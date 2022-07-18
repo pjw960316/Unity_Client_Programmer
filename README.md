@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/55792986/179510244-0cc22756-c39c-4dd9-a02b-175f6b9620e9.png)
+![image](https://user-images.githubusercontent.com/55792986/179517841-661b0edb-0e08-4995-939b-f12ded7d9966.png)
 
 # 일시
 - 2022/07/14 ~ 
