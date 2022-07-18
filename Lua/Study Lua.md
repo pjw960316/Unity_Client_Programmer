@@ -1,9 +1,9 @@
-# 전역 변수와 지역 변수
+# Global Variable And Local Variable
 - 선언한 모든 변수는 전역 변수가 된다. 그러므로 어떤 스크립트에서도 참조가 가능하다.
   - 이는 매우 위험하므로 local을 붙여서 지역변수로 만든다.
   - do-end, function 같은 scope 내에서 local을 붙이면 해당 scope로 한정된다.
 - 가능하면 local로 지역 변수화 시킨다.
-- 변수를 선언할 때 사용되는 근처에 
+- 변수를 선언할 때 사용되는 근처에 선언하여 scope를 줄이고 빠르게 확인하도록 한다.
 
 # Class
 #### 1. 개요 
@@ -21,10 +21,19 @@
 
 #### 4. 상속
 
+# Types And Values
+- ![image](https://user-images.githubusercontent.com/55792986/179511098-7f74f426-f372-4768-b25f-737b12398ac4.png)
+- 루아는 숫자를 number type으로 간주한다.
+
+# 12페이지까지 정리했다.
+
+# Table
+
 # 추후에 정리하자
 - require를 통해 다른 루아 스크립트를 include 한다.
   - 전체 코드를 복사한 느낌.
   - 무분별한 require는 큰 오버헤드가 존재하므로 필요할 때만 선언하는 방식도 좋다.
+
 
 
 
