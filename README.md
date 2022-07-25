@@ -21,7 +21,6 @@
 1. 유니티 
   - 이전에 공부한 내용에 이어서 추가로 공부하자. [대학생 때 공부한 유니티](https://github.com/pjw960316/6_semester_lecture/blob/master/unity/unity%20study.pdf)
 
-
 2. 개발자 칼럼
    - 세상에는 훌륭한 개발자분들이 경험한 글이 많이 존재한다.
    - 이를 읽고 발전하자.
