@@ -14,7 +14,7 @@
 - 두 회사를 짧게 다니며 가장 크게 배운 것이 있다. 신입의 경우 하루하루 배우는 것이 너무 많기 때문에 이를 잘 정리하는 능력이 중요하다.
 - 기록은 했지만 정리하지 못했다. 이제는 성장하는 개발자가 되기 위해 **기록하고 정리한다.**
 - ![20220725_160722](https://user-images.githubusercontent.com/55792986/180719980-982da156-9696-43c9-a33b-3cde518f4d17.png)
-    - reference https://jojoldu.tistory.com/24?category=717426
+    - reference [test](https://jojoldu.tistory.com/24?category=717426)
 <br><br><br>
 
 # 유니티 개발자, 그리고 좋은 개발자가 되기 위해 공부하고 기록하자.
