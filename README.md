@@ -14,12 +14,12 @@
 - 두 회사를 짧게 다니며 가장 크게 배운 것이 있다. 신입의 경우 하루하루 배우는 것이 너무 많기 때문에 이를 잘 정리하는 능력이 중요하다.
 - 기록은 했지만 정리하지 못했다. 이제는 성장하는 개발자가 되기 위해 **기록하고 정리한다.**
 - ![20220725_160722](https://user-images.githubusercontent.com/55792986/180719980-982da156-9696-43c9-a33b-3cde518f4d17.png)
-    - reference [test](https://jojoldu.tistory.com/24?category=717426)
+    - reference [기억보단 기록을 블로그](https://jojoldu.tistory.com/24?category=717426)
 <br><br><br>
 
 # 유니티 개발자, 그리고 좋은 개발자가 되기 위해 공부하고 기록하자.
 1. 유니티 
-  - 이전에 공부한 내용에 이어서 추가로 공부하자. https://github.com/pjw960316/6_semester_lecture/blob/master/unity/unity%20study.pdf
+  - 이전에 공부한 내용에 이어서 추가로 공부하자. [대학생 때 공부한 유니티](https://github.com/pjw960316/6_semester_lecture/blob/master/unity/unity%20study.pdf)
 
 
 2. 개발자 칼럼
