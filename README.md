@@ -25,7 +25,7 @@
 
 ### 2. 게임 클라이언트 프로그래머가 되기 위한 CS 지식
 - 기초가 중요하다.
-- 학부 시절에 공부했던 내용도 추가한다.
+- 학부 시절에 공부했던 내용도 추가한다. [대학생 때 공부한 CS](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/Computer%20Science/Study%20In%20College)
 - 게임 클라이언트 프로그래머의 기초를 다져주는 지식들을 공부한다. 
   - 후에 직장에 들어가면 공부해야 할 지식이 더 확고해 질 것 이다.
      
