@@ -14,5 +14,9 @@
 - ### Unity
   - 메인 컨텐츠이므로 다른 디렉토리에서 관리!
 
+- ### Unclassified Learning Materials
+  - 분류하기 어려운 자료들의 모임.
+  - 추후에 노트가 많아지면 분류한다.
+
 
 

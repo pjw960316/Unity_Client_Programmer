@@ -3,6 +3,10 @@
 - [1. Framework](#1-framework)
 - [2. Library](#2-library)
 - [3. Module](#3-module)
+- [4. MVC Pattern](#4-mvc-pattern)
+- [5. Dependency 종속성, 의존성](#5-dependency-종속성-의존성)
+- [6. Binding](#6-binding)
+- [7. Wrapping](#7-wrapping)
 # 1. Framework
 - ### 정의
   - ![image](https://user-images.githubusercontent.com/55792986/181395656-4d21c2f0-627a-4d00-acad-1ce0f9d4f1ae.png)
@@ -10,6 +14,7 @@
     - 여러 클래스와 컴포넌트로 구성되어 있다. (UI.lua, Dragon.lua)
     - 회사에서는 프레임워크가 회사의 가장 큰 재산이라고 했다.
   - skeleton과 같은 개념.
+  - 내부가 여러개의 모듈로 이루어져 있다.
 - ### 집 짓기 예시
   - ![20220728_090831](https://user-images.githubusercontent.com/55792986/181393199-0a972c48-e636-41e8-9395-0e68f7c8b26a.png)
   - 집을 지을 때 뼈대를 구성하는 작업이 프레임워크다..
@@ -47,3 +52,9 @@
   - 모듈 간에 종속성을 최대한 줄이는 방식의 코딩을 인턴 때 진행했었다.
 
 # 4. MVC Pattern
+
+# 5. Dependency 종속성, 의존성
+
+# 6. Binding
+
+# 7. Wrapping
