@@ -4,7 +4,7 @@
 - [2. Library](#2-library)
 - [3. Module](#3-module)
 - [4. MVC Pattern](#4-mvc-pattern)
-- [5. Dependency 종속성, 의존성](#5-dependency-종속성-의존성)
+- [5. Coupling (=Dependency)](#5-coupling-dependency)
 - [6. Binding](#6-binding)
 - [7. Wrapping](#7-wrapping)
 # 1. Framework
@@ -53,7 +53,8 @@
 
 # 4. MVC Pattern
 
-# 5. Dependency 종속성, 의존성
+# 5. Coupling (=Dependency)
+- 
 
 # 6. Binding
 
