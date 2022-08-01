@@ -30,7 +30,7 @@
   - <img width="731" alt="20220801_173532" src="https://user-images.githubusercontent.com/55792986/182108154-58b9cecd-0929-4c3c-b2ba-fa8efb7c3419.png">
   - <img width="606" alt="20220801_180838" src="https://user-images.githubusercontent.com/55792986/182114491-9d58ef8f-b5f2-45fb-b593-3b498c6fcd55.png">
   - **.Net Framework와 .Net Core를 합쳐서 .Net으로 대동단결 하였다!**
-  - .Net Standard
+  - .Net Standard도 이제는 .Net으로?
 
 ### 2. C# Version
 - <img width="441" alt="20220801_181604" src="https://user-images.githubusercontent.com/55792986/182115871-428a9fec-b8ce-402e-b46d-7f54d1c755ec.png">
