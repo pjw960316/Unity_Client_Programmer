@@ -5,7 +5,19 @@
     - [2. C# Version](#2-c-version)
     - [3. Unity Version](#3-unity-version)
 - [CallBack Function](#callback-function)
-- [Interface & multiple inheritance](#interface--multiple-inheritance)
+- [Property (속성)](#property-속성)
+    - [Reference : MSDN](#reference--msdn)
+    - [1. 학창시절에 왜 사용하지 않았을까?](#1-학창시절에-왜-사용하지-않았을까)
+    - [2. Property를 사용해야 하는 이유](#2-property를-사용해야-하는-이유)
+    - [3. 접근지정자는 어떻게 해야 할까?](#3-접근지정자는-어떻게-해야-할까)
+- [Inheritance](#inheritance)
+    - [1. C#은 다중상속을 지원하지 않는다. 그러므로 Monobehaviour를 상속받는 클래스는 다른 클래스를 상속 받지 못한다.](#1-c은-다중상속을-지원하지-않는다-그러므로-monobehaviour를-상속받는-클래스는-다른-클래스를-상속-받지-못한다)
+- [Inheritance vs Component](#inheritance-vs-component)
+    - [Reference : Link](#reference--link)
+    - [1. 이전 경험](#1-이전-경험)
+    - [2. 공통된 기능](#2-공통된-기능)
+    - [3. 상속 (Inheritance)으로 구현해보기](#3-상속-inheritance으로-구현해보기)
+    - [4. 컴포넌트로 구현해보기](#4-컴포넌트로-구현해보기)
 
 
 # Version : .Net, C#, Unity
@@ -63,7 +75,44 @@
 
 # CallBack Function 
 
-# Interface & multiple inheritance
-- 어떤 스크립트가 MonoBehaviour를 상속하고 있다면 다른 클래스를 상속받지 못한다. 이를 해결하기 위해 C#에서는 인터페이스를 제공한다.
-- 인터페이스는 어떤 구현도 갖지 않는다.
+# Property (속성)
+### Reference : [MSDN](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/classes-and-structs/properties)
+### 1. 학창시절에 왜 사용하지 않았을까?
+- getter, setter도 제대로 사용하지 않았기 때문에 쓸 이유가 없었다.
+
+### 2. Property를 사용해야 하는 이유
+- 귀찮음이 해소 된다. 
+  - 멤버 변수는 private로 선언하기 때문에 public으로 구현된 get,set을 이용해야 한다.
+  - property는 이를 매우 간편하게 해준다.
+
+### 3. 접근지정자는 어떻게 해야 할까?
+- ![image](https://user-images.githubusercontent.com/55792986/182595224-ed28e2e9-14e7-47f8-8503-d45ec5f70ff6.png)
+  - private로 선언하면 자식은 접근하지 못한다.
+
+
+# Inheritance
+### 1. C#은 다중상속을 지원하지 않는다. 그러므로 Monobehaviour를 상속받는 클래스는 다른 클래스를 상속 받지 못한다.
+- 다이아몬드 문제로 인해 지원하지 않는다.
+- <img width="698" alt="20220803_184517" src="https://user-images.githubusercontent.com/55792986/182578386-f32409a8-0b77-4a67-9bc6-867b10ece4cf.png">
+
+
+# Inheritance vs Component
+### Reference : [Link](https://www.youtube.com/watch?v=8TIkManpEu4)
+### 1. 이전 경험
+- 회사에서는 상속만 이용했다.
+- 부모의 멤버변수, 메소드를 모두 상속 받았고, 적당한 계층의 클래스에 필요한 함수를 구현했다.
+- 인터페이스나 오버라이딩도 거의 제대로 이용되지 않았던 걸로 기억한다. 
+
+### 2. 공통된 기능
+- 롤에서 정글몹과 미니언을 구현한다고 가정해보자.
+- 정글몹과 미니언의 공통된 기능을 저장하는 스크립트, 정글몹 6개의 기능을 저장하는 스크립트, 미니언들의 기능을 저장하는 스크립트
+  - 이렇게 계층화해서 상속구조를 만들 수 있다고 생각한다.
+
+### 3. 상속 (Inheritance)으로 구현해보기
+- 최상단 structure는 인터페이스로 구현해야할까? 클래스로 구현해야할까?
+- ad,ap 같은 최상단 멤버의 접근지정자는 어떻게 해야할까?
+
+
+### 4. 컴포넌트로 구현해보기
+- 
 
