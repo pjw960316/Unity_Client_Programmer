@@ -5,6 +5,8 @@
 - [JsonUtility](#jsonutility)
     - [1. 개요](#1-개요)
     - [2. 예제](#2-예제)
+      - [2-1. json 파일](#2-1-json-파일)
+      - [2-2. JsonUtility 이용](#2-2-jsonutility-이용)
 - [System.Text.Json](#systemtextjson)
 
 # Json에 관한 생각
@@ -23,7 +25,7 @@
 - <img width="518" alt="20220809_164916" src="https://user-images.githubusercontent.com/55792986/183594565-69f1cffa-1b8b-45fd-bbe5-1187ce5e0aba.png">
 
 ### 2. 예제
-(1) json 파일
+#### 2-1. json 파일
 ~~~
 {
     "minion":
@@ -49,7 +51,8 @@
 - 보통 이렇게 배열 형식으로 사용하는 경우가 많을 것 이다.
 - 현재는 배열 내부에 3개의 객체가 있다.
   - 객체가 1개인 경우는 배열을 사용하지 않는데 이런 경우 json 배열을 만들지 말고 아래의 JsonUtility 코드에서 Minions 클래스를 만들지 않으면 해결된다.
-(2) JsonUtility 이용
+
+#### 2-2. JsonUtility 이용
 ~~~
 using System.Collections;
 using System.Collections.Generic;
