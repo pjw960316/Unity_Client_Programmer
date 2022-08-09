@@ -10,6 +10,7 @@
     - [1. 학창시절에 왜 사용하지 않았을까?](#1-학창시절에-왜-사용하지-않았을까)
     - [2. Property를 사용해야 하는 이유](#2-property를-사용해야-하는-이유)
     - [3. 접근지정자는 어떻게 해야 할까?](#3-접근지정자는-어떻게-해야-할까)
+- [Member Variable Tips](#member-variable-tips)
 
 
 # Version : .Net, C#, Unity
@@ -81,5 +82,6 @@
 - ![image](https://user-images.githubusercontent.com/55792986/182595224-ed28e2e9-14e7-47f8-8503-d45ec5f70ff6.png)
   - private로 선언하면 자식은 접근하지 못한다.
 
-
-
+# Member Variable Tips
+- ![image](https://user-images.githubusercontent.com/55792986/183585061-b53b3549-e031-4492-ab98-b6d663cc2c43.png)
+- ![image](https://user-images.githubusercontent.com/55792986/183585096-2d2cc685-8d74-4682-a4e3-c5f0f0a9621a.png)
