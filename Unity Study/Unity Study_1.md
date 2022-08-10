@@ -4,6 +4,7 @@
     - [1. .Net Version](#1-net-version)
     - [2. C# Version](#2-c-version)
     - [3. Unity Version](#3-unity-version)
+- [Abstract](#abstract)
 - [CallBack Function](#callback-function)
 - [Property (속성)](#property-속성)
     - [Reference : MSDN](#reference--msdn)
@@ -65,7 +66,9 @@
     - .Net Standard 2.0을 현재 버전에서 사용하고 있다. 그러므로 .Net API를 사용할 때 .Net Standard 2.0문서를 보면 될 것 이다.
     - 이전의 회사에서는 모두 예전 버전을 이용했다. Visual studio도 2017을 썼고, Cocos도 최신버전이 아니었다. 회사들은 새로운 버전이 나왔다고 바로 마이그레이션 하지 않기 때문에 다음에 갈 회사도 비슷할 것 이다. 그러므로 **현재 버전에서 어떤 .Net과 어떤 C# 버전이 이용되는지 파악하고 사용하는 것이 가장 중요할 것 이다.**
 
-
+# Abstract
+- abstract function이 1개라도 있으면 해당 클래스는 abstract class가 된다.
+- 
 # CallBack Function 
 
 # Property (속성)
