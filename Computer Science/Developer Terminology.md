@@ -3,8 +3,13 @@
 - [1. Framework](#1-framework)
 - [2. Library](#2-library)
 - [3. Module](#3-module)
-- [4. MVC Pattern](#4-mvc-pattern)
-- [5. Coupling (=Dependency)](#5-coupling-dependency)
+- [4. 모듈 간의 관계](#4-모듈-간의-관계)
+    - [4-1. Coupling (=결합도 =연관 정도)](#4-1-coupling-결합도-연관-정도)
+      - [4-1-1. Tight Coupling (=강한 결합)](#4-1-1-tight-coupling-강한-결합)
+      - [4-1-2. Loose Coupling (=느슨한 결합)](#4-1-2-loose-coupling-느슨한-결합)
+    - [4-2. Cohesion (=응집도)](#4-2-cohesion-응집도)
+    - [4-3. 결론 : Loose Coupling의 관점으로 설계하고 그 방법에 대해 정리해본다.](#4-3-결론--loose-coupling의-관점으로-설계하고-그-방법에-대해-정리해본다)
+- [5. MVC Pattern](#5-mvc-pattern)
 - [6. Binding](#6-binding)
 - [7. Wrapping](#7-wrapping)
 # 1. Framework
@@ -46,15 +51,63 @@
     - API와 Library는 포함관계라고 생각한다.
 
 # 3. Module
+- 소프트웨어를 **기능별로** 나누는 것을 말한다.
 - ![image](https://user-images.githubusercontent.com/55792986/181397941-1ccaed10-6282-4f5d-b161-3516ad8fe12d.png)
-  - 용어 그 자체의 뜻은 **구성 단위** 이다.
-  - Unity에서 하나의 스크립트 파일이 모듈일 수도 있다.
-  - 모듈 간에 종속성을 최대한 줄이는 방식의 코딩을 인턴 때 진행했었다.
+- 용어 그 자체의 뜻은 **구성 단위** 이다.
+- Unity에서 하나의 스크립트 파일이 모듈일 수도 있다.
+- 모듈 간에 종속성을 최대한 줄이는 방식의 코딩을 인턴 때 진행했었다.
+  - 독립성이 높은 모듈일수록 좋다.
+  - 독립성이 높으면 해당 모듈을 수정하더라도 다른 모듈에 끼치는 영향이 적으며 오류가 발생하더라도 쉽게 문제를 발견하고 해결할 수 있다.
+# 4. 모듈 간의 관계
+### 4-1. Coupling (=결합도 =연관 정도)
+- ![image](https://user-images.githubusercontent.com/55792986/184568974-e3937691-1ca3-4a6c-ae23-d2292d0bcfa2.png)
+  - 다른 모듈과의 의존성(=dependency)정도 
+- **유니티에서 모듈을 스크립트**라고 생각하면 스크립트간에 연관된 정도가 많으면 결합도가 높다고 한다.
+- 응집도와는 반대 되는 개념이다. 
+- 결합도가 높으면 다른 모듈을 찾아가며 유지 보수해야 하기 때문에 유지 보수 측면에서 좋지 않기 때문에 
 
-# 4. MVC Pattern
+#### 4-1-1. Tight Coupling (=강한 결합)
+-![image](https://user-images.githubusercontent.com/55792986/184570254-c0c64600-8688-483d-96f5-fa08551de7f4.png)
+  - 두 객체가 강하게 결합되어 있다면 하나의 객체에서 다른 객체를 알고 있어야 한다.
+  - 작은 프로그램에서는 괜찮지만 큰 프로그램이라면 문제가 된다. 다른 개발자가 작성한 코드를 완벽하게 이해하지 않은 상태에서 모두 검사해 보아야 한다.
+- 팀장님이 하셨던 말 중에 '드래곤이 없다면 이 코드는 동작하지 않을 텐데?' 라는 것이 기억난다.
+  - 모듈이나 객체가 없더라도 코드가 동작해야 한다.
+  
+<br/>
 
-# 5. Coupling (=Dependency)
+- 아래의 예시를 확인해 본다.
+~~~
+class A {
+   public int a = 0;
+   public int getA() {
+      System.out.println("getA() method");
+      return a;
+   }
+   public void setA(int aa) {
+      if(!(aa > 10))
+         a = aa;
+   }
+}
+public class B {
+   public static void main(String[] args) {
+      A aObject = new A();
+      aObject.a = 100; // Not suppose to happen as defined by class A, this causes tight coupling.
+      System.out.println("aObject.a value is: " + aObject.a);
+   }
+}
+~~~
+  - 만약 개발자가 클래스 A의 변수 a를 private로 변경한다면 클래스 B는 정상 동작하지 않게 된다.
+#### 4-1-2. Loose Coupling (=느슨한 결합)
+- 일단 이게 좋음
+### 4-2. Cohesion (=응집도)
+- 응집도가 높으면 하나의 모듈에 많은 기능들이 응집되어 모여있다.
+  
+### 4-3. 결론 : Loose Coupling의 관점으로 설계하고 그 방법에 대해 정리해본다.
+- 인터페이스를 조금 더 이해하고...
 - 
+# 5. MVC Pattern
+
+
 
 # 6. Binding
 

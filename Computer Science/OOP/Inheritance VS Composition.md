@@ -28,6 +28,7 @@
 - ![20220809_123635](https://user-images.githubusercontent.com/55792986/183558827-42f878f2-f0ed-4fcb-a6fc-a5786ca1e4cc.png)
 
 # Inheritance vs Composition 연습
+### Practice : [Link](https://github.com/pjw960316/Better_Unity_Skill)
 ### Reference : [Link](https://www.youtube.com/watch?v=8TIkManpEu4)
 ### 1. 이전 경험
 - 회사에서는 상속만 이용했다.
@@ -43,7 +44,8 @@
   - 죽음
 - (2) 미니언 끼리 공통기능 (Minions Class)
   - 자동 이동 (속도는 다르지만 이는 상태로 조절)
-  - 일정 거리에 들어왔을 때 공격(인터페이스?)
+  - 일정 거리에 들어왔을 때 공격
+  - 이걸 인터페이스로 구현해본다.
 - (3) 근거리 미니언, 원거리 미니언, 대포미니언, 슈퍼미니언 독립기능 (각각의 Class)
   - 각각의 공격은 다를 것 이다?
     - 공격이란 기능을 수행하는 것은 똑같고, 애니메이션과 상태만 다르게 구현할 수도 있을 것.
