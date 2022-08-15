@@ -35,3 +35,6 @@
 
 # Interface
 - [Refrence](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Books%20For%20Development/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4.md) (5장의 6번 항목에서 인터페이스를 자세하게 설명했다.)
+- 인터페이스의 메소드(=메시지)를 선언할 때는 접근지정자를 붙이지 않는다.
+  - 자동으로 public이 된다.
+  - 누군가 상속받아서 구현을 해야 하기 때문에 당연한 것 이다.
