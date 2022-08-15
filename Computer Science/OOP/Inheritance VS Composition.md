@@ -19,6 +19,10 @@
 - 어떤 함수를 구현할 때 부모 클래스에서 구현할지 자식 클래스에서 구현할지에 대한 구분이 어렵다.
   - 회사에서도 이 부분이 매우 어려웠다.
 
+### 4. 기타
+- 자식이 부모에게서 어떤 메서드를 상속받았다고 가정하자. 자식의 메서드에서 사용되는 멤버 변수는 자식의 것이다.
+- base를 이용하여 부모의 멤버를 호출할 수 있다.
+
 
 # Composition
 - ![20220809_121908](https://user-images.githubusercontent.com/55792986/183558147-7066d537-c330-4ad1-a179-2956d0a78ceb.png)
@@ -30,6 +34,7 @@
 # Inheritance vs Composition 연습
 ### Practice : [Link](https://github.com/pjw960316/Better_Unity_Skill)
 ### Reference : [Link](https://www.youtube.com/watch?v=8TIkManpEu4)
+
 ### 1. 이전 경험
 - 회사에서는 상속만 이용했다.
 - 부모의 멤버변수, 메소드를 모두 상속 받았고, 적당한 계층의 클래스에 필요한 함수를 구현했다.

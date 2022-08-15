@@ -8,6 +8,7 @@
 
 # 정리 한 이유
 - 3개의 키워드는 모두 각자의 기능이 있고 명확하게 이해하고 구분해야 더 좋은 설계를 할 수 있을 것 같다.
+- 인턴 때 인터페이스 개념도 제대로 모르고 실무를 했었다...
   
 # Abstract (추상 클래스와 추상 메서드)
 - [MSDN](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract)
@@ -38,3 +39,15 @@
 - 인터페이스의 메소드(=메시지)를 선언할 때는 접근지정자를 붙이지 않는다.
   - 자동으로 public이 된다.
   - 누군가 상속받아서 구현을 해야 하기 때문에 당연한 것 이다.
+- 인터페이스를 상속받아 구현한 메서드는 반드시 public이어야 한다.
+  - ![image](https://user-images.githubusercontent.com/55792986/184607435-7a5091ca-f08a-498d-abc4-f6dc140a7c72.png)
+    - 다른 스크립트에서도 불려야 하므로 public이어야 한다.
+    - [Link](https://stackoverflow.com/questions/7238575/why-must-an-c-sharp-interface-method-implemented-in-a-class-be-public)
+- 어떤 클래스가 두 개의 인터페이스 또는 클래스를 상속 받았고 이 때 동일한 이름의 메서드가 구현되어 있다면 아래와 같이 진행하면 된다. 근데 애당초 이름이 겹치지 않도록 작성해야 할 것 이다.
+~~~
+void IMinion.getDamage(int a)
+    {
+
+    }
+~~~ 
+- 
