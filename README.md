@@ -32,7 +32,7 @@
 - 세상에는 훌륭한 개발자분들이 경험한 글이 많이 존재한다. 이를 읽고 발전하자.
 
 ### 4. 개발 관련 서적
-- 책으로 배우는 것은 정말 많다.
+- [개발 서적](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/Books%20For%20Development)
 
 
 
