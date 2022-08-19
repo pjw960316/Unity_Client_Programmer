@@ -7,6 +7,7 @@
       - [2.1 하나의 Delegate에 다수의 Event를 등록하는가?](#21-하나의-delegate에-다수의-event를-등록하는가)
     - [3. 참고](#3-참고)
     - [생각](#생각)
+- [EventHandler Class](#eventhandler-class)
 - [연습](#연습)
     - [1. 구현](#1-구현)
     - [2. EventHandler와 Delegate](#2-eventhandler와-delegate)
@@ -36,6 +37,9 @@
 - 하나의 delegate에 여러가지 이벤트
 - eventhandler api
 
+# EventHandler Class
+- 다른 스크립트의 함수 포인터를 추가 할 수 있다.
+  - 게임내에 존재하는 모든 함수를 하나의 EventHandler 객체에 등록 시킬 수 있음을 의미한다.
 # 연습
 ### 1. 구현
 - 미니언이 죽었을 때 죽인 캐릭터에서 메서드가 호출되고, 게임매니저에서 관련 메서드가 호출되도록 구현한다.
