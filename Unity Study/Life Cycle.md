@@ -1,45 +1,7 @@
 # 목차
 - [목차](#목차)
-- [상속과 monobehaviour](#상속과-monobehaviour)
 - [Awake vs 생성자](#awake-vs-생성자)
-
-
-# 상속과 monobehaviour
-~~~
-public class Structure : MonoBehaviour
-{
-    public int money;
-
-    private void Awake()
-    {
-        Debug.Log("call awake");
-    }
-    private void Start()
-    {
-        Debug.Log("call start");
-        money = 30;
-    }
-    protected void onDie()
-    {
-        Debug.Log(money);
-        //죽었을 때 호출된다.
-        //죽인 객체에게 돈을 준다.
-        //다른 객체의 멤버 변수 값을 변경한다.
-    }
-}
-~~~
-~~~
-public class CannonMinion : Structure
-{
-    private void Start()
-    {
-        money = 60;
-        onDie();
-    }
-}
-~~~
-- CannonMinion만 GameObject에 할당한다. 당연히 Structure는 어떠한 객체에도 할당하지 않는다.
-- CannonMinion은 Awake()와 Start()를 모두 Structure를 통해 호출된다. Awake()는 Structure의 것으로 호출되지만 Start()는 오버라이딩 했기 때문에 CannonMinion의 것으로 호출된다.
+- [Awake , Start는 왜 override를 붙이지 않는가? (검색의 한계를 느낀다...)](#awake--start는-왜-override를-붙이지-않는가-검색의-한계를-느낀다)
 
 # Awake vs 생성자
 - ![20220817_131012](https://user-images.githubusercontent.com/55792986/185032968-bbd8461a-92cc-4c6e-9e7c-a20aa6947d65.png)
@@ -52,4 +14,16 @@ void Start() //Awake()도 동일할 것
     }
 ~~~
 - 유니티는 생성자 대신 Awake()를 권장한다.
+
+# Awake , Start는 왜 override를 붙이지 않는가? (검색의 한계를 느낀다...)
+- 보통 우리는 Monobehaviour를 상속받는다. 그리고 start와 awake를 구현하는데 이 때 어떻게 override를 붙이지 않고 편하게 사용할 수 있을까?
+- 비슷한 질문
+  - 질문 : ![image](https://user-images.githubusercontent.com/55792986/185576507-b053df6d-e857-4961-a171-f42c3fc8f5e7.png)
+  - 답변 : [Answer](https://forum.unity.com/threads/solved-start-and-update-methods-do-we-override-them-hide-them-or-what.404044/)
+    - 외국 형님들의 답변을 봐도 잘 모르겠다.
+  - 답변_2 : ![20220819_172858](https://user-images.githubusercontent.com/55792986/185578134-0aeceeed-175b-438f-85df-db0cdd2c0ead.png)
+    - monobehaviour에서 가상함수로 구현하지 않았다.
+      - 내 생각 : 그럼에도 불구하고 구현도 하지 않았을 것. 
+    - 이해한 것 (틀릴 가능성이 높음) : 게임오브젝트에 달은 스크립트의 awake만 호출되고, 부모의 awake는 무시됨.
+      - 만약 부모 것을 호출하고 싶다면 virtual과 override 그리고 base를 이용하여 상속받아 base로 호출해야 할 듯.
    
