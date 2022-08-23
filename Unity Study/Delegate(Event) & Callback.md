@@ -3,8 +3,7 @@
 - [개요](#개요)
 - [Delegate & Event](#delegate--event)
     - [1. 이전 공부](#1-이전-공부)
-    - [2. 고민](#2-고민)
-      - [2.1 하나의 Delegate에 다수의 Event를 등록하는가?](#21-하나의-delegate에-다수의-event를-등록하는가)
+    - [2. 막 고민](#2-막-고민)
     - [3. 참고](#3-참고)
     - [생각](#생각)
 - [EventHandler Class](#eventhandler-class)
@@ -24,11 +23,23 @@
 - 이론만 공부를 한 상태에서 실무를 해보니 어려웠다.
 - 실무에서 고민한 내용을 지금 연습해보자.
 
-### 2. 고민
-#### 2.1 하나의 Delegate에 다수의 Event를 등록하는가?
+### 2. 막 고민
+- 2.1 하나의 Delegate에 다수의 Event를 등록하는가?
 - 질문 : ![image](https://user-images.githubusercontent.com/55792986/185571375-0feb7d4b-2e2c-4a02-a867-8866e3010231.png)
 - 답변 : ![image](https://user-images.githubusercontent.com/55792986/185571638-7dc0041b-f475-401a-9394-f8bc7c668068.png)
   - 가능하다. 그래서 EventHandler Class를 .Net에서 구현해줬다.
+
+- 2.2 이벤트는 하나의 스크립트에 몰아서 구현하는가?
+
+- 2.3 참고참고
+- https://daebalstudio.tistory.com/entry/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%99%84%EB%B2%BD%ED%95%98%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0
+
+- 2.4 이벤트는 static ? private ? public?
+  - 이벤트는 모든 스크립트에서 참고 해야 하지 않는가?
+  - 이벤트의 범용성이 궁금한 것.
+
+- 2.5 이 메소드는 반드시 상속받아서 사용해야 한다를 표기하는 것? 근데 구현은 위에서 해줌.
+  - 다시 말 해 구현은 위에서 하는 데 위의 스크립트는 쓰지 않고 무조건 자식에서만 쓰임을 표기
 ### 3. 참고
 - [Unity Official Youtube](https://www.youtube.com/watch?v=k4JlFxPcqlg)
 
