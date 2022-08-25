@@ -98,5 +98,5 @@
 ### 1. 구현
 - 미니언이 죽었을 때 죽인 캐릭터에서 메서드가 호출되고, 게임매니저에서 관련 메서드가 호출되도록 구현한다.
 
-### 2. EventHandler와 Delegate
+### 2. EventHandler와 Delegateqq
 - .Net의 EventHandler를 이용하여 delegate를 만들지 않는다. (delegate 만드는 건 귀찮다!)
