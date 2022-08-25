@@ -1,6 +1,22 @@
 - [목차](#목차)
 - [Inheritance](#inheritance)
+    - [1. C#은 다중상속을 지원하지 않는다. 그러므로 Monobehaviour를 상속받는 클래스는 다른 클래스를 상속 받지 못한다.](#1-c은-다중상속을-지원하지-않는다-그러므로-monobehaviour를-상속받는-클래스는-다른-클래스를-상속-받지-못한다)
+    - [2. Base Class](#2-base-class)
+    - [3. 함수의 위치](#3-함수의-위치)
+    - [4. 기타](#4-기타)
 - [Composition](#composition)
+- [Inheritance vs Composition 연습](#inheritance-vs-composition-연습)
+    - [Practice : Link](#practice--link)
+    - [Reference : Link](#reference--link)
+    - [1. 이전 경험](#1-이전-경험)
+    - [2. 설계](#2-설계)
+    - [3. 상속 (Inheritance)으로 구현해보기](#3-상속-inheritance으로-구현해보기)
+    - [4. 컴포넌트로 구현해보기](#4-컴포넌트로-구현해보기)
+- [멤버 변수에 대해서 고민해보자.](#멤버-변수에-대해서-고민해보자)
+    - [1. 비슷한 고민](#1-비슷한-고민)
+    - [2. 어떻게 구현할까?](#2-어떻게-구현할까)
+
+# 목차
 
 # Inheritance
 ### 1. C#은 다중상속을 지원하지 않는다. 그러므로 Monobehaviour를 상속받는 클래스는 다른 클래스를 상속 받지 못한다.
@@ -64,3 +80,17 @@
 
 ### 4. 컴포넌트로 구현해보기
 - StructureState Class, MinionsMove Class 처럼 세부적으로 나누는 클래스.
+
+# 멤버 변수에 대해서 고민해보자.
+### 1. 비슷한 고민
+- 질문
+  - ![image](https://user-images.githubusercontent.com/55792986/186606975-2fbea4d7-c3b1-4932-b8ec-3af020e6de67.png)
+- 답변
+  - ![20220825_165029](https://user-images.githubusercontent.com/55792986/186607109-144d13fa-6374-4553-b9c8-33832e19eadc.png)
+  - 객체의 멤버 변수가 모두 상태를 나타내지는 않지만(당연함) 상태를 나타내는 멤버 변수가 존재한다.
+  - 이런 경우 '객체지향의 사실과 오해'를 참고하면 숨겨주어야 한다. 상태를 참고하려면 메서드를 이용해야 한다.
+  
+### 2. 어떻게 구현할까?
+- 프로퍼티로 구현한다.
+  - 인터페이스에?
+
