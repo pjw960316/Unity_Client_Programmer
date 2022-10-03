@@ -35,6 +35,7 @@
 - [개발 서적](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/Books%20For%20Development)
 
 # 당분간은 코딩테스트에 좀 더 집중한다.
-- 하지만 코딩테스트와 별개로 조금씩 공부한다.
+- [코딩 테스트](https://github.com/pjw960316/Practice_For_Coding_Test)
+- 하지만 코딩테스트와 별개로 조금씩 공부를 다시 시작해보자.
 
 
