@@ -34,6 +34,7 @@
 ### 4. 개발 관련 서적
 - [개발 서적](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/Books%20For%20Development)
 
-### 5. Test
+# 당분간은 코딩테스트에 좀 더 집중한다.
+- 하지만 코딩테스트와 별개로 조금씩 공부한다.
 
 
