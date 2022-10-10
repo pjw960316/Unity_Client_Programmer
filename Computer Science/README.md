@@ -19,5 +19,10 @@
   - 자유롭게 필기한다.
   - 추후에 노트가 많아지면 분류한다.
 
+# 3. Data Structure & Algorithm
+- 언젠가는 이것도 여기로 이동 시킨다.
+- 하지만 코딩테스트, 면접, 언젠가는 도전할 코딩테스트 대회를 위해 아래의 링크에서 작업한다.
+  - [Link](https://github.com/pjw960316/Practice_For_Coding_Test/tree/master/Study)
+
 
 
