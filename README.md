@@ -18,7 +18,8 @@
 
 # 유니티 개발자, 그리고 좋은 개발자가 되기 위해 공부하고 기록하자.
 ### 1. 유니티
-- 이전에 공부한 내용에 이어서 추가로 공부하자. [대학생 때 공부한 유니티](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Unity%20Study%20(2020%20~%202021).pdf)
+- 이전에 공부한 내용에 이어서 추가로 공부하자. 
+- [대학생 때 공부한 유니티](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Unity%20Study%20(2020%20~%202021).pdf)
 
 ### 2. 게임 클라이언트 프로그래머가 되기 위한 CS 지식
 - 기초가 중요하다.
