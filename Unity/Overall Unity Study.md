@@ -13,7 +13,6 @@
     - [2. Property를 사용해야 하는 이유](#2-property를-사용해야-하는-이유)
     - [3. 접근지정자는 어떻게 해야 할까?](#3-접근지정자는-어떻게-해야-할까)
 - [Member Variable Tips](#member-variable-tips)
-- [C# Dictionary](#c-dictionary)
 
 # 개요
 - 마땅히 소규모 문서로 나누기 애매한 내용들...
@@ -96,6 +95,3 @@
 - ![image](https://user-images.githubusercontent.com/55792986/183585061-b53b3549-e031-4492-ab98-b6d663cc2c43.png)
 - ![image](https://user-images.githubusercontent.com/55792986/183585096-2d2cc685-8d74-4682-a4e3-c5f0f0a9621a.png)
 
-# C# Dictionary
-- key,value에 클래스를 넣을 수 있다.
-- dictionary도 객체이므로 항상 객체를 생성하고 이용한다.
