@@ -7,11 +7,12 @@
     - [2. C# 예시](#2-c-예시)
     - [3. 결론](#3-결론)
 - [Delegate & Event의 사용 이유](#delegate--event의-사용-이유)
+- [이벤트 주도적 프로그래밍](#이벤트-주도적-프로그래밍)
 - [Event에 대해 좀 더 깊게 공부해 본다.](#event에-대해-좀-더-깊게-공부해-본다)
     - [1. Event를 이용할 때는 .Net의 EventHandler를 이용하는 방법이 좋다.](#1-event를-이용할-때는-net의-eventhandler를-이용하는-방법이-좋다)
     - [2. public으로 선언해도 오직 해당 클래스 내부에서만 호출할 수 있습니다.](#2-public으로-선언해도-오직-해당-클래스-내부에서만-호출할-수-있습니다)
     - [3. Event(==EventHandler)는 static으로 선언해야 하는가?](#3-eventeventhandler는-static으로-선언해야-하는가)
-- [막 고민](#막-고민)
+- [고민](#고민)
 - [.Net API : EventHandler](#net-api--eventhandler)
 - [연습](#연습)
     - [1. 구현](#1-구현)
@@ -20,17 +21,17 @@
 
 # 개요
 - 라이브 게임 개발 당시 가장 어려웠던 것은 회사 코드의 콜백 구조를 이해하는 것 이었다.
-- 유니티에서 콜백을 잘 사용하려면 어떻게 설계해야 할지 공부해본다.
+- :star:유니티에서 **콜백**을 잘 사용하려면 어떻게 설계해야 할지 공부해본다.
 
 # 이전 공부
-- [Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity%20Study/Previous%20Unity%20Study_2.pdf)
+- :link:[Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Unity%20Study%20(2022.04%20~%202022.06).pdf)
 - 기본적인 개념을 공부했다.
 - 이론만 공부를 한 상태에서 실무를 해보니 어려웠다.
 - 실무에서 고민한 내용을 지금 연습해보자.
 
 # Design Pattern : Observer Pattern (Listener & Callback)
 ### 1. 개념
-- [Link_1 : 전반적인 개념](https://velog.io/@haero_kim/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4-%EA%B0%9C%EB%85%90-%EB%96%A0%EB%A8%B9%EC%97%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4)
+- :link:[Link_1 : 전반적인 개념](https://velog.io/@haero_kim/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4-%EA%B0%9C%EB%85%90-%EB%96%A0%EB%A8%B9%EC%97%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4)
 - **내 생각 : 어떤 이벤트가 발생하면 이벤트 처리기에 등록된 메서드들이 호출되는 패턴이 옵저버 패턴이다.** 
 - 문제 상황
   - ![image](https://user-images.githubusercontent.com/55792986/186142782-682ee612-9601-44f2-85c1-6974f9cfcb22.png)
@@ -54,12 +55,15 @@
   
 
 # Delegate & Event의 사용 이유
-- 이벤트를 사용하지 않으면 메서드들을 호출 시킬 때 메서드를 보유한 객체를 메서드들을 호출시키는 스크립트에서 선언을 해야 한다.
-  - **스크립트가 복잡**해진다.
-  - 스크립트(클래스)간에 연결이 필요 없다.
-- 이벤트에 어떤 메서드들이 등록되어 있는지 알 필요가 없다.  
-- [Reference](https://daebalstudio.tistory.com/entry/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%99%84%EB%B2%BD%ED%95%98%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)
+- :star:사용 이유 : 이벤트를 사용하지 않으면 메서드들을 호출 시킬 때 메서드를 보유한 객체를 메서드들을 호출시키는 스크립트에서 선언을 해야 한다.
+  - 다시 말해 **스크립트가 복잡**해진다.
+- **이벤트를 사용하면 스크립트(클래스)간에 연결이 필요 없다.**
+  - 이벤트에 어떤 메서드들이 등록되어 있는지 알 필요가 없다.  
+  - :link:[Reference](https://daebalstudio.tistory.com/entry/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%99%84%EB%B2%BD%ED%95%98%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)
 
+# 이벤트 주도적 프로그래밍
+- 면접 때 잘못 이해하고 있어서 면접관님에게 지적 받은 부분이다. 제대로 이해하고 다시 작성해본다.
+- 
 # Event에 대해 좀 더 깊게 공부해 본다.
 ### 1. Event를 이용할 때는 .Net의 EventHandler를 이용하는 방법이 좋다.
 - [Reference](https://docs.microsoft.com/ko-kr/dotnet/api/system.eventhandler?view=net-6.0)
@@ -78,7 +82,7 @@
 ### 3. Event(==EventHandler)는 static으로 선언해야 하는가?
 - 이건 실제로 코딩하면서 결정해보자. static으로 하면 이 이벤트처리기는 프로그램 전체에서 공유.
   
-# 막 고민
+# 고민
 - 2.1 하나의 Delegate에 다수의 Event를 등록하는가?
 - 질문 : ![image](https://user-images.githubusercontent.com/55792986/185571375-0feb7d4b-2e2c-4a02-a867-8866e3010231.png)
 - 답변 : ![image](https://user-images.githubusercontent.com/55792986/185571638-7dc0041b-f475-401a-9394-f8bc7c668068.png)
@@ -98,5 +102,5 @@
 ### 1. 구현
 - 미니언이 죽었을 때 죽인 캐릭터에서 메서드가 호출되고, 게임매니저에서 관련 메서드가 호출되도록 구현한다.
 
-### 2. EventHandler와 Delegateqq
+### 2. EventHandler와 Delegate
 - .Net의 EventHandler를 이용하여 delegate를 만들지 않는다. (delegate 만드는 건 귀찮다!)

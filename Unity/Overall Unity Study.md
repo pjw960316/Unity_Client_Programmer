@@ -8,14 +8,16 @@
 - [Abstract](#abstract)
 - [CallBack Function](#callback-function)
 - [Property (속성)](#property-속성)
-    - [Reference : MSDN](#reference--msdn)
+    - [:link:MSDN](#linkmsdn)
     - [1. 학창시절에 왜 사용하지 않았을까?](#1-학창시절에-왜-사용하지-않았을까)
     - [2. Property를 사용해야 하는 이유](#2-property를-사용해야-하는-이유)
     - [3. 접근지정자는 어떻게 해야 할까?](#3-접근지정자는-어떻게-해야-할까)
 - [Member Variable Tips](#member-variable-tips)
 
 # 개요
-- 마땅히 소규모 문서로 나누기 애매한 내용들...
+- 마땅히 소규모 문서로 나누기 애매한 내용들을 예비로 모아둔다.
+- :flags:최종 목표는 여기에 적힌 내용들을 적절한 문서로 이동 시키는 것 이다.
+
   
 # Version : .Net, C#, Unity
 - 많이 정리해봤지만 unity의 버전과 연관지어서 정리해 보는 게 필요하다.
@@ -75,12 +77,12 @@
 # CallBack Function 
 
 # Property (속성)
-### Reference : [MSDN](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/classes-and-structs/properties)
+### :link:[MSDN](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/classes-and-structs/properties)
 ### 1. 학창시절에 왜 사용하지 않았을까?
 - getter, setter도 제대로 사용하지 않았기 때문에 쓸 이유가 없었다.
 
 ### 2. Property를 사용해야 하는 이유
-- [Reference](https://developer-talk.tistory.com/39)
+- :link:[Reference](https://developer-talk.tistory.com/39)
 - 변수(프로퍼티)의 값을 변경하거나(set) 가져올 때(get) 조건을 걸어서 변수의 접근을 제어할 수 있기 때문입니다.
   - get, set을 만들 때 조건문으로 설정한다.
 - get과 set이 간단한 경우 매우 간편하게 선언할 수 있다.
