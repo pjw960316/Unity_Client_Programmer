@@ -5,8 +5,14 @@
 - [scope와 stack의 성질 (내 생각)](#scope와-stack의-성질-내-생각)
 - [:star:메서드 내부의 지역변수와 객체의 멤버변수의 메모리 할당 위치 같은 건 중요하지 않아 -> Reference Type의 원리만 알면 된다.](#star메서드-내부의-지역변수와-객체의-멤버변수의-메모리-할당-위치-같은-건-중요하지-않아---reference-type의-원리만-알면-된다)
 - [C# Stack Memory vs Heap Memory](#c-stack-memory-vs-heap-memory)
-- [Boxing & Unboxing](#boxing--unboxing)
-- [Garbage Collection](#garbage-collection)
+- [Garbage Collection (=GC)](#garbage-collection-gc)
+    - [1. 개요](#1-개요)
+    - [2. GC를 하는 조건](#2-gc를-하는-조건)
+    - [3. Unity의 Heap 분류](#3-unity의-heap-분류)
+    - [4. GC에서 살아남는 메모리](#4-gc에서-살아남는-메모리)
+    - [5. 세대를 이용하는 GC](#5-세대를-이용하는-gc)
+    - [6. Memory Compaction (메모리 빈 공간 없애기)](#6-memory-compaction-메모리-빈-공간-없애기)
+    - [7. 참고문헌](#7-참고문헌)
 
 # 개요
 - 면접 단골 질문일 만큼 정말 중요한 내용이다.
@@ -48,9 +54,35 @@
   - Garbage Collection은 Managed Heap의 영역이다.
 - :link:[추가 링크](https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/)
 
+# Garbage Collection (=GC)
+### 1. 개요
+- ![image](https://user-images.githubusercontent.com/55792986/198259528-bd68a268-1b8a-4da3-b8c2-53655e9258f7.png)
 
-# Boxing & Unboxing
-- C#은 value_type 과 reference_type으로 메모리에 할당한다.
-- 
-# Garbage Collection
+### 2. GC를 하는 조건
+- ![image](https://user-images.githubusercontent.com/55792986/198262004-650aae6c-f23e-4daa-b93b-7c74ee8219cc.png)
+  - 간단하게 생각하면 메모리가 부족하면 수행할 것 이다.
+
+### 3. Unity의 Heap 분류
+- ![image](https://user-images.githubusercontent.com/55792986/198262261-4ea44f09-eaa9-4b34-b6a5-121f7b25479a.png)
+
+### 4. GC에서 살아남는 메모리
+- ![image](https://user-images.githubusercontent.com/55792986/198262729-a0ddbdf2-b3bc-4511-b693-ed90d15b26d2.png)
+  - A,C,D의 경우 해당 힙의 주소 및 정보를 스택이나 힙에 저장하고 있기 때문에 올바른 참조관계로 이루어져 있다. 그러므로 살아남는다.
+  - F의 경우 D가 참조하고 있기 때문에 살아남는다.
+  - B와 E의 경우 힙에 저장되어 있지만 아무도 참조하고 있지 않기 때문에 제거한다.
+    - 제거한 빈 공간으로 인해 Fragmentation(단편화)이 발생하므로 Compaction(압축)으로 해결한다. 
+
+### 5. 세대를 이용하는 GC
+- 참고문헌을 읽는 것이 좋아 보인다.
+
+### 6. Memory Compaction (메모리 빈 공간 없애기)
+- ![image](https://user-images.githubusercontent.com/55792986/198264662-9ea66084-5667-43cf-ade0-50c096459566.png)
+  - 외부 단편화가 발생하는 것을 해결하기 위해 memory compaction을 수행한다.
+- ![image](https://user-images.githubusercontent.com/55792986/198264817-c97c0faa-2dbb-4c42-8b87-12ff4608bfab.png)
+  - 외부 단편화를 제거한다. 그로 인해 메모리의 누수가 줄어들고 효율적으로 사용할 수 있다.
+  - 시간이 많이 걸리고 효율적으로 compaction을 할 수 없는 경우도 존재한다.
+
+### 7. 참고문헌
+- :link:[UNITY](https://docs.unity3d.com/kr/current/Manual/performance-garbage-collector.html)
+- :link:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/fundamentals)
 - :link:[친구 블로그](https://luv-n-interest.tistory.com/m/922)
