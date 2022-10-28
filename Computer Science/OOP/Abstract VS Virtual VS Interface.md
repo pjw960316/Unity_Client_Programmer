@@ -55,11 +55,13 @@
 - Virtual로 선언된 가상 메소드를 오버라이딩한 버전의 메소드가 오버라이딩 되지 않도록 봉인할 수 있다.
 - ![image](https://user-images.githubusercontent.com/55792986/185403786-0f553666-5e3a-490c-bcd2-9c29afa5a538.png)
 - ![image](https://user-images.githubusercontent.com/55792986/185403876-8345a38f-094d-4e42-867a-ccef624cd40b.png)
+
 # Interface
 - [Refrence](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Books%20For%20Development/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4.md) (5장의 6번 항목에서 인터페이스를 자세하게 설명했다.)
 - 인터페이스의 메소드(=메시지)를 선언할 때는 접근지정자를 붙이지 않는다.
   - 자동으로 public이 된다.
   - 누군가 상속받아서 구현을 해야 하기 때문에 당연한 것 이다.
+    - 구현을 강제한다.
 - 인터페이스를 상속받아 구현한 메서드는 반드시 public이어야 한다.
   - ![image](https://user-images.githubusercontent.com/55792986/184607435-7a5091ca-f08a-498d-abc4-f6dc140a7c72.png)
     - 다른 스크립트에서도 불려야 하므로 public이어야 한다.

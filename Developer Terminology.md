@@ -4,6 +4,7 @@
 - [Framework](#framework)
 - [Library](#library)
 - [Module](#module)
+- [Build / Release](#build--release)
 
 # 개요
 - 개발자로 지내면서 배운 용어를 정리한다.
@@ -53,3 +54,7 @@
 - 모듈 간에 종속성을 최대한 줄이는 방식의 코딩을 인턴 때 진행했었다.
   - 독립성이 높은 모듈일수록 좋다.
   - 독립성이 높으면 해당 모듈을 수정하더라도 다른 모듈에 끼치는 영향이 적으며 오류가 발생하더라도 쉽게 문제를 발견하고 해결할 수 있다.
+
+# Build / Release
+![image](https://user-images.githubusercontent.com/55792986/198577943-eec15be7-8f99-4935-84e6-1a80dcc83db4.png)
+

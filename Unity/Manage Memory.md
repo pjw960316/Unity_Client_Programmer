@@ -5,6 +5,10 @@
 - [scope와 stack의 성질 (내 생각)](#scope와-stack의-성질-내-생각)
 - [:star:메서드 내부의 지역변수와 객체의 멤버변수의 메모리 할당 위치 같은 건 중요하지 않아 -> Reference Type의 원리만 알면 된다.](#star메서드-내부의-지역변수와-객체의-멤버변수의-메모리-할당-위치-같은-건-중요하지-않아---reference-type의-원리만-알면-된다)
 - [C# Stack Memory vs Heap Memory](#c-stack-memory-vs-heap-memory)
+- [:star:Struct vs Class](#starstruct-vs-class)
+    - [1. Struct](#1-struct)
+    - [2. Class](#2-class)
+    - [3. struct의 장점](#3-struct의-장점)
 - [Garbage Collection (=GC)](#garbage-collection-gc)
     - [1. 개요](#1-개요)
     - [2. GC를 하는 조건](#2-gc를-하는-조건)
@@ -54,6 +58,23 @@
   - Garbage Collection은 Managed Heap의 영역이다.
 - :link:[추가 링크](https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/)
 
+# :star:Struct vs Class
+### 1. Struct
+- 구조체는 value type이라 스택에 저장됩니다.
+  - ![image](https://user-images.githubusercontent.com/55792986/198582083-7e623816-1680-432e-a86a-069ef981186d.png)
+    - :star:구조체에 대한 객체 ss를 만들면 ss 자체가 스택에 올라가며 ss를 이루고 있는 멤버 변수 + 멤버 함수(이건 아닐 수도)만큼 스택의 메모리를 차지합니다.
+    - 구조체의 메모리 차지는 대학 1때 배운 로직이다.
+- 구조체의 멤버 변수중에 참조 타입인 배열이 있다면?
+  - 배열의 주소만 스택에 존재하고 배열 자체는 힙에 할당됩니다.
+  - 근데 이런 경우 그냥 힙이 좋지 않을까?
+- 상속을 할 수 없다.
+
+### 2. Class
+- 클래스는 reference type이라 힙에 저장됩니다.
+
+### 3. struct의 장점
+- 클래스는 결국 참조 타입이므로 주소에 대한 메모리를 추가적으로 사용한다. 객체가 많아지면 이를 struct로 바꿨을 때 줄일 수 있다.
+- 
 # Garbage Collection (=GC)
 ### 1. 개요
 - ![image](https://user-images.githubusercontent.com/55792986/198259528-bd68a268-1b8a-4da3-b8c2-53655e9258f7.png)
