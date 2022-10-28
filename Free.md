@@ -14,3 +14,17 @@
 - visual studio를 세팅하고 개발을 한다.
   
 # C#에서 unsafe를 이용해서 주소 출력해보기.
+- unsafe를 이용하려면 csproj에 <AllowUnsafeBlocks>true</AllowUnsafeBlocks>를 property group에 추가해야한다.
+~~~c#
+        private void printMemoryAddressWithUnsafe()
+        {
+            unsafe //unsafe block
+            {
+                int number = 27;
+                int* pointerToNumber = &number;
+
+                Console.WriteLine($"Value of the variable: {number}");
+                Console.WriteLine($"Address of the variable: {(long)pointerToNumber:X}");
+            }
+        }
+~~~

@@ -8,7 +8,7 @@
 - [:star:Struct vs Class](#starstruct-vs-class)
     - [1. Struct](#1-struct)
     - [2. Class](#2-class)
-    - [3. struct의 장점](#3-struct의-장점)
+    - [3. 차이점을 가장 잘 보여주는 코드](#3-차이점을-가장-잘-보여주는-코드)
 - [Garbage Collection (=GC)](#garbage-collection-gc)
     - [1. 개요](#1-개요)
     - [2. GC를 하는 조건](#2-gc를-하는-조건)
@@ -41,7 +41,6 @@
 - :star:Reference Type으로 선언한 것은 주소를 스택이나 힙에 저장하고, 실제 데이터는 힙(아마 모두 힙일 것)에 저장된다. 저장된 주소를 통해 실제 데이터에 접근해서 **참조**한다.
   
 # C# Stack Memory vs Heap Memory
-- :link:[Link](https://www.c-sharpcorner.com/article/stack-vs-heap-memory-c-sharp/)
 - ![image](https://user-images.githubusercontent.com/55792986/198195402-cb2a823d-2e2c-4c11-9c13-2927f7d03ccd.png)
 - ![image](https://user-images.githubusercontent.com/55792986/198195894-a393214f-487b-426e-a1cd-4c6bb83dad66.png)
   - ![image](https://user-images.githubusercontent.com/55792986/198196438-e98544a7-4ee3-46bd-9e4d-3acd3af4cd73.png)
@@ -49,6 +48,7 @@
   - ![image](https://user-images.githubusercontent.com/55792986/198198711-5a7e2b0c-7bb2-4990-ac4d-7d839b47f7dd.png)
     - 힙 영역에 배열을 저장하는 부분을 보면 배열의 데이터는 힙에 저장되지만 배열의 주소는 스택에 저장된다.
     - new로 선언하는 모든 것(배열, 객체 등등)은 힙에 실제 값들을 저장하고 스택에 힙을 참조할 수 있는 주소를 저장한다.
+    - 참조의 경우 힙에 저장된 데이터를 바꾸면 참조하고 있는 모든 애들도 해당 데이터가 변경된다.
 - ![20221027_140253](https://user-images.githubusercontent.com/55792986/198196247-e87bb55c-a963-46fe-aa8c-bb334a59ac52.png)
   - ![image](https://user-images.githubusercontent.com/55792986/198208655-afc783e1-a655-4ce3-8e68-044a31c305a0.png)
   - 스택에는 Value_type이 저장되고 힙에는 Reference_type이 저장된다. 힙에 저장되는 reference_type을 가기 위한 주소는 스택에 저장된다.
@@ -56,25 +56,56 @@
 - 스택 접근 속도가 힙 접근 속도보다 빠르다.
 - ![image](https://user-images.githubusercontent.com/55792986/198207907-76e38bc8-021c-4e05-8a26-bd340eaed4f6.png)
   - Garbage Collection은 Managed Heap의 영역이다.
-- :link:[추가 링크](https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/)
+- :link:[Link_1](https://www.c-sharpcorner.com/article/stack-vs-heap-memory-c-sharp/)
+- :link:[Link_2](https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/)
 
 # :star:Struct vs Class
 ### 1. Struct
-- 구조체는 value type이라 스택에 저장됩니다.
+- :star:구조체는 value type이라 객체의 멤버들이 스택에 저장된다.
   - ![image](https://user-images.githubusercontent.com/55792986/198582083-7e623816-1680-432e-a86a-069ef981186d.png)
     - :star:구조체에 대한 객체 ss를 만들면 ss 자체가 스택에 올라가며 ss를 이루고 있는 멤버 변수 + 멤버 함수(이건 아닐 수도)만큼 스택의 메모리를 차지합니다.
     - 구조체의 메모리 차지는 대학 1때 배운 로직이다.
 - 구조체의 멤버 변수중에 참조 타입인 배열이 있다면?
-  - 배열의 주소만 스택에 존재하고 배열 자체는 힙에 할당됩니다.
+  - 배열의 주소만 스택에 존재하고 배열 자체는 힙에 할당된다.
   - 근데 이런 경우 그냥 힙이 좋지 않을까?
 - 상속을 할 수 없다.
+- 생성자를 만들 수 없다.
+- :link:[link](https://www.sysnet.pe.kr/2/0/12624)
 
 ### 2. Class
-- 클래스는 reference type이라 힙에 저장됩니다.
+- :star:클래스는 reference type이라 객체의 멤버들이 힙에 저장된다.
+- ![image](https://user-images.githubusercontent.com/55792986/198620218-5459b1e0-af93-4122-88c3-655bea797c24.png)
+  - 멤버 변수 Age의 실제 값은 힙에 저장된다.
+- 상속이 가능하다.
+- 생성자를 만들 수 있다.
 
-### 3. struct의 장점
-- 클래스는 결국 참조 타입이므로 주소에 대한 메모리를 추가적으로 사용한다. 객체가 많아지면 이를 struct로 바꿨을 때 줄일 수 있다.
-- 
+### 3. 차이점을 가장 잘 보여주는 코드
+~~~c#
+        private void testStruct()
+        {
+            str_data obj_1 = new str_data();
+            obj_1.a = 10;
+            str_data obj_2 = new str_data();
+            obj_2.a = 20;
+            str_data obj_3 = obj_2;
+            obj_3.a = 30; //obj_3은 obj_2를 복사한 독립적인 객체기 때문에 obj_3의 값을 변화시킨다고 해서 obj_2에 영향을 미치지 않는다.
+
+            Console.WriteLine(obj_1.a + " " + obj_2.a + " " + obj_3.a); //10 20 30
+        }
+
+        private void testClass()
+        {
+            data obj_1 = new data(10);
+            data obj_2 = new data(10);
+            data obj_3 = obj_2; //참조
+
+            obj_2.a = 20;
+            obj_3.a = 30; //obj_2와 obj_3은 같은 힙 메모리를 참조하고 있으므로 obj_2.a의 값도 30으로 변할 것 이다.
+     
+            Console.WriteLine(obj_1.a + " " + obj_2.a + " " + obj_3.a); //10 30 30
+        }
+~~~
+
 # Garbage Collection (=GC)
 ### 1. 개요
 - ![image](https://user-images.githubusercontent.com/55792986/198259528-bd68a268-1b8a-4da3-b8c2-53655e9258f7.png)
