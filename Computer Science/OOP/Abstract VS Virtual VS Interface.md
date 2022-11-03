@@ -27,7 +27,7 @@
   
 # Virtual (가상 함수)
 ### 1. 특징
-- 가상 함수는 부모에서 구현을 해도 된다.
+- :star:가상 함수는 부모에서 구현을 해도 된다.
 
 ### 2. 사용 이유
 - 추상 메서드는 명확히 사용 이유가 존재한다. 하지만 가상 함수는 조금 모호하다. 
@@ -46,7 +46,10 @@
 ![image](https://user-images.githubusercontent.com/55792986/185398970-e72a3592-75e7-4635-a363-2fcb0e5ef069.png)
 - 내 생각 : 추상 함수, 가상 함수 모두 테이블이 만들어 지기 때문에 기존 보다는 성능저하가 발생 할 것 이다. 그럼에도 불구하고 이점이 많으니 사용하겠지.
   
-# Abstract vs Virtual
+# :star:Abstract vs Virtual
+- 개인적인 생각
+  - 왜 구분되는지가 더 중요한 것이고, 이를 실무를 하면서 깨달아야 한다.
+  - 이론으로 습득하는 것은 한계가 있다.
 - 차이점
   - <img width="505" alt="20220810_173505" src="https://user-images.githubusercontent.com/55792986/183855202-8357de3f-f86e-42f1-a9b8-e1da73ef1ae4.png">
   - ![image](https://user-images.githubusercontent.com/55792986/185400348-0a62afea-598b-4b8b-9224-aafb3c44fa24.png)

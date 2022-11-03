@@ -1,3 +1,4 @@
+
 # 1. 대학생 때 공부했던 자료들을 정리했다.
 - markdown으로 만들지 않아 목차가 없는 것이 아쉽다.
 - 조금 더 많이 공부했더라면 좋았을 텐데.
@@ -24,5 +25,7 @@
 - 하지만 코딩테스트, 면접, 언젠가는 도전할 코딩테스트 대회를 위해 아래의 링크에서 작업한다.
   - [Link](https://github.com/pjw960316/Practice_For_Coding_Test/tree/master/Study)
 
+# 4. Watch PDF With VS-CODE
+- vscode로 보는 경우 'vscode-pdf' extension을 다운로드 받으면 보기 쉽다.
 
 
