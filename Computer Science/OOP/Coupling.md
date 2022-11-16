@@ -8,7 +8,7 @@
 
 # 가볍게 용어부터 정리하고 가자.
 - ![image](https://user-images.githubusercontent.com/55792986/197937691-a9bdf6f3-0afd-478e-8e87-5ebcd3c7c992.png)
-    - (Coupling = 결합도) = (Dependency = 의존성) != (Cohesion = 응집도)
+    - :star:(Coupling = 결합도) = (Dependency = 의존성) != (Cohesion = 응집도)
   
 # Coupling 
 - **유니티에서 모듈을 스크립트**라고 생각하면 스크립트간에 연관된 정도가 많으면 결합도가 높다고 한다.

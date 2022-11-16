@@ -58,12 +58,13 @@
 - :star:사용 이유 : 이벤트를 사용하지 않으면 메서드들을 호출 시킬 때 메서드를 보유한 객체를 메서드들을 호출시키는 스크립트에서 선언을 해야 한다.
   - 다시 말해 **스크립트가 복잡**해진다.
 - **이벤트를 사용하면 스크립트(클래스)간에 연결이 필요 없다.**
-  - 이벤트에 어떤 메서드들이 등록되어 있는지 알 필요가 없다.  
+  - :star:이벤트에 어떤 메서드들이 등록되어 있는지 알 필요가 없다.  
   - :link:[Reference](https://daebalstudio.tistory.com/entry/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%99%84%EB%B2%BD%ED%95%98%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)
 
 # 이벤트 주도적 프로그래밍
 - 면접 때 잘못 이해하고 있어서 면접관님에게 지적 받은 부분이다. 제대로 이해하고 다시 작성해본다.
-- 
+- 멤버 변수의 값이 변경 되는 시점에 이벤트 매니저에게 해당 이벤트를 처리를 요청하는 기법.
+  
 # Event에 대해 좀 더 깊게 공부해 본다.
 ### 1. Event를 이용할 때는 .Net의 EventHandler를 이용하는 방법이 좋다.
 - [Reference](https://docs.microsoft.com/ko-kr/dotnet/api/system.eventhandler?view=net-6.0)
