@@ -3,7 +3,7 @@
 - [개요](#개요)
 - [Stack의 의문점](#stack의-의문점)
 - [scope와 stack의 성질 (내 생각)](#scope와-stack의-성질-내-생각)
-- [:star:메서드 내부의 지역변수와 객체의 멤버변수의 메모리 할당 위치 같은 건 중요하지 않아 -> Reference Type의 원리만 알면 된다.](#star메서드-내부의-지역변수와-객체의-멤버변수의-메모리-할당-위치-같은-건-중요하지-않아---reference-type의-원리만-알면-된다)
+- [:star: 메서드 내부의 지역변수와 객체의 멤버변수의 메모리 할당 위치 같은 건 중요하지 않아 -\> Reference Type의 원리만 알면 된다.](#star-메서드-내부의-지역변수와-객체의-멤버변수의-메모리-할당-위치-같은-건-중요하지-않아---reference-type의-원리만-알면-된다)
 - [C# Stack Memory vs Heap Memory](#c-stack-memory-vs-heap-memory)
 - [:star:Struct vs Class](#starstruct-vs-class)
     - [1. Struct](#1-struct)
@@ -36,7 +36,7 @@
   - 이는 조금만 생각해보면 LIFO이고 이를 가장 쉽게 이용할 수 있는 자료구조는 스택이다.
 - Example : Big Scope -> Small Scope라면 small scope 내부의 변수와 함수의 주소들이 스택의 탑 부터 쌓이며 small scope를 나가면 스택의 탑 부터 지워진다.
    
-# :star:메서드 내부의 지역변수와 객체의 멤버변수의 메모리 할당 위치 같은 건 중요하지 않아 -> Reference Type의 원리만 알면 된다.
+# :star: 메서드 내부의 지역변수와 객체의 멤버변수의 메모리 할당 위치 같은 건 중요하지 않아 -> Reference Type의 원리만 알면 된다.
 - 오랜 고민을 한 끝에 뭐가 스택에 가고 뭐가 힙에 가는 것은 크게 중요하지 않을지도 모른다고 생각했다. 결국에 중요한 것은 Reference Type의 원리다.
 - :star:Reference Type으로 선언한 것은 주소를 스택이나 힙에 저장하고, 실제 데이터는 힙(아마 모두 힙일 것)에 저장된다. 저장된 주소를 통해 실제 데이터에 접근해서 **참조**한다.
   
