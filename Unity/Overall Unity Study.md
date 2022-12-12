@@ -7,11 +7,6 @@
     - [3. Unity Version](#3-unity-version)
 - [Abstract](#abstract)
 - [CallBack Function](#callback-function)
-- [Property (속성)](#property-속성)
-    - [:link:MSDN](#linkmsdn)
-    - [1. 학창시절에 왜 사용하지 않았을까?](#1-학창시절에-왜-사용하지-않았을까)
-    - [2. Property를 사용해야 하는 이유](#2-property를-사용해야-하는-이유)
-    - [3. 접근지정자는 어떻게 해야 할까?](#3-접근지정자는-어떻게-해야-할까)
 - [Member Variable Tips](#member-variable-tips)
 
 # 개요
@@ -76,22 +71,7 @@
 - 
 # CallBack Function 
 
-# Property (속성)
-### :link:[MSDN](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/classes-and-structs/properties)
-### 1. 학창시절에 왜 사용하지 않았을까?
-- getter, setter도 제대로 사용하지 않았기 때문에 쓸 이유가 없었다.
 
-### 2. Property를 사용해야 하는 이유
-- :link:[Reference](https://developer-talk.tistory.com/39)
-- 변수(프로퍼티)의 값을 변경하거나(set) 가져올 때(get) 조건을 걸어서 변수의 접근을 제어할 수 있기 때문입니다.
-  - get, set을 만들 때 조건문으로 설정한다.
-- get과 set이 간단한 경우 매우 간편하게 선언할 수 있다.
-  - 멤버 변수는 private로 선언하기 때문에 public으로 구현된 get,set을 이용해야 한다.
-  
-
-### 3. 접근지정자는 어떻게 해야 할까?
-- ![image](https://user-images.githubusercontent.com/55792986/182595224-ed28e2e9-14e7-47f8-8503-d45ec5f70ff6.png)
-  - private로 선언하면 자식은 접근하지 못한다.
 
 # Member Variable Tips
 - ![image](https://user-images.githubusercontent.com/55792986/183585061-b53b3549-e031-4492-ab98-b6d663cc2c43.png)
