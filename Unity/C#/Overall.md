@@ -102,7 +102,7 @@ class Program
 
 ### 3. 연습
 ~~~c#
-    public enum Color
+    public enum Color //클래스 외부
     {
         Red,
         Green = 10,
@@ -132,7 +132,5 @@ class Program
 ~~~
   - Main 함수와 StringFromColor 함수는 어떤 클래스에 포함되어 있고, enum Color는 그 외부에 있다.
     - 중략이 있다.
-  - enum은 무조건 객체를 만들어야 하나?
-  - 아닌 경우가 더 많다. 그냥 enum 그 자체의 이름을 이용하는 경우가 더 많다. Color.Red 처럼.
-    - 근데 static으로 선언하지 않았는데 어떻게 스크립트.클래스
+  - Enum에 관련된 의도 파악이 잘 안 된다.
     

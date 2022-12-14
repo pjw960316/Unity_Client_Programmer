@@ -1,12 +1,17 @@
 # 목차
 - [목차](#목차)
-- [개요](#개요)
-- [이전 공부](#이전-공부)
-- [Design Pattern : Observer Pattern (Listener & Callback)](#design-pattern--observer-pattern-listener--callback)
+- [해야 하는 작업](#해야-하는-작업)
+- [Delegate 기본 개념](#delegate-기본-개념)
+- [Delegate에 메서드를 추가하는 방법](#delegate에-메서드를-추가하는-방법)
+- [:star:delegate 그래서 왜 사용할까?](#stardelegate-그래서-왜-사용할까)
+    - [1. 메서드의 주소 값을 델리게이트에 저장하기 때문에 메서드를 인자로 넘겨주기에 용이하다.](#1-메서드의-주소-값을-델리게이트에-저장하기-때문에-메서드를-인자로-넘겨주기에-용이하다)
+    - [2. 하나의 델리게이트에 여러 개의 메서드 주소를 저장할 수 있다. (=Delegate Chain)](#2-하나의-델리게이트에-여러-개의-메서드-주소를-저장할-수-있다-delegate-chain)
+- [Delegate와 관련이 있는 Design Pattern : Observer Pattern (Listener \& Callback)](#delegate와-관련이-있는-design-pattern--observer-pattern-listener--callback)
     - [1. 개념](#1-개념)
     - [2. C# 예시](#2-c-예시)
     - [3. 결론](#3-결론)
-- [Delegate & Event의 사용 이유](#delegate--event의-사용-이유)
+- [Delegate 기본 개념](#delegate-기본-개념-1)
+- [Delegate \& Event의 사용 이유](#delegate--event의-사용-이유)
 - [이벤트 주도적 프로그래밍](#이벤트-주도적-프로그래밍)
 - [Event에 대해 좀 더 깊게 공부해 본다.](#event에-대해-좀-더-깊게-공부해-본다)
     - [1. Event를 이용할 때는 .Net의 EventHandler를 이용하는 방법이 좋다.](#1-event를-이용할-때는-net의-eventhandler를-이용하는-방법이-좋다)
@@ -18,18 +23,64 @@
     - [1. 구현](#1-구현)
     - [2. EventHandler와 Delegate](#2-eventhandler와-delegate)
 
+# 해야 하는 작업
+- Unity Study (2022.4 ~ 2022.6)의 delegate migration
+- 작업을 완료하면 이 부분을 지운다. 
+  
+# Delegate 기본 개념
+- :star:**Delegate = 메서드의 주소(함수 포인터)의 모임**
+  - 메서드 모양이 델리게이트와 같으면 델리게이트에 메서드의 주소를 저장한다.
+~~~c#
+delegate void FUNC(int arg) //FUNC는 타입이고, 이는 메서드의 호출정보를 담는 타입이다.
+~~~
+- ![image](https://user-images.githubusercontent.com/55792986/207513007-73a8072e-b444-4414-b101-103d61dce3fa.png)
+  - delegate는 사실 클래스다.
+  - System.MulticastDelegate를 상속받는 클래스다.
 
-# 개요
-- 라이브 게임 개발 당시 가장 어려웠던 것은 회사 코드의 콜백 구조를 이해하는 것 이었다.
-- :star:유니티에서 **콜백**을 잘 사용하려면 어떻게 설계해야 할지 공부해본다.
+# Delegate에 메서드를 추가하는 방법
+~~~c#
+    delegate void FUNC();
+    public class DelegateClass
+    {
+        //delegate에 넣을 static method
+        public static void TestStaticMethodDelegate()
+        {
+            Console.WriteLine("TestStaticMethodDelegate");
+        }
 
-# 이전 공부
-- :link:[Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Unity%20Study%20(2022.04%20~%202022.06).pdf)
-- 기본적인 개념을 공부했다.
-- 이론만 공부를 한 상태에서 실무를 해보니 어려웠다.
-- 실무에서 고민한 내용을 지금 연습해보자.
+        //delegate에 넣을 instance method
+        public void TestInstanceMethodDelegate()
+        {
+            Console.WriteLine("TestInstanceMethodDelegate");
+        }
+    }
 
-# Design Pattern : Observer Pattern (Listener & Callback)
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            FUNC myDelegate = DelegateClass.TestStaticMethodDelegate; //static method는 클래스.메서드로 추가시킨다.
+
+            DelegateClass obj = new DelegateClass();
+            myDelegate += obj.TestInstanceMethodDelegate; //instance method는 객체를 만들고 객체.메서드로 추가시킨다.
+            myDelegate(); //위에서 등록시킨 두 함수가 호출된다.
+        }
+    }
+~~~
+- 정리본
+  - ![image](https://user-images.githubusercontent.com/55792986/207514295-0876e973-aebe-46ef-9e01-849c157caaf8.png)
+
+# :star:delegate 그래서 왜 사용할까?
+### 1. 메서드의 주소 값을 델리게이트에 저장하기 때문에 메서드를 인자로 넘겨주기에 용이하다.
+- ![image](https://user-images.githubusercontent.com/55792986/207515384-6d15e198-a42a-42e8-8563-4ff73ce4af06.png)
+
+### 2. 하나의 델리게이트에 여러 개의 메서드 주소를 저장할 수 있다. (=Delegate Chain)
+- 연산자를 통해 메서드들을 델리게이트에 추가하고 제거할 수 있다.
+
+
+
+
+# Delegate와 관련이 있는 Design Pattern : Observer Pattern (Listener & Callback)
 ### 1. 개념
 - :link:[Link_1 : 전반적인 개념](https://velog.io/@haero_kim/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4-%EA%B0%9C%EB%85%90-%EB%96%A0%EB%A8%B9%EC%97%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4)
 - **내 생각 : 어떤 이벤트가 발생하면 이벤트 처리기에 등록된 메서드들이 호출되는 패턴이 옵저버 패턴이다.** 
@@ -52,7 +103,9 @@
 
 ### 3. 결론
 - **내 생각 : 콜백 메서드들을 EventHandler에 등록하면, EventHandler에 신호가 오는지 귀를 기울인다. 신호가 오면 EventHandler에서 콜백 메서드들이 호출된다.**
-  
+
+# Delegate 기본 개념 
+- :link:[Unity_study](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Unity%20Study%20(2022.04%20~%202022.06).pdf)
 
 # Delegate & Event의 사용 이유
 - :star:사용 이유 : 이벤트를 사용하지 않으면 메서드들을 호출 시킬 때 메서드를 보유한 객체를 메서드들을 호출시키는 스크립트에서 선언을 해야 한다.
