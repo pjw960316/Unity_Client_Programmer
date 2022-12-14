@@ -11,6 +11,10 @@
 - [Namespace \& Using](#namespace--using)
     - [1. Namespace](#1-namespace)
     - [2. Using](#2-using)
+- [Enum](#enum)
+    - [1. 개념](#1-개념)
+    - [2. 특징](#2-특징)
+    - [3. 연습](#3-연습)
 
 # 개요
 - 분류 하기 애매한 친구들은 여기에 정리하고 추후에 분류한다.
@@ -85,3 +89,50 @@ class Program
     }
 ~~~
     - using system을 제거하면 console.writeline에 대해서 system.을 붙여 주어야 한다.
+
+
+# Enum
+### 1. 개념
+- ![image](https://user-images.githubusercontent.com/55792986/207493471-ca28e90a-8012-4201-9731-2b3dcce0b7d5.png)
+- ![image](https://user-images.githubusercontent.com/55792986/207494045-fedbcda8-f442-48bb-8e63-543a0a1a81ac.png)
+  - :star:Enum은 상수를 저장하는 특수한 클래스다.
+
+### 2. 특징
+- 클래스 외부에도 선언이 가능하고 내부에도 선언이 가능하다.
+
+### 3. 연습
+~~~c#
+    public enum Color
+    {
+        Red,
+        Green = 10,
+        Blue
+    }
+    static void Main(string[] args)
+    {
+        Console.WriteLine(StringFromColor(Color.Red));
+        Console.WriteLine(StringFromColor(Color.Green));
+        Console.WriteLine(StringFromColor(Color.Blue));
+    }
+
+    public static string StringFromColor(Color c) 
+    {
+        switch (c) 
+        {
+            case Color.Red:
+                return c.ToString() + " "  + ((int)c).ToString();
+            case Color.Green:
+                return c.ToString() + " "  + ((int)c).ToString();
+            case Color.Blue:
+                return c.ToString() + " "  + ((int)c).ToString();
+            default:
+                return "Invalid color";
+        }
+    }
+~~~
+  - Main 함수와 StringFromColor 함수는 어떤 클래스에 포함되어 있고, enum Color는 그 외부에 있다.
+    - 중략이 있다.
+  - enum은 무조건 객체를 만들어야 하나?
+  - 아닌 경우가 더 많다. 그냥 enum 그 자체의 이름을 이용하는 경우가 더 많다. Color.Red 처럼.
+    - 근데 static으로 선언하지 않았는데 어떻게 스크립트.클래스
+    
