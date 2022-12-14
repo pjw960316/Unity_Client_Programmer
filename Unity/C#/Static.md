@@ -5,7 +5,8 @@
 - [Static을 붙이면 어디에 저장되는가?](#static을-붙이면-어디에-저장되는가)
 - [Static Class](#static-class)
 - [Static Method](#static-method)
-- [static의 초기화 시점](#static의-초기화-시점)
+- [:question:static의 초기화 시점](#questionstatic의-초기화-시점)
+- [static을 많이 쓰면 문제가 되지 않을까?](#static을-많이-쓰면-문제가-되지-않을까)
 
 # 개요
 - static은 공부를 해도 해도 끝이 없는 것 같다.
@@ -45,6 +46,19 @@ public class C1
 ~~~
   - 에러가 없다.
 
-# static의 초기화 시점
+# :question:static의 초기화 시점
 - 예전에 공부하다가 이 부분의 초기화 시점에 대한 글을 읽었던 기억이 난다.
-- static을 좀 더 깊게 이해하고 해당 문서를 찾고 이해한다.
+- main함수 전에 선언되어 프로그램의 시작과 동시에 할당되고 프로그램이 종료되어야 메모리에서 소멸된다.
+  - 내 생각 : 이를 생각해보면 프로그램은 어차피 메인에서 참조가 일어나므로 static에 대한 참조에서는 오류가 날 일이 없는가?
+
+# static을 많이 쓰면 문제가 되지 않을까?
+- Question_1
+  - ![image](https://user-images.githubusercontent.com/55792986/207466969-27501026-6fd2-4562-9296-ee9f2ccca1d3.png)
+- Answer_1
+  - ![20221214_082705](https://user-images.githubusercontent.com/55792986/207467175-65d0ab44-23f2-4644-a6f8-2fe77634cad0.png)
+  - unsafe한 static method가 위험하다.
+- Question_2
+  - 메모리 영역에서 데이터 영역은 어떻게 관리되는가?
+- Answer_2
+  - 전역 변수와 Static 변수가 존재한다.
+  - 추가적인 자료는 찾지 못했다.
