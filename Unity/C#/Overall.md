@@ -15,6 +15,7 @@
     - [1. 개념](#1-개념)
     - [2. 특징](#2-특징)
     - [3. 연습](#3-연습)
+- [Partial Class](#partial-class)
 
 # 개요
 - 분류 하기 애매한 친구들은 여기에 정리하고 추후에 분류한다.
@@ -133,4 +134,9 @@ class Program
   - Main 함수와 StringFromColor 함수는 어떤 클래스에 포함되어 있고, enum Color는 그 외부에 있다.
     - 중략이 있다.
   - Enum에 관련된 의도 파악이 잘 안 된다.
+
+
+# Partial Class
+- ![20221215_141512](https://user-images.githubusercontent.com/55792986/207778212-cbf69bff-ba1e-4165-91ea-cc6d556a3499.png)
+  - 메서드의 기능을 묶어서 클래스를 쪼갠다.
     

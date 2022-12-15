@@ -22,6 +22,7 @@
 - [연습](#연습)
     - [1. 구현](#1-구현)
     - [2. EventHandler와 Delegate](#2-eventhandler와-delegate)
+- [Delegate 대신 Event를 사용하는 이유](#delegate-대신-event를-사용하는-이유)
 
 # 해야 하는 작업
 - Unity Study (2022.4 ~ 2022.6)의 delegate migration
@@ -34,7 +35,8 @@
 delegate void FUNC(int arg) //FUNC는 타입이고, 이는 메서드의 호출정보를 담는 타입이다.
 ~~~
 - ![image](https://user-images.githubusercontent.com/55792986/207513007-73a8072e-b444-4414-b101-103d61dce3fa.png)
-  - delegate는 사실 클래스다.
+  - Delegate는 사실 클래스다.
+    - 참조 타입이다.
   - System.MulticastDelegate를 상속받는 클래스다.
 
 # Delegate에 메서드를 추가하는 방법
@@ -76,6 +78,7 @@ delegate void FUNC(int arg) //FUNC는 타입이고, 이는 메서드의 호출�
 
 ### 2. 하나의 델리게이트에 여러 개의 메서드 주소를 저장할 수 있다. (=Delegate Chain)
 - 연산자를 통해 메서드들을 델리게이트에 추가하고 제거할 수 있다.
+- 델리게이트에 여러 메서드(모두 리턴 값이 존재)를 저장한다. 모든 메서드에 대해서 리턴 값을 갖고 싶다면 .GetInvocationList() 메서드를 이용한다.
 
 
 
@@ -158,3 +161,10 @@ delegate void FUNC(int arg) //FUNC는 타입이고, 이는 메서드의 호출�
 
 ### 2. EventHandler와 Delegate
 - .Net의 EventHandler를 이용하여 delegate를 만들지 않는다. (delegate 만드는 건 귀찮다!)
+
+# Delegate 대신 Event를 사용하는 이유
+- 이런 문제가 생길 수 있다.
+- ![image](https://user-images.githubusercontent.com/55792986/207784130-8f985681-0f11-433b-9c45-9d0e7a614b7a.png)
+  - B의 실수로 이전에 A가 델리게이트에 등록한 함수가 사라질 수 있다.
+- 해결책 : Event 키워드
+  - delegate에 event 키워드를 붙이면 해당 delegate에 메서드를 추가할 때 반드시 += 이나 -=을 이용해야 한다.
