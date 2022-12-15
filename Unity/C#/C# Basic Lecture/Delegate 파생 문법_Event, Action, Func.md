@@ -3,6 +3,8 @@
 - [개요](#개요)
 - [전체적인 결론](#전체적인-결론)
 - [Action](#action)
+- [Func](#func)
+- [정리](#정리)
 
 # 개요
 - Delegate에서 파생된 키워드와 문법을 이해한다.
@@ -65,5 +67,10 @@
     ~~~ 
 - :star:**다양한 타입과 매개변수의 길이에 대해서 Action을 사용하면 편리하게 Delegate를 사용할 수 있다.**
 
+# Func
+- 반환 값이 있는 Action이다.
+
+# 정리
+- ![image](https://user-images.githubusercontent.com/55792986/207791912-ab0b1f25-447d-4778-9d20-544c19c06c3c.png)
 
 
