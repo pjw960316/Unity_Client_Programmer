@@ -18,6 +18,7 @@
 - 많이 정리해봤지만 unity의 버전과 연관지어서 정리해 보는 게 필요하다.
 ### 1. .Net Version
 - Reference : [링크](https://s-core.co.kr/insight/view/%EC%95%8C%EC%95%84%EB%91%90%EB%A9%B4-%EC%93%B8%EB%AA%A8-%EC%9E%88%EB%8A%94-%EB%8B%B7%EB%84%B7-net-%EC%9D%B4%EC%95%BC%EA%B8%B0/)
+- Reference : [링크](https://points.tistory.com/25)
 - (1) .Net Framework 
    - <img width="720" alt="20220801_172301" src="https://user-images.githubusercontent.com/55792986/182106008-580997d5-eab8-4217-a5b6-4ab7c604c6aa.png">
    - <img width="574" alt="20220801_173239" src="https://user-images.githubusercontent.com/55792986/182107722-497748c4-cee1-4120-be22-4a072829a236.png">
