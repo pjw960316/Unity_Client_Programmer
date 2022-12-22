@@ -14,5 +14,6 @@
 - :link:[Reference](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=pxkey&logNo=221307184650)
 
 # Lambda Expression
+- **일단 메서드다.**
 - 익명의 메서드를 만드는 문법이다.
 - 함수 이름을 넣어야 하는 장소에 '매개변수 => 구현부'를 넣는 문법이다.

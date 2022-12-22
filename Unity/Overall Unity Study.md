@@ -8,6 +8,7 @@
 - [Abstract](#abstract)
 - [CallBack Function](#callback-function)
 - [Member Variable Tips](#member-variable-tips)
+- [Tips](#tips)
 
 # 개요
 - 마땅히 소규모 문서로 나누기 애매한 내용들을 예비로 모아둔다.
@@ -72,9 +73,9 @@
 - 
 # CallBack Function 
 
-
-
 # Member Variable Tips
 - ![image](https://user-images.githubusercontent.com/55792986/183585061-b53b3549-e031-4492-ab98-b6d663cc2c43.png)
 - ![image](https://user-images.githubusercontent.com/55792986/183585096-2d2cc685-8d74-4682-a4e3-c5f0f0a9621a.png)
 
+# Tips
+- asset에서 검색하는 것은 언제나 빠르다.
