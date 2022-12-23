@@ -5,6 +5,7 @@
 - [성능 및 장점](#성능-및-장점)
 - [사용 하기 좋은 순간](#사용-하기-좋은-순간)
 - [참고](#참고)
+- [12/23](#1223)
 
 # UniRX 개념
 - UniRX (=Reactive Extensions for Unity)
@@ -31,3 +32,16 @@
 # 참고
 - [노는게 제일좋아](https://luv-n-interest.tistory.com/1268)
 - [티스토리](https://skuld2000.tistory.com/31)
+
+# 12/23
+- 일단 observer pattern 기반이다.
+  - 그래서 subject가 observer에게 notify를 간단하게 해줄 수 있다.
+- observable 오브젝트 
+  - 관찰할 수 있는 오브젝트
+
+- Unirx에서 많이 보이는 애들
+  - subject
+  - observable
+    - observable은 너무 커서 partial로 나눠서 관리한다
+
+
