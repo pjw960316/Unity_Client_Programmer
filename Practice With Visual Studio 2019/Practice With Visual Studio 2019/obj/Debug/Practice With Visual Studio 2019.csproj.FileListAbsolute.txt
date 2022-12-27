@@ -1,7 +1,0 @@
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\bin\Debug\Practice With Visual Studio 2019.exe.config
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\bin\Debug\Practice With Visual Studio 2019.exe
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\bin\Debug\Practice With Visual Studio 2019.pdb
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\obj\Debug\Practice With Visual Studio 2019.csproj.AssemblyReference.cache
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\obj\Debug\Practice With Visual Studio 2019.csproj.CoreCompileInputs.cache
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\obj\Debug\Practice With Visual Studio 2019.exe
-F:\GitHub Desktop Repository\Unity_Client_Programmer\Practice With Visual Studio 2019\Practice With Visual Studio 2019\obj\Debug\Practice With Visual Studio 2019.pdb
