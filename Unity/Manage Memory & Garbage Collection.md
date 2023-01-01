@@ -17,6 +17,8 @@
     - [5. 세대를 이용하는 GC](#5-세대를-이용하는-gc)
     - [6. Memory Compaction (메모리 빈 공간 없애기)](#6-memory-compaction-메모리-빈-공간-없애기)
     - [7. 참고문헌](#7-참고문헌)
+    - [아직 정리안한 내용](#아직-정리안한-내용)
+- [dispose()를 왜 쓸까?](#dispose를-왜-쓸까)
 
 # 개요
 - 면접 단골 질문일 만큼 정말 중요한 내용이다.
@@ -138,3 +140,20 @@
 - :link:[UNITY](https://docs.unity3d.com/kr/current/Manual/performance-garbage-collector.html)
 - :link:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/fundamentals)
 - :link:[친구 블로그](https://luv-n-interest.tistory.com/m/922)
+
+### 아직 정리안한 내용
+- :star:스택의 c2 변수가 더 이상 힙 메모리를 참조 하지 않기 때문에 바로 GC를 갈 것 같지만 실상은 그렇지 않다. 특정 조건일 때 GC가 동작해서 힙 메모리를 해제한다.
+~~~c#
+Car c2 = new Car
+c2 = null; //
+~~~
+
+- 사실 c#도 소멸자 finalizer가 있다.
+
+- 내가 원할 때 GC 호출가능
+  - GC.Collect() -> 즉시 호출
+    - 하지만 스레드와 finalizer 개념 때문에 이도 정확하지 않다.
+    - 추후 설명 예정
+
+
+# dispose()를 왜 쓸까?

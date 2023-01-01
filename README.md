@@ -1,35 +1,36 @@
 # 일시
 ### 2022/07/25 시작!
 
-
 # 정리되지 않은 기록을 하나로 정리하며 발전하자.
-- 두 회사를 짧게 다니며 가장 크게 배운 것이 있다. 신입의 경우 하루하루 배우는 것이 너무 많기 때문에 이를 잘 정리하는 능력이 중요하다.
+- 회사를 다니며 가장 크게 배운 것이 있다. 신입의 경우 하루하루 배우는 것이 너무 많기 때문에 이를 잘 정리하는 능력이 중요하다.
+  - :star:하지만 정리를 위해 과하게 디렉터리를 만드는 건 좋지 않다.
 - 기록은 했지만 정리하지 못했다. 이제는 성장하는 개발자가 되기 위해 **기록하고 정리한다.**
 - 이전에 정리해 놨던 내용들을 우선 정리한다.
 - ![20220725_160722](https://user-images.githubusercontent.com/55792986/180719980-982da156-9696-43c9-a33b-3cde518f4d17.png) 
-<br><br>
 
 # 유니티 개발자, 그리고 좋은 개발자가 되기 위해 공부하고 기록하자.
-### 1. 유니티
-- 이전에 공부한 내용에 이어서 추가로 공부하자. 
-- [대학생 때 공부한 유니티](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Unity%20Study%20(2020%20~%202021).pdf)
+## 1. Unity
+- C#
+  - 시작하세요! C# 10 프로그래밍.
+  - 회사 강의.
+- OOP
+  - 객체 지향을 위한 방법론.
+  - Unity와 C# 디렉터리에 대한 구분이 모호하지만 명시적으로 구분해야 한다.
+- Unity
+  - 순수 유니티 내용.
 
-### 2. 게임 클라이언트 프로그래머가 되기 위한 CS 지식
-- 기초가 중요하다.
-- 학부 시절에 공부했던 내용도 추가한다. 
-- [대학생 때 공부한 CS](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/Computer%20Science/Study%20In%20College)
-- 게임 클라이언트 프로그래머의 기초를 다져주는 지식들을 공부한다. 
-  - 후에 직장에 들어가면 공부해야 할 지식이 더 확고해 질 것 이다.
-          
-### 3. 감명 깊은 개발자 칼럼을 읽고 개인의 생각을 기록하자.
-- [노션_개발자 칼럼](https://persistent-hoverfly-e3c.notion.site/851b21afd1954da5847743f51a6be41c)
-- 세상에는 훌륭한 개발자분들이 경험한 글이 많이 존재한다. 이를 읽고 발전하자.
+## 2. Computer Science
+- Algorithm
+- Computer Graphics
+- Data Structure
+- Math
+- Software Architecture
+- SQL
+- Study In College
+  - 대학교 시절 정리한 Computer Science
 
-### 4. 개발 관련 서적
-- [개발 서적](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/Books%20For%20Development)
-
-# 코테는 정말 가끔...
-- [코딩 테스트](https://github.com/pjw960316/Practice_For_Coding_Test)
-
+## 3. Books For Development
+- 개발 도서
+- 결국 해당 내용도 Unity 아니면 Computer Science 이므로 이 디렉터리는 제거 할 계획이다.
 
 
