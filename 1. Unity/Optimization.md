@@ -1,8 +1,7 @@
 # 목차
 - [목차](#목차)
 
-# 개요
-- 예전 문서는 가독성이 좋지 않다.
+
   
 # Find vs FindGameObjectswithTag
 - 이전에는 뭐가 빠르고 뭐가 느리고 이런 걸 분석해봤다.
@@ -27,5 +26,7 @@
   - **오버헤드가 높은 메서드가 무엇인지 이론적으로 예측할 수 잇고 프로파일러를 통해 해당 예측을 검증할 수 있다.**
 - 프로파일러를 통해 어떤 메서드가 얼만큼 오버헤드가 있는지 검사해보았다.
 
-# 참고 자료
+# Reference
+- :book:유니티 5 게임프로그래밍 최적화 
+  - [교보문고](https://product.kyobobook.co.kr/detail/S000001057936)
 - :link:[MSDN](https://learn.microsoft.com/ko-kr/windows/mixed-reality/develop/unity/performance-recommendations-for-unity?tabs=openxr)
