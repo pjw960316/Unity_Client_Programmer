@@ -12,3 +12,8 @@
 
 # 코드 작성자
 - 코드 작성자를 누르면 해당 코드를 누가 썼는지 알 수 있고 전체적인 히스토리를 알 수 있다.
+
+# Perforce에 커밋된 코드와 지금 코드 비교하기
+- <img width="1047" alt="20230103_204047" src="https://user-images.githubusercontent.com/55792986/210350493-b51f62be-bf5a-4825-853e-f55c4891015f.png">
+  - 빨간 네모 우클릭 -> Perforce -> Show History -> Compare
+
