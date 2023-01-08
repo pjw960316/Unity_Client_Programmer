@@ -36,3 +36,19 @@
 - 가독성이 좋으면
 - 기능 별로 분리해서 메서드를 만들면 좋긴한데 자유임.
   - 잘 분리하면 가독성 좋음
+
+# 부동 소수점
+- ![image](https://user-images.githubusercontent.com/55792986/210028509-7347fdec-c85d-4319-91b8-5dda0b2b3d32.png)
+- ![image](https://user-images.githubusercontent.com/55792986/210028723-e43b745a-42d6-4794-bce2-3d8346b249e3.png)
+-  8bytes -> 4bytes 손실
+
+# 위험한 float 비교
+- ![image](https://user-images.githubusercontent.com/55792986/210466704-4d6ad080-365c-4d65-ba83-325c77d2770d.png)
+  - 1인 줄 알았는데 0.99999999999다.
+- ~~~c#
+  unity mathf.approximately
+  ~~~
+  - ![image](https://user-images.githubusercontent.com/55792986/210472546-0e5480b3-bd88-4f38-8f2c-c78d23be8789.png)
+  - ![image](https://user-images.githubusercontent.com/55792986/210472786-684ab4ff-8e5a-4b81-9c0b-bcaed265ecaa.png)
+    - mathf.approximately가 입실론에 근거한 메서드이다.
+  - ![image](https://user-images.githubusercontent.com/55792986/210472889-edef6194-b55d-4754-8087-5984f83ba2f7.png)-
