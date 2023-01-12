@@ -13,7 +13,7 @@
 - 개발자가 prefab을 건드는 일(스크립트 붙이는)도 존재하므로 prefab도 변경 사항이 될 수 있다.
 - 자주 자주 최신을 받아주자.
 - 변경 사항의 파일중에 ?가 붙은 거는 충돌을 의미한다.
-  - 우클릭 5 번째 resolve ...을 누르면 머지 할 수 있다.
+  - resolve -> Auto resolve multiple files -> Automatic Resolve
     - 기본적으로 Automatic resolve를 한다.
     - 여기서 성공하면 완료
     - 여기서 실패하면 accept source(server에 올라간 걸로 해당 파일을 적용하겠음) 또는 accept target (local에 저장된 내 걸로 해당 파일을 적용하겠음)
