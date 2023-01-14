@@ -1,0 +1,16 @@
+# 목차
+- [목차](#목차)
+
+# 개요
+- 시간을 많이 날려 먹는 버그들을 정리해 놓자.
+
+# 클래스의 public 또는 Serialized Field 멤버 필드의 이름을 변경했을 때
+- 보통 이런 것 들은 에디터에서 어떤 객체와 연결해주는 경우가 많다. 
+- 해당 이름을 변경해버리면 연결도 해제 된다. ㅠㅠ
+
+# NullReferenceException
+- ![image](https://user-images.githubusercontent.com/55792986/212466985-f1fd0107-eadc-4010-ab30-45391b71e330.png)
+- 나는 요즘 위의 부분을 꺼놓고 코딩을 한다. 관련 없는 에러여도 출력 되면 괜히 거슬린다.
+  - 이러면 NullReferenceException도 나오지 않는다.
+- NullReferenceException이 발동하면 게임이 무반응 상태가 된다.
+  - 그러므로 게임이 멈추면 NullReferenceException가 발생했는지 의심을 해보고, 객체가 null을 참조하고 있는지 확인하자.

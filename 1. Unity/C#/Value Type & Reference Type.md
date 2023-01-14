@@ -2,6 +2,7 @@
 - [목차](#목차)
 - [스택과 힙에 관해서는...](#스택과-힙에-관해서는)
 - [:star:value type vs reference type](#starvalue-type-vs-reference-type)
+- [Reference Type에 관한 회고](#reference-type에-관한-회고)
 
 # 스택과 힙에 관해서는...
 - :link:[Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Manage%20Memory.md#c-stack-memory-vs-heap-memory)
@@ -52,3 +53,15 @@ public class Move : MonoBehaviour
 ~~~c#
 cattle_r_transform_reference_type = transform;
 ~~~~
+
+# Reference Type에 관한 회고
+~~~c#
+public class ReferenceExample
+{
+	public int number;
+}
+ReferenceExample a = new ReferenceExample(); 
+var b = a;
+~~~
+  - 당연히 a의 멤버 변수의 값이 변경되면 b의 멤버 변수의 값도 변경된다.
+    - 참조 타입이니까.
