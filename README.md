@@ -4,13 +4,13 @@
 # 1. Unity
 ![image](https://user-images.githubusercontent.com/55792986/210168349-e082870f-bd39-42be-8b51-c81e08302054.png)
 - C#
-  - 시작하세요! C# 10 프로그래밍.
-  - 회사 강의.
+  - 시작하세요! C# 10 프로그래밍
+  - 강의
 - OOP
-  - 객체 지향을 위한 방법론.
+  - 객체 지향을 위한 방법론
   - Unity와 C# 디렉터리에 대한 구분이 모호하지만 명시적으로 구분해야 한다.
 - Unity
-  - 순수 유니티 내용.
+  - 순수 유니티 내용
 
 <br></br>
 # 2. Computer Science
