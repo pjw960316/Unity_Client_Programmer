@@ -1,8 +1,7 @@
 <br></br>
 # 2022년 7월 25일 시작
 <br></br>
-# 목차
-## 1. Unity
+# 1. Unity
 ![image](https://user-images.githubusercontent.com/55792986/210168349-e082870f-bd39-42be-8b51-c81e08302054.png)
 - C#
   - 시작하세요! C# 10 프로그래밍.
@@ -14,7 +13,7 @@
   - 순수 유니티 내용.
 
 <br></br>
-## 2. Computer Science
+# 2. Computer Science
 - ![image](https://user-images.githubusercontent.com/55792986/210168375-c603696b-8517-40c5-9d41-896fef1a3b2e.png)
   - [UtilForever](https://github.com/utilForever/game-developer-roadmap)
 - Algorithm
@@ -27,7 +26,7 @@
   - 대학교 시절 정리한 Computer Science
 
 <br></br>
-## 3. Growing Developers
+# 3. Growing Developers
 - 신입 개발자는 매일매일 많은 지식을 습득한다. 유니티 개발자니까 대부분 유니티 관련 지식이지만 이걸 넘어서서 좋은 개발자가 될 수 있는 지식도 얻게 된다.
   - 단순한 컴퓨터 공학 지식 및 유니티를 넘어서는 것들이 존재한다는 것을 인지했고 이에 대한 정리가 필요함을 느꼈다.
 <br></br>
