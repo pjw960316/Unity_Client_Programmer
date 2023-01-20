@@ -7,7 +7,7 @@
     - [2. 사용 이유](#2-사용-이유)
     - [3. override를 붙이지 않는 다면?](#3-override를-붙이지-않는-다면)
 - [Overhead](#overhead)
-- [Abstract vs Virtual](#abstract-vs-virtual)
+- [:star:Abstract vs Virtual](#starabstract-vs-virtual)
 - [Sealed](#sealed)
 - [Interface](#interface)
 
@@ -36,6 +36,7 @@
   - ![image](https://user-images.githubusercontent.com/55792986/185402871-dc79d0c2-3977-4efb-9135-4fc1da012b54.png)
   - ![image](https://user-images.githubusercontent.com/55792986/185402363-928218b0-f9bc-49a9-956c-f0495d157fc5.png)
     - 부모 함수 Test에 한정자(virtual, abstract, override)가 붙지 않으면 오버라이딩이 불가능 합니다.
+    - 오버라이딩 해서 쓰겠다고 명시적으로 나타내 주니까 가독성면에서 좋다고 생각한다.
 
 ### 3. override를 붙이지 않는 다면?
 - override를 붙이지 않을 때 (관련 자료를 읽어봐도 잘 이해가 안 됨. 추후에 이해하면 필기하자)
