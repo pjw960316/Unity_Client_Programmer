@@ -4,6 +4,7 @@
     - [1. 의문점이 발생한 코드](#1-의문점이-발생한-코드)
     - [2. 해답 (:exclamation:확실하지는 않다.)](#2-해답-exclamation확실하지는-않다)
 - [Awake , Start는 왜 override를 붙이지 않는가? (검색의 한계를 느낀다...)](#awake--start는-왜-override를-붙이지-않는가-검색의-한계를-느낀다)
+- [Awake는 메시지다.](#awake는-메시지다)
 - [FixedUpdate vs Update의 프레임 관점](#fixedupdate-vs-update의-프레임-관점)
     - [1. 프레임](#1-프레임)
     - [2. Time.deltatime으로 update에서도 언제나 동일한 결과값이 나오도록 한다.](#2-timedeltatime으로-update에서도-언제나-동일한-결과값이-나오도록-한다)
@@ -38,6 +39,10 @@ private void Start()
     - 이해한 것 (틀릴 가능성이 높음) : 게임오브젝트에 달은 스크립트의 awake만 호출되고, 부모의 awake는 무시됨.
       - 만약 부모 것을 호출하고 싶다면 virtual과 override 그리고 base를 이용하여 상속받아 base로 호출해야 할 듯.
 
+# Awake는 메시지다.
+- ![image](https://user-images.githubusercontent.com/55792986/213359255-b399363f-a5f0-4155-88e2-4e79e29729f2.png)
+  - Awake는 메시지고, 이는 메서드와 유사한 형태다.
+  
 # FixedUpdate vs Update의 프레임 관점
 ### 1. 프레임
 - 60frame이면 1/60초 마다 한 번 진행하기 때문에 한 번의 프레임이 1000/60 ms다. 100frame이면 1/100초 마다 한 번 진행하기 때문에 한번의 프레임이 10ms가 된다.

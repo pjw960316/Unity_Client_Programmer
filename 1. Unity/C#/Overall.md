@@ -15,6 +15,7 @@
     - [2. 특징](#2-특징)
     - [3. 연습](#3-연습)
 - [Partial Class](#partial-class)
+- [default params](#default-params)
 
 # 개요
 - 분류 하기 애매한 친구들은 여기에 정리하고 추후에 분류한다.
@@ -130,3 +131,6 @@ class Program
 - ![20221215_141512](https://user-images.githubusercontent.com/55792986/207778212-cbf69bff-ba1e-4165-91ea-cc6d556a3499.png)
   - 메서드의 기능을 묶어서 클래스를 쪼갠다.
     
+# default params
+- ![image](https://user-images.githubusercontent.com/55792986/213071043-621b19ff-6db4-4d99-abb8-5737371979e8.png)
+- 항상 마지막 매개변수에 넣어줘야 한다.

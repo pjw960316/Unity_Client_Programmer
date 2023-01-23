@@ -1,0 +1,46 @@
+# 목차
+- [목차](#목차)
+- [공식 문서 사용법](#공식-문서-사용법)
+- [F12 : Go to Declaration or Usages](#f12--go-to-declaration-or-usages)
+- [Shift + F12 : Find Usages](#shift--f12--find-usages)
+- [Shift + Shift : Search Everywhere](#shift--shift--search-everywhere)
+- [Ctrl + Shift + F : Find In Files](#ctrl--shift--f--find-in-files)
+- [F3 : Find Next/ Move to Next Occurrence](#f3--find-next-move-to-next-occurrence)
+- [Ctrl + G : Go to Line/Column](#ctrl--g--go-to-linecolumn)
+  
+# 공식 문서 사용법
+- :link:[Rider Official Docs](https://www.jetbrains.com/help/rider/Reference_Keyboard_Shortcuts_Index.html#top_shortcuts)
+  - 단축키 옆에 적은 내용을 해당 링크에서 검색하면 찾아갈 수 있다.
+  
+# F12 : Go to Declaration or Usages
+- **메서드 정의문으로 바로 이동**한다.
+- 정의를 개발자가 스스로 다른 스크립트나 현재 스크립트에 만들었다면 그 곳으로 순간이동 한다.
+
+# Shift + F12 : Find Usages
+- **메서드의 호출 위치를 모두 보여준다.** (=참조된 모든 위치를 정리해서 보여준다.)
+- :star:만약 형식이 다양하다면 형식을 select 해줘야 하므로 Shift + F12 + Enter(Select)를 해주면 어디서 호출하고 있는지 파악이 가능하다.
+  - 이 함수가 어디서 호출되는지 파악하면 코드 흐름을 파악하기 용이하다.
+
+# Shift + Shift : Search Everywhere
+- 전체 검색
+- ![image](https://user-images.githubusercontent.com/55792986/213972762-c5ae0099-ba36-46f3-8bdc-36fdb01135f2.png)
+  - 검색한 문자열이 포함된 파일(.cs), 클래스, 등에 대해 전체 프로젝트에서 검색한다.
+  - **코드를 작성한 분들이 이전에 어떻게 사용했는 지 찾아볼 수 있다.**
+
+# Ctrl + Shift + F : Find In Files
+- 정확한 명칭은 Find and Replace Text in Solution
+- Shift + Shift는 간략하게 나오지만 얘는 코드의 일부도 보여준다.
+- **Shift + Shift가 더 편한 것 같다. 아직까지 둘의 기능과 목적은 거의 동일한 것 같다.**
+
+# F3 : Find Next/ Move to Next Occurrence
+- 찾은 내용에 대해서 다음으로 이동할 때 사용한다.
+
+# Ctrl + G : Go to Line/Column 
+- 줄 번호 이동
+
+
+
+
+
+
+

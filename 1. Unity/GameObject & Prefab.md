@@ -2,7 +2,9 @@
 - [목차](#목차)
 - [개요](#개요)
 - [Prefab (의외로 개념을 명확하게 이해하고 있지 않았었다.)](#prefab-의외로-개념을-명확하게-이해하고-있지-않았었다)
-- [Getchildren 보다 괜찮은 방법](#getchildren-보다-괜찮은-방법)
+- [자식 객체를 연결할 때 더 이상 Getchild(), Getchildren()을 사용하지 말고 SerializeField로 직접 넣어주자.](#자식-객체를-연결할-때-더-이상-getchild-getchildren을-사용하지-말고-serializefield로-직접-넣어주자)
+- [GetComponent로 부모 스크립트만 가져오기](#getcomponent로-부모-스크립트만-가져오기)
+- [스크립트의 본질을 잊지마라. 어딘 가에는 붙어있을 것 이다.](#스크립트의-본질을-잊지마라-어딘-가에는-붙어있을-것-이다)
 
 # 개요
 - 게임 오브젝트와 프리팹과 관련된 대다수의 내용을 이 곳에 정리한다.
@@ -15,7 +17,22 @@
 - 즉, 엄청 큰 A 프리팹 애셋이 있다. 그리고 A 프리팹 에셋을 이용해서 게임에서는 A 프리팹의 복제품들을 생성한다. A 프리팹의 하위 5번째 계층에 B 프리팹이 존재한다. 여기서 매우 중요하다. 가장 실수를 많이 하는 부분이다. 우리가 A 프리팹 복제 객체에 존재하는 B 복제 객체에 어떤 스크립트를 넣으려면 어떻게 해야할까? 절대로 B 프리팹 에셋이 해당 스크립트를 넣는 것이 아니라, Asset에 가서 A 프리팹 에셋에 존재하는 B 프리팹에 넣어주어야 한다.
 - 그리고 게임을 Play해서 생기는 (clone)객체들에 어떠한 작업을 해도 어차피 게임이 꺼지면 모두 사라진다. 
 
-# Getchildren 보다 괜찮은 방법
-- 게임 오브젝트에 붙어있는 자식 게임 오브젝트를 찾을 때 GetChildren()을 사용한다.
-  - 하지만 이런 경우 index를 지정하거나 이름을 사용하는 데 유지보수의 측면에서 좋지 않다.
-- 게임 오브젝트에 자식 게임 오브젝트의 스크립트를 Serialize Field로 만들어서 추가해 버리면 매우 안전하다.
+# 자식 객체를 연결할 때 더 이상 Getchild(), Getchildren()을 사용하지 말고 SerializeField로 직접 넣어주자.
+- 이전에는 게임 오브젝트에 붙어있는 자식 게임 오브젝트를 찾을 때 GetChildren()을 사용했었다. 일반적인 컴포넌트를 찾아주려면 넣어줘야 하지만 자식은 Unity의 함수로 찾을 수 있기 때문이다.
+  - 하지만 필연적으로 인덱스나 이름을 parameter로 넣어줘야 하며 이는 하드코딩에 가깝다. 또한 성능도 좋지 않다.
+  - ![image](https://user-images.githubusercontent.com/55792986/213980039-c7bfcc31-cc0e-4548-ab86-7bd3cb73f5db.png)
+    - 혼자 허접한 게임을 만들 때는 자식의 개수가 적었지만, 큰 구조라면 자식도 많아지고 자주 호출된다. 
+- 게임 오브젝트에 자식 게임 오브젝트의 스크립트를 Serialize Field로 만들어서 추가해 버리면 매우 안전하고 이 방식이 현재는 정답이라고 생각한다.
+- **주의 : Serialize Field로 선언한 멤버의 이름을 바꾸면 null exception이 날 것 이다. 다시 연결해줘야 한다.**
+  - 하지만 해당 이름으로 유지 시켜주는 FormerlySerializedAsAttribute 라는 것도 있다.
+  - ![image](https://user-images.githubusercontent.com/55792986/213980653-8c91f3e3-8aa1-487d-9577-78295b920674.png)
+  - https://docs.unity3d.com/ScriptReference/Serialization.FormerlySerializedAsAttribute.html
+
+# GetComponent로 부모 스크립트만 가져오기
+- ![image](https://user-images.githubusercontent.com/55792986/212243908-0a881976-ef90-41ed-80c6-675810b25f3a.png)
+  - 상속 관계에서의 GetComponent
+
+# 스크립트의 본질을 잊지마라. 어딘 가에는 붙어있을 것 이다.
+- 스크립트에 적은 것은 결국 어떤 객체의 컴포넌트로 쓰기 위함이다. 
+- 프리팹으로 만든 복잡한 게임오브젝트 내부를 파고들어 하위의 하위의 하위의 계층을 파고들면 어딘가에는 연결되어 있을 것 이다!
+- 물론 아닌 것도 있지만 그런 애들은 정말 특별한 목적의 스크립트다. 

@@ -93,8 +93,6 @@
 ### 3. Event(==EventHandler)는 static으로 선언해야 하는가?
 - 이건 실제로 코딩하면서 결정해보자. static으로 하면 이 이벤트처리기는 프로그램 전체에서 공유.
 
-
-
 # Delegate 대신 Event를 사용하는 이유
 - 이런 문제가 생길 수 있다.
 - ![image](https://user-images.githubusercontent.com/55792986/207784130-8f985681-0f11-433b-9c45-9d0e7a614b7a.png)
@@ -102,4 +100,6 @@
 - 해결책 : Event 키워드
   - delegate에 event 키워드를 붙이면 해당 delegate에 메서드를 추가할 때 반드시 += 이나 -=을 이용해야 한다.
 
+# Action Ref
+- ![image](https://user-images.githubusercontent.com/55792986/212207753-45218da6-6914-4f8e-acd6-419c2ada6e28.png)
 
