@@ -3,6 +3,7 @@
 - [공식 문서 사용법](#공식-문서-사용법)
 - [F12 : Go to Declaration or Usages](#f12--go-to-declaration-or-usages)
 - [Shift + F12 : Find Usages](#shift--f12--find-usages)
+- [Ctrl + F12 : Go To Implementation](#ctrl--f12--go-to-implementation)
 - [Shift + Shift : Search Everywhere](#shift--shift--search-everywhere)
 - [Ctrl + Shift + F : Find In Files](#ctrl--shift--f--find-in-files)
 - [F3 : Find Next/ Move to Next Occurrence](#f3--find-next-move-to-next-occurrence)
@@ -21,6 +22,42 @@
 - :star:만약 형식이 다양하다면 형식을 select 해줘야 하므로 Shift + F12 + Enter(Select)를 해주면 어디서 호출하고 있는지 파악이 가능하다.
   - 이 함수가 어디서 호출되는지 파악하면 코드 흐름을 파악하기 용이하다.
 
+# Ctrl + F12 : Go To Implementation
+- 어떤 메서드가 인터페이스의 메서드를 호출하는 경우, 해당 메서드의 직접적인 구현부를 봐서 어떻게 동작하는 지 이해할 필요가 있다.
+- 예를 들어, 어떤 넘이 Dispose()를 호출하는 데 이 넘의 정의부를 F12로 가면  Interface의 정의(정의도 없지)만 나온다.
+~~~c#
+public interface IDisposable
+  {
+    /// <summary>
+    ///   관리되지 않는 리소스의 확보, 해제 또는 다시 설정과 관련된 응용 프로그램 정의 작업을 수행합니다.
+    /// </summary>
+    void Dispose();
+  }
+~~~
+  - 여기서 Dispose에 Ctrl + F12를 하고 직접 구현한 클래스의 구현부를 본다. 내가 F12를 누른 곳이 CompositeDispose 클래스의 객체에 대한 Dispose였다.
+~~~c#
+public void Dispose()
+        {
+            var currentDisposables = default(IDisposable[]);
+            lock (_gate)
+            {
+                if (!_disposed)
+                {
+                    _disposed = true;
+                    currentDisposables = _disposables.ToArray();
+                    _disposables.Clear();
+                    _count = 0;
+                }
+            }
+
+            if (currentDisposables != null)
+            {
+                foreach (var d in currentDisposables)
+                    if (d != null)
+                        d.Dispose();
+            }
+        }
+~~~
 # Shift + Shift : Search Everywhere
 - 전체 검색
 - ![image](https://user-images.githubusercontent.com/55792986/213972762-c5ae0099-ba36-46f3-8bdc-36fdb01135f2.png)

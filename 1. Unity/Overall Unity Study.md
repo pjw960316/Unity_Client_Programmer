@@ -6,7 +6,6 @@
     - [2. C# Version](#2-c-version)
     - [3. Unity Version](#3-unity-version)
 - [Abstract](#abstract)
-- [CallBack Function](#callback-function)
 - [Member Variable Tips](#member-variable-tips)
 - [Tips](#tips)
 
@@ -70,8 +69,6 @@
 
 # Abstract
 - abstract function이 1개라도 있으면 해당 클래스는 abstract class가 된다.
-- 
-# CallBack Function 
 
 # Member Variable Tips
 - ![image](https://user-images.githubusercontent.com/55792986/183585061-b53b3549-e031-4492-ab98-b6d663cc2c43.png)
