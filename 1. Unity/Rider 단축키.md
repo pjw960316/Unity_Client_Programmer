@@ -8,6 +8,7 @@
 - [Ctrl + Shift + F : Find In Files](#ctrl--shift--f--find-in-files)
 - [F3 : Find Next/ Move to Next Occurrence](#f3--find-next-move-to-next-occurrence)
 - [Ctrl + G : Go to Line/Column](#ctrl--g--go-to-linecolumn)
+- [Ctrl + R + R : Rename Refactoring](#ctrl--r--r--rename-refactoring)
   
 # 공식 문서 사용법
 - :link:[Rider Official Docs](https://www.jetbrains.com/help/rider/Reference_Keyboard_Shortcuts_Index.html#top_shortcuts)
@@ -74,6 +75,9 @@ public void Dispose()
 
 # Ctrl + G : Go to Line/Column 
 - 줄 번호 이동
+
+# Ctrl + R + R : Rename Refactoring
+- 바꾸고 싶은 애의 이름을 더블클릭하고 이 기능을 사용하면 해당 이름과 같은 모든 이름을 원하는 이름으로 한 번에 변경할 수 있다.
 
 
 
