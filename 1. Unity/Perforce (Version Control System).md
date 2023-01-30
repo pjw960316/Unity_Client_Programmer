@@ -2,7 +2,7 @@
 - [목차](#목차)
 - [개요](#개요)
 - [P4](#p4)
-- [Shelve에 대해 공부해보자.](#shelve에-대해-공부해보자)
+- [Pending 만들기](#pending-만들기)
 
 # 개요
 - 성능이 좋은 Version Control System인 Perforce를 공부해보자.
@@ -26,4 +26,6 @@
   - pending을 구분할 수 있다.
 
 
-# Shelve에 대해 공부해보자.
+# Pending 만들기
+- Pending 목록 밖에서 우클릭 해서 만들자.
+- pending을 하나 만들고 Description에 pending 이름을 적어라.
