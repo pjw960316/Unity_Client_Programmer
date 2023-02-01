@@ -75,6 +75,26 @@
 # Func
 - 반환 값이 있는 Action이다.
 
+# Action Func
+~~~c#
+private void ActionFunc()
+    {
+        Action<int, int> a = (x,y) =>
+        {
+            Debug.Log($"{x}  {y}");
+        };
+
+        Func<int, int, int> b = (x, y) =>
+        {
+            var z = x + y;
+            return z;
+        };
+    }
+~~~
+  - action의 generic은 매개변수만
+  - func의 generic은 매개변수와 리턴 값 같이
+    - 1번int와 2번 int는 매개변수, 3번 int는 리턴 값의 int를 담당
+
 # 정리
 - ![image](https://user-images.githubusercontent.com/55792986/207791912-ab0b1f25-447d-4778-9d20-544c19c06c3c.png)
 
