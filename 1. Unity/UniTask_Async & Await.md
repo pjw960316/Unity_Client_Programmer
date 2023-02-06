@@ -5,7 +5,7 @@
 - [동기 호출과 비동기 호출](#동기-호출과-비동기-호출)
     - [1. 동기 호출 (=Blocking Call)](#1-동기-호출-blocking-call)
     - [2. 비동기 호출](#2-비동기-호출)
-- [Async/Await : 비동기 호출을 간단하게 하는 키워드](#asyncawait--비동기-호출을-간단하게-하는-키워드)
+- [.Net Async/Await : 비동기 호출을 간단하게 하는 키워드](#net-asyncawait--비동기-호출을-간단하게-하는-키워드)
 - [Async 함수의 리턴 타입](#async-함수의-리턴-타입)
 - [Async 키워드와 Async를 붙이는 함수](#async-키워드와-async를-붙이는-함수)
 - [Async/Await 정리](#asyncawait-정리)
@@ -23,26 +23,21 @@
 - ![20230126_162313](https://user-images.githubusercontent.com/55792986/214779318-7824ee69-30e8-4710-a2c6-481dbf4ec677.png)
     - Blocking이 발생하지 않고 주 스레드는 계속 일을 한다.
 
-# Async/Await : 비동기 호출을 간단하게 하는 키워드 
-- await이 있는 메서드에서는 async 키워드를 붙여준다.
-~~~c#
-Main()
-{
-    PlayLongWork();
-    CLog.Error("i never stop");
-}
-private async void PlayLongWork()
-{
-    int result = await PracticeAsync();
-}
-~~~
-  - 메인 함수에서 PlayLongWork()는 비동기로 동작한다. 그러므로 메인 스레드에서는 블록이 발생하지 않고 "i never stop"을 출력한다.
-  - 비동기로 동작하며 result에 값을 넣어 줄 때 까지 비동기로 도는 워크 스레드에서는 PracticeAsync()의 작업이 완료 될 때 까지 기다린다. 
+# .Net Async/Await : 비동기 호출을 간단하게 하는 키워드 
+- ![20230206_164222](https://user-images.githubusercontent.com/55792986/216913244-155031a6-3c96-4128-a9b9-7c215adcd124.png)
 - ![20230201_141055](https://user-images.githubusercontent.com/55792986/215956880-75105804-3c47-466b-a651-7018cee01135.png)
-  - :star:**주 스레드 실행 흐름에서 Async로 만들어 진 메서드인 UpdateResult를 만났다. 실행 흐름에서 await를 만나면 우측 식인 SumAsync(1,200)을 호출만 하고(SumAsync(1,200)은 아직 끝나지 않았다.) 실행 흐름을 다시 주 스레드로 돌아온다.**
-    - 디버그를 찍어보면 await 없이 SumAsync(1,200)을 부르면 SumAsync로 디버거가 이동하는데 await를 사용 하면 이동하지 않고 호출만 하고 바로 주 스레드의 다음 라인인 Console.WriteLine($"{ret}")으로 넘어간다.
-- 워크 스레드로 빼는 이유는 당연히 오래걸리는 작업이거나, 기다려야 하는 메서드가 존재할 때. 
+- ![image](https://user-images.githubusercontent.com/55792986/216913024-2a1018bc-93e0-4ddb-b5a3-5cc2c116468d.png)
+  - :star:**실행 흐름**
+    - 1) 주 스레드는 Main에서 UpdateResult를 호출한다.
+    - 2) 주 스레드는 UpdateResult()에 진입해서 Console.WriteLine("UpdateResult")를 실행한다.
+    - 3) await을 만나고 SumAsync(1,200)을 호출해놓고(풀에 있던 다른 스레드가 SumAsync를 수행) 다시 주 스레드는 Main으로 돌아간다.
+    - 4) 주 스레드는 Main의 Console.WriteLine("Main : Run Event loop")를 실행하고 이 때 비동기로 다른 스레드에서 SumAsync()의 내부를 수행한다.
+    - 5) **:star:주 스레드가 아닌 다른 스레드**에서 SumAsync(1,200)을 완료하면 UpdateResult()의 ret에 그 값을 초기화 하고 Console.WriteLine($"{ret}")까지 진행하고 종료한다. 
+- 주 스레드는 SumAsync의 결과를 기다리지 않고 Main 함수를 수행할 수 있다.
+- async 메서드의 await을 만나면 풀의 스레드에서 해당 부분을 관리하고 주 스레드는 관심을 갖지 않고 자신의 흐름을 유지한다.
+  - Blocking이 발생하지 않는다!
 
+- 
 # Async 함수의 리턴 타입
 - void면 그냥 void
 - Task로 리턴할 수 있는데 신기한 것이 return을 적지 않아도 Task를 리턴한다.
