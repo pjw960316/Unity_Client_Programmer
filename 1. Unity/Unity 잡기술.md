@@ -2,6 +2,7 @@
 - [목차](#목차)
 - [계층이 빡센 GameObject에서 원하는 부분 찾기](#계층이-빡센-gameobject에서-원하는-부분-찾기)
 - [Auto Refresh를 끄자.](#auto-refresh를-끄자)
+- [프로젝트 전역의 Define](#프로젝트-전역의-define)
   
 # 계층이 빡센 GameObject에서 원하는 부분 찾기
 - Scene에서 거기를 더블클릭하면 Hierarchy에서 알아서 찾아간다.
@@ -18,3 +19,9 @@
     - 까먹고 변경 되지 않았다고 착각하는 순간 정신 나간다.
     - 디버깅 포인트가 붉게 나오지 않은 것으로 해결할 수 있다.
       - 코드와 유니티에서 latest 빌드한 내용과 다른 부분은 디버깅이 되지 않는다.
+
+# 프로젝트 전역의 Define
+- Edit -> Project Setting
+- 특정 모드일 때 해당 코드가 동작함을 이용할 때 매우 유용하다.
+  - 어떤 키워드가 설정되어 있으면 이 코드가 동작하고..
+- [Reference](https://drehzr.tistory.com/796)

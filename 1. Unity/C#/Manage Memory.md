@@ -9,8 +9,8 @@
     - [1. Struct](#1-struct)
     - [2. Class](#2-class)
     - [3. 차이점을 가장 잘 보여주는 코드](#3-차이점을-가장-잘-보여주는-코드)
-    - [6. Memory Compaction (메모리 빈 공간 없애기)](#6-memory-compaction-메모리-빈-공간-없애기)
-    - [7. 참고문헌](#7-참고문헌)
+    - [4. Memory Compaction (메모리 빈 공간 없애기)](#4-memory-compaction-메모리-빈-공간-없애기)
+    - [5. 참고문헌](#5-참고문헌)
     - [아직 정리안한 내용](#아직-정리안한-내용)
 - [dispose()를 왜 쓸까?](#dispose를-왜-쓸까)
 
@@ -102,16 +102,14 @@
         }
 ~~~
 
-
-
-### 6. Memory Compaction (메모리 빈 공간 없애기)
+### 4. Memory Compaction (메모리 빈 공간 없애기)
 - ![image](https://user-images.githubusercontent.com/55792986/198264662-9ea66084-5667-43cf-ade0-50c096459566.png)
   - 외부 단편화가 발생하는 것을 해결하기 위해 memory compaction을 수행한다.
 - ![image](https://user-images.githubusercontent.com/55792986/198264817-c97c0faa-2dbb-4c42-8b87-12ff4608bfab.png)
   - 외부 단편화를 제거한다. 그로 인해 메모리의 누수가 줄어들고 효율적으로 사용할 수 있다.
   - 시간이 많이 걸리고 효율적으로 compaction을 할 수 없는 경우도 존재한다.
 
-### 7. 참고문헌
+### 5. 참고문헌
 - :link:[UNITY](https://docs.unity3d.com/kr/current/Manual/performance-garbage-collector.html)
 - :link:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/fundamentals)
 - :link:[친구 블로그](https://luv-n-interest.tistory.com/m/922)
