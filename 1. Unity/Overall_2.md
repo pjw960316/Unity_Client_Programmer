@@ -10,6 +10,8 @@
 - [위험한 float 비교](#위험한-float-비교)
 - [static 클래스 쓰면서 느낀 것](#static-클래스-쓰면서-느낀-것)
 - [멤버 변수 초기화](#멤버-변수-초기화)
+- [유니티의 동기](#유니티의-동기)
+- [float을 Math.approximately 써도 비교하지 말자](#float을-mathapproximately-써도-비교하지-말자)
 
 # 개요
 - 일단 강의를 들으면서 분류 하기 귀찮은 것 들을 이 곳에 모아둔다.
@@ -66,3 +68,16 @@
 ![image](https://user-images.githubusercontent.com/55792986/216017864-367ae3ba-8dbd-47ce-9da8-01b14484bdc6.png)
   - default 생성자 이전에 초기화 되는 것을 명시적으로 알고 있어라.
   - 객체 생성 시점도 미리 해버릴 수 있다. 
+
+# 유니티의 동기
+- https://tistory.jeon.sh/59
+- ![20230206_171712](https://user-images.githubusercontent.com/55792986/216919704-ced2d76c-e549-4691-b511-647b164eb962.png)
+- ![20230206_171752](https://user-images.githubusercontent.com/55792986/216919841-3d1e2349-a1ea-431b-8c5a-691705985b18.png)
+- ![20230206_171956](https://user-images.githubusercontent.com/55792986/216920313-0b91800e-d384-43db-b0be-f10a9eacd752.png)
+
+
+
+# float을 Math.approximately 써도 비교하지 말자
+- 이게 결국에는 오차를 줄여주는 것 이므로 완전히 정확하지는 않다.
+- 그러므로 99%의 정확함과 1%의 미스가 났는데 유저는 1%에 당황한다.
+  - 100%의 정확한 비교로 가자.

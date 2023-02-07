@@ -1,21 +1,6 @@
-# 목차
-- [목차](#목차)
-- [개요](#개요)
-- [Version : .Net, C#, Unity](#version--net-c-unity)
-    - [1. .Net Version](#1-net-version)
-    - [2. C# Version](#2-c-version)
-    - [3. Unity Version](#3-unity-version)
-- [Abstract](#abstract)
-- [Member Variable Tips](#member-variable-tips)
-- [Tips](#tips)
-
-# 개요
-- 마땅히 소규모 문서로 나누기 애매한 내용들을 예비로 모아둔다.
-- :flags:최종 목표는 여기에 적힌 내용들을 적절한 문서로 이동 시키는 것 이다.
-
-  
 # Version : .Net, C#, Unity
 - 많이 정리해봤지만 unity의 버전과 연관지어서 정리해 보는 게 필요하다.
+
 ### 1. .Net Version
 - Reference : [링크](https://s-core.co.kr/insight/view/%EC%95%8C%EC%95%84%EB%91%90%EB%A9%B4-%EC%93%B8%EB%AA%A8-%EC%9E%88%EB%8A%94-%EB%8B%B7%EB%84%B7-net-%EC%9D%B4%EC%95%BC%EA%B8%B0/)
 - Reference : [링크](https://points.tistory.com/25)
@@ -66,13 +51,3 @@
     - .Net Standard 2.0은 .Net Framework 4.x보다 작은 범위라고 생각되며, 모든 Framework 4.x의 기능을 사용하지 못한다.
     - .Net Standard 2.0을 현재 버전에서 사용하고 있다. 그러므로 .Net API를 사용할 때 .Net Standard 2.0문서를 보면 될 것 이다.
     - 이전의 회사에서는 모두 예전 버전을 이용했다. Visual studio도 2017을 썼고, Cocos도 최신버전이 아니었다. 회사들은 새로운 버전이 나왔다고 바로 마이그레이션 하지 않기 때문에 다음에 갈 회사도 비슷할 것 이다. 그러므로 **현재 버전에서 어떤 .Net과 어떤 C# 버전이 이용되는지 파악하고 사용하는 것이 가장 중요할 것 이다.**
-
-# Abstract
-- abstract function이 1개라도 있으면 해당 클래스는 abstract class가 된다.
-
-# Member Variable Tips
-- ![image](https://user-images.githubusercontent.com/55792986/183585061-b53b3549-e031-4492-ab98-b6d663cc2c43.png)
-- ![image](https://user-images.githubusercontent.com/55792986/183585096-2d2cc685-8d74-4682-a4e3-c5f0f0a9621a.png)
-
-# Tips
-- asset에서 검색하는 것은 언제나 빠르다.

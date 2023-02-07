@@ -4,7 +4,7 @@
 - [F12 : Go to Declaration or Usages](#f12--go-to-declaration-or-usages)
 - [Shift + F12 : Find Usages](#shift--f12--find-usages)
 - [Ctrl + F12 : Go To Implementation](#ctrl--f12--go-to-implementation)
-- [Shift + Shift : Search Everywhere](#shift--shift--search-everywhere)
+- [:star:Shift + Shift : Search Everywhere](#starshift--shift--search-everywhere)
 - [Ctrl + Shift + F : Find In Files](#ctrl--shift--f--find-in-files)
 - [F3 : Find Next/ Move to Next Occurrence](#f3--find-next-move-to-next-occurrence)
 - [Ctrl + G : Go to Line/Column](#ctrl--g--go-to-linecolumn)
@@ -59,16 +59,18 @@ public void Dispose()
             }
         }
 ~~~
-# Shift + Shift : Search Everywhere
+# :star:Shift + Shift : Search Everywhere
 - 전체 검색
 - ![image](https://user-images.githubusercontent.com/55792986/213972762-c5ae0099-ba36-46f3-8bdc-36fdb01135f2.png)
   - 검색한 문자열이 포함된 파일(.cs), 클래스, 등에 대해 전체 프로젝트에서 검색한다.
+  - **:star: 스크립트 파일 찾을 때 유용하다.**
   - **코드를 작성한 분들이 이전에 어떻게 사용했는 지 찾아볼 수 있다.**
 
 # Ctrl + Shift + F : Find In Files
 - 정확한 명칭은 Find and Replace Text in Solution
 - Shift + Shift는 간략하게 나오지만 얘는 코드의 일부도 보여준다.
-- **Shift + Shift가 더 편한 것 같다. 아직까지 둘의 기능과 목적은 거의 동일한 것 같다.**
+  - **:star: 협력 코드에서 다른 사람이 어떻게 썼는지 찾기에 유용하다.**
+    - 예를 들어, Unirx의 OnNext()를 어떻게 썼는지 궁금할 때 OnNext()를 검색한다.
 
 # F3 : Find Next/ Move to Next Occurrence
 - 찾은 내용에 대해서 다음으로 이동할 때 사용한다.

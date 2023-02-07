@@ -26,7 +26,6 @@
 - pending
   - pending을 구분할 수 있다.
 
-
 # Pending 만들기
 - Pending 목록 밖에서 우클릭 해서 만들자.
 - Pending을 하나 만들고 Description에 pending 이름을 적어라.

@@ -1,16 +1,15 @@
 # 목차
 - [목차](#목차)
-- [생각](#생각)
+- [해당 문서에 대한 계획 (02/07)](#해당-문서에-대한-계획-0207)
 - [Thread](#thread)
 - [ThreadPool](#threadpool)
 - [Task](#task)
-- [async / await](#async--await)
-- [Unitask vs task](#unitask-vs-task)
-- [UniTask](#unitask)
+- [ThreadSafe](#threadsafe)
+- [ConcurrentQueue를 왜 쓸까?](#concurrentqueue를-왜-쓸까)
 
-# 생각
-- 이 문서에 대한 정리를 어떻게 해야 할까?
-- thread, task, unitask 는 큰 개념이지만 연관 되었다.
+# 해당 문서에 대한 계획 (02/07)
+- 스레드랑 unitask가 연결이 되어있지만 unitask는 따로 빼서 관리하자.
+- 최근에 산 책을 여기서 정리하자.
   
 # Thread
 - 과거 회사 경험 + 취준 때 공부한 자료 + 지금을 섞어서 훌륭한 융합 공부를 해보자.
@@ -41,14 +40,12 @@
 - 강의에서는 Task도 좋다고 하지만 이건 유니티 친화가 아닐 것
 - 종료 대기는 태스크 객체.wait()
 - 자세한 메서드는 f12에서 확인
-- 
 
-# async / await
-- 
-# Unitask vs task
-- ![image](https://user-images.githubusercontent.com/55792986/209285354-feaaec6e-f4a9-40f1-9af4-45aa1478889d.png)
-
-# UniTask
-- ![image](https://user-images.githubusercontent.com/55792986/209274876-0b387bbd-c442-4fd4-a1e4-58949be5d8a7.png)
-- link : https://neuecc.medium.com/unitask-a-new-async-await-library-for-unity-a1ff0766029
-- async/await for 비동기, unirx for event
+# ThreadSafe
+- ![20230206_115020](https://user-images.githubusercontent.com/55792986/216872480-4fd5712e-84df-445b-8ab9-a917b1de0dd8.png)
+- https://gompangs.tistory.com/entry/OS-Thread-Safe%EB%9E%80
+- https://learn.microsoft.com/ko-kr/dotnet/standard/collections/thread-safe/
+  
+# ConcurrentQueue를 왜 쓸까?
+- [C-Sharp](https://www.csharpstudy.com/DS/queue.aspx)
+  - 일반적인 큐와 다른 것은 스레드에 대해서 안전한지

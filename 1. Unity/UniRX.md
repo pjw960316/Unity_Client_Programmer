@@ -7,6 +7,7 @@
 - [Iobservable, Iobserver, Idisposable](#iobservable-iobserver-idisposable)
 - [unirx disposable](#unirx-disposable)
 - [ReactiveProperty](#reactiveproperty)
+- [MainThreadDisPatcher](#mainthreaddispatcher)
 - [참고](#참고)
 
 # UniRX 개념
@@ -66,11 +67,15 @@ private void TestUnirxDisposable()
 # ReactiveProperty
 - ![image](https://user-images.githubusercontent.com/55792986/215650884-f4e3c4d6-6a35-4591-a0fe-470651c99ecb.png)
 
+# MainThreadDisPatcher
+- ![20230206_172626](https://user-images.githubusercontent.com/55792986/216921630-0891ed9a-ab14-45d0-8bdd-15ce5dbc09d2.png)
+  - 결국 메인스레드에서 유니티 API를 동작하게 하는 기술이다.
+  - 유니티 API가 메인스레드에서 동작해야 함은 변하지 않는다.
 
 # 참고
-- [노는게 제일좋아](https://luv-n-interest.tistory.com/1268)
 - [티스토리](https://skuld2000.tistory.com/31)
   - 2번과 3번 강의가 핵심이다.
+- [노는게 제일좋아](https://luv-n-interest.tistory.com/1268)
 - [Mentum](https://mentum.tistory.com/525)
 
 
