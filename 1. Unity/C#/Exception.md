@@ -14,6 +14,7 @@
 - [3가지 방법 사용 시점](#3가지-방법-사용-시점)
 - [Throw는 항상 try-catch와 함께 나오던데 이건 뭘까?](#throw는-항상-try-catch와-함께-나오던데-이건-뭘까)
 - [try-catch 예외처리의 비용과 블록 스코프](#try-catch-예외처리의-비용과-블록-스코프)
+- [예외 검사](#예외-검사)
 - [:book:참고 문헌](#book참고-문헌)
 
 # 개요
@@ -135,7 +136,11 @@
 - 예외를 처리하는 작업은 일반적인 메서드 호출보다 훨씬 더 시간이 많이 걸린다.
 - [Real Test](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=hermet&logNo=104819461)
   - Try-Catch가 좋은 구문이지만 if로 예외처리 하는 것 보다 비용이 많이 든다.
-  
+
+# 예외 검사
+- 예외 검사를 메서드의 앞부분에 한다.
+- 당연히 그래야 예외 나면 뒤에 코드를 돌리지 않을 것.
+
 # :book:참고 문헌
 - 도서 : Clean Code
   - 아직 조금 어렵다.
