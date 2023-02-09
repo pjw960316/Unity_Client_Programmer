@@ -134,3 +134,8 @@ class Program
 # default params
 - ![image](https://user-images.githubusercontent.com/55792986/213071043-621b19ff-6db4-4d99-abb8-5737371979e8.png)
 - 항상 마지막 매개변수에 넣어줘야 한다.
+
+# C# 실수
+- ![20230208_100211](https://user-images.githubusercontent.com/55792986/217402008-481dd0b7-6831-4da9-a403-9fbb16d85aba.png)
+- ![image](https://user-images.githubusercontent.com/55792986/217402958-be8ac43f-802e-478c-b0be-b9d9b2c23700.png)
+- ![20230208_101504](https://user-images.githubusercontent.com/55792986/217403551-e01d4761-9f44-407d-8d6c-c53d5d8bbe77.png)
