@@ -2,6 +2,8 @@
 - [목차](#목차)
 - [개요](#개요)
 - [? 연산자 = Nullable 연산자](#-연산자--nullable-연산자)
+- [가치](#가치)
+- [Null 검사의 빈도](#null-검사의-빈도)
 
 # 개요
 - '?' 연산자를 이용해서 null을 검사한다.
@@ -75,4 +77,14 @@ public class ExampleScript : MonoBehaviour
 }
 ~~~
 - 매우 좋은 예제는 아니지만 obj가 null인 경우를 의도하는 구현은 충분히 자주 있다.
+
+# 가치
+- 개인적인 생각이 포함된 내용이다.
+- 게임이 비정상적으로 종료되는 경우가 null 객체에 접근하는 경우다.
+- 개발자는 null에 접근하지 않는 코드를 작성해야 하며 if 조건문으로 null이 아닌 경우나 ?를 이용해서 null을 검사한다.
+
+# Null 검사의 빈도
+- ![20230528_222433](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/28e6c741-a61e-45e1-84ca-03179f8daa82)
+
+
 
