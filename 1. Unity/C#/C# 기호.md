@@ -1,0 +1,41 @@
+# 목차
+- [목차](#목차)
+- [개요](#개요)
+- [. (Dot Operator)](#-dot-operator)
+    - [1. 기본개념](#1-기본개념)
+    - [2. 메모리 관점에서 바라본 체이닝](#2-메모리-관점에서-바라본-체이닝)
+- [=\> (람다 제외)](#-람다-제외)
+- [\_](#_)
+- [default](#default)
+
+# 개요
+- 익숙하지 않은 기호 정리
+  
+# . (Dot Operator)
+### 1. 기본개념
+- ![20230528_223021](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/36b8fcab-a33b-4cba-8b1e-9072d3d6d31f)
+- ![20230528_223045](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/7da8ab08-0f30-47d5-87bc-f9ab9c0f39ac)
+### 2. 메모리 관점에서 바라본 체이닝
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/0035d1b6-9bb2-4045-aa4f-893c82c71f40)
+- ![20230528_223740](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/3fe84c3b-0d20-499f-9451-8049fbdcc8ad)
+- ![20230528_223841](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/d2bd0149-868b-4b52-af86-b9fd46083ec8)
+  - 체이닝을 하면 객체의 생성이 연쇄적으로 일어나므로 결국에는 성능 관점에서 좋지 않다. 
+  - 자주 사용하면 멤버 변수에 캐싱하자. 하지만 멤버 변수는 scope가 넓기 때문에 자주 사용하지 않으면 지역변수로 할당해서 scope를 줄이자.
+   
+# => (람다 제외)
+- ![image](https://user-images.githubusercontent.com/55792986/214262380-c3abf6d0-ebb3-4cdc-8f95-395487996e42.png)
+- ![image](https://user-images.githubusercontent.com/55792986/214261883-8139b76c-1397-4141-aa28-ed0aa81ac00b.png)
+  - return을 생략한다.
+
+# _
+- ![image](https://user-images.githubusercontent.com/55792986/214254695-0fe9d0cb-6d92-45ad-b7c1-78a008d50bf4.png)
+- ![image](https://user-images.githubusercontent.com/55792986/214254872-3d9ddc94-1e99-49de-90d2-e4398a3fae05.png)
+  - 람다에서 빈 값 넣어줄 때 정말 편하다.
+
+
+# default
+- 내가 알던 default 개념과 동일하다.
+- ![image](https://user-images.githubusercontent.com/55792986/214260719-0bde5b60-5bdb-4b85-b3a7-b0ff8862aae1.png)
+  
+
+  
