@@ -15,16 +15,27 @@
   - 창고에 기록이 장황하면 찾을 수 없고 읽고 싶지 않다. 그건 존재 가치가 없는 글 이다.
 
 <br></br>
-# 1. Unity
+# 1. Unity Programming
 ![image](https://user-images.githubusercontent.com/55792986/210168349-e082870f-bd39-42be-8b51-c81e08302054.png)
 - C#
   - 시작하세요! C# 10 프로그래밍
   - 강의
+<br></br>
+- Unity
+  - 유니티 기술
+<br></br>
 - OOP
   - 객체 지향을 위한 방법론
   - Unity와 C# 디렉터리에 대한 구분이 모호하지만 명시적으로 구분해야 한다.
-- Unity
-  - 순수 유니티 내용
+<br></br>
+- Basic Programming Technique
+  - 유니티 개발을 하면서 배운 보편적인 프로그래밍 테크닉
+<br></br>
+- Design Pattern
+  - 디자인 패턴
+<br></br>
+- 미분류
+  - 분류 하기 어려운 지식 
 
 <br></br>
 # 2. Computer Science
@@ -40,7 +51,8 @@
   - 대학교 시절 정리한 Computer Science
 
 # 3. Book
-  
+- 당분간은 크게 고려하지 않을 문서.
+ 
 <br></br>
 # 생각
 - 정리하지 않은 글은 절대 다시 읽지 않는다.
