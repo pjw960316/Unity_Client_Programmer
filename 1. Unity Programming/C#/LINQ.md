@@ -33,7 +33,7 @@ class Program
 }
 ~~~
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/90da06b1-4536-4e89-bbdf-d5d9b2bec0c4)
-- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/55a5e646-1f42-4f24-a34b-4d647bfa2173)
+- ![20230726_220209](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/a675609d-5dbf-4e93-a9c2-6bf356c40235)
 - 결론적으로 새로운 리스트가 할당 되는 것.
 - 아래의 Lazy Evaluation과 차이점은 .toList()를 하는 것!
   - 아직 Lazy Evaluation의 특성을 활용해서 최적화를 해 본 경험은 없다.
