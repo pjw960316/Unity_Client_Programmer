@@ -1,11 +1,76 @@
-# Ienumerable을 이해해서 왜 List 같은 애들에 대해 .Where(조건)을 사용할 수 있는지 이해해 보자
-- ![20230217_112320](https://user-images.githubusercontent.com/55792986/219533485-59abf09a-638b-4f94-b6bf-66f26178eff9.png)
-- ![image](https://user-images.githubusercontent.com/55792986/219533654-abf151bf-d3ea-4a86-a766-6c15b44c2613.png)
-- ![20230217_112532](https://user-images.githubusercontent.com/55792986/219533793-efa6f62d-4c50-4142-8e3a-21646d57e211.png)
-- ![image](https://user-images.githubusercontent.com/55792986/219533895-ad6ca1c8-6b1d-480f-b1ea-39f7fd89dac8.png)
-  - C#의 Collection은 모두 Ienumerable을 구현하기 때문에 LINQ를 사용할 수 있다.
-- ![image](https://user-images.githubusercontent.com/55792986/219535334-80b09158-667e-4d62-948b-620f699173e0.png)
-  - 이건 다른 인터페이슨데 MoveNext()로 다른 열거자만으로 이동한다.
+# 목차
+- [목차](#목차)
+- [LINQ 결과물의 참조 여부](#linq-결과물의-참조-여부)
+- [Lazy Evaluation](#lazy-evaluation)
 
-# Where
-- https://ibocon.tistory.com/96
+# LINQ 결과물의 참조 여부
+~~~c#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> originalList = new List<int> { 1, 2, 3, 4, 5 };
+
+        List<int> evenNumbersList = originalList.Where(x => x % 2 == 0).ToList(); 
+        // origianlList = originalList.Where(x => x % 2 == 0).ToList(); 이렇게 해서 재사용을 해도 된다!
+
+        originalList[0] = 10;
+
+        foreach (int num in originalList)
+        {
+            Console.Write(num + " "); // Output: 10 2 3 4 5
+        }
+
+        foreach (int num in evenNumbersList)
+        {
+            Console.Write(num + " "); // Output: 2 4
+        }
+    }
+}
+~~~
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/90da06b1-4536-4e89-bbdf-d5d9b2bec0c4)
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/55a5e646-1f42-4f24-a34b-4d647bfa2173)
+- 결론적으로 새로운 리스트가 할당 되는 것.
+- 아래의 Lazy Evaluation과 차이점은 .toList()를 하는 것!
+  - 아직 Lazy Evaluation의 특성을 활용해서 최적화를 해 본 경험은 없다.
+
+# Lazy Evaluation
+~~~c#
+class Program
+{
+    static void Main()
+    {
+        List<int> originalList = new List<int> { 1, 2, 3, 4, 5 };
+
+        IEnumerable<int> evenNumbersQuery = originalList.Where(x => x % 2 == 0);
+
+        foreach (int num in evenNumbersQuery)
+        {
+            Console.Write(num + " "); // Output: 2 4
+        }
+        Console.Write("\n");
+
+        originalList[0] = 10;
+
+        foreach (int num in originalList)
+        {
+            Console.Write(num + " "); // Output: 10 2 3 4 5
+        }
+        Console.Write("\n");
+
+        foreach (int num in evenNumbersQuery)
+        {
+            Console.Write(num + " "); // Output: 10 2 4
+        }
+    }
+}
+~~~
+- 마지막 Output이 10 2 4가 나온 이유는 evenNumbersQuery는 실제로 연산을 해야 할 순간까지 계산을 하지 않는 Linq의 성질 때문이다.
+- 마지막 output을 구하는 순간에 IEnumerable<int> evenNumbersQuery = originalList.Where(x => x % 2 == 0);의 연산을 제대로 수행한다.
+  - 제대로 라는 말이 모호하지만 이게 이해하기 제일 쉽다.
+  - 그러므로 10,2,3,4,5에 대해서 LINQ를 수행한다.
+- 프로그래머가 실수하기 정말 좋은 특성이라고 생각한다. 최적화에는 용이하지만.
