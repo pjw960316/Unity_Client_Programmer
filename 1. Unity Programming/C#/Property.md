@@ -6,7 +6,7 @@
 - [그러면 이론상 모든 멤버의 필드는 프로퍼티인가?](#그러면-이론상-모든-멤버의-필드는-프로퍼티인가)
 - [Property 기초](#property-기초)
 - [getter와 setter의 특징](#getter와-setter의-특징)
-- [자동속성](#자동속성)
+- [생략되는 지정자](#생략되는-지정자)
 
 # 개요
 - 많이 배워봤고 들어봤지만 직접 써 본 경험은 적은 키워드다.
@@ -41,9 +41,7 @@ int n2 = p.Age //우변식이므로 자동으로 get이 호출.
 - getter와 setter 중에 하나만 있어도 상관은 없다.
 - 접근지정자를 지정해서 사용할 수 있는 위치를 지정할 수 있다.
 
-# 자동속성
-![image](https://user-images.githubusercontent.com/55792986/207480187-face6cc1-3b8b-43ee-8ae3-3dc856e4eee2.png)
-- 간단하게 만들고 싶을 때는 자동 속성을 이용하면 된다.
-- 자동속성은 public과 동일한 데 굳이 사용하는 이유?
-  - 나중에 변경 할 때 프로퍼티로 만들었다면 매우 쉽게 getter와 setter에 기능을 추가 할 수 있다.
+# 생략되는 지정자
+- ![20230815_204316](https://github.com/pjw960316/Practice_For_Coding_Test/assets/55792986/e1bec356-83c1-4eec-99a4-37c1d3a4d94a)
+
 
