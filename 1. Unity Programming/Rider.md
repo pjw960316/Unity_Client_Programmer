@@ -9,6 +9,7 @@
 - [Inheritor](#inheritor)
 - [Usage](#usage)
 - [Rider의 디버그 기능 중 Navigate](#rider의-디버그-기능-중-navigate)
+- [Plugin](#plugin)
 
 # 공식문서
 - :link:[Rider Official](https://www.jetbrains.com/help/rider/Introduction.html)
@@ -53,3 +54,6 @@
 
 # Rider의 디버그 기능 중 Navigate
 - 이걸 누르면 그 액션이나 콜백에 어떤 메서드가 들어있는 지 알 수 있고 거기로 이동한다.
+
+# Plugin
+- https://duckly.com/blog/best-plugins-for-rider-2022/

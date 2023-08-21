@@ -3,6 +3,8 @@
 - [스택과 힙에 관해서는...](#스택과-힙에-관해서는)
 - [:star:value type vs reference type](#starvalue-type-vs-reference-type)
 - [Reference Type에 관한 회고](#reference-type에-관한-회고)
+- [리스트에서 실수할 수 있는 개념](#리스트에서-실수할-수-있는-개념)
+  - [ToList()의 함정](#tolist의-함정)
 
 # 스택과 힙에 관해서는...
 - :link:[Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Manage%20Memory.md#c-stack-memory-vs-heap-memory)
@@ -65,3 +67,62 @@ var b = a;
 ~~~
   - 당연히 a의 멤버 변수의 값이 변경되면 b의 멤버 변수의 값도 변경된다.
     - 참조 타입이니까.
+
+
+# 리스트에서 실수할 수 있는 개념
+~~~ c#
+void Main()
+{
+	AA obj = new AA(1,2,"hi");
+	AA obj2 = obj;
+	
+	obj.a = 3; //value change
+	obj.c = "hihihihi"; //reference change
+	obj.d.Add(77);
+	obj.d.Add(88);
+	obj.d.Add(99);
+	
+	AA obj3 = new AA();
+	
+	//deep copy
+	obj3.a = obj.a;
+	obj3.b = obj.b;
+	obj3.c = obj.c;
+	obj3.d = obj.d;
+	
+	obj3.a = 1;
+	obj3.d.Add(100);
+	
+	obj3.Dump();
+	obj.Dump();
+	
+}
+
+public class AA
+{
+	public int a;
+	public int b;
+	public string c;
+	public List<int> d = new List<int>();
+	
+	public AA()
+	{
+	}
+	public AA(int aa, int bb, string cc)
+	{
+		a = aa;
+		b = bb;
+		c = cc;
+	}
+}
+~~~
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/cb66d839-9cdd-46c9-96f8-dd2c6ac6b3a9)
+- obj3.d = obj.d와 같이 리스트를 복사할 때는 실제로 리스트의 참조만 복사되기 때문에 obj3와 obj가 같은 리스트를 공유하게 됩니다. 따라서 obj3.d.Add(100)을 호출하면 obj3의 리스트에 100이 추가되면서, obj의 리스트도 동일한 리스트를 참조하고 있으므로 obj의 리스트에도 100이 추가되는 결과가 발생합니다.
+
+
+## ToList()의 함정
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/3cb7f8ab-b7c6-4fc9-a2a0-a9ce3e6f4c62)
+  - 이 경우 ToList()를 했으니 새로운 리스트를 할당한다고 생각한다. 맞다!
+  - 하지만 
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/16436480-5ab8-4d31-9068-505451fc58d0)
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/2beb37d0-1d35-41ea-aea4-c07ce7c5b0f8)
