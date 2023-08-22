@@ -3,8 +3,9 @@
 - [스택과 힙에 관해서는...](#스택과-힙에-관해서는)
 - [:star:value type vs reference type](#starvalue-type-vs-reference-type)
 - [Reference Type에 관한 회고](#reference-type에-관한-회고)
-- [리스트에서 실수할 수 있는 개념](#리스트에서-실수할-수-있는-개념)
-  - [ToList()의 함정](#tolist의-함정)
+- [리스트에서 조심해야 하는 개념](#리스트에서-조심해야-하는-개념)
+  - [1. 참조에 대한 주의](#1-참조에-대한-주의)
+  - [2. ToList()의 함정](#2-tolist의-함정)
 
 # 스택과 힙에 관해서는...
 - :link:[Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Unity/Manage%20Memory.md#c-stack-memory-vs-heap-memory)
@@ -69,7 +70,8 @@ var b = a;
     - 참조 타입이니까.
 
 
-# 리스트에서 실수할 수 있는 개념
+# 리스트에서 조심해야 하는 개념
+## 1. 참조에 대한 주의
 ~~~ c#
 void Main()
 {
@@ -120,9 +122,10 @@ public class AA
 - obj3.d = obj.d와 같이 리스트를 복사할 때는 실제로 리스트의 참조만 복사되기 때문에 obj3와 obj가 같은 리스트를 공유하게 됩니다. 따라서 obj3.d.Add(100)을 호출하면 obj3의 리스트에 100이 추가되면서, obj의 리스트도 동일한 리스트를 참조하고 있으므로 obj의 리스트에도 100이 추가되는 결과가 발생합니다.
 
 
-## ToList()의 함정
+## 2. ToList()의 함정
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/3cb7f8ab-b7c6-4fc9-a2a0-a9ce3e6f4c62)
-  - 이 경우 ToList()를 했으니 새로운 리스트를 할당한다고 생각한다. 맞다!
-  - 하지만 
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/16436480-5ab8-4d31-9068-505451fc58d0)
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/2beb37d0-1d35-41ea-aea4-c07ce7c5b0f8)
+- 결론
+  - ![20230821_150339](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/47cf3deb-2b3d-458d-a344-403f7358aac1)
+  - 리스트 객체는 다른 힙 메모리지만, 리스트의 요소는 같은 힙 메모리를 참조.
