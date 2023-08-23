@@ -1,7 +1,5 @@
 # 목차
 - [목차](#목차)
-- [옛날 부분 대신 이걸로 본다.](#옛날-부분-대신-이걸로-본다)
-- [Unitask를 이해하려면 Async Await을 이해해야 한다.](#unitask를-이해하려면-async-await을-이해해야-한다)
 - [동기 호출과 비동기 호출](#동기-호출과-비동기-호출)
     - [1. 동기 호출 (=Blocking Call)](#1-동기-호출-blocking-call)
     - [2. 비동기 호출](#2-비동기-호출)
@@ -11,9 +9,7 @@
 - [Async/Await 정리](#asyncawait-정리)
 - [Async vs Coroutine](#async-vs-coroutine)
 
-# 옛날 부분 대신 이걸로 본다.
 
-# Unitask를 이해하려면 Async Await을 이해해야 한다.
 # 동기 호출과 비동기 호출
 ### 1. 동기 호출 (=Blocking Call)
 - ![20230126_162358](https://user-images.githubusercontent.com/55792986/214779354-5e5015cf-65bd-4b5d-9b13-d737103d016a.png)
@@ -37,7 +33,9 @@
 - async 메서드의 await을 만나면 풀의 스레드에서 해당 부분을 관리하고 주 스레드는 관심을 갖지 않고 자신의 흐름을 유지한다.
   - Blocking이 발생하지 않는다!
 
-- 
+\
+\
+
 # Async 함수의 리턴 타입
 - void면 그냥 void
 - Task로 리턴할 수 있는데 신기한 것이 return을 적지 않아도 Task를 리턴한다.
