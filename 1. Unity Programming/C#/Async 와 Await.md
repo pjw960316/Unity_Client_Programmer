@@ -32,9 +32,8 @@
 - 주 스레드는 SumAsync의 결과를 기다리지 않고 Main 함수를 수행할 수 있다.
 - async 메서드의 await을 만나면 풀의 스레드에서 해당 부분을 관리하고 주 스레드는 관심을 갖지 않고 자신의 흐름을 유지한다.
   - Blocking이 발생하지 않는다!
+\
 
-\
-\
 
 # Async 함수의 리턴 타입
 - void면 그냥 void
@@ -44,6 +43,7 @@
   - ![image](https://user-images.githubusercontent.com/55792986/214784401-0779a594-a6d0-4009-a852-f546b7a419b0.png)
     - 얘는 리턴 값을 명시해줘야 한다.
     - ret는 int지만 C#에서 알아서 Task<int>로 변경해서 리턴 해준다.
+\
 
 # Async 키워드와 Async를 붙이는 함수
 - Async 키워드를 붙인 비동기 함수
@@ -51,9 +51,11 @@
 - 함수 이름 뒤에 Async를 붙여서 만든 함수 (ex : TestAsync)
   - 보통 Async 키워드를 붙인 비동기 함수 내부에서 호출되고 await 뒤에 있다.
   - TestAsync의 작업이 모두 진행 완료 될 때 까지 비동기 함수에서 결과를 기다리겠다.
+\
 
 # Async/Await 정리
 - ![image](https://user-images.githubusercontent.com/55792986/214785317-a8da3b13-c1b9-4eff-a17a-d377af8d5db3.png)
+\
 
 # Async vs Coroutine
 - ![20230126_171320](https://user-images.githubusercontent.com/55792986/214787579-622546cc-ed29-4cb3-9e4b-06d63e80012b.png)
