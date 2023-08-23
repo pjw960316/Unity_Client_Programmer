@@ -23,6 +23,7 @@
 - ![20230206_164222](https://user-images.githubusercontent.com/55792986/216913244-155031a6-3c96-4128-a9b9-7c215adcd124.png)
 - ![20230201_141055](https://user-images.githubusercontent.com/55792986/215956880-75105804-3c47-466b-a651-7018cee01135.png)
   - 위의 이미지 설명
+  - '함수'는 즉시 반환이 중요하다. 해당 함수를 탈출하는 것을 의미한다. 
     - ![image](https://user-images.githubusercontent.com/55792986/216913024-2a1018bc-93e0-4ddb-b5a3-5cc2c116468d.png)
   - :star:**실행 흐름**
     - 1) 주 스레드는 Main에서 UpdateResult를 호출한다.
