@@ -4,7 +4,6 @@
 - [A is B에서 A는 상위도 하위도 모두 가능](#a-is-b에서-a는-상위도-하위도-모두-가능)
 
 # 개요
-- 헷갈림... 조만간 정리
 
 # A is B에서 A는 상위도 하위도 모두 가능
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/275c0001-0696-4d0d-8e7c-d6e8bf010463)
