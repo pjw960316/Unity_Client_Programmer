@@ -69,10 +69,29 @@ var b = a;
   - 당연히 a의 멤버 변수의 값이 변경되면 b의 멤버 변수의 값도 변경된다.
     - 참조 타입이니까.
 
+<br/><br/><br/>
 
 # 리스트에서 조심해야 하는 개념
 ## 1. 참조에 대한 주의
 ~~~ c#
+public class AA
+{
+	public int a;
+	public int b;
+	public string c;
+	public List<int> d = new List<int>(); //Reference Type
+	
+	public AA()
+	{
+	}
+	public AA(int aa, int bb, string cc)
+	{
+		a = aa;
+		b = bb;
+		c = cc;
+	}
+}
+
 void Main()
 {
 	AA obj = new AA(1,2,"hi");
@@ -97,30 +116,14 @@ void Main()
 	
 	obj3.Dump();
 	obj.Dump();
-	
-}
-
-public class AA
-{
-	public int a;
-	public int b;
-	public string c;
-	public List<int> d = new List<int>();
-	
-	public AA()
-	{
-	}
-	public AA(int aa, int bb, string cc)
-	{
-		a = aa;
-		b = bb;
-		c = cc;
-	}
 }
 ~~~
-- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/cb66d839-9cdd-46c9-96f8-dd2c6ac6b3a9)
-- obj3.d = obj.d와 같이 리스트를 복사할 때는 실제로 리스트의 참조만 복사되기 때문에 obj3와 obj가 같은 리스트를 공유하게 됩니다. 따라서 obj3.d.Add(100)을 호출하면 obj3의 리스트에 100이 추가되면서, obj의 리스트도 동일한 리스트를 참조하고 있으므로 obj의 리스트에도 100이 추가되는 결과가 발생합니다.
 
+- ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/cb66d839-9cdd-46c9-96f8-dd2c6ac6b3a9)
+- obj3.d = obj.d와 같이 리스트를 복사할 때는 실제로 리스트의 참조만 복사되기 때문에 obj3와 obj가 같은 리스트를 공유하게 됩니다. 
+- 따라서 obj3.d.Add(100)을 호출하면 obj3의 리스트에 100이 추가되면서, obj의 리스트도 동일한 리스트를 참조하고 있으므로 obj의 리스트에도 100이 추가되는 결과가 발생합니다.
+
+<br/><br/><br/>
 
 ## 2. ToList()의 함정
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/3cb7f8ab-b7c6-4fc9-a2a0-a9ce3e6f4c62)
