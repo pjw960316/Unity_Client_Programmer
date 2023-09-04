@@ -4,6 +4,8 @@
 - [C2에 Test()가 없다면?](#c2에-test가-없다면)
 - [C1,C2에 Test()가 없다면?](#c1c2에-test가-없다면)
 
+<br/><br/><br/>
+
 # Base는 바로 직속 부모를 가르킨다.
 ~~~c#
 public class C1
@@ -41,7 +43,7 @@ void Main()
 3
 */
 ~~~
-<br/><br/>
+<br/><br/><br/>
 
 # C2에 Test()가 없다면?
 ~~~c#
@@ -77,7 +79,7 @@ void Main()
 */
 ~~~
 - 직속 부모가 없으면 그 위로 간다.
-<br/><br/>
+<br/><br/><br/>
 
 # C1,C2에 Test()가 없다면?
 ~~~c#
