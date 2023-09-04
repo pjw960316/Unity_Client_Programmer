@@ -1,72 +1,110 @@
-# 1. 베이직 한 테스트
+# 목차
+- [목차](#목차)
+- [Base는 바로 직속 부모를 가르킨다.](#base는-바로-직속-부모를-가르킨다)
+- [C2에 Test()가 없다면?](#c2에-test가-없다면)
+- [C1,C2에 Test()가 없다면?](#c1c2에-test가-없다면)
+
+# Base는 바로 직속 부모를 가르킨다.
 ~~~c#
 public class C1
 {
-    public virtual void TestTest()
+    public virtual void Test()
     {
-        CLog.Error("1");
+        Console.WriteLine("1");
     }
 }
 public class C2 : C1
 {
-    public override void TestTest()
+    public override void Test()
     {
-        CLog.Error("2");
+        Console.WriteLine("2");
     }
 }
 public class C3 : C2
 {
-    public override void TestTest()
+    public override void Test()
     {
-        base.TestTest();
-        CLog.Error("3");
+        base.Test();
+		
+        Console.WriteLine("3");
     }
 }
 
-Main()
+void Main()
 {
-    C3 obj = new C3();
-    obj.TestTest();
+	C3 obj = new C3();
+	obj.Test();
 }
-~~~
-- 3과 2가 출력된다.
-  - 일단 base는 조상이 아닌 직속 부모를 호출하는 게 맞다.
 
-# 2. 중간을 건너 뛰면
+/*Result
+2
+3
+*/
+~~~
+
+# C2에 Test()가 없다면?
 ~~~c#
 public class C1
 {
-    public virtual void TestTest()
+    public virtual void Test()
     {
-        CLog.Error("1");
+        Console.WriteLine("1");
     }
 }
 public class C2 : C1
 {
-    /*public override void TestTest()
-    {
-        CLog.Error("2");
-    }*/
+    //None
 }
 public class C3 : C2
 {
-    public override void TestTest()
+    public override void Test()
     {
-        base.TestTest();
-        CLog.Error("3");
+        base.Test();
+        Console.WriteLine("3");
     }
 }
 
-Main()
+void Main()
 {
-    C3 obj = new C3();
-    obj.TestTest();
+	C3 obj = new C3();
+	obj.Test();
+}
+
+/*Result
+1
+3
+*/
+~~~
+- 직속 부모가 없으면 그 위로 간다.
+
+# C1,C2에 Test()가 없다면?
+~~~c#
+public class C1
+{
+    //None
+}
+public class C2 : C1
+{
+    //None
+}
+public class C3 : C2
+{
+    public override void Test()
+    {
+        base.Test(); //컴파일 에러
+        Console.WriteLine("3");
+    }
+}
+
+void Main()
+{
+	C3 obj = new C3();
+	obj.Test();
 }
 ~~~
-- 3과 1이 출력된다.
-  - 직속 부모가 해당 메서드를 갖지 않으면 더 올라가서 찾아본다.
-- 만약 C1까지 없다면?
-  - C1이 없으면 애당초 C3의 고유 메서드다.
+- C3의 모든 부모 (C2,C1)에 대해서 Test()가 없기 때문에 컴파일 에러가 난다.
+- CS0115 'UserQuery.C3.Test()': no suitable method found to override
+
 
 
   
