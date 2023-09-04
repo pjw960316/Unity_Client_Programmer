@@ -6,6 +6,7 @@
 - [Sealed](#sealed)
 - [Interface](#interface)
 - [인터페이스 왜 쓸까?](#인터페이스-왜-쓸까)
+- [Virtual을 사용하면 자식 객체에서 override 한 메서드가 해당 함수를 대체한다.](#virtual을-사용하면-자식-객체에서-override-한-메서드가-해당-함수를-대체한다)
 
 # 정리 한 이유
 - 3개의 키워드는 모두 각자의 기능이 있고 명확하게 이해하고 구분해야 더 좋은 설계를 할 수 있을 것 같다.
@@ -28,6 +29,7 @@ public abstract class C4
         Debug.Log("no abstract method, but OK");
     }
 }
+- **Abstract 클래스는 instance를 만들지 못하니까 무조건 상속 받아서 instance를 생성해야 하는 특징이 있다.**
 ~~~
 
 # Overhead
@@ -77,3 +79,65 @@ public IObservable<byte> DataObservable
     get { return this.subject; } // Or this.subject.AsObservable();
 }
 ~~~
+
+# Virtual을 사용하면 자식 객체에서 override 한 메서드가 해당 함수를 대체한다.
+~~~c#
+class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Animal is eating.");
+    }
+	
+	public virtual void Bark()
+    {
+        Console.WriteLine("None");
+    }
+}
+
+class Dog : Animal
+{
+    public override void Bark()
+    {
+		base.Bark();
+        Console.WriteLine("Dog is barking.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+		//1. 내가 생각한 일반적으로 쓰는 다운 캐스팅
+        Animal animal = new Dog();
+
+        if (animal is Dog dog)
+        {
+            dog.Bark();  // 'dog'는 Dog 타입으로 캐스팅되었으므로 Dog 클래스의 메서드 사용 가능
+            dog.Eat();   // 'dog'는 Animal 타입도 되므로 Animal 클래스의 메서드 역시 사용 가능
+        }
+		
+		Console.WriteLine("===============================");
+		//2. 이런 코드도 된다.
+		Dog dog2 = new Dog();
+		if(dog2 is Animal animal2)
+		{
+            // animal2는 Animal 타입이므로 None만 호출되어야 하지만 virtual 함수이므로 자식의 Bark()가 호출된다.
+            // Dog의 Bark에 base.Bark()가 있으므로 부모의 Bark()도 호출된다. 
+			animal2.Bark(); 
+			animal2.Eat();
+		}
+    }
+}
+
+/*result
+None
+Dog is barking.
+Animal is eating.
+===============================
+None
+Dog is barking.
+Animal is eating.
+*/
+~~~
+- ![20230904_133612](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/5ce1fb02-2578-4d7c-b32b-83b708d2fc12)
