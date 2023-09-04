@@ -26,7 +26,7 @@
   - 반드시 상속을 받은 클래스를 생성해서 이용해야 한다.
   - Architecture 관점으로 보면 다형성을 이용할 수 있다.
 
-<br/><br/>
+<br/>
 
 ### 2. Abstract 클래스는 abstract method, virtual method, 일반 method을 모두 method로 들고 있을 수 있다.
 ~~~c#
