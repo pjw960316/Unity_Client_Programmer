@@ -4,6 +4,7 @@
 - [Abstract Class](#abstract-class)
     - [1. Abstract Class는 Instance를 생성 할 수 없다.](#1-abstract-class는-instance를-생성-할-수-없다)
     - [2. Abstract 클래스는 abstract method, virtual method, 일반 method을 모두 method로 들고 있을 수 있다.](#2-abstract-클래스는-abstract-method-virtual-method-일반-method을-모두-method로-들고-있을-수-있다)
+    - [3. 추가 내용](#3-추가-내용)
 - [Abstract Method](#abstract-method)
     - [1. Abstract Method는 반드시 자식 클래스에서 구현해야 한다.](#1-abstract-method는-반드시-자식-클래스에서-구현해야-한다)
 - [Virtual을 사용하면 자식 객체에서 override 한 메서드가 해당 함수를 대체한다.](#virtual을-사용하면-자식-객체에서-override-한-메서드가-해당-함수를-대체한다)
@@ -88,6 +89,10 @@ Drawing a rectangle.
 ~~~
 - 컴파일 에러 증명
   - ![20230904_201229](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/7b9d301e-2b40-469f-9731-848b614fbdac)
+<br/><br/>
+
+### 3. 추가 내용
+- 부모 클래스의 인스턴스를 생성하지 못하게 하면서 특정 메서드에 대해 자식들이 반드시 재정의하도록 강제하고 싶을 수 있다. 추상 클래스와 추상 메서드는 그와 같은 상황을 위해 존재한다.
 
 <br/><br/><br/>
 

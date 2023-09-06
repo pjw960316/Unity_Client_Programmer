@@ -10,6 +10,7 @@
 - [Ctrl + G : Go to Line/Column](#ctrl--g--go-to-linecolumn)
 - [Ctrl + R + R : Rename Refactoring](#ctrl--r--r--rename-refactoring)
 - [Alt + Enter : Show Intention Actions](#alt--enter--show-intention-actions)
+- [Alt + Home : 부모 클래스의 메서드로 이동](#alt--home--부모-클래스의-메서드로-이동)
   
 # 공식 문서 사용법
 - :link:[Rider Official Docs](https://www.jetbrains.com/help/rider/Reference_Keyboard_Shortcuts_Index.html#top_shortcuts)
@@ -84,6 +85,8 @@ public void Dispose()
 
 # Alt + Enter : Show Intention Actions
 - 라이더가 알려주는 더 좋은 코드로 바꾸는 기술.
+
+# Alt + Home : 부모 클래스의 메서드로 이동
 
 
 
