@@ -11,6 +11,7 @@
     - [1. Override Method인 Bark가 대체 하는 경우](#1-override-method인-bark가-대체-하는-경우)
     - [2. 위의 코드에서 Bark를 Abstract로 변화해도 동일하게 동작한다.](#2-위의-코드에서-bark를-abstract로-변화해도-동일하게-동작한다)
     - [3. 1번 예제에서 base를 추가하면?](#3-1번-예제에서-base를-추가하면)
+- [Virtual 추가 내용](#virtual-추가-내용)
 - [Overhead](#overhead)
 - [Sealed](#sealed)
 
@@ -285,6 +286,50 @@ Animal is eating.
 ~~~
 - base.Bark()에서 부모 클래스인 Animal의 Virtual 함수를 콜하기 때문에 "None"이 출력된다.
   - virtual 메서드에 Body가 있는 이유
+<br/><br/><br/>
+
+# Virtual 추가 내용
+~~~c#
+class A
+{
+	public void Call()
+	{
+		Test();
+	}
+	
+    public virtual void Test()
+    {
+        Console.WriteLine("A's Test()");
+    }
+}
+
+class B : A
+{
+    public override void Test()
+    {
+        Console.WriteLine("B's Test()");
+    }
+}
+
+class C : B
+{
+    public override void Test()
+    {
+        Console.WriteLine("C's Test()");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        A obj = new C();
+		obj.Call();
+    }
+}
+
+//result : C's Test()
+~~~
 <br/><br/><br/>
 
 # Overhead
