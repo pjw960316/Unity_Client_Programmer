@@ -13,6 +13,8 @@
 - [Alt + Home : 부모 클래스의 메서드로 이동](#alt--home--부모-클래스의-메서드로-이동)
 - [Ctrl + Alt + B : 디버깅 포인트 목록 보기](#ctrl--alt--b--디버깅-포인트-목록-보기)
   
+ <br/><br/><br/>
+  
 # 공식 문서 사용법
 - :link:[Rider Official Docs](https://www.jetbrains.com/help/rider/Reference_Keyboard_Shortcuts_Index.html#top_shortcuts)
   - 단축키 옆에 적은 내용을 해당 링크에서 검색하면 찾아갈 수 있다.
@@ -65,6 +67,8 @@ public void Dispose()
             }
         }
 ~~~
+<br/><br/><br/>
+
 # :star:Shift + Shift : Search Everywhere
 - 전체 검색
 - ![image](https://user-images.githubusercontent.com/55792986/213972762-c5ae0099-ba36-46f3-8bdc-36fdb01135f2.png)
