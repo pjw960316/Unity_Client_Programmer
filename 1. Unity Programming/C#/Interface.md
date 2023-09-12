@@ -36,3 +36,6 @@ public IObservable<byte> DataObservable
 
 # Interface
 - [내가 읽은 책](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/Books%20For%20Development/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%20%EC%82%AC%EC%8B%A4%EA%B3%BC%20%EC%98%A4%ED%95%B4.md) (5장의 6번 항목에서 인터페이스를 자세하게 설명했다.)
+
+# 빈 메서드
+- ![20230912_133436](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/3c5578d2-4edf-43fc-83e1-1649724a983e)

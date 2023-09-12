@@ -7,6 +7,7 @@
 - [Property 기초](#property-기초)
 - [getter와 setter의 특징](#getter와-setter의-특징)
 - [생략되는 지정자](#생략되는-지정자)
+- [자동완성](#자동완성)
 
 # 개요
 - 많이 배워봤고 들어봤지만 직접 써 본 경험은 적은 키워드다.
@@ -44,4 +45,6 @@ int n2 = p.Age //우변식이므로 자동으로 get이 호출.
 # 생략되는 지정자
 - ![20230815_204316](https://github.com/pjw960316/Practice_For_Coding_Test/assets/55792986/e1bec356-83c1-4eec-99a4-37c1d3a4d94a)
 
+# 자동완성
+- Rider에서는 일단 private로 만들고 필요하면 Alt+Enter를 이용해서 Property로 만들자.
 
