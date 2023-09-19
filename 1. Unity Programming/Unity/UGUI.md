@@ -106,6 +106,8 @@
 # Layout Element
 - Layout Group에서 자식들의 배치에 대한 툴을 잡는다. 하지만 자식들 개개인의 옵션에 따라 배치를 커스텀하고 싶을 때가 존재한다.
 - 이 때 Layout Element를 자식들에게 각각 부여하여 개별의 배치를 설정한다.
+- 이름 그대로 상위 타입에 대한 자식 위젯(=element)의 크기를 조절한다.
+  - OSA에서 스크롤 뷰를 만들 때 Content Size Fitter의 Preferred를 적용하려면 Layout Element의 preferred 값을 조절한다.
 
 # Graphic Raycaster
 - ![20230209_104734](https://user-images.githubusercontent.com/55792986/217695613-2c842205-3854-4bad-8bdf-2958c8e7080c.png)
