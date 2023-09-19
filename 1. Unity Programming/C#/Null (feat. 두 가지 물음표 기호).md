@@ -1,6 +1,7 @@
 # 목차
 - [목차](#목차)
 - [개요](#개요)
+- [? 연산자](#-연산자)
 - [Nullable 연산자 : ? 연산자와 ??연산자 사용법](#nullable-연산자---연산자와-연산자-사용법)
 - [Nullable 연산자 사용 이유](#nullable-연산자-사용-이유)
 - [Null 검사의 빈도](#null-검사의-빈도)
@@ -9,6 +10,19 @@
 - Null을 정복한다.
 - '?' 연산자를 이용해서 null을 검사한다.
 - '??' 연산자를 이용해서 코드의 총량을 줄인다.
+<br/><br/><br/>
+
+# ? 연산자
+~~~c#
+string y = x?.ToString().ToString();
+
+string y = ((x != null) ? x.ToString ().ToString () : null);
+~~~
+- 두 식은 같은 것을 의미한다. (LINQPAD7)
+- ![20230919_114911](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/994a3d0f-719f-4b57-9605-ba8a29e5d7f8)
+- ![20230919_115011](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/a446db15-ec43-481c-95c0-2784fb21a377)
+  - ? 이전의 구문이 null이면 뒤에 어떤 구문이 와도 null을 리턴한다.
+<br/><br/><br/>
 
 # Nullable 연산자 : ? 연산자와 ??연산자 사용법
 ~~~c#
@@ -31,6 +45,8 @@ void Test(String str, DataNode dataNode)
     int amount = dataNode?.Amount ?? 5;  
 }
 ~~~
+<br/><br/><br/>
+
 # Nullable 연산자 사용 이유
 - 참조형 객체에 대해서 null을 검사하고 그 결과에 따라 이어지는 변수와 함수를 간단하게 처리하기 위함.
 ~~~c#
@@ -103,6 +119,7 @@ public class ExampleScript : MonoBehaviour
 ~~~
 - 매우 좋은 예제는 아니지만 obj가 null인 경우를 의도하는 구현은 충분히 자주 있다.
 
+<br/><br/><br/>
 
 # Null 검사의 빈도
 - ![20230528_222433](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/28e6c741-a61e-45e1-84ca-03179f8daa82)
