@@ -9,8 +9,8 @@
 
 # 이미지 캡처
 - (1) 캡처후 markdown에 붙여 넣는다.
-- (2) 현재 디렉터리에 png 파일이 생성되는데 상위 폴더(이름은 중요하지 않지만 Image로 네이밍 할 것)로 이동 시킨다.
+- (2) 현재 디렉터리에 png 파일이 생성되는데 상위 폴더(이름은 중요하지 않지만 Capture로 네이밍 할 것)로 이동 시킨다.
 - (3) 형식 : 느낌표 [이름][경로]
   - 이렇게 나타난다.
-  - ./Image/image.png로 경로를 바꿔주면 된다.
-  - ![Alt text](./Image/image.png)
+  - ./Capture/image.png로 경로를 바꿔주면 된다.
+  - ![Alt text](./Capture/image.png)
