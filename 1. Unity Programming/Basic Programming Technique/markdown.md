@@ -13,4 +13,7 @@
 - (3) 형식 : 느낌표 [이름][경로]
   - 이렇게 나타난다.
   - ./Capture/image.png로 경로를 바꿔주면 된다.
-  - ![Alt text](./Capture/image.png)
+  - ![Alt text](./Capture/image.png)  -> image라는 이름은 항상 독특하게 변경해주자.
+- **주의 사항**
+  - 기본적으로 이미지의 이름은 image다. 그런데 이전에 Capture 폴더에 image가 있으면 덮어 씌워 진다.
+  - 그러므로 image라는 default 이름이 아닌 특이한 이름으로 저장한다.
