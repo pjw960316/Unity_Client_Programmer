@@ -3,7 +3,12 @@
 - [개요](#개요)
 - [A is B에서 A는 상위도 하위도 모두 가능](#a-is-b에서-a는-상위도-하위도-모두-가능)
 
+<br/><br/><br/>
+
 # 개요
+- 많이 사용하는 캐스팅 문법은 정리가 필요하다.
+
+<br/><br/><br/>
 
 # A is B에서 A는 상위도 하위도 모두 가능
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/275c0001-0696-4d0d-8e7c-d6e8bf010463)
@@ -47,4 +52,3 @@ class Program
     }
 }
 ~~~
-

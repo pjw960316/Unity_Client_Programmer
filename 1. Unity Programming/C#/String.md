@@ -1,4 +1,16 @@
+# 목차
+- [목차](#목차)
+- [개요](#개요)
+- [String.Format](#stringformat)
+    - [1. 소수를 문자열로 표현할 때 사용하자.](#1-소수를-문자열로-표현할-때-사용하자)
+
+# 개요
+- String은 현업에서 정말 많이 쓴다.
+- 래핑된 메서드를 이용하거나 쉽게 사용 할 수 있는 유틸 함수를 이용하여 구현하는 데 용이하지만 String을 사용하는 기본 테크닉은 개발자가 숙지 하고 있어야 한다.
+- 업무 속도를 위해 적절한 암기가 필요하다고 생각한다. 
+
 # String.Format
+### 1. 소수를 문자열로 표현할 때 사용하자.
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/93353d92-9167-4ebd-adda-f5c9aa4d4519)
 - ![20230921_175704](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/c0952a3e-cf67-4f10-872f-f12486715adf)
   - 첫 째 자리 일 때가 의미하는 것
