@@ -5,6 +5,7 @@
 - [Nullable 연산자 : ? 연산자와 ??연산자 사용법](#nullable-연산자---연산자와-연산자-사용법)
 - [Nullable 연산자 사용 이유](#nullable-연산자-사용-이유)
 - [Null 검사의 빈도](#null-검사의-빈도)
+- [반복되는 코드는 줄여야 한다. 왜냐하면 반복되는 코드에는 null 검사도 반복이 되기 떄문이다.](#반복되는-코드는-줄여야-한다-왜냐하면-반복되는-코드에는-null-검사도-반복이-되기-떄문이다)
 
 # 개요
 - Null을 정복한다.
@@ -123,6 +124,11 @@ public class ExampleScript : MonoBehaviour
 
 # Null 검사의 빈도
 - ![20230528_222433](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/28e6c741-a61e-45e1-84ca-03179f8daa82)
+
+<br/><br/><br/>
+
+# 반복되는 코드는 줄여야 한다. 왜냐하면 반복되는 코드에는 null 검사도 반복이 되기 떄문이다.
+- 귀찮다!!!
 
 
 
