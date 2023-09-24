@@ -41,9 +41,9 @@
 ### 3. 박싱과 언박싱이 발생함 : Value Type -> Reference Type
 - ![image](https://user-images.githubusercontent.com/55792986/206982548-6163403f-1caa-47bf-98c3-fa252b736d03.png)
 - ![image](https://user-images.githubusercontent.com/55792986/206982590-0459c1c2-96a5-4f9f-9943-232b017236e7.png)
-  - Reference type은 반드시 heap의 데이터를 참조해야 한다. 
-    - 그런데 Reference type인 o2에서 value type인 n1을 참조하도록 하면 n1은 자체적으로 해당 값을 힙에 박싱한다.
-    - 그리고 명시적 캐스팅을 하면 박싱한 데이터를 다시 스택으로 복사한다. 이게 언박싱이다.
+- Reference type은 반드시 heap의 데이터를 참조해야 한다. 
+  - 그런데 Reference type인 o2에서 value type인 n1을 참조하도록 하면 n1은 자체적으로 해당 값을 힙에 박싱한다.
+  - 명시적 캐스팅을 하면 박싱한 데이터를 다시 스택으로 복사한다. 이게 언박싱이다.
 
 <br/><br/><br/>
 
