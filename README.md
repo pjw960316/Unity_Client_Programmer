@@ -23,14 +23,14 @@
 <br>
 
 - **ChatGPT에 질문한 내용은 캡처를 해서 첨부하고, 간단하면 인용을 이용하여 적는다.**
-- 당시의 질문 히스토리가 있어야 나중에 볼 때 훨씬 유용하다.
-- 인용으로 적으면 내 생각이 포함 되지 않은 올바른 지식임을 나타낸다.    
+  - 당시의 질문 히스토리가 있어야 나중에 볼 때 훨씬 유용하다.
+  - 인용으로 적으면 내 생각이 포함 되지 않은 올바른 지식임을 나타낸다.    
 
 <br>
 
 - **문서 제목을 한글로 만드는 것이 가독성이 더 좋다.**
   
-<br></br>
+<br>
 
 - **모르는 지식이 나왔을 때 찾아 볼 수 있는 창고로 만들자.**
   - 창고에 기록이 장황하면 찾을 수 없고 읽고 싶지 않다. 그건 존재 가치가 없는 글 이다.
@@ -39,25 +39,25 @@
 
 # 1. Unity Programming
 ![image](https://user-images.githubusercontent.com/55792986/210168349-e082870f-bd39-42be-8b51-c81e08302054.png)
-- Basic Programming Technique
+- **Basic Programming Technique**
   - 전반적인 프로그래밍 기술
 
 <br>
 
-- C#
+- **C#**
   - C# 문법 및 스크립팅
 <br>
 
-- Design Pattern
+- **Design Pattern**
 
  <br>
 
-- Unity
+- **Unity**
   - 유니티 엔진 기능
 
 <br>
 
-- Personal Coding Style
+- **Personal Coding Style**
   - 나만의 코딩 스타일을 정리하여 실무 능률 증가
 
 <br></br>
@@ -65,17 +65,16 @@
 # 2. Computer Science
 - ![image](https://user-images.githubusercontent.com/55792986/210168375-c603696b-8517-40c5-9d41-896fef1a3b2e.png)
   - :link:[UtilForever](https://github.com/utilForever/game-developer-roadmap)
-- Algorithm
-- Computer Graphics
-- Data Structure
-- Math
-- Software Architecture
-- SQL
-- Study In College
+- **Algorithm**
+- **Computer Graphics**
+- **Data Structure**
+- **Math**
+- **Software Architecture**
+- **SQL**
+- **Study In College**
   - 대학교 시절 정리한 Computer Science
 
 <br></br>
 
 # 3. Book
 - 당분간은 크게 고려하지 않을 문서.
-- 기술 서적(C#)은 해당 문서에 추가한다.
