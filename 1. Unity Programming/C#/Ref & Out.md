@@ -5,7 +5,8 @@
     - [2. 메모리 절약 관점의 궁금증](#2-메모리-절약-관점의-궁금증)
 - [Out](#out)
 - [Ref와 Out 정리](#ref와-out-정리)
-- [Call-By-Reference](#call-by-reference)
+
+<br/><br/><br/>
 
 # Ref
 ### 1. 기본 개념
@@ -27,9 +28,13 @@
 - :star: Value Type을 Reference Type처럼 이용하는 키워드이다.
 - 함수의 인자로 넘겨줄 때 call-by-reference처럼 되려면 매개변수와 인자에 모두 ref를 붙인다. 
 
+<br/><br/>
+
 ### 2. 메모리 절약 관점의 궁금증
 - ref로 참조하면 메모리도 절약되는가?
   - 예를 들어 함수의 매개변수로 값을 받는다고 가정하자. 그러면 매개변수를 전달하면서 하나의 복사본을 만들게 된다. 그리고 인자로 넘겨 준 복사본과는 독립적인 관계가 된다. 이 때 복사본을 만들면서 메모리 낭비?가 발생한다. 하지만 ref로 전달해주면 복사본을 생성하지 않기 때문에 메모리가 절약 된다.
+
+<br/><br/><br/>
 
 # Out
 - ref와 비슷한 키워드다.
@@ -48,12 +53,8 @@
             }
 ~~~
 
+<br/><br/><br/>
+
 # Ref와 Out 정리
 - ![image](https://user-images.githubusercontent.com/55792986/207471350-ac5444c7-3738-48c8-9a8c-943153aeddb9.png)
-- 내 생각 : ref와 out은 결국 value type과 관련이 있는 키워드라고 생각한다.
-
-# Call-By-Reference
-- 명확히 이해하고 있다고 생각한다.
-- 뭐 일단 new 붙이면 힙에 메모리가 잡힌다.
-- 내가 알고 있는 대로 생각해도 무방하다.
-
+- 내 생각 : ref와 out은 결국 value type과 관련이 있는 키워드다.
