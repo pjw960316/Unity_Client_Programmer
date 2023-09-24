@@ -3,8 +3,7 @@
 # Personal Coding Style을 가져야 하는 이유
 - ![20230918_120124](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/10718ec5-17b6-47ac-9712-0498c3ef8014)
 - ![20230918_114858](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/9e58540e-3f3b-49d0-b204-f50fc528c1d5)
-
-<br/><br/>
+<br/>
 
 - 업무를 하는 도중 코딩 스타일에 대한 고민을 자주한다.
   - 그 이유는 나만의 코딩 스타일이 없기 때문이다.
