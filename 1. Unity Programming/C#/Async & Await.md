@@ -9,15 +9,20 @@
 - [Async/Await 정리](#asyncawait-정리)
 - [Async vs Coroutine](#async-vs-coroutine)
 
+<br/><br/><br/>
 
 # 동기 호출과 비동기 호출
 ### 1. 동기 호출 (=Blocking Call)
 - ![20230126_162358](https://user-images.githubusercontent.com/55792986/214779354-5e5015cf-65bd-4b5d-9b13-d737103d016a.png)
   - 디스크 I/O를 하느라 스레드가 멈춰 있는 현상을 blocking 이라고 한다.
-  
+
+<br/><br/>
+
 ### 2. 비동기 호출
 - ![20230126_162313](https://user-images.githubusercontent.com/55792986/214779318-7824ee69-30e8-4710-a2c6-481dbf4ec677.png)
     - Blocking이 발생하지 않고 주 스레드는 계속 일을 한다.
+
+<br/><br/><br/>
 
 # Async/Await : 비동기 호출을 간단하게 하는 키워드 
 - ![20230206_164222](https://user-images.githubusercontent.com/55792986/216913244-155031a6-3c96-4128-a9b9-7c215adcd124.png)
@@ -34,7 +39,7 @@
 - 주 스레드는 SumAsync의 결과를 기다리지 않고 Main 함수를 수행할 수 있다.
 - async 메서드의 await을 만나면 풀의 스레드에서 해당 부분을 관리하고 주 스레드는 관심을 갖지 않고 자신의 흐름을 유지한다.
   - Blocking이 발생하지 않는다!
-<br/><br/>
+<br/><br/><br/>
 
 # Async 함수의 리턴 타입
 - void면 그냥 void
@@ -44,7 +49,7 @@
   - ![image](https://user-images.githubusercontent.com/55792986/214784401-0779a594-a6d0-4009-a852-f546b7a419b0.png)
     - 얘는 리턴 값을 명시해줘야 한다.
     - ret는 int지만 C#에서 알아서 Task<int>로 변경해서 리턴 해준다.
-<br/><br/>
+<br/><br/><br/>
 
 # Async 키워드와 Async를 붙이는 함수
 - Async 키워드를 붙인 비동기 함수
@@ -52,11 +57,11 @@
 - 함수 이름 뒤에 Async를 붙여서 만든 함수 (ex : TestAsync)
   - 보통 Async 키워드를 붙인 비동기 함수 내부에서 호출되고 await 뒤에 있다.
   - TestAsync의 작업이 모두 진행 완료 될 때 까지 비동기 함수에서 결과를 기다리겠다.
-<br/><br/>
+<br/><br/><br/>
 
 # Async/Await 정리
 - ![image](https://user-images.githubusercontent.com/55792986/214785317-a8da3b13-c1b9-4eff-a17a-d377af8d5db3.png)
-<br/><br/>
+<br/><br/><br/>
 
 # Async vs Coroutine
 - ![20230126_171320](https://user-images.githubusercontent.com/55792986/214787579-622546cc-ed29-4cb3-9e4b-06d63e80012b.png)
