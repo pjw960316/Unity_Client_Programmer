@@ -20,6 +20,7 @@
 - [TextMeshPro (=TMP)](#textmeshpro-tmp)
 - [Image](#image)
 - [Content Size Fitter](#content-size-fitter)
+- [RectTransform 변경하기](#recttransform-변경하기)
 - [참조](#참조)
 
 # 과거 문서는 올바르게 연습하지 않고 정리한 느낌이 강하다. 이 문서를 이용해라.
@@ -151,6 +152,16 @@
 # Content Size Fitter
 - UI의 내용물에 따라서 UI의 크기를 알아서 조절해 주는 기능.
 - 보통 레이아웃과 함께 사용 된다.
+
+# RectTransform 변경하기
+- ![Alt text](./Capture/2023092601.png)
+~~~c#
+_rect.offsetMin = new Vector2(200, 0);
+_rect.offsetMax = new Vector2(-300, 0);
+~~~
+  - 이러면 left값이 200, right 값이 300이 된다.
+  - left는 parent에 대해서 왼쪽으로 200을 떨어뜨리고
+  - right는 parent에 대해서 오른쪽으로 300을 떨어뜨린다.
 
 # 참조
 - [Unity](https://docs.unity3d.com/kr/2018.4/Manual/UISystem.html)
