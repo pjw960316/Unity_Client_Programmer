@@ -21,6 +21,8 @@
 - [Image](#image)
 - [Content Size Fitter](#content-size-fitter)
 - [RectTransform 변경하기](#recttransform-변경하기)
+- [RectTransform](#recttransform)
+- [AnchoredPosion Vs LocalPosition](#anchoredposion-vs-localposition)
 - [참조](#참조)
 
 # 과거 문서는 올바르게 연습하지 않고 정리한 느낌이 강하다. 이 문서를 이용해라.
@@ -162,6 +164,12 @@ _rect.offsetMax = new Vector2(-300, 0);
   - 이러면 left값이 200, right 값이 300이 된다.
   - left는 parent에 대해서 왼쪽으로 200을 떨어뜨리고
   - right는 parent에 대해서 오른쪽으로 300을 떨어뜨린다.
+
+# RectTransform
+- ![Alt text](./Capture/20231010.png)
+
+# AnchoredPosion Vs LocalPosition
+- ![Alt text](./Capture/202310101.png)
 
 # 참조
 - [Unity](https://docs.unity3d.com/kr/2018.4/Manual/UISystem.html)
