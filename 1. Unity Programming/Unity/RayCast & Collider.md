@@ -6,3 +6,6 @@
 _boxCollider.size = _lineImageRect.rect.size; //크기 대응해주고
 _boxCollider.offset += new Vector2(_boxCollider.size.x / 2, 0); // offset 대응해주고.
 ~~~
+
+# RayCast 보이지 않는...
+- ![Alt text](./Capture/20231011_135233.png)
