@@ -176,6 +176,7 @@ _rect.offsetMax = new Vector2(-300, 0);
 - 위치를 코드로 잡을 때 비율을 이용해서 rect 위치를 이동하는데
 - 이 때 가운데가 pivot이면 가운데를 기준으로 이동하니까 어렵다.
 - 그러므로 왼쪽으로 피봇을 박는게 맞다.
+  - 실수 조심해라. 왼쪽부터 시작일 때 실제 객체가 왼쪽에 존재해서 계산 되는 지 정말 중요하다.
 
 # 참조
 - [Unity](https://docs.unity3d.com/kr/2018.4/Manual/UISystem.html)
