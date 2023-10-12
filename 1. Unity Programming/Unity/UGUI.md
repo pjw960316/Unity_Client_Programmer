@@ -23,6 +23,7 @@
 - [RectTransform 변경하기](#recttransform-변경하기)
 - [RectTransform](#recttransform)
 - [AnchoredPosion Vs LocalPosition](#anchoredposion-vs-localposition)
+- [Anchor와 Pivot을 잘 정해야 비율 계산이 쉽다.](#anchor와-pivot을-잘-정해야-비율-계산이-쉽다)
 - [참조](#참조)
 
 # 과거 문서는 올바르게 연습하지 않고 정리한 느낌이 강하다. 이 문서를 이용해라.
@@ -170,6 +171,11 @@ _rect.offsetMax = new Vector2(-300, 0);
 
 # AnchoredPosion Vs LocalPosition
 - ![Alt text](./Capture/202310101.png)
+
+# Anchor와 Pivot을 잘 정해야 비율 계산이 쉽다.
+- 위치를 코드로 잡을 때 비율을 이용해서 rect 위치를 이동하는데
+- 이 때 가운데가 pivot이면 가운데를 기준으로 이동하니까 어렵다.
+- 그러므로 왼쪽으로 피봇을 박는게 맞다.
 
 # 참조
 - [Unity](https://docs.unity3d.com/kr/2018.4/Manual/UISystem.html)
