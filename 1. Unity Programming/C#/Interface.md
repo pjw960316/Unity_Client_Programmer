@@ -4,6 +4,7 @@
 - [인터페이스 왜 쓸까?](#인터페이스-왜-쓸까)
 - [Interface](#interface)
 - [인터페이스를 상속 받은 클래스에서 인터페이스의 메서드를 빈 메서드로 구현하는 것은 나쁜가?](#인터페이스를-상속-받은-클래스에서-인터페이스의-메서드를-빈-메서드로-구현하는-것은-나쁜가)
+- [가변 인자 인터페이스](#가변-인자-인터페이스)
 
 <br/><br/><br/>
 
@@ -59,3 +60,32 @@ public IObservable<byte> DataObservable
 # 인터페이스를 상속 받은 클래스에서 인터페이스의 메서드를 빈 메서드로 구현하는 것은 나쁜가?
 - ![20230912_133436](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/3c5578d2-4edf-43fc-83e1-1649724a983e)
 - 전혀 나쁘지 않다.
+
+# 가변 인자 인터페이스
+> C#에서 인터페이스에 'params' 키워드를 사용하는 것은 가능합니다. 이를 통해 가변 인수를 받는 메서드를 정의할 수 있고, 이 인터페이스를 구현하는 클래스에서 해당 메서드를 구현해야 합니다.
+~~~c#
+public interface IMyInterface
+{
+    void SetData(params object[] objects);
+}
+
+public class MyClass : IMyInterface
+{
+    private List<object> _dataList = new List<object>();
+
+    public void SetData(params object[] objects)
+    {
+        if (objects == null)
+        {
+            // null 처리 로직
+            return;
+        }
+        _dataList.Clear();
+        _dataList.AddRange(objects);
+    }
+}
+~~~
+- 추상적으로 어떤 인터페이스를 상속 받은 클래스에서 어떤 기능을 하도록 **강제**하고 싶다. 
+  - 하지만 하위 클래스 마다 구현체는 다양하므로(매개변수도 다양하고 실제 구현도 다양하다.) 추상적으로만 정의하고 싶다.
+  - 이에 대응하기 위해 가변 인자를 검색해 봤고 구현을 해보았다.
+- 하지만 결론적으로 가변 인자를 이용해서 인터페이스를 만들 수 는 있지만 오히려 구현이 복잡해지는 단점이 발생했다. 
