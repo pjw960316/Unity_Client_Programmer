@@ -6,6 +6,7 @@
 - [Nullable 연산자 사용 이유](#nullable-연산자-사용-이유)
 - [Null 검사의 빈도](#null-검사의-빈도)
 - [반복되는 코드는 줄여야 한다. 왜냐하면 반복되는 코드에는 null 검사도 반복이 되기 떄문이다.](#반복되는-코드는-줄여야-한다-왜냐하면-반복되는-코드에는-null-검사도-반복이-되기-떄문이다)
+- [Null 초기화](#null-초기화)
 
 # 개요
 - Null을 정복한다.
@@ -130,5 +131,7 @@ public class ExampleScript : MonoBehaviour
 # 반복되는 코드는 줄여야 한다. 왜냐하면 반복되는 코드에는 null 검사도 반복이 되기 떄문이다.
 - 귀찮다!!!
 
+# Null 초기화
+- ![Alt text](./Capture/20231016null.png)
 
 

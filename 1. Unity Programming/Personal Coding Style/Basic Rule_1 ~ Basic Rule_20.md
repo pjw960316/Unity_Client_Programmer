@@ -10,6 +10,7 @@
 - [Rule\_8 : 두 번 이상 중복되는 코드는 많이 복잡하면 함수로 빼지만 그렇지 않으면 반복해도 문제는 없다고 생각한다.](#rule_8--두-번-이상-중복되는-코드는-많이-복잡하면-함수로-빼지만-그렇지-않으면-반복해도-문제는-없다고-생각한다)
 - [Rule\_9 : 이벤트를 바인딩 하는 함수는 BindEvent로 네이밍하여 메서드로 만들어 준다.](#rule_9--이벤트를-바인딩-하는-함수는-bindevent로-네이밍하여-메서드로-만들어-준다)
 - [Rule\_10 : Transform 또는 RectTransform은 Unity Inspector에서 연결을 하거나 캐싱을 하자.](#rule_10--transform-또는-recttransform은-unity-inspector에서-연결을-하거나-캐싱을-하자)
+- [Rule\_11 : 명시적으로 null로 초기화 하는 것은 좋은 습관이 될 수 있다.](#rule_11--명시적으로-null로-초기화-하는-것은-좋은-습관이-될-수-있다)
 
 <br/><br/><br/>
 
@@ -72,3 +73,8 @@
 
 # Rule_10 : Transform 또는 RectTransform은 Unity Inspector에서 연결을 하거나 캐싱을 하자.
 - ![Alt text](./Capture/20231012_153217.png)
+
+<br/><br/><br/>
+
+# Rule_11 : 명시적으로 null로 초기화 하는 것은 좋은 습관이 될 수 있다.
+- ![Alt text](./Capture/20231016_185151.png)
