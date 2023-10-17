@@ -17,3 +17,6 @@
     - 잘 안 보이지만 Binary가 유독 빠르다.
 - 참고 자료
   - https://www.youtube.com/watch?v=qrQZOPZmt0w
+
+# 유니티 inspector 직렬화
+- FormerlySerializedAs와 객체의 명칭이 다르면 아무리 프리팹을 연결해도 런타임에서 none으로 처리해서 바인딩이 끊긴다.
