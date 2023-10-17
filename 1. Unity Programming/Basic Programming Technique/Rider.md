@@ -10,7 +10,7 @@
 - [Usage](#usage)
 - [Rider의 디버그 기능 중 Navigate](#rider의-디버그-기능-중-navigate)
 - [Plugin](#plugin)
-- [0+16 Usages](#016-usages)
+- [Exposing APIs](#exposing-apis)
 
 # 공식문서
 - :link:[Rider Official](https://www.jetbrains.com/help/rider/Introduction.html)
@@ -59,7 +59,6 @@
 # Plugin
 - https://duckly.com/blog/best-plugins-for-rider-2022/
 
-# 0+16 Usages
-- ![20230911_144329](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/2b8ad115-ab02-4f65-a601-4b205f1344b8)
-- 프로젝트에서 실제로 사용 되는 것은 0개지만 프로젝트 외부에서 사용 되는 곳은 16개
-  - 라이브러리 같은.
+# Exposing APIs
+- ![Alt text](./Capture/imageasd.png)
+- 해당 클래스를 상속 받는 클래스를 계층으로 볼 수 있다.

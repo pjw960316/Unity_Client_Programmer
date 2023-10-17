@@ -25,6 +25,7 @@
 # :star:자동완성:star:
 - Rider에서는 private 멤버에 대해서 필요하면 Alt+Enter를 통해 Property로 만들어라.
 - 아래에 문법은 정리했지만 자동완성을 하는 것이 가장 큰 테크닉이다.
+- ![Alt text](./Capture/20231017.png)
 
 <br/><br/><br/>
 
