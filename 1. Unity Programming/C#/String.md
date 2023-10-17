@@ -3,7 +3,7 @@
 - [개요](#개요)
 - [String.Format](#stringformat)
     - [1. 소수를 문자열로 표현할 때 사용하자.](#1-소수를-문자열로-표현할-때-사용하자)
-- [StringBuilder](#stringbuilder)
+- [String의 불변성](#string의-불변성)
 
 # 개요
 - String은 현업에서 정말 많이 쓴다.
@@ -21,4 +21,17 @@
 
 <br/><br/><br/>
 
-# StringBuilder
+# String의 불변성
+~~~c#
+string origin = "aaa";
+string copy = origin;
+copy = "bbb";
+
+origin.Dump();
+copy.Dump();
+
+//Result
+//"aaa"
+//"bbb"
+~~~
+- ![Alt text](./Capture/20231017_214200.png)
