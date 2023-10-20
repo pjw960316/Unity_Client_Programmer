@@ -25,6 +25,41 @@
 <br/><br/><br/>
 
 # Async/Await : 비동기 호출을 간단하게 하는 키워드 
+~~~c#
+public static void Main()
+{
+	Test();
+	
+	Console.WriteLine("Main Don't Block");
+	Console.ReadLine();
+}
+
+public static async void Test()
+{
+	Console.WriteLine("Test Start");
+	
+	int ret = await SumAsync(1,2); //Await에서 UpdateResult를 즉시 탈출한다.
+
+	Console.WriteLine($"Test End : {ret}");
+	
+	return;
+}
+
+public static async Task<int> SumAsync(int a, int b)
+{
+	// 3초 동안 대기
+	await Task.Delay(3000);
+
+	return a + b;
+}
+
+/* Result
+  Test Start
+  Main Don't Block
+  Test End : 3
+*/
+~~~
+
 - ![20230206_164222](https://user-images.githubusercontent.com/55792986/216913244-155031a6-3c96-4128-a9b9-7c215adcd124.png)
 - ![20230201_141055](https://user-images.githubusercontent.com/55792986/215956880-75105804-3c47-466b-a651-7018cee01135.png)
   - 위의 이미지 설명
