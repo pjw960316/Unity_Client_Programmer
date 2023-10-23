@@ -108,14 +108,17 @@ class Program
 		Animal a = new Animal();
 		Animal b = new Dog();
 		
-		var c = a as Dog;
+		//a의 경우 타입은 Animal이고 인스턴스는 Animal 타입이다.
+		var c = a as Dog; 
+
+		//b의 경우 타입은 Animal이고 인스턴스는 Dog 타입이다.
+		//인스턴스가 Dog 타입이고 이건 Dog 타입으로 캐스팅이 된다. (as Dog;에서 Dog의 타입과 같거나 Dog의 하위 타입이니까)
 		var d = b as Dog;
 		
 		c.Dump(); //null
 		d.Dump();	
 	}
 }
-
 /* Result
 c는 null이 된다.
 d는 다운 캐스팅에 성공한다.
