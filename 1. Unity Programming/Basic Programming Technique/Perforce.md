@@ -6,6 +6,7 @@
 - [이전 서밋과 비교하기](#이전-서밋과-비교하기)
 - [서밋만 안하면 세상은 변하지 않으니 걱정하지 마라!](#서밋만-안하면-세상은-변하지-않으니-걱정하지-마라)
 - [Checkout의 주의 사항](#checkout의-주의-사항)
+- [Backout](#backout)
 
 # 개요
 - 성능이 좋은 Version Control System인 Perforce를 공부해보자.
@@ -46,3 +47,9 @@
 
 # Checkout의 주의 사항
 - ![20230707_101214](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/45ec5fa8-280d-4213-a83b-f0d1aa67cea2)
+
+# Backout
+- 잘못 서밋한 Rev.149052의 내용을 되돌리고 싶어서 Backout Summitted Changelist 149052를 했다. 
+- 하지만 이건 149052를 하기 전 상태로 돌리는 거기 때문에 149052의 내용을 작업하기 이전 시점으로 돌아간다.
+  - 서밋 자체가 되는 것이 아니라 Pending List로 돌아온다.
+- 이 상태에서 이전 상태로 돌리고 싶으면 Pending List를 그냥 올리면 되고 추가 작업이 필요하면 Pending List에서 작업하고 다시 서밋하면 된다.
