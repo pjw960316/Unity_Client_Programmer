@@ -13,6 +13,7 @@
     - [3. 1번 예제에서 base를 추가하면?](#3-1번-예제에서-base를-추가하면)
 - [Virtual 추가 내용](#virtual-추가-내용)
 - [Overhead](#overhead)
+- [일반 메서드에서 Virtual 메서드 호출](#일반-메서드에서-virtual-메서드-호출)
 - [Sealed](#sealed)
 
 <br/><br/><br/>
@@ -336,6 +337,58 @@ class Program
 ![image](https://user-images.githubusercontent.com/55792986/185398970-e72a3592-75e7-4635-a363-2fcb0e5ef069.png)
 - 내 생각 : 추상 함수, 가상 함수 모두 테이블이 만들어 지기 때문에 기존 보다는 성능저하가 발생 할 것 이다. 그럼에도 불구하고 이점이 많으니 사용하겠지.
       
+<br/><br/><br/>
+
+# 일반 메서드에서 Virtual 메서드 호출
+~~~c#
+class Animal
+{
+	public void OriginMethod()
+	{
+		Eat();
+	}
+	
+	public virtual void Eat()
+	{
+	}
+}
+
+class Dog : Animal
+{
+	public override void Eat()
+	{
+		Console.WriteLine("Dog Eat");
+	}
+}
+
+class Cat : Animal
+{
+	public override void Eat()
+	{
+		Console.WriteLine("Cat Eat");
+	}
+}
+
+class Program
+{
+	static void Main(string[] args)
+	{
+		Dog dog = new Dog();
+		Cat cat = new Cat();
+		
+		dog.OriginMethod();
+		cat.OriginMethod();
+	}
+}
+/*
+result
+Dog Eat
+Cat Eat
+*/
+~~~
+- 일반 메서드에서 virtual 메서드를 호출하면 해당 인스턴스에 맞는 Override 메서드가 호출된다.
+- 기본 virtual 특성과 동일하다.
+
 <br/><br/><br/>
 
 # Sealed
