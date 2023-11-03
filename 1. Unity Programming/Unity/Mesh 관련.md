@@ -4,5 +4,6 @@
   - ![Alt text](./Capture/20231103_171336.png)
   - ![Alt text](./Capture/20231103_171407.png)
 
-# 하나의 게임 오브젝트는 여러 개의 mesh로 이루어 질 수 있다.
+# 하나의 게임 오브젝트는 여러 개의 mesh로 이루어 질 수 있고, 하나의 mesh는 여러 개의 polygon으로 이루어 질 수 있다.
 - ![Alt text](./Capture/20231103_171611.png)
+- ![Alt text](20231103_171756.png)
