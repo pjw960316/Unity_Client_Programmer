@@ -8,6 +8,7 @@
 - [부모가 SetActive(false)면 자식도 SetActive(false)가 되나?](#부모가-setactivefalse면-자식도-setactivefalse가-되나)
 - [유니티에서 변경 되지 않는 이미지는 연결할 필요가 없다.](#유니티에서-변경-되지-않는-이미지는-연결할-필요가-없다)
 - [A 프리팹 안에 존재하는 B 프리팹](#a-프리팹-안에-존재하는-b-프리팹)
+- [Prefab Instance](#prefab-instance)
 
 # 개요
 - 게임 오브젝트와 프리팹과 관련된 대다수의 내용을 이 곳에 정리한다.
@@ -56,3 +57,8 @@
 - B 프리팹도 파란색으로 표시되는 프리팹이다. 과연 B 프리팹을 변경 했을 때 원본 B도 변경이 되는가?
   - 결론부터 말하면 아니다.
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/88a294cb-86d3-412f-af04-0429f66fe2f7)
+
+# Prefab Instance
+- Project 폴더에 있는 프리팹을 Scene에 끌어다가 사용하면 Prefab Instance가 된다.
+- ![Alt text](./Capture/20231103_152236.png)
+- 원본 변경에 안전한 푸른 네모니 맘 편히 사용하자.
