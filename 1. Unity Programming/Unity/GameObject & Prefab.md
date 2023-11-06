@@ -59,6 +59,13 @@
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/88a294cb-86d3-412f-af04-0429f66fe2f7)
 
 # Prefab Instance
+- Hierarchy에서 파란색 네모로 표시되어 자신이 Prefab Instance 라는 것을 나타낸다.
 - Project 폴더에 있는 프리팹을 Scene에 끌어다가 사용하면 Prefab Instance가 된다.
 - ![Alt text](./Capture/20231103_152236.png)
-- 원본 변경에 안전한 푸른 네모니 맘 편히 사용하자.
+- **:star:star:주의점**
+  - 어떠한 방법으로 원본 프리팹을 변경하는 경우가 있다.
+  - 이러면 당연히 원본 프리팹과 연결된 모든 프리팹 인스턴스도 변경이 된다.
+  - 독립적인 프리팹 인스턴스만 변경하려고 했는데 원본 프리팹을 변경하면 다른 프리팹 인스턴스는 의도하지 않았는데 변경된다.
+    - 이 경우 다행이도 Perforce에 원본이 변경된 것도 Pending에 잡히므로 반드시 확인하고 원본을 변경하지 않도록 한다
+- 올바르게 프리팹 인스턴스의 inspector만 변경을 하면 해당 변경 사항이 Bold 처리되어 나온다. (Override 됨을 의미)
+  - ![Alt text](20231106_160026.png)
