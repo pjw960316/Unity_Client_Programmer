@@ -3,10 +3,10 @@
 - [동기 호출과 비동기 호출](#동기-호출과-비동기-호출)
     - [1. 동기 호출 (=Blocking Call)](#1-동기-호출-blocking-call)
     - [2. 비동기 호출](#2-비동기-호출)
-- [Async/Await : 비동기 호출을 간단하게 하는 키워드](#asyncawait--비동기-호출을-간단하게-하는-키워드)
+- [Async/Await 예제\_1 : LINQPAD7](#asyncawait-예제_1--linqpad7)
+- [Async/Await 예제\_2 : Lecture](#asyncawait-예제_2--lecture)
 - [Async 함수의 리턴 타입](#async-함수의-리턴-타입)
 - [Async 키워드와 Async를 붙이는 함수](#async-키워드와-async를-붙이는-함수)
-- [Async/Await 정리](#asyncawait-정리)
 - [Async vs Coroutine](#async-vs-coroutine)
 
 <br/><br/><br/>
@@ -24,7 +24,7 @@
 
 <br/><br/><br/>
 
-# Async/Await : 비동기 호출을 간단하게 하는 키워드 
+# Async/Await 예제_1 : LINQPAD7
 ~~~c#
 public static void Main()
 {
@@ -38,7 +38,9 @@ public static async void Test()
 {
 	Console.WriteLine("Test Start");
 	
-	int ret = await SumAsync(1,2); //Await에서 UpdateResult를 즉시 탈출한다.
+  //await으로 인해 Test()를 탈출하고, SumAsync를 대기한다.
+  //그러므로 Result에서 Test Start 후에 즉시 Main Don't Block이 적힌다.
+	int ret = await SumAsync(1,2); 
 
 	Console.WriteLine($"Test End : {ret}");
 	
@@ -60,10 +62,13 @@ public static async Task<int> SumAsync(int a, int b)
 */
 ~~~
 
+
+<br/><br/><br/>
+
+# Async/Await 예제_2 : Lecture
 - ![20230206_164222](https://user-images.githubusercontent.com/55792986/216913244-155031a6-3c96-4128-a9b9-7c215adcd124.png)
 - ![20230201_141055](https://user-images.githubusercontent.com/55792986/215956880-75105804-3c47-466b-a651-7018cee01135.png)
-  - 위의 이미지 설명
-  - '함수'는 즉시 반환이 중요하다. 해당 함수를 탈출하는 것을 의미한다. 
+  - '메서드'의 즉시 반환이 핵심이다. 해당 메서드를 탈출하는 것을 의미한다. 
     - ![image](https://user-images.githubusercontent.com/55792986/216913024-2a1018bc-93e0-4ddb-b5a3-5cc2c116468d.png)
   - :star:**실행 흐름**
     - 1) 주 스레드는 Main에서 UpdateResult를 호출한다.
@@ -92,10 +97,6 @@ public static async Task<int> SumAsync(int a, int b)
 - 함수 이름 뒤에 Async를 붙여서 만든 함수 (ex : TestAsync)
   - 보통 Async 키워드를 붙인 비동기 함수 내부에서 호출되고 await 뒤에 있다.
   - TestAsync의 작업이 모두 진행 완료 될 때 까지 비동기 함수에서 결과를 기다리겠다.
-<br/><br/><br/>
-
-# Async/Await 정리
-- ![image](https://user-images.githubusercontent.com/55792986/214785317-a8da3b13-c1b9-4eff-a17a-d377af8d5db3.png)
 <br/><br/><br/>
 
 # Async vs Coroutine
