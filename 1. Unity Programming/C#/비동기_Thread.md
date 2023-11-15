@@ -23,19 +23,4 @@
 
 <br/><br/><br/>
  
-# fire-and-forget 방식
-- ![Alt text](./Capture/20231110_173537.png)
-- ![Alt text](./Capture/20231110_173920.png)
-- 원래는 await을 붙여서 해당 함수의 결과를 기다렸다. 특히 Unitask<bool> 같이 리턴 값이 있으면
-~~~c#
-var result1 = await (Unitask<bool>를 리턴하는 함수)
-var result2 = await (Unitask<bool>를 리턴하는 함수)
-~~~
-  - result1은 await 걸린 함수의 실행이 모두 완료 됨을 기다리고 결과를 초기화 한다.
-  - 하지만 result2는 await이 걸려 있지 않기 때문에 기다리지 않고 초기화를 한다.
-  - > 반환된 UniTask<bool>가 완료될 때까지 기다리지 않으면, 함수의 결과가 필요한 코드 부분에서 오류가 발생할 수 있습니다.
 
-<br/><br/><br/>
-
-# 일반 virtual 함수를 Override했을 때 파생 함수는 async를 붙여서 비동기로 만들어도 된다. 
-- ![Alt text](./Capture/20231110_173220.png)
