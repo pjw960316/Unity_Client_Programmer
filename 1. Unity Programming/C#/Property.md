@@ -20,6 +20,7 @@
   - get, set을 만들 때 조건문으로 설정한다.
 - get과 set이 간단한 경우 매우 간편하게 선언할 수 있다.
   - C#에서 자동으로 getter와 setter를 만들어 주는 편리한 property 문법이 있다.
+- get과 set에 대해서 F12를 통해 어디서 get하고 어디서 set하는 지 쉽게 알 수 있다.
 
 <br/><br/><br/>
 
