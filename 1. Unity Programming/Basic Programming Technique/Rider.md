@@ -11,6 +11,7 @@
 - [Rider의 디버그 기능 중 Navigate](#rider의-디버그-기능-중-navigate)
 - [Plugin](#plugin)
 - [Exposing APIs](#exposing-apis)
+- [inheritor Bold](#inheritor-bold)
 
 # 공식문서
 - :link:[Rider Official](https://www.jetbrains.com/help/rider/Introduction.html)
@@ -62,3 +63,6 @@
 # Exposing APIs
 - ![Alt text](./Capture/imageasd.png)
 - 해당 클래스를 상속 받는 클래스를 계층으로 볼 수 있다.
+
+# inheritor Bold
+- 진하게 표시되면 직속 자식을 의미한다.
