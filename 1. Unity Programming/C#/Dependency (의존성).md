@@ -3,8 +3,7 @@
 - [의존성(Dependency)랑 결합도(Coupling)은 같은 건가?](#의존성dependency랑-결합도coupling은-같은-건가)
 - [Coupling](#coupling)
 - [Coupling의 종류](#coupling의-종류)
-- [Tight Coupling (=강한 결합)](#tight-coupling-강한-결합)
-- [Loose Coupling (=약한 결합)](#loose-coupling-약한-결합)
+- [결합도가 높은 프로그램의 단점](#결합도가-높은-프로그램의-단점)
 
 # 의존성(Dependency)랑 결합도(Coupling)은 같은 건가?
 - ![image](https://user-images.githubusercontent.com/55792986/197937691-a9bdf6f3-0afd-478e-8e87-5ebcd3c7c992.png)
@@ -28,37 +27,5 @@
 
 <br/><br/><br/>
 
-# Tight Coupling (=강한 결합)
--![image](https://user-images.githubusercontent.com/55792986/184570254-c0c64600-8688-483d-96f5-fa08551de7f4.png)
-  - 두 객체가 강하게 결합되어 있다면 하나의 객체에서 다른 객체를 알고 있어야 한다.
-  - 작은 프로그램에서는 괜찮지만 큰 프로그램이라면 문제가 된다. 다른 개발자가 작성한 코드를 완벽하게 이해하지 않은 상태에서 모두 검사해 보아야 한다.
-- 팀장님이 하셨던 말 중에 '드래곤이 없다면 이 코드는 동작하지 않을 텐데?' 라는 것이 기억난다.
-  - 모듈이나 객체가 없더라도 코드가 동작해야 한다.
-- 아래의 예시를 확인해 본다.
-~~~C#
-class A {
-   public int a = 0;
-   public int getA() {
-      System.out.println("getA() method");
-      return a;
-   }
-   public void setA(int aa) {
-      if(!(aa > 10))
-         a = aa;
-   }
-}
-public class B {
-   public static void main(String[] args) {
-      A aObject = new A();
-      aObject.a = 100; // Not suppose to happen as defined by class A, this causes tight coupling.
-      System.out.println("aObject.a value is: " + aObject.a);
-   }
-}
-~~~
-  - 만약 개발자가 클래스 A의 변수 a를 private로 변경한다면 클래스 B는 정상 동작하지 않게 된다.
-
-<br/><br/><br/>
-
-# Loose Coupling (=약한 결합)
-- 결합도를 줄이는 것 이다.
-- 개발을 하면서 이 방식을 채워 나간다.
+# 결합도가 높은 프로그램의 단점
+- ![Alt text](./Capture/20231123_115612.png)
