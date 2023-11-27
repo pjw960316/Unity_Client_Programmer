@@ -5,12 +5,13 @@
 - [Shift + F12 : Find Usages](#shift--f12--find-usages)
 - [Ctrl + F12 : Go To Implementation](#ctrl--f12--go-to-implementation)
 - [:star:Shift + Shift : Search Everywhere](#starshift--shift--search-everywhere)
+- [Alt + Home : Base로 이동](#alt--home--base로-이동)
+- [Alt + End : Derived로 이동](#alt--end--derived로-이동)
 - [Ctrl + Shift + F : Find In Files](#ctrl--shift--f--find-in-files)
 - [F3 : Find Next/ Move to Next Occurrence](#f3--find-next-move-to-next-occurrence)
 - [Ctrl + G : Go to Line/Column](#ctrl--g--go-to-linecolumn)
 - [Ctrl + R + R : Rename Refactoring](#ctrl--r--r--rename-refactoring)
 - [Alt + Enter : Show Intention Actions](#alt--enter--show-intention-actions)
-- [Alt + Home : 부모 클래스의 메서드로 이동](#alt--home--부모-클래스의-메서드로-이동)
 - [Ctrl + Alt + B : 디버깅 포인트 목록 보기](#ctrl--alt--b--디버깅-포인트-목록-보기)
   
  <br/><br/><br/>
@@ -77,6 +78,11 @@ public void Dispose()
   - **코드를 작성한 분들이 이전에 어떻게 사용했는 지 찾아볼 수 있다.**
 <br/><br/><br/>
 
+# Alt + Home : Base로 이동
+# Alt + End : Derived로 이동
+
+<br/><br/><br/>
+
 # Ctrl + Shift + F : Find In Files
 - 정확한 명칭은 Find and Replace Text in Solution
 - Shift + Shift는 간략하게 나오지만 얘는 코드의 일부도 보여준다.
@@ -98,9 +104,7 @@ public void Dispose()
 
 # Alt + Enter : Show Intention Actions
 - 라이더가 알려주는 더 좋은 코드로 바꾸는 기술.
-<br/><br/><br/>
 
-# Alt + Home : 부모 클래스의 메서드로 이동
 <br/><br/><br/>
 
 # Ctrl + Alt + B : 디버깅 포인트 목록 보기
