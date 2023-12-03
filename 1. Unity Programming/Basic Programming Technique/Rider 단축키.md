@@ -48,6 +48,7 @@
 # Ctrl + Alt + B : 디버깅 포인트 목록 보기
 - ![20230907_153123](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/8c4a23ab-3775-4f15-adc7-13e70a3be3b5)
 - 전체 선택 하고 '-'를 누르면 디버깅 포인트 모두 날릴 수 있다.
+<br/><br/><br/>
 
 # Ctrl + G : 줄 번호 이동
 - Go to Line/Column 
