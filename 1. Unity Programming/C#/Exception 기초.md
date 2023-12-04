@@ -9,7 +9,6 @@
     - [3. 정리](#3-정리)
 - [try-catch 연습](#try-catch-연습)
 - [try-catch 추가 내용](#try-catch-추가-내용)
-- [try-catch 예외처리의 비용과 블록 스코프](#try-catch-예외처리의-비용과-블록-스코프)
 
 <br/><br/><br/>
 
@@ -114,10 +113,3 @@
       - 이 말이 이해가 안 되면 그냥 당시에 검증 했으니 넘어가면 된다.
   - 라이브러리의 메서드에서 내부적으로 예외처리를 해주고 있다.
     - 그로 인해 address에 'http://www.naver.com'대신 'http://www.never.com'을 적어주면 예외를 받고 처리하게 되는 것 이다.
-
-<br/><br/><br/>
-
-# try-catch 예외처리의 비용과 블록 스코프
-- 예외를 처리하는 작업은 일반적인 메서드 호출보다 훨씬 더 시간이 많이 걸린다.
-- [Real Test](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=hermet&logNo=104819461)
-  - Try-Catch가 좋은 구문이지만 if로 예외처리 하는 것 보다 비용이 많이 든다.
