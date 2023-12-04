@@ -11,6 +11,8 @@
 - [예외처리 관련 실제 대응](#예외처리-관련-실제-대응)
 - [:star:예외처리 관련 조언](#star예외처리-관련-조언)
 
+<br/><br/><br/>
+
 # Exception(예외)의 정의
 - ![image](https://user-images.githubusercontent.com/55792986/208034488-20b9c234-77a7-4b59-ba46-bce033a9d78c.png)
 - 에러와 동일하게 생각해도 무방하다.
