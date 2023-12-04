@@ -1,11 +1,6 @@
 # 목차
 - [목차](#목차)
-- [다른 관점](#다른-관점)
-- [Throw NullReferenceException](#throw-nullreferenceexception)
-- [예외처리 관련 중요한 사항](#예외처리-관련-중요한-사항)
-- [예외(Exception) vs 오류(ERROR)](#예외exception-vs-오류error)
-- [예외 처리를 해야 하는 이유](#예외-처리를-해야-하는-이유)
-- [Unity의 Warning 과 Error](#unity의-warning-과-error)
+- [개요](#개요)
 - [예외처리 방식\_1 : If문](#예외처리-방식_1--if문)
 - [예외처리 방식\_2 : Out Parameter 활용](#예외처리-방식_2--out-parameter-활용)
 - [예외처리 방식\_3 : try-catch-finally](#예외처리-방식_3--try-catch-finally)
@@ -14,43 +9,14 @@
     - [3. 정리](#3-정리)
 - [try-catch 연습](#try-catch-연습)
 - [try-catch 추가 내용](#try-catch-추가-내용)
-- [3가지 방법 사용 시점](#3가지-방법-사용-시점)
-- [Throw는 항상 try-catch와 함께 나오던데 이건 뭘까?](#throw는-항상-try-catch와-함께-나오던데-이건-뭘까)
 - [try-catch 예외처리의 비용과 블록 스코프](#try-catch-예외처리의-비용과-블록-스코프)
-- [예외 검사](#예외-검사)
-- [:book:참고 문헌](#book참고-문헌)
 
-# 다른 관점
-- 예외는 일찍 알릴 수록 좋다고 생각
-- 예외는 자세히 설명해 줄 수록 좋다고 생각
+<br/><br/><br/>
 
+# 개요
+- 입사 초기에 인강 듣고 정리한 걸로 기억한다.
 
-# Throw NullReferenceException
-- 이거와 같이 try-catch를 사용하지 않고 상위 클래스에서도 catch 하지 않아 null referenceException이 발생하도록 하는 기법
-- ![Alt text](./Capture/20231204_165819.png)
-
-
-# 예외처리 관련 중요한 사항
-- 테스트를 할 때 에러 때문에 진행이 안되는 경우 당장 에러를 일단 handle 해야 하긴 한다.
-  - handle을 구현하지는 않고
-- 하지만 개발 단계에서 테스트 진행에 문제가 없는 경우는 handle을 구현하지 않고 예외를 처리하는 방식은 문제가 된다.
-  - 당장 아무것도 하지 않지만 handle을 구현했기 때문에 유니티의 크래시는 발생하지 않는다.
-  - 하지만 handle을 구현하지 않았지만 유니티의 크래시는 발생하지 않으므로 팀원들은 해결되었다고 생각한다.
-
-# 예외(Exception) vs 오류(ERROR)
-- 같다고 봐도 무방하다.
-  - ![image](https://user-images.githubusercontent.com/55792986/208034488-20b9c234-77a7-4b59-ba46-bce033a9d78c.png)
-
-# 예외 처리를 해야 하는 이유
-- :star:프로그램 내에 적절한 catch 문이 포함되어 있지 않으면 예외가 발생했을 때 응용프로그램이 종료된다.
-- 오류가 발생했음을 무시한다면 데이터가 손상된 상태로 응용프로그램이 수행될 것인데 이 경우 정상적으로 수행을 이어가기 어렵다.
-
-# Unity의 Warning 과 Error
-- 보통 Error만 키고 개발을 한다.
-- 하지만 특수한 경우 Warning도 의심해 봐야 한다.
-  - Ex : Dotween의 라이브러리 메서드 중 어떤 녀석은 Error를 Warning으로 처리해서 개발자에게 나타내준다!
-    - 이 것 때문에 왜 에러가 나는지 몰랐다.
-    - Warning까지 켜고 작업하는 개발자가 많은 지는 모르겠다.
+<br/><br/><br/>
 
 # 예외처리 방식_1 : If문 
 - 결론부터 말하면 좋지 않은 방식이다.
@@ -61,13 +27,17 @@
   - return 값으로 -1을 적어주면 이 것이 오류인지 실제 반환 값을 의미하는 것인지 구분이 애매하다.
     - 다시 말해, 오류에 대한 자세한 정보를 알 수 없다.
 
+<br/><br/><br/>
+
 # 예외처리 방식_2 : Out Parameter 활용 
 - 리턴 값과 오류를 분리한다.
 - 리턴 값은 메서드의 성공과 실패만 나타내고 out parameter로 연산의 결과를 이용합니다.  
   - 예시 ![20221216_093212](https://user-images.githubusercontent.com/55792986/207995059-a9d0aeff-2a8c-4f13-a47d-10620605db61.png)
 - ![image](https://user-images.githubusercontent.com/55792986/207995132-466c5e4d-99c0-42c4-981b-d3f8daa80114.png)
   - :star: 내 생각 : 협업에서 예외를 반드시 처리하라는 강제성은 매우 중요할 것 이다.
-  
+
+<br/><br/><br/>
+
 # 예외처리 방식_3 : try-catch-finally
 ### 1. 키워드
 - try 
@@ -93,8 +63,9 @@
 ### 3. 정리
 - ![20221216_094000](https://user-images.githubusercontent.com/55792986/207995915-7776cb17-ad3f-43e5-a27e-bff969769ad5.png)
 
-# try-catch 연습
-- 
+<br/><br/><br/>
+
+# try-catch 연습 
 ~~~c#
             try
             {
@@ -109,6 +80,8 @@
             }
 ~~~
   - 콘솔에서 divide zero 예외 처리를 진행한다.
+
+<br/><br/><br/>
 
 # try-catch 추가 내용
 - System.Exception 클래스를 열심히 봐라.
@@ -142,30 +115,9 @@
   - 라이브러리의 메서드에서 내부적으로 예외처리를 해주고 있다.
     - 그로 인해 address에 'http://www.naver.com'대신 'http://www.never.com'을 적어주면 예외를 받고 처리하게 되는 것 이다.
 
-# 3가지 방법 사용 시점
-- 중요하지 않은 사소한 오류
-  - 예외처리 방식_1의 If문이나 예외처리 방식_2의 out parameter를 사용한다.
-- 중요한 오류
-  - 예외처리 방식_3의 try-catch를 이용한다. 
-  - c#은 이걸 많이 사용.
-  
-# Throw는 항상 try-catch와 함께 나오던데 이건 뭘까?
-- catch에서 처리하는 예외에 대해서 다시 던지는?
-- 예를 들어, 서브 메서드가 있고 메인 메서드가 있다. 서브 메서드에서 예외를 catch를 통해 잡아서 처리를 했고 이 정보를 다시 메인 메서드로 보내고 싶을 때 throw 키워드를 사용한다.
-- 일단은 언제 throw가 필요한 지 느낌이 오지 않으므로 추후에 공부하고 try-catch 먼저 사용한다.
-- throw e 보다는 throw가 훨씬 좋은 코드이므로 반드시 throw를 이용한다.
+<br/><br/><br/>
 
 # try-catch 예외처리의 비용과 블록 스코프
 - 예외를 처리하는 작업은 일반적인 메서드 호출보다 훨씬 더 시간이 많이 걸린다.
 - [Real Test](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=hermet&logNo=104819461)
   - Try-Catch가 좋은 구문이지만 if로 예외처리 하는 것 보다 비용이 많이 든다.
-
-# 예외 검사
-- 예외 검사를 메서드의 앞부분에 한다.
-- 당연히 그래야 예외 나면 뒤에 코드를 돌리지 않을 것.
-
-# :book:참고 문헌
-- 도서 : Clean Code
-  - 아직 조금 어렵다.
-- 도서 : Effective C#
-  - 많이 참고했다.
