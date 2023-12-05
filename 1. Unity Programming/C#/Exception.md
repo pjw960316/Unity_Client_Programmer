@@ -7,6 +7,7 @@
     - [2. Try-Catch를 이용하지 않고 Throw만 하는 경우](#2-try-catch를-이용하지-않고-throw만-하는-경우)
     - [3. Observable의 OnError를 이용하는 예외처리](#3-observable의-onerror를-이용하는-예외처리)
 - [자동발생 NullReferenceException VS 명시적 NullReferenceException(=Throw NullReference)](#자동발생-nullreferenceexception-vs-명시적-nullreferenceexceptionthrow-nullreference)
+- [Throw Exception / UnityEngine.Debug.LogException / UnityEngine.Debug.LogError](#throw-exception--unityenginedebuglogexception--unityenginedebuglogerror)
 - [예외처리 메커니즘](#예외처리-메커니즘)
 - [예외처리 관련 실제 대응](#예외처리-관련-실제-대응)
 - [:star:예외처리 관련 조언](#star예외처리-관련-조언)
@@ -83,6 +84,11 @@ observable.Subscribe(
 # 자동발생 NullReferenceException VS 명시적 NullReferenceException(=Throw NullReference)
 - ![Alt text](./Capture/20231204_165819.png)
 <br/><br/><br/>
+
+# Throw Exception / UnityEngine.Debug.LogException / UnityEngine.Debug.LogError
+- ![Alt text](./Capture/20231205_152341.png)
+- ![Alt text](./Capture/20231205_152510.png)
+
 
 # 예외처리 메커니즘
 - 호출 스택을 따라 상위로 이동하면서 적절한 catch 블록을 찾는다.
