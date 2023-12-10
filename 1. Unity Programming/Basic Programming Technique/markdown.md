@@ -8,7 +8,7 @@
 <br/><br/><br/>
 
 # 글자 색상
-- $\bf{\large{\color{#5ad7b7}두꺼운\ 글씨체,\ 큰글씨,\ 파란색}}$
+- $\bf{\large{\color{#ff0000}두꺼운\ 글씨체,\ 큰글씨,\ 파란색}}$
 - $\huge{\rm{\color{#6580DD}큰글씨\ 로만체\ 초록색}}$
 - <p>$\it{\large{\color{#5ad7b7}이텔릭체,\ 큰글씨,\ 빨간색}}$</p>
   - '\' 는 SpaceBar를 의미한다.
