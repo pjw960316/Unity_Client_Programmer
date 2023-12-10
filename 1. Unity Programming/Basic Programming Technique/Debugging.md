@@ -23,7 +23,7 @@ MyNamespace.Player.<Update>b__8_0 (System.Single currentSize) (at 경로 : 70)
 - '<Update>b__8_0'
   - 람다식을 포함하고 있는 메서드와 람다식을 나타내는 이름이다. 
   - Update는 람다식이 포함된 메소드의 이름을 나타내며, b__8_0은 컴파일러가 생성한 고유 식별자다.
-  - $\bf{\large{\color{#ff0000}Update\ 메서드에서\ Null ReferenceException이\ 발생한\ 것\ 이\ 아니라\n Update\ 메서드\ 내부의\ 람다식에서\ 발생한\ 것\ 이다.\ 디버깅\ 타겟을\ 제대로\ 이해해야\ 한다.}}$
+  - $\bf{\large{\color{#ff0000}Update\ 메서드에서\ Null ReferenceException이\ 발생한\ 것\ 이\ 아니라\ Update\ 메서드\ 내부의\ 람다식에서\ 발생한\ 것\ 이다.\ 디버깅\ 타겟을\ 제대로\ 이해해야\ 한다.}}$
 - (System.Single currentSize)
   - **메서드의 매개변수를 나타낸다. 에러가 난 변수를 나타내는 것 이 아니다.**
 - (at 경로 : 70)
