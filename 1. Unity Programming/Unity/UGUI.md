@@ -117,6 +117,7 @@
 - ![20230209_104734](https://user-images.githubusercontent.com/55792986/217695613-2c842205-3854-4bad-8bdf-2958c8e7080c.png)
   - 얘 꺼버리면 해당 UI는 광선(raycast)에 충돌되지 않고 통과한다.
     - 그래서 마우스로 클릭해도 다 뚫는다.
+  - 버튼이 눌리지 않으면 이게 존재하는 지 봐라.
     
 # EvenetSystem
 - ![20230208_112043](https://user-images.githubusercontent.com/55792986/217412194-5b7ca7ce-5109-401d-bfb6-664b3ab7da82.png)
