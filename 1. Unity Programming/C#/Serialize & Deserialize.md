@@ -20,3 +20,6 @@
 
 # 유니티 inspector 직렬화
 - FormerlySerializedAs와 객체의 명칭이 다르면 아무리 프리팹을 연결해도 런타임에서 none으로 처리해서 바인딩이 끊긴다.
+
+# 내가 만든 클래스 타입을 element로 하는 List를 Inspector에서 나오게 하려면
+- 내가 만든 클래스위에 Serializable Attribute를 붙여 줘야 한다.
