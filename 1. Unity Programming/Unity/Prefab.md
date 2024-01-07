@@ -19,13 +19,14 @@
 ### 1. Prefab Asset 과 Prefab Instance 의 기본적인 차이점
 - ![Alt text](./Capture/20240107_194114.png)
 - ![Alt text](./Capture/20240107_195538.png)
-  - Prefab Asset은 Asset 폴더에 존재하는 클래스 같은 존재고, Prefab Instance는 Hierarchy에 존재하는 인스턴스 같은 존재다.
+  - C#으로 비유
+    - Prefab Asset은 Asset 폴더에 존재하는 클래스 같은 존재다.
+    - Prefab Instance는 Hierarchy에 존재하는 인스턴스 같은 존재다.
 
 <br/>
 
 ### 2. Prefab Asset (원본)
-- Prefab Asset
-  - ![Alt text](./Capture/20240107_195010.png)
+- ![Alt text](./Capture/20240107_195010.png)
 - Prefab Asset에 대한 수정은 모든 prefab instance에 영향을 미친다. 
 - 유니티 공식 문서
   - ![Alt text](./Capture/20240107_194607.png)
@@ -33,6 +34,7 @@
 <br/>
 
 ### 3. Prefab Instance (원본으로 생성된 인스턴스)
+- ![Alt text](./Capture/20240107_202713.png)
 - Prefab Instance로도 Apply를 누르면 Prefab Asset을 변경 시켜 버릴 수 있기 때문에 $\bf{\large{\color{#ff0000}절대로\ 'Apply'를\ 누르지\ 않도록\ 한다.}}$ 
   - ![Alt text](./Capture/20240107_201036.png)
 - **파란색 네모로 표시되는 이유**
