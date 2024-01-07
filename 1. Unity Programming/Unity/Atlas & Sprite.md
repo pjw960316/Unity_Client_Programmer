@@ -17,5 +17,7 @@
   - Material이 알파를 지원하지 않으면 SpriteRenderer의 Color의 알파 값을 변화시켜도 투명도는 변화하지 않는다.
 - ![Alt text](./Capture/20231127_153751.png)
 
+<br/><br/><br/>
+
 # Texture의 관점으로 바라 본 Sprite 와 Atlas
 - ![Alt text](./Capture/20231127_153100.png) 
