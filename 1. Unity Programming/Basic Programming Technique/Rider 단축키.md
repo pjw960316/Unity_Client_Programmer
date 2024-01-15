@@ -9,6 +9,7 @@
 - [Ctrl + Shift + F : 프로젝트에서 해당 키워드 찾기](#ctrl--shift--f--프로젝트에서-해당-키워드-찾기)
 - [Alt + Enter : Rider의 코드 리팩터링](#alt--enter--rider의-코드-리팩터링)
 - [Ctrl + Alt + B : 디버깅 포인트 목록 보기](#ctrl--alt--b--디버깅-포인트-목록-보기)
+- [Ctrl + Alt + Enter : Reformat Existing Code](#ctrl--alt--enter--reformat-existing-code)
 - [Ctrl + G : 줄 번호 이동](#ctrl--g--줄-번호-이동)
 - [Ctrl + R + R : 이름 변경](#ctrl--r--r--이름-변경)
   
@@ -48,6 +49,10 @@
 # Ctrl + Alt + B : 디버깅 포인트 목록 보기
 - ![20230907_153123](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/8c4a23ab-3775-4f15-adc7-13e70a3be3b5)
 - 전체 선택 하고 '-'를 누르면 디버깅 포인트 모두 날릴 수 있다.
+<br/><br/><br/>
+
+# Ctrl + Alt + Enter : Reformat Existing Code
+- 코드 정리
 <br/><br/><br/>
 
 # Ctrl + G : 줄 번호 이동
