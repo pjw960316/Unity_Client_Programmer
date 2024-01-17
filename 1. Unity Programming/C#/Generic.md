@@ -54,6 +54,6 @@ void Main()
 ~~~
 - 기능 : Generic 타입이 **해당 클래스 또는 자식이면 컴파일 에러를 남기지 않고 정상 동작**하지만 그렇지 않으면 컴파일 에러를 낸다.
 - ![Alt text](./Capture/20240118_002317.png)
-  - SoccerPlayer를 상속 받으면 어떠한 Dictionary도 TestGeneric Method를 호출 할 수 있기 때문에 자료구조의 타입 마다 메서드를 구현 할 필요가 없다.
+  - **Dictionary의 Value Type이 SoccerPlayer를 상속 받는 Dictionary라면 TestGeneric의 인자로 들어올 수 있기 때문에, 자료구조의 타입 마다 메서드(예시에서의 TestGeneric)를 구현 할 필요가 없다.**
 - ![Alt text](./Capture/20240118_002516.png)
   - 호출하는 구문에서 더 이상 <>로 타입을 명시해 주지 않아도 된다.
