@@ -8,6 +8,8 @@
     - [1. Rider에서는 과거의 코드와 로컬을 비교할 수 있다.](#1-rider에서는-과거의-코드와-로컬을-비교할-수-있다)
     - [2. 실수로 이전의 코드를 지웠지만 라이더는 모두 기억하고 있다.](#2-실수로-이전의-코드를-지웠지만-라이더는-모두-기억하고-있다)
 
+<br/><br/><br/>
+
 # 공식문서
 - :link:[Rider Official](https://www.jetbrains.com/help/rider/Introduction.html)
   
