@@ -16,7 +16,8 @@
 ### 2. Order In Layer 비교
   - Order In Layer가 높을 수록 위에 그려진다. 
 ### 3. Unity Hierarchy에서의 위치 비교
-  - ![Alt text](./Capture/2023092601.png20240204_185901.png)
+- ![Alt text](./Capture/20240204_185901.png)
+  
 
 
 <br/><br/><br/>
