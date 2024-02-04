@@ -20,8 +20,14 @@
 # :star::star::star:그려지는 순서:star::star::star:
 ### 1. Sorting Layer 비교
   - **Sorting Layer가 높을 수록 위에 그려진다. (위에 그려지는 것이 보인다.)**
+
+<br/>
+
 ### 2. Order In Layer 비교
   - **Order In Layer가 높을 수록 위에 그려진다.**
+
+<br/>
+
 ### 3. Unity Hierarchy에서의 위치 비교
 - ![Alt text](./Capture/20240204_185901.png)
   
