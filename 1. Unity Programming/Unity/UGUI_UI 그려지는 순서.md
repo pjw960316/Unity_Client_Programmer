@@ -6,7 +6,8 @@
     - [2. Order In Layer 비교](#2-order-in-layer-비교)
     - [3. Unity Hierarchy에서의 위치 비교](#3-unity-hierarchy에서의-위치-비교)
 - [Sorting Layer](#sorting-layer)
-- [Order In Layer](#order-in-layer)
+- [주의 사항](#주의-사항)
+- [Particle은 특수하게 Order를 조절한다.](#particle은-특수하게-order를-조절한다)
 - [Sorting Layer vs Layer](#sorting-layer-vs-layer)
 
 <br/><br/><br/>
@@ -38,9 +39,19 @@
 
 <br/><br/><br/>
 
-# Order In Layer
+# 주의 사항
+- order 들을 관리할 때는 order가 음수가 되면 예상하지 못한 버그가 발생할 수 있기 때문에 양수로 관리한다.
+  - 보통 제일 아래 깔리는 order를 0으로 default setting을 하기 때문이다.
+  - ![Alt text](./Capture/20240204_191749.png)
+- 동적으로 order를 변경하는 코드(Observer Pattern)를 이용하여 order가 변경 됐을 때 보이지 않을 수 있는 잠재적인 상황도 제어한다. 
+
+<br/><br/><br/>
+
+# Particle은 특수하게 Order를 조절한다.
+- Particle은 내부적으로 rendering order를 관리하고 있기 때문에 GetComponent를 이용해서 가져온다.
 
 <br/><br/><br/>
 
 # Sorting Layer vs Layer
 - ![20230209_113748](https://user-images.githubusercontent.com/55792986/217703459-dc53fd92-b8ec-4a85-8eaf-8a3472e09ac8.png)
+  
