@@ -12,6 +12,7 @@
 - [Ctrl + Alt + Enter : Reformat Existing Code](#ctrl--alt--enter--reformat-existing-code)
 - [Ctrl + G : 줄 번호 이동](#ctrl--g--줄-번호-이동)
 - [Ctrl + R + R : 이름 변경](#ctrl--r--r--이름-변경)
+- [라이더에서 영역 선택한 부분 Time-Lapse](#라이더에서-영역-선택한-부분-time-lapse)
   
  <br/><br/><br/>
   
@@ -62,3 +63,6 @@
 # Ctrl + R + R : 이름 변경
 - Rename Refactoring
 <br/><br/><br/>
+
+# 라이더에서 영역 선택한 부분 Time-Lapse
+- ![alt text](./Capture/20240208_111431.png)
