@@ -1,27 +1,17 @@
 # 목차
 - [목차](#목차)
-- [개요](#개요)
 - [Property를 사용해야 하는 이유](#property를-사용해야-하는-이유)
 - [:star:자동완성:star:](#star자동완성star)
 - [자동 프로퍼티의 단점](#자동-프로퍼티의-단점)
 - [:star:캡슐화 : 멤버 변수(특히 데이터 필드)는 public이 아닌 private으로 사용해야 한다.](#star캡슐화--멤버-변수특히-데이터-필드는-public이-아닌-private으로-사용해야-한다)
-- [문법](#문법)
-
-<br/><br/><br/>
-
-# 개요
-- 필요할 때 자동완성을 이용해서 사용하자.
+- [기초 문법](#기초-문법)
 
 <br/><br/><br/>
 
 # Property를 사용해야 하는 이유
-- :link:[Reference](https://developer-talk.tistory.com/39)
-- 변수(프로퍼티)의 값을 변경하거나(set) 가져올 때(get) 조건을 걸어서 변수의 접근을 제어할 수 있기 때문입니다.
-  - get, set을 만들 때 조건문으로 설정한다.
-- get과 set이 간단한 경우 매우 간편하게 선언할 수 있다.
-  - C#에서 자동으로 getter와 setter를 만들어 주는 편리한 property 문법이 있다.
-- get과 set에 대해서 F12를 통해 어디서 get하고 어디서 set하는 지 쉽게 알 수 있다.
-  - 이게 진짜 크다!!!
+- Property를 이용하면 F12를 통해 get 과 set의 호출 위치를 쉽게 알 수 있다.
+  - 일반 변수로 선언하면 set 하는 부분을 찾기가 불편하다. 
+
 
 <br/><br/><br/>
 
@@ -46,7 +36,7 @@
 
 <br/><br/><br/>
 
-# 문법
+# 기초 문법
 - ![image](https://user-images.githubusercontent.com/55792986/207478777-de5bddc1-190f-4af7-a078-84fd85e8d9a0.png)
 ~~~c#
 p.Age = 10; //좌변식이므로 자동으로 set이 호출.
