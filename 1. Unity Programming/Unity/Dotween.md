@@ -1,6 +1,7 @@
 # 목차
 - [목차](#목차)
 - [Dotween](#dotween)
+- [Dotween 팁](#dotween-팁)
 - [공부](#공부)
 
 <br/><br/><br/>
@@ -9,6 +10,12 @@
 - ![20230102_153850](https://user-images.githubusercontent.com/55792986/210201007-f8c843c0-1a21-4fd8-88f9-b362064565e3.png)
 - Dotween은 어떤 값의 Value를 x1 -> x2로 점진적으로 변화 시킬 때 유용하다.
   - 해당 값을 람다로 이용해서 전달도 되고, 람다 내부에 구현을 통해 점진적 변화에 커스텀 한 조절을 넣을 수도 있다.
+
+<br/><br/><br/>
+
+# Dotween 팁
+- Preview Controls
+  - 이거로 Scene에서 해당 Tween을 미리 재생 시켜 볼 수 있다.
 
 <br/><br/><br/>
 

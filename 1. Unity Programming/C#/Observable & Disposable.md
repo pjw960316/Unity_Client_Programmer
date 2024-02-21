@@ -3,6 +3,7 @@
 - [이전에 이해하기 어려웠던 이유는 용어 때문이었다!](#이전에-이해하기-어려웠던-이유는-용어-때문이었다)
 - [왜 Observable.Create 같은 Observable을 만들고 Subscribe를 했을 때 리턴타입은 IDisposable 인가?](#왜-observablecreate-같은-observable을-만들고-subscribe를-했을-때-리턴타입은-idisposable-인가)
 - [Subscribe안에 넣은 인자가 Observable.Create() 뭐시기의 콜백이 되는 거 (머리로는 대충 이해했는데 정리 필요)](#subscribe안에-넣은-인자가-observablecreate-뭐시기의-콜백이-되는-거-머리로는-대충-이해했는데-정리-필요)
+- [Using으로 Dispose()를 알아서 하도록 한다!](#using으로-dispose를-알아서-하도록-한다)
 - [Observable 원리](#observable-원리)
 - [Await 걸면 Observable.Create() 같은 메서드에서 Subscribe()를 걸지 않아도 작업이 완료 되면 호출이 된다.](#await-걸면-observablecreate-같은-메서드에서-subscribe를-걸지-않아도-작업이-완료-되면-호출이-된다)
 
@@ -51,6 +52,29 @@ class Program
 <br/><br/><br/>
 
 - 밑에는 과거에 적은 거라 다시 보고 필요 없으면 날려
+<br/><br/><br/>
+
+# Using으로 Dispose()를 알아서 하도록 한다!
+- Dispose()는 까먹을 수 있다.
+~~~c#
+static IEnumerable<int> LoadNumbers(string filePath)
+{
+    using StreamReader reader = File.OpenText(filePath);
+    
+    var numbers = new List<int>();
+    string line;
+    while ((line = reader.ReadLine()) is not null)
+    {
+        if (int.TryParse(line, out int number))
+        {
+            numbers.Add(number);
+        }
+    }
+    return numbers;
+}
+~~~
+- ![alt text](./Capture/20240221_112834.png)
+
 <br/><br/><br/>
 
 # Observable 원리
