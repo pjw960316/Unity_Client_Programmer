@@ -75,7 +75,7 @@
 
 <br/>
 
-- **1번 순서** : 우클릭 -> Open In -> Explorer
+- **1번 순서** : Rider Script에서 우클릭 -> Open In -> Explorer
 - **2번 순서** : 경로를 Perforce의 WorkSpace에 복붙
 - **3번 순서** : 파일 History 열기
 - **4번 순서** : Ctrl 눌러서 비교하고 싶은 두 파일 선택하기
