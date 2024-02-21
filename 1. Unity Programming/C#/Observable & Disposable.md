@@ -3,6 +3,7 @@
 - [이전에 이해하기 어려웠던 이유는 용어 때문이었다!](#이전에-이해하기-어려웠던-이유는-용어-때문이었다)
 - [왜 Observable.Create 같은 Observable을 만들고 Subscribe를 했을 때 리턴타입은 IDisposable 인가?](#왜-observablecreate-같은-observable을-만들고-subscribe를-했을-때-리턴타입은-idisposable-인가)
 - [Subscribe안에 넣은 인자가 Observable.Create() 뭐시기의 콜백이 되는 거 (머리로는 대충 이해했는데 정리 필요)](#subscribe안에-넣은-인자가-observablecreate-뭐시기의-콜백이-되는-거-머리로는-대충-이해했는데-정리-필요)
+- [using (Effective C#)](#using-effective-c)
 - [Using으로 Dispose()를 알아서 하도록 한다!](#using으로-dispose를-알아서-하도록-한다)
 - [Observable 원리](#observable-원리)
 - [Await 걸면 Observable.Create() 같은 메서드에서 Subscribe()를 걸지 않아도 작업이 완료 되면 호출이 된다.](#await-걸면-observablecreate-같은-메서드에서-subscribe를-걸지-않아도-작업이-완료-되면-호출이-된다)
@@ -52,6 +53,13 @@ class Program
 <br/><br/><br/>
 
 - 밑에는 과거에 적은 거라 다시 보고 필요 없으면 날려
+<br/><br/><br/>
+
+# using (Effective C#)
+> Using 문은 컴파일타임에 IDisposable 인터페이스를 지원하는 타입에 대해서만 사용할 수 있다.
+> Using 문은 컴파일러가 알아서 Try-Catch로 변환 시킨다.
+> 메서드 내에서 IDisposable 인터페이스를 구현한 객체를 지역변수로 사용하는 경우라면 항상 using 문을 사용하기 바란다.
+
 <br/><br/><br/>
 
 # Using으로 Dispose()를 알아서 하도록 한다!
