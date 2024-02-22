@@ -1,5 +1,6 @@
 # 목차
 - [목차](#목차)
+- [Rider Ienumerable 타입](#rider-ienumerable-타입)
 - [Stack Trace](#stack-trace)
     - [1. Lambda Method의 StackTrace](#1-lambda-method의-stacktrace)
     - [2. 일반적인 StackTrace](#2-일반적인-stacktrace)
@@ -7,6 +8,11 @@
 - [Conditional Line BreakPoints : Update 메서드나 For문 디버깅 하기](#conditional-line-breakpoints--update-메서드나-for문-디버깅-하기)
 - [실용주의 프로그래머](#실용주의-프로그래머)
 - [:star::star::star:디버깅 과정에서 함수의 결과값 보는 법](#starstarstar디버깅-과정에서-함수의-결과값-보는-법)
+
+<br/><br/><br/>
+
+# Rider Ienumerable 타입
+- result 누르면 List 형식으로 볼 수 있다.
 
 <br/><br/><br/>
 
