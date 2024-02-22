@@ -14,6 +14,8 @@
 - [Ctrl + R + R : 이름 변경](#ctrl--r--r--이름-변경)
 - [라이더에서 영역 선택한 부분 Time-Lapse](#라이더에서-영역-선택한-부분-time-lapse)
 - [:star:라이더에서 최신 리비전과 비교하는 것이 아니라 과거의 두 리비전끼리 비교하는 방법 : Perforce 이용하기](#star라이더에서-최신-리비전과-비교하는-것이-아니라-과거의-두-리비전끼리-비교하는-방법--perforce-이용하기)
+    - [1. Rider에서 바로 보기](#1-rider에서-바로-보기)
+    - [2. Perforce 거치기](#2-perforce-거치기)
   
  <br/><br/><br/>
   
@@ -75,6 +77,13 @@
 
 <br/>
 
+### 1. Rider에서 바로 보기
+- **1번 순서** : Rider Script에서 우클릭 -> Perforce -> Show History
+- **2번 순서** : 목록에서 비교하고 싶은 파일 선택 -> Ctrl + D
+
+<br/>
+
+### 2. Perforce 거치기
 - **1번 순서** : Rider Script에서 우클릭 -> Open In -> Explorer
 - **2번 순서** : 경로를 Perforce의 WorkSpace에 복붙
 - **3번 순서** : 파일 History 열기
