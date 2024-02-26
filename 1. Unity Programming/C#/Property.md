@@ -2,6 +2,7 @@
 - [목차](#목차)
 - [Property를 사용해야 하는 이유](#property를-사용해야-하는-이유)
 - [:star:자동완성:star:](#star자동완성star)
+- [Property에서 사용하는 Back Field에 대해서 null 체크를 해야 한다.](#property에서-사용하는-back-field에-대해서-null-체크를-해야-한다)
 - [자동 프로퍼티의 단점](#자동-프로퍼티의-단점)
 - [:star:캡슐화 : 멤버 변수(특히 데이터 필드)는 public이 아닌 private으로 사용해야 한다.](#star캡슐화--멤버-변수특히-데이터-필드는-public이-아닌-private으로-사용해야-한다)
 - [Property의 Set할 때 null reference exception이 발생하면](#property의-set할-때-null-reference-exception이-발생하면)
@@ -20,6 +21,12 @@
 - Rider에서는 private 멤버에 대해서 필요하면 Alt+Enter를 통해 Property로 만들어라.
 - 아래에 문법은 정리했지만 자동완성을 하는 것이 가장 큰 테크닉이다.
 - ![Alt text](./Capture/20231017.png)
+
+<br/><br/><br/>
+
+# Property에서 사용하는 Back Field에 대해서 null 체크를 해야 한다.
+- Property의 Get과 Set은 메서드다.
+- 메서드안에서 이용되는 Back Field는 변수다. 그러므로 null이 올 수 있다! 
 
 <br/><br/><br/>
 
