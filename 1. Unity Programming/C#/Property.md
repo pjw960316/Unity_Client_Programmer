@@ -4,6 +4,7 @@
 - [:star:자동완성:star:](#star자동완성star)
 - [자동 프로퍼티의 단점](#자동-프로퍼티의-단점)
 - [:star:캡슐화 : 멤버 변수(특히 데이터 필드)는 public이 아닌 private으로 사용해야 한다.](#star캡슐화--멤버-변수특히-데이터-필드는-public이-아닌-private으로-사용해야-한다)
+- [Property의 Set할 때 null reference exception이 발생하면](#property의-set할-때-null-reference-exception이-발생하면)
 - [기초 문법](#기초-문법)
 
 <br/><br/><br/>
@@ -33,6 +34,14 @@
   - '객체지향의 사실과 오해'를 읽으면 바로 이해할 수 있다.
     - 필드는 private로 하고 public 메서드(행동)로 해당 필드를 관리한다.
 - 그래서 우리는 private로 선언하고 property를 이용한다.
+
+<br/><br/><br/>
+
+# Property의 Set할 때 null reference exception이 발생하면
+- ![alt text](./Capture/20240226_142143.png)
+- property의 Set에는 추가적인 동작 코드를 넣을 수 있는데. 이 동작 코드에서 null이 나면 위의 에러가 나타난다.
+
+
 
 <br/><br/><br/>
 
