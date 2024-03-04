@@ -8,7 +8,7 @@
 <br/><br/><br/>
 
 # 일단 나(=GameObject)는 켠다! : SetActive(true) 와 activeSelf를 확인한다
-- ![alt text](./Capture/20240304_204251.png)
+- ![alt text](./Capture/20240304_2042512.png)
 - ![alt text](./Capture/20240304_204113.png)
 - ![alt text](./Capture/20240304_204851.png)
 - 현재 타겟의 GameObject에 대해서 SetActive(true)를 하면 나는 켜진다. 
