@@ -7,6 +7,7 @@
 - [Async/Await 예제\_2 : Lecture](#asyncawait-예제_2--lecture)
 - [Async 함수의 리턴 타입](#async-함수의-리턴-타입)
 - [Async 키워드와 Async를 붙이는 함수](#async-키워드와-async를-붙이는-함수)
+- [await이 걸리는 순간 this도 null일 수 있다.](#await이-걸리는-순간-this도-null일-수-있다)
 - [Async vs Coroutine](#async-vs-coroutine)
 
 <br/><br/><br/>
@@ -98,6 +99,10 @@ public static async Task<int> SumAsync(int a, int b)
   - 보통 Async 키워드를 붙인 비동기 함수 내부에서 호출되고 await 뒤에 있다.
   - TestAsync의 작업이 모두 진행 완료 될 때 까지 비동기 함수에서 결과를 기다리겠다.
 <br/><br/><br/>
+
+# await이 걸리는 순간 this도 null일 수 있다.
+- 실행 흐름이 언제인지 알 수 없기 때문에 나 자체가 꺼졌을 때 해당 task가 수행 될 수 있다.
+- cancellationToken을 항상 await과 함께 쓴다고 생각해서 이벤트도 종료 시키고, 인스턴스의 필드에 대해서도 null 검사를 해서 안정성을 확보한다.
 
 # Async vs Coroutine
 - ![20230126_171320](https://user-images.githubusercontent.com/55792986/214787579-622546cc-ed29-4cb3-9e4b-06d63e80012b.png)
