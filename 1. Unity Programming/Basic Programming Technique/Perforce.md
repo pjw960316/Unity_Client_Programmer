@@ -5,6 +5,7 @@
 - [Shelve](#shelve)
 - [ChangeList 검색](#changelist-검색)
 - [Time Lapse View](#time-lapse-view)
+- [Change Owner Ship](#change-owner-ship)
 - [과거에 적은 기초](#과거에-적은-기초)
 
 <br/><br/><br/>
@@ -42,6 +43,11 @@
   - Single Revision을 이용하면 'show aging of text'를 켜서 본다.
     - 초록색에 가까울수록 최근에 작성된 코드다.
   - Incremental diffs를 이용해 changelist 마다의 변화를 볼 수 있다.
+<br/><br/><br/>
+
+# Change Owner Ship
+- ChangeList에 Shelve 된 파일만 있어야 해당 기능을 사용 할 수 있다.
+- 그러므로 내가 작업한 내용을 shelve하고, 작업한 파일은 따른 changeList에 옮겨 놓은 후에 Change Owner Ship을 진행 한다.
 
 <br/><br/><br/>
 

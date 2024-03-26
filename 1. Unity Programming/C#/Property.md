@@ -7,6 +7,7 @@
 - [:star:캡슐화 : 멤버 변수(특히 데이터 필드)는 public이 아닌 private으로 사용해야 한다.](#star캡슐화--멤버-변수특히-데이터-필드는-public이-아닌-private으로-사용해야-한다)
 - [Property의 Set할 때 null reference exception이 발생하면](#property의-set할-때-null-reference-exception이-발생하면)
 - [기초 문법](#기초-문법)
+- [고민](#고민)
 
 <br/><br/><br/>
 
@@ -62,3 +63,7 @@ int n2 = p.Age //우변식이므로 자동으로 get이 호출.
 - ![20230815_204316](https://github.com/pjw960316/Practice_For_Coding_Test/assets/55792986/e1bec356-83c1-4eec-99a4-37c1d3a4d94a)
 - getter와 setter 중에 하나만 있어도 상관은 없다.
 - 접근지정자를 지정해서 사용할 수 있는 위치를 지정할 수 있다.
+
+# 고민
+- 별거 아니지만 요즘 고민하는 것
+- 데이터 클래스의 필드에 null이 올 수 있고, 그걸 참조해서 터지는 경우. property로 이를 최대한 방어할 수 있지 않을까 싶었다.
