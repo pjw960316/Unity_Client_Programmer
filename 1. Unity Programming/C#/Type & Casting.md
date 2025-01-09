@@ -13,9 +13,9 @@ $$
 \usepackage{xcolor}
 
 \begin{document}
-$$
 
-$$
+
+
 \Huge
 \color{#ff0000}
 {
@@ -24,9 +24,9 @@ A\ B\\
 C\ D
 \end{aligned}
 }
-$$
 
-$$
+
+
 \end{document}
 $$
 
