@@ -8,15 +8,14 @@
 
 
 <br><br><br>
-
 $$
 \Huge
 \color{#ff0000}
 {
-\begin{aligned}
+\begin{flushleft}
 A\ B\\ 
 C\ D 
-\end{aligned}
+\end{flushleft}
 }
 $$
 
