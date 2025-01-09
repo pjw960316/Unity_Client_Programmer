@@ -1,6 +1,6 @@
 # 목차
 - [목차](#목차)
-- [:fire: Declared Type은 컴파일 시점의 타입 :fire: Instance Type은 런타임 시점의 타입이다.](#fire-declared-type은-컴파일-시점의-타입-fire-instance-type은-런타임-시점의-타입이다)
+- [:fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.](#fire-컴파일-시점에는-타입-검사시에-declared-type으로-한다fire-런타임-시점에는-타입-검사시에-instance-type으로-한다)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
 - [:star::star:As의 내부 동작 및 결론](#starstaras의-내부-동작-및-결론)
@@ -9,8 +9,42 @@
 
 <br><br><br>
 
-# :fire: Declared Type은 컴파일 시점의 타입 <br>:fire: Instance Type은 런타임 시점의 타입이다.
+# :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
+~~~c#
+void Main()
+{
+	Fruit fruit = new Fruit();
+	Fruit fruit2 = new Apple();
+	Apple apple = new Apple();
+	GreenApple greenApple = new GreenApple();
+	Animal animal = new Animal();
+	
+	//Test(fruit); //InvalidCastException
+	//Test(animal); //InvalidCastException
+	Test(fruit2); //Success
+	Test(apple); //Success
+	Test(greenApple); //Success
+}
 
+public static void Test(object o)
+{
+	Apple apple = (Apple) o;
+	apple.GetType().Dump();
+}
+
+public class Fruit{}
+public class Apple : Fruit{}
+public class GreenApple : Apple{}
+public class Animal{}
+~~~
+- **컴파일 단계**
+  - 컴파일러는 컴파일 단계에서 명시적 캐스팅이 성공할지 실패할지를 검증하지 않는다. 대신, 이 책임을 런타임에 넘긴다.
+  - 컴파일러는 "캐스팅 구문이 문법적으로 유효하다"고 판단하여 에러 없이 컴파일을 허용합니다.
+- **런타임 단계**
+  - 런타임 단계에서 (Apple)이 성공하려면, instance type이 Apple 타입이거나 Apple의 derived Class이어야 한다.
+  - 그러므로 fruit2와 apple은 instance type이 Apple 타입이고, greenApple은 Apple 타입의 Dervied Class이므로 캐스팅에 성공한다.
+
+<br><br><br>
 
 # As의 동작 요약
 ~~~c#
