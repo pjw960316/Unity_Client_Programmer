@@ -7,18 +7,10 @@
 - [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
 
 <br><br><br>
-$$
-\begin{flushleft}
-\Huge
-\color{#ff0000}
-{
-\begin{aligned}
-A\ B\\ 
-C\ D
-\end{aligned}
-}
-\end{flushleft}
-$$
+<div style="text-align: left; font-size: 2em; color: red;">
+  A B<br>
+  C D
+</div>
 
 
 <br><br><br>
