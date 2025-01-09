@@ -11,8 +11,10 @@ $$
 \Huge
 \color{#ff0000}
 {
+\begin{aligned}
 A\ B\\ 
 C\ D 
+\end{aligned}
 }
 $$
 
