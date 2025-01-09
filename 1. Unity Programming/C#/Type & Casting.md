@@ -9,7 +9,13 @@
 <br><br><br>
 
 $$
-\hspace*{-5cm}
+\documentclass[fleqn]{article} 
+\usepackage{xcolor}
+
+\begin{document}
+$$
+
+$$
 \Huge
 \color{#ff0000}
 {
@@ -18,6 +24,10 @@ A\ B\\
 C\ D
 \end{aligned}
 }
+$$
+
+$$
+\end{document}
 $$
 
 
