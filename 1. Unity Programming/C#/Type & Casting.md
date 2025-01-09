@@ -1,6 +1,5 @@
 # 목차
 - [목차](#목차)
-- [$\\bf{{\\color{#ff0000} Instance\\ Type = 런타임\\ 시점의\\ 객체\\ 타입 }}$](#bfcolorff0000-instance-type--런타임-시점의-객체-타입-)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
 - [:star::star:As의 내부 동작 및 결론](#starstaras의-내부-동작-및-결론)
@@ -8,24 +7,15 @@
 - [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
 
 <br><br><br>
-
 $$
-\begin{align*}
 \color{#ff0000}
-A&\to B\\
-C&\to D
-\end{align*}
-$$
-$$\bf{{\color{#ff0000}Declared\\ type = 컴파일\ 시점의\ 객체\ 타입 }}$$
-# $\bf{{\color{#ff0000} Instance\ Type = 런타임\ 시점의\ 객체\ 타입 }}$
-
-$$
+{
 \begin{align*}
-A&\to B\\
-C&\to D
+A\ B\\ 
+C\ D 
 \end{align*}
+}
 $$
-
 
 <br><br><br>
 
