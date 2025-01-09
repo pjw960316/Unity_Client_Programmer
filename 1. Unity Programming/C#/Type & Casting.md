@@ -1,6 +1,6 @@
 # 목차
 - [목차](#목차)
-- [$\\bf{\\large{\\color{#ff0000}안녕\\ 안녕  안녕}}$](#bflargecolorff0000안녕-안녕--안녕)
+- [$\\bf{\\large{\\color{#ff0000}안녕\\ 안녕\\ 안녕}}$](#bflargecolorff0000안녕-안녕-안녕)
 - [두꺼운 글씨체](#두꺼운-글씨체)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
@@ -11,7 +11,7 @@
 <br><br><br>
 
 
-# $\bf{\large{\color{#ff0000}안녕\ 안녕 <br> 안녕}}$
+# $\bf{\large{\color{#ff0000}안녕\ 안녕\ 안녕}}$
 # <span style="font-size: 24px; font-weight: bold; color: #ff0000;">두꺼운 글씨체</span>  
 <span style="font-size: 24px; font-weight: bold; color: #ff0000;">큰글씨</span>  
 <span style="font-size: 24px; font-weight: bold; color: #ff0000;">빨간색</span>
