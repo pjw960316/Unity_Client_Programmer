@@ -9,15 +9,16 @@
 <br><br><br>
 $$
 \Huge
-\textbf
-{\textcolor{red}
+\bf
+\color{#ff0000}
 {
 \begin{align*}
 A\ B\\ 
-C\ D
+C\ D 
 \end{align*}
-}}
+}
 $$
+
 
 
 <br><br><br>
