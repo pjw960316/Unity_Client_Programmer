@@ -38,10 +38,10 @@ public class GreenApple : Apple{}
 public class Animal{}
 ~~~
 - **컴파일 단계**
-  - 컴파일러는 컴파일 단계에서 명시적 캐스팅이 성공할지 실패할지를 검증하지 않는다. 대신, 이 책임을 런타임에 넘긴다.
+  - 컴파일러는 <ins>컴파일 단계에서 명시적 캐스팅이 성공할지 실패할지를 검증하지 않는다.</ins> 대신, 이 책임을 런타임에 넘긴다.
   - 컴파일러는 "캐스팅 구문이 문법적으로 유효하다"고 판단하여 에러 없이 컴파일을 허용합니다.
 - **런타임 단계**
-  - 런타임 단계에서 (Apple)이 성공하려면, instance type이 Apple 타입이거나 Apple의 derived Class이어야 한다.
+  - 런타임 단계에서 Test 메서드에 있는 Apple apple = (Apple) o;이 성공하려면, <ins>instance type이 Apple 타입이거나 Apple의 derived Class</ins>이어야 한다.
   - 그러므로 fruit2와 apple은 instance type이 Apple 타입이고, greenApple은 Apple 타입의 Dervied Class이므로 캐스팅에 성공한다.
 
 <br><br><br>
