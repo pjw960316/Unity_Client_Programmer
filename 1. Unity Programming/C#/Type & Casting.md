@@ -10,7 +10,7 @@
 <br><br><br>
 
 
-$\bf{{\color{#ff0000}Declared\\ type = 컴파일\ 시점의\ 객체\ 타입 }}$
+$$\bf{{\color{#ff0000}Declared\\ type = 컴파일\ 시점의\ 객체\ 타입 }}$$
 # $\bf{{\color{#ff0000} Instance\ Type = 런타임\ 시점의\ 객체\ 타입 }}$
 
 $$
