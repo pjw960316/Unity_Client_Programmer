@@ -9,6 +9,7 @@
 <br><br><br>
 $$
 \Huge
+\bold
 \color{#ff0000}
 {
 \begin{align*}
