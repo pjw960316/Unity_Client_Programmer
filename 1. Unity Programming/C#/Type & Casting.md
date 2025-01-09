@@ -6,14 +6,15 @@
 - [As Casting을 연속으로 하는 경우](#as-casting을-연속으로-하는-경우)
 - [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
 
-<br><br><br>
+
 $$
 \Huge
 \color{#ff0000}
+\boldmath
 {
 \begin{align*}
-A\ B\\ 
-C\ D 
+\mathbf{A\ B}\\ 
+\mathbf{C\ D}
 \end{align*}
 }
 $$
