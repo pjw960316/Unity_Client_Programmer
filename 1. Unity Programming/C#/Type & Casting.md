@@ -1,6 +1,6 @@
 # 목차
 - [목차](#목차)
-- [$\\bf{\\large{\\color{#ff0000}안녕\\ 안녕 \\n 안녕}}$](#bflargecolorff0000안녕-안녕-n-안녕)
+- [$\\bf{\\large{\\color{#ff0000}안녕\\ 안녕  안녕}}$](#bflargecolorff0000안녕-안녕--안녕)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
 - [:star::star:As의 내부 동작 및 결론](#starstaras의-내부-동작-및-결론)
@@ -10,7 +10,7 @@
 <br><br><br>
 
 
-# $\bf{\large{\color{#ff0000}안녕\ 안녕 \n 안녕}}$
+# $\bf{\large{\color{#ff0000}안녕\ 안녕 <br> 안녕}}$
 
 <br><br><br>
 
