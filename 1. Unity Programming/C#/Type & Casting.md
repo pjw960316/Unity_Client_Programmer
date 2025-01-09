@@ -10,11 +10,10 @@
 $$
 \Huge
 \color{#ff0000}
-\boldmath
 {
 \begin{align*}
-\mathbf{A\ B}\\ 
-\mathbf{C\ D}
+A\ B\\ 
+C\ D 
 \end{align*}
 }
 $$
