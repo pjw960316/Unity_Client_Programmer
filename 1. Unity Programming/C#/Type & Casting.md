@@ -9,7 +9,13 @@
 
 <br><br><br>
 
-
+$$
+\begin{align*}
+\color{#ff0000}
+A&\to B\\
+C&\to D
+\end{align*}
+$$
 $$\bf{{\color{#ff0000}Declared\\ type = 컴파일\ 시점의\ 객체\ 타입 }}$$
 # $\bf{{\color{#ff0000} Instance\ Type = 런타임\ 시점의\ 객체\ 타입 }}$
 
