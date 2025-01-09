@@ -11,10 +11,8 @@ $$
 \Huge
 \color{#ff0000}
 {
-\begin{align*}
 A\ B\\ 
 C\ D 
-\end{align*}
 }
 $$
 
