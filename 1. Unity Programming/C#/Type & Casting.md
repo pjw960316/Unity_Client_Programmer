@@ -7,15 +7,8 @@
 - [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
 
 <br><br><br>
-
-
-\documentclass[fleqn]{article} 
-\usepackage{xcolor}
-
-\begin{document}
-
-
 $$
+\begin{flushleft}
 \Huge
 \color{#ff0000}
 {
@@ -24,11 +17,8 @@ A\ B\\
 C\ D
 \end{aligned}
 }
+\end{flushleft}
 $$
-
-
-\end{document}
-
 
 
 <br><br><br>
