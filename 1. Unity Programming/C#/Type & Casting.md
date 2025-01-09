@@ -1,6 +1,6 @@
 # 목차
 - [목차](#목차)
-- [:fire: Declared Type은 컴파일 시점의 타입  Instance Type은 런타임 시점의 타입이다.](#fire-declared-type은-컴파일-시점의-타입--instance-type은-런타임-시점의-타입이다)
+- [:fire: Declared Type은 컴파일 시점의 타입 \\t Instance Type은 런타임 시점의 타입이다.](#fire-declared-type은-컴파일-시점의-타입-t-instance-type은-런타임-시점의-타입이다)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
 - [:star::star:As의 내부 동작 및 결론](#starstaras의-내부-동작-및-결론)
@@ -9,7 +9,7 @@
 
 <br><br><br>
 
-# :fire: Declared Type은 컴파일 시점의 타입 <br> Instance Type은 런타임 시점의 타입이다.
+# :fire: Declared Type은 컴파일 시점의 타입 <br>\t Instance Type은 런타임 시점의 타입이다.
 
 
 # As의 동작 요약
