@@ -8,14 +8,14 @@
 
 <br><br><br>
 
-$$
+
 \documentclass[fleqn]{article} 
 \usepackage{xcolor}
 
 \begin{document}
 
 
-
+$$
 \Huge
 \color{#ff0000}
 {
@@ -24,11 +24,11 @@ A\ B\\
 C\ D
 \end{aligned}
 }
-
+$$
 
 
 \end{document}
-$$
+
 
 
 <br><br><br>
