@@ -8,7 +8,7 @@
 
 <br><br><br>
 $$
-\large
+\Huge
 \color{#ff0000}
 {
 \begin{align*}
