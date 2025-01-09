@@ -14,7 +14,7 @@
 void Main()
 {
 	Fruit fruit = new Fruit();
-	Fruit fruit2 = new Apple();
+	Fruit fruit2 = new Apple(); //Fruit = Declared Type , Apple = Instance Type
 	Apple apple = new Apple();
 	GreenApple greenApple = new GreenApple();
 	Animal animal = new Animal();
