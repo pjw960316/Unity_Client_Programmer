@@ -6,36 +6,7 @@
 - [As Casting을 연속으로 하는 경우](#as-casting을-연속으로-하는-경우)
 - [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
 
-\documentclass[fleqn]{article}
-\usepackage{xcolor}
-
-\begin{document}
-
-$$
-\Huge
-\color{#ff0000}
-{
-\begin{aligned}
-A\ B\\ 
-C\ D
-\end{aligned}
-}
-$$
-
-\end{document}
-
-\documentclass{article}
-\usepackage{xcolor}
-
-\begin{document}
-
-{\Huge
-\color{#ff0000}
-A\ B \\
-C\ D
-}
-
-\end{document}
+<br><br><br>
 
 $$
 \hspace*{-5cm}
@@ -48,23 +19,6 @@ C\ D
 \end{aligned}
 }
 $$
-
-\documentclass{article}
-\usepackage{xcolor} 
-
-\begin{document}
-
-\begin{flushleft}
-{\Huge
-\color{#ff0000}
-\begin{aligned}
-A\ B\\ 
-C\ D
-\end{aligned}
-}
-\end{flushleft}
-
-\end{document}
 
 
 <br><br><br>
