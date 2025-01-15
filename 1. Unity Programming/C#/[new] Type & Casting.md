@@ -1,8 +1,10 @@
 # 목차
 - [목차](#목차)
 - [:fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.](#fire-컴파일-시점에는-타입-검사시에-declared-type으로-한다fire-런타임-시점에는-타입-검사시에-instance-type으로-한다)
+- [:fire: is는 런타임 시점에 Instance Type을 비교해서 나와 같은 Instance Type인지 아니면 나의 Derived Instance Type인지 비교해서 T/F를 리턴한다.](#fire-is는-런타임-시점에-instance-type을-비교해서-나와-같은-instance-type인지-아니면-나의-derived-instance-type인지-비교해서-tf를-리턴한다)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
+- [](#)
 - [:star::star:As의 내부 동작 및 결론](#starstaras의-내부-동작-및-결론)
 - [As Casting을 연속으로 하는 경우](#as-casting을-연속으로-하는-경우)
 - [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
@@ -45,6 +47,40 @@ public class Animal{}
   - 그러므로 fruit2와 apple은 instance type이 Apple 타입이고, greenApple은 Apple 타입의 Dervied Class이므로 캐스팅에 성공한다.
 
 <br><br><br>
+
+# :fire: is는 런타임 시점에 Instance Type을 비교해서 나와 같은 Instance Type인지 아니면 나의 Derived Instance Type인지 비교해서 T/F를 리턴한다.
+~~~c#
+void Main()
+{
+	Fruit fruit = new Fruit();
+	Fruit apple_1 = new Apple();
+	Apple apple_2 = new Apple();
+	GreenApple apple_3 = new GreenApple();
+	
+	Test(fruit);
+	Test(apple_1);
+	Test(apple_2);
+	Test(apple_3);
+}
+
+static void Test(Fruit inputObj)
+{
+	if(inputObj is Apple)
+	{
+		(inputObj.ToString() + " is Apple").Dump();
+	}
+	else
+	{
+		(inputObj.ToString() + " is not Apple").Dump();
+	}
+}
+
+
+class Fruit {}
+class Apple : Fruit{}
+class GreenApple : Apple{}
+~~~
+
 
 # As의 동작 요약
 ~~~c#
@@ -113,6 +149,7 @@ d는 다운 캐스팅에 성공한다.
 
 <br/><br/><br/>
 
+# 
 # :star::star:As의 내부 동작 및 결론
 - ![Alt text](./Capture/20231023_115636.png)
 - ![Alt text](./Capture/20231023_115234.png)
