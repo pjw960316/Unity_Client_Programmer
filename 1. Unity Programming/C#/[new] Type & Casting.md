@@ -1,7 +1,7 @@
 # 목차
 - [목차](#목차)
 - [:fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.](#fire-컴파일-시점에는-타입-검사시에-declared-type으로-한다fire-런타임-시점에는-타입-검사시에-instance-type으로-한다)
-- [:fire: is는 런타임 시점에 Instance Type을 비교해서 :fire: 나와 같은 Instance Type인지 아니면 :fire: 나의 Derived Instance Type인지 비교해서 T/F를 리턴한다.](#fire-is는-런타임-시점에-instance-type을-비교해서-fire-나와-같은-instance-type인지-아니면-fire-나의-derived-instance-type인지-비교해서-tf를-리턴한다)
+- [:fire: Is는 런타임 시점에 Instance Type을 비교해서 :fire: 나와 같은 Instance Type인지 아니면 :fire: 나의 Derived Instance Type인지 비교해서 :fire: T/F를 리턴한다.](#fire-is는-런타임-시점에-instance-type을-비교해서-fire-나와-같은-instance-type인지-아니면-fire-나의-derived-instance-type인지-비교해서-fire-tf를-리턴한다)
 - [As의 동작 요약](#as의-동작-요약)
 - [As의 동작](#as의-동작)
 - [](#)
@@ -48,7 +48,7 @@ public class Animal{}
 
 <br><br><br>
 
-# :fire: is는 런타임 시점에 Instance Type을 비교해서 <br>:fire: 나와 같은 Instance Type인지 아니면 <br>:fire: 나의 Derived Instance Type인지 비교해서 T/F를 리턴한다.
+# :fire: Is는 런타임 시점에 Instance Type을 비교해서 <br>:fire: 나와 같은 Instance Type인지 아니면 <br>:fire: 나의 Derived Instance Type인지 비교해서 <br>:fire: T/F를 리턴한다.
 ~~~c#
 void Main()
 {
