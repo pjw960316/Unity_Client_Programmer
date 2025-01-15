@@ -2,12 +2,10 @@
 - [목차](#목차)
 - [:fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.](#fire-컴파일-시점에는-타입-검사시에-declared-type으로-한다fire-런타임-시점에는-타입-검사시에-instance-type으로-한다)
 - [:fire: Is는 런타임 시점에 Instance Type을 비교해서 :fire: 나와 같은 Instance Type인지 아니면 :fire: 나의 Derived Instance Type인지 비교해서 :fire: T/F를 리턴한다.](#fire-is는-런타임-시점에-instance-type을-비교해서-fire-나와-같은-instance-type인지-아니면-fire-나의-derived-instance-type인지-비교해서-fire-tf를-리턴한다)
-- [As의 동작 요약](#as의-동작-요약)
-- [As의 동작](#as의-동작)
-- [](#)
-- [:star::star:As의 내부 동작 및 결론](#starstaras의-내부-동작-및-결론)
+- [is도 제대로 모르고 as를 봤군 (지워)](#is도-제대로-모르고-as를-봤군-지워)
+- [As의 동작 \[지우자\]](#as의-동작-지우자)
 - [As Casting을 연속으로 하는 경우](#as-casting을-연속으로-하는-경우)
-- [업 캐스팅 vs 다운 캐스팅](#업-캐스팅-vs-다운-캐스팅)
+- [업 캐스팅 vs 다운 캐스팅 \[지금 생각에는 컴파일 에러와 런타임 에러의 차이로 보이는데 이때 잘못 알고 한 듯. 다시 공부부\]](#업-캐스팅-vs-다운-캐스팅-지금-생각에는-컴파일-에러와-런타임-에러의-차이로-보이는데-이때-잘못-알고-한-듯-다시-공부부)
 
 <br><br><br>
 
@@ -79,25 +77,18 @@ static void Test(Fruit inputObj)
 class Fruit {}
 class Apple : Fruit{}
 class GreenApple : Apple{}
+
+/*
+UserQuery+Fruit is not Apple
+UserQuery+Apple is Apple
+UserQuery+Apple is Apple
+UserQuery+GreenApple is Apple
+*/
 ~~~
 
+# is도 제대로 모르고 as를 봤군 (지워)
 
-# As의 동작 요약
-~~~c#
-// 상속구조는 Animal -> Dog -> Pomeranian
-//Animal과 Dog은 아래 예제를 보면 클래스다.
-Animal obj = new Pomeranian();
-obj as Dog; // 캐스팅 성공
-~~~
-- Animal : 타입
-- Pomeranian : 인스턴스 타입 (=실제 타입)
-- 나만의 용어로 앞으로 이렇게 설명 할 것 이다.
-- $\bf{\large{\color{#ff0000}As는\ 비교\ 대상의\ 인스턴스\ 타입과\ 캐스팅을\ 하려는\ 타입이\ 동일하거나\ 캐스팅을\ 하려는\ 타입의\ 하위\ 타입이면\ 캐스팅에\ 성공한다.}}$
-- $\bf{\large{\color{#ff0000}obj의\ 인스턴스\ 타입은\ Pomeranian이고,\ 캐스팅을\ 하려는\ 타입은\ Dog다.}}$
-- obj 인스턴스 타입인 Pomeranian은 캐스팅을 하려는 타입인 Dog과 동일하지는 않지만, 하위 타입이므로 캐스팅에 성공한다.
-<br/><br/><br/>
-
-# As의 동작
+# As의 동작 [지우자]
 ~~~c#
 class Animal
 {
@@ -147,18 +138,6 @@ d는 다운 캐스팅에 성공한다.
 > 타입 안정성(Type Safety): 타입을 명확히 알고 있으면, 해당 타입의 메서드와 프로퍼티만을 사용하게 됩니다. 이는 런타임 에러의 가능성을 줄입니다.
 > 오버로딩과 다형성(Overloading & Polymorphism): 특히 객체지향 프로그래밍에서는 같은 이름의 메서드가 다른 타입에 대해 다르게 동작할 수 있습니다. 타입을 명확히 알고 있으면, 어떤 메서드가 호출될지 예측하기 쉽습니다.
 
-<br/><br/><br/>
-
-# 
-# :star::star:As의 내부 동작 및 결론
-- ![Alt text](./Capture/20231023_115636.png)
-- ![Alt text](./Capture/20231023_115234.png)
-- **이것만 기억하자.**
-- 싱글턴의 어떤 메서드를 이용해서 객체를 생성할 수 있다. 
-  - 예시 : Animal obj = 싱글턴 코드
-- 그러면 이게 타입은 Animal이지만 인스턴스 타입은 싱글턴 코드를 봐야 한다.
-- 이 때 obj as Dog를 했을 때 성공하면 싱글턴 코드에서 Dog 타입이나 Dog의 하위 타입으로 받아 온 것 이다!!!
-- 실패 했으면 싱글턴 코드에서 상위 타입으로 받거나 다른 타입인 것이고. 그러면 null로 리턴 한다.
 
 <br/><br/><br/>
 
@@ -172,7 +151,7 @@ d는 다운 캐스팅에 성공한다.
 
 <br/><br/><br/>
 
-# 업 캐스팅 vs 다운 캐스팅
+# 업 캐스팅 vs 다운 캐스팅 [지금 생각에는 컴파일 에러와 런타임 에러의 차이로 보이는데 이때 잘못 알고 한 듯. 다시 공부부]
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/275c0001-0696-4d0d-8e7c-d6e8bf010463)
 ~~~c#
 class Program
