@@ -1,14 +1,3 @@
-# 목차
-- [목차](#목차)
-- [:fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.](#fire-컴파일-시점에는-타입-검사시에-declared-type으로-한다fire-런타임-시점에는-타입-검사시에-instance-type으로-한다)
-- [:fire: Is는 런타임 시점에 Instance Type을 비교해서 :fire: 나와 같은 Instance Type인지 아니면 :fire: 나의 Derived Instance Type인지 비교해서 :fire: T/F를 리턴한다.](#fire-is는-런타임-시점에-instance-type을-비교해서-fire-나와-같은-instance-type인지-아니면-fire-나의-derived-instance-type인지-비교해서-fire-tf를-리턴한다)
-- [is도 제대로 모르고 as를 봤군 (지워)](#is도-제대로-모르고-as를-봤군-지워)
-- [As의 동작 \[지우자\]](#as의-동작-지우자)
-- [As Casting을 연속으로 하는 경우](#as-casting을-연속으로-하는-경우)
-- [업 캐스팅 vs 다운 캐스팅 \[지금 생각에는 컴파일 에러와 런타임 에러의 차이로 보이는데 이때 잘못 알고 한 듯. 다시 공부부\]](#업-캐스팅-vs-다운-캐스팅-지금-생각에는-컴파일-에러와-런타임-에러의-차이로-보이는데-이때-잘못-알고-한-듯-다시-공부부)
-
-<br><br><br>
-
 # :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
 ~~~c#
 void Main()
