@@ -35,7 +35,7 @@ public class Animal{}
 
 <br><br><br>
 
-# :fire: Is는 런타임 시점에 검사 대상 Instance Type과 검사 타겟의 Instance Type을 비교해서 <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
+# :fire: Is는 런타임 시점에 <br>:fire 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교해서 <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
 ~~~c#
 void Main()
 {
