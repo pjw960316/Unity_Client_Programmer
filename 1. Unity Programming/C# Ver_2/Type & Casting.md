@@ -76,7 +76,7 @@ UserQuery+GreenApple is Apple
 ~~~
 
 # 그림
-- ![alt text](image-1.png)
+- ![alt text](./capture/0117_1.png)
 # is도 제대로 모르고 as를 봤군 (지워)
 
 # As의 동작 [지우자]
