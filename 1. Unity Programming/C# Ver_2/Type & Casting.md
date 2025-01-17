@@ -52,7 +52,9 @@ void Main()
 
 static void Test(Fruit inputObj)
 {
-	if(inputObj is Apple) //inputObj(=검사 대상)가 Apple(=검사 타겟)과 같은 타입이거나, Apple의 Derived Type이면 TRUE를 리턴한다.
+	//inputObj(=검사 대상)가 Apple(=검사 타겟)과 같은 타입이거나
+	//Apple의 Derived Type이면 TRUE를 리턴한다.
+	if(inputObj is Apple) 
 	{
 		(inputObj.ToString() + " is Apple").Dump();
 	}
