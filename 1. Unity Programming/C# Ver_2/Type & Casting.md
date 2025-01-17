@@ -78,7 +78,7 @@ UserQuery+GreenApple is Apple
 
 <br><br><br>
 
-# :fire: Declared Type <= Instance Type일 때만 암시적 할당 가능하다. <br>:fire: Declared Type > Instance Type인 경우, 명시적 캐스팅 필요하다.
+## :fire: Declared Type <= Instance Type일 때만 암시적 할당 가능하다. <br>:fire: Declared Type > Instance Type인 경우, 명시적 캐스팅 필요하다.
 ![alt text](./capture/0117_1.png)
 - Parent는 Object의 모든 걸 갖고, Child는 Parent의 모든 걸 갖기 때문에 포함 관계를 위의 그림처럼 이해한다.
 - 여기서 업캐스팅과 다운 캐스팅의 개념이 나오지만 굳이 기록 X (지울거)
@@ -87,8 +87,12 @@ UserQuery+GreenApple is Apple
 ~~~c#
 void Main()
 {
-	Object o1 = new Parent(); // SUCCESS!
-	Parent o2 = new Object(); // Compile ERROR : cannot implicitly convert type 'object' to 'Parent'
+	Object o1 = new Parent(); // SUCCESS
+	//Parent o2 = new Object(); // Compile ERROR : cannot implicitly convert type 'object' to 'Parent'
+	Object o3 = (Parent) o1; // SUCCESS
+	
+	if(o3 is Parent) {"TRUE".Dump();} // TRUE
+	if(o3 is Object) {"TRUE".Dump();} // TRUE
 }
 ~~~
 
