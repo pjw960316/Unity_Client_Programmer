@@ -89,7 +89,7 @@ void Main()
 {
 	Object o1 = new Parent(); // SUCCESS
 	//Parent o2 = new Object(); // Compile ERROR : cannot implicitly convert type 'object' to 'Parent'
-	Object o3 = (Parent) o1; // SUCCESS
+	Object o3 = (Parent) o1; // SUCCESS -> 명시적 캐스팅 (Explicit Casting)
 	
 	if(o3 is Parent) {"TRUE".Dump();} // TRUE
 	if(o3 is Object) {"TRUE".Dump();} // TRUE
