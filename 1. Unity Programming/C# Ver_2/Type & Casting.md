@@ -62,7 +62,6 @@ static void Test(Fruit inputObj)
 	}
 }
 
-
 class Fruit {}
 class Apple : Fruit{}
 class GreenApple : Apple{}
@@ -75,60 +74,20 @@ UserQuery+GreenApple is Apple
 */
 ~~~
 
-# 그림
+<br><br><br>
+
+# :fire: Declared Type <= Instance Type일 때만 암시적 할당 가능하다. <br>:fire: Declared Type > Instance Type인 경우, 명시적 캐스팅 필요하다.
 ![alt text](./capture/0117_1.png)
-# is도 제대로 모르고 as를 봤군 (지워)
-
-# As의 동작 [지우자]
+- Parent는 Object의 모든 걸 갖고, Child는 Parent의 모든 걸 갖기 때문에 포함 관계를 위의 그림처럼 이해한다.
+- 여기서 업캐스팅과 다운 캐스팅의 개념이 나오지만 굳이 기록 X (지울거)
+- 아마 P120 ~ P127이 이걸 깊게 이해하는 내용일 테니 5장 공부 후 그 다음에 읽고 여기에도 정리하자.
 ~~~c#
-class Animal
+void Main()
 {
-	public int Age = 1;
-	
-	public void Eat()
-	{
-		Console.WriteLine("Animal is eating.");
-	}
+	Object o1 = new Parent(); // SUCCESS!
+	Parent o2 = new Object(); // Compile ERROR : cannot implicitly convert type 'object' to 'Parent'
 }
-
-class Dog : Animal
-{
-	public int DogValue = 2;
-	public void Bark()
-	{
-		Console.WriteLine("Dog is barking.");
-	}
-}
-
-class Program
-{
-	static void Main(string[] args)
-	{
-		Animal a = new Animal();
-		Animal b = new Dog();
-		
-		//a의 경우 타입은 Animal이고 인스턴스 타입은 Animal 타입이다.
-		var c = a as Dog; 
-
-		//b의 경우 타입은 Animal이고 인스턴스 타입은 Dog 타입이다.
-		//인스턴스가 Dog 타입이고 이건 Dog 타입으로 캐스팅이 된다. (as Dog;에서 Dog의 타입과 같거나 Dog의 하위 타입이니까)
-		var d = b as Dog;
-		
-		c.Dump(); //null
-		d.Dump();	
-	}
-}
-/* Result
-c는 null이 된다.
-d는 다운 캐스팅에 성공한다.
-*/
 ~~~
-- ![Alt text](./Capture/202310231.png)
-- ![Alt text](./Capture/20231023_114345.png)
-> **new로 객체를 생성할 때 타입과 인스턴스를 구분해서 생각하는 것은 좋은 습관** 입니다. 이런 분리를 통해 코드의 의미와 작동 원리를 더 정확하게 이해할 수 있습니다.
-> 타입 안정성(Type Safety): 타입을 명확히 알고 있으면, 해당 타입의 메서드와 프로퍼티만을 사용하게 됩니다. 이는 런타임 에러의 가능성을 줄입니다.
-> 오버로딩과 다형성(Overloading & Polymorphism): 특히 객체지향 프로그래밍에서는 같은 이름의 메서드가 다른 타입에 대해 다르게 동작할 수 있습니다. 타입을 명확히 알고 있으면, 어떤 메서드가 호출될지 예측하기 쉽습니다.
-
 
 <br/><br/><br/>
 
@@ -142,18 +101,19 @@ d는 다운 캐스팅에 성공한다.
 
 <br/><br/><br/>
 
-# 업 캐스팅 vs 다운 캐스팅 [지금 생각에는 컴파일 에러와 런타임 에러의 차이로 보이는데 이때 잘못 알고 한 듯. 다시 공부부]
+# 업 캐스팅 vs 다운 캐스팅 [erase]
 - ![image](https://github.com/pjw960316/Unity_Client_Programmer/assets/55792986/275c0001-0696-4d0d-8e7c-d6e8bf010463)
 ~~~c#
 class Program
 {
     class Animal
-{
-	public int Age = 1;
-	
-	public void Eat()
 	{
-		Console.WriteLine("Animal is eating.");
+		public int Age = 1;
+		
+		public void Eat()
+		{
+			Console.WriteLine("Animal is eating.");
+		}
 	}
 }
 
