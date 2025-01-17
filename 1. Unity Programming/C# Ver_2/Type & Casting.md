@@ -1,4 +1,4 @@
-# :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
+## :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
 ~~~c#
 void Main()
 {
@@ -35,7 +35,7 @@ public class Animal{}
 
 <br><br><br>
 
-# :fire: Is는 런타임 시점에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
+## :fire: Is는 런타임 시점에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
 ~~~c#
 void Main()
 {
