@@ -35,7 +35,7 @@ public class Animal{}
 
 <br><br><br>
 
-# :fire: Is는 런타임 시점에 Instance Type을 비교해서 <br>:fire: 나와 같은 Instance Type인지 아니면 <br>:fire: 나의 Derived Instance Type인지 비교해서 <br>:fire: T/F를 리턴한다.
+# :fire: Is는 런타임 시점에 검사 대상 Instance Type과 검사 타겟의 Instance Type을 비교해서 <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
 ~~~c#
 void Main()
 {
@@ -52,7 +52,7 @@ void Main()
 
 static void Test(Fruit inputObj)
 {
-	if(inputObj is Apple)
+	if(inputObj is Apple) //inputObj(=검사 대상)가 Apple(=검사 타겟)과 같은 타입이거나, Apple의 Derived Type이면 TRUE를 리턴한다.
 	{
 		(inputObj.ToString() + " is Apple").Dump();
 	}
@@ -81,6 +81,7 @@ UserQuery+GreenApple is Apple
 - Parent는 Object의 모든 걸 갖고, Child는 Parent의 모든 걸 갖기 때문에 포함 관계를 위의 그림처럼 이해한다.
 - 여기서 업캐스팅과 다운 캐스팅의 개념이 나오지만 굳이 기록 X (지울거)
 - 아마 P120 ~ P127이 이걸 깊게 이해하는 내용일 테니 5장 공부 후 그 다음에 읽고 여기에도 정리하자.
+- Type Safety 개념도 함께 정리
 ~~~c#
 void Main()
 {
