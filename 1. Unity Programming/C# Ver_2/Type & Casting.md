@@ -110,6 +110,7 @@ void Main()
 {
     Object obj1 = new Object();
 	Base obj2 = (Base)obj1; //Invalid_Cast_Exception
+	Object obj3 = (Base)obj1; //Invalid_Cast_Exception
 }
 
 public class Base { }
