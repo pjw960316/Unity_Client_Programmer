@@ -1,3 +1,7 @@
+## :fire: 용어정리 <br>:fire: Base Type - Derived Type : 상위 타입과 하위 타입 <br>:fire: Declared Type - Instance Type : 컴파일 타임의 타입과 런타임 타임의 타입. <br> () : Explicit Casting.
+
+<br><br><br>
+
 ## :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
 ~~~c#
 void Main()
@@ -80,28 +84,58 @@ UserQuery+GreenApple is Apple
 
 ## :fire: Declared Type <= Instance Type일 때만 암시적 할당 가능하다. <br>:fire: Declared Type > Instance Type인 경우, 명시적 캐스팅 필요하다.
 ![alt text](./capture/0117_1.png)
-- Parent는 Object의 모든 걸 갖고, Child는 Parent의 모든 걸 갖기 때문에 포함 관계를 위의 그림처럼 이해한다.
+- Parent는 Object의 모든 걸 갖고, Derived Type은 Base Type의 모든 걸 갖기 때문에 포함 관계를 위의 그림처럼 이해한다.
 - 여기서 업캐스팅과 다운 캐스팅의 개념이 나오지만 굳이 기록 X (지울거)
 - 아마 P120 ~ P127이 이걸 깊게 이해하는 내용일 테니 5장 공부 후 그 다음에 읽고 여기에도 정리하자.
 - Type Safety 개념도 함께 정리
 ~~~c#
 void Main()
 {
-	Object o1 = new Parent(); // SUCCESS
-	//Parent o2 = new Object(); // Compile ERROR : cannot implicitly convert type 'object' to 'Parent'
-	Object o3 = (Parent) o1; // SUCCESS -> 명시적 캐스팅 (Explicit Casting)
+	Object o1 = new Base(); // SUCCESS
+	//Parent o2 = new Object(); // Compile ERROR : cannot implicitly convert type 'object' to 'Base'
+	Object o3 = (Base) o1; // SUCCESS -> 명시적 캐스팅 (Explicit Casting)
 	
-	if(o3 is Parent) {"TRUE".Dump();} // TRUE
+	if(o3 is Base) {"TRUE".Dump();} // TRUE
 	if(o3 is Object) {"TRUE".Dump();} // TRUE
 }
+
+class Base { }
 ~~~
 
 <br/><br/><br/>
 
-## As Casting을 연속으로 하는 경우 (과거에 썼는 데 뭐 언젠가는 고치지 않을까???)
-- As를 사용하여 연속적으로 캐스팅을 하는 경우 매 번 null을 검사하는 방어 코드를 작성하게 된다.
-  - 연속적으로 if문에서 null을 체크하는 것이 보기 좋지는 않다.
-- 해결 방법
-  - ![Alt text](./Capture/20231113_205859.png)
-    - as를 이용하는 구문에 대해서 라이더의 Alt+Enter를 이용하면 Pattern Matching으로 간결하게 바꾸어 준다.
-    - Depth가 깊은 연속적인 캐스팅의 경우 따로 메서드로 만들면 가독성이 향상 된다.
+## :fire: Instance Type이 Base Type인 객체를 Derived Type으로 Expicit Casting을 시도할 때, runtime exception과 함께 실패한다.
+
+### 예외 발생 코드
+~~~c#
+void Main()
+{
+    Object obj1 = new Object();
+	Base obj2 = (Base)obj1; //Invalid_Cast_Exception
+}
+
+public class Base { }
+public class Derived : Base { }
+~~~
+- Base Type 객체는 Dervied Type에서 정의한 고유 멤버를 포함하지 않으므로, Derived Type으로 변환 할 수 없다.
+- 그러므로 is 또는 as를 이용해서 검사해야 한다.
+  
+### 예외 처리 코드
+~~~c#
+void Main()
+{
+    Object obj1 = new Object();
+	
+	if(obj1 is Base)
+	{
+		Base obj2 = (Base)obj1;
+	}
+	else
+	{
+		Base obj2 = null;
+	}
+}
+
+public class Base { }
+public class Derived : Base { }
+~~~
