@@ -104,7 +104,7 @@ class Base { }
 
 <br/><br/><br/>
 
-## :fire: Instance Type이 Base Type인 객체를 Derived Type으로 :fire: Expicit Casting을 시도할 때, runtime exception과 함께 실패한다.
+## :fire: Instance Type이 Base Type인 객체를 Derived Type으로 :<br>fire: Expicit Casting을 시도할 때, runtime exception과 함께 실패한다.
 
 #### [예외 발생 코드]
 ~~~c#
