@@ -104,9 +104,9 @@ class Base { }
 
 <br/><br/><br/>
 
-## :fire: Instance Type이 Base Type인 객체를 Derived Type으로 Expicit Casting을 시도할 때, runtime exception과 함께 실패한다.
+## :fire: Instance Type이 Base Type인 객체를 Derived Type으로 :fire: Expicit Casting을 시도할 때, runtime exception과 함께 실패한다.
 
-### 예외 발생 코드
+#### [예외 발생 코드]
 ~~~c#
 void Main()
 {
@@ -120,7 +120,7 @@ public class Derived : Base { }
 - Base Type 객체는 Dervied Type에서 정의한 고유 멤버를 포함하지 않으므로, Derived Type으로 변환 할 수 없다.
 - 그러므로 is 또는 as를 이용해서 검사해야 한다.
   
-### 예외 처리 코드
+#### [예외 처리 코드]
 ~~~c#
 void Main()
 {
