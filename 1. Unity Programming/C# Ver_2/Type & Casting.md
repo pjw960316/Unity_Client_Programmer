@@ -103,7 +103,7 @@ class Base { }
 ~~~
 <br><br>
 
-## :fire: Instance Type이 Base Type인 객체를<br>:fire: Derived Type으로 Expicit Casting을 시도할 때<br>:fire: Runtime Exception과 함께 실패한다.
+## :fire: Instance Type이 Base Type인 객체를<br>:fire: Derived Type으로 Explicit Casting을 시도할 때<br>:fire: Runtime Exception과 함께 실패한다.
 
 #### [예외 발생 코드]
 ~~~c#
