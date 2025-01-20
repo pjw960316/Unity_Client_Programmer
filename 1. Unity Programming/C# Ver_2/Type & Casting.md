@@ -39,7 +39,7 @@ public class Animal{}
 
 <br><br>
 
-## :fire: Is는 런타임 시점에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
+## :fire: Is는 런타임 시점에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.
 ~~~c#
 void Main()
 {
@@ -79,6 +79,7 @@ UserQuery+Apple is Apple
 UserQuery+GreenApple is Apple
 */
 ~~~
+- 제목에 적은 '검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.'은 '검사 타겟의 Instance Type과 같거나 검사 타겟의 Derived Instance Type이면 TRUE를 리턴한다.'와 같다.
 
 <br><br>
 
