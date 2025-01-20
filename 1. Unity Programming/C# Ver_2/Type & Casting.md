@@ -140,6 +140,6 @@ public class Derived : Base { }
 
 <br><br>
 
-# Explicit 3총사(is, as, 괄호) 중 나는 is만 사용할 것 이다.
+## :fire: Explicit 3총사(is, as, 괄호) 중 나는 is만 사용할 것 이다.
 - 가독성이 as 보다 좋다.
 - 예외처리에서 is가 가장 안전하다고 판단한다.
