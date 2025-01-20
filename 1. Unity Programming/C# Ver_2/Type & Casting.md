@@ -1,6 +1,6 @@
-## :fire: 용어정리 <br>:fire: Base Type - Derived Type : 상위 타입과 하위 타입 <br>:fire: Declared Type - Instance Type : 컴파일 타임의 타입과 런타임 타임의 타입. <br> () : Explicit Casting.
+## :fire: 용어정리 <br>:fire: Base Type - Derived Type : 상위 타입과 하위 타입 <br>:fire: Declared Type - Instance Type : Complie Type & Runtime Type <br>:fire: () : Explicit Casting
 
-<br><br><br>
+<br><br>
 
 ## :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
 ~~~c#
@@ -37,7 +37,7 @@ public class Animal{}
   - 런타임 단계에서 Test 메서드에 있는 Apple apple = (Apple) o;이 성공하려면, <ins>instance type이 Apple 타입이거나 Apple의 derived Class</ins>이어야 한다.
   - 그러므로 fruit2와 apple은 instance type이 Apple 타입이고, greenApple은 Apple 타입의 Dervied Class이므로 캐스팅에 성공한다.
 
-<br><br><br>
+<br><br>
 
 ## :fire: Is는 런타임 시점에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type과 같거나 <br>:fire: 검사 타겟의 Derived Instance Type이면 <br>:fire: TRUE를 리턴한다.
 ~~~c#
@@ -80,7 +80,7 @@ UserQuery+GreenApple is Apple
 */
 ~~~
 
-<br><br><br>
+<br><br>
 
 ## :fire: Declared Type <= Instance Type일 때만 암시적 할당 가능하다. <br>:fire: Declared Type > Instance Type인 경우, 명시적 캐스팅 필요하다.
 ![alt text](./capture/0117_1.png)
@@ -101,8 +101,7 @@ void Main()
 
 class Base { }
 ~~~
-
-<br/><br/><br/>
+<br><br>
 
 ## :fire: Instance Type이 Base Type인 객체를 Derived Type으로 :<br>fire: Expicit Casting을 시도할 때, runtime exception과 함께 실패한다.
 
