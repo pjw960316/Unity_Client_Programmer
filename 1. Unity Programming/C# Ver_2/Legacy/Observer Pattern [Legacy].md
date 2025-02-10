@@ -1,5 +1,4 @@
-## :fire: Observer Pattern (Listener & Callback)
-### 1. 개념
+## :fire: Observer Pattern (Listener & Callback) 기초
 - **내 생각 : 어떤 이벤트가 발생하면 이벤트 처리기에 등록된 메서드들이 호출되는 패턴이 옵저버 패턴이다.** 
 #### [문제 상황]
 ![image](https://user-images.githubusercontent.com/55792986/186142782-682ee612-9601-44f2-85c1-6974f9cfcb22.png)
@@ -7,30 +6,36 @@
 
 #### [해결 방법]
 - 종 = 인터페이스 = 이벤트(C#)
+
+<br>
+
 ![image](https://user-images.githubusercontent.com/55792986/186142895-16bc60d2-609a-4ff7-97fd-6a9a200444de.png)
 ![image](https://user-images.githubusercontent.com/55792986/186142945-43b38284-b326-4a37-91af-5b0ab9116389.png)
 
 <br>
 
-### 2. C# 예시
-- [Link_2 : C#에서 Event를 사용하면서 구현한 예시](https://www.codeproject.com/Articles/1084848/Implementing-Observer-Pattern-with-Events-Csharp)
-- Subject(주체) 
-  - ![image](https://user-images.githubusercontent.com/55792986/186143915-5b6c17aa-8ab9-4b94-a680-052be8b94a2f.png)
-    - 이벤트를 처리하는 처리기를 선언한다.
-    - 처리기가 이벤트에 등록되는 메서드들과 이들을 호출하는 주체를 묶어준다.
-    - 이벤트가 발생해야 함을 알려주는 주체다. 다시 말해 어떤 상황이 도래해서 호출되어야 하는 메시지 묶음를 호출하는 인스턴스.
-- Observer(관찰자, 리스너)
-  - ![image](https://user-images.githubusercontent.com/55792986/186144376-be4ede98-6ea8-4f2d-bc40-abde766bb9c3.png)
-    - 주체에서 발생한 이벤트에 등록할 메서드들이 여기서 등록된다.
+## :fire: Observer Pattern 예시
+- **Subject(주체)**
+![image](https://user-images.githubusercontent.com/55792986/186143915-5b6c17aa-8ab9-4b94-a680-052be8b94a2f.png)
+- 이벤트를 처리하는 처리기를 선언한다.
+- 처리기가 이벤트에 등록되는 메서드들과 이들을 호출하는 주체를 묶어준다.
+- 이벤트가 발생해야 함을 알려주는 주체다. 다시 말해 어떤 상황이 도래해서 호출되어야 하는 메시지 묶음를 호출하는 인스턴스.
 
 <br>
 
-### 3. 결론
+- **Observer(관찰자, 리스너)**
+![image](https://user-images.githubusercontent.com/55792986/186144376-be4ede98-6ea8-4f2d-bc40-abde766bb9c3.png)
+- 주체에서 발생한 이벤트에 등록할 메서드들이 여기서 등록된다.
+
+<br>
+
 - **내 생각 : 콜백 메서드들을 EventHandler에 등록하면, EventHandler에 신호가 오는지 귀를 기울인다. 신호가 오면 EventHandler에서 콜백 메서드들이 호출된다.**
 
-<br><br>
+<br>
 
-# 한 번 더 공부하는 기본 개념
+## :fire:
+
+## :fire: 한 번 더 공부하는 기본 개념
 ![image](https://user-images.githubusercontent.com/55792986/209259652-8b19ea06-fa46-41c5-b398-e4cdb6bf10ff.png)
 - 하나의 데이터가 변경될 때 연관된 객체가 반응해서 변경되는 기법
 - 테이블과 그래프의 연관 예시로 설명
