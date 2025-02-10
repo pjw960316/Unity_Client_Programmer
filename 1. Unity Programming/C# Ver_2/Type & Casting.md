@@ -147,7 +147,7 @@ public class Derived : Base { }
 
 <br><br>
 
-## :fire: namespace는 큰 게임 프로젝트 안에 존재하는 <br>:fire: 미니게임 프로젝트에서 독립성을 위해 사용하기 좋다고 생각한다. <br>그리고 모호성을 해결하기 위해 명시적으로 using OOOOO = OOOOO;로 적어주자. 
+## :fire: namespace는 큰 게임 프로젝트 안에 존재하는 <br>:fire: 미니게임 프로젝트에서 독립성을 위해 사용하기 좋다고 생각한다. <br>:fire::fire: 또한, 모호성을 해결하기 위해 명시적으로 using OOOOO = OOOOO;로 적어주자. 
 
 #### [Ambiguous Code]
 ~~~c#
@@ -211,10 +211,39 @@ namespace MiniGame
 
 <br><br>
 
-## :fire:
+## :fire: using과 namespace 안에 직접 선언한 클래스의 우선순위는 직접 선언이 이긴다.
+#### [예시 코드]
+~~~c#
+using System;
 
+void Main()
+{
+	char[] charArray = { 'H', 'e', 'l', 'l', 'o' };
+	String str = new String(charArray);
+	
+	if(str.GetType() == typeof(System.String))
+	{
+		//str.Any();
+		"My Custom class's priority is higher than using System".Dump();
+	}
+	else
+	{
+		str.Test();
+	}
+}
+
+public class String
+{
+	public String(char[] param) {}
+	
+	public void Test()
+	{
+		"My Custom String's Test Method Called".Dump();
+	}
+}
+// My Custom String's Test Method Called
+~~~
 <br><br>
-
 
 ## :question: using을 쓰면 컴파일러가 모든 using을 매번 검사하는 건 아니지만, <br>:question: 어쨌든 불필요한 검사가 있을 거임.
 
