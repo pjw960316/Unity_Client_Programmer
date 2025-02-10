@@ -147,7 +147,78 @@ public class Derived : Base { }
 
 <br><br>
 
-## :fire: nullable
+## :fire: namespace는 큰 게임 프로젝트 안에 존재하는 <br>:fire: 미니게임 프로젝트에서 독립성을 위해 사용하기 좋다고 생각한다. <br>그리고 모호성을 해결하기 위해 명시적으로 using OOOOO = OOOOO;로 적어주자. 
+
+#### [Ambiguous Code]
+~~~c#
+using MiniGame; // 내가 2024년에 이렇게 적어놓고 사용했다고 가정하자.
+using BigGame; // 2025년에 새로 들어온 개발자가 여기다가 이렇게 적으면 ambiguous가 발생한다. 
+
+void Main()
+{
+	// 아래의 타입은 MiniGame.MusicController인지 BigGame.MusicController인지 알 수 없다.
+	// CS0104: 'MusicController' is an ambiguous reference between 'MiniGame.MusicController' and 'BigGame.MusicController'
+	MusicController musicController = new MusicController();
+	musicController.Play();
+}
+
+namespace BigGame
+{
+	class MusicController
+	{
+		public void Play(){"BigGame".Dump();}
+	}
+}
+
+namespace MiniGame
+{
+	class MusicController
+	{
+		public void Play(){"MiniGame".Dump();}
+	}
+}
+~~~
+
+#### [Explicit Code]
+~~~c#
+using MusicController = MiniGame.MusicController; //Explicit
+
+void Main()
+{
+	MusicController musicController = new MusicController();
+	musicController.Play();
+}
+
+namespace BigGame
+{
+	class MusicController
+	{
+		public void Play(){"BigGame".Dump();}
+	}
+}
+
+namespace MiniGame
+{
+	class MusicController
+	{
+		public void Play(){"MiniGame".Dump();}
+	}
+}
+//MiniGame
+~~~
+
+
+
+<br><br>
+
+## :fire:
+
+<br><br>
+
+
+## :question: using을 쓰면 컴파일러가 모든 using을 매번 검사하는 건 아니지만, <br>:question: 어쨌든 불필요한 검사가 있을 거임.
+
+## :question: nullable
 - 좀 더 깊게 공부할 것 5장~6장 보면서
 ~~~ c#
 void Main()
