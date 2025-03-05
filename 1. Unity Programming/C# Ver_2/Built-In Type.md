@@ -6,7 +6,7 @@
 
 <br><br>
 
-## :fire: 오버플로우가 발생할 것 같은 연산에서는 <br> :fire: checked 코드 블럭 와 try-catch를 이용해서 exception handling을 하자.
+## :fire: 오버플로우가 발생할 것 같은 연산:star:(특히 돈 관련):star:에서는 <br> :fire: checked 코드블럭과 try-catch를 이용해서 exception handling을 하자.
 #### [checked 예제]
 ~~~c#
 void Main()
@@ -19,13 +19,13 @@ void Main()
 	{
 		checked
 		{
-			a = (Byte)(a + b * c); //오버플로우 날까봐 두려운 코드를 checked로 예외처리 하자.
+			a = (Byte)(a + b * c); //오버플로우 날까봐 두려운 코드를 checked로 감싸자.
 		}
 	}
 	catch (OverflowException ex) // c가 2라면 overflow가 발생하고 예외가 잡힌다.
 	{
 		Console.WriteLine($"오버플로 예외 발생: {ex.Message}");
-		a.Dump();  //126+125*2 지만 126으로 출력.
+		a.Dump();  //126 + 125 * 2 지만 오버플로우 발생해서 126으로 출력.
 	}
 }
 // result
