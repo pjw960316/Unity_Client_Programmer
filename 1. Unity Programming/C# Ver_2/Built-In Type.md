@@ -32,3 +32,12 @@ void Main()
 // 오버플로 예외 발생: Arithmetic operation resulted in an overflow.
 // 126
 ~~~
+
+<br><br>
+
+## :fire: 클래스 내부에 있는 변수도 heap에 저장.
+- heap에 저장되는 걸 알면 뭐가 좋은가?
+- heap에 저장이 되는 것과 stack에 저장이 되는 게 callbyref이 정도 밖에 지식이 없는데. 이걸 넘어서는 걸 정리해야 한다.
+- 어떤 클래스나 구조체를 생성할 때 내가 알아야 할 것
+  - 회사에서 구조체를 많이 쓰지 않았는데 왜 였을까?
+  - 사실 int도 구조체면. 구조체는 매우 흔한 개념인데.
