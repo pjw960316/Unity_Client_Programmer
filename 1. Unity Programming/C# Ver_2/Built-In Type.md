@@ -35,7 +35,7 @@ void Main()
 
 <br><br>
 
-## :fire:
+## :fire: ValueType Address는 ref, fixed를 이용해서 비교한다. <br> :fire: ReferenceType Address는 TypedReference, __makeref를 이용해서 비교한다.
 #### [Address 비교]
 ~~~c#
 void Main()
@@ -145,6 +145,7 @@ public class Test
 		stringValue = "abcd";
 	}
 }
+
 /*RESULT
 ------------------------------ 1 -----------------------
 [ValueType Compare]
@@ -182,6 +183,8 @@ obj_2 : 1672689057032
 different
 */
 ~~~
+- ref는 박싱을 막지 못한다.
+- [] 
 
 ## :fire: 클래스 내부에 있는 변수도 heap에 저장.
 - heap에 저장되는 걸 알면 뭐가 좋은가?
