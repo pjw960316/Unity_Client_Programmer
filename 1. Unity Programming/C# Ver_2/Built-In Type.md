@@ -46,11 +46,19 @@ void Main()
 	Test testObj2 = new Test();
 	Test testObj1_Copy = testObj1;
 	
-	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value);
+	//1.
+	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value, true);
+	
+	//2.
 	addressManager.CompareAddress(ref testObj1.value, ref testObj2.value);
+	
+	//3.
 	addressManager.CompareAddress(ref testObj1.stringValue, ref testObj2.stringValue);
 	
+	//4.
 	addressManager.CompareAddress(ref testObj1, ref testObj1_Copy);
+	
+	//5.
 	addressManager.CompareAddress(ref testObj1, ref testObj2);
 }
 
@@ -61,12 +69,18 @@ public class AddressManager
 		return this;
 	}
 
-	public void CompareAddress<T> (ref T obj1, ref T obj2)
+	public void CompareAddress<T> (ref T obj1, ref T obj2, bool checkBoxingTest = false)
 	{
 		if (typeof(T).IsValueType)
 		{
 			"[ValueType Compare]".Dump();
 			CompareValueTypeAddress(ref obj1, ref obj2);
+			
+			if (checkBoxingTest)
+			{
+				"[ValueType Boxing Compare]".Dump();
+				CompareValueTypeAddressUsingBoxing(obj1, obj2);
+			}
 		}
 		else
 		{
@@ -113,6 +127,11 @@ public class AddressManager
 			(obj1_address == obj2_address ? "same\n" : "different\n").Dump();
 		}
 	}
+	
+	private void CompareValueTypeAddressUsingBoxing(object obj_1, object obj_2)
+	{
+		CompareReferenceTypeAddress<object>(obj_1, obj_2);
+	}
 }
 
 public class Test
@@ -126,30 +145,40 @@ public class Test
 		stringValue = "abcd";
 	}
 }
-/*result
+/*RESULT
+------------------------------ 1 -----------------------
 [ValueType Compare]
-obj_1 : 1672651343200
-obj_2 : 1672651343200
+obj_1 : 1672689057016
+obj_2 : 1672689057016
 same
 
-[ValueType Compare]
-obj_1 : 1672651343200
-obj_2 : 1672651343232
+[ValueType Boxing Compare]
+obj_1 : 1672689064800
+obj_2 : 1672689064824
 different
 
+------------------------------ 2 -----------------------
+[ValueType Compare]
+obj_1 : 1672689057016
+obj_2 : 1672689057048
+different
+
+------------------------------ 3 -----------------------
 [ReferenceType Compare]
 obj_1 : 1670744546184
 obj_2 : 1670744546184
 same
 
+------------------------------ 4 -----------------------
 [ReferenceType Compare]
-obj_1 : 1672651343184
-obj_2 : 1672651343184
+obj_1 : 1672689057000
+obj_2 : 1672689057000
 same
 
+------------------------------ 5 -----------------------
 [ReferenceType Compare]
-obj_1 : 1672651343184
-obj_2 : 1672651343216
+obj_1 : 1672689057000
+obj_2 : 1672689057032
 different
 */
 ~~~
