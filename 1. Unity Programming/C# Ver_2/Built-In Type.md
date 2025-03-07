@@ -35,9 +35,130 @@ void Main()
 
 <br><br>
 
+## :fire:
+#### [Address 비교]
+~~~c#
+void Main()
+{
+	AddressManager addressManager = new AddressManager();
+	
+	Test testObj1 = new Test();
+	Test testObj2 = new Test();
+	Test testObj1_Copy = testObj1;
+	
+	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value);
+	addressManager.CompareAddress(ref testObj1.value, ref testObj2.value);
+	addressManager.CompareAddress(ref testObj1.stringValue, ref testObj2.stringValue);
+	
+	addressManager.CompareAddress(ref testObj1, ref testObj1_Copy);
+	addressManager.CompareAddress(ref testObj1, ref testObj2);
+}
+
+public class AddressManager
+{
+	private AddressManager GetThis()
+	{
+		return this;
+	}
+
+	public void CompareAddress<T> (ref T obj1, ref T obj2)
+	{
+		if (typeof(T).IsValueType)
+		{
+			"[ValueType Compare]".Dump();
+			CompareValueTypeAddress(ref obj1, ref obj2);
+		}
+		else
+		{
+			"[ReferenceType Compare]".Dump();
+			CompareReferenceTypeAddress (obj1, obj2);
+		}
+	}
+	
+	private void CompareValueTypeAddress<T> (ref T obj_1, ref T obj_2)
+	{
+		unsafe
+		{
+			string obj1_address = "";
+			string obj2_address = "";
+			
+			fixed (T* ptr1 = &obj_1, ptr2 = &obj_2)
+			{
+				obj1_address = Convert.ToString((long)ptr1);
+				obj2_address = Convert.ToString((long)ptr2);
+			}
+			
+			$"{"obj_1 : "}{obj1_address}".Dump();
+			$"{"obj_2 : "}{obj2_address}".Dump();
+
+			(obj1_address == obj2_address ? "same\n" : "different\n").Dump();
+		}
+	}
+
+	private void CompareReferenceTypeAddress<T> (T obj_1, T obj_2)
+	{
+		unsafe
+		{
+			TypedReference typedReference_1 = __makeref(obj_1);
+			IntPtr ptr_1 = **(IntPtr**)(&typedReference_1);
+			string obj1_address = Convert.ToString((long)ptr_1);
+
+			TypedReference typedReference_2 = __makeref(obj_2);
+			IntPtr ptr_2 = **(IntPtr**)(&typedReference_2);
+			string obj2_address = Convert.ToString((long)ptr_2);
+
+			$"{"obj_1 : "}{obj1_address}".Dump();
+			$"{"obj_2 : "}{obj2_address}".Dump();
+
+			(obj1_address == obj2_address ? "same\n" : "different\n").Dump();
+		}
+	}
+}
+
+public class Test
+{
+	public int value;
+	public string stringValue;
+	
+	public Test()
+	{
+		value = 22;
+		stringValue = "abcd";
+	}
+}
+/*result
+[ValueType Compare]
+obj_1 : 1672651343200
+obj_2 : 1672651343200
+same
+
+[ValueType Compare]
+obj_1 : 1672651343200
+obj_2 : 1672651343232
+different
+
+[ReferenceType Compare]
+obj_1 : 1670744546184
+obj_2 : 1670744546184
+same
+
+[ReferenceType Compare]
+obj_1 : 1672651343184
+obj_2 : 1672651343184
+same
+
+[ReferenceType Compare]
+obj_1 : 1672651343184
+obj_2 : 1672651343216
+different
+*/
+~~~
+
 ## :fire: 클래스 내부에 있는 변수도 heap에 저장.
 - heap에 저장되는 걸 알면 뭐가 좋은가?
 - heap에 저장이 되는 것과 stack에 저장이 되는 게 callbyref이 정도 밖에 지식이 없는데. 이걸 넘어서는 걸 정리해야 한다.
 - 어떤 클래스나 구조체를 생성할 때 내가 알아야 할 것
   - 회사에서 구조체를 많이 쓰지 않았는데 왜 였을까?
   - 사실 int도 구조체면. 구조체는 매우 흔한 개념인데.
+
+
