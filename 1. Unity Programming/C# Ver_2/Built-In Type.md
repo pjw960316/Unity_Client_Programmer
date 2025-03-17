@@ -41,25 +41,38 @@ void Main()
 void Main()
 {
 	AddressManager addressManager = new AddressManager();
-	
+
 	Test testObj1 = new Test();
 	Test testObj2 = new Test();
 	Test testObj1_Copy = testObj1;
-	
-	//1.
-	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value, true);
-	
-	//2.
-	addressManager.CompareAddress(ref testObj1.value, ref testObj2.value);
-	
-	//3.
-	addressManager.CompareAddress(ref testObj1.stringValue, ref testObj2.stringValue);
-	
-	//4.
+
+	"1. 복사본의 인스턴스 주소 비교".Dump();
 	addressManager.CompareAddress(ref testObj1, ref testObj1_Copy);
 	
-	//5.
+	"2. 복사본의 인스턴스 내부 멤버 비교".Dump();
+	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value);
+	addressManager.CompareAddress(ref testObj1.person, ref testObj1_Copy.person);
+	addressManager.CompareAddress(ref testObj1.person.age, ref testObj1_Copy.person.age);
+	addressManager.CompareAddress(ref testObj1.person.name, ref testObj1_Copy.person.name);
+
+	"3. 복사본의 인스턴스 값 변경 후 내부 멤버 비교".Dump();
+	testObj1.value = 33; 
+	testObj1.person.age = 8;
+	testObj1.person.name = "jitwo";
+
+	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value); //boxing 검사 X
+	addressManager.CompareAddress(ref testObj1.person.age, ref testObj1_Copy.person.age);
+	addressManager.CompareAddress(ref testObj1.person.name, ref testObj1_Copy.person.name);
+
+	"4. 복사본의 인스턴스 박싱 비교".Dump();
+	addressManager.CompareAddress(ref testObj1.value, ref testObj1_Copy.value,true);
+	
+	"5. 서로 독립적으로 생성한 인스턴스 주소 비교".Dump();
 	addressManager.CompareAddress(ref testObj1, ref testObj2);
+	
+	"6. 서로 독립적으로 생성한 인스턴스 내부 멤버 비교".Dump();
+	addressManager.CompareAddress(ref testObj1.value, ref testObj2.value);
+	addressManager.CompareAddress(ref testObj1.stringValue, ref testObj2.stringValue);
 }
 
 public class AddressManager
@@ -69,39 +82,41 @@ public class AddressManager
 		return this;
 	}
 
-	public void CompareAddress<T> (ref T obj1, ref T obj2, bool checkBoxingTest = false)
+	public void CompareAddress<T>(ref T obj1, ref T obj2, bool checkBoxingTest = false)
 	{
 		if (typeof(T).IsValueType)
 		{
-			"[ValueType Compare]".Dump();
-			CompareValueTypeAddress(ref obj1, ref obj2);
-			
 			if (checkBoxingTest)
 			{
 				"[ValueType Boxing Compare]".Dump();
 				CompareValueTypeAddressUsingBoxing(obj1, obj2);
 			}
+			else
+			{
+				"[ValueType Compare]".Dump();
+				CompareValueTypeAddress(ref obj1, ref obj2);
+			}
 		}
 		else
 		{
 			"[ReferenceType Compare]".Dump();
-			CompareReferenceTypeAddress (obj1, obj2);
+			CompareReferenceTypeAddress(obj1, obj2);
 		}
 	}
-	
-	private void CompareValueTypeAddress<T> (ref T obj_1, ref T obj_2)
+
+	private void CompareValueTypeAddress<T>(ref T obj_1, ref T obj_2)
 	{
 		unsafe
 		{
 			string obj1_address = "";
 			string obj2_address = "";
-			
+
 			fixed (T* ptr1 = &obj_1, ptr2 = &obj_2)
 			{
 				obj1_address = Convert.ToString((long)ptr1);
 				obj2_address = Convert.ToString((long)ptr2);
 			}
-			
+
 			$"{"obj_1 : "}{obj1_address}".Dump();
 			$"{"obj_2 : "}{obj2_address}".Dump();
 
@@ -109,7 +124,7 @@ public class AddressManager
 		}
 	}
 
-	private void CompareReferenceTypeAddress<T> (T obj_1, T obj_2)
+	private void CompareReferenceTypeAddress<T>(T obj_1, T obj_2)
 	{
 		unsafe
 		{
@@ -127,7 +142,7 @@ public class AddressManager
 			(obj1_address == obj2_address ? "same\n" : "different\n").Dump();
 		}
 	}
-	
+
 	private void CompareValueTypeAddressUsingBoxing(object obj_1, object obj_2)
 	{
 		CompareReferenceTypeAddress<object>(obj_1, obj_2);
@@ -138,52 +153,103 @@ public class Test
 {
 	public int value;
 	public string stringValue;
+	public Person person;
+	
+	public struct Person 
+	{
+		public int age;
+		public string name;
+		
+		public Person(int age, string name)
+		{
+			this.age = age;
+			this.name = name;			
+		}
+	}
 	
 	public Test()
 	{
 		value = 22;
 		stringValue = "abcd";
+		person = new Person(30, "jiwon");
 	}
 }
 
 /*RESULT
------------------------------- 1 -----------------------
-[ValueType Compare]
-obj_1 : 1672689057016
-obj_2 : 1672689057016
+1. 복사본의 인스턴스 주소 비교
+[ReferenceType Compare]
+obj_1 : 2343732696632
+obj_2 : 2343732696632
 same
 
+2. 복사본의 인스턴스 내부 멤버 비교
+[ValueType Compare]
+obj_1 : 2343732696648
+obj_2 : 2343732696648
+same
+
+[ValueType Compare]
+obj_1 : 2343732696656
+obj_2 : 2343732696656
+same
+
+[ValueType Compare]
+obj_1 : 2343732696664
+obj_2 : 2343732696664
+same
+
+[ReferenceType Compare]
+obj_1 : 2342906927344
+obj_2 : 2342906927344
+same
+
+3. 복사본의 인스턴스 값 변경 후 내부 멤버 비교
+[ValueType Compare]
+obj_1 : 2343732696648
+obj_2 : 2343732696648
+same
+
+[ValueType Compare]
+obj_1 : 2343732696664
+obj_2 : 2343732696664
+same
+
+[ReferenceType Compare]
+obj_1 : 2342906930144
+obj_2 : 2342906930144
+same
+
+4. 복사본의 인스턴스 박싱 비교
 [ValueType Boxing Compare]
-obj_1 : 1672689064800
-obj_2 : 1672689064824
+obj_1 : 2343732765368
+obj_2 : 2343732765392
 different
 
------------------------------- 2 -----------------------
+5. 서로 독립적으로 생성한 인스턴스 주소 비교
+[ReferenceType Compare]
+obj_1 : 2343732696632
+obj_2 : 2343732696680
+different
+
+6. 서로 독립적으로 생성한 인스턴스 내부 멤버 비교
 [ValueType Compare]
-obj_1 : 1672689057016
-obj_2 : 1672689057048
+obj_1 : 2343732696648
+obj_2 : 2343732696696
 different
 
------------------------------- 3 -----------------------
 [ReferenceType Compare]
-obj_1 : 1670744546184
-obj_2 : 1670744546184
+obj_1 : 2342906920880
+obj_2 : 2342906920880
 same
 
------------------------------- 4 -----------------------
-[ReferenceType Compare]
-obj_1 : 1672689057000
-obj_2 : 1672689057000
-same
-
------------------------------- 5 -----------------------
-[ReferenceType Compare]
-obj_1 : 1672689057000
-obj_2 : 1672689057032
-different
 */
 ~~~
 - :star: **Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.**
   - stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
   - heap에는 인스턴스의 멤버인 value와 stringValue가 <ins>순서대로 메모리에 저장</ins>되어 있기 때문에 스택에 이 들의 메모리 주소까지 저장할 필요가 없다.
   - 인스턴스는 일반적으로 각 멤버 변수가 선언된 순서대로 heap 메모리에 저장된다.
+
+<br><br>
+
+## :fire: class 내부에 존재하는 valueType (ex : int , struct)도 모두 힙에 저장된다. <br> :fire: class 내부에 존재하는 struct와 struct의 멤버 보두 힙에 저장된다. <br> :fire: 같은 클래스의 두 인스턴스를 만들고 하나를 다른 하나로 복사를 해도 클래스 내부의 struct는 값 복사가 일어나지 않는다.
+- 위의 코드 예제 2번과 3번을 참고한다.
