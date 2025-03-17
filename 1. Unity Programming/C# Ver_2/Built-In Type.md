@@ -6,7 +6,7 @@
 
 <br><br>
 
-## :fire: 오버플로우가 발생할 것 같은 연산:star:(특히 돈 관련):star:에서는 <br> :fire: checked 코드블럭과 try-catch를 이용해서 exception handling을 하자.
+## :fire: 오버플로우가 발생할 것 같은 연산:star:(특히 돈 관련):star:에서는 <br> checked 코드블럭과 try-catch를 이용해서 exception handling을 하자.
 #### [checked 예제]
 ~~~c#
 void Main()
