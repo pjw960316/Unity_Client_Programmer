@@ -251,5 +251,5 @@ same
 
 <br><br>
 
-## :fire: class 내부에 존재하는 valueType (ex : int , struct)도 모두 힙에 저장된다. <br> :fire: class 내부에 존재하는 struct와 struct의 멤버 보두 힙에 저장된다. <br> :fire: 같은 클래스의 두 인스턴스를 만들고 하나를 다른 하나로 복사를 해도 클래스 내부의 struct는 값 복사가 일어나지 않는다.
+## :fire: class 내부에 존재하는 valueType (ex : int , struct)도 모두 힙에 저장된다. <br> :fire: class 내부에 존재하는 struct와 struct의 멤버 모두 힙에 저장된다. <br> :fire: 인스턴스와 인스턴스 복사본을 만들면 인스턴스들의 struct 멤버는 valueType 이지만 <br> 값 복사가 일어나지 않고 같은 주소를 갖는다.
 - 위의 코드 예제 2번과 3번을 참고한다.
