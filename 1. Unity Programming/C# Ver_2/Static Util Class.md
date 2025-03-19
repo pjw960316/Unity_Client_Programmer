@@ -1,4 +1,4 @@
-## :fire: 값 타입의 주소 얻기기
+## :fire: 값 타입의 주소 얻기
 ~~~c#
 static class ValueTypeAddressManager
 {
@@ -20,6 +20,8 @@ static class ValueTypeAddressManager
 }
 ~~~
 - ref를 사용해서 값 복사를 하지 않고 원본의 메모리 주소를 메서드로 전달한다.
+
+<br><br>
 
 ## :fire: 참조 타입의 주소 얻기
 ~~~c#
