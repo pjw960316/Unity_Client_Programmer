@@ -40,8 +40,10 @@ void Main()
 
 <br><br>
 
-## :fire: Class 내부에 멤버로 존재하는 Struct는 Class의 instance가 복사 될 때 Deep-Copy(==데이터를 복사할 때 완전히 새로운 메모리 공간에 새로운 객체를 생성하여 복사)가 일어나지 않는다.
+## :fire: Class 내부에 멤버로 존재하는 Struct는 <br> Class의 instance가 복사 될 때 Deep-Copy가 일어나지 않는다.
+- Deep-Copy의 개념 : 데이터를 복사할 때 완전히 새로운 메모리 공간에 새로운 객체를 생성하여 복사.
 - **<ins>어떤 순간에도</ins> struct는 ValueType이다.** 하지만 ValueType이 항상 deep-copy를 하지는 않는다.
+
 #### [지역변수 struct 와 class의 멤버인 struct의 복사 비교 예제]
 ~~~c#
 void Main()
