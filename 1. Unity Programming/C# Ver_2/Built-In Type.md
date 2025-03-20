@@ -35,19 +35,18 @@ void Main()
 
 <br><br>
 
-
-~~~
-- :star: **Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.**
-  - stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
-  - heap에는 인스턴스의 멤버인 value와 stringValue가 <ins>순서대로 메모리에 저장</ins>되어 있기 때문에 스택에 이 들의 메모리 주소까지 저장할 필요가 없다.
-  - 인스턴스는 일반적으로 각 멤버 변수가 선언된 순서대로 heap 메모리에 저장된다.
+## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
+- stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
+- heap에는 인스턴스의 멤버인 value와 stringValue가 <ins>순서대로 메모리에 저장</ins>되어 있기 때문에 스택에 이 들의 메모리 주소까지 저장할 필요가 없다.
+- 인스턴스는 일반적으로 각 멤버 변수가 선언된 순서대로 heap 메모리에 저장된다.
+  
 
 <br><br>
 
-## :fire: class
-- 위의 코드 예제 2번과 3번을 참고한다.
+## :fire: Struct는 기본적으로는 Stack에 생성 되지만, <br> Struct가 Class의 멤버로 존재할 때는 Heap에 생성된다.
+- [지울 설명] : 이 개념은 heap에 생성되는 것의 GC와 연관지어서 학습하면 좋을 것 
 
+<br><br>
 
-## 확실한 거
-- class의 struct **멤버**는 heap에 저장(이건 안 중요함). 근데 valueType 성질을 보유
-- class의 함수에 존재하는 지역변수 선언 struct와 다른 점. 
+## :fire: Class 내부에 멤버로 존재하는 Struct는 Class의 instance가 복사 될 때 Deep-Copy(==데이터를 복사할 때 완전히 새로운 메모리 공간에 새로운 객체를 생성하여 복사)가 일어나지 않는다.
+- **<ins>어떤 순간에도</ins> struct는 ValueType이다.** 하지만 ValueType이 항상 deep-copy를 하지는 않는다.
