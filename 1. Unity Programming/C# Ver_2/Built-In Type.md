@@ -35,18 +35,126 @@ void Main()
 
 <br><br>
 
-## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
-- stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
-- heap에는 인스턴스의 멤버인 value와 stringValue가 <ins>순서대로 메모리에 저장</ins>되어 있기 때문에 스택에 이 들의 메모리 주소까지 저장할 필요가 없다.
-- 인스턴스는 일반적으로 각 멤버 변수가 선언된 순서대로 heap 메모리에 저장된다.
-  
-
-<br><br>
-
 ## :fire: Struct는 기본적으로는 Stack에 생성 되지만, <br> Struct가 Class의 멤버로 존재할 때는 Heap에 생성된다.
-- [지울 설명] : 이 개념은 heap에 생성되는 것의 GC와 연관지어서 학습하면 좋을 것 
+- [지울 설명] : 이 개념은 heap에 생성되는 것의 GC와 연관지어서 학습하면 좋을 것 -> 당장은 그래서 뭐?
 
 <br><br>
 
 ## :fire: Class 내부에 멤버로 존재하는 Struct는 Class의 instance가 복사 될 때 Deep-Copy(==데이터를 복사할 때 완전히 새로운 메모리 공간에 새로운 객체를 생성하여 복사)가 일어나지 않는다.
 - **<ins>어떤 순간에도</ins> struct는 ValueType이다.** 하지만 ValueType이 항상 deep-copy를 하지는 않는다.
+#### [지역변수 struct 와 class의 멤버인 struct의 복사 비교 예제]
+~~~c#
+void Main()
+{
+	$"************************************* 1. 지역변수 struct ************************************************".Dump();
+	BasicStruct str_1 = new BasicStruct();
+	BasicStruct str_2 = str_1; //둘 다 ValueType이다. 둘 다 stack에 있다. deep-copy가 일어난다.
+
+	var str_1_address = ValueTypeAddressManager.GetAddress(ref str_1);
+	var str_2_address = ValueTypeAddressManager.GetAddress(ref str_2);
+	if (str_1_address != str_2_address)
+	{
+		$"{str_1_address} | {str_2_address} | different".Dump();
+	}
+
+	str_1.a = 3; //값 변경
+	$"{str_1.a} vs {str_2.a}\n".Dump();
+
+	$"************************************* 2. class의 멤버인 struct ************************************************".Dump();
+
+	Book easyClassic = new Book(19000, "easyClassic");
+	Book easyClassicCopy = easyClassic; //둘 다 ValueType이다. 둘 다 heap에 있다. 하지만 deep-copy가 일어나지 않는다.
+	
+	var member_1_address = easyClassic.GetStructMemberAddress();
+	var member_2_address = easyClassicCopy.GetStructMemberAddress();
+	if(member_1_address == member_2_address)
+	{
+		$"{member_1_address} | {member_2_address} | same".Dump();
+	}
+	
+	easyClassic.SetFavoritePage(66,77); //원본 인스턴스에 존재하는 struct의 멤버 변경
+	$"{easyClassic.myFavoritePage.num_1} vs {easyClassicCopy.myFavoritePage.num_1}".Dump();
+}
+
+public struct BasicStruct
+{
+	public int a;
+	
+	public BasicStruct()
+	{
+		a = 1;
+	}
+}
+
+public class Book
+{
+	int price;
+	string name;
+	public FavoritePage myFavoritePage;
+	
+	public struct FavoritePage
+	{
+		public int num_1;
+		public int num_2;
+		
+		public FavoritePage(int n1, int n2)
+		{
+			num_1 = n1;
+			num_2 = n2;
+		}
+	}
+	
+	public Book(int price, string name)
+	{
+		this.price = price;
+		this.name = name;
+		
+		SetFavoritePage(11,22);
+	}
+	
+	public void SetFavoritePage(int n1,int n2)
+	{
+		myFavoritePage = new FavoritePage(n1 , n2);
+	}
+	
+	public string GetStructMemberAddress()
+	{
+		return ValueTypeAddressManager.GetAddress(ref myFavoritePage.num_1);
+	}
+}
+
+static class ValueTypeAddressManager
+{
+	//unmanaged를 붙이지 않으면 generic 에서 warning이 발생
+	public static unsafe string GetAddress<T>(ref T valueType) where T : unmanaged
+	{
+		if (valueType.GetType().IsValueType == false)
+		{
+			return null;
+		}
+
+		fixed (T* ptr = &valueType)
+		{
+			string address = Convert.ToString((long)ptr, 16);
+			string ret = $"0x{address}";
+			return ret;
+		}
+	}
+}
+/*result
+************************************* 지역변수 struct ************************************************
+0xf2ceafcdd8 | 0xf2ceafcdd0 | different
+3 vs 1
+
+************************************* class의 멤버인 struct ************************************************
+0x256184bafd4 | 0x256184bafd4 | same
+66 vs 66
+*/
+~~~
+
+<br><br>
+
+## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
+- stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
+- heap에는 인스턴스의 멤버인 value와 stringValue가 <ins>순서대로 메모리에 저장</ins>되어 있기 때문에 스택에 이 들의 메모리 주소까지 저장할 필요가 없다.
+- 인스턴스는 일반적으로 각 멤버 변수가 선언된 순서대로 heap 메모리에 저장된다. 
