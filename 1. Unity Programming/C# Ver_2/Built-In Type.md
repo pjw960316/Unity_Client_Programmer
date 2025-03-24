@@ -156,7 +156,7 @@ static class ValueTypeAddressManager
 
 <br><br>
 
-## :fire: struct를 멤버로 포함한 instance를 method의 params로 전달할 때 struct는 deep-copy가 일어나지 않는다.
+## :fire: struct를 멤버로 포함한 instance를 method의 params로 전달할 때 <br> struct는 deep-copy가 일어나지 않는다.
 #### [params로 전달하는 예제]
 ~~~c#
 void Main()
