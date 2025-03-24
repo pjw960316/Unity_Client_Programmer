@@ -125,24 +125,6 @@ public class Book
 	}
 }
 
-static class ValueTypeAddressManager
-{
-	//unmanaged를 붙이지 않으면 generic 에서 warning이 발생
-	public static unsafe string GetAddress<T>(ref T valueType) where T : unmanaged
-	{
-		if (valueType.GetType().IsValueType == false)
-		{
-			return null;
-		}
-
-		fixed (T* ptr = &valueType)
-		{
-			string address = Convert.ToString((long)ptr, 16);
-			string ret = $"0x{address}";
-			return ret;
-		}
-	}
-}
 /*result
 ************************************* 지역변수 struct ************************************************
 0xf2ceafcdd8 | 0xf2ceafcdd0 | different
@@ -217,38 +199,6 @@ public class Book
 	}
 }
 
-public static class ValueTypeAddressManager
-{
-	//unmanaged를 붙이지 않으면 generic 에서 warning이 발생
-	public static unsafe string GetAddress<T>(ref T valueType) where T : unmanaged
-	{
-		if (valueType.GetType().IsValueType == false)
-		{
-			return null;
-		}
-
-		fixed (T* ptr = &valueType)
-		{
-			string address = Convert.ToString((long)ptr, 16);
-			string ret = $"0x{address}";
-			return ret;
-		}
-	}
-}
-
-public static class ReferenceTypeAddressManager
-{
-	public static string GetAddress<T>(T referenceTypeInstance)
-	{
-		unsafe
-		{
-			TypedReference typedReference = __makeref(referenceTypeInstance);
-			IntPtr ptr = **(IntPtr**)(&typedReference);
-			string address = Convert.ToString((long)ptr);
-			return address;
-		}
-	}
-}
 /*result
 ---------------------------------------- 1. instance의 주소와 instance의 struct 주소 출력 ---------------------------------------
 1807242423504
