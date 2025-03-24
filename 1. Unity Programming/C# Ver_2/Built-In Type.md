@@ -213,6 +213,7 @@ public class Book
 - params로 전달한 instance의 주소, instance의 struct member인 myFavoritePage의 주소가 모두 같게 유지된다. 
 	- heap에 존재하며 deep-copy가 일어나지 않는다.
 - 같은 주소를 가리키기 때문에 Main()에서 struct의 값을 변경하면 params로 받은 instance의 멤버의 myFavoritePage도 값이 변경된다.
+- 직전 예제와 같은 내용일 수 있지만 한 번 더 정리한다.
 - :star: 최종 정리 : <ins>클래스의 멤버로 선언된 struct는 해당 클래스를 메서드의 인자로 params로 전달해도 struct 내부까지 deep copy 되지 않으므로, 메모리 낭비 없이 안전하게 사용할 수 있다. 따라서 struct를 class 내부에서 데이터 묶음용으로 쓰는 건 좋은 방식이다.</ins>
 
 <br><br>
