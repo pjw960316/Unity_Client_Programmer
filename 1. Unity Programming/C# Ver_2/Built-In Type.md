@@ -40,7 +40,7 @@ void Main()
 
 <br><br>
 
-## :fire: Class 내부에 멤버로 존재하는 Struct는 <br> Class의 instance가 복사 될 때 Deep-Copy가 일어나지 않는다.
+## :fire: Class 내부에 멤버로 존재하는 Struct는 <br> Class의 instance가 복사 될 때 deep-Copy가 일어나지 않는다.
 - Deep-Copy의 개념 : 데이터를 복사할 때 완전히 새로운 메모리 공간에 새로운 객체를 생성하여 복사.
 - **<ins>어떤 순간에도</ins> struct는 ValueType이다.** 하지만 ValueType이 항상 deep-copy를 하지는 않는다.
 
@@ -155,6 +155,118 @@ static class ValueTypeAddressManager
 ~~~
 
 <br><br>
+
+## :fire: struct를 멤버로 포함한 instance를 method의 params로 전달할 때 struct는 deep-copy가 일어나지 않는다.
+#### [params로 전달하는 예제]
+~~~c#
+void Main()
+{
+	Book maskBook = new Book(19900, "mask");
+	maskBook.ChangeFavoritePage(33,44); //instance의 struct 값 변경
+	
+	$"---------------------------------------- 1. instance의 주소와 instance의 struct 주소 출력 ---------------------------------------".Dump();
+	ReferenceTypeAddressManager.GetAddress(maskBook).Dump();
+	ValueTypeAddressManager.GetAddress(ref maskBook.myFavoritePage).Dump();
+	
+	MethodTestManager methodTestManager = new MethodTestManager(maskBook);
+}
+
+public class MethodTestManager
+{
+	public MethodTestManager(Book book)
+	{
+		$"---------------------------------------- 2. method의 params로 받은 instance의 주소와 instance의 struct 주소 출력 ---------------------------------------".Dump();
+		ReferenceTypeAddressManager.GetAddress(book).Dump();
+		ValueTypeAddressManager.GetAddress(ref book.myFavoritePage).Dump();
+		
+		$"---------------------------------------- 3. Main()에서 변경한 struct의 값이 반영되는지? ---------------------------------------".Dump();
+		$"{book.myFavoritePage.num_1} | {book.myFavoritePage.num_2}".Dump();
+	}
+}
+
+public class Book
+{
+	int price;
+	string name;
+	public FavoritePage myFavoritePage;
+
+	public struct FavoritePage
+	{
+		public int num_1;
+		public int num_2;
+
+		public FavoritePage(int n1, int n2)
+		{
+			num_1 = n1;
+			num_2 = n2;
+		}
+	}
+
+	public Book(int price, string name)
+	{
+		this.price = price;
+		this.name = name;
+
+		myFavoritePage = new FavoritePage(11, 22);
+	}
+
+	public void ChangeFavoritePage(int n1, int n2)
+	{
+		myFavoritePage.num_1 = n1;
+		myFavoritePage.num_2 = n2;
+	}
+}
+
+public static class ValueTypeAddressManager
+{
+	//unmanaged를 붙이지 않으면 generic 에서 warning이 발생
+	public static unsafe string GetAddress<T>(ref T valueType) where T : unmanaged
+	{
+		if (valueType.GetType().IsValueType == false)
+		{
+			return null;
+		}
+
+		fixed (T* ptr = &valueType)
+		{
+			string address = Convert.ToString((long)ptr, 16);
+			string ret = $"0x{address}";
+			return ret;
+		}
+	}
+}
+
+public static class ReferenceTypeAddressManager
+{
+	public static string GetAddress<T>(T referenceTypeInstance)
+	{
+		unsafe
+		{
+			TypedReference typedReference = __makeref(referenceTypeInstance);
+			IntPtr ptr = **(IntPtr**)(&typedReference);
+			string address = Convert.ToString((long)ptr);
+			return address;
+		}
+	}
+}
+/*result
+---------------------------------------- 1. instance의 주소와 instance의 struct 주소 출력 ---------------------------------------
+1807242423504
+0x1a4c80aece4
+---------------------------------------- 2. method의 params로 받은 instance의 주소와 instance의 struct 주소 출력 ---------------------------------------
+1807242423504
+0x1a4c80aece4
+---------------------------------------- 3. Main()에서 변경한 struct의 값이 반영되는지? ---------------------------------------
+33 | 44
+*/
+~~~
+- params로 전달한 instance의 주소, instance의 struct member인 myFavoritePage의 주소가 모두 같게 유지된다. 
+	- heap에 존재하며 deep-copy가 일어나지 않는다.
+- 같은 주소를 가리키기 때문에 Main()에서 struct의 값을 변경하면 params로 받은 instance의 멤버의 myFavoritePage도 값이 변경된다.
+- :star: 최종 정리 : <ins>클래스의 멤버로 선언된 struct는 해당 클래스를 메서드의 인자로 params로 전달해도 struct 내부까지 deep copy 되지 않으므로, 메모리 낭비 없이 안전하게 사용할 수 있다. 따라서 struct를 class 내부에서 데이터 묶음용으로 쓰는 건 좋은 방식이다.</ins>
+
+<br><br>
+
 
 ## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
 - stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
