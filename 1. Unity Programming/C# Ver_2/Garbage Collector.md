@@ -1,6 +1,11 @@
 - [text](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/)
 - 지울 것 : 내용이 어렵고 복잡하므로 메모 형식으로 일단 쓰고 계속 고치자.
 
+## 용어
+- Managed Heap (관리되는 힙)
+  - GC가 자동으로 관리하는 힙 메모리 영역
+
+
 ## 핵심 개요
 - Managed Heap -> GC가 필요
 - GC 알고리즘 가볍게
