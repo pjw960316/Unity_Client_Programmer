@@ -1,12 +1,10 @@
-- [text](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/)
-- 지울 것 : 내용이 어렵고 복잡하므로 메모 형식으로 일단 쓰고 계속 고치자.
-
-## 용어
-- Managed Heap (관리되는 힙)
-  - GC가 자동으로 관리하는 힙 메모리 영역
+## MSDN Link
+- [LINK](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/)
 
 
-## 핵심 개요
+<br><br>
+
+## 핵심 개요 [제거해]
 - Managed Heap -> GC가 필요
 - GC 알고리즘 가볍게
 - GC에게 부담을 주는 코딩이 무엇이고 그걸 하지 않는 방식을 유니티와 연관해서
@@ -15,11 +13,13 @@
 
 <br><br>
 
-## :fire: Managed Heap
-- 메모리 해제 -> 내가 굳이 하지 않으면 GC 가 함
-- 내가 명령할 것 = 객체 할당 및 생성자로 초기화
-- NextObjPtr이 관리 힙에서 할당할 시에 0으로 채우는 것 
-- Managed Heap이 무한대가 아니기 때문에 GC를 쓴다.
+## :fire: Managed Heap을 CLR이 관리하는 기법을 알면 GC의 필요성을 이해할 수 있다. <br> :fire: 아래의 용어들을 숙지해야 한다.
+- Reference Counting
+- 순환 참조
+- Root
+- Mark
+- nextobjPtr
+
 
 <br><br>
 
