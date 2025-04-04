@@ -26,7 +26,7 @@
 
 <br><br>
 
-## :fire: 메모리에서 정확하게 해제되는 시점 : GC가 동작했을 때
+## :fire: Heap Memory에서 해제되는 정밀한 시점 : GC가 동작했을 때
 #### [예제]
 ~~~c#
 class Test
@@ -57,7 +57,7 @@ class Program
 <br><br>
 
 ## :fire: GC는 Managed Heap에 있는 ReferenceType만 관리한다. <br> :fire: 하지만... Class의 멤버로 있는 ValueType도 함께 관리된다.
-  - ReferenceType인 인스턴스가 제거되면 당연히 인스턴스 전체가 메모리에서 사라지기 때문에 내부의 valueType 멤버들(int, struct)도 **같이 제거** 된다.
+  - ReferenceType인 인스턴스가 제거되면 당연히 인스턴스 전체가 메모리에서 사라지기 때문에, 내부의 valueType 멤버들(int, struct)도 **같이 제거** 된다.
     - Class의 valueType 멤버들도 managed heap에 있다.
   - 다시 말해, 클래스의 valueType 멤버가 독립적으로 제거되는 경우는 알 수 없으나, 인스턴스가 삭제될 때 valueType 멤버는 당연히 같이 해제된다.
 
