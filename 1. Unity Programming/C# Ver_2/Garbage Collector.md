@@ -4,26 +4,25 @@
 <br><br>
 
 ## 핵심 개요 [흐름 파악]
-- 1. 왜 GC가 필요한지를 Managed Heap에서 메모리를 관리하는 방식을 통해 이해한다.
-- 2. GC 알고리즘을 가볍게 이해한다.
+- 왜 GC가 필요한지를 Managed Heap에서 메모리를 관리하는 방식을 통해 이해한다.
+- GC 알고리즘을 가볍게 이해한다.
 - GC에게 부담을 주는 코딩이 무엇이고 그걸 하지 않는 방식을 유니티와 연관해서
 - GC가 관리하지 못할 것으로 생각되는 부분을 내가 강제로 해제하는 구현
 - GC.Collect() 하면 순간 멈춘 경험
 
 <br><br>
 
-## :fire: Managed Heap을 CLR이 관리하는 기법을 알면 GC의 필요성을 이해할 수 있다. <br> :fire: 아래의 개념을 숙지해야 한다.
-- 살아있는 객체를 판단하는 근거
-  - **구시대 방식 : Reference Counting**
-    > 객체는 자신이 참조 되는 횟수를 기록하는 필드를 가지고 있어서 프로그램 내에 <ins>얼마나 많은 부분이 해당 객체를 참조</ins>하고 있는지를 기록한다.
-    - 자식 클래스의 멤버로 부모 클래스를 갖고 있으면 참조가 +1이 되므로 0이 되지 않아 Circular Reference가 일어나서 메모리에서 해제되지 않는 문제가 있다
-  - **C# 방식 : Reference Tracking**
-    - Root
-      - GC가 객체 생존 여부를 판단하는 최초의 기준점이 되는 Reference Type의 변수.
-      - 무조건 reference Type이다.
-      - 새로운 변수가 아닌 내가 작성한 코드에 있는 Reference Type 변수이다.
-    - Mark
-      - 아래의 예제에서 unreachable을 이해하면 된다.
+## :fire: Managed Heap을 CLR이 관리하는 기법을 알면 GC의 필요성을 이해할 수 있다. <br> :fire: GC가 죽여야 할할 객체를 판단하는 근거.
+- **구시대 방식 : Reference Counting**
+  > 객체는 자신이 참조 되는 횟수를 기록하는 필드를 가지고 있어서 프로그램 내에 <ins>얼마나 많은 부분이 해당 객체를 참조</ins>하고 있는지를 기록한다.
+  - 자식 클래스의 멤버로 부모 클래스를 갖고 있으면 참조가 +1이 되므로 0이 되지 않아 Circular Reference가 일어나서 메모리에서 해제되지 않는 문제가 있다
+- **C# 방식 : Reference Tracking**
+  - Root
+    - GC가 객체 생존 여부를 판단하는 최초의 기준점이 되는 Reference Type의 변수.
+    - 무조건 reference Type이다.
+    - 새로운 변수가 아닌 내가 작성한 코드에 있는 Reference Type 변수이다.
+  - Mark
+    - 아래의 예제에서 unreachable을 이해하면 된다.
 
 <br><br>
 
