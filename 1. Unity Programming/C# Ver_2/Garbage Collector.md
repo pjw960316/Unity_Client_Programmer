@@ -12,7 +12,7 @@
 
 <br><br>
 
-## :fire: Managed Heap을 CLR이 관리하는 기법을 알면 GC의 필요성을 이해할 수 있다. <br> :fire: GC가 죽여야 할할 객체를 판단하는 근거.
+## :fire: Managed Heap을 CLR이 관리하는 기법을 알면 GC의 필요성을 이해할 수 있다. <br> :fire: GC가 죽여야 할 객체를 판단하는 근거.
 - **구시대 방식 : Reference Counting**
   > 객체는 자신이 참조 되는 횟수를 기록하는 필드를 가지고 있어서 프로그램 내에 <ins>얼마나 많은 부분이 해당 객체를 참조</ins>하고 있는지를 기록한다.
   - 자식 클래스의 멤버로 부모 클래스를 갖고 있으면 참조가 +1이 되므로 0이 되지 않아 Circular Reference가 일어나서 메모리에서 해제되지 않는 문제가 있다
@@ -51,8 +51,8 @@ class Program
   - 첫 번째 주소 = heap 주소 : obj의 인스턴스가 실제로 저장된 Heap 메모리의 주소값. (예제의 0x77)
   - 두 번째 주소 = stack 주소 : 첫 번째 주소의 값을 stack의 변수에 저장하는 데, 이 때 stack에 생기는 주소 저장 필드의 주소값. (예제의 0x11)
   - ![alt text](./capture/20250404.png) 
-- 1번 시점에 obj는 **unreachable(=접근 불가)** 상태가 되지만, 아직 managed heap에 obj의 인스턴스 정보가 저장되어 있다. 
-- 2번 시점이 되면 heap에서 제거된다. 
+- 예제 코드의 1번 시점에 obj는 **unreachable(=접근 불가)** 상태가 되지만, 아직 managed heap에 obj의 인스턴스 정보가 저장되어 있다. 
+- 예제 코드의 2번 시점이 되면 heap에서 해제된다. 
 
 <br><br>
 
