@@ -3,6 +3,12 @@
 
 <br><br>
 
+## 최종 목표
+- 왜 회사에서 Idisposable을 상속 받은 dispose를 구현했어야 하는지
+- 왜 이걸 최상단에서 관리했는지?
+  
+<br><br>
+
 ## 핵심 개요 [흐름 파악]
 - 왜 GC가 필요한지를 Managed Heap에서 메모리를 관리하는 방식을 통해 이해한다.
 - GC 알고리즘을 가볍게 이해한다.
@@ -53,6 +59,32 @@ class Program
   - ![alt text](./capture/20250404.png) 
 - 예제 코드의 1번 시점에 obj는 **unreachable(=접근 불가)** 상태가 되지만, 아직 managed heap에 obj의 인스턴스 정보가 저장되어 있다. 
 - 예제 코드의 2번 시점이 되면 heap에서 해제된다. 
+
+<br><br>
+
+## :fire: '= null'과 'unreachable'은 명백히 다른 개념이다. <br> unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다. <br> 참조가 100개 되어 있는데 1개 null로 한다고 unreachable이 되지 않는다.
+~~~c#
+#### [참조가 2개인 힙에 올라간 1개의 AAA 인스턴스]
+void Main()
+{
+	AAA obj_1 = new AAA();
+	AAA obj_2 = obj_1; //프로젝트에서는 협업이므로 이렇게 직관적으로 참조가 보이지 않는다. 
+	
+	obj_1 = null; // Dispose() 방식을 쓰지 않은 예제
+}
+
+public class AAA
+{
+	public int a;
+	
+	public AAA()
+	{
+		a = 12;
+	}
+}
+~~~
+- :bangbang: obj_1의 참조를 끊었으니 힙에 있는 AAA인스턴스는 GC가 수집되어 메모리가 해제되겠다고 생각하지만 -> 절대 그렇지 않다.
+- AAA 인스턴스는 아직 obj_2로 reachable 하기 때문에 개발자가 obj_1 = null;을 한다고 힙에서 AAA 인스턴스가 GC로 인해 해제 되지 않는다.
 
 <br><br>
 
