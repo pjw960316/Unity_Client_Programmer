@@ -62,9 +62,9 @@ class Program
 
 <br><br>
 
-## :fire: '= null'과 'unreachable'은 명백히 다른 개념이다. <br> unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다. <br> 참조가 100개 되어 있는데 1개 null로 한다고 unreachable이 되지 않는다.
-~~~c#
+## :fire: '= null'과 'unreachable'은 명백히 다른 개념이다. <br> unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다. <br> 참조가 100개 되어 있는데, 고작 1개를 null로 초기화 한다고 unreachable이 되지 않는다.
 #### [참조가 2개인 힙에 올라간 1개의 AAA 인스턴스]
+~~~c#
 void Main()
 {
 	AAA obj_1 = new AAA();
@@ -83,8 +83,8 @@ public class AAA
 	}
 }
 ~~~
-- :bangbang: obj_1의 참조를 끊었으니 힙에 있는 AAA인스턴스는 GC가 수집되어 메모리가 해제되겠다고 생각하지만 -> 절대 그렇지 않다.
-- AAA 인스턴스는 아직 obj_2로 reachable 하기 때문에 개발자가 obj_1 = null;을 한다고 힙에서 AAA 인스턴스가 GC로 인해 해제 되지 않는다.
+- :bangbang: obj_1의 참조를 끊었으니 힙에 있는 AAA인스턴스는 GC가 수집되어 메모리가 해제되겠다고 생각하지만, 절대 그렇지 않다.
+- AAA 인스턴스는 아직 obj_2로 reachable 하기 때문에 개발자가 'obj_1 = null'을 한다고 힙에서 AAA 인스턴스가 GC로 인해 해제 되지는 않는다.
 
 <br><br>
 
