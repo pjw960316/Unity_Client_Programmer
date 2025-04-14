@@ -35,7 +35,7 @@ class LoginRequest
 
 <br><br>
 
-## :fire: **[SerializeField]**는 Unity가 해당 필드를 “에디터에 노출하고 파일에 저장”할 수 있게 <br> Serialization 대상으로 지정하는 키워드.
+## :fire: [SerializeField]는 Unity가 해당 필드를 “에디터에 노출하고 파일에 저장”할 수 있게 <br> Serialization 대상으로 지정하는 키워드.
 - 기본 : private 필드를 inspector에 노출 시키기 위해 사용한다.
 - 심화 : Unity Editor(+inspector)와 코드의 파일 저장 구조를 **잇는** 기능
   - YAML 변환?????
