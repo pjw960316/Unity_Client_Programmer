@@ -43,7 +43,7 @@ public int Capacity
 ~~~c#
 public class Coffee
 {
-	private int DEFAULT_COFFEE_CAPACITY = 300;
+	private const int DEFAULT_COFFEE_CAPACITY = 300;
 	
 	public Coffee()
 	{
