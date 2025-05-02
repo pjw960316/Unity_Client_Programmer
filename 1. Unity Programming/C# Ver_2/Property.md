@@ -111,6 +111,7 @@ GetCapacity
 
 ## :fire: Property는 Field가 아닌 Method다. <br> :fire: Field 보다 조금이지만 overhead가 있을 수 밖에 없다. <br> :fire: 그러므로 property를 남용하지 말고 field로 충분하면 field로 사용한다.
 > 저자는 생각보다 많은 사람들이 property를 필요 이상으로 남용한다는 것에 개인적으로 많이 놀랐다.
+
 > Property는 메서드를 호출하는 것과 비교했을 때 성능상의 이점이 있는 것도 아니다.
 
 <br><br>
