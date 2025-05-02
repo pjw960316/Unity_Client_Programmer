@@ -11,7 +11,7 @@ public int Capacity
 
 <br>
 
-#### [여러러 줄 Property]
+#### [여러 줄 Property]
 ~~~c#
 private int capacity; 
 public int Capacity
