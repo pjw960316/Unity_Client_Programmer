@@ -39,7 +39,7 @@ public int Capacity
 
 <br>
 
-#### [Property 사용 예제 - 커피 마시기기]
+#### [Property 사용 예제 - 커피 마시기]
 ~~~c#
 public class Coffee
 {
