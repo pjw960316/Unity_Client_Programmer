@@ -1,4 +1,4 @@
-# :fire: Property 사용 규칙
+## :fire: Property 사용 규칙
 #### [한 줄 Property]
 ~~~c#
 private int capacity; 
@@ -101,3 +101,8 @@ GetCapacity
 */
 ~~~
 - DrinkedCoffee() 메서드에서도 Get이 호출되는 것을 주의한다.
+
+
+<br><br>
+
+## :fire: 생성자에서 private 변수를 초기화 할까? 아니면 그 변수의 property를 초기화할까? <br> :fire: 유니티로 개발하면서 뭐가 맞는 지 정하고 여기에 적자.
