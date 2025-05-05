@@ -1,3 +1,8 @@
+## :fire: abstract & virtual 과거 문서
+- [Github -C#](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23/Abstract%20%26%20Virtual.md)
+
+<br><br>
+
 ## :fire: '메서드 단위의 추상화'는 메서드를 작게 많이 쪼개고, 메서드의 같은 추상화 레벨 순서로 적는 것. 
 ![alt text](./capture/20250505.png)
 ~~~c#
