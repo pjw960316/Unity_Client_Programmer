@@ -62,6 +62,9 @@ public class DailyRoutinePlanner
 	public void PlayGame(){}
 }
 ~~~
+![alt text](./capture/20250505.png)
+
+<br><br>
 
 ## :fire: 추상화 2단계 : 클래스 단위의 추상화
 ~~~c#
