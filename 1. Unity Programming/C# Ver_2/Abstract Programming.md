@@ -168,3 +168,9 @@ public class NightRoutine : Routine
 	public void PlayGame() { }
 }
 ~~~
+
+<br><br>
+
+## :fire: 참고 서적
+- 클린 코드
+- 객체 지향의 사실과 오해
