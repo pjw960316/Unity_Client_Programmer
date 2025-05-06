@@ -8,6 +8,7 @@ public int Capacity
     private set => capacity = value;
 }
 ~~~
+- Rider에서 Reformat & Clean-Up 해버리면 알아서 Auto-Property로 변경해준다.
 
 <br>
 
