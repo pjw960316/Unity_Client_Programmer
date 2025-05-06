@@ -68,6 +68,7 @@ public class DailyRoutinePlanner
 }
 ~~~
 - 메서드가 짧다 → 하나의 기능을 한다 → 좋은 이름 짓기가 쉽고 빠르다 → 메서드를 이름만 보고 이해 가능
+- :link: [비슷한 고민을 한 StackOverFlow](https://softwareengineering.stackexchange.com/questions/110933/how-to-determine-the-levels-of-abstraction)
 > 큰 메서드를 작은 메서드 여럿으로 쪼개다 보면 종종 작은 클래스 여럿으로 쪼갤 기회가 생긴다.
 
 <br><br>
