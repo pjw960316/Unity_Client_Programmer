@@ -19,4 +19,5 @@
 <br><br><br>
 
 # 📙 Personal Coding Style 
+- **코드를 작성할 때 지킬 나만의 코딩 스타일**
 - **Notion Link** : [Link](https://persistent-hoverfly-e3c.notion.site/Personal-Coding-Style-1d129daafd668071bad8cd865abf59b4?pvs=74)
