@@ -10,4 +10,5 @@
 
 <br><br><br>
 
-# :lion: Personal Coding Style :  [Link](https://persistent-hoverfly-e3c.notion.site/Personal-Coding-Style-1d129daafd668071bad8cd865abf59b4?pvs=74)
+# :lion: Personal Coding Style 
+- **노션 링크** : [Link](https://persistent-hoverfly-e3c.notion.site/Personal-Coding-Style-1d129daafd668071bad8cd865abf59b4?pvs=74)
