@@ -6,4 +6,4 @@
 
 <br><br><br>
 
-# MyPersonalCodingStyle : 개인 Notion Page : [Link](https://persistent-hoverfly-e3c.notion.site/Personal-Coding-Style-1d129daafd668071bad8cd865abf59b4?pvs=74)
+# Personal Coding Style :  [Link](https://persistent-hoverfly-e3c.notion.site/Personal-Coding-Style-1d129daafd668071bad8cd865abf59b4?pvs=74)
