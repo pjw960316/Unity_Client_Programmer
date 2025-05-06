@@ -1,9 +1,8 @@
-## :fire: abstract & virtual 과거 문서
-- [Github -C#](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23/Abstract%20%26%20Virtual.md)
+## :fire: 추상화는 '메서드 수준의 추상화'와 '클래스 수준의 추상화'가 있다. <br> 아래에 두 예제를 적어 놓았으니 코드를 필요시에 읽어라.
 
 <br><br>
 
-## :fire: '메서드 단위의 추상화'는 메서드를 작게 많이 쪼개고, 메서드의 같은 추상화 레벨 순서로 적는 것. 
+## :fire: '메서드 수준의 추상화'는 메서드를 작게 많이 쪼개고, 메서드의 같은 추상화 레벨 순서로 적는 것. 
 ![alt text](./capture/20250505.png)
 ~~~c#
 // 모든 메서드의 바디에는 구현이 있다고 가정한다.
@@ -72,7 +71,7 @@ public class DailyRoutinePlanner
 
 <br><br>
 
-## :fire: '클래스 단위의 추상화' : 클래스 쪼개기?????
+## :fire: '클래스 수준의 추상화' : 클래스 쪼개기?????
 ~~~c#
 void Main()
 {
@@ -174,3 +173,9 @@ public class NightRoutine : Routine
 ## :fire: 참고 서적
 - 클린 코드
 - 객체 지향의 사실과 오해
+
+
+<br><br>
+
+## :fire: abstract & virtual 과거 문서
+- [Github -C#](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23/Abstract%20%26%20Virtual.md)
