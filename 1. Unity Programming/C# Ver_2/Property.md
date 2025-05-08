@@ -1,5 +1,5 @@
 ## :fire: Property 사용 규칙
-#### [Auto-Implemented Property : Validation과 복잡한 로직이 필요 없을 시에 사용한다.]
+#### :small_orange_diamond: [Auto-Implemented Property : Validation과 복잡한 로직이 필요 없을 시에 사용한다.]
 ~~~c#
 public int Capacity { get; private set; }
 ~~~
@@ -9,7 +9,7 @@ public int Capacity { get; private set; }
 
 <br>
 
-#### [Basic Property : **Validation** 또는 복잡한 로직이 필요할 때 사용한다.]
+#### :large_orange_diamond: [Basic Property : **Validation** 또는 복잡한 로직이 필요할 때 사용한다.]
 ~~~c#
 private int capacity; 
 public int Capacity
@@ -116,6 +116,8 @@ GetCapacity
 <br><br>
 
 ## :fire: Field 대신 Property를 사용할 때 얻는 이점
+
+<br><br>
 
 ## Reference
 - [link](https://medium.com/@vsiromin/understanding-auto-implemented-properties-in-c-ed1b01620548)
