@@ -39,7 +39,7 @@ public int Capacity
 
 #### [Property 사용 예제 - 커피 마시기]
 <details>
-  <summary>:open_file_folder: 커피 마시기 코드 보기</summary>
+  <summary>:point_up_2: 커피 마시기 코드 보기</summary>
 
 ~~~c#
 public class Coffee
