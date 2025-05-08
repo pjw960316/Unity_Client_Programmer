@@ -38,7 +38,6 @@ public int Capacity
 <br>
 
 #### [Property 사용 예제 - 커피 마시기]
-
 <details>
   <summary>커피 마시기</summary>
 
@@ -102,7 +101,6 @@ GetCapacity
 200
 */
 ~~~
-
 </details>
 
 > 만약 속성을 정의한다면, get과 set 접근자를 모두 정의하는 것이 좋다.
