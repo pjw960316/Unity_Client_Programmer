@@ -5,7 +5,7 @@ public int Capacity { get; private set; }
 ~~~
 - Rider에서 Reformat & Clean-Up 하면 알아서 Auto-Property로 변경해준다.
 - Backing-field가 없기 때문에 코드가 간결해 진다.
-- 컴파일러가 자동으로 backing-field를 암시적으로 생성한다.
+- 컴파일러가 backing-field를 암시적으로 생성한다.
 
 <br>
 
@@ -38,7 +38,9 @@ public int Capacity
 <br>
 
 #### [Property 사용 예제 - 커피 마시기]
-~~~c#
+<details>
+  <summary>커피 마시기</summary>
+  ~~~c#
 public class Coffee
 {
 	private const int DEFAULT_COFFEE_CAPACITY = 300;
@@ -98,6 +100,8 @@ GetCapacity
 200
 */
 ~~~
+</details>
+
 > 만약 속성을 정의한다면, get과 set 접근자를 모두 정의하는 것이 좋다.
 - DrinkedCoffee() 메서드에서도 Get이 호출되는 것을 주의한다.
 
