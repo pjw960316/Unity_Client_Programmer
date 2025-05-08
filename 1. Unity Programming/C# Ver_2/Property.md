@@ -39,7 +39,7 @@ public int Capacity
 
 #### [Property 사용 예제 - 커피 마시기]
 <details>
-  <summary>커피 마시기</summary>
+  <summary>커피 마시기 코드 보기</summary>
 
 ~~~c#
 public class Coffee
@@ -117,5 +117,5 @@ GetCapacity
 
 ## :fire: Field 대신 Property를 사용할 때 얻는 이점
 
-## link
+## Reference
 - [link](https://medium.com/@vsiromin/understanding-auto-implemented-properties-in-c-ed1b01620548)
