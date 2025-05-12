@@ -115,7 +115,7 @@ GetCapacity
 
 <br><br>
 
-## :fire: 그러면 언제 Property 써요? <br> 1. get은 외부에서도 가능하지만 set은 내부에서만 가능하게 하고 싶을 때 <br> 2. 값에 대한 변경사항과 유지보수에 대한 관리가 필요할 만큼 중요한 멤버일 때
+## :fire: :question::question: 그러면 언제 Property 써요? <br> 1. get은 외부에서도 가능하지만 set은 내부에서만 가능하게 하고 싶을 때 <br> 2. 값에 대한 변경사항과 유지보수에 대한 관리가 필요할 만큼 중요한 멤버일 때
 ![alt text](./capture/20250512.png) 
 
 <br><br>
