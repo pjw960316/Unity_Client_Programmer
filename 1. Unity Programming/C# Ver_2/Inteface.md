@@ -40,8 +40,8 @@ public class MessageMan
 </details>
 
 - Message 와 Method의 차이만 알면 책을 쉽게 이해할 수 있다.
-  - ShowMessageExample() method에서 methodMan instance의 TestMethod()를 call 하는 걸 message라고 부른다.
-  - TestMethod()가 MethodMan instance의 메서드로 존재하는 데, 이걸 method라고 부른다.
+  - ShowMessageExample() method에서 methodMan instance의 TestMethod()를 call 하는 걸 <ins>message</ins>라고 부른다.
+  - TestMethod()가 MethodMan instance의 메서드로 존재하는 데, 이걸 <ins>method</ins>라고 부른다.
 
 <br><br>
 
