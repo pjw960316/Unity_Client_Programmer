@@ -45,7 +45,7 @@ public class MessageMan
 
 <br><br>
 
-## :fire: Interface는 class를 만드는 계획표다. <br> 구상 한 내용을 class로 바로 만들지 말고 Interface로 만들어라. 
+## :fire: Interface는 class를 만드는 계획표다. <br> :fire: 구상 한 내용을 class로 바로 만들지 말고 Interface로 만들어라. 
 - Interface 만들기 -> 상속 받은 class는 interface의 method를 구현해야 할 **'책임'**이 생김. -> 팀장님이든 1년차 신입이든든 상속 받은 class에서 method를 구현함 -> 훌륭하든 개판이든 method가 구현되어 있음 -> 호출하는 부분에서는 잘 돌아가겠지 하고 해당 메서드를 호출하면 된다.
 
 <br><br>
