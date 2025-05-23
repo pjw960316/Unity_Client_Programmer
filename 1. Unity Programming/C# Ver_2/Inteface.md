@@ -1,9 +1,9 @@
 ## :fire: Inteface에 대한 의문이 있을 때 <br> '객체지향의 사실과 오해'의 P138 ~ P176을 천천히 읽어봐라.
 
-#### ['객체지향의 사실과 오해'에서 중요한 개념인 message 와 method의 차이점은 이해하고 가자]
+#### [코드 예제]
 
 <details>
-<summary> :point_up_2: 접기 버튼에 적힐 텍스트 </summary>
+<summary> :point_up_2: '객체지향의 사실과 오해'에서 중요한 개념인 message 와 method의 차이점은 이해하고 가자 </summary>
 
 ~~~c#
 void Main()
