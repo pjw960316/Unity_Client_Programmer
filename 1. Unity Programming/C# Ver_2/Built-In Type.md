@@ -46,7 +46,7 @@ void Main()
 
 #### [지역변수 struct 와 class의 멤버인 struct의 복사 비교 예제]
 <details>
-  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인해라  </summary>
+  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
 
 ~~~c#
 void Main()
@@ -145,7 +145,7 @@ public class Book
 ## :fire: struct를 멤버로 포함한 instance를 method의 params로 전달할 때 <br> struct는 deep-copy가 일어나지 않는다.
 #### [params로 전달하는 예제]
 <details>
-  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인해라  </summary>
+  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
 
 ~~~c#
 void Main()
