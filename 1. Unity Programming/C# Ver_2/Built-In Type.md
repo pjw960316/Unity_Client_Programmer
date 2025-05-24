@@ -45,6 +45,9 @@ void Main()
 - **<ins>어떤 순간에도</ins> struct는 ValueType이다.** 하지만 ValueType이 항상 deep-copy를 하지는 않는다.
 
 #### [지역변수 struct 와 class의 멤버인 struct의 복사 비교 예제]
+<details>
+  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인해라  </summary>
+
 ~~~c#
 void Main()
 {
@@ -135,11 +138,15 @@ public class Book
 66 vs 66
 */
 ~~~
+</details>
 
 <br><br>
 
 ## :fire: struct를 멤버로 포함한 instance를 method의 params로 전달할 때 <br> struct는 deep-copy가 일어나지 않는다.
 #### [params로 전달하는 예제]
+<details>
+  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인해라  </summary>
+
 ~~~c#
 void Main()
 {
@@ -210,6 +217,8 @@ public class Book
 33 | 44
 */
 ~~~
+</details>
+
 - params로 전달한 instance의 주소, instance의 struct member인 myFavoritePage의 주소가 모두 같게 유지된다. 
 	- heap에 존재하며 deep-copy가 일어나지 않는다.
 - 같은 주소를 가리키기 때문에 Main()에서 struct의 값을 변경하면 params로 받은 instance의 멤버의 myFavoritePage도 값이 변경된다.
