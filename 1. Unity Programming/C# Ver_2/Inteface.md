@@ -49,5 +49,9 @@ public class MessageMan
 
 <br><br>
 
+## :fire: Interface 타입의 instance는 interface에 정의된 메서드는 반드시 동작 시킬 수 있다. <br> 그 외의 메서드를 더 동작 시키고 싶으면 캐스팅을 해라.
+
+<br><br>
+
 ## :fire: 과거 문서
 - :link: [Link](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_1/Interface.md)
