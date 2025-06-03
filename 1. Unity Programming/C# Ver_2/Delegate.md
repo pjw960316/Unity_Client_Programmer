@@ -4,7 +4,7 @@
 
 <br><br>
 
-## :fire: Lambda Expression은 단 한 번만 호출되어야 하는 method일 때 사용하고, 그 외에는 method로 만든다.
+## :fire: Lambda Expression은 단 한 번만 호출되어야 하는 method일 때 사용하고, <br> 그 외에는 method로 만든다.
 - Lambda expression은 Delegate가 맞다. MSDN : Any lambda expression can be converted to a delegate type.
 - 그러나 책에서 <ins>만약 해당 코드를 소스 코드에서 단 한 번만 참조하는 경우라면 메서드로 만드는 대신, 람다 표현식을 이용한다</ins> <-와 같이 약간의 혼용을 하고 있다. 
 - 이는 결국 Lambda Expression은 delegate만 동작하는 느낌으로는 1회성 method로 생각해도 무방하다고 지금은 판단한다.
