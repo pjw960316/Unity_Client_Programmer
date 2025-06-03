@@ -18,7 +18,7 @@
 ## :fire: Delegate를 사용하는 핵심 이유는 <br> 1. 다른 메서드의 인자로 사용하기 위함이다. <br> 2. 여러 개의 메서드를 한 번에 호출하기 위함이다.
 - Delegates are used to pass methods as arguments to other methods
 - Delegate Chain
-![alt text](./capture/20250603.png.png)
+![alt text](./capture/20250603.png)
 
 <br><br>
 
