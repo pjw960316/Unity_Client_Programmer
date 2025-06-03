@@ -1,4 +1,4 @@
-## :fire: Action은 delegate, Func도 delegate, lambda Expression도 delegate이다. <br> :fire: Instance 관점에서 method와 delegate는 <br> 행동이란 키워드로 같은 그룹에 묶을 수 있다. 
+## :fire: Action은 delegate, Func도 delegate, lambda Expression도 delegate이다. <br> :fire: OOP 관점에서 method와 delegate는 <br> 행동이란 키워드로 같은 그룹에 묶을 수 있다. 
 > A delegate is a type that represents **references to methods** with a particular parameter list and return type.
 
 > 코드에서 람다 표현식을 사용하면 컴파일러는 자동으로 이를 델리게이트로 인지한다.
