@@ -70,7 +70,7 @@ namespace MiniGame
 
 <br><br>
 
-## :fire: .Net Library인 String vs 내가 만든 String Class의 승리는 :fire: 내가 만든 String Class이다.  
+## :fire: .Net Library인 String vs 내가 만든 String Class의 승리는 <br> :fire: 내가 만든 String Class이다.  
 #### [코드 예제]
 ~~~c#
 using System;
