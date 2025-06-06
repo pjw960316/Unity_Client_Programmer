@@ -70,8 +70,8 @@ namespace MiniGame
 
 <br><br>
 
-## :fire: using과 namespace 안에 직접 선언한 클래스의 우선순위는 직접 선언이 이긴다.
-#### [System.String Class 와 내가 만든 String Class의 싸움]
+## :fire: .Net Library인 String vs 내가 만든 String Class의 승리는 :fire: 내가 만든 String Class이다.  
+#### [코드 예제]
 ~~~c#
 using System;
 
@@ -79,27 +79,22 @@ void Main()
 {
 	char[] charArray = { 'H', 'e', 'l', 'l', 'o' };
 	String str = new String(charArray);
-	
-	if(str.GetType() == typeof(System.String))
+
+	if (str.GetType() == typeof(System.String))
 	{
-		//str.Any();
-		"My Custom class's priority is higher than using System".Dump();
+		"External Library Win".Dump();
 	}
 	else
 	{
-		str.Test();
+		"My Custom Library Win".Dump();
 	}
 }
 
 public class String
 {
-	public String(char[] param) {}
-	
-	public void Test()
-	{
-		"My Custom String's Test Method Called".Dump();
-	}
+	public String(char[] param) { }
 }
-// My Custom String's Test Method Called
+
+// My Custom Library Win 
 ~~~
 <br><br>
