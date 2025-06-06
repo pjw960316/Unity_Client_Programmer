@@ -1,4 +1,4 @@
-## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있고, <br> :fire: 하나의 namespace 안에는 여러 class가 있을 수 있다.
+## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있고, <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
 - **ILSpy 기호**
   - ![alt text](./capture//20250606_1.png)
 
@@ -18,19 +18,44 @@
   - ![alt text](./capture//20250606_3.png)
   - 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
 
+- **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
+  - ![alt text](./capture//20250606_5.png)
+
 <br>
 
 - 'using System' 과 'using System.Text'가 상속관계가 아니라 사실은 서로 다른 NameSpace이었다.
 
 <br><br>
 
-## :fire: 아래 정리하고 한 줄 요약 해라
-- DLL = Dynamic Link Library = 라이브러리
-  - > A DLL is a library that contains code and data that can be used by more than one program at the same time. 
-- Library
-- BCL = Base Class Library = 라이브러리
-- Assembly
-- API = Application Programming Interface = 인터페이스
+## :fire: Library는 class와 interface들이 모여있는 그룹이며 편하게 가져다가 쓸 수 있다. <br> Library에는 대표적으로 DLL과 BCL이 있다. <br> :fire: API는 <ins>a definition on how to write software to interface this thing</ins>로 이해한다.
+- **Library**
+  - **DLL** = Dynamic Link Library = 라이브러리
+    - >	A DLL is a library that contains code and data that can be used by more than one program at the same time. 
+  - **BCL** = Base Class Library = 기본 내장 라이브러리
+    - Ex : System.IO , List<T>
+<br>
+
+- **API = Application Programming Interface**
+  - 이 Interface가 C#의 Interface 문법은 아니다. Interface의 본질적인 의미인 설계서 느낌이다.
+  - 그러므로 :star:API는 class가 될 수도 있고 library가 될 수도 있고:star:, 자기 멋대로다.
+  - > An API is a specification; a library implements that specification. Theoretically, two different libraries could implement the same API. 
+
+- #### [Reddit에서 찾은 좋은 답변]
+
+<details>
+  <summary> :point_up_2: 눌러서 코드를 합시다  </summary>
+
+- [alt text](./capture//20250606_6.png)
+- [alt text](./capture//20250606_7.png)
+- [Reference](https://www.reddit.com/r/learnprogramming/comments/1l3ekbs/is_a_library_just_an_api/)
+
+</details>
+
+<br><br>
+
+## :fire: DLL도 Dependency가 생긴다는 단점은 있지만 사용 할 수 밖에 없다고 생각한다.
+> When a program or a DLL uses a DLL function in another DLL, a dependency is created. The program is no longer self-contained, and the program may experience problems if the dependency is broken. For example, the program may not run if one of the following actions occurs
+- 버전을 올려서 이전 버전의 DLL을 사용할 때 생기는 충돌
 
 <br><br>
 
