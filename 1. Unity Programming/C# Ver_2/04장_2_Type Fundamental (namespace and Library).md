@@ -32,9 +32,16 @@
 - Assembly
 - API = Application Programming Interface = 인터페이스
 
+<br><br>
 
 ## :fire: Using System 의 두 가지 의미 <br> :fire: 1. 이 파일에서 BCL의 System Namespace에 존재하는 class 들을 사용하겠다. <br> :fire: 2. System Namespace를 생략 할 수 있다.  
 > C#에서 using 지시자를 사용할 것인지의 여부는 전적으로 여러분의 선택에 따르는 문제이며 필요하다면 namespace를 포함하는 전체 타입 이름을 매번 기술해주어도 상관 없다. C#의 using 지시자는 이 지시자로 선언한 namespace 참조를 각 타입 이름 앞에 자동으로 붙여서 적절한 타입을 찾아내도록 C# 컴파일러에게 지시하는 기능을 한다.
+
+<br><br>
+
+## :link: Reference
+- [MSDN](https://learn.microsoft.com/en-us/troubleshoot/windows-client/setup-upgrade-and-drivers/dynamic-link-library)
+- [WIKI](https://en.wikipedia.org/wiki/DLL_hell)
 
 <br><br>
 
