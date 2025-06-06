@@ -99,7 +99,7 @@ public class String
 ~~~
 <br><br>
 
-## :fire: 하나의 DLL 안에 여러 네임스페이스가 있을 수 있고, <br> :fire: 하나의 네임스페이스 안에는 여러 클래스가 있을 수 있다.
+## :fire: 하나의 DLL파일 안에 여러 네임스페이스가 있을 수 있고, <br> :fire: 하나의 네임스페이스 안에는 여러 클래스가 있을 수 있다.
 - ILSpy 기호
   - ![alt text](./capture//20250606_1.png)
 - DLL 파일 경로
