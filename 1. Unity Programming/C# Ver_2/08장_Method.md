@@ -1,4 +1,4 @@
-## :fire: 팀에서 만든 클래스에서 중요하지 않은 (유틸적인 기능)은 메서드는 <br> 확장 메서드(Extension Method)를 모아 놓은 Static Class에 따로 모아서 구현한다. 
+## :fire: 팀에서 만든 클래스에서 중요하지 않은(=유틸적인 기능) 메서드는 <br> 확장 메서드(Extension Method)를 모아 놓은 Static Class에 따로 모아서 구현한다. 
 
 #### [Generic Extension Method]
 ~~~c#
@@ -48,8 +48,8 @@ static class StringExtension
 - 하나의 클래스를 중요한 메서드와 중요하지 않은 메서드로 구분해서 하나의 일반 클래스와 static 클래스(확장 메서드의 모임인 Extension)로 쪼갤 수 있다.
   - :question::question: 중요함과 중요하지 않음을 구분하는 것도 코스트라 온전한 장점이라 하긴 쉽지 않고, 코드 파편화가 있어서 가독성에는 혼란을 줄 수 있다고 생각은 한다.
   - > Extension methods don't appear directly in the class definition, meaning that they can be harder to discover by developers who are unfamiliar with the available extensions.
-- :bangbang: 확장 메서드를 담고 있는 static class에서는 기존 class의 private | public member에는 접근하지 못하는 단점도 있다.
-- :bangbang: 굳이 기존 클래스에 포함되지 않아도 될 유틸을 괜히 확장 메서드로 포함시킨다면 엄밀하게 말해서는 class에 응집도를 떨어뜨릴 수 있다.
+- :bangbang: 확장 메서드를 담고 있는 static class에서는 기존 class의 private | protected member에는 접근하지 못하는 단점도 있다.
+- :bangbang: 굳이 기존 클래스에 포함되지 않아도 될 유틸을 괜히 확장 메서드로 포함시킨다면 엄밀하게 말해서는 class의의 응집도를 떨어뜨릴 수 있다.
 
 <br><br>
 
