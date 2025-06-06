@@ -16,6 +16,7 @@
 
 - **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
   - ![alt text](./capture//20250606_3.png)
+  - 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
 
 <br>
 
