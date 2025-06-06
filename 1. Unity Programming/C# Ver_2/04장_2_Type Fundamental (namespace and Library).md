@@ -2,7 +2,7 @@
 
 #### [Ambiguous Code]
 <details>
-  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
+  <summary> :point_up_2: 눌러서 코드를 합시다  </summary>
 
 ~~~c#
 using MiniGame; // 내가 2024년에 이렇게 적어놓고 사용했다고 가정하자. 아래 코드(using BigGame)가 없다면 잘 돌아간다.
@@ -37,7 +37,7 @@ namespace MiniGame
 
 #### [Explicit Code]
 <details>
-  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
+  <summary> :point_up_2: 눌러서 코드를 합시다  </summary>
 
 ~~~c#
 using MusicController = MiniGame.MusicController; //Explicit
@@ -67,7 +67,6 @@ namespace MiniGame
 ~~~
 
 </details>
-
 
 <br><br>
 
@@ -104,5 +103,3 @@ public class String
 // My Custom String's Test Method Called
 ~~~
 <br><br>
-
-## :question: using을 쓰면 컴파일러가 모든 using을 매번 검사하는 건 아니지만, <br>:question: 어쨌든 불필요한 검사가 있을 거임.
