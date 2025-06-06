@@ -1,4 +1,4 @@
-## :fire: 하나의 DLL 파일 안에 여러 namespace가가 있을 수 있고, <br> :fire: 하나의 namespace 안에는 여러 class가 있을 수 있다.
+## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있고, <br> :fire: 하나의 namespace 안에는 여러 class가 있을 수 있다.
 - **ILSpy 기호**
   - ![alt text](./capture//20250606_1.png)
 
