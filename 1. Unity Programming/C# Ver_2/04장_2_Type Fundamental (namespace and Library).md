@@ -40,20 +40,20 @@
   - 그러므로 :star:API는 class가 될 수도 있고 library가 될 수도 있고:star:, 자기 멋대로다.
   - > An API is a specification; a library implements that specification. Theoretically, two different libraries could implement the same API. 
 
-- #### [Reddit에서 찾은 좋은 답변]
+- #### [Reddit에서 찾은 답변]
 
 <details>
-  <summary> :point_up_2: 눌러서 코드를 합시다  </summary>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
-- [alt text](./capture//20250606_6.png)
-- [alt text](./capture//20250606_7.png)
+- [alt text](./capture/20250606_6.png)
+- [alt text](./capture/20250606_7.png)
 - [Reference](https://www.reddit.com/r/learnprogramming/comments/1l3ekbs/is_a_library_just_an_api/)
 
 </details>
 
 <br><br>
 
-## :fire: DLL도 Dependency가 생긴다는 단점은 있지만 사용 할 수 밖에 없다고 생각한다.
+## :fire: DLL도 Dependency가 생긴다는 단점은 있지만, 사용 할 수 밖에 없다고 생각한다.
 > When a program or a DLL uses a DLL function in another DLL, a dependency is created. The program is no longer self-contained, and the program may experience problems if the dependency is broken. For example, the program may not run if one of the following actions occurs
 - 버전을 올려서 이전 버전의 DLL을 사용할 때 생기는 충돌
 
@@ -74,7 +74,7 @@
 
 #### [Ambiguous Code]
 <details>
-  <summary> :point_up_2: 눌러서 코드를 합시다  </summary>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
 using MiniGame; // 내가 2024년에 이렇게 적어놓고 사용했다고 가정하자. 아래 코드(using BigGame)가 없다면 잘 돌아간다.
@@ -109,7 +109,7 @@ namespace MiniGame
 
 #### [Explicit Code]
 <details>
-  <summary> :point_up_2: 눌러서 코드를 합시다  </summary>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
 using MusicController = MiniGame.MusicController; //Explicit
