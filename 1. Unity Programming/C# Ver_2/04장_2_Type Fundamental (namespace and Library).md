@@ -45,8 +45,8 @@
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
-- [alt text](./capture/20250606_6.png)
-- [alt text](./capture/20250606_7.png)
+- ![alt text](./capture/20250606_6.png)
+- ![alt text](./capture/20250606_7.png)
 - [Reference](https://www.reddit.com/r/learnprogramming/comments/1l3ekbs/is_a_library_just_an_api/)
 
 </details>
