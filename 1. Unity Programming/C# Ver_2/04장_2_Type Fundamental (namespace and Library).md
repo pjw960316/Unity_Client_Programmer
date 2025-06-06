@@ -98,3 +98,13 @@ public class String
 // My Custom Library Win 
 ~~~
 <br><br>
+
+## :fire: 하나의 DLL 안에 여러 네임스페이스가 있을 수 있고, <br> :fire: 하나의 네임스페이스 안에는 여러 클래스가 있을 수 있다.
+- ILSpy 기호
+  - ![alt text](./capture//20250606_1.png)
+- DLL 파일 경로
+  - ![alt text](./capture//20250606_2.png)
+- DLL 파일 하나에는 무수히 많은 NameSpace가 존재 할 수 있다.
+  - ![alt text](./capture//20250606_4.png)
+- NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.
+  - ![alt text](./capture//20250606_3.png)
