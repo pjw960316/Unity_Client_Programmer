@@ -53,6 +53,18 @@
 
 <br><br>
 
+## :fire: Unity Project에서 팀원들이 Assets/Scripts 경로에 작성한 모든 C# 스크립트 파일들을 컴파일한다. <br> 그 결과로 하나의 DLL(='Assembly-CSharp.dll`)이 생성되며, <br> Assembly-CSharp.dll은 곧 하나의 .NET assembly이며, <br> DLL과 Assembly는 .NET 환경에서 사실상 같은 개념이다.
+- > larger projects can be planned so that several developers can work on separate source code files or modules, which are combined to create a single assembly.
+  - larger projects = 회사 게임 프로젝트, several developers = 클라이언트 팀, source code files = 업무시에 작성하는 스크립트 파일
+  - single assembly = Assembly-Csharp dll 
+  - 그러므로 Assembly == DLL로 인식해도 된다. (물론 엄밀히 말하면 좀 다르긴 한데 좀 애매하다.)
+- > An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (.exe) or dynamic link library (.dll) files, and are the building blocks of .NET applications. DLL contains compiled code of functions stored in so called libraries. Programs call these functions found in the DLLs when needed from inside the program executable (or from another library).
+  - MSDN과 Quora를 합친건데, 같다고 봐도 무방하다.
+- :bangbang: .asmdef를 이용하면 하나의 'Assembly-Csharp.dll'이 아니라 여러 개의 dll로 나누어 진다.
+  - internal keyword가 access 영역을 하나의 assembly(=dll)로 설정하는 키워드인데, .asmdef를 사용하지 않으면 클라이언트 개발팀에서 작성하는 모든 코드는 internal일 때 접근이 가능하다고 판단 할 수 있다.
+
+<br><br>
+
 ## :fire: DLL도 Dependency가 생긴다는 단점은 있지만, 사용 할 수 밖에 없다고 생각한다.
 > When a program or a DLL uses a DLL function in another DLL, a dependency is created. The program is no longer self-contained, and the program may experience problems if the dependency is broken. For example, the program may not run if one of the following actions occurs
 - 버전을 올려서 이전 버전의 DLL을 사용할 때 생기는 충돌
