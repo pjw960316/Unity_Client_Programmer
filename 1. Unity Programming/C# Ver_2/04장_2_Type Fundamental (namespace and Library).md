@@ -63,7 +63,7 @@
 
 <br>
 
-- :bangbang: .asmdef를 이용하면 하나의 'Assembly-Csharp.dll'이 아니라 여러 개의 dll로 나누어 진다.
+- **.asmdef를 이용하면 하나의 'Assembly-Csharp.dll'이 아니라 여러 개의 dll로 나누어 진다.**
   - internal keyword가 access 영역을 하나의 assembly(=dll)로 설정하는 키워드인데, .asmdef를 사용하지 않으면 클라이언트 개발팀에서 작성하는 모든 코드는 internal일 때 접근이 가능하다고 판단 할 수 있다.
 
 <br><br>
