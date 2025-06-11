@@ -1,5 +1,6 @@
 ## MSDN Link
 - [LINK](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/)
+- 제프리 리처가 오래된 책이라... 최신 링크 [LINK](https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/botr/garbage-collection.md)
 
 <br><br>
 
