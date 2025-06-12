@@ -11,7 +11,7 @@
 
 <br><br>
 
-## MVP Pattern 에서는 Presenter가 명확하게 View와 Model을 분리해준다.
+## :fire: Presenter가 명확하게 View와 Model을 분리해준다.
 > Presenter: Model과 View 사이를 연결하는 중재자(mediator)입니다. View로부터 입력 이벤트를 받으면 Model을 업데이트하고, Model의 결과를 다시 View로 전달해 화면을 갱신하는 일을 맡습니다.
   - Presenter가 1대1로 Model과 View를 연결하는 Unit 단위 연결 통로라면, Presenter들 끼리의 소통은 Manager를 통해 한다.
   - SoundManager가 필요한 정보를 UIManager에게 전달하려면 SoundManager가 Presenter를 참조해서 정보를 얻고, UIManager에게 전달한다.
@@ -19,7 +19,10 @@
 
 <br><br>
 
-## MVC는 Controller가 애매해서 Unity에서 사용하기 어렵다고 생각한다.
+## :fire: :TODO: 그래서 MVP & Manager에 존재해야 할 Fields 와 Methods를 잘 정리하자.
+
+<br><br>
+## :fire: MVC는 Controller가 애매해서 Unity에서 사용하기 어렵다고 생각한다.
 > M stands for Model (Which is a fancy name for **Data**)
 
 > V stands for View (which is UI elements)
