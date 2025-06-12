@@ -32,3 +32,9 @@
 - :link:[What is a manager and controller?](https://www.reddit.com/r/Unity3D/comments/qe1s6f/what_is_a_manager_and_controller_in_beginner/)
 
 <br><br>
+
+## :fire: 잡설
+- MVVM은 이전 프로젝트에서 Binding Hell을 겪어서 갈아 엎었다는 걸 들은 적이 있다.
+- MVRP (R = Reactive) 
+  - 지금 결국 구현하는 게 사실 MVRP?
+- MVP를 챙기지 않아서 UI에서 모든 걸 처리하는 스파게티 코드 양산 개발자...
