@@ -3,6 +3,8 @@
   - :link:[which methods should be in Model class except set/get members?](https://stackoverflow.com/questions/13550143/mvc-which-methods-should-be-in-model-class-except-set-get-members)
 - 연결을 위해 presenter는 model 과 view를 멤버로 들고 있는다.
 - 관리를 위해 manager는 presenter를 멤버로 들고 있는다.
+- OOOO이 XXXX를 들고 있다 or 관리하고 있다 = 멤버로 저장하고 있다.
+- OOOO이 XXXX를 모른다 = 멤버로 저장하고 있지 않다.
 
 #### [Sound System을 통한 예시]
 ![alt text](./captures/20250612.png)
