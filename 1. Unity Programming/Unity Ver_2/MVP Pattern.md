@@ -45,13 +45,6 @@
 2. 
 
 <br><br>
-
-## :fire: Presenter가 명확하게 View와 Model을 분리해준다.
-1. 
-2. 
-
-
-<br><br>
 ## :fire: MVC는 Controller가 애매해서 Unity에서 사용하기 어렵다고 생각한다.
 > M stands for Model (Which is a fancy name for **Data**)
 
