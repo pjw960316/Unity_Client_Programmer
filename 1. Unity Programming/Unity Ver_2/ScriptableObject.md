@@ -2,11 +2,13 @@
 
 <br><br>
 
-## :fire: SO는 무엇을 저장하는가?
-
-<br><br>
-
-## :fire: 언제써?
+## :fire: Runtime에 변하지 않는 (큰?) Readonly Data는 SO에 저장한다. <br> 한 번 만 쓰인다면 prefab에 직접 넣어도 되지만, 파편화 방지를 위해 SO에 저장한다.  
+> ScriptableObject is a data container that you can use to **save large amounts of data, independent of class instances.**
+> It’s common to have many GameObjects which rely on duplicate data that **does not need to change at runtime**. Rather than having this duplicate local data on each GameObject, you can funnel(이동시키다) it into a ScriptableObject. Each of the objects stores a reference to the shared data asset, rather than copying the data itself. This can provide significant performance improvements in projects with thousands of objects.
+- [Ex] AudioClip이 단 한 번만 사용되더라도 SoundData 명칭의 ScriptableObject Script에 저장한다. -> 추후에 바꿀 수도 있지만 현재는 이렇게 한다.
+- 기획자는 XML로 데이터를 관리하고, 개발자는 SO로 데이터를 관리한다.
+  - PlayerPrefs, Addressable도 있다.
+- :wrench: TODO : SO를 좀 더 다루면서 계속 갱신해야 한다.
 
 <br><br>
 
@@ -16,7 +18,6 @@
 
 <br><br>
 
-ScriptableObject가 singleton이나 static이 아닌데도 copy 없이 1개를 참조 하는 거 공부해서 적어
-> A ScriptableObject is a data container that you can use to save large amounts of data, independent of class instances. One of the main use cases for ScriptableObjects is to reduce your project’s memory usage by avoiding copies of values.
+## :fire: ScriptableObject가 singleton이나 static이 아닌데도 copy 없이 1개를 참조 하는 거 공부해서 적어 [그로 인해 데이터의 의미 없는 복사 제거]
+> One of the main use cases for ScriptableObjects is to reduce your project’s memory usage by avoiding copies of values.
 > This means that there is one copy of the data in memory.
-
