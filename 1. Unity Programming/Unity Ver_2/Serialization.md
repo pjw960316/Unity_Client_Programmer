@@ -1,3 +1,12 @@
+## :fire: Rider에서 사용하는 C#이 한국어라 가정하고, Unity에서 사용하는 언어(YAML)가 일본어라고 가정한다. <br> :fire: 둘이 대화를 하기 위해서는 공통된 언어(binary?)가 필요하고 그걸 영어라고 가정한다. <br> :fire: 영어로 변환하는 것이 Serialization(=직렬화)이다. 
+- 영어가 반드시 binary로 1대1 비유가 되지는 않는다.
+- [SerializeField] , [Serializable] = 통역하기 = Serializable 한 객체로 변경
+> When you apply a Serializefield attribute, it means that you are making the current object 'readable' by the inspector. 
+
+> When you apply a Serializable attribute, it means you are saying that Objects of this type can be 'readed' by the unity's inpector.
+
+<br><br>
+
 ## :fire: 데이터를 저장하고 전달하기 위해 xml로 Serialization을 한다.
 > Serialization은 가독성과 전달성을 위해 데이터를 **구조화**하는 과정.
 #### [C#의 인스턴스를 XML로 serialization을 시킨 예시]
@@ -34,10 +43,3 @@ class LoginRequest
 - 방식 코드?
 
 <br><br>
-
-## :fire: [SerializeField]는 Unity가 해당 필드를 “에디터에 노출하고 파일에 저장”할 수 있게 <br> Serialization 대상으로 지정하는 키워드.
-- 기본 : private 필드를 inspector에 노출 시키기 위해 사용한다.
-- 심화 : Unity Editor(+inspector)와 코드의 파일 저장 구조를 **잇는** 기능
-  - YAML 변환?????
-- prefab을 까보면 YAML로 되어 있다.
-- 그래서 왜? 모르겠어...
