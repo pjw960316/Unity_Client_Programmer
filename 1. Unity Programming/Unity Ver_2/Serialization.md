@@ -4,6 +4,7 @@
 > When you apply a Serializefield attribute, it means that you are making the current object 'readable' by the inspector. 
 
 > When you apply a Serializable attribute, it means you are saying that Objects of this type can be 'readed' by the unity's inpector.
+> Interfaces are currently not serializable by Unity and therefore don’t show in the inspector.
 
 <br><br>
 

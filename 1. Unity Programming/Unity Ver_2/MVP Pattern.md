@@ -43,8 +43,12 @@
 ## :fire: Manager의 역할과 뭘 구현해야 하는가
 1. 
 2. 
+:question: :link:[여러 개의 view와 1개의 model을 대응할 때 presenter?](https://chatgpt.com/c/68501688-00ec-8004-af44-6a66c19db681)
+  - 나는 이런 걸 Manager로 해버리려 했다. 예를 들어 StringManager 1개가 모든 string을 관리하는 것.
+  - 그러나 토론에서는 1:1로 presenter를 만들라는데, 일단 stringManager를 구현하면서 여기를 수정한다.
 
 <br><br>
+
 ## :fire: MVC는 Controller가 애매해서 Unity에서 사용하기 어렵다고 생각한다.
 > M stands for Model (Which is a fancy name for **Data**)
 
