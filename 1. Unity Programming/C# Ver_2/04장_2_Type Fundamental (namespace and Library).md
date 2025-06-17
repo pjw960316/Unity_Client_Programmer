@@ -1,3 +1,8 @@
+## : :fireworks:   Class or Interface  ⊂  NameSpace  ⊂  DLL(=Assembly)  ⊂  AppDomain 
+- 아래의 :fire:에서 해당 내용을 다룬다.
+
+<br><br>
+
 ## :fire: Unity 게임 프로젝트에서 팀원들이 작성한 <br> <ins>모든 C# 스크립트 파일들</ins>은 보통 'Asset/Scripts'에 저장된다. <br> 이 파일들을 컴파일 하면, 그 결과로 <ins>하나의 DLL(='Assembly-CSharp.dll`)</ins>이 생성된다. <br><br> :fire: Assembly-CSharp.dll은 곧 하나의 .NET assembly이며, <br> DLL과 Assembly는 .NET 환경에서 사실상 <ins>같은 개념</ins>이다.
 - > larger projects can be planned so that several developers can work on separate source code files or modules, which are combined to create a single assembly.
   - larger projects = 회사 게임 프로젝트, several developers = 클라이언트 팀, source code files = 업무시에 작성하는 스크립트 파일
@@ -50,7 +55,7 @@
 
 <br>
 
-- **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
+- **NameSpace 하나에는 무수히 많은 Interface가 존재 할 수 있다.**
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
 
