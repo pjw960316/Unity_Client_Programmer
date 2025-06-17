@@ -15,6 +15,8 @@
 
 - ![alt text](./capture//20250606_1.png)
 
+</details>
+
 <br>
 
 - **DLL 파일 경로**
