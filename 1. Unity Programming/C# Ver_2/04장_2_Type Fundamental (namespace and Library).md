@@ -11,16 +11,17 @@
 ## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
 - **ILSpy 기호**
 <details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
 
-  - ![alt text](./capture//20250606_1.png)
+- ![alt text](./capture//20250606_1.png)
 
 <br>
 
 - **DLL 파일 경로**
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-  - ![alt text](./capture//20250606_2.png)
+  
+- ![alt text](./capture//20250606_2.png)
 
 </details>
 
@@ -29,7 +30,8 @@
 - **DLL 파일 하나에는 무수히 많은 NameSpace가 존재 할 수 있다.**
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-  - ![alt text](./capture//20250606_4.png)
+ 
+- ![alt text](./capture//20250606_4.png)
 
 </details>
 
@@ -38,15 +40,16 @@
 - **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
 - <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-  - ![alt text](./capture//20250606_3.png)
-  - 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
+  
+- ![alt text](./capture//20250606_3.png)
+- 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
 
 </details>
 
 - **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
 - <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-  - ![alt text](./capture//20250606_5.png)
+- ![alt text](./capture//20250606_5.png)
 
 </details>
 
@@ -79,8 +82,6 @@
 - [Reference](https://www.reddit.com/r/learnprogramming/comments/1l3ekbs/is_a_library_just_an_api/)
 
 </details>
-
-
 
 <br>
 
