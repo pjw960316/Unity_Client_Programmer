@@ -53,7 +53,7 @@
 
 <br><br>
 
-## :fire: Unity에서 팀원들이 Assets/Scripts 경로에 작성한 <ins>모든 C# 스크립트 파일들</ins>을 컴파일 하면, <br>	그 결과로 <ins>하나의 DLL(='Assembly-CSharp.dll`)</ins>이 생성된다. <br><br> :fire: Assembly-CSharp.dll은 곧 하나의 .NET assembly이며, <br> DLL과 Assembly는 .NET 환경에서 사실상 <ins>같은 개념</ins>이다.
+## :fire: Unity에서 팀원들이 Assets/Scripts 경로에 작성한 <ins>모든 C# 스크립트 파일들</ins>을 컴파일 하면, <br> 그 결과로 <ins>하나의 DLL(='Assembly-CSharp.dll`)</ins>이 생성된다. <br><br> :fire: Assembly-CSharp.dll은 곧 하나의 .NET assembly이며, <br> DLL과 Assembly는 .NET 환경에서 사실상 <ins>같은 개념</ins>이다.
 - > larger projects can be planned so that several developers can work on separate source code files or modules, which are combined to create a single assembly.
   - larger projects = 회사 게임 프로젝트, several developers = 클라이언트 팀, source code files = 업무시에 작성하는 스크립트 파일
   - single assembly = Assembly-Csharp dll 
