@@ -48,6 +48,8 @@
 
 </details>
 
+<br>
+
 - **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
