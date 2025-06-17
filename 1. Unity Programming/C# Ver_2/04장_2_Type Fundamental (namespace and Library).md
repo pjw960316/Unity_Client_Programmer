@@ -11,7 +11,7 @@
 - > An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (.exe) or dynamic link library (.dll) files, and are the building blocks of .NET applications. DLL contains compiled code of functions stored in so called libraries. Programs call these functions found in the DLLs when needed from inside the program executable (or from another library).
   - MSDN과 Quora를 합친건데, 같다고 봐도 무방하다.
 
-<br>
+<br><br>
 
 ## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
 - **ILSpy 기호**
