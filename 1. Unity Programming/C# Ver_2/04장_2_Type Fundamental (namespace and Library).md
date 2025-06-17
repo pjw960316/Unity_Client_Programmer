@@ -58,9 +58,7 @@
 
 </details>
 
-<br>
-
-- 'using System' 과 'using System.Text'가 상속관계가 아니라 사실은 서로 다른 NameSpace이었다.
+  - 'using System' 과 'using System.Text'가 상속관계가 아니라 사실은 서로 다른 NameSpace이었다.
 
 <br><br>
 
