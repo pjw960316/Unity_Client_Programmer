@@ -1,4 +1,4 @@
-## : :fireworks:   Class or Interface  ⊂  NameSpace  ⊂  DLL(=Assembly)  ⊂  AppDomain 
+## :fireworks:   Class or Interface  ⊂  NameSpace  ⊂  DLL(=Assembly)  ⊂  AppDomain 
 - 아래의 :fire:에서 해당 내용을 다룬다.
 
 <br><br>
