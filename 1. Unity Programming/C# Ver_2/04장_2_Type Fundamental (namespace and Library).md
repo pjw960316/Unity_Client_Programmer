@@ -1,25 +1,54 @@
-## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있고, <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
+## :fire: Unity 게임 프로젝트에서 팀원들이 작성한 <br> <ins>모든 C# 스크립트 파일들</ins>은 보통 'Asset/Scripts'에 저장된다. <br> 이 파일들을 컴파일 하면, 그 결과로 <ins>하나의 DLL(='Assembly-CSharp.dll`)</ins>이 생성된다. <br><br> :fire: Assembly-CSharp.dll은 곧 하나의 .NET assembly이며, <br> DLL과 Assembly는 .NET 환경에서 사실상 <ins>같은 개념</ins>이다.
+- > larger projects can be planned so that several developers can work on separate source code files or modules, which are combined to create a single assembly.
+  - larger projects = 회사 게임 프로젝트, several developers = 클라이언트 팀, source code files = 업무시에 작성하는 스크립트 파일
+  - single assembly = Assembly-Csharp dll 
+  - 그러므로 Assembly == DLL로 인식해도 된다. (물론 엄밀히 말하면 좀 다르긴 한데 좀 애매하다.)
+- > An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (.exe) or dynamic link library (.dll) files, and are the building blocks of .NET applications. DLL contains compiled code of functions stored in so called libraries. Programs call these functions found in the DLLs when needed from inside the program executable (or from another library).
+  - MSDN과 Quora를 합친건데, 같다고 봐도 무방하다.
+
+<br>
+
+## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
 - **ILSpy 기호**
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
   - ![alt text](./capture//20250606_1.png)
 
 <br>
 
 - **DLL 파일 경로**
+<details>
+  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
   - ![alt text](./capture//20250606_2.png)
+
+</details>
 
 <br>
 
 - **DLL 파일 하나에는 무수히 많은 NameSpace가 존재 할 수 있다.**
+<details>
+  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
   - ![alt text](./capture//20250606_4.png)
+
+</details>
 
 <br>
 
 - **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
+- <details>
+  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
   - ![alt text](./capture//20250606_3.png)
   - 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
 
+</details>
+
 - **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
+- <details>
+  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
   - ![alt text](./capture//20250606_5.png)
+
+</details>
 
 <br>
 
@@ -51,15 +80,7 @@
 
 </details>
 
-<br><br>
 
-## :fire: Unity 게임 프로젝트에서 팀원들이 작성한 <br> <ins>모든 C# 스크립트 파일들</ins>은 보통 'Asset/Scripts'에 저장된다. <br> 이 것 들을 컴파일 하면, 그 결과로 <ins>하나의 DLL(='Assembly-CSharp.dll`)</ins>이 생성된다. <br><br> :fire: Assembly-CSharp.dll은 곧 하나의 .NET assembly이며, <br> DLL과 Assembly는 .NET 환경에서 사실상 <ins>같은 개념</ins>이다.
-- > larger projects can be planned so that several developers can work on separate source code files or modules, which are combined to create a single assembly.
-  - larger projects = 회사 게임 프로젝트, several developers = 클라이언트 팀, source code files = 업무시에 작성하는 스크립트 파일
-  - single assembly = Assembly-Csharp dll 
-  - 그러므로 Assembly == DLL로 인식해도 된다. (물론 엄밀히 말하면 좀 다르긴 한데 좀 애매하다.)
-- > An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (.exe) or dynamic link library (.dll) files, and are the building blocks of .NET applications. DLL contains compiled code of functions stored in so called libraries. Programs call these functions found in the DLLs when needed from inside the program executable (or from another library).
-  - MSDN과 Quora를 합친건데, 같다고 봐도 무방하다.
 
 <br>
 
