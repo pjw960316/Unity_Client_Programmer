@@ -1,9 +1,9 @@
-## :fire: 스크립트가 기계어가 되는 과정 (Unity) <br> C# script -> Roslyn compiler Compile -> IL code (Assembly-Csharp.dll) -> play Button Click -> JIT compiler compile -> Runtime -> 01010101001
+## :fire: [유니티에서 스크립트가 기계어가 되는 과정] <br> :point_right: C# script -> Roslyn compiler Compile -> IL code (Assembly-Csharp.dll) -> play Button Click -> JIT compiler compile -> Runtime -> 01010101001
 - **Assembly-Csharp.dll 파일은 IL Code** + Meta file로 구성되어 있다.
 
 <br><br>
 
-## :fire: Unity Rebuild (Ctrl + R) == Roslyn Compiler로 모든 script file들을 <br> Recompile해서 기존의 Assembly-Csharp.dll을 지우고 새로 만든다.
+## :fire: Unity Rebuild (Ctrl + R) == Roslyn Compiler로 모든 script file들을 <br> Recompile해서 기존의 Assembly-Csharp.dll을 지우고 새로 만드는 기능.
 
 <br><br>
 
