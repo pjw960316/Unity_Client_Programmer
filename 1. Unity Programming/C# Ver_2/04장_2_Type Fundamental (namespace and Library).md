@@ -6,6 +6,7 @@
 ## :fire: 개발자 + 기획자 + 아트가 모여서 만든 하나의 유니티 프로젝트가 곧 하나의 Domain이다. <br> AppDomain.CurrentDomain 내부에는 여러 종류의 DLL이 포함되어 있다. <br> 그 DLL 중에는 Assembly-CSharp.dll도 포함되어 있다.
 - ![alt text](./capture/20250617.png)
 - AppDomain.CurrentDomain.GetAssemblies()에서 참조하는 여러 DLL 중 Assembly-CSharp.dll도 포함된다.
+  - ![alt text](./capture/20250617_2.png)
 > 애플리케이션 도메인(AppDomains)은 앱을 서로 격리합니다. AppDomains는 런타임 지원이 필요하며 리소스 비용이 많이 듭니다. 더 많은 앱 도메인 만들기는 지원되지 않으며 나중에 이 기능을 추가할 계획이 없습니다. 코드 격리의 경우 별도의 프로세스 또는 컨테이너를 대안으로 사용합니다.
   - 좀 더 생각해 볼 문제
 
