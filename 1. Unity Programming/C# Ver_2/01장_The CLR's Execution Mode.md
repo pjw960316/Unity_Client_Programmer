@@ -3,7 +3,9 @@
 
 <br><br>
 
-## :fire: Unity Rebuild (Ctrl + R) == Roslyn Compiler로 모든 script file들을 <br> Recompile해서 기존의 Assembly-Csharp.dll을 지우고 새로 만드는 기능.
+## :fire: Unity Rebuild (Ctrl + R) == Rider에서 작성한 코드 변경사항 반영
+- Rebuild == Roslyn Compiler로 모든 script file들을 <br> Recompile해서 기존의 Assembly-Csharp.dll을 지우고 새로 만드는 기능.
+    - DLL이 갱신 되므로 코드가 반영된다.
 
 <br><br>
 
