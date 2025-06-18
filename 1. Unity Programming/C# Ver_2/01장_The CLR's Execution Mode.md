@@ -1,4 +1,4 @@
-## :fire: [유니티에서 스크립트가 기계어가 되는 과정] <br> :point_right: C# script -> Roslyn compiler Compile -> IL code (Assembly-Csharp.dll) -> play Button Click -> JIT compiler compile -> Runtime -> 01010101001
+## :fire: [유니티에서 스크립트가 기계어가 되는 과정] <br> :point_right: C# script -> Roslyn compiler compile -> IL code (Assembly-Csharp.dll) -> play Button Click -> JIT compiler compile -> Runtime -> 01010101001(기계어)
 - **Assembly-Csharp.dll 파일은 IL Code** + Meta file로 구성되어 있다.
 
 <br><br>
