@@ -28,6 +28,10 @@
 
 <br><br>
 
+## :question: 이렇게 GameStartManagerMono에서 SoundData.asset을 로드했음. 근데 로드를 했지만 얘는 SoundManager에서 관리해야 한다. 이 때 GameStartManagerMono에서 SoundManager에게 SoundData.asset을 전달하는 게 DI의 한 종류?
+
+<br><br>
+
 ## :question: ScriptableObject가 singleton이나 static이 아닌데도 copy 없이 1개를 참조 하는 거 공부해서 적어 [그로 인해 데이터의 의미 없는 복사 제거]
 - 다수의 Script에서 Manager에 있는 하나의 SO.asset을 참조하기 때문에...
 > One of the main use cases for ScriptableObjects is to reduce your project’s memory usage by avoiding copies of values.
