@@ -19,6 +19,7 @@
 <br><br>
 
 ## :fire: SO.asset이 메모리에 로드되는 가장 쉬운 방법 <br> :point_right: monoBehaviour 상속 받은 script의 [SerializeField] 필드로 존재하기
+- ![alt text](./captures/20250619_2.png)
 - ![alt text](./captures/20250619.png)
   - SoundData.asset == SO.asset
   - SoundData Script == ScriptableObject를 상속 받고 있는 Class
