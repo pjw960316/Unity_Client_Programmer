@@ -18,6 +18,17 @@
 
 <br><br>
 
-## :fire: ScriptableObject가 singleton이나 static이 아닌데도 copy 없이 1개를 참조 하는 거 공부해서 적어 [그로 인해 데이터의 의미 없는 복사 제거]
+## :fire: SO.asset이 메모리에 로드되는 가장 쉬운 방법 <br> :point_right: monoBehaviour 상속 받은 script의 [SerializeField] 필드로 존재하기
+- ![alt text](./captures/20250619.png)
+  - SoundData.asset == SO.asset
+  - SoundData Script == ScriptableObject를 상속 받고 있는 Class
+- SO.asset과 SO를 상속 받는 Script는 GameObject와 MonoBehaviour를 상속 받는 Script와 비슷한 관계다.
+  - SO가 Model로 게임 내에서 동작하려면 SO를 상속 받는 Script가 component로 존재하는 SO.asset이 필요하다.
+
+<br><br>
+
+## :question: ScriptableObject가 singleton이나 static이 아닌데도 copy 없이 1개를 참조 하는 거 공부해서 적어 [그로 인해 데이터의 의미 없는 복사 제거]
+- 다수의 Script에서 Manager에 있는 하나의 SO.asset을 참조하기 때문에...
 > One of the main use cases for ScriptableObjects is to reduce your project’s memory usage by avoiding copies of values.
 > This means that there is one copy of the data in memory.
+> SO는 constructor가 호출 되지 않는다.
