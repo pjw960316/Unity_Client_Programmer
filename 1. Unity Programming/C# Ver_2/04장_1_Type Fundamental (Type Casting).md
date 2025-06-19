@@ -39,7 +39,7 @@ public class Animal{}
 
 <br><br>
 
-## :fire: Is는 런타임 시점에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.
+## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.
 ~~~c#
 void Main()
 {
@@ -80,6 +80,7 @@ UserQuery+GreenApple is Apple
 */
 ~~~
 - 제목에 적은 '검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.'은 '검사 타겟의 Instance Type과 같거나 검사 타겟의 Derived Instance Type이면 TRUE를 리턴한다.'와 같다.
+- is와 as 모두 runtime에 검사하는 캐스팅 연산자고, 둘 다 예외를 절대로 발생 시키지 않는다.
 
 <br><br>
 
@@ -144,29 +145,3 @@ public class Derived : Base { }
 ## :fire: Explicit 3총사(is, as, 괄호) 중 나는 is만 사용할 것 이다.
 - 가독성이 as 보다 좋다.
 - 예외처리에서 is가 가장 안전하다고 판단한다.
-
-<br><br>
-
-## :question: nullable
-- 좀 더 깊게 공부할 것 5장~6장 보면서
-~~~ c#
-void Main()
-{
-	Test obj = new Test();
-	
-	int a = default;
-	// psuedo : a = Func(Read Xml) 
-	// Xml을 읽어오는 코드는 잘 구현했지만 기획 데이터가 null이라면 a = null이 된다.
-	// 이를 방지하기 위해 받는 부분에서 ?를 이용해서 null이 올 수 있음을 적어준다.
-			
-	obj.CheckNullable(a);
-}
-
-public class Test
-{
-	public void CheckNullable(int? param){}
-}
-~~~
-- 1. 그러면 언제나 ?를 써도 되는가? -> 성능? -> 콜이 많다면 고려해야 하지만, 콜이 적은 메서드면 굳이?
-- 2. 받는 메서드의 매개변수에서 ?로 null 처리를 하는 게 맞지 않는가?
-- 공부하고 제목 바꾸고 -> 그래서 ?를 이때 쓰자. 이렇게.
