@@ -1,0 +1,38 @@
+## :orange_book: 작가가 은유한 예시를 실제 Unity Programming 구현과 연관 짓는다.
+
+<br><br>
+
+## :fireworks: OOP 설계 단계 <br> :fire: 1. 객체의 적절한 책임(행동)을 설계한다. <br> :fire: 해당 책임(행동)을 수행하기 위해 필요한 데이터를 설계한다. <br> :fire: 필요한 데이터와 책임(행동)이 어느 정도 결정된 후에 클래스의 구현 방법을 결정한다.
+
+<br><br>
+
+## :fire: '요청' = Method Call = Message Send
+> 객체가 어떤 행동을 하는 유일한 이유는 다른 객체로부터 요청을 수신했기 때문이다.
+- Method Call에는 적절한 argument와 함께 할 수 있다.
+
+<br><br>
+
+## :fire: '책임' = '행동' = Method Signature = Method Head <br> :fire: Inteface or Abstract를 통해 책임을 강제하고, <br> Virtual를 통해 책임을 유연하게 조언한다.
+> 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
+- 여기서 '재판을 수행'하는 것에만 집중해야 한다.
+- '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
+> 객체가 다른 객체로 부터 받은 요청을 처리하기 위해 객체가 수행하는 행동을 책임이라고 한다. 객체지향 설계의 핵심은 올바른 책임을 올바른 객체에게 할당하는 것이다.
+- 직장에서 항상 고민하던 '이 Method(책임)는 어디에 넣어햐 하지'는 사실 객체지향 설계의 핵심이었다.
+
+> 행동은 결국 객체가 협력에 참여하면서 완수해야 하는 책임을 의미한다.
+
+> 크레이그 라만 : 객체지향 개발에서 가장 중요한 능력은 책임을 능숙하게 소프트웨어 객체에 할당하는 것
+
+> A return type of a method isn't part of the signature of the method for the purposes of method overloading. However, it's part of the signature of the method when determining the compatibility between a delegate and the method that it points to.
+
+<br><br>
+
+## :fire: '책임 수행' = Method Body = Method 구현
+
+<br><br>
+
+## :fire: '역할' = Class = Type
+
+<br><br>
+
+## :fire: '협력' = Assembly = Unity Project 
