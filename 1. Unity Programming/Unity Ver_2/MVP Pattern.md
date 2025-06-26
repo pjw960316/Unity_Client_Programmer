@@ -61,8 +61,14 @@
 
 <br><br>
 
+## :earth_asia: MVP + Manager의 역할을 위에서 알아보았고 각각 생성을 할 수 있다. <br> 이제는 Dependency Injection을 통해 <br> 서로를 연결 시켜주어야 한다.
+
+<br><br>
+
 ## :fire: Dependency Injection을 통해 Presenter가 View와 Model을 알도록 한다.
 > Model does not know the View or the Presenter. View does not know the Model or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
+
+<br><br>
 
 ## :zzz: MVC는 Controller가 애매해서 Unity에서 사용하기 어렵다고 생각한다.
 > M stands for Model (Which is a fancy name for **Data**)
