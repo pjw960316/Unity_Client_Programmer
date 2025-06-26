@@ -12,7 +12,7 @@
 
 <br><br>
 
-## :fire: '책임' = '행동' = Method Signature = Method Head <br> :fire: Inteface or Abstract를 통해 책임을 강제하고, <br> :fire: Virtual를 통해 책임을 유연하게 조언한다.
+## :fire: '책임' = '행동' = Method Signature = Method Head <br> :fire: Inteface or Abstract를 통해 책임을 강제하고, <br> :fire: Virtual를 통해 책임을 유연하게 조언한다. <br> :fire: 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
