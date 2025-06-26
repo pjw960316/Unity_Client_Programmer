@@ -2,6 +2,7 @@
 
 <details>
   <summary> :point_up_2: 누르면 매우 큰 이미지가 나옵니다...  </summary>
+  
 ![alt text](./captures/20250618.png)
 
 </details>
