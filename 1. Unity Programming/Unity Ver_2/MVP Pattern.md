@@ -2,7 +2,7 @@
 
 <details>
   <summary> :point_up_2: 누르면 매우 큰 이미지가 나옵니다...  </summary>
-  
+
 ![alt text](./captures/20250618.png)
 
 </details>
@@ -24,8 +24,7 @@
 
 <br><br>
 
-## :earth_asia: Model, View, Present, Manager에 대한 역할과 무엇을 적어야 하는 지 적어 놓았으므로, 제목 말고 아래의 글 까지 읽어야 한다. 
-- (지워) 제일 중요한 거를 제목에 적어도 되고
+## :earth_asia: Model, View, Present, Manager에 대한 역할과 <br> 무엇을 적어야 하는 지 적어 놓았다. <br> 제목 말고 아래의 글 까지 읽어야 한다. 
 
 <br><br>
 
