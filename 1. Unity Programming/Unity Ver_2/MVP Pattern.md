@@ -46,6 +46,8 @@
   - SoundManager가 필요한 정보를 UIManager에게 전달하려면 SoundManager가 Presenter를 참조해서 정보를 얻고, UIManager에게 전달한다.
 > The presenter receives events from the view, retrieves data from the model and updates the view with the data.
 
+> Model does not know the View or the Presenter. View does not know the Model or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
+
 > The Presenter in MVP often holds a direct reference to the View interface.
 - :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
 1. 
@@ -53,7 +55,7 @@
 <br><br>
 
 ## :fire: Manager의 역할과 뭘 구현해야 하는가
-1. 
+1. 좀 더 실력이 늘면 factory class와 분리하는 게 맞지만 지금은 factory class의 역할을 manager에서 해도 좋을 것 같다. (factory class에서 presenter에 model과 view의 interface를 argument로 전달해서 DI를 진행한다.)
 2. 
 :question: :link:[여러 개의 view와 1개의 model을 대응할 때 presenter?](https://chatgpt.com/c/68501688-00ec-8004-af44-6a66c19db681)
   - 나는 이런 걸 Manager로 해버리려 했다. 예를 들어 StringManager 1개가 모든 string을 관리하는 것.
@@ -65,8 +67,39 @@
 
 <br><br>
 
-## :fire: Dependency Injection을 통해 Presenter가 View와 Model을 알도록 한다.
-> Model does not know the View or the Presenter. View does not know the Model or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
+## :fire: Dependency Injection은 필요한 instance를 직접 new로 생성하지 않고, <br> :fire: 외부(다른 class or interface)에서 제공 받는 것 이다. <br><br> :fire: 만약 필요한 instance의 field가 100개라면, 직접 new 할 때 100개의 field를 모두 초기화해줘야 하는 끔찍한 일이 벌어진다. <br> :fire: 흔히 Dependency를 다른 class를 '알아야 한다'고 표현하는데, new 할 때 100개의 field를 다 초기화 해줘야 하니 '알아야 한다'와 일맥상통 한다.
+
+#### [DI 없음 : 직접 new로 생성하는 쓰레기 코드]
+~~~c#
+public class Employee 
+{
+    private ComplexClass oneHundredFieldInstance; // 필드 100개인 instance
+
+    public Employee() 
+    {
+        this.oneHundredFieldInstance = new ComplexClass(arg0, arg1, arg2, ... , arg99); // 직접 생성
+    }
+}
+~~~
+
+<br>
+
+#### [DI 있음 : 외부로 주입 받는 좋은 코드]
+~~~c#
+public class Employee 
+{
+    private IComplexClass oneHundredFieldInstance; // 필드 100개인 instance + Interface로 받는다.
+
+    public Employee(IComplexClass oneHundredFieldInstance) 
+    { 
+      // 외부에서 생성된 인스턴스를 받음
+        this.oneHundredFieldInstance = oneHundredFieldInstance;
+    }
+}
+~~~
+- :link:[How to explain dependency injection to a 5-year-old? - what about this? 형님 글_추천수 92](https://stackoverflow.com/questions/1638919/how-to-explain-dependency-injection-to-a-5-year-old)
+> The main problem comes when you need to test one particular object, you need to create an instance of other object, and most likely you need to create an instance of yet other object to do that. The chain may become unmanageable.
+- 테스트 할 때 외부로 주입을 받는 다면 MockAddress instance를 만들어서 쉽게 테스트가 가능하지만, 내가 직접 생성해야 하면 내가 직접 다 만들어야 하는 괴로움이 있다. 
 
 <br><br>
 
