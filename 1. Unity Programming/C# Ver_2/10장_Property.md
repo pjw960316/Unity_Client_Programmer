@@ -6,6 +6,7 @@ public int Capacity { get; private set; }
 - Rider에서 Reformat & Clean-Up 하면 알아서 Auto-Property로 변경해준다.
 - Backing-field가 없기 때문에 코드가 간결해 진다.
 - 컴파일러가 backing-field를 암시적으로 생성한다.
+- Backing-field를 직접 변경하지 말고, Property를 변경해서 Set이 돌게 한다.
 
 <br>
 
