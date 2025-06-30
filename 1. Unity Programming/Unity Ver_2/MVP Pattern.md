@@ -37,6 +37,7 @@
 ## :fire: View의 역할과 뭘 구현해야 하는가
 > the View is responsible for handling user input.
 1. 
+- :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
 
 <br><br>
 
@@ -46,10 +47,11 @@
   - SoundManager가 필요한 정보를 UIManager에게 전달하려면 SoundManager가 Presenter를 참조해서 정보를 얻고, UIManager에게 전달한다.
 > The presenter receives events from the view, retrieves data from the model and updates the view with the data.
 
-> Model does not know the View or the Presenter. View does not know the Model or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
+> Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
 
 > The Presenter in MVP often holds a direct reference to the View interface.
 - :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
+
 1. 
 
 <br><br>
