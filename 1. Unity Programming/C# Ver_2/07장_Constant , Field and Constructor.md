@@ -2,7 +2,7 @@
 
 <br><br>
 
-## :fire: 2가지 Initialization 방법 <br> :fire: 1번 : Field Initializer (=Initialization At Declaration) <br> :fire: 2번 : Constructor <br> :fire: Field initializer가 Constructor 보다 먼저 동작한다. <br> 그러므로, Constructor가 Field Initializer를 덮어 씌울 수 있다. <br> readonly Field는 2가지 Initialization에서만 할당이 가능하다.
+## :fire: 두 가지 Initialization 방법 <br> :fire: 1번 : Field Initializer (=Initialization At Declaration) <br> :fire: 2번 : Constructor <br> :fire: Field initializer가 Constructor 보다 먼저 동작한다. <br> 그러므로, Constructor가 Field Initializer를 덮어 씌울 수 있다. <br> :fire: readonly Field는 두 가지 Initialization에서만 할당이 가능하다.
 > Fields are initialized immediately before the constructor for the object instance is called. If the constructor assigns the value of a field, it overwrites any value given during field declaration.
 
 > A read-only field can only be assigned a value during initialization or in a constructor
@@ -13,3 +13,7 @@
 > Prefer initialization in declaration if you don't have a constructor parameter that changes the value of the field.
 
 > If the value of the field changes because of a constructor parameter put the initialization in the constructors.
+
+<br><br> 
+
+## :fire: Activator
