@@ -31,7 +31,11 @@
 ## :fire: Model
 #### 1. 역할 및 책임
 
+<br>
+
 #### 2. 멤버로 들고 있을 것
+
+<br>
 
 #### 3. 특징
 - 절대로 View를 멤버로 갖지 않는다.
@@ -42,8 +46,12 @@
 
 ## :fire: View
 #### 1. 역할 및 책임
-- View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다. (그걸 이벤트로 구현한다.)
-  > the View is responsible for handling user input.
+> the View is responsible for handling user input.
+  - View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
+  - 이를 UniRx를 이용해서 구현한다.
+
+<br>
+
 #### 2. 멤버로 들고 있을 것
 - 의견이 갈리지만 Interface Type의 Presenter
   - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
@@ -55,6 +63,8 @@
 private readonly Subject<Unit> _onSoundButtonClicked = new();
 public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 ~~~
+
+<br>
 
 #### 3. 특징
 - 절대로 Model을 멤버로 갖지 않는다.
@@ -68,12 +78,16 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
   - SoundManager가 필요한 정보를 UIManager에게 전달하려면 SoundManager가 Presenter를 참조해서 정보를 얻고, UIManager에게 전달한다.
 > The presenter receives events from the view, retrieves data from the model and updates the view with the data.
 
+<br>
+
 #### 2. 멤버로 들고 있을 것
 - View 와 Model을 Member로 갖는다.
 - View에서 전달 받은 event의 **Handle Method**
 ~~~c#
  _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
  ~~~
+
+<br>
 
 #### 3. 기타 사항
 > Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
@@ -85,7 +99,11 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 #### 1. 역할 및 책임
 - 좀 더 실력이 늘면 factory class와 분리하는 게 맞지만 지금은 factory class의 역할을 manager에서 해도 좋을 것 같다. (factory class에서 presenter에 model과 view의 interface를 argument로 전달해서 DI를 진행한다.)
 
+<br>
+
 #### 2. 멤버로 들고 있을 것
+
+<br>
 
 #### 3. 기타 사항
 :question: :link:[여러 개의 view와 1개의 model을 대응할 때 presenter?](https://chatgpt.com/c/68501688-00ec-8004-af44-6a66c19db681)
