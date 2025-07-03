@@ -53,10 +53,10 @@
 <br>
 
 #### 2. 멤버로 들고 있을 것
-- 의견이 갈리지만 Interface Type의 Presenter
+- **의견이 갈리지만 Interface Type의 Presenter**
   - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
   - 3가지 Choice가 있다.
-- private Subject & public IObservable
+- **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
 
 ~~~c#
@@ -81,8 +81,8 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 <br>
 
 #### 2. 멤버로 들고 있을 것
-- View 와 Model을 Member로 갖는다.
-- View에서 전달 받은 event의 **Handle Method**
+- **View 와 Model을 Member로 갖는다.**
+- **View에서 전달 받은 event의 <ins>Handle Method</ins>**
 ~~~c#
  _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
  ~~~
