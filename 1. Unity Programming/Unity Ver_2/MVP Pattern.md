@@ -53,9 +53,11 @@
 <br>
 
 #### 2. 멤버로 들고 있을 것
-- **의견이 갈리지만 Interface Type의 Presenter**
+- **의견이 갈리지만 Presenter**
   - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
-  - 3가지 Choice가 있다.
+    - 3가지 Choice가 있다.
+  - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
+    - view가 presenter를 class Type으로 들고 있다.
 - **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
 
@@ -81,7 +83,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 <br>
 
 #### 2. 멤버로 들고 있을 것
-- **View 와 Model을 Member로 갖는다.**
+- **View 와 Model을 멤버로 갖는다.**
 - **View에서 전달 받은 event의 <ins>Handle Method</ins>**
 ~~~c#
  _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
@@ -109,6 +111,10 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 :question: :link:[여러 개의 view와 1개의 model을 대응할 때 presenter?](https://chatgpt.com/c/68501688-00ec-8004-af44-6a66c19db681)
   - 나는 이런 걸 Manager로 해버리려 했다. 예를 들어 StringManager 1개가 모든 string을 관리하는 것.
   - 그러나 토론에서는 1:1로 presenter를 만들라는데, 일단 stringManager를 구현하면서 여기를 수정한다.
+
+<br><br>
+
+## :fire: Presenter가 View와 1대1 대응을 하면 view를 Implemented Type으로 들고 있어도 된다. <br> :fire: Presenter가 View와 1대다 대응을 하면 view를 Interface Type으로 들고 있는 게 좋다. <br> :question: 유지 보수를 생각하면 언제나 Interface로 들고 있는 게 맞는 듯 하지만, 아직 명확한 답을 내리지 못했다.
 
 <br><br>
 
