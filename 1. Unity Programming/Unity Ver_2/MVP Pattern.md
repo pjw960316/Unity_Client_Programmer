@@ -42,15 +42,23 @@
 
 ## :fire: View
 #### 1. 역할 및 책임
-> the View is responsible for handling user input.
-
+- View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다. (그걸 이벤트로 구현한다.)
+  > the View is responsible for handling user input.
 #### 2. 멤버로 들고 있을 것
-- 절대로 Model을 멤버로 갖지 않는다. 
 - 의견이 갈리지만 Interface Type의 Presenter
-- :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
+  - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
   - 3가지 Choice가 있다.
+- private Subject & public IObservable
+  - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
+
+~~~c#
+private readonly Subject<Unit> _onSoundButtonClicked = new();
+public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
+~~~
+
 #### 3. 특징
- 
+- 절대로 Model을 멤버로 갖지 않는다.
+
 <br><br>
 
 ## :fire: Presenter
@@ -62,6 +70,10 @@
 
 #### 2. 멤버로 들고 있을 것
 - View 와 Model을 Member로 갖는다.
+- View에서 전달 받은 event의 **Handle Method**
+~~~c#
+ _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
+ ~~~
 
 #### 3. 기타 사항
 > Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
