@@ -1,5 +1,4 @@
-## :orange_book: 작가가 은유한 예시를 실제 Unity Programming 구현과 연관 짓는다.
-## :orange_book: 작가의 용어를 이해하고 :star:로 시작하는 문단을 이해한다.
+## :orange_book: 작가가 은유한 예시를 실제 Unity Programming 구현과 연관 짓는다. <br> :orange_book: 작가의 용어를 이해하고 :star:로 시작하는 문단을 이해한다.
 
 <br><br>
 
