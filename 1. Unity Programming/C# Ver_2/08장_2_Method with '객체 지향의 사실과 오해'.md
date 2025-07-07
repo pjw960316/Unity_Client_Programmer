@@ -2,10 +2,6 @@
 
 <br><br>
 
-## :fireworks: [Unity Project 설계 단계] <br> :fire: 1. 객체의 적절한 책임(행동)을 설계한다. <br> :fire: 해당 책임(행동)을 수행하기 위해 필요한 데이터를 설계한다. <br> :fire: 필요한 데이터와 책임(행동)이 어느 정도 결정된 후에 클래스의 구현 방법을 결정한다.
-
-<br><br>
-
 ## :fire: '요청' = Method Call = Message Send
 > 객체가 어떤 행동을 하는 유일한 이유는 다른 객체로부터 요청을 수신했기 때문이다.
 - Method Call에는 적절한 argument와 함께 할 수 있다.
@@ -32,7 +28,7 @@
 
 <br><br>
 
-## :star::fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
+## :star::fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br> :star: 정리하면 Instance 끼리 공통 적인 책임 수행 방식 (구현이 같은 method)가 다수 존재한다면 Abstract Class를 구현한다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
@@ -50,3 +46,9 @@
 <br>
 
 - Interface의 Default 기능은 다루지 않는다.
+
+<br><br>
+
+## :star::fireworks: [Unity Project 설계 단계] <br> :fire: 1단계 : 객체의 적절한 책임(행동)을 설계한다. <br> :fire: 2단계 : 해당 책임(행동)을 수행하기 위해 필요한 데이터를 설계한다. <br> :fire: 3단계 : 필요한 데이터와 책임(행동)이 어느 정도 결정된 후에 클래스의 구현 방법을 결정한다.
+- 1단계에서 interface 또는 Abstract Class를 설계하는 것.
+  - 재사용 method가 많을수록 abstract class를 사용하는 설계가 올바르다고 현재는 판단한다.
