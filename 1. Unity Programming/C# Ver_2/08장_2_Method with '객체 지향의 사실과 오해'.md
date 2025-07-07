@@ -18,7 +18,6 @@
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
 > 객체가 다른 객체로 부터 받은 요청을 처리하기 위해 객체가 수행하는 행동을 책임이라고 한다. 객체지향 설계의 핵심은 올바른 책임을 올바른 객체에게 할당하는 것이다.
 - 직장에서 항상 고민하던 '이 Method(책임)는 어디에 넣어햐 하지'는 사실 객체지향 설계의 핵심이었다.
-- Interface의 Default 기능은 다루지 않는다.
 
 <br>
 
@@ -27,6 +26,10 @@
 > 크레이그 라만 : 객체지향 개발에서 가장 중요한 능력은 책임을 능숙하게 소프트웨어 객체에 할당하는 것
 
 > A return type of a method isn't part of the signature of the method for the purposes of method overloading. However, it's part of the signature of the method when determining the compatibility between a delegate and the method that it points to.
+
+<br>
+
+- Interface의 Default 기능은 다루지 않는다.
 
 <br><br>
 
