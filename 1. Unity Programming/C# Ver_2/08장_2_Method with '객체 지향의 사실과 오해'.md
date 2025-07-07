@@ -28,7 +28,7 @@
 
 <br><br>
 
-## :star::fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br> :star: 정리하면, 여러 클래스(Instance)가 동일한 역할(interface)을 가지면서 공통적으로 수행하는 구현(method body)도 다수 존재한다면 interface로 역할을 정의하고 그 역할을 구현한 abstract class를 추가로 설계한다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
+## :star::fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br> :star: 정리하면, 여러 class가 동일한 책임을 가지면서 책임 수행 방식의 공통점도 다수 존재한다면 interface로 역할을 정의하고 그 역할을 구현한 abstract class를 추가로 설계한다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
