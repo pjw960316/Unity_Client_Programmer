@@ -1,4 +1,5 @@
 ## :orange_book: 작가가 은유한 예시를 실제 Unity Programming 구현과 연관 짓는다.
+## :orange_book: 작가의 용어를 이해하고 :star:로 시작하는 문단을 이해한다.
 
 <br><br>
 
@@ -12,7 +13,27 @@
 
 <br><br>
 
-## :fire: '책임' = '행동' = Method Signature = Method Head <br><br> :fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
+## :fire: '책임' = '행동' = Method Signature = Method Head 
+
+<br><br>
+
+## :fire: '책임 수행' = Method Body = Method 구현
+
+<br><br>
+
+## :fire: '역할' = Class = Type
+> 어떤 객체가 수행하는 책임의 집합은 객체가 협력 안에서 수행하는 역할을 암시한다.
+
+> 역할은 협력 안에서 구체적인 객체로 대체될 수 있는 추상적은 협력자다. 따라서 본질적으로 역할은 다른 객체에 의해 대체 가능함을 의미한다.
+- 하나의 class를 만들면 해당 type으로 여러 instance를 생성 할 수 있다. (not singleton) 
+
+<br><br>
+
+## :fire: '협력' = Assembly = Unity Project 
+
+<br><br>
+
+## :star::fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
@@ -30,19 +51,3 @@
 <br>
 
 - Interface의 Default 기능은 다루지 않는다.
-
-<br><br>
-
-## :fire: '책임 수행' = Method Body = Method 구현
-
-<br><br>
-
-## :fire: '역할' = Class = Type
-> 어떤 객체가 수행하는 책임의 집합은 객체가 협력 안에서 수행하는 역할을 암시한다.
-
-> 역할은 협력 안에서 구체적인 객체로 대체될 수 있는 추상적은 협력자다. 따라서 본질적으로 역할은 다른 객체에 의해 대체 가능함을 의미한다.
-- 하나의 class를 만들면 해당 type으로 여러 instance를 생성 할 수 있다. (not singleton) 
-
-<br><br>
-
-## :fire: '협력' = Assembly = Unity Project 
