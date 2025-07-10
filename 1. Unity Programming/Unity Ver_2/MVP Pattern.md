@@ -119,6 +119,13 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 
 <br><br>
 
+## :question: 무수히 많은 View와 무수히 많은 Presenter가 Project에 있지만, <br> 그들의 추상화 레벨이 같다면 Presenter가 자신과 같은 추상화 레벨의 View Type을 명시적으로 갖도록 구현할 수 있다?
+- 어떤 View가 상속 단계 4단계 중 2단계인데 이 View와 연결된 Presenter가 있다. 그러면 이 Presenter는 View를 IView 타입으로 자신의 필드로 들고 있는 게 아니라, View의 상속 2단계 타입으로 들고 있는다.  
+- :bangbang:한 동안 무조건 Iview로 들고 있어야 한다고 생각을 했고, 이 위에도 그런데. 좀 더 구현하면서 두 개념을 다듬어 보자
+- :link:[내가 적은 Abstract Programming](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/%EB%B2%88%EC%99%B8_Abstract%20Programming.md)
+
+<br><br>
+
 ## :earth_asia: MVP + Manager의 역할을 위에서 알아보았고 각각 생성을 할 수 있다. <br> 이제는 Dependency Injection을 통해 <br> 서로를 연결 시켜주어야 한다.
 
 <br><br>
