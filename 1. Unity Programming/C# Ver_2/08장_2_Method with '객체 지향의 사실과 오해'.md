@@ -2,7 +2,7 @@
 
 <br><br>
 
-## :fire: '요청' = Method Call = Message Send
+## :fire: '요청' = '호출' = Method Call = Message Send
 > 객체가 어떤 행동을 하는 유일한 이유는 다른 객체로부터 요청을 수신했기 때문이다.
 - Method Call에는 적절한 argument와 함께 할 수 있다.
 
@@ -46,6 +46,11 @@
 <br>
 
 - Interface의 Default 기능은 다루지 않는다.
+
+<br><br>
+
+## :fire: Method Call('요청')은 Unirx의 Subject 와 Observable로 강제하거나 <br> Event(+Unity Event) System을 통해 강제 시킬 수 있다.
+- 책임도 강제가 되고, 요청도 강제가 되면 설계자가 다른 프로그래머에게 내 의도를 강제 시킬 수 있다. 
 
 <br><br>
 
