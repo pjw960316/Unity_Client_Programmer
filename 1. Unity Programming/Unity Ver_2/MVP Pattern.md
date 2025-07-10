@@ -34,7 +34,6 @@
 <br>
 
 #### 2. 멤버로 들고 있을 것
-- **Presenter가 MonoBehaviour 관련 데이터(ex : transform)를 요청 할 때, 그걸 줄 수 있는 Public Get Method**
 
 <br>
 
@@ -61,12 +60,11 @@
     - view가 presenter를 class Type으로 들고 있다.
 - **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
-- **Manager에게 Request 하는 Method**
-
 ~~~c#
 private readonly Subject<Unit> _onSoundButtonClicked = new();
 public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 ~~~
+- **Presenter가 MonoBehaviour 관련 데이터(ex : transform)를 요청 할 때, 그걸 줄 수 있는 Public Get Method**
 
 <br>
 
@@ -90,6 +88,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 ~~~c#
  _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
  ~~~
+- **Manager에게 Request 하는 Method**
 
 <br>
 
