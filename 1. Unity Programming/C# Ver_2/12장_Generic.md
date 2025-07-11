@@ -3,7 +3,7 @@
 #### [호출부에서 명시적인 타입을 알면 Generic을 써서 전달하자]
 ~~~c#
 
-//1. UIAlarmPopup(=Conctrete한 View) Script의 코드
+//1. View_1 : UIAlarmPopup Script의 코드
 protected void Awake()
 {
     
@@ -15,7 +15,15 @@ protected void Awake()
     BindEvent();
 }
 
-//2. SoundManager의 코드
+//2. View_2 : UIButtonBase Script의 코드
+private void Initialize()
+{
+    _buttonPresenter = SoundManager.Instance.GetPresenterAfterCreate<ButtonPresenterBase>(this);
+    
+    BindEvent();
+}
+
+//3. SoundManager의 코드
 public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresenter : IPresenter, new()
 {
     TPresenter presenter = new TPresenter();
