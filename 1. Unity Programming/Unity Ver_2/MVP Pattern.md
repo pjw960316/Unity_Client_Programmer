@@ -131,7 +131,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 
 <br><br>
 
-## :fire: View는 필드로 다른 view를 들고 있는 경우가 대부분이다. <br> (예를 들면, Popup 내부에는 여러 개의 Button이 있다.) <br> :fire:초기 구현에서는 Popup에서 모든 하위 View들을 필드로 관리했지만 <br> 추후에 하위 View들이 거대해지면서 코드의 중복이 생기기 시작한다. <br> :fire::star:이 때가 필드로 들고 있던 view를 독립적인 새로운 View Script를 빼서 관리해야 할 때다. <br> 회사에서는 이걸 widget화 한다고 배웠었다.
+## :fire: View는 필드로 다른 view를 들고 있는 경우가 대부분이다. <br> (예를 들면, Popup 내부에는 여러 개의 Button이 있다.) <br> :fire:구현 초기에는, Popup에서 모든 하위 View들을 필드로 관리하는 데 어려움이 없다. <br> 그러나 추후에 하위 View들이 거대해지면서 코드의 중복이 생기기 시작한다. <br> :fire::star:이 때가 필드로 들고 있던 view를 독립적인 새로운 View Script를 빼서 관리해야 할 때다. <br> 회사에서는 이걸 widget화 한다고 배웠었다.
 
 #### [회사에서 적어 놓은 내용]
 <details>
