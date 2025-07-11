@@ -49,6 +49,9 @@
 > the View is responsible for handling user input.
   - View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
   - 이를 UniRx를 이용해서 구현한다.
+- View는 Pub/Sub 구조에서 publisher의 역할을 갖고 있다.
+  - View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
+  - View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
 
 <br>
 
@@ -79,6 +82,8 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
   - Presenter가 1대1로 Model과 View를 연결하는 Unit 단위 연결 통로라면, Presenter들 끼리의 소통은 Manager를 통해 한다.
   - SoundManager가 필요한 정보를 UIManager에게 전달하려면 SoundManager가 Presenter를 참조해서 정보를 얻고, UIManager에게 전달한다.
 > The presenter receives events from the view, retrieves data from the model and updates the view with the data.
+- Presenter는 Pub/Sub 구조에서 subscriber의 역할을 갖고 있다.
+  - View가 제공한 이벤트를 구독하여 이벤트가 발생했을 때 수행할 로직을 구현한다.
 
 <br>
 
