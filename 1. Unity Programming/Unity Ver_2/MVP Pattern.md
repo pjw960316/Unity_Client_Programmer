@@ -61,6 +61,10 @@
     - 3가지 Choice가 있다.
   - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
     - view가 presenter를 class Type으로 들고 있다.
+- **자신보다 작은 View Widget (ex : Button Widget Script)**
+- **Struct**
+
+  - 자신보다 작은 View에 로직이 없고, 애매한 개수의 데이터를 묶고 싶다면, Widget으로 만들지 말고 Struct로 묶는다.
 - **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
 ~~~c#
@@ -73,6 +77,16 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 
 #### 3. 특징
 - 절대로 Model을 멤버로 갖지 않는다.
+- :Star: 거대한 View(Popup)는 작은 View(Button, Image, ScrollView)들을 들고 있다. 작은 View가 거대해 질 수 있다.
+  - 거대해졌는데 아직 로직은 없다 : Struct로 묶기
+  ~~~c#
+  public struct ButtonData
+  {
+    public Button button;
+    public EButtons buttonType;
+  }
+  ~~~
+  - 거대해졌는데 로직도 필요하다 : Widget Script로 빼기    
 
 <br><br>
 
