@@ -86,6 +86,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 - :star: 거대한 View(Popup)는 작은 View(Button, Image, ScrollView)들을 들고 있다. 작은 View가 거대해 질 수 있다.
   - 거대해졌는데 아직 로직은 없다 -> Presenter가 쉽게 이용하도록 <ins>**public Struct로 묶기**</ins>
   ~~~c#
+  // Ebuttons 하나 추가하려고 Widget으로 빼서 Script를 만드는 것 도 낭비다.
   public struct ButtonData
   {
     public Button button;
