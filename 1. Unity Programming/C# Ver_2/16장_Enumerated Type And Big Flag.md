@@ -1,0 +1,1 @@
+## :fire: Enum Type은 Presenter의 내부에 필드로 구현한다. <br> :fire: Enum Type은 Presenter와 View 그리고 Presenter와 Model끼리만 공유할 상수 약속이다.

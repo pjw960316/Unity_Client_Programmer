@@ -78,7 +78,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 #### 3. 특징
 - 절대로 Model을 멤버로 갖지 않는다.
 - :Star: 거대한 View(Popup)는 작은 View(Button, Image, ScrollView)들을 들고 있다. 작은 View가 거대해 질 수 있다.
-  - 거대해졌는데 아직 로직은 없다 : Struct로 묶기
+  - 거대해졌는데 아직 로직은 없다 : **Struct로 묶기**
   ~~~c#
   public struct ButtonData
   {
@@ -86,7 +86,8 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
     public EButtons buttonType;
   }
   ~~~
-  - 거대해졌는데 로직도 필요하다 : Widget Script로 빼기    
+    - public이기 때문에 Presenter가 쉽게 사용한다.
+  - 거대해졌는데 로직도 필요하다 : **Widget Script로 빼기**    
 
 <br><br>
 
@@ -108,6 +109,9 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
  _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
  ~~~
 - **Manager에게 Request 하는 Method**
+- **Enum**
+  - Class 외부에 선언하지 않도록 주의한다. (Scope)
+  - ![alt text](./captures/20250715.png)
 
 <br>
 
