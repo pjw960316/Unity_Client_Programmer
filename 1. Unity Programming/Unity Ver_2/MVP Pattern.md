@@ -18,7 +18,13 @@
 - OOOO이 XXXX를 모른다 = 멤버로 저장하고 있지 않다.
 
 #### [Sound System을 통한 예시]
+<details>
+  <summary> :point_up_2: 누르면 매우 큰 이미지가 나옵니다...  </summary>
+
 ![alt text](./captures/20250612.png)
+
+</details>
+
 - Presenter 끼리의 직접 소통은 금지하고 SoundManager를 통해 소통한다.
 - SoundManager가 UIManager와 소통하기 위해서는 SoundManager가 들고 있는 Presenter 들을 통해 필요한 정보를 가져와서 전달해야 한다.
 
