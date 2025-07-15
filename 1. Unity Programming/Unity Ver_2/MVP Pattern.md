@@ -77,7 +77,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 
 #### 3. 특징
 - 절대로 Model을 멤버로 갖지 않는다.
-- :Star: 거대한 View(Popup)는 작은 View(Button, Image, ScrollView)들을 들고 있다. 작은 View가 거대해 질 수 있다.
+- :star: 거대한 View(Popup)는 작은 View(Button, Image, ScrollView)들을 들고 있다. 작은 View가 거대해 질 수 있다.
   - 거대해졌는데 아직 로직은 없다 : **Struct로 묶기**
   ~~~c#
   public struct ButtonData
