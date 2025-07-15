@@ -67,10 +67,10 @@
     - 3가지 Choice가 있다.
   - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
     - view가 presenter를 class Type으로 들고 있다.
+- **자신보다 작은 View Struct**
+  - '특징'에 설명 해 놓았다.
 - **자신보다 작은 View Widget (ex : Button Widget Script)**
-- **Struct**
-
-  - 자신보다 작은 View에 로직이 없고, 애매한 개수의 데이터를 묶고 싶다면, Widget으로 만들지 말고 Struct로 묶는다.
+  - '특징'에 설명 해 놓았다.
 - **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
 ~~~c#
