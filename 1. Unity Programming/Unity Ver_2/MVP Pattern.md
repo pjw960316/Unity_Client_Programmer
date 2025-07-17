@@ -138,6 +138,7 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 
 #### 2. 멤버로 들고 있을 것
 - 게임에 상주하는 UnityEngine.Object 상속 받는 Object
+  - Command Pattern
 
 <br>
 
