@@ -16,7 +16,7 @@
 
 <br><br>
 
-## :fire: 직접 Destroy()로 파괴하는 것과 Scene이 변경되어 자동으로 파괴되는 것은 <br> '파괴'의 관점에서는 거의 비슷하다. <br> :fire: 둘 다 UnityEngine.Object(!= C# Object)를 상속 받는 Scene에 존재하는 모든 Instance들을 파괴한다.
+## :fire: 직접 Destroy()로 파괴하는 것과 Scene이 변경되어 자동으로 파괴되는 것은 <br> '파괴'의 관점에서는 거의 비슷하다. <br> :fire: 둘 다 UnityEngine.Object(!= C# Object)를 상속 받는 <br> Scene에 존재하는 모든 Instance들을 파괴한다.
 - Scene이 변경될 때 
   > OnDestroy occurs when a Scene or game ends. Stopping the Play mode when running from inside the Editor will end the application. As this end happens an OnDestroy will be executed. Also, <ins>if a Scene is closed and a new Scene is loaded</ins> the OnDestroy call will be made.
 - Scene이 변경될 때 DontDestroyOnLoad를 사용하지 않으면 Scene의 Object 들은 파괴된다.
