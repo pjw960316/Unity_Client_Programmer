@@ -172,7 +172,7 @@ void Main()
 
 </details>
 
-- 결론적으로 public으로 변경하는 Setter만 있을 시에 private로 설정해도 어디서든 바뀔 수 있다.
+- 결론적으로 public으로 변경하는 Setter가 존재하면 private로 설정해도 어디서든 바뀔 수 있다.
 - F12가 있다고 해서 추적이 된다고 하지만, private이 무색하게 10개의 class 끼리 공유가 되면 답이 없지 않을까?
 - 누군가 View Class에서 Model Class의 데이터를 바꾼다? 그냥 답이 없음.
 
