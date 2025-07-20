@@ -104,7 +104,7 @@ void Main()
 // 2
 ~~~
 
-</deatails>
+</details>
 
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
@@ -127,9 +127,9 @@ public class PrivateTestSubject
 }
 ~~~
 
-</deatails>
+</details>
 
-- :link:[Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/06%EC%9E%A5_Type%20and%20Member%20Basics%20(%3DClass).md)
+> Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
 
 #### [:two: Immutable]
