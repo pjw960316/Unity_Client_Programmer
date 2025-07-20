@@ -205,8 +205,10 @@ void Main()
 	testManager.InsertDataToList();
 	testManager.PrintPrivateList();
 }
+~~~
 
 </details>
+
 - ChangeListInstance()에서 새로운 devilList를 기존의 readonly List에 할당하는 것은 막을 수 있다.
 - 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다. 
 
