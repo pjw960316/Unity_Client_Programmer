@@ -109,7 +109,7 @@ void Main()
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
 
-#### [:one: readonly]
+#### [1. readonly 예제]
 
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
@@ -132,4 +132,4 @@ public class PrivateTestSubject
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
 
-#### [:two: Immutable]
+#### [2. Immutable 예제]
