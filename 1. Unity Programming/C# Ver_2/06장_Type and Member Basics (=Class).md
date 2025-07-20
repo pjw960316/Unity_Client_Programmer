@@ -50,6 +50,7 @@ public class Test
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
+// 예제 1-1 : 2개의 Class에서 private의 방어가 뚫리는 구조
 public class TestManager
 {
 	private PrivateTestSubject _privateTestSubject;
@@ -108,6 +109,71 @@ void Main()
 
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
+
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
+~~~c#
+// 예제 1-2 : 3개의 Class에서 private의 방어가 뚫리는 구조
+public class TestManager
+{
+	private PrivateTestSubject _privateTestSubject;
+
+	public TestManager(PrivateTestSubject testSubject)
+	{
+		this._privateTestSubject = testSubject;
+	}
+	
+	public void ChangeTestObjectNumber()
+	{
+		//1. 이건 당연히 안 됨.
+		//_privateTestSubject._privateTestObject._privateNumber = 5;
+		
+		//2. 변경 가능
+		_privateTestSubject.PrivateTestObject.ChangeNumber();
+	}
+}
+
+public class PrivateTestSubject
+{
+	public PrivateTestObject PrivateTestObject; //만약 public으로 하면.
+
+	public PrivateTestSubject(PrivateTestObject obj)
+	{
+		PrivateTestObject = obj;
+	}
+}
+
+public class PrivateTestObject
+{
+	private int _privateNumber = 0;
+	
+	public void PrintPrivateNumber()
+	{
+		_privateNumber.Dump();
+	}
+	
+	public void ChangeNumber()
+	{
+		_privateNumber = 77;
+	}
+}
+
+void Main()
+{
+	PrivateTestObject privateTestObject = new PrivateTestObject();
+	PrivateTestSubject privateTestSubject = new PrivateTestSubject(privateTestObject);
+	TestManager testManager = new TestManager(privateTestSubject);
+
+	testManager.ChangeTestObjectNumber();
+	privateTestObject.PrintPrivateNumber();
+}
+~~~
+- 결론적으로 public으로 변경하는 Setter만 있을 시에 private로 설정해도 어디서든 바뀔 수 있다.
+- F12가 있다고 해서 추적이 된다고 하지만, private이 무색하게 10개의 class 끼리 공유가 되면 답이 없지 않을까?
+- 누군가 View Class에서 Model Class의 데이터를 바꾼다? 그냥 답이 없음.
+
+</details>
 
 <br>
 
