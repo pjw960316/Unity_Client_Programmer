@@ -44,7 +44,7 @@ public class Test
 <br><br>
 
 ## :fire: Private 필드는 외부에서 접근에 완벽히 안전하지 않다. 그러므로 다음의 두 가지 방식을 사용한다. <br> :one: private field에 readonly + Declaration을 쓰도록 한다. <br> :two: Container는 Immutable Type으로 구현한다.
-#### [private의 한계 : property나 public Method라 그냥 뚫린다.]
+#### [예제 1_private의 한계 : property나 public Method로 그냥 뚫린다.]
 
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
@@ -109,7 +109,7 @@ void Main()
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
 
-#### [1. readonly 예제]
+#### [예제_2 : readonly로 변경 방어]
 
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
@@ -132,4 +132,4 @@ public class PrivateTestSubject
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
 
-#### [2. Immutable 예제]
+#### [예제_3 : Immutable로 Container 변경 방어]
