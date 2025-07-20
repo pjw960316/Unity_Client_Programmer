@@ -109,7 +109,9 @@ void Main()
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
 
-#### [예제_2 : readonly로 변경 방어]
+<br>
+
+#### [예제_2 : Non-Container Field는 readonly로 방어]
 
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
@@ -132,4 +134,155 @@ public class PrivateTestSubject
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
 
-#### [예제_3 : Immutable로 Container 변경 방어]
+<br>
+
+#### [예제_3 : Container는 readonly로 방어가 불가능 하다.]
+
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
+~~~c#
+
+public class TestManager
+{
+	private PrivateTestSubject _privateTestSubject;
+	
+	public TestManager(PrivateTestSubject arg)
+	{
+		this._privateTestSubject = arg;
+	}
+	
+	public void InsertDataToList()
+	{
+		_privateTestSubject.InsertDataToList();
+	}
+
+	public void PrintPrivateList()
+	{
+		_privateTestSubject.PrintPrivateList();
+	}
+}
+
+public class PrivateTestSubject
+{
+	private readonly List<int> _privateList = new(); 
+	
+	public PrivateTestSubject()
+	{
+		//default setting
+		_privateList.Add(2);
+		_privateList.Add(4);
+		_privateList.Add(6);
+	}
+	
+	public void ChangeListInstance()
+	{
+		List<int> devilList = new();
+		
+		//이건 막는다.
+		//_privateList = devilList;
+	}
+	
+	public void InsertDataToList()
+	{
+		_privateList.Add(8);
+	}
+
+	public void PrintPrivateList()
+	{
+		foreach(var member in _privateList)
+		{
+			member.Dump();
+		}
+	}
+}
+
+void Main()
+{
+	PrivateTestSubject privateTestSubject = new PrivateTestSubject();
+	TestManager testManager = new TestManager(privateTestSubject);
+	
+	testManager.InsertDataToList();
+	testManager.PrintPrivateList();
+}
+
+</details>
+- ChangeListInstance()에서 새로운 devilList를 기존의 readonly List에 할당하는 것은 막을 수 있다.
+- 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다. 
+
+<br>
+
+#### [예제_4 : readonly Container는 Immutable로 만들어 준다.]
+
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
+~~~c#
+
+public class TestManager
+{
+	private PrivateTestSubject _privateTestSubject;
+	
+	public TestManager(PrivateTestSubject arg)
+	{
+		this._privateTestSubject = arg;
+	}
+	
+	public void InsertDataToList()
+	{
+		_privateTestSubject.InsertDataToList();
+	}
+
+	public void PrintPrivateList()
+	{
+		_privateTestSubject.PrintPrivateList();
+	}
+	
+	public void PrintFirstElementInImmutableList()
+	{
+		_privateTestSubject.GetFirstElement().Dump();
+	}
+}
+
+public class PrivateTestSubject
+{
+	private ImmutableList<int> _privateImmutableList = ImmutableList.Create(2,4,6);
+
+	public PrivateTestSubject() {}
+	
+	public void InsertDataToList()
+	{
+		_privateImmutableList.Add(8);
+	}
+	
+	public int GetFirstElement()
+	{
+		return _privateImmutableList.FirstOrDefault();
+	}
+
+	public void PrintPrivateList()
+	{
+		foreach(var member in _privateImmutableList)
+		{
+			member.Dump();
+		}
+	}
+}
+
+void Main()
+{
+	PrivateTestSubject privateTestSubject = new PrivateTestSubject();
+	TestManager testManager = new TestManager(privateTestSubject);
+	
+	testManager.InsertDataToList();
+	testManager.PrintPrivateList(); // 2 4 6
+	
+	testManager.PrintFirstElementInImmutableList(); // 2
+}
+~~~  
+
+</details>
+
+- InsertDataToList()를 통해 8을 추가 시켰지만 전혀 동작하지 않는다.
+- 그러나 외부에서 LINQ로 FirstOrDefault()하는 건 정상적으로 동작한다.
+- :link:[MSDN_ImmutableList<T>](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist-1?view=net-9.0)
