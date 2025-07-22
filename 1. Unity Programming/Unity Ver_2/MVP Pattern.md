@@ -39,11 +39,11 @@
 
 <br>
 
-#### 2. 멤버로 들고 있을 것
+#### :two: 멤버로 들고 있을 것
 
 <br>
 
-#### 3. 특징
+#### :three: 특징
 - 절대로 View를 멤버로 갖지 않는다.
 - 1개의 Model로 여러개의 Presenter와 연결 할 수 있다?? 
 - 게임 로드시에 모두 로딩한다??
@@ -61,7 +61,7 @@
 
 <br>
 
-#### 2. 멤버로 들고 있을 것
+#### :two: 멤버로 들고 있을 것
 - **의견이 갈리지만 Presenter**
   - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
     - 3가지 Choice가 있다.
@@ -110,7 +110,7 @@ private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonDa
 
 <br>
 
-#### 3. 특징
+#### :three: 특징
 - 절대로 Model을 멤버로 갖지 않는다.
   - > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
   - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html)
@@ -139,7 +139,7 @@ private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonDa
 
 <br>
 
-#### 2. 멤버로 들고 있을 것
+#### :two: 멤버로 들고 있을 것
 - **View 와 Model을 멤버로 갖는다.**
 - **View에서 전달 받은 event의 <ins>Handle Method</ins>**
 ~~~c#
@@ -155,7 +155,7 @@ private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonDa
 
 <br>
 
-#### 3. 기타 사항
+#### :three: 기타 사항
 > Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
 - :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
 
@@ -167,13 +167,13 @@ private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonDa
 
 <br>
 
-#### 2. 멤버로 들고 있을 것
+#### :two: 멤버로 들고 있을 것
 - 게임에 상주하는 UnityEngine.Object 상속 받는 Object
   - Command Pattern
 
 <br>
 
-#### 3. 기타 사항
+#### :three: 기타 사항
 :question: :link:[여러 개의 view와 1개의 model을 대응할 때 presenter?](https://chatgpt.com/c/68501688-00ec-8004-af44-6a66c19db681)
   - 나는 이런 걸 Manager로 해버리려 했다. 예를 들어 StringManager 1개가 모든 string을 관리하는 것.
   - 그러나 토론에서는 1:1로 presenter를 만들라는데, 일단 stringManager를 구현하면서 여기를 수정한다.
