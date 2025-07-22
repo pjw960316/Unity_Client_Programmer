@@ -35,7 +35,7 @@
 <br><br>
 
 ## :fire: Model
-#### 1. 역할 및 책임
+#### :one: 역할 및 책임
 
 <br>
 
@@ -51,7 +51,7 @@
 <br><br>
 
 ## :fire: View
-#### 1. 역할 및 책임
+#### :one: 역할 및 책임
 > the View is responsible for handling user input.
   - View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
   - 이를 UniRx를 이용해서 구현한다.
@@ -81,31 +81,30 @@ public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 - **Presenter를 통해 Model과 Manager에 접근 할 필요 없는 수준의 UI 갱신 데이터(=field)와 로직(=method)**
   - ex : 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
   - > For me it depends on what data we're talking about. If there is any UI component that has any potential business logic tied with it, I'd prefer to keep it in my ViewModel (as a standalone state or part of a UiState data class as Lackner does it). However suppose we have a toggle which <ins>just changes appearances and has nothing to do with any of your app's business logic, I'd keep that in my compose code as that is Ui centric logic.</ins>
-
 ~~~c#
 private void UpdateButtonColor(ButtonData clickedButtonData)
 {
-    var clickedButtonType = clickedButtonData.buttonType;
+  var clickedButtonType = clickedButtonData.buttonType;
 
-    switch (clickedButtonType)
-    {
-        case EButtons.DivisionConst:
-            throw new InvalidDataException("buttonType은 DivisionConst가 될 수 없다.");
-        case < EButtons.DivisionConst:
-            InternalUpdateButtonColor(clickedButtonType, _alarmMusicButtons);
-            break;
-        case > EButtons.DivisionConst:
-            InternalUpdateButtonColor(clickedButtonType, _timeButtons);
-            return;
-    }
+  switch (clickedButtonType)
+  {
+    case EButtons.DivisionConst:
+        throw new InvalidDataException("buttonType은 DivisionConst가 될 수 없다.");
+    case < EButtons.DivisionConst:
+        InternalUpdateButtonColor(clickedButtonType, _alarmMusicButtons);
+        break;
+    case > EButtons.DivisionConst:
+        InternalUpdateButtonColor(clickedButtonType, _timeButtons);
+        return;
+  }
 }
 
 private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonData> list)
 {
-    foreach (var buttonData in list)
-    {
-        buttonData.button.image.color = _buttonColorDictionary[buttonData.buttonType == clickedButtonType];
-    }
+  foreach (var buttonData in list)
+  {
+      buttonData.button.image.color = _buttonColorDictionary[buttonData.buttonType == clickedButtonType];
+  }
 }
 ~~~
 
@@ -130,7 +129,7 @@ private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonDa
 <br><br>
 
 ## :fire: Presenter
-#### 1. 역할 및 책임
+#### :one: 역할 및 책임
 > Presenter: Model과 View 사이를 연결하는 **중재자(mediator)**입니다. View로부터 입력 이벤트를 받으면 Model을 업데이트하고, Model의 결과를 다시 View로 전달해 화면을 갱신하는 일을 맡습니다.
   - Presenter가 1대1로 Model과 View를 연결하는 Unit 단위 연결 통로라면, Presenter들 끼리의 소통은 Manager를 통해 한다.
   - SoundManager가 필요한 정보를 UIManager에게 전달하려면 SoundManager가 Presenter를 참조해서 정보를 얻고, UIManager에게 전달한다.
@@ -163,7 +162,7 @@ private void InternalUpdateButtonColor(EButtons clickedButtonType, List<ButtonDa
 <br><br>
 
 ## :fire: Manager
-#### 1. 역할 및 책임
+#### :one: 역할 및 책임
 - 좀 더 실력이 늘면 factory class와 분리하는 게 맞지만 지금은 factory class의 역할을 manager에서 해도 좋을 것 같다. (factory class에서 presenter에 model과 view의 interface를 argument로 전달해서 DI를 진행한다.)
 
 <br>
