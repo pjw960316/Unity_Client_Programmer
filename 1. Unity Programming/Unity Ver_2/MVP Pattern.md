@@ -73,10 +73,9 @@
   - '특징'에 설명 해 놓았다.
 - **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
-~~~c#
-private readonly Subject<Unit> _onSoundButtonClicked = new();
-public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
-~~~
+  - 예시 코드
+    - private readonly Subject<Unit> _onSoundButtonClicked = new();
+    - public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
 - **Presenter가 MonoBehaviour 관련 데이터(ex : transform)를 요청 할 때, 그걸 줄 수 있는 Public Get Method**
 - **Presenter를 통해 Model과 Manager에 접근 할 필요 없는 수준의 UI 갱신 데이터(=field)와 로직(=method)**
   - ex : 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
