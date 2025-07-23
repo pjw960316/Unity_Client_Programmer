@@ -14,7 +14,7 @@
 
 <br><br>
 
-## :fireworks: 간단한 UI Object 배치는 'Anchor Preset'을 사용하지만, 아래의 주의사항을 명심한다. <br> :fire: 'Anchor Preset'은 자동으로 position을 보정해서 의도한 대로 UI의 위치를 변경되지 않는다. <br> :fire: Alt만 눌러서 사용하고, position을 항상 0으로 변경해서 의도한 대로 Preset을 사용한다. 
+## :fire: 간단한 UI Object 배치는 'Anchor Preset'을 사용하지만, 아래의 주의사항을 명심한다. <br> :fire: 'Anchor Preset'은 자동으로 position을 보정해서 의도한 대로 UI의 위치를 변경되지 않는다. <br> :fire: Alt만 눌러서 사용하고, position을 항상 0으로 변경해서 의도한 대로 Preset을 사용한다. 
 - ![alt text](./captures/20250723_1.png)
 - 'Alt'만 사용하면 Pivot은 (0.5,0.5)로 변하지 않고 고정되어, UI Object의 중점을 기준점으로 한다.
 - 'Shift'를 누르면 pivot이 변하기 때문에 되도록 사용하지 않는다. (머리 아픔)
@@ -22,7 +22,7 @@
 
 <br><br>
 
-## :fireworks: 복잡한 UI Object 배치는 Anchor Preset을 사용하지 않고, 직접 Anchor를 사용한다.
+## :fire: 복잡한 UI Object 배치는 Anchor Preset을 사용하지 않고, 직접 Anchor를 사용한다.
 - ![alt text](./captures/20250723_2.png)
 - ![alt text](./captures/20250723_3.png)
 - ![alt text](./captures/20250723_4.png)
@@ -30,4 +30,9 @@
   - 자료에서 Min Y가 0.05고 Max Y가 0.95다. 그렇기 때문에, UI Object의 세로 길이를 부모의 5~95%로 설정하고 있다.
 - :bangbang: 만약 동작을 하지 않는다면, 유니티가 또 Pos를 보정하지 않았는 지 체크한다.
 
+<br><br>
 
+## :fire: RectTransform (수정 필요
+> Rect Transform is a new transform component that is used for all UI elements. Rect Transform on it, it will instead change the width and the height, keeping the local scale unchanged. This resizing will not affect font sizes, border on sliced images, and so on.
+
+> Rect Transform is a new transform component that is used for all UI elements. Rect Transform on it, it will instead change the width and the height, keeping the local scale unchanged. This resizing will not affect font sizes, border on sliced images, and so on.) 
