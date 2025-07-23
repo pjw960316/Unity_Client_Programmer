@@ -26,8 +26,8 @@
 - ![alt text](./captures/20250723_2.png)
 - ![alt text](./captures/20250723_3.png)
 - ![alt text](./captures/20250723_4.png)
-- Anchor는 0 ~ 1로 부모 RectTransform에 대한 비율을 표시한다.
-  - ex : Min X가 0.05고 Max X가 0.95 면 좌우에 부모 기준 5~95%의 가로 길이로 자신의 크기를 설정한다.
+  - Anchor는 0 ~ 1로 부모 RectTransform에 대한 비율을 표시한다.
+  - 자료에서 Min Y가 0.05고 Max Y가 0.95다. 그렇기 때문에, UI Object의 세로 길이를 부모의 5~95%로 설정하고 있다.
 - :bangbang: 만약 동작을 하지 않는다면, 유니티가 또 Pos를 보정하지 않았는 지 체크한다.
 
 
