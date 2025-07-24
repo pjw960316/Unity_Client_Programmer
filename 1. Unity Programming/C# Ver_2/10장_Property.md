@@ -1,5 +1,10 @@
 ## :fire: Property 사용 규칙
-#### :large_blue_diamond: [Auto-Implemented Property : Validation과 복잡한 로직이 필요 없을 시에 사용한다.]
+#### :one: 검증 코드 or 복잡한 로직이 필요 없을 때 : Rider의 **Auto-Implemented Property**를 사용 한다. <br>
+1. private field 생성 <br>
+2. Alt-Enter <br>
+3. Encapsulate Field <br>
+4. To Auto-Property <br>
+
 ~~~c#
 public int Capacity { get; private set; }
 ~~~
@@ -10,7 +15,7 @@ public int Capacity { get; private set; }
 
 <br>
 
-#### :large_blue_diamond: [Basic Property : **Validation** 또는 복잡한 로직이 필요할 때 사용한다.]
+#### :two: 검증 코드 or 복잡한 로직이 필요 할 때 : 직접 구현한다.
 ~~~c#
 private int capacity; 
 public int Capacity
