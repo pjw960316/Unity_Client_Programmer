@@ -49,8 +49,50 @@
 
 <br><br>
 
-## :question: 책임'만' 강제하는 Interface가 유연하다고 확실히 느낀 지점이 있다. <br> 개발을 하다보면 중복을 제거하고 싶어서 상위 타입으로 올리거나 <br> abstract class에 대한 고민을 하게 된다. <br> 만약 변경을 하게 되면, 책임 수행 까지 강제하기 때문에 <br> 유연하지 못하다. (=과거에는 비슷해서 책임 수행도 강제 했지만, 나중에는 다른 메서드) <br> :fire: 결론적으로 Interface는 책임만 부여하기 때문에 코드에 대한 자율성이 높아지지만 의도는 분명하다.
-- 나름 정리했는데 생각을 적은 나 조차도 이런 구현을 할 때만 딱 와닿는 애매한 글.
+## :star::fire: 책임은 Interface로 구현한다. <br> :fire: 책임 수행의 중복은 Abstract Class로 구현한다. <br> :fire: 둘을 같이 사용한다!
+
+#### [Manager class(=Concrete Class)의 Interface 와 Abstract Class 구분]
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
+~~~c#
+public interface IManager : IFactory
+{
+    public void Initialize();
+    public void SetModel(IEnumerable<ScriptableObject> _list);
+    public void ConnectInstanceByActivator(IManager instance);
+}
+
+// Note
+// 공통로직을 담는 메서드가 굳이 IManager를 상속 받을 필요 없다.
+public abstract class ManagerBase<T> where T : class, new()
+{
+    private static T _instance;
+
+    public static T Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new T();
+            }
+
+            return _instance;
+        }
+    }
+
+    public virtual void ConnectInstanceByActivator(IManager instance)
+    {
+        if (_instance == null)
+        {
+            _instance = instance as T;
+        }
+    }
+}
+~~~
+
+</details>
 
 <br><br>
 
