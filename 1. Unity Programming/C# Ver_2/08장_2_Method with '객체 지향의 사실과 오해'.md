@@ -95,6 +95,7 @@ public abstract class ManagerBase<T> where T : class, new()
 </details>
 
 - Concrete Manager들을 구현하다 보니, ConnectInstanceByActivator의 책임 수행(=메서드 구현)이 같고, 코드의 중복이 발생했다. 이를 Generic으로 처리하면 중복을 줄일 수 있다고 판단했다. 그로 인해, Abstract Class를 구현했고, 메서드를 구현하여 책임 수행에 대한 기본 수행 로직을 제공하지만, 변경에도 자유로울 수 있도록 virtual로 선언했다.
+- :link:[Abstract class or interface? Why not both?](https://www.youtube.com/watch?v=5aCUhnSN00k)
 
 <br><br>
 
