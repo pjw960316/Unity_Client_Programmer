@@ -2,7 +2,7 @@
 
 <br><br>
 
-## :fire: Observable.Timer는 작업을 마치면 개발자가 수동으로 Dispose() 하지 않아도 <br> 자동으로 시간이 지나면 Dispose() 된다.
+## :fire: Observable.Timer는 작업을 마치면 <br> 개발자가 수동으로 Dispose() 하지 않아도 <br> 자동으로 시간이 지나면 Dispose() 된다.
 
 #### [Observable.Timer 예제]
 ~~~c#
