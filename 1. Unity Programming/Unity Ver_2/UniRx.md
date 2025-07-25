@@ -32,10 +32,4 @@ Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(_ => { MainCanvas.ToastMess
 - :seven: **Timer는 OperatorObserverBase를 상속 받고 있고, OperatorObserverBase의 Dispose()를 호출한다.** <br> **그 결과 내가 Dispose()를 하지 않아도 Observable.Timer은 Dispose()가 되는 것 이다.**
   - ![alt text](./captures/20250725_12.png)
   - ![alt text](./captures/20250725_13.png)
-  
-<br>
-
-- **결론**
-  
-
-
+    - :five:의 Schedule() method에서 'var d = new BooleanDisposal'을 만들고 return 하고 있다.
