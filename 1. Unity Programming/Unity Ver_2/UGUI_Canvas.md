@@ -7,3 +7,8 @@
 
 ## :fire: Canvas의 Render Mode는 Screen Space - Overlay를 사용한다. <br> UI를 Field의 GameObject와 독립적으로 존재해 Z-Buffer 경쟁을 피하고, 항상 위로 오도록 한다.
 > This render mode places UI elements on the screen rendered on top of the scene. If the screen is resized or changes resolution, the Canvas will automatically change size to match this.
+
+
+<br><br>
+
+## :Fire: Scale With Screen Size을 이용해서 다양한 해상도에 대응한다.
