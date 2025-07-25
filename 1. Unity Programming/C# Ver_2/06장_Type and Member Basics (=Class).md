@@ -43,7 +43,7 @@ public class Test
 
 <br><br>
 
-## :fire: Private 필드는 외부에서 접근에 완벽히 안전하지 않다. 그러므로 다음의 두 가지 방식을 사용한다. <br> :one: private field에 readonly + Declaration을 쓰도록 한다. <br> :two: Container는 Immutable Type으로 구현한다.
+## :fire: Private Field (Non Container)는 외부에서 접근에 완벽히 안전하지 않다. <br> :fire: 그러므로 private field에 readonly + Declaration을 쓰도록 한다.
 #### [예제 1_private의 한계 : property나 public Method로 그냥 뚫린다.]
 
 <details>
@@ -201,9 +201,12 @@ public class PrivateTestSubject
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
 
-<br>
 
-#### [예제_3 : Container는 readonly로 방어가 불가능 하다.]
+<br><br>
+
+## :fire: Private Container Field는 readonly + Declaration으로도 방어가 불가능하다. <br> 그러므로 ImmutableList<T>를 사용한다. <br> :fire: ImmutableList에 Add 또는 Remove를 해도 원본은 변경하지 않지만, 새로운 ImmutableList를 만들게 된다. <br> 그러므로 정말로 값이 추가되거나 삭제되지 않고 readonly로 사용하고 싶은 Container에 대해서만 ImmutableList로 구현한다.
+
+#### [예제_1 : Container는 readonly로 방어가 불가능하다.]
 
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
@@ -278,11 +281,10 @@ void Main()
 </details>
 
 - ChangeListInstance()에서 새로운 devilList를 기존의 readonly List에 할당하는 것은 막을 수 있다.
-- 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다. 
+- 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다.
 
-<br>
 
-#### [예제_4 : readonly Container는 Immutable로 만들어 준다.]
+#### [예제_2 : Immutable한 readonly Container는 Immutable로 만들어 준다.]
 
 <details>
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
@@ -291,22 +293,26 @@ void Main()
 public class PrivateTestSubject
 {
 	private ImmutableList<int> _privateImmutableList = ImmutableList.Create(2,4,6);
+	private ImmutableList<int> _privateNewImmutableList;
 
 	public PrivateTestSubject() {}
 	
-	public void InsertDataToList()
+	public void CreateNewList()
 	{
-		_privateImmutableList.Add(8);
-	}
-	
-	public int GetFirstElement()
-	{
-		return _privateImmutableList.FirstOrDefault();
+		_privateNewImmutableList = _privateImmutableList.Add(8);
 	}
 
-	public void PrintPrivateList()
+	public void PrintPrivateImmutableList()
 	{
 		foreach(var member in _privateImmutableList)
+		{
+			member.Dump();
+		}
+	}
+
+	public void PrintPrivateNewImmutableList()
+	{
+		foreach (var member in _privateNewImmutableList)
 		{
 			member.Dump();
 		}
@@ -322,19 +328,18 @@ public class TestManager
 		this._privateTestSubject = arg;
 	}
 	
-	public void InsertDataToList()
+	public void CreateNewList()
 	{
-		_privateTestSubject.InsertDataToList();
+		_privateTestSubject.CreateNewList();
 	}
 
-	public void PrintPrivateList()
+	public void Print()
 	{
-		_privateTestSubject.PrintPrivateList();
-	}
-	
-	public void PrintFirstElementInImmutableList()
-	{
-		_privateTestSubject.GetFirstElement().Dump();
+		_privateTestSubject.PrintPrivateImmutableList();
+		
+		"\n".Dump();
+		
+		_privateTestSubject.PrintPrivateNewImmutableList();
 	}
 }
 
@@ -342,16 +347,23 @@ void Main()
 {
 	PrivateTestSubject privateTestSubject = new PrivateTestSubject();
 	TestManager testManager = new TestManager(privateTestSubject);
-	
-	testManager.InsertDataToList();
-	testManager.PrintPrivateList(); // 2 4 6
-	
-	testManager.PrintFirstElementInImmutableList(); // 2
+
+	testManager.CreateNewList();
+	testManager.Print(); 
+
+	//Result
+	//2 4 6
+	//2 4 6 8
 }
 ~~~  
 
 </details>
 
-- InsertDataToList()를 통해 8을 추가 시켰지만 전혀 동작하지 않는다.
-- 그러나 외부에서 LINQ로 FirstOrDefault()하는 건 정상적으로 동작한다.
+- '_privateImmutableList.Add(8);'을 통해 8을 추가시켰지만 _privateImmutableList은 여전히 '2,4,6'만을 elements로 갖는다.
+- '_privateNewImmutableList = _privateImmutableList.Add(8);'를 하면 Add나 Remove로 원본은 변화시키지 않고 새로운 ImmutableList를 생성한다.
 - :link:[MSDN_ImmutableList<T>](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist-1?view=net-9.0)
+
+<br>
+
+- :bangbang: ImmutableList가 ReadOnlyCollection 보다 thread-safe 하기에 ImmutableList를 사용해야 한다.
+  - :link:[Why use ImmutableList over ReadOnlyCollection?](https://stackoverflow.com/questions/30165810/why-use-immutablelist-over-readonlycollection)
