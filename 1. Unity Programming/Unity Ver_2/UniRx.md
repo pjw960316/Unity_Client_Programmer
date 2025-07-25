@@ -18,13 +18,17 @@ Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(_ => { MainCanvas.ToastMess
 - :four: **Action이 있어서 ObservableExtension을 이용하고 있다.**
   - ![alt text](./captures/20250725_5.png)
   - ![alt text](./captures/20250725_6.png)
+  - Observable.Timer가 반환하는 TimerObservable은 OperatorObservableBase<long>를 상속받는다. 
+  - ObservableExtensions.Subscribe는 IObservable<T>.Subscribe를 호출하지만, 이 인터페이스의 실제 구현은 OperatorObservableBase<T> Subscribe이다.
+  - 따라서 결과적으로 Observable.Timer의 Subscribe는 OperatorObservableBase의 Subscribe가 된다.
 - :five: **내가 적은 1f 시간 만큼 Time이 걸린다.**
   - ![alt text](./captures/20250725_7.png)
   - ![alt text](./captures/20250725_8.png)
-- :six: **MainThreadScheduler에서 Schedule method에서 Delay Action coroutine을 생성해서 작업을 진행한다.** <br> **작업 완료 콜백의 Action은 OnNext와 OnComplete을 호출한다.**
+- :six: **MainThreadScheduler의 Schedule method에서 Delay Action coroutine을 생성해서 작업을 진행한다.** <br> **작업 완료 콜백의 Action은 OnNext와 OnComplete을 호출한다.**
   - ![alt text](./captures/20250725_9.png)
   - ![alt text](./captures/20250725_10.png)
   - ![alt text](./captures/20250725_11.png)
+    - 맨 위의 코드에서 **long Type** Iobservable을 전달하고 있다.
 - :seven: **Timer는 OperatorObserverBase를 상속 받고 있고, OperatorObserverBase의 Dispose()를 호출한다.** <br> **그 결과 내가 Dispose()를 하지 않아도 Observable.Timer은 Dispose()가 되는 것 이다.**
   - ![alt text](./captures/20250725_12.png)
   - ![alt text](./captures/20250725_13.png)
@@ -32,8 +36,6 @@ Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(_ => { MainCanvas.ToastMess
 <br>
 
 - **결론**
-  - Observable.Timer가 반환하는 TimerObservable은 OperatorObservableBase<long>를 상속받는다. 
-  - ObservableExtensions.Subscribe는 IObservable<T>.Subscribe를 호출하지만, 이 인터페이스의 실제 구현은 OperatorObservableBase<T> Subscribe이다.
-  - 따라서 결과적으로 Observable.Timer의 Subscribe는 OperatorObservableBase의 Subscribe가 된다.
+  
 
 
