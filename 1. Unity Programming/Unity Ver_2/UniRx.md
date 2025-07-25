@@ -21,10 +21,11 @@ Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(_ => { MainCanvas.ToastMess
 - :five: **내가 적은 1f 시간 만큼 Time이 걸린다.**
   - ![alt text](./captures/20250725_7.png)
   - ![alt text](./captures/20250725_8.png)
-- wkfy
+- :six: **MainThreadScheduler에서 Schedule method에서 Delay Action coroutine을 생성해서 작업을 진행한다.** <br> **작업 완료 콜백의 Action은 OnNext와 OnComplete을 호출한다.**
   - ![alt text](./captures/20250725_9.png)
   - ![alt text](./captures/20250725_10.png)
   - ![alt text](./captures/20250725_11.png)
+- :seven: **Timer는 OperatorObserverBase를 상속 받고 있고, OperatorObserverBase의 Dispose()를 호출한다.** <br> **그 결과 내가 Dispose()를 하지 않아도 Observable.Timer은 Dispose()가 되는 것 이다.**
   - ![alt text](./captures/20250725_12.png)
   - ![alt text](./captures/20250725_13.png)
   
