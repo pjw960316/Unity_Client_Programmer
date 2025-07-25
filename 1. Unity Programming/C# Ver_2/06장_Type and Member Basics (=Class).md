@@ -209,27 +209,6 @@ public class PrivateTestSubject
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
-
-public class TestManager
-{
-	private PrivateTestSubject _privateTestSubject;
-	
-	public TestManager(PrivateTestSubject arg)
-	{
-		this._privateTestSubject = arg;
-	}
-	
-	public void InsertDataToList()
-	{
-		_privateTestSubject.InsertDataToList();
-	}
-
-	public void PrintPrivateList()
-	{
-		_privateTestSubject.PrintPrivateList();
-	}
-}
-
 public class PrivateTestSubject
 {
 	private readonly List<int> _privateList = new(); 
@@ -264,6 +243,26 @@ public class PrivateTestSubject
 	}
 }
 
+public class TestManager
+{
+	private PrivateTestSubject _privateTestSubject;
+	
+	public TestManager(PrivateTestSubject arg)
+	{
+		this._privateTestSubject = arg;
+	}
+	
+	public void InsertDataToList()
+	{
+		_privateTestSubject.InsertDataToList();
+	}
+
+	public void PrintPrivateList()
+	{
+		_privateTestSubject.PrintPrivateList();
+	}
+}
+
 void Main()
 {
 	PrivateTestSubject privateTestSubject = new PrivateTestSubject();
@@ -289,6 +288,30 @@ void Main()
   <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
+public class PrivateTestSubject
+{
+	private ImmutableList<int> _privateImmutableList = ImmutableList.Create(2,4,6);
+
+	public PrivateTestSubject() {}
+	
+	public void InsertDataToList()
+	{
+		_privateImmutableList.Add(8);
+	}
+	
+	public int GetFirstElement()
+	{
+		return _privateImmutableList.FirstOrDefault();
+	}
+
+	public void PrintPrivateList()
+	{
+		foreach(var member in _privateImmutableList)
+		{
+			member.Dump();
+		}
+	}
+}
 
 public class TestManager
 {
@@ -312,31 +335,6 @@ public class TestManager
 	public void PrintFirstElementInImmutableList()
 	{
 		_privateTestSubject.GetFirstElement().Dump();
-	}
-}
-
-public class PrivateTestSubject
-{
-	private ImmutableList<int> _privateImmutableList = ImmutableList.Create(2,4,6);
-
-	public PrivateTestSubject() {}
-	
-	public void InsertDataToList()
-	{
-		_privateImmutableList.Add(8);
-	}
-	
-	public int GetFirstElement()
-	{
-		return _privateImmutableList.FirstOrDefault();
-	}
-
-	public void PrintPrivateList()
-	{
-		foreach(var member in _privateImmutableList)
-		{
-			member.Dump();
-		}
 	}
 }
 
