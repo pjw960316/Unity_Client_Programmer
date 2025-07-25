@@ -176,7 +176,7 @@ void Main()
 - F12가 있다고 해서 추적이 된다고 하지만, private이 무색하게 10개의 class 끼리 공유가 되면 답이 없지 않을까?
 - 누군가 View Class에서 Model Class의 데이터를 바꾼다? 그냥 답이 없음.
 
-<br>
+<br><br>
 
 #### [예제_2 : Non-Container Field는 readonly로 방어]
 
@@ -200,7 +200,6 @@ public class PrivateTestSubject
 
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
-
 
 <br><br>
 
@@ -283,6 +282,7 @@ void Main()
 - ChangeListInstance()에서 새로운 devilList를 기존의 readonly List에 할당하는 것은 막을 수 있다.
 - 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다.
 
+<br><br>
 
 #### [예제_2 : Immutable한 readonly Container는 Immutable로 만들어 준다.]
 
