@@ -361,9 +361,6 @@ void Main()
 
 - '_privateImmutableList.Add(8);'을 통해 8을 추가시켰지만 _privateImmutableList은 여전히 '2,4,6'만을 elements로 갖는다.
 - '_privateNewImmutableList = _privateImmutableList.Add(8);'를 하면 Add나 Remove로 원본은 변화시키지 않고 새로운 ImmutableList를 생성한다.
-- :link:[MSDN_ImmutableList<T>](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist-1?view=net-9.0)
-
-<br>
-
 - :bangbang: ImmutableList가 ReadOnlyCollection 보다 thread-safe 하기에 ImmutableList를 사용해야 한다.
   - :link:[Why use ImmutableList over ReadOnlyCollection?](https://stackoverflow.com/questions/30165810/why-use-immutablelist-over-readonlycollection)
+  - :link:[MSDN_ImmutableList<T>](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist-1?view=net-9.0)
