@@ -272,6 +272,8 @@ void Main()
 	testManager.InsertDataToList();
 	testManager.PrintPrivateList();
 }
+// RESULT
+// 2 4 6 8
 ~~~
 
 </details>
