@@ -1,4 +1,6 @@
 ## :fire: 개발자 간 논리 오류를 전파하고 싶을 때는 Debug.Assert를 사용한다.
+> Assertions are used to check the programmer's understanding of the world. An assertion should fail only if the **programmer has done something wrong.** For example, never use an assertion to check user input.
+
 > It should NEVER be possible to produce a test case which causes an assertion to fire. If an assertion fires, either the code is wrong or the assertion is wrong; either way, something needs to change in the code.
 <br><br>
 
