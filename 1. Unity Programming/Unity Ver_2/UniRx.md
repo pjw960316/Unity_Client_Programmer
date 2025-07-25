@@ -17,7 +17,13 @@ Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(_ => { MainCanvas.ToastMess
   - BaseType이 SubScribe를 구현하고 있다.
 - ![alt text](./captures/20250725_5.png)
 - ![alt text](./captures/20250725_6.png)
-  - 하지만 Action이 있어서 ObservableExtension을 이용하고 있다.
-- 
+  - Action이 있어서 ObservableExtension을 이용하고 있다.
+
+<br>
+
+- **결론**
+  - Observable.Timer가 반환하는 TimerObservable은 OperatorObservableBase<long>를 상속받는다. 
+  - ObservableExtensions.Subscribe는 IObservable<T>.Subscribe를 호출하지만, 이 인터페이스의 실제 구현은 OperatorObservableBase<T> Subscribe이다.
+  - 따라서 결과적으로 Observable.Timer의 Subscribe는 OperatorObservableBase의 Subscribe가 된다.
 
 
