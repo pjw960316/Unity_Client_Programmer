@@ -14,11 +14,9 @@
 
 <br><br>
 
-## :fire: 간단한 UI Object 배치는 'Anchor Preset'을 사용하지만, 아래의 주의사항을 명심한다. <br> :fire: 'Anchor Preset'은 자동으로 position을 보정해서 의도한 대로 UI의 위치를 변경되지 않는다. <br> :fire: Alt만 눌러서 사용하고, position을 항상 0으로 변경해서 의도한 대로 Preset을 사용한다. 
+## :fire: 간단한 UI Object 배치는 'Anchor Preset'을 사용하지만, 아래의 주의사항을 명심한다. <br> :fire: 'Anchor Preset'은 자동으로 position을 보정해서 의도한 대로 UI의 위치를 변경되지 않는다. <br> :fire: Alt만 눌러서 먼저 사용하고, position을 항상 0으로 변경해서 의도한 대로 Preset을 확인한다. <br> :fire: 그 후 자동화를 원하면 Shift도 눌러서 사용한다.
 - ![alt text](./captures/20250723_1.png)
 - 'Alt'만 사용하면 Pivot은 (0.5,0.5)로 변하지 않고 고정되어, UI Object의 중점을 기준점으로 한다.
-- 'Shift'를 누르면 pivot이 변하기 때문에 되도록 사용하지 않는다. (머리 아픔)
-- 경험상, 보정을 받지 않고, 직접 pos를 계산하는 게 훨씬 커스텀하게 조절하기에 유용했다.
 
 <br><br>
 
