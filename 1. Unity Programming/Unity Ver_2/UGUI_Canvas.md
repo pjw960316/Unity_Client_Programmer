@@ -12,3 +12,9 @@
 <br><br>
 
 ## :Fire: Scale With Screen Size을 이용해서 다양한 해상도에 대응한다.
+
+<br><br>
+
+## :question: 부모의 Auto-Layout + 자식의 Layout Element로 Layout이 정해진다.
+> Their heights are determined by their respective minimum, preferred, and flexible heights according to the following model:
+ 
