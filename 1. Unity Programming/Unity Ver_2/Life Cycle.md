@@ -15,7 +15,11 @@
 
 <br><br>
 
-## :fire: Awake는 상속구조에서 virtual OnAwake를 이용해서 구현한다. <br> :fire: 또한, BindEvent() 같이 Base에서도 1번, Derived에서도 1번 호출되어야 하는 method는 <br> virtual로 구현하지 않고 Shadowing을 한다. <br> :bangbang: GameObject에 Derived Type의 Script를 붙이게 되면 Instance Type이 Derived Type이 된다. <br> :fire: 그러므로, BindEvent가 Virtual이라면 <br> Base Type의 OnAwake()에 존재하는 BindEvent()가 <br> Dervied Type의 BindEvent()로 호출되기 때문에 주의한다. <br> :fire: 결론적으로 Virtual 키워드 없이 같은 method 네임을 사용하는 **Shadowing**도 필요하다.
+## :fire: GameObject에 Derived Type의 Script를 붙이게 되면 Instance Type이 Derived Type이 된다.
+
+<br><br>
+
+## :fire: Awake는 상속구조에서 virtual OnAwake를 이용해서 구현한다. <br> :fire: 또한, BindEvent() 같이 Base에서도 1번, Derived에서도 1번 호출되어야 하는 method는 <br> virtual로 구현하지 않고 **Shadowing**을 한다. <br> :fire: 아래 코드에서 Base의 BindEvent()를 virtual로 선언하면 <br> Dervied Type의 BindEvent()로 호출되기 때문에 주의한다. <br> :fire: 결론적으로 Virtual 키워드 없이 같은 method 네임을 사용하는 Shadowing도 필요하다.
 
 #### [Base Type의 Script]
 ~~~c#
@@ -61,5 +65,6 @@ private void BindEvent()
 }
 ~~~
 - ![alt text](./captures/20250731.png)
+  - BindEvent가 각각 호출되며 의도대로 동작한다.
 > Shadowing (method hiding)
 > A method or function of the base class is available to the child (derived) class without the use of the "overriding" keyword. The compiler hides the function or method of the base class. This concept is known as shadowing or method hiding. In the shadowing or method hiding, the child (derived) class has its own version of the function, the same function is also available in the base class.
