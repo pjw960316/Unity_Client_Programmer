@@ -15,6 +15,7 @@
 
 <br><br>
 
-## :question: 부모의 Auto-Layout + 자식의 Layout Element로 Layout이 정해진다.
-> Their heights are determined by their respective minimum, preferred, and flexible heights according to the following model:
- 
+## :fire: 어떤 UI Object에게 할당할 수 있는 공간이 최대 50이라고 가정한다. <br> Min이 30이고, preferred가 80일 때 Layout Element는 50을 할당한다. <br> min을 만족시키지만 preferred는 50의 한계가 있어서 80을 할당해 줄 수 없다. <br> :fire: preferred를 flexible이 0일 때 Max로 봐도 무방하다.
+> Their heights are determined by their respective minimum, preferred, and flexible heights according to the following model
+
+> Preferred : this layout element should have before additional **available value** is allocated. 
