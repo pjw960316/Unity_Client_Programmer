@@ -19,7 +19,7 @@
 
 ## :fireworks: 현재 상황은 GameObject에 Derived Type이 존재하는 Script를 붙였다. <br> Script의 this의 Instance Type은 Derived Type이 된다. <br> :fire: Awake는 상속구조에서 virtual OnAwake를 이용해서 구현한다. <br> :fire: 또한, BindEvent() 같이 Base에서도 1번, Derived에서도 1번 호출되어야 하는 method는 <br> virtual로 구현하지 않고 **Shadowing** 기법으로 구현한다. <br> :fire: 아래 코드에서 Base의 BindEvent()를 virtual로 선언하면 <br> Dervied Type의 BindEvent()로 호출되기 때문에 주의한다. <br> :fire: 결론적으로 Virtual 키워드 없이 같은 method 네임을 사용하는 Shadowing도 필요하다.
 
-#### [Base Type의 Script]
+#### [Base Type의 Script : UIButtonBase]
 ~~~c#
 
 public void Awake()
@@ -46,7 +46,7 @@ private void BindEvent()
 }
 ~~~
 
-#### [Derived Type의 Script]
+#### [Derived Type의 Script : UIOpenPopupButtonBase]
 ~~~c#
 public override void OnAwake()
 {
