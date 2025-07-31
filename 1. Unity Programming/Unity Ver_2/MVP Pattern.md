@@ -62,11 +62,6 @@
 <br>
 
 #### :two: 멤버로 들고 있을 것
-- **의견이 갈리지만 Presenter**
-  - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
-    - 3가지 Choice가 있다.
-  - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
-    - view가 presenter를 class Type으로 들고 있다.
 - **자신보다 작은 View Struct**
   - '특징'에 설명 해 놓았다.
 - **자신보다 작은 View Widget (ex : Button Widget Script)**
@@ -83,6 +78,12 @@
   - ![alt text](./captures/20250722.png)
     - 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
     - Model 과 Manager가 필요 없고, View 갱신만 담당하기에 로직임에도 View Script에 구현해도 문제가 없다.
+- :question:**처음에는 Presenter를 들고 있기로 했으나, 지금은 들고 있지 않도록 변경**
+  - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
+    - 3가지 Choice가 있다.
+  - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
+    - view가 presenter를 class Type으로 들고 있다.
+
 
 <br>
 
