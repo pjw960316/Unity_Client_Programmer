@@ -17,7 +17,7 @@
 
 
 
-## :fireworks: 현재 상황은 GameObject에 <br> Derived Type이 존재하는 Script(UIOpenPopupButtonBase)를 붙였다. <br> Script의 this의 Instance Type은 Derived Type이 된다. <br><br> :fire: Awake는 상속구조에서 virtual OnAwake를 이용해서 구현한다. <br> :fire: 또한, BindEvent() 같이 Base에서도 1번, Derived에서도 1번 호출되어야 하는 method는 <br> virtual로 구현하지 않고 **Shadowing** 기법으로 구현한다. <br> :fire: 아래 코드에서 Base의 BindEvent()를 virtual로 선언하면 <br> Dervied Type의 BindEvent()로 호출되기 때문에 주의한다. <br> :fire: 결론적으로 Virtual 키워드 없이 같은 method 네임을 사용하는 Shadowing도 필요하다.
+## :fireworks: 현재 상황은 GameObject에 <br> Derived Type이 존재하는 Script(UIOpenPopupButtonBase)를 붙였다. <br> Script의 this의 Instance Type은 Derived Type이 된다. <br><br> :fire: Awake는 상속구조에서 virtual OnAwake를 이용해서 구현한다. <br> :fire: 또한, BindEvent() 같이 Base에서도 1번, Derived에서도 1번 호출되어야 하는 method는 <br> virtual로 구현하지 않고 **Shadowing** 기법으로 구현한다. <br> :fire: 아래 코드에서 Base의 BindEvent()를 virtual로 선언하면 <br> Dervied Type의 BindEvent()로 호출되기 때문에 주의한다. <br> Base의 Awake에서 호출하는 OnAwake()는 Derived의 OnAwake()가 호출된다. <br> :fire: 결론적으로 Virtual 키워드 없이 같은 method 네임을 사용하는 Shadowing도 필요하다.
 
 #### [Base Type의 Script : UIButtonBase]
 ~~~c#
@@ -26,14 +26,22 @@ public void Awake()
 {
     Debug.Log("Base Awake");
 
-    OnAwake();
+    // Note
+    // [Overriding]
+    // Script가 UIButtonBase가 붙으면 Base의 OnAwake()가 호출되고
+    // Script가 UIOpenPopupButtonBase가 붙으면 Derived의 OnAwake()가 호출되기 바람.
+    OnAwake(); 
 }
 
 public virtual void OnAwake()
 {
     Debug.Log("Base OnAwake");
 
-    BindEvent(); // 의도 : Base Type의 BindEvent가 호출.
+    // Note
+    // [Shadowing]
+    // Script가 UIButtonBase가 붙으면 Base의 BindEvent()가 호출되고
+    // Script가 UIOpenPopupButtonBase가 붙어도 Derived의 BindEvent()가 호출되기 바람.
+    BindEvent(); 
 }
 
 // Note
@@ -71,3 +79,4 @@ private void BindEvent()
   - BindEvent가 각각 호출되며 의도대로 동작한다.
 > Shadowing (method hiding)
 > A method or function of the base class is available to the child (derived) class without the use of the "overriding" keyword. The compiler hides the function or method of the base class. This concept is known as shadowing or method hiding. In the shadowing or method hiding, the child (derived) class has its own version of the function, the same function is also available in the base class.
+- :link:[Overriding vs Shadowing](https://www.c-sharpcorner.com/UploadFile/ff2f08/overriding-vs-shadowing-in-C-Sharp/)
