@@ -62,10 +62,8 @@
 <br>
 
 #### :two: 멤버로 들고 있을 것
-- **자신보다 작은 View Struct**
-  - :four:에 설명 해 놓았다.
-- **자신보다 작은 View Widget (ex : Button Widget Script)**
-  - :four:에 설명 해 놓았다.
+- **자신보다 작은 개념의 View Struct 또는 View Widget**
+  - [누르면 설명으로 이동한다](#scene에서-큰-viewpopup는-작은-view들button-image-scrollview을-들고-있다--작은-view를-구현할-때-view-struct-와-view-widget-중-선택한다)
 - **private Subject & public IObservable**
   - View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
   - 예시 코드
