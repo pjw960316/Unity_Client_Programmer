@@ -1,5 +1,8 @@
-## :fire: Enum Type은 Presenter의 내부에 필드로 구현한다. <br> :fire: Enum Type은 Presenter와 View 그리고 Presenter와 Model끼리만 공유할 상수 약속이다.
-- View와 Model에서는 using 문을 이용해서 Presenter가 제공하는 enum을 사용한다.
+## :fire: Enum Type은 Class 밖에 선언하는 것이 일반적이다.
+> Enums are types, just like classes. When you declare an enum inside a class, it's just a nested type. A nested enum just hides other enums with the same name that are declared in outer scopes, but you can still refer to the hidden enum through its fully qualified name (using the namespace prefix, in your example).
+
+> The decision whether to declare a top level enum or a nested enum depends on your design and whether those enums will be used by anything other than the class. You can also make a nested enum private or protected to its enclosing type. :star:**But, top level enums are far more common.**
+- top level enums가 class 밖에 선언하는 것을 의미한다.
 
 <br><br>
 
