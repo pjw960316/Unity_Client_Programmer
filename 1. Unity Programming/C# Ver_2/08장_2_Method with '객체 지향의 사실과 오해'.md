@@ -8,7 +8,7 @@
 
 <br><br>
 
-## :fire: '책임' = '행동' = Method Signature = Method Head 
+## :fire: '책임' = '행동' = Method Signature = Method Head = Interface의 존재 이유
 
 <br><br>
 

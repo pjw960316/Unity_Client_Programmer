@@ -90,6 +90,7 @@
 - 절대로 Model을 멤버로 갖지 않는다.
   - > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
   - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
+- 멍청해서 아무것도 모르게 한다.
 
 <br><br>
 
