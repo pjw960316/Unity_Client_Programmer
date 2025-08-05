@@ -14,7 +14,7 @@ public class MyCharacterData : IModel
 
 <br><br>
 
-## :fire: XML을 C# Class로 변환하는 4단계 과정 <br> (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
+## :fire: XML을 C# Class로 변환시키는 4단계 과정 <br> (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
 
 #### :one: [<ins>C# Class</ins>] (Xml에 대응하는 C#의 Class를 만들어 준다.) 
 - :todo: 코드 완성하고 예제로
