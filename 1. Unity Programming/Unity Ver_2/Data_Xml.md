@@ -99,7 +99,7 @@ Debug.Log($"{text}");
 */
 ~~~
 
-<br>
+<br><br>
 
 ## :fireworks: XML의 기본 특징에 대해 공부한다.
 
