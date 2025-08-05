@@ -14,7 +14,7 @@ public class MyCharacterData : IModel
 
 <br><br>
 
-## :fire: XML을 C# Class로 변환시키는 4단계 과정 <br> (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
+## :fireworks: XML을 C# Class로 변환시키는 4단계 과정 <br> (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
 
 #### :one: [<ins>C# Class</ins>] (Xml에 대응하는 C#의 Class를 만들어 준다.) 
 - :todo: 코드 완성하고 예제로
@@ -100,3 +100,26 @@ Debug.Log($"{text}");
 ~~~
 
 <br>
+
+## :fireworks: XML의 기본 특징
+
+#### :one: Xml은 대소문자에 민감하다. 
+
+<br>
+
+#### :two: XML은 get과 set이 public인 property와 함께한다. 
+> XmlSerializer only looks at public fields and properties.
+
+<br>
+
+#### :three: XML의 Root Element가 C#의 [XmlRoot] attribute고, XML의 Child Element가 C#의 [XmlElement] attribute다.
+
+~~~XML
+<MyCharacterData>
+<Name>지원</Name>
+<RoutineOneSuccessTime>3</RoutineOneSuccessTime>
+</MyCharacterData>
+~~~
+- MyCharacterData = Root Element
+- Name & RoutineOneSuccessTime = Child Element 
+- :link:[formatting XML](https://dontpaniclabs.com/blog/post/2025/05/06/formatting-xml-when-serializing-c-objects/)
