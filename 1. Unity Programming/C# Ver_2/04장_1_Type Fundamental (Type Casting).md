@@ -41,7 +41,7 @@ public class Animal{}
 
 <br><br>
 
-## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Declared Type을 비교한다. <br>:fire: 검사 대상의 Instance Type이 검사 타겟과 동일하거나 <br> 검사 타겟의 Derived Type이면 True를 리턴한다. 
+## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Declared Type을 비교한다. <br>:fire: 검사 대상의 Instance Type이 <br> 검사 타겟과 동일하거나, 검사 타겟의 Derived Type이면 True를 리턴한다. 
 
 #### [기본 예제]
 ~~~c#
