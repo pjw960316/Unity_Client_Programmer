@@ -30,6 +30,18 @@ public class MyCharacterData : IModel
 #### :three: [<ins>Decode</ins>] (TextAsset인 XML의 Raw Byte[]를 String으로 변환하는 과정)
 - ![alt text](./captures/20250805_1.png)
 
+~~~c#
+public string text
+{
+    get
+    {
+        byte[] bytes = this.bytes;
+        return bytes.Length == 0 ? string.Empty : TextAsset.DecodeString(bytes);
+    }
+}
+~~~
+- TextAsset 클래스가 알아서 해준다.
+
 <br>
 
 #### :four: [<ins>Deserialize</ins>] (Xml의 String을 C#의 Class에 대응하는 과정)
