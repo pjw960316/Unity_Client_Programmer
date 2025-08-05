@@ -8,8 +8,9 @@ public class MyCharacterData : IModel
 
 ## :fire: Unity에서 xml은 TextAsset에 포함되고, TextAsset으로 관리된다.
 > Represents a raw text or binary file asset.
+
 > Text assets are a format for imported text files. When you drop a text file into your Project folder, Unity converts it to a Text Asset. The supported text formats are: <ins>.bytes / .xml / .json / .txt / .md / </ins> 
-- 포맷이 더 있지만 써보지 않은 것 이라 생략한다.
+- 더 많은 format이 존재하지만 생략했다.
 
 <br><br>
 
