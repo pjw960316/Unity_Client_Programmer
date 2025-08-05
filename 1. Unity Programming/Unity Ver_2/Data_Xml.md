@@ -101,7 +101,7 @@ Debug.Log($"{text}");
 
 <br>
 
-## :fireworks: XML의 기본 특징
+## :fireworks: XML의 기본 특징에 대해 공부한다.
 
 #### :one: Xml은 대소문자에 민감하다. 
 
@@ -117,9 +117,9 @@ Debug.Log($"{text}");
 ~~~XML
 <MyCharacterData>
 <Name>지원</Name>
-<RoutineOneSuccessTime>3</RoutineOneSuccessTime>
+<Age>30</Age>
 </MyCharacterData>
 ~~~
 - MyCharacterData = Root Element
-- Name & RoutineOneSuccessTime = Child Element 
+- Name & Age = Child Element 
 - :link:[formatting XML](https://dontpaniclabs.com/blog/post/2025/05/06/formatting-xml-when-serializing-c-objects/)
