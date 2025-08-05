@@ -92,7 +92,9 @@ UserQuery+GreenApple is Apple
 
 - is와 as 모두 runtime에 검사하는 캐스팅 연산자고, 둘 다 예외를 절대로 발생 시키지 않는다.
 
-#### [개발하다가 만든 좋은 예제]
+<br><br>
+
+#### [개발하다가 만든 예제]
 
 ~~~c#
 public interface IManager : IFactory
