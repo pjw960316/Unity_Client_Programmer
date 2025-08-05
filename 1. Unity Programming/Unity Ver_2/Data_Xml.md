@@ -1,5 +1,10 @@
-이전에는 SoundData를 ScriptableObject, 이걸 SoundManager가 필드로 들고 있었는데
-이제는 MycharcaterData를 Datamanager를 통해 XML을 읽어서 초기화하고, MYCharacterManager에서 MyCharcaterData를 필드로?
+## ::fire: IModel을 상속 받는 클래스를 Xml로부터 만들어야 할 때 사용한다.
+
+~~~c#
+public class MyCharacterData : IModel
+~~~
+
+<br><br>
 
 ## :fire: Unity에서는 xml은 TextAsset에 포함되고, TextAsset으로 관리한다.
 > Represents a raw text or binary file asset.
@@ -8,16 +13,32 @@
 
 <br><br>
 
-## :fire: XML을 C# Class로 변환하는 과정 (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
-#### :one: [Load] (디스크에 있는 Xml을 런타임 메모리로 올리는 과정)
+## :fire: XML을 C# Class로 변환하는 4단계 과정 (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
+
+#### :one: [C# Class] (Xml에 대응하는 C#의 Class를 만들어 준다.) 
+- :todo: 코드 완성하고 예제로
+- 잡다한 xmlelement attribute 정도?
+
+#### :two: [Load] (디스크에 있는 Xml을 런타임 메모리로 올리는 과정)
 - Resources.Load()를 사용하고 있지만, Addressable을 이용하도록 한다.
 
 <br>
 
-#### :two: [Decode] (TextAsset인 XML의 Raw Byte[]를 String으로 변환하는 과정)
+#### :three: [Decode] (TextAsset인 XML의 Raw Byte[]를 String으로 변환하는 과정)
 - ![alt text](./captures/20250805_1.png)
 
-#### [Decode 예시]
+<br>
+
+#### :four: [Deserialize] (Xml의 String을 C#의 Class에 대응하는 과정)
+- :link:[MSDN XmlSerializer](https://learn.microsoft.com/ko-kr/dotnet/standard/serialization/xml-and-soap-serialization)
+- ![alt text](./captures/20250805_3.png)
+- ![alt text](./captures/20250805_2.png)
+  - 내부적으로 reflection을 사용하고 있다.
+  - StringReader -> TextReader로 사용한다.
+
+<br>
+
+#### [전체 예시]
 
 ~~~xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -61,23 +82,3 @@ Debug.Log($"{text}");
 ~~~
 
 <br>
-
-#### :three: [Deserialize] (Xml의 String을 C#의 Class에 대응하는 과정)
-- load -> decode -> deserialize
-- :one: load
-- :two: decode
-- :three: deserialize
-
-
-- [ ]  XMLSerializer
-    - 상속 구조 X
-    - https://learn.microsoft.com/ko-kr/dotnet/standard/serialization/xml-and-soap-serialization
-    
-    XML serialization의 중심 클래스는 [XmlSerializer](https://learn.microsoft.com/ko-kr/dotnet/api/system.xml.serialization.xmlserializer) 클래스이며, 이 클래스에서 가장 중요한 메서드는 **Serialize** 및 **Deserialize** 메서드입니다
-    
-    - Class(객체)를 XML로 바꾸어 저장하는 것을 XML Serializer이라 한다.
-    - XML을 Class로 복원하는 것을 XML Deserialize이라 부른다.
-- [ ]  오류
-    - XmlSerializer는 **중첩 클래스(nested class)** 를 역직렬화할 수 없습니다.
-    - 또, `FruitList.Fruit`와 XML `<Fruit>`이 **일치하지 않습니다.**
-- xml Attribute를 사용해서 xml 파일의 element와 나의 class 이름을 맞춘다.
