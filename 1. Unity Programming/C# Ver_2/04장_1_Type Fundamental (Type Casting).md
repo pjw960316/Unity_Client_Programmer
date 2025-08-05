@@ -44,6 +44,10 @@ public class Animal{}
 ## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Declared Type을 비교한다. <br>:fire: 검사 대상의 Instance Type이 <br> 검사 타겟과 동일하거나, 검사 타겟의 Derived Type이면 True를 리턴한다. 
 
 #### [기본 예제]
+
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
 ~~~c#
 void Main()
 {
@@ -83,6 +87,9 @@ UserQuery+Apple is Apple
 UserQuery+GreenApple is Apple
 */
 ~~~
+
+</details>
+
 - is와 as 모두 runtime에 검사하는 캐스팅 연산자고, 둘 다 예외를 절대로 발생 시키지 않는다.
 
 #### [개발하다가 만든 좋은 예제]
