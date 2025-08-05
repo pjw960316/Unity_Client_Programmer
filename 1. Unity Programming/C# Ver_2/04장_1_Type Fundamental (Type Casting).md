@@ -3,6 +3,8 @@
 <br><br>
 
 ## :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
+
+#### [기본 예제]
 ~~~c#
 void Main()
 {
@@ -39,7 +41,9 @@ public class Animal{}
 
 <br><br>
 
-## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Instance Type을 비교한다. <br>:fire: 검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.
+## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Declared Type을 비교한다. <br>:fire: 검사 대상의 Instance Type이 검사 타겟과 동일하거나, 검사 타겟의 Derived Type이면 True를 리턴한다. 
+
+#### [기본 예제]
 ~~~c#
 void Main()
 {
@@ -79,8 +83,58 @@ UserQuery+Apple is Apple
 UserQuery+GreenApple is Apple
 */
 ~~~
-- 제목에 적은 '검사 타겟의 Instance Type이 멤버와 메서드가 같거나 많으면 TRUE를 리턴한다.'은 '검사 타겟의 Instance Type과 같거나 검사 타겟의 Derived Instance Type이면 TRUE를 리턴한다.'와 같다.
 - is와 as 모두 runtime에 검사하는 캐스팅 연산자고, 둘 다 예외를 절대로 발생 시키지 않는다.
+
+#### [개발하다가 만든 좋은 예제]
+
+~~~c#
+public interface IManager : IFactory
+{
+    public void Initialize();
+    public void SetModel(IEnumerable<IModel> models);
+    public void ConnectInstanceByActivator(IManager instance);
+}
+
+public class SoundManager : ManagerBase<SoundManager>, IManager, IDisposable
+{}
+
+// _managerTypeList만 보면 된다.
+private void SetManagerTypesUsingReflection()
+{
+	_cSharpAssembly = AppDomain.CurrentDomain.GetAssemblies()
+		.FirstOrDefault(asm => asm.GetName().Name == MAIN_ASSEMBLY);
+
+	if (_cSharpAssembly == null)
+	{
+		throw new NullReferenceException("_cSharpAssembly is null");
+	}
+
+	_managerTypeList = _cSharpAssembly.GetTypes()
+		.Where(type => typeof(IManager).IsAssignableFrom(type) && type.IsClass)
+		.ToList();
+}
+
+private void CreateSingletonManagers()
+{
+	foreach (var type in _managerTypeList)
+	{
+		//1번 시점
+		var objectTypeInstance = Activator.CreateInstance(type);
+
+		//2번 시점
+		if (objectTypeInstance is IManager manager)
+		{
+			//3번 시점
+			manager.ConnectInstanceByActivator(manager);
+			_managerList.Add(manager);
+		}
+	}
+}
+~~~
+- 1번 시점에서 objectTypeInstance은 Declared Type은 Object지만, 실제로는 _managerTypeList에서 instance Type을 알고 있기에 Instance Type은 SoundManager 같이 concrete한 Type이다.
+- 2번 시점에서 objectTypeInstance의 Instance Type이 SoundManager일 때, 검사대상의 Instance Type(=soundManager)이 검사 타겟의 Declared Type(=IManager)의 derived type이므로 true가 리턴된다.
+- 3번 시점에서 다형성이 동작하여, SoundManager의 ConnectInstanceByActivator(arg)가 호출된다.
+  - 실제로는 SoundManager : ManagerBase<T>이므로, ManagerBase<T>의 ConnectInstanceByActivator가 호출되었다.
 
 <br><br>
 
