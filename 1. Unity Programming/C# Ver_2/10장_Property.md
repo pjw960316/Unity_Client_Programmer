@@ -1,20 +1,6 @@
-## :fire: Property 사용 규칙
-#### :one: 검증 코드 or 복잡한 로직이 필요 없을 때 : Rider의 **Auto-Implemented Property**를 사용 한다. <br>
-1. private field 생성 <br>
-2. Alt-Enter <br>
-3. Encapsulate Field <br>
-4. To Auto-Property <br>
+## :fire: Auto-Property를 사용하지 않는다.
 
-~~~c#
-public int Capacity { get; private set; }
-~~~
-- Backing-field가 없기 때문에 코드가 간결해 진다.
-- 컴파일러가 backing-field를 암시적으로 생성한다.
-- Backing-field를 직접 변경하지 말고, Property를 변경해서 Set이 돌게 한다.
-
-<br>
-
-#### :two: 검증 코드 or 복잡한 로직이 필요 할 때 : 직접 구현한다.
+#### [코드]
 ~~~c#
 private int capacity; 
 public int Capacity
