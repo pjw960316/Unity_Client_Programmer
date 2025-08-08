@@ -138,6 +138,8 @@
 #### :two: 멤버로 들고 있을 것
 - 게임에 상주하는 UnityEngine.Object 상속 받는 Object
   - Command Pattern
+- MainCanvas (GameObject)
+  - 항상 존재하므로.
 
 <br>
 
