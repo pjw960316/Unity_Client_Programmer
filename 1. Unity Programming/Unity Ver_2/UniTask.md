@@ -36,6 +36,10 @@ Main : Run Event Loop
 
 <br><br>
 
+## :fire: await가 있는 메서드에서는 그 메서드의 return type은 반드시 UniTask 계열(혹은 .NET의 Task 계열)이어야 한다.
+
+<br><br>
+
 ## :link: 과거 문서
 - [Async & Await](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_1/%EB%B9%84%EB%8F%99%EA%B8%B0_Async%20%26%20Await.md)
 - [UniTask](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_1/%EB%B9%84%EB%8F%99%EA%B8%B0_Unitask.md)
