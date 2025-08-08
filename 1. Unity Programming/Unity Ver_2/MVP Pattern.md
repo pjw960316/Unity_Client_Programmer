@@ -140,6 +140,10 @@
 <br>
 
 #### :three: 기타 사항
+- **View의 Iobservable을 들고 있지 않고, Presenter가 Iobservable을 구독하고, Presenter로 부터 필요한 행동을 요청 받는다.**
+  - View가 제공한 Iobservable은 presenter가 구독하고, Presenter가 Manager에게 필요한 명령을 요청하는 구조가 가장 이상적이다.
+  - Manager가 직접 View의 이벤트를 구독하는 것은 MVP Pattern의 SRP를 위배한다.
+    - Manager는 Presenter를 관리하지, View를 관리할 책임은 없다.
 :question: :link:[여러 개의 view와 1개의 model을 대응할 때 presenter?](https://chatgpt.com/c/68501688-00ec-8004-af44-6a66c19db681)
   - 나는 이런 걸 Manager로 해버리려 했다. 예를 들어 StringManager 1개가 모든 string을 관리하는 것.
   - 그러나 토론에서는 1:1로 presenter를 만들라는데, 일단 stringManager를 구현하면서 여기를 수정한다.
