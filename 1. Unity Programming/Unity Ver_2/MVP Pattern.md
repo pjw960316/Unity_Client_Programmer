@@ -91,6 +91,8 @@
   - > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
   - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
 - 멍청해서 아무것도 모르게 한다.
+- View 마다 반드시 Presenter를 구현해야 하는 것 은 아니다.
+  > If you want to implement MVP by the book and stay true to its principals, every UI that has user interaction should have a presenter. In this case, if your activity is not interacting with the user, there is no need to have a presenter, and your fragments can have their own. If your activity needs, let's say show a loading to the user because of some data loading prior to show the fragments (this is a user interaction because you are interacting with the user to let them know that something is happening so they should wait), then might be good to consider having a presenter for the activity.
 
 <br><br>
 
