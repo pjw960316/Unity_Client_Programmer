@@ -2,25 +2,24 @@
 
 #### [코드]
 ~~~c#
-private int capacity; 
+private int _capacity; 
 public int Capacity
 {
     get
     {
         ShowToastMessage();
-        
-        return capacity;
+        return _capacity;
     }
     private set
     {
-        if (capacity < 100)
+        if (_capacity < 100)
         {
             "drink all".Dump();
-            capacity = 0;
+            Capacity = 0;
         }
         else
         {
-            capacity = value;
+            Capacity = value;
         }
     }
 }
