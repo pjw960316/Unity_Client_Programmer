@@ -38,6 +38,9 @@ Main : Run Event Loop
 <br><br>
 
 ## :fire: await 키워드가 있는 메서드는 <br> return type을 반드시 UniTask 계열(혹은 .NET의 Task 계열)로 해야 한다.
+> If a method is `async`, it **has to** be `await`ed. <br> == If a method `await`s something inside, it **has to** be `async`
+
+> If a method is `async` it **has to** return `Task` or `Task<T>`, never `void`
 
 <br><br>
 
