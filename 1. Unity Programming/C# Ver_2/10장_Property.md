@@ -1,100 +1,41 @@
-## :fire: Auto-Property를 사용하지 않는다.
+## :fireworks: Back-Field가 있는 property가 확장될 때 IDE에서 warning을 덜 나타나기에 <br> Back-Field와 함께 property를 사용한다. <br> configure inspection severity에서 Auto-Property 껐다.
 
-#### [코드]
+<br><br>
+
+## :fire: 3가지 형식의 property
+#### :one: 일반 property
 ~~~c#
-private int _capacity; 
-public int Capacity
+private int _number = 3;
+
+public int Number
 {
-    get
-    {
-        ShowToastMessage();
-        return _capacity;
-    }
-    private set
-    {
-        if (_capacity < 100)
-        {
-            "drink all".Dump();
-            Capacity = 0;
-        }
-        else
-        {
-            Capacity = value;
-        }
-    }
+	get => _number;
+	Number = _number;
 }
 ~~~
 
 <br>
 
-#### [Property 사용 예제 - 커피 마시기]
-<details>
-  <summary>:point_up_2: 커피 마시기 코드 보기</summary>
-
+#### :two: SerializeField property
 ~~~c#
-public class Coffee
-{
-	private const int DEFAULT_COFFEE_CAPACITY = 300;
-	
-	public Coffee()
-	{
-		capacity = DEFAULT_COFFEE_CAPACITY;
-	}
-	
-	private int capacity; 
-	public int Capacity
-	{
-		get
-		{
-			ShowToastMessage();
-			
-			return capacity;
-		}
-		private set
-		{
-			if (capacity < 100)
-			{
-				"drink all".Dump();
-				capacity = 0;
-			}
-			else
-			{
-				capacity = value;
-			}
-		}
-	}
-	
-	private void ShowToastMessage()
-	{
-		"GetCapacity".Dump();
-	}
-	
-	public void DrinkedCoffee()
-	{
-		Capacity -= 100; //여기서도 Get이 호출된다.
-	}
-}
+[SerializeField] private Canvas _canvas;
 
-void Main()
-{
-	Coffee americano = new Coffee();
-	americano.DrinkedCoffee();
-
-	int myAmericanCapacity = americano.Capacity;
-	myAmericanCapacity.Dump(); 
-}
-/*
-RESULT
-
-GetCapacity
-GetCapacity
-200
-*/
+public Canvas Canvas => _canvas;
 ~~~
-</details>
 
-> 만약 속성을 정의한다면, get과 set 접근자를 모두 정의하는 것이 좋다.
-- DrinkedCoffee() 메서드에서도 Get이 호출되는 것을 주의한다.
+<br>
+
+#### :three: Xml의 property
+~~~c#
+private int _budget;
+    
+[XmlElement(ElementName = "Budget")]
+public int Budget
+{
+	get => _budget;
+	set => _budget = value;
+}
+~~~
 
 <br><br>
 
