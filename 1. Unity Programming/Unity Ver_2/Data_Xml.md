@@ -123,3 +123,7 @@ Debug.Log($"{text}");
 - MyCharacterData = Root Element
 - Name & Age = Child Element 
 - :link:[formatting XML](https://dontpaniclabs.com/blog/post/2025/05/06/formatting-xml-when-serializing-c-objects/)
+
+<br><br>
+
+## :fire: [XmlIgnore] attribute를 이용해서 테스트 시에 <br> Serialize 실패 에러를 무시할 수 있다. <br> :question: Model의 데이터 필드로 존재하는 Dictionary의 경우 [XmlIgnore]를 이용해서 무시하고, <br> List를 Serialize 한 걸 property로 참조하여 이용한다.  
