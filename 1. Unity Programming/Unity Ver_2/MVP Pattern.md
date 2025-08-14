@@ -160,6 +160,15 @@
 
 <br><br>
 
+## :fireworks: MVP Pattern을 사용하니 체감되는 생산성
+- View, Presenter, Model을 분리해서 개발하니 View 구현 시간이 현저히 줄었다. View는 의도적으로 멍청하게 만들어 두고, Presenter에서 모든 로직을 처리한 뒤 View에는 최소한의 데이터만 전달(SetText 정도) 하면 된다. 이 구조 덕분에 View 개발은 단순 작업 수준으로 떨어지고, 핵심은 Presenter 로직 설계에만 집중하면 되므로 전체 생산성이 크게 향상됨을 체감했다.
+
+<br>
+
+- 전 직장에서는 View와 Presenter 로직이 뒤섞여 있어 View 수정도 로직 파악이 필요했고, 결과적으로 작업 시간이 오래 걸렸다. 역할을 명확히 분리하자, 반복적인 View 작업이 단순화되고 유지보수도 쉬워졌다.
+
+<br><br>
+
 ## :fire: Scene에서 큰 View(Popup)는 작은 View들(Button, Image, ScrollView)을 들고 있다. <br> :fire: 작은 View를 구현할 때 View Struct 와 View Widget 중 선택한다.
 
 #### :one: 거대해졌는데 아직 로직은 없다 -> Presenter가 쉽게 이용하도록 <ins>**public Struct로 묶기**</ins>
