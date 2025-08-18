@@ -364,3 +364,22 @@ void Main()
 - :bangbang: ImmutableList가 ReadOnlyCollection 보다 thread-safe 하기에 ImmutableList를 사용해야 한다.
   - :link:[Why use ImmutableList over ReadOnlyCollection?](https://stackoverflow.com/questions/30165810/why-use-immutablelist-over-readonlycollection)
   - :link:[MSDN_ImmutableList<T>](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist-1?view=net-9.0)
+
+<br>
+
+#### [예제_3 : 활용도가 높은 실제 예제 : private field로 일반 Container 사용하고, public property로 Immutable Container를 사용한다.]
+~~~c#
+private Dictionary<string, List<bool>> _routineRecordDictionary = new();
+
+public ImmutableDictionary<string, ImmutableList<bool>> RoutineRecordDictionary
+{
+	get
+	{
+		return _routineRecordDictionary.ToImmutableDictionary
+		(
+			kvp => kvp.Key,
+			kvp => kvp.Value.ToImmutableList()
+		);
+	}
+}
+~~~
