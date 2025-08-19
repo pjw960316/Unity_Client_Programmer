@@ -11,7 +11,7 @@
 
 <br><br>
 
-## :Fire: Scale With Screen Size을 이용해서 다양한 해상도에 대응한다.
+## :fire: Scale With Screen Size을 이용해서 다양한 해상도에 대응한다.
 
 <br><br>
 
