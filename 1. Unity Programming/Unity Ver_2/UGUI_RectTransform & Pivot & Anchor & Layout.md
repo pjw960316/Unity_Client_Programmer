@@ -34,3 +34,7 @@
 > Rect Transform is a new transform component that is used for all UI elements. Rect Transform on it, it will instead change the width and the height, keeping the local scale unchanged. This resizing will not affect font sizes, border on sliced images, and so on.
 
 > Rect Transform is a new transform component that is used for all UI elements. Rect Transform on it, it will instead change the width and the height, keeping the local scale unchanged. This resizing will not affect font sizes, border on sliced images, and so on.) 
+
+<br><br>
+
+## :fire: Horizontal / Vertical Layout을 지양한다. <br> :fire: 부모가 자식을 통제하기 때문에 의도하지 않은 결과가 나타날 수 있다.

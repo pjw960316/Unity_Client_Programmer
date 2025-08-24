@@ -383,3 +383,4 @@ public ImmutableDictionary<string, ImmutableList<bool>> RoutineRecordDictionary
 	}
 }
 ~~~
+- _routineRecordDictionary를 정렬해도 ImmutableDictionary의 정렬은 보장되지 않는다. 그러므로, ImmutableSortedDictionary를 사용하고 Compare Method는 직접 구현한다.
