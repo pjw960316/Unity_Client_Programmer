@@ -92,6 +92,7 @@
     - 3가지 Choice가 있다.
   - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
     - view가 presenter를 class Type으로 들고 있다.
+- **단순한 position 계산, scale 계산 같은 순수 UI 수치 계산은 View에서 처리해도 무방하다.**
 
 <br>
 
