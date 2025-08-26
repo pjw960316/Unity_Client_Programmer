@@ -7,7 +7,25 @@ Observable.Timer(TimeSpan.FromSeconds(playingTime))
 
 <br><br>
 
-## :fireworks: 자주 쓰는 UniRx의 Method 뜯어 보기
+## : UniRx에서 Subscriber에게 데이터를 전달할 때 params가 1개 이상은 전달 할 수 없다. <br> 그러므로, struct로 DTO를 만들어서 2개 이상의 데이터를 묶어 전달한다.
+~~~c#
+public struct ScrollData
+{
+    public readonly float Offset;
+    public readonly bool IsScrollDown;
+    public readonly UIRoutineRecordWidget MovingWidget; // note : 보이지 않아서 움직일 widget 
+
+    public ScrollData(float offset, bool isScrollDown, UIRoutineRecordWidget movingWidget)
+    {
+        Offset = offset;
+        IsScrollDown = isScrollDown;
+        MovingWidget = movingWidget;
+    }
+}
+
+private readonly Subject<ScrollData> _onUpdateScrollWidget = new();
+public IObservable<ScrollData> OnUpdateScrollWidget => _onUpdateScrollWidget;
+~~~
 
 <br><br>
 
