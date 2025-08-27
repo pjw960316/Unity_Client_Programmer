@@ -111,7 +111,7 @@
 #### :four: 예전에 회사에서 적은 내용
 
 <details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+  <summary> :point_up_2: 눌러서 이미지를 확인 합시다  </summary>
 
 ![alt text](./captures/20250827.png)
 
