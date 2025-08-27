@@ -106,6 +106,17 @@
   > If you want to implement MVP by the book and stay true to its principals, every UI that has user interaction should have a presenter. In this case, if your activity is not interacting with the user, there is no need to have a presenter, and your fragments can have their own. If your activity needs, let's say show a loading to the user because of some data loading prior to show the fragments (this is a user interaction because you are interacting with the user to let them know that something is happening so they should wait), then might be good to consider having a presenter for the activity.
   - View가 Presenter를 들고 있지 않으면 단방향 의존성이라는 좋은 설계가 이루어진다.
 
+<br>
+
+#### :four: 예전에 회사에서 적은 내용
+
+<details>
+  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
+
+![alt text](./captures/20250827.png)
+
+</details>
+
 <br><br>
 
 ## :fire: Presenter
