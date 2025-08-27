@@ -94,17 +94,18 @@
   - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
     - view가 presenter를 class Type으로 들고 있다.
 
-
 <br>
 
 #### :three: 특징
-- 절대로 Model을 멤버로 갖지 않는다.
+- **절대로 Model을 멤버로 갖지 않는다.**
   - > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
   - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
-- 멍청해서 아무것도 모르게 한다.
-- View 마다 반드시 Presenter를 구현해야 하는 것 은 아니다.
+- **아무것도 모르는 멍청이로 구현 할수록 올바른 View의 형태다.**
+- **View 마다 반드시 Presenter를 구현해야 하는 것 은 아니다.**
+  - View가 Presenter를 들고 있지 않으면 단방향 의존성이라는 좋은 설계가 이루어진다. (현재는 최대한 들고 있지 않도록 노력 중)
   > If you want to implement MVP by the book and stay true to its principals, every UI that has user interaction should have a presenter. In this case, if your activity is not interacting with the user, there is no need to have a presenter, and your fragments can have their own. If your activity needs, let's say show a loading to the user because of some data loading prior to show the fragments (this is a user interaction because you are interacting with the user to let them know that something is happening so they should wait), then might be good to consider having a presenter for the activity.
-  - View가 Presenter를 들고 있지 않으면 단방향 의존성이라는 좋은 설계가 이루어진다.
+- **구현 순서  :  View Initialize() -> View에서 Presenter 생성 -> Presenter는 생성되면서 Initialize() -> Presenter가 SetData()를 통해 Manager 또는 Model에서 받아온 Data로 View에 Inject하여 Data를 세팅한다.**
+  > We already know how the widgets should look, therefore, we call setupScreen() first. Then, we call activate() the presenter, which, if required, can read the relevant data from the model (like data from the previous screens or from hardware) and call functions available in the view to update the state of the widgets
 
 <br>
 
@@ -128,6 +129,7 @@
 - Presenter는 Pub/Sub 구조에서 subscriber의 역할을 갖고 있다.
   - View가 제공한 이벤트를 구독하여 이벤트가 발생했을 때 수행할 로직을 구현한다.
 - Presenter에서 Model의 데이터 필드를 업데이트 한다. (property Set)
+- View 마다 Presenter를 1대1 대응 시킬 필요는 없다. 예를 들어, Button의 경우 로직적으로 다양한 기능이 존재하지 않으므로 모든 Button에 대응하는 Presenter 1개만 있어도 된다고 생각한다.
 
 <br>
 
