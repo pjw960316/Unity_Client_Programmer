@@ -49,7 +49,7 @@
 
 <br><br>
 
-## :star::fire: 책임은 Interface로 구현한다. <br> :fire: 책임 수행의 중복은 Abstract Class로 구현한다. <br> :fire: 둘을 같이 사용한다!
+## :star::fire: 책임은 Interface로 구현한다. <br> :fire: 책임 수행의 중복은 Abstract Class로 구현한다. <br> :fire: 또한, Interface는 public으로 구현하기에 외부에서 호출될 책임을 구현하고 <br> Abstract는 protected와 private으로 내부의 책임을 구현하는 방향을 지향한다.  
 
 #### [Manager class(=Concrete Class)의 Interface 와 Abstract Class 구분]
 <details>
