@@ -7,7 +7,7 @@
 
 <br><br>
 
-## :fire: Resources.Load는 항상 슬래스(/)만 사용해야 하고 <br> 절대 경로(full-path)를 사용하지 않는다.
+## :fire: Resources.Load는 항상 슬래시(/)로 구성된 상대 경로를 이용한다. <br> :fire: 확장자를 붙이지 않는다. <br> :fire: 절대 경로(full-path)를 사용하지 않는다. 
 > Note that the path is case insensitive and must not contain a file extension. All asset names and paths in Unity use forward slashes, so using backslashes in the path will not work.
 
 <br><br>
