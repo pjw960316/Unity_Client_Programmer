@@ -50,6 +50,7 @@
 <br><br>
 
 ## :star::fire: 책임은 Interface로 구현한다. <br> :fire: 책임 수행의 중복은 Abstract Class로 구현한다. <br> :fire: 또한, Interface는 public으로 구현하기에 외부에서 호출될 책임을 구현하고 <br> Abstract는 protected와 private으로 내부의 책임을 구현하는 방향을 지향한다.  
+- 예를 들어, 모든 Popup은 OnAwake()를 구현해서 Initialize()의 책임을 상속 구조로 수행하도록 할 것 이다. 그렇다고 OnAwake()를 Public으로 할 필요는 없다. 그러므로, OnAwake()의 책임은 유지하고, 내부에서 호출되어야 하기 때문에 Abstract Class에 구현한다.
 
 #### [Manager class(=Concrete Class)의 Interface 와 Abstract Class 구분]
 <details>
