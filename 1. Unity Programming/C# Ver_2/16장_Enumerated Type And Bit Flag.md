@@ -9,3 +9,7 @@
 ## :fire: Enum은 Static처럼 사용된다. <br> :fire: IL로 까보면 알 수 있다.
 - ![alt text](./capture/20250724_1.png)
 - ![alt text](./capture/20250724_2.png)
+
+<br><br>
+
+## :question: Enum은 상속이 불가능하니, 많이 쪼개지말고 한 곳에 많이 모아서 저장하는 게 코드 분할을 막기 쉽다.
