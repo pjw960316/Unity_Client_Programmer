@@ -12,6 +12,8 @@
 
 ## :fire::two: Presenter가 멤버로 들고 있을 것
 - **View 와 Model을 멤버로 갖는다.**
+  > Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
+  - :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
 - **View에서 전달 받은 event의 <ins>Handle Method</ins>**
 ~~~c#
  _view.OnSoundButtonClicked.Subscribe(unit => OpenPopup()).AddTo(_disposable);
@@ -27,5 +29,25 @@
 <br><br>
 
 ## :fire::three: Presenter의 특징
-> Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
-- :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
+- Presenter -> View는 매우 올바르다. 그러나 Presenter와 Connect된 View가 Popup이라고 가정할 때, Presenter는 그 Popup이 들고 있는 Widget-View에는 직접 접근하면 안 된다. 다시 말해, Presenter가 직접 Widget을 Setting하면 안 된다.
+  - 캡슐화 관점에서 Popup(big-view)은 자신의 field은 Widget들(small-view)를 private이나 protected로 숨겨야 한다.
+  - 그러므로, Presenter의 SetView로 Widget의 데이터를 세팅할 때 Presenter -> Popup(big-view) -> Widgets(small-view)를 구조로 구현해야 한다.
+  - Presenter가 widget의 세부 구현에 관여하면 SRP 위반이다.
+~~~c#
+// Presenter에서 호출 될 Popup의 public method
+// widget의 text를 popup을 통해 세팅한다.
+public void SetButtonText(ImmutableDictionary<EAlarmButtonType, float> immutableDictionary)
+{
+    foreach (var widget in _alarmTimeButtons)
+    {
+        if (immutableDictionary.TryGetValue(widget.AlarmButtonType, out var time))
+        {
+            widget.UpdateAlarmButtonText(time);
+        }
+        else
+        {
+            Debug.Log($"{widget.AlarmButtonType} 의 알람 버튼의 텍스트가 세팅되지 않았습니다.");
+        }
+    }
+}
+~~~

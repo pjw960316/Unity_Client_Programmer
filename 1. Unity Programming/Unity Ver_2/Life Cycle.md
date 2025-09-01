@@ -15,7 +15,32 @@
 
 <br><br>
 
+## :fire: Field Initializer는 static이 아니면 Awake 보다 빠르다. <br> Popup(Big view) 내부에 있는 Widget(Small View)의 Awake의 시점은 명확히 알 수 없기 때문에 <br> Initialize()로 구현해서 명시적으로 시점을 조절한다.
+- Popup Initialize() -> Widget Initialize() -> Create Presenter -> Presenter Initialize() -> Presenter SetView()를 의도했다. 
+- 하지만 Widget Initialize()를 OnAwake()에 넣으면 Presenter SetView() 보다 늦게 호출될 수 있기 때문에 Widget Initialize는 명시적으로 Popup에서 호출한다. 
+~~~c#
+private void Initialize()
+{
+  // 시점을 명확히 한다.
+  InitializeWidgets();
+}
 
+private void InitializeWidgets()
+{
+    foreach (var widget in AlarmAudioClipButtons)
+    {
+      // 이걸 Widget의 Awake()에서 콜하면 언제인지 명확히 알 수 없다.
+      widget.Initialize();
+    }
+
+    foreach (var widget in AlarmTimeButtons)
+    {
+      widget.Initialize();
+    }
+}
+~~~
+
+<br><br>
 
 ## :fireworks: 현재 상황은 GameObject에 <br> Derived Type이 존재하는 Script(UIOpenPopupButtonBase)를 붙였다. <br> Script의 this의 Instance Type은 Derived Type이 된다. <br><br> :fire: Awake는 상속구조에서 virtual OnAwake를 이용해서 구현한다. <br> :fire: 또한, BindEvent() 같이 Base에서도 1번, Derived에서도 1번 호출되어야 하는 method는 <br> virtual로 구현하지 않고 **Shadowing** 기법으로 구현한다. <br> :fire: 아래 코드에서 Base의 BindEvent()를 virtual로 선언하면 <br> Dervied Type의 BindEvent()로 호출되기 때문에 주의한다. <br> Base의 Awake에서 호출하는 OnAwake()는 Derived의 OnAwake()가 호출된다. <br> :fire: 결론적으로 Virtual 키워드 없이 같은 method 네임을 사용하는 Shadowing도 필요하다.
 
