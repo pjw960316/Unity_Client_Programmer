@@ -7,9 +7,9 @@
   - View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
   - View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
 
-<br>
+<br><br>
 
-#### :two: 멤버로 들고 있을 것
+## :fire::two: View가 멤버로 들고 있을 것
 - **자신보다 작은 개념의 View Struct 또는 View Widget**
   - [누르면 설명으로 이동한다](#fire-scene에서-큰-viewpopup는-작은-view들button-image-scrollview을-들고-있다--fire-작은-view를-구현할-때-view-struct-와-view-widget-중-선택한다)
 - **private Subject & public IObservable**
@@ -33,9 +33,9 @@
   - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
     - view가 presenter를 class Type으로 들고 있다.
 
-<br>
+<br><br>
 
-#### :three: 특징
+## :fire::three: View의 특징
 - **절대로 Model을 멤버로 갖지 않는다.**
   - > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
   - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
@@ -46,9 +46,9 @@
 - **구현 순서  :  View Initialize() -> View에서 Presenter 생성 -> Presenter는 생성되면서 Initialize() -> Presenter가 SetData()를 통해 Manager 또는 Model에서 받아온 Data로 View에 Inject하여 Data를 세팅한다.**
   > We already know how the widgets should look, therefore, we call setupScreen() first. Then, we call activate() the presenter, which, if required, can read the relevant data from the model (like data from the previous screens or from hardware) and call functions available in the view to update the state of the widgets
 
-<br>
+<br><br>
 
-#### :four: 예전에 회사에서 적은 내용
+## :fire::four: View에 대해서예전에 회사에서 적은 내용
 
 <details>
   <summary> :point_up_2: 눌러서 이미지를 확인 합시다  </summary>
@@ -94,4 +94,3 @@ public struct ButtonData
 <br><br>
 
 ## :fire: View는 필드로 다른 view를 들고 있는 경우가 대부분이다. <br> (예를 들면, Popup 내부에는 여러 개의 Button이 있다.) <br> :fire:구현 초기에는, Popup에서 모든 하위 View들을 필드로 관리하는 데 어려움이 없다. <br> 그러나 추후에 하위 View들이 거대해지면서 코드의 중복이 생기기 시작한다. <br> :fire::star:이 때가 필드로 들고 있던 view를 독립적인 새로운 View Script를 빼서 관리해야 할 때다. <br> 회사에서는 이걸 widget화 한다고 배웠었다.
-
