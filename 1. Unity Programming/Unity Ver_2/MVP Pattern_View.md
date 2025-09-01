@@ -1,6 +1,5 @@
 
-## :fire: View
-#### :one: 역할 및 책임
+## :fire::one: View의 역할 및 책임
 > the View is responsible for handling user input.
   - View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
   - 이를 UniRx를 이용해서 구현한다.
