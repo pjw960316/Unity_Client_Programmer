@@ -1,6 +1,7 @@
 ## :fire::one: Manager의 역할 및 책임
 - 좀 더 실력이 늘면 factory class와 분리하는 게 맞지만 지금은 factory class의 역할을 manager에서 해도 좋을 것 같다. (factory class에서 presenter에 model과 view의 interface를 argument로 전달해서 DI를 진행한다.)
 - Manager에서 Model의 데이터 필드를 업데이트 한다. (property Set)
+- - Manager의 관리 책임만 유지하고, 기능 구현의 부담을 줄인다. 즉, 게임 로직 기능 메서드는 Model 과 Presenter로 분산하고, 이 들을 관리하는 메서드만 Manager에 남긴다.
 
 <br><br>
 

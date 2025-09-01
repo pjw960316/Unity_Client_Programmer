@@ -26,6 +26,6 @@
 
 <br><br>
 
-## :fire::three: Presenter가의 특징
+## :fire::three: Presenter의 특징
 > Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
 - :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
