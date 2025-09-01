@@ -48,17 +48,6 @@
 
 <br><br>
 
-## :fire::four: View에 대해서예전에 회사에서 적은 내용
-
-<details>
-  <summary> :point_up_2: 눌러서 이미지를 확인 합시다  </summary>
-
-![alt text](./captures/20250827.png)
-
-</details>
-
-<br><br>
-
 ## :fire: Scene에서 큰 View(Popup)는 작은 View들(Button, Image, ScrollView)을 들고 있다. <br> :fire: 작은 View를 구현할 때 View Struct 와 View Widget 중 선택한다.
 
 #### :one: 거대해졌는데 아직 로직은 없다 -> Presenter가 쉽게 이용하도록 <ins>**public Struct로 묶기**</ins>
