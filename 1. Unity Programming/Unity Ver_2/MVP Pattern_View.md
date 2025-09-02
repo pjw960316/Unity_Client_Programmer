@@ -1,11 +1,12 @@
 
 ## :fire::one: View의 역할 및 책임
-- View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
-  - > the View is responsible for handling user input.
-- Popup(=Big View)이 Widget(=Small View)을 들고 있는 형태로 View는 구성되어 있다.
-- View는 Pub/Sub 구조에서 publisher의 역할을 갖고 있다.
-  - View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
-  - View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
+#### 1.  View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
+> the View is responsible for handling user input.
+
+#### 2.  Popup(=Big View)이 Widget(=Small View)을 들고 있는 형태로 View는 구성되어 있다.
+#### 3.  View는 Pub/Sub 구조에서 publisher의 역할을 갖고 있다.
+- View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
+- View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
 
 <br><br>
 
