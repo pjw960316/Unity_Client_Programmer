@@ -6,12 +6,15 @@
 <br><br>
 
 ## :fire::two: Model이 멤버로 들고 있을 것
-#### 1. 일반 필드
-- :question: Set을 Property로 사용하기 때문에 Manager에서 사용해도 문제 없다고 판단한다. 하지만 이 것도 Model에서 진행 할 지 수칙을 정해야 한다.
+#### 1. private으로 캡슐화 시킨 일반 타입의 데이터 필드
+- 외부에서 접근을 public getter property 또는 public getter method로 구현해서 Property에게 제공한다.
 #### 2.Container 
-- Container(List, Dictionary)의 Set, Update 종류의 데이터 Setter Method
-- ImmutableContainer의 Get 종류의 데이터 Getter Method
+- private 형태의 외부 접근 불가한 기본 Container(List, Dictionary) 
+- public 형태의 외부 접근 가능한 ImmutableContainer의 Getter Property
 - :link:[06장_Type and Member Basics (=Class).md](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/06%EC%9E%A5_Type%20and%20Member%20Basics%20(%3DClass).md)
+#### 3. Enum
+- Class 외부에 선언하지 않도록 주의한다. (Scope)
+- ![alt text](./captures/20250715.png)
 
 <br><br>
 
