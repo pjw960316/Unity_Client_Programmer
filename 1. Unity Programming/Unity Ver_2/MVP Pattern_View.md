@@ -49,6 +49,8 @@
 #### 1. 아무것도 모르는 멍청이로 구현 할수록 올바른 View의 형태다.
 > View is Humble
 - 뷰는 데이터를 화면으로 전달하는 간단한 일만 처리하도록 만든다.
+  > 예시 : App은 Presenter에 Date 객체를 전달한다. 그러면 Presenter는 해당 데이터를 적절한 포맷의 문자열로 만들고, 이 문자열을 View Model이라고 부르는 간단한 데이터 구조에 담는다. 그러면 View는 View Model에 이 데이터를 찾는다.
+  - 복잡한 로직처리가 필요할 때는 바로 Presenter로 넘긴다.
 #### 2.절대로 Model을 멤버로 갖지 않는다.
 > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
 - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
