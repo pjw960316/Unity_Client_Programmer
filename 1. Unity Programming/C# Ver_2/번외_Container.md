@@ -12,3 +12,7 @@ public ImmutableDictionary<EAlarmButtonType, float> AlarmTimeDictionary => _alar
 ~~~
 - 외부에서의 Add,Remove 방어
 - :link:[[예제_2 : Immutable한 readonly Container는 Immutable로 만들어 준다.](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/06%EC%9E%A5_Type%20and%20Member%20Basics%20(%3DClass).md#%EC%98%88%EC%A0%9C_2--immutable%ED%95%9C-readonly-container%EB%8A%94-immutable%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4-%EC%A4%80%EB%8B%A4)
+
+<br><br>
+
+## :fire: TryAdd(), TryGetValue() 같이 예외에 안전한 메서드를 사용한다.
