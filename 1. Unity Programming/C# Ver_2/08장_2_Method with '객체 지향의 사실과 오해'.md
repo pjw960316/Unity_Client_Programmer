@@ -28,7 +28,7 @@
 
 <br><br>
 
-## :fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br> :star: 정리하면, 여러 class가 동일한 책임을 가지면서 책임 수행 방식의 공통점도 다수 존재한다면 interface로 역할을 정의하고 그 역할을 구현한 abstract class를 추가로 설계한다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다.
+## :fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br> :star: 정리하면, 여러 class가 동일한 책임을 가지면서 책임 수행 방식의 공통점도 다수 존재한다면 interface로 역할을 정의하고 그 역할을 구현한 abstract class를 추가로 설계한다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다. :question: 다시 읽어보니 뭔가 뭔가다...
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
@@ -46,6 +46,80 @@
 <br>
 
 - Interface의 Default 기능은 다루지 않는다.
+
+<br><br>
+
+## :fireworks: UIPopupBase를 상속 받는 AlarmPopup을 통해 virtual & abstract로 OnAwake() 구조를 이해한다. 
+
+~~~c#
+// Class : UIPopupBase
+private void Awake()
+{
+    OnAwake();
+}
+
+protected virtual void OnAwake()
+{
+    Initialize();
+
+    CreatePresenterByManager();
+
+    BindEvent();
+}
+
+protected virtual void Initialize()
+{
+    _uiManager = UIManager.Instance;
+    _uiToastManager = UIToastManager.Instance;
+}
+
+protected abstract void BindEvent();
+protected abstract void CreatePresenterByManager();
+
+// AlarmPopup : UIPopupBase
+protected override void OnAwake()
+{
+    base.OnAwake();
+}
+
+protected sealed override void Initialize()
+{
+    base.Initialize();
+
+    InitializeWidgets();
+}
+
+private void InitializeWidgets()
+{
+    foreach (var widget in AlarmAudioClipButtons)
+    {
+        widget.Initialize();
+    }
+
+    foreach (var widget in AlarmTimeButtons)
+    {
+        widget.Initialize();
+    }
+}
+
+protected sealed override void CreatePresenterByManager()
+{
+    _uiManager.CreatePresenter<AlarmPresenter>(this);
+}
+
+#endregion
+
+protected sealed override void BindEvent()
+{
+    BindButtonMenuEvents(AlarmAudioClipButtons);
+    BindButtonMenuEvents(AlarmTimeButtons);
+
+    _confirmButton?.OnClick.AddListener(OnClickConfirmButton);
+}
+~~~
+- virtual은 상위 타입의 기능도 필요한 경우가 있기 때문에 'base.부모 메서드' 콜을 항상 의식한다.
+- Abstract는 책임에 대한 부여만 있기 때문에 'base.부모 메서드' 콜은 의식 하지 않는다.
+- UIPopupBase에서 하위 Concrete Class에서 OnAwake()에서 호출될 메서드들의 실행 순서를 **강제**한다.
 
 <br><br>
 
@@ -104,7 +178,3 @@ public abstract class ManagerBase<T> where T : class, new()
 - 책임도 강제가 되고, 요청도 강제가 되면 설계자가 다른 프로그래머에게 내 의도를 강제 시킬 수 있다. 
 
 <br><br>
-
-## :star::fireworks: [Unity Project 설계 단계] <br> :fire: 1단계 : 객체의 적절한 책임(행동)을 설계한다. <br> :fire: 2단계 : 해당 책임(행동)을 수행하기 위해 필요한 데이터를 설계한다. <br> :fire: 3단계 : 필요한 데이터와 책임(행동)이 어느 정도 결정된 후에 클래스의 구현 방법을 결정한다.
-- 1단계에서 interface 또는 Abstract Class를 설계하는 것.
-  - 재사용 method가 많을수록 abstract class를 사용하는 설계가 올바르다고 현재는 판단한다.
