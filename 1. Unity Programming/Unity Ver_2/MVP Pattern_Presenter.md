@@ -2,11 +2,20 @@
 #### 1. Model과 View 사이를 연결하는 **중재자(mediator)**입니다.
 > View로부터 입력 이벤트를 받으면 Model을 업데이트하고, Model의 결과를 다시 View로 전달해 화면을 갱신하는 일을 맡습니다.
   - Presenter가 1대1로 Model과 View를 연결하는 Unit 단위 연결 통로라면, Presenter들 끼리의 소통은 Manager를 통해 한다.
-#### 2. View의 Event를 구독할 책임이 있다.
+#### 2. MVP Pattern의 Presenter는 MVC Pattern의 Controller + Presenter로 이해할 수 있다.
+- View -> Controller -> Model
+  - View에서 부터의 Input 정보를 Controller를 통해 Model로 전달한다. 이는 Mvp Pattern에서 Presenter가 Model에게 Data를 Request하는 부분과 유사하다.
+- Model -> Presenter -> View
+  - Model은 변화된 Data를 Presenter에게 전달하고 Presenter는 이를 View에게 Command하여 User가 보는 화면을 갱신시킨다.
+  - 이는 현재 Presenter에서의 동작과 유사하다.
+- Presenter가 2개의 책임이 있으므로 구분하는 것이 SRP에 맞지만, 나는 일단 Request를 접두어로 붙여 구분하기로 했다.
+> 이렇게 MVP의 Presenter를 통해 Model 과 View의 소통을 구분하는 일은 어렵지 않으며, 향후에 겪을 수 많은 고통거리를 덜어줄 것 이다. 
+  - 과거에 구분하지 못해서 View에서 모든 것을 동작시키고, 도저히 유지보수가 되지 않는 코드를 많이 생산해 봤다. 크게 다가오는 글이었다.
+#### 3. View의 Event를 구독할 책임이 있다.
 > The presenter receives events from the view, retrieves data from the model and updates the view with the data.
   - Presenter는 Pub/Sub 구조에서 subscriber의 역할을 담당한다. IObservable이 View에서 public인 이유는 Presenter가 구독을 해야하기 때문이다.
   - View가 제공한 이벤트를 구독하여 이벤트가 발생했을 때 수행할 로직을 구현할 책임이 있다.
-#### 3. Model 또는 Manager로 부터 Data를 Get하고, Get한 데이터를 View에 Set한다.
+#### 4. Model 또는 Manager로 부터 Data를 Get하고, Get한 데이터를 View에 Set한다.
 ~~~c#
 // Model -> Presenter (GetData)
 _latestSleepingAudioClip = _alarmData.GetAlarmAudioClip(eAlarmAudioClip);

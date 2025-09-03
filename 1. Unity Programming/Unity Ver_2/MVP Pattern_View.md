@@ -47,9 +47,11 @@
 
 ## :fire::three: View의 특징
 #### 1. 아무것도 모르는 멍청이로 구현 할수록 올바른 View의 형태다.
+> View is Humble
+- 뷰는 데이터를 화면으로 전달하는 간단한 일만 처리하도록 만든다.
 #### 2.절대로 Model을 멤버로 갖지 않는다.
-  - > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
-  - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
+> Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
+- :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
 #### 3. Presenter를 들고 있지 않는다. Presenter -> View를 하도록 Presenter에게 자신가 자신을 이용하도록 한다.
 > In the Model-View-Presenter (MVP) architectural pattern, the View component exposes public methods to allow the Presenter to interact with and manipulate the User Interface (UI). These public methods represent the contract between the Presenter and the View, defining how the Presenter can instruct the View to display data, update UI elements, or perform other UI-related actions. 
 - View가 Presenter를 들고 있지 않으면 단방향 의존성이라는 좋은 설계가 이루어진다. 
