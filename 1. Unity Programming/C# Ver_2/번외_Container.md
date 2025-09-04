@@ -15,4 +15,4 @@ public ImmutableDictionary<EAlarmButtonType, float> AlarmTimeDictionary => _alar
 
 <br><br>
 
-## :fire: TryAdd(), TryGetValue() 같이 예외에 안전한 메서드를 사용한다.
+## :fire: Dictionary 에서 기본적으로는 dict[key] = value로 element를 추가한다. <br> :fire: 덮어 쓰기가 싫을 때는 TryAdd()를 이용한다.
