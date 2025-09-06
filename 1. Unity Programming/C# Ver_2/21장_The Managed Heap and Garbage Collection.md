@@ -86,13 +86,46 @@ public class AAA
   - ReferenceType인 인스턴스가 제거되면 당연히 인스턴스 전체가 메모리에서 사라지기 때문에, 내부의 valueType 멤버들(int, struct)도 **같이 제거** 된다.
     - Class의 valueType 멤버들도 managed heap에 있다.
   - 다시 말해, 클래스의 valueType 멤버가 독립적으로 제거되는 경우는 알 수 없으나, 인스턴스가 삭제될 때 valueType 멤버는 당연히 같이 해제된다.
-
+  
 <br><br>
 
-## :fire: [경험을 해봐야 할 것] GC Collect를 사용해도 괜찮다는 두 가지 순간
-> 1. 반복 발생할 가능성이 매우 희박한 이벤트를 처리한 후 상당히 많은 객체가 제거되어야 하는 경우
-> 2. 게임 프로젝트의 초기화 완료 직후나 사용자가 데이터 파일을 저장한 직후와 같은 경우에 모든 세대에 걸친 GC 작업은 괜찮아 보인다.
-  
+## :fireworks: 본문도 읽어야 한다. <br> :fire: Factory Manager를 통해 Instance들의 생성 및 해제를 관리한다. <br> :fire: 그렇게 하면, 명시적으로 Instance를 Terminate하여 Instance의 생명주기를 관리하고, GC를 유도 시킬 책임만 갖는 Manager를 사용할 수 있다.
+~~~c#
+
+// [Presenter Manager -> Factory Singleton Manager]
+public void CreatePresenter<TPresenter>(IView view) where TPresenter : PresenterBase, new()
+{
+    var presenter = new TPresenter();
+    presenter.Initialize(view);
+
+    _livedPresenterHashSet.Add(presenter);
+}
+
+public void TerminatePresenter(PresenterBase presenter)
+{
+    if (_livedPresenterHashSet.Contains(presenter))
+    {
+        _livedPresenterHashSet.Remove(presenter);
+    }
+}
+
+// [PresenterBase -> 모든 Presenter가 상속 받는 Base Class]
+public void TerminatePresenter()
+{
+    _disposable?.Dispose();
+    
+    //refactor
+    //_view와 _model의 null처리도 해줘야 하는가?
+    
+    _presenterManager.TerminatePresenter(this);
+}
+~~~
+
+- Presenter가 아무에게도 참조되지 않는다면 Presenter는 GC 대상자가 된다. 그러므로 Presenter의 Field에 대해서 memory 해제를 시작한다.
+- Presenter 자체가 GC 결과 Unreachable이 되면 메모리에서 해제된다. 그러나 Presenter 내부의 어떤 필드가 1개라도 외부에서 참조가 된다면 그 필드는 살아 남는다. 대신 Presenter의 Field로 메모리에 존재하는 게 아니라 그냥 독립적인 녀석으로 메모리에 존재하게 된다.즉, Instance가 삭제되면 내부의 모든 Reference Type의 필드는 메모리가 해제된다는 틀린 개념이다.
+- :star: 그러므로, 개발자는 구현 단계에서 필드를 캡슐화로 숨겨서 외부 참조를 막아야 하며, 외부에서 Getter를 통해 참조될 때, 이 녀석은 Instance가 해제되어도 살아 남을 수 있다는 생각을 해야 한다. 
+- this = null 같은 코드는 애당초 불가능하고, 자신을 직접 null로 하는 코드는 C# GC 정책이 지원하지도 않는다. 그러므로, :star:자신은 자신이 들고 있는 필드에 대한 정리를 최선을 다해서 진행해야 한다.  
+
 <br><br>
 
 ## :fire: unsafe 코드 블록 안에서는 C#의 안전한 메모리 관리 환경을 벗어나 <br> C++과 비슷하게 포인터를 사용하여 메모리 주소를 직접 다룰 수 있다. <br> :fire: fixed 키워드를 이용하면 GC에 의해 인스턴스가 이동되지 않도록 고정한다.
