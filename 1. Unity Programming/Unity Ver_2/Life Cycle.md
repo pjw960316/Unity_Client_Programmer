@@ -15,7 +15,8 @@
 
 <br><br>
 
-## :fireworks: 유니티 생성 이벤트의 순서를 제대로 이해한다. <<br>:one::fire: Field Initializer는 static이 아니면 항상 제일 빠르다. <br>:two::fire: Awake가 빠르다. <br>:three::fire: start가 빠르다. <br> :star::fire: Popup과 Popup 내부의 Widget의 Awake중 누가 빨리 되는 지는 알 수 없다. <br> 그러나 언제나 Popup의 Field Initializer는 Widget의 Awake 보다 빠르고, 반대로 Widget의 Field Initializer는 Popup의 Awake 보다 반드시 빠르다. <br> 당연히 Start와 Awake의 관계도 똑같다.
+## :fireworks: 유니티 생성 이벤트의 순서를 제대로 이해한다. <br>:one: Field Initializer는 static이 아니면 항상 제일 빠르다. <br>:two: Awake가 그 다음으로 빠르다. <br>:three: start가 그 다음으로 빠르다. <br> :star::fire: Popup과 Popup 내부의 Widget의 Awake중 누가 빨리 되는 지는 알 수 없다. <br> 그러나 언제나 Popup의 Field Initializer는 Widget의 Awake 보다 빠르고, 반대로 Widget의 Field Initializer는 Popup의 Awake 보다 반드시 빠르다. <br> 당연히 Start와 Awake의 관계도 똑같다.
+- OnEnable 이런 건 일단 제외했다.
 
 <br><br>
 
