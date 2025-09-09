@@ -28,7 +28,7 @@
 
 <br><br>
 
-## :fire: Interface 그리고 Abstract Method는 책임을 강제한다는 공통점이 있지만 미묘한 차이점 또한 존재한다. <br><br> :fire: Interface는 책임을 강제해서 외부에 제공하다록 한다. <br> :fire: Abstract Method는 책임을 강제함과 동시에 이 기능은 반드시 override해서 구현해야 한다는 책임까지 강제한다. 수행 방향은 제공하지 않는다. <br> virtual method는 통해 책임 수행 방향을 조언 할 수 도 있다.(base에 body를 적으니) <br> :fire: 3가지 키워드 모두 책임을 강제하거나 책임의 수행 방향 까지 조언 할 수 있으나, Method Call ('요청')을 강요하지는 않는다.
+## :fire: Interface 그리고 Abstract Method는 책임을 강제한다는 공통점이 있지만 <br> 미묘한 차이점 또한 존재한다. <br><br> :fire: Interface는 책임을 강제해서 외부에 제공하도록 한다. <br> :fire: Abstract Method는 책임을 강제함과 동시에 <br> 이 기능은 반드시 override해서 구현해야 한다는 책임까지 강제한다. <br> 수행 방향은 제공하지 않는다. <br>:fire: Virtual method는 책임 수행 방향을 조언 할 수 도 있다. (base에 body를 적으니) <br> :fire: 3가지 키워드 모두 책임을 강제하거나 책임의 수행 방향 까지 조언 할 수 있으나<br> Method Call ('요청')을 강요하지는 않는다.
 > Interfaces are about exposing a contract. “You can use this thing this way”. Abstract classes are used for shared functionality. “Here’s a toolkit in building this class, implement one or two methods and you’re set.” They have a bit of overlap. Many abstract classes also implement interfaces. It’s not uncommon to see where something that takes in the interface, but there’s a base class that provides a lot of common functionality.
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
