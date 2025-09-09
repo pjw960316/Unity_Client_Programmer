@@ -28,7 +28,8 @@
 
 <br><br>
 
-## :fireworks: Interface 그리고 Abstract Class는 책임을 강제한다는 공통점이 있지만 차이점 또한 존재한다. <br><br> :fire: Interface는 순수하게 책임만 강제한다. <br> :fire: Abstract Class는 책임을 강제함과 동시에 <ins>책임 수행의 방향</ins>도 설정 할 수 있다. <br> abstract method를 통해 책임 수행을 강제할 수도 있고 <br> virtual method를 통해 책임 수행을 유연하게 조언 할수 도 있다. <br> :star: 정리하면, 여러 class가 동일한 책임을 가지면서 책임 수행 방식의 공통점도 다수 존재한다면 interface로 역할을 정의하고 그 역할을 구현한 abstract class를 추가로 설계한다. <br><br> :fire: 3가지 키워드 모두 책임을 강제하거나 조언하지만, Method가 구현되었다고 Method Call ('요청')을 강요하지는 않는다. :question: 다시 읽어보니 뭔가 뭔가다...
+## :fire: Interface 그리고 Abstract Method는 책임을 강제한다는 공통점이 있지만 미묘한 차이점 또한 존재한다. <br><br> :fire: Interface는 책임을 강제해서 외부에 제공하다록 한다. <br> :fire: Abstract Method는 책임을 강제함과 동시에 이 기능은 반드시 override해서 구현해야 한다는 책임까지 강제한다. 수행 방향은 제공하지 않는다. <br> virtual method는 통해 책임 수행 방향을 조언 할 수 도 있다.(base에 body를 적으니) <br> :fire: 3가지 키워드 모두 책임을 강제하거나 책임의 수행 방향 까지 조언 할 수 있으나, Method Call ('요청')을 강요하지는 않는다.
+> Interfaces are about exposing a contract. “You can use this thing this way”. Abstract classes are used for shared functionality. “Here’s a toolkit in building this class, implement one or two methods and you’re set.” They have a bit of overlap. Many abstract classes also implement interfaces. It’s not uncommon to see where something that takes in the interface, but there’s a base class that provides a lot of common functionality.
 > 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
 - 여기서 '재판을 수행'하는 것에만 집중해야 한다.
 - '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
@@ -43,13 +44,9 @@
 
 > A return type of a method isn't part of the signature of the method for the purposes of method overloading. However, it's part of the signature of the method when determining the compatibility between a delegate and the method that it points to.
 
-<br>
-
-- Interface의 Default 기능은 다루지 않는다.
-
 <br><br>
 
-## :fireworks: UIPopupBase를 상속 받는 AlarmPopup을 통해 virtual & abstract로 OnAwake() 구조를 이해한다. 
+## :fireworks: UIPopupBase를 상속 받는 AlarmPopup을 통해 virtual & abstract로 OnAwake() 구조를 이해한다. <br> :fire: 다형성
 
 ~~~c#
 // Class : UIPopupBase
@@ -120,6 +117,7 @@ protected sealed override void BindEvent()
 - virtual은 상위 타입의 기능도 필요한 경우가 있기 때문에 'base.부모 메서드' 콜을 항상 의식한다.
 - Abstract는 책임에 대한 부여만 있기 때문에 'base.부모 메서드' 콜은 의식 하지 않는다.
 - UIPopupBase에서 하위 Concrete Class에서 OnAwake()에서 호출될 메서드들의 실행 순서를 **강제**한다.
+- abstract method를 이용해서 상위 타입에서 method의 호출 순서를 제어할 수 있다.
 
 <br><br>
 

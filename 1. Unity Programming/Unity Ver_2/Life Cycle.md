@@ -15,30 +15,7 @@
 
 <br><br>
 
-## :fire: Field Initializer는 static이 아니면 Awake 보다 빠르다. <br> Popup(Big view) 내부에 있는 Widget(Small View)의 Awake의 시점은 명확히 알 수 없기 때문에 <br> Initialize()로 구현해서 명시적으로 시점을 조절한다.
-- Popup Initialize() -> Widget Initialize() -> Create Presenter -> Presenter Initialize() -> Presenter SetView()를 의도했다. 
-- 하지만 Widget Initialize()를 OnAwake()에 넣으면 Presenter SetView() 보다 늦게 호출될 수 있기 때문에 Widget Initialize는 명시적으로 Popup에서 호출한다. 
-~~~c#
-private void Initialize()
-{
-  // 시점을 명확히 한다.
-  InitializeWidgets();
-}
-
-private void InitializeWidgets()
-{
-    foreach (var widget in AlarmAudioClipButtons)
-    {
-      // 이걸 Widget의 Awake()에서 콜하면 언제인지 명확히 알 수 없다.
-      widget.Initialize();
-    }
-
-    foreach (var widget in AlarmTimeButtons)
-    {
-      widget.Initialize();
-    }
-}
-~~~
+## :fireworks: 유니티 생성 이벤트의 순서를 제대로 이해한다. <<br>:one::fire: Field Initializer는 static이 아니면 항상 제일 빠르다. <br>:two::fire: Awake가 빠르다. <br>:three::fire: start가 빠르다. <br> :star::fire: Popup과 Popup 내부의 Widget의 Awake중 누가 빨리 되는 지는 알 수 없다. <br> 그러나 언제나 Popup의 Field Initializer는 Widget의 Awake 보다 빠르고, 반대로 Widget의 Field Initializer는 Popup의 Awake 보다 반드시 빠르다. <br> 당연히 Start와 Awake의 관계도 똑같다.
 
 <br><br>
 
