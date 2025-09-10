@@ -15,7 +15,11 @@
 > The presenter receives events from the view, retrieves data from the model and updates the view with the data.
   - Presenter는 Pub/Sub 구조에서 subscriber의 역할을 담당한다. IObservable이 View에서 public인 이유는 Presenter가 구독을 해야하기 때문이다.
   - View가 제공한 이벤트를 구독하여 이벤트가 발생했을 때 수행할 로직을 구현할 책임이 있다.
-#### 4. Model 또는 Manager로 부터 Data를 Get하고, Get한 데이터를 View에 Set한다.
+#### 4. View에서 받은 Input으로 인한 변경사항을 Model에 전달하여 Model의 Data를 변경하고, Model로 부터 Data를 Get해서 View를 통해 보여지는 화면을 갱신한다.
+> 단순히 Model 에서 값을 가져다가 View에 뿌리는 중계자가 아니라, 사용자의 입력을 받아 Model의 상태를 변경할 책임까지 Presenter는 갖고 있다.
+- Model의 field는 public get; private set;으로 유지하고, public method를 통해 변경한다.
+  - View의 경우 model을 필드로 들고 있지 않기 때문에 public method를 사용할 수 없어 캡슐화가 보장된다.
+#### 5. Manager로 부터 데이터를 Get 한다.
 ~~~c#
 // Model -> Presenter (GetData)
 _latestSleepingAudioClip = _alarmData.GetAlarmAudioClip(eAlarmAudioClip);
@@ -46,8 +50,12 @@ protected override void SetView()
 <br><br>
 
 ## :fire::three: Presenter의 특징
-#### 1. View 마다 (특히 Widget) Presenter를 1대1로 대응 시킬 필요는 없다.
-- Button의 경우 로직적으로 다양한 기능이 존재하지 않으므로 모든 Button에 대응하는 Presenter 1개만 있어도 된다고 생각한다.
+#### :star:1. View와 1대1로 대응하고, View와 Presenter가 묶인 것을 VP라고 할 때 <br> 여러 개의 VP가 1개의 model을 참조하는 구조로 재사용을 구현하도록 한다.
+- 2 views - 1 presenter로 구현을 해보았다. 의존성이 매우 높게 된다.
+  - 1번 view를 close할 때 2번 view 동작시에 1번 view의 동작에 여전히 접근할 수 있지만 null이다.
+  - 생명 주기를 presenter가 담당하기에 벅차다.
+  - presenter의 기능이 늘어나고, 책임이 1개가 아니게 된다.
+- 되도록 1view - 1presenter로 하고, 로직 중복은 서로 다른 popup이 어지간 하면 존재하지 않을 것 이고, 존재하더라도 static util class로 빼자.
 #### 2. Presenter -> View는 올바르다. 그러나 Presenter와 Connect된 View가 Popup이라고 가정할 때, Presenter는 그 Popup이 들고 있는 Widget(small view)에는 직접 접근하면 안 된다. 다시 말해, Presenter가 직접 Widget을 Setting하면 안 된다.
 - 캡슐화 관점에서 Popup(big-view)은 자신의 field은 Widget들(small-view)를 private이나 protected로 숨겨야 한다.
 - 그러므로, Presenter의 SetView로 Widget의 데이터를 세팅할 때 Presenter -> Popup(big-view) -> Widgets(small-view)를 구조로 구현해야 한다.
