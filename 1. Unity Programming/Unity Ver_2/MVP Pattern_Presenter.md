@@ -19,7 +19,22 @@
 > 단순히 Model 에서 값을 가져다가 View에 뿌리는 중계자가 아니라, 사용자의 입력을 받아 Model의 상태를 변경할 책임까지 Presenter는 갖고 있다.
 - Model의 field는 public get; private set;으로 유지하고, public method를 통해 변경한다.
   - View의 경우 model을 필드로 들고 있지 않기 때문에 public method를 사용할 수 없어 캡슐화가 보장된다.
-#### 5. Manager로 부터 데이터를 Get 한다.
+#### 5. View를 끄는 주체는 Presenter가 되어야 한다. 그래야 생명주기가 관리된다.
+~~~c#
+private void OnStartAlarmSystem()
+{
+    _uiManager.AddPendingPopup(EPopupKey.AlarmTimerPopup);
+
+    //AlarmPresenter에서 View를 끈다.  
+    _alarmPopup.ClosePopup();
+
+    RequestPlaySleepingMusic();
+
+    RequestOpenAlarmTimerPopup();
+}
+~~~
+
+#### 6. Manager로 부터 데이터를 Get 한다.
 ~~~c#
 // Model -> Presenter (GetData)
 _latestSleepingAudioClip = _alarmData.GetAlarmAudioClip(eAlarmAudioClip);
