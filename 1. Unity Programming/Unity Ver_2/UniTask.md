@@ -44,6 +44,10 @@ Main : Run Event Loop
 
 <br><br>
 
+## :fire: 당연하지만, await 키워드는 비동기를 지원하는 메서드에 대해서만 사용 가능 하다.
+
+<br><br>
+
 ## :question: 비동기를 구현하려면 async UniTask 타입을 리턴하는 method가 2개 필요하다.
 - 추후 더 내용을 적자.
 

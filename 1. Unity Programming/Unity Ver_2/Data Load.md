@@ -40,6 +40,80 @@ private void InitializeXmlFileDataList()
 
 <br><br>
 
+## :fire::one: 음원 로드 방식_1 : 1. Decompress On Load + PreLoad Audio Data ON
+#### 
+- 게임 Scene 열리기 전에 로드 하는 것 같다. (로드 씬 보다 먼저 동작해서 검은 화면이 이어진 현상 발견)
+- 초기에 메모리에 로드 하니까 빠르지만 코드 영역을 넘어선 Native 영역이라 컨트롤이 불가능
+> Decompress audio files as soon as they’re loaded. Use this option for smaller compressed sounds to avoid the performance overhead of decompressing during gameplay. Be aware that decompressing Vorbis-encoded sounds on load will use about ten times more memory than keeping them compressed (for ADPCM encoding it’s about 3.5 times), so don’t use this option for large files.
+
+## :fire::two: Compressed In Memory + PreLoad Audio Data OFF
+- 큰 파일에서 권장한다.
+- Unity는 ScriptableObject에 저장된 음원을 메모리에 로드 시키지 않는다.
+
+#### [문제점 : ScriptableObject에서는 로드 되지 않는다. 그러므로 게임 음원을 재생시킬 때 로드되는 데 이 때 렉을 유발한다.]
+~~~c#
+// AlarmData : ScriptableObject
+// 이건 메모리에 올라오지 않고, LoadAudioData()를 호출해야 올라온다. -> 렉 유발.
+// 실제로 음원이 크니까 게임에서 음악 재생시에 5초 정도 렉이 발생했었다.
+[SerializeField] private SerializedDictionary<EAlarmButtonType, AudioClip> _sleepingAudioClipDictionary = new();
+
+// AudioClip.cs
+/// <summary>
+///   <para>Loads the asset data of an AudioClip into memory, so it will immediately be ready to play.</para>
+/// </summary>
+/// <returns>
+///   <para>Returns true if the clip is loaded into memory.</para>
+/// </returns>
+public bool LoadAudioData()
+{
+IntPtr _unity_self = Object.MarshalledUnityObject.MarshalNotNull<AudioClip>(this);
+if (_unity_self == IntPtr.Zero)
+ThrowHelper.ThrowNullReferenceException((object) this);
+return AudioClip.LoadAudioData_Injected(_unity_self);
+}
+~~~
+
+#### [해결 방식 : Path만 추출해서 Resources.LoadASync로 비동기 로드 후 -> 연결]
+~~~c#
+
+// 비동기로 로드한다.
+private async UniTaskVoid PreLoadAudioDataAsync()
+{
+var alarmData = _modelList.OfType<AlarmData>().FirstOrDefault();
+if (alarmData == null)
+{
+    throw new NullReferenceException("alarmData is null");
+}
+
+alarmData.Initialize();
+var sleepingAudioClipPathDictionary = alarmData.SleepingAudioClipPathDictionary;
+
+foreach (var element in sleepingAudioClipPathDictionary)
+{
+    var key = element.Key;
+    var relativePath = element.Value;
+
+    var loadData = await Resources.LoadAsync<AudioClip>(relativePath);
+    var memoryLoadedAudioClip = loadData as AudioClip;
+
+    alarmData.SetSleepingAudioClipDictionary(key, memoryLoadedAudioClip);
+
+    //log
+    Debug.Log($"{relativePath}의 음원 파일 {memoryLoadedAudioClip?.name}이 비동기로 로드 되었습니다");
+}
+}
+
+// 기존의 _sleepingAudioClipDictionary의 value는 load가 되지 않았으나, 직접 비동기로 로드 후에 넣어준다.
+// 렉을 해결했다.
+public void SetSleepingAudioClipDictionary(EAlarmButtonType eAlarmButtonType, AudioClip memoryLoadedAudioClip)
+{
+_sleepingAudioClipDictionary[eAlarmButtonType] = memoryLoadedAudioClip;
+}
+~~~
+> Keep audio compressed in memory and decompress while playing. This option has a slight performance overhead, especially for Ogg/Vorbis compressed files. Use it only for files that consume excess memory on Decompress on Load. The decompression happens on the mixer thread, which you can monitor in the DSP CPU section in the Audio module of the Profiler window.
+
+<br><br>
+
 ## :question: Addressable (아직 내용 X)
 
 > I think addressables was meant to replace resources since it can manage memory better, pull from CCD, etc. I personally have never used resources so it’s easy for me to ignore, which is what i suggest you do in this case, is not to use resources anymore.
