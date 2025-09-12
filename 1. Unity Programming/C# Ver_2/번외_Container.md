@@ -16,3 +16,10 @@ public ImmutableDictionary<EAlarmButtonType, float> AlarmTimeDictionary => _alar
 <br><br>
 
 ## :fire: Dictionary 에서 기본적으로는 dict[key] = value로 element를 추가한다. <br> :fire: 덮어 쓰기가 싫을 때는 TryAdd()를 이용한다.
+
+<br><br>
+
+## :fire: Container에서 Type에 맞는 element 찾기 : OfType
+~~~c#
+var alarmData = _modelList.OfType<AlarmData>().FirstOrDefault();
+~~~
