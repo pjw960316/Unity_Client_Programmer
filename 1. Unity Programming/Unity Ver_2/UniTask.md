@@ -36,6 +36,13 @@ private void OnClick()
 ~~~
 <br><br>
 
+> async void is a standard C# task system so it does not run on UniTask systems. It is better not to use it. async UniTaskVoid is a lightweight version of async UniTask because it does not have awaitable completion and reports errors immediately to UniTaskScheduler.UnobservedTaskException. If you don't require awaiting (fire and forget), using UniTaskVoid is better. Unfortunately to dismiss warning, you're required to call Forget().
+  - Task 보다는 UniTask를 이용하자. (의견이 갈리기는 함.) 
+
+> Also UniTask has the Forget method, it is similar to UniTaskVoid and has the same effects. However UniTaskVoid is more efficient if you completely don't use await
+  - Return Type이 없으면 UniTask를 사용하자.
+
+
 ## :fireworks: 우선 Unity는 싱글 스레드이므로 메인 스레드와 서브 스레드는 사실 구분되지 않는다. <br> 하지만 설명을 위해 구분했다. <br> :fire: 메인  스레드는 await 키워드를 만날시에 해당 메서드를 **즉시 탈출하고** 호출부로 돌아간 후, 이어서 진행한다. <br> 그리고 서브 스레드 1개가 이 시점부터 일을 시작한다. <br> :fire: 서브 스레드는 await 키워드에 걸린 Unitask를 비동기적으로 수행하고, 이를 완료하면 주 스레드에게 알린다. <br> :fire: 주 스레드는 완료 시점에 await 이후로 돌아와서 결과 값을 가지고 일을 수행한다.
 #### [await 예제]
 ~~~c#
