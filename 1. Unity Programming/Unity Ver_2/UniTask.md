@@ -34,7 +34,6 @@ private void OnClick()
     PlaySoundAsync().Forget(); 
 }
 ~~~
-<br><br>
 
 > async void is a standard C# task system so it does not run on UniTask systems. It is better not to use it. async UniTaskVoid is a lightweight version of async UniTask because it does not have awaitable completion and reports errors immediately to UniTaskScheduler.UnobservedTaskException. If you don't require awaiting (fire and forget), using UniTaskVoid is better. Unfortunately to dismiss warning, you're required to call Forget().
   - Task 보다는 UniTask를 이용하자. (의견이 갈리기는 함.) 
