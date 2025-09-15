@@ -3,7 +3,7 @@
 
 <br><br>
 
-## :fire: UniTask를 사용해서 리턴값을 비동기로 받으려면 async method가 <ins>2개</ins>가 필요하다. <br> :fire: UniTaskVoid를 사용해서 리턴 값 없이 비동기 동작을 수행하려면 async method가 <ins>1개</ins> 필요하다. <br> UniTaskVoid는 완전히 fire-and-forget을 위한 타입이다. <br> 반드시 .Forget() 호출이 필요하다. <br> 결과도, 예외도, 취소도 관심 없고 그냥 비동기 함수 실행만 하기 위한 리턴 타입이다.
+## :fire: UniTask를 리턴 타입으로 사용해서 리턴값을 비동기로 받으려면 async method가 <ins>2개</ins>가 필요하다. <br> :fire: UniTaskVoid를 리턴 타입으로 사용해서 리턴 값 없이 비동기 동작을 수행하려면 async method가 <ins>1개</ins> 필요하다. <br> UniTaskVoid는 완전히 fire-and-forget을 위한 타입이다. <br> 반드시 .Forget() 호출이 필요하다. <br> 결과도, 예외도, 취소도 관심 없고 그냥 비동기 함수 실행만 하기 위한 리턴 타입이다.
 
 #### [1. UniTask -> 2개 async method]
 ~~~c#
