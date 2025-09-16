@@ -6,22 +6,11 @@
 
 <br><br>
 
-## :fire: Struct는 기본적으로는 Stack에 생성 되지만, <br> Struct가 Class의 멤버로 존재할 때는 Heap에 생성된다.
-- [지울 설명] : 이 개념은 heap에 생성되는 것의 GC와 연관지어서 학습하면 좋을 것 -> 당장은 그래서 뭐?
+## :star::star::star::fire: deep-copy와 shallow-copy는 무조건 params의 타입에만 집중한다. (내부 필드는 신경 쓰지 않는다.) <br> :fire: params가 참조 타입이면 내부 필드가 어떻든 모두 call by ref 처럼 동작해 <br> shallow-copy가 일어난다. :fire: params가 값 타입인 경우 내부 필드에 따라 혼합된다.
 
 <br><br>
 
-## :fireworks: class 내부 struct, struct 내부 class, 같이 헷갈리는 params copy에 대해 모두 정리한다.
-
-#### :+1::question: 먼저 object의 address를 C#에서 얻는 방법부터 알아본다.
-> But if necessary, you can track an object and get its pointer as an IntPtr, which does not require an unsafe environment. To get the pointer, the GCHandle class and its Alloc method with the GCHandleType.Pinned type are used.
-- :link:[Easy memory management. Unsafe vs Safe Coding: Performance of UnsafeUtility, Marshal and GC.](https://medium.com/@DanielMcRon/easy-memory-management-unsafe-vs-safe-coding-performance-of-unsafeutility-marshal-and-gc-e659af0d3fc8)
-- 이게 GC Handle의 주소이므로 실제 주소는 아니다.
-- ![alt text](./capture/20250916.png)
-~~~c#
-GCHandle objHandle = GCHandle.Alloc(this,GCHandleType.WeakTrackResurrection);
-string address = GCHandle.ToIntPtr(objHandle).ToString("X"); 
-~~~
+## :fireworks: 위에 적은 정말 중요한 내용을 다양한 케이스로 증명해 보았다.
 
 #### :zero: 기본 코드 구성
 ~~~c#
@@ -99,7 +88,7 @@ public void ViewTest()
 
 <br>
 
-#### :one: 일반 int를 params로 전달할 때 : deep-copy (원본 변경 X)
+#### :one: instance의 int field를 따로 추출해서 params로 전달하고, <ins>int field</ins>를 변경 : params인 _fieldObjectSparrow.Age가 value type -> 값 복사 -> deep-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow.Age); //여기서 기존에 5임.
 
@@ -120,7 +109,7 @@ public void ViewTest()
 
 <br>
 
-#### :two: instance를 params로 전달하고, int 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+#### :two: instance를 params로 전달하고, <ins>int field</ins>를 변경 : params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -135,7 +124,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :three: instance를 params로 전달하고, string 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+#### :three: instance를 params로 전달하고, <ins>String field</ins>를 변경 : params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -150,7 +139,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :four: instance를 params로 전달하고, List<int> 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+#### :four: instance를 params로 전달하고, <ins>List<int> field</ins>를 변경 : params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -176,7 +165,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :five: instance를 params로 전달하고, Eagle(Class) 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+#### :five: instance를 params로 전달하고, <ins>Eagle(Class) field</ins>를 변경 : params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 public class Eagle
 {
@@ -220,7 +209,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :star::six: instance를 params로 전달하고, EagleStruct(Struct) 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+#### :star::six: instance를 params로 전달하고, <ins>Struct field</ins>를 변경 : params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 public struct EagleStruct
 {
@@ -269,7 +258,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :star::seven: instance의 field인 struct를 params로 전달하고, EagleStruct 자체를 변경하면 : deep-copy + shallow-copy (정말 주의해야 할 것!)
+#### :star::seven: instance의 struct를 따로 추출해서 params로 전달하고, <ins>struct field</ins>를 변경 : params인 _fieldObjectSparrow.EnemyEagleStruc가 Value type -> 값 복사 -> deep-copy + Shallow-copy (혼합 변경)
 ~~~c#
 // EagleStruct 자체는 6번 예제와 동일하다.
 
@@ -300,6 +289,16 @@ private void TestStructAndClass(FieldObjectSparrow.EagleStruct param)
 - age는 struct의 값 복사로 동작하기 때문에 deep-copy가 일어나서 원본이 바뀌지 않는다.
 - Name은 immutable이라 원본이 바뀌지 않는다.
 - :star: reference type의 instance 내부의 value type의 struct 내부의 reference type인 list는 shallow-copy가 일어난다.
+
+#### :+1::question: object의 address를 C#에서 얻는 방법부터 알아본다.
+> But if necessary, you can track an object and get its pointer as an IntPtr, which does not require an unsafe environment. To get the pointer, the GCHandle class and its Alloc method with the GCHandleType.Pinned type are used.
+- :link:[Easy memory management. Unsafe vs Safe Coding: Performance of UnsafeUtility, Marshal and GC.](https://medium.com/@DanielMcRon/easy-memory-management-unsafe-vs-safe-coding-performance-of-unsafeutility-marshal-and-gc-e659af0d3fc8)
+- 이게 GC Handle의 주소이므로 실제 주소는 아니다.
+- ![alt text](./capture/20250916.png)
+~~~c#
+GCHandle objHandle = GCHandle.Alloc(this,GCHandleType.WeakTrackResurrection);
+string address = GCHandle.ToIntPtr(objHandle).ToString("X"); 
+~~~
 
 <br><br>
 
