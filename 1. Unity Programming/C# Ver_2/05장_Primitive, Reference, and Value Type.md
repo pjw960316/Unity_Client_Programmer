@@ -45,7 +45,51 @@ private void TestStructAndClass(int param)
   _fieldObjectSparrow.ViewTest();
 }
 
-//3. [FieldObjectSparrow Class] 데이터 확인
+//3. [FieldObjectSparrow Class Field]
+public class FieldObjectSparrow : FieldObjectBase
+{
+  public class Eagle
+  {
+    public int Age = 7;
+    public string Name = "2gle";
+    public List<int> NumberList = new();
+
+    public Eagle()
+    {
+        NumberList.Add(23);
+        NumberList.Add(24);
+        NumberList.Add(25);
+        NumberList.Add(26);
+    }
+  }
+
+  public struct EagleStruct
+  {
+    public int Age;
+    public string Name;
+    public List<int> NumberList;
+
+    public EagleStruct(int age)
+    {
+        Age = age;
+        Name = "2gle";
+        NumberList = new List<int>();
+
+        NumberList.Add(23);
+        NumberList.Add(24);
+        NumberList.Add(25);
+        NumberList.Add(26);
+    }
+  }
+
+  public int Age = 5;
+  public string Name = "ChamBird";
+  public List<int> NumberList = new();
+  public Eagle EnemyEagle = new();
+  public EagleStruct EnemyEagleStruct = new(7); 
+}
+
+//4. [FieldObjectSparrow Class] 데이터 확인
 public void ViewTest()
 {
   Debug.Log("Params를 넘겨준 쪽 데이터 확인"); 
