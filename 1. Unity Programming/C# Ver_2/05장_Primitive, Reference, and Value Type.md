@@ -126,9 +126,9 @@ TestStructAndClass(_fieldObjectSparrow);
 
 private void TestStructAndClass(FieldObjectSparrow param)
 {
-    param.Age = 11;
-    Debug.Log($"{param.Age}");
-    _fieldObjectSparrow.ViewTest();
+  param.Age = 11;
+  Debug.Log($"{param.Age}");
+  _fieldObjectSparrow.ViewTest();
 }
 ~~~
 - 11로 변경하면 둘 다 11로 변경된다.
@@ -140,11 +140,11 @@ private void TestStructAndClass(FieldObjectSparrow param)
 TestStructAndClass(_fieldObjectSparrow);
 
 private void TestStructAndClass(FieldObjectSparrow param)
-    {
-        param.Name = "Not ChamBird";
-        Debug.Log($"{param.Name}");
-        _fieldObjectSparrow.ViewTest();
-    }
+{
+  param.Name = "Not ChamBird";
+  Debug.Log($"{param.Name}");
+  _fieldObjectSparrow.ViewTest();
+}
 ~~~
 - String은 Immutable 하지만, 이건 자체 변경이므로 올바르게 나온다.
 
@@ -155,20 +155,20 @@ private void TestStructAndClass(FieldObjectSparrow param)
 TestStructAndClass(_fieldObjectSparrow);
 
 private void TestStructAndClass(FieldObjectSparrow param)
-    {
-        param.Name = "Not ChamBird";
+{
+  param.Name = "Not ChamBird";
 
-        param.NumberList.Add(123123);
-        param.NumberList.Add(123124);
-        param.NumberList.Add(123125);
-        param.NumberList[2] = 777777777;
-        
-        foreach (var i in param.NumberList)
-        {
-            Debug.Log($"{i}");
-        }
-        _fieldObjectSparrow.ViewTest();
-    }
+  param.NumberList.Add(123123);
+  param.NumberList.Add(123124);
+  param.NumberList.Add(123125);
+  param.NumberList[2] = 777777777;
+  
+  foreach (var i in param.NumberList)
+  {
+      Debug.Log($"{i}");
+  }
+  _fieldObjectSparrow.ViewTest();
+}
 ~~~
 - 둘 다 똑같이 나온다.
   - 777777777777로 바꾼거도 같고, Add 한 거도 똑같다.
@@ -231,14 +231,14 @@ public struct EagleStruct
 
   public EagleStruct(int age)
   {
-      Age = age;
-      Name = "2gle";
-      NumberList = new List<int>();
+    Age = age;
+    Name = "2gle";
+    NumberList = new List<int>();
 
-      NumberList.Add(23);
-      NumberList.Add(24);
-      NumberList.Add(25);
-      NumberList.Add(26);
+    NumberList.Add(23);
+    NumberList.Add(24);
+    NumberList.Add(25);
+    NumberList.Add(26);
   }
 }
 
@@ -259,7 +259,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
   Debug.Log($"{param.EnemyEagleStruct.Name}");
   foreach (var i in param.EnemyEagleStruct.NumberList)
   {
-      Debug.Log($"{i}");
+    Debug.Log($"{i}");
   }
   
   Debug.Log("==============================================");
@@ -277,22 +277,22 @@ TestStructAndClass(_fieldObjectSparrow.EnemyEagleStruct);
 
 private void TestStructAndClass(FieldObjectSparrow.EagleStruct param)
 {
-    param.Age = 999;
-    param.Name = "3gle";
-    param.NumberList.Add(123123);
-    param.NumberList.Add(123124);
-    param.NumberList.Add(123125);
-    param.NumberList[1] = 55555;
-    
-    Debug.Log($"{param.Age}");
-    Debug.Log($"{param.Name}");
-    foreach (var i in param.NumberList)
-    {
-        Debug.Log($"{i}");
-    }
-    
-    Debug.Log("==============================================");
-    _fieldObjectSparrow.ViewTest();
+  param.Age = 999;
+  param.Name = "3gle";
+  param.NumberList.Add(123123);
+  param.NumberList.Add(123124);
+  param.NumberList.Add(123125);
+  param.NumberList[1] = 55555;
+  
+  Debug.Log($"{param.Age}");
+  Debug.Log($"{param.Name}");
+  foreach (var i in param.NumberList)
+  {
+      Debug.Log($"{i}");
+  }
+  
+  Debug.Log("==============================================");
+  _fieldObjectSparrow.ViewTest();
 }
 ~~~
 - age는 struct의 
