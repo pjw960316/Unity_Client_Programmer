@@ -6,33 +6,7 @@
 
 <br><br>
 
-## :fire: 오버플로우가 발생할 것 같은 연산:star:(특히 돈 관련):star:에서는 <br> checked 코드블럭과 try-catch를 이용해서 exception handling을 하자.
-#### [checked 예제]
 
-~~~c#
-void Main()
-{
-    Byte a = 126;
-    Byte b = 125;
-    Byte c = 2; //만약 기획 데이터라면?
-
-    try
-  {
-    checked
-    {
-      a = (Byte)(a + b * c); //오버플로우 날까봐 두려운 코드를 checked로 감싸자.
-    }
-  }
-  catch (OverflowException ex) // c가 2라면 overflow가 발생하고 예외가 잡힌다.
-  {
-    Console.WriteLine($"오버플로 예외 발생: {ex.Message}");
-    a.Dump();  //126 + 125 * 2 지만 오버플로우 발생해서 126으로 출력.
-  }
-}
-// result
-// 오버플로 예외 발생: Arithmetic operation resulted in an overflow.
-// 126
-~~~
 
 <br><br>
 
@@ -262,6 +236,7 @@ void Main()
 }
 ~~~
 - arrayList[1]는 object 타입이지만 Int32로 출력된다.
+
 #### [참고만 하자 : Native C++의 .Net 런타임에서 Boxing을 확인하는 코드]
 ![alt text](./capture/20250423.png)
 - Unbox 라는 키워드를 확인 할 수 있다.
@@ -271,3 +246,34 @@ void Main()
 <br>
 
 > Hence GetType() is processed as usual. Since boxed object has a typical layout, we can use the standard Object.GetType() method which get object’s MethodTable and returns the :star:corresponding(상응하는) Type object.
+
+
+<br><br>
+
+## :fire: 오버플로우가 발생할 것 같은 연산:star:(특히 돈 관련):star:에서는 <br> checked 코드블럭과 try-catch를 이용해서 exception handling을 하자.
+#### [checked 예제]
+
+~~~c#
+void Main()
+{
+    Byte a = 126;
+    Byte b = 125;
+    Byte c = 2; //만약 기획 데이터라면?
+
+    try
+  {
+    checked
+    {
+      a = (Byte)(a + b * c); //오버플로우 날까봐 두려운 코드를 checked로 감싸자.
+    }
+  }
+  catch (OverflowException ex) // c가 2라면 overflow가 발생하고 예외가 잡힌다.
+  {
+    Console.WriteLine($"오버플로 예외 발생: {ex.Message}");
+    a.Dump();  //126 + 125 * 2 지만 오버플로우 발생해서 126으로 출력.
+  }
+}
+// result
+// 오버플로 예외 발생: Arithmetic operation resulted in an overflow.
+// 126
+~~~
