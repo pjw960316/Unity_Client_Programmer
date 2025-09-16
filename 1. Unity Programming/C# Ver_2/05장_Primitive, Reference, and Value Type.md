@@ -6,11 +6,25 @@
 
 <br><br>
 
-## :star::star::star::fire: deep-copy와 shallow-copy는 무조건 params의 타입에만 집중한다. <br> (내부 필드는 신경 쓰지 않는다.) <br> :fire: params가 참조 타입이면 내부 필드가 어떻든 모두 call by ref 처럼 동작해 <br> shallow-copy가 일어난다. <br> :fire: params가 값 타입인 경우 내부 필드에 따라 혼합된다.
+## :star::star::star::fire: deep-copy와 shallow-copy는 무조건 params의 타입에만 집중한다. <br> (내부 필드는 신경 쓰지 않는다.) <br> :fire: params가 참조 타입이면 내부 필드가 어떻든 모두 call by ref 처럼 동작해 <br> shallow-copy가 일어난다. <br> :fire: params가 값 타입이면, call by value 처럼 동작해 <br> deep-copy가 일어난다. <br> :fire: 그러나 params가 struct이면, struct 내부 값 타입은 deep copy되고, struct 내부 참조 필드는 shallow copy된다.
+> 참조 타입은 관리되는 힙에 항상 할당된다. 
 
 <br><br>
 
-## :fireworks: 위에 적은 중요한 내용을 다양한 케이스로 증명해 보았다.
+## :fire: struct 내부에 reference type을 뒀을 때 아무리 생각해도 실수 할 것 같다. 그러므로, struct는 value type으로 내부를 구성할 때만 사용하는 게 좋아보인다.
+> [MSDN] AVOID defining a struct unless the type has all of the following characteristics: 
+
+> It logically represents a single value, similar to primitive types (int, double, etc.). 
+
+> It has an instance size under 16 bytes. 
+
+> It is immutable. 
+
+> It will not have to be boxed frequently. In all other cases, you should define your types as classes.
+
+<br><br>
+
+## :fireworks: params로 전달하는 Call-by-value 와 call-by-ref를 7가지 케이스로 증명해 보았다.
 
 #### :zero: 기본 코드 구성
 ~~~c#
@@ -106,6 +120,7 @@ public void ViewTest()
 }
 ~~~
 - 11로 변경해도, 원본은 5로 유지된다.
+- FieldObjectSparrow의 int field는 어떤 상황에도 힙에 존재하는 것은 자명한 사실이다. (값 타입도 Heap에 있을 수 있다!)
 
 <br>
 
