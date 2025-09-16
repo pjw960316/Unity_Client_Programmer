@@ -222,7 +222,6 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 #### :star::six: instance를 params로 전달하고, EagleStruct(Struct) 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
 ~~~c#
-
 public struct EagleStruct
 {
   public int Age;
@@ -266,6 +265,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
   _fieldObjectSparrow.ViewTest();
 }
 - 이것도 완전히 동일하게 나온다. (사실 얘는 좀 다를 거라 생각했다.)
+~~~
 
 <br>
 
