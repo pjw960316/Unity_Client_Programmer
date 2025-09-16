@@ -25,11 +25,12 @@ string address = GCHandle.ToIntPtr(objHandle).ToString("X");
 
 #### :zero: 기본 코드 구성
 ~~~c#
+//SparrowPresenter Class와 FieldObjectSparrow Class 2개를 이용해서 테스트
 
-//1. 호출부
+//1. [SparrowPresenter Class] 호출부
 TestStructAndClass(_fieldObjectSparrow.Age);
 
-//2. 여기서 params의 타입을 계속 변경하며 테스트
+//2. [SparrowPresenter Class] params의 타입을 계속 변경하며 테스트
 private void TestStructAndClass(int param)
 {
   Debug.Log("Params를 받고 데이터 변경");
@@ -44,7 +45,7 @@ private void TestStructAndClass(int param)
   _fieldObjectSparrow.ViewTest();
 }
 
-//3. FieldObjectSparrow에서 자신의 데이터 확인
+//3. [FieldObjectSparrow Class] 데이터 확인
 public void ViewTest()
 {
   Debug.Log("Params를 넘겨준 쪽 데이터 확인"); 
