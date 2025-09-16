@@ -6,7 +6,7 @@
 
 <br><br>
 
-## :star::star::star::fire: deep-copy와 shallow-copy는 무조건 params의 타입에만 집중한다. (내부 필드는 신경 쓰지 않는다.) <br> :fire: params가 참조 타입이면 내부 필드가 어떻든 모두 call by ref 처럼 동작해 <br> shallow-copy가 일어난다. :fire: params가 값 타입인 경우 내부 필드에 따라 혼합된다.
+## :star::star::star::fire: deep-copy와 shallow-copy는 무조건 params의 타입에만 집중한다. <br> (내부 필드는 신경 쓰지 않는다.) <br> :fire: params가 참조 타입이면 내부 필드가 어떻든 모두 call by ref 처럼 동작해 <br> shallow-copy가 일어난다. <br> :fire: params가 값 타입인 경우 내부 필드에 따라 혼합된다.
 
 <br><br>
 
