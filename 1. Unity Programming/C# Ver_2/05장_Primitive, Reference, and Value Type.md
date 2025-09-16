@@ -306,7 +306,9 @@ private void TestStructAndClass(FieldObjectSparrow.EagleStruct param)
 - Name은 immutable이라 원본이 바뀌지 않는다.
 - :star: reference type의 instance 내부의 value type의 struct 내부의 reference type인 list는 shallow-copy가 일어난다.
 
-#### :+1::question: object의 address를 C#에서 얻는 방법부터 알아본다.
+<br>
+
+#### :question: object의 address를 C#에서 얻는 방법부터 알아본다.
 > But if necessary, you can track an object and get its pointer as an IntPtr, which does not require an unsafe environment. To get the pointer, the GCHandle class and its Alloc method with the GCHandleType.Pinned type are used.
 - :link:[Easy memory management. Unsafe vs Safe Coding: Performance of UnsafeUtility, Marshal and GC.](https://medium.com/@DanielMcRon/easy-memory-management-unsafe-vs-safe-coding-performance-of-unsafeutility-marshal-and-gc-e659af0d3fc8)
 - 이게 GC Handle의 주소이므로 실제 주소는 아니다.
