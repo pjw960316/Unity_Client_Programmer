@@ -264,8 +264,8 @@ private void TestStructAndClass(FieldObjectSparrow param)
   Debug.Log("==============================================");
   _fieldObjectSparrow.ViewTest();
 }
-- 이것도 완전히 동일하게 나온다. (사실 얘는 좀 다를 거라 생각했다.)
 ~~~
+- 이것도 완전히 동일하게 나온다. (사실 얘는 좀 다를 거라 생각했다.)
 
 <br>
 
@@ -295,8 +295,13 @@ private void TestStructAndClass(FieldObjectSparrow.EagleStruct param)
   _fieldObjectSparrow.ViewTest();
 }
 ~~~
-- age는 struct의 
+- ![alt text](./capture/20250916_1.png)
+- ![alt text](./capture/20250916_2.png)
+- age는 struct의 값 복사로 동작하기 때문에 deep-copy가 일어나서 원본이 바뀌지 않는다.
+- Name은 immutable이라 원본이 바뀌지 않는다.
+- :star: reference type의 instance 내부의 value type의 struct 내부의 reference type인 list는 shallow-copy가 일어난다.
 
+<br><br>
 
 ## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
 - stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
