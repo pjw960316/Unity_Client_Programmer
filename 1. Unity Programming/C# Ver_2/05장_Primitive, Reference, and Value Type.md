@@ -52,6 +52,8 @@ public void ViewTest()
 }
 ~~~
 
+<br>
+
 #### :one: 일반 int를 params로 전달할 때 : deep-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow.Age); //여기서 기존에 5임.
@@ -71,6 +73,8 @@ public void ViewTest()
 ~~~
 - 11로 변경해도, 원본은 5로 유지된다.
 
+<br>
+
 #### :two: instance를 params로 전달하고, int 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
@@ -83,6 +87,8 @@ private void TestStructAndClass(FieldObjectSparrow param)
 }
 ~~~
 - 11로 변경하면 둘 다 11로 변경된다.
+
+<br>
 
 #### :three: instance를 params로 전달하고, string 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
 ~~~c#
@@ -97,7 +103,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 ~~~
 - String은 Immutable 하지만, 이건 자체 변경이므로 올바르게 나온다.
 
-<br><br>
+<br>
 
 #### :four: instance를 params로 전달하고, List<int> 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
 ~~~c#
@@ -122,6 +128,8 @@ private void TestStructAndClass(FieldObjectSparrow param)
 - 둘 다 똑같이 나온다.
   - 777777777777로 바꾼거도 같고, Add 한 거도 똑같다.
 - element가 int 타입이므로 값 타입이다. 하지만 FieldObjectSparrow라는 Reference Type의 Field로 있고, 또한 그 Field의 List도 Reference Type이기 때문에 당연히 heap에 존재하고 shallow-copy가 일어난다.
+
+<br>
 
 #### :five: instance를 params로 전달하고, Eagle(Class) 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
 ~~~c#
@@ -164,6 +172,8 @@ private void TestStructAndClass(FieldObjectSparrow param)
 ~~~
 - 완전히 동일하게 나온다.
 - Reference Type 끼리는 결국 Shallow-Copy가 된다.
+
+<br>
 
 #### :star::six: instance를 params로 전달하고, EagleStruct(Struct) 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
 ~~~c#
@@ -211,6 +221,8 @@ private void TestStructAndClass(FieldObjectSparrow param)
   _fieldObjectSparrow.ViewTest();
 }
 - 이것도 완전히 동일하게 나온다. (사실 얘는 좀 다를 거라 생각했다.)
+
+<br>
 
 #### :star::seven: instance의 field인 struct를 params로 전달하고, EagleStruct 자체를 변경하면 : deep-copy + shallow-copy (정말 주의해야 할 것!)
 ~~~c#
