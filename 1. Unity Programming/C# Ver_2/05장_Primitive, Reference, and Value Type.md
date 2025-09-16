@@ -16,6 +16,7 @@
 #### :+1: 먼저 object의 address를 C#에서 얻는 방법부터 알아본다.
 > But if necessary, you can track an object and get its pointer as an IntPtr, which does not require an unsafe environment. To get the pointer, the GCHandle class and its Alloc method with the GCHandleType.Pinned type are used.
 - :link:[Easy memory management. Unsafe vs Safe Coding: Performance of UnsafeUtility, Marshal and GC.](https://medium.com/@DanielMcRon/easy-memory-management-unsafe-vs-safe-coding-performance-of-unsafeutility-marshal-and-gc-e659af0d3fc8)
+- 필요시에 해보자.
 
 #### :zero: 기본 코드 구성
 ~~~c#
@@ -92,6 +93,73 @@ private void TestStructAndClass(FieldObjectSparrow param)
 - String은 Immutable 하지만, 이건 자체 변경이므로 올바르게 나온다.
 
 <br><br>
+
+#### :four: instance를 params로 전달하고, List<int> 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+~~~c#
+TestStructAndClass(_fieldObjectSparrow);
+
+private void TestStructAndClass(FieldObjectSparrow param)
+    {
+        param.Name = "Not ChamBird";
+
+        param.NumberList.Add(123123);
+        param.NumberList.Add(123124);
+        param.NumberList.Add(123125);
+        param.NumberList[2] = 777777777;
+        
+        foreach (var i in param.NumberList)
+        {
+            Debug.Log($"{i}");
+        }
+        _fieldObjectSparrow.ViewTest();
+    }
+~~~
+- 둘 다 똑같이 나온다.
+  - 777777777777로 바꾼거도 같고, Add 한 거도 똑같다.
+- element가 int 타입이므로 값 타입이다. 하지만 FieldObjectSparrow라는 Reference Type의 Field로 있고, 또한 그 Field의 List도 Reference Type이기 때문에 당연히 heap에 존재하고 shallow-copy가 일어난다.
+
+#### :five: instance를 params로 전달하고, Eagle(Reference Class) 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+~~~c#
+public class Eagle
+{
+  public int Age = 7;
+  public string Name = "2gle";
+  public List<int> NumberList = new();
+
+  public Eagle()
+  {
+    NumberList.Add(23);
+    NumberList.Add(24);
+    NumberList.Add(25);
+    NumberList.Add(26);
+  }
+}
+
+TestStructAndClass(_fieldObjectSparrow);
+
+private void TestStructAndClass(FieldObjectSparrow param)
+{
+  param.EnemyEagle.Age = 999;
+  param.EnemyEagle.Name = "3gle";
+  param.EnemyEagle.NumberList.Add(123123);
+  param.EnemyEagle.NumberList.Add(123124);
+  param.EnemyEagle.NumberList.Add(123125);
+  param.EnemyEagle.NumberList[1] = 55555;
+  
+  Debug.Log($"{param.EnemyEagle.Age}");
+  Debug.Log($"{param.EnemyEagle.Name}");
+  foreach (var i in param.EnemyEagle.NumberList)
+  {
+      Debug.Log($"{i}");
+  }
+  
+  Debug.Log("==============================================");
+  _fieldObjectSparrow.ViewTest();
+}
+~~~
+- 완전히 동일하게 나온다.
+- Reference Type 끼리는 결국 Shallow-Copy가 된다.
+
 
 
 ## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
