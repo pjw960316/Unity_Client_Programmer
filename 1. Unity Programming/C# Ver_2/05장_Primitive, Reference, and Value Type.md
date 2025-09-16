@@ -11,7 +11,7 @@
 
 <br><br>
 
-## :fire: struct 내부에 reference type을 뒀을 때 아무리 생각해도 실수 할 것 같다. 그러므로, struct는 value type으로 내부를 구성할 때만 사용하는 게 좋아보인다.
+## :fire: struct 내부에 reference type을 뒀을 때 아무리 생각해도 실수 할 것 같다. <br> 그러므로, struct는 value type으로 내부를 구성할 때만 사용하는 게 좋아보인다.
 > [MSDN] AVOID defining a struct unless the type has all of the following characteristics: 
 
 > It logically represents a single value, similar to primitive types (int, double, etc.). 
@@ -136,6 +136,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 }
 ~~~
 - 11로 변경하면 둘 다 11로 변경된다.
+- FieldObjectSparrow의 int field는 단독으로 전달되면 deepCopy가 되지만 이렇게 call-by-ref에 포함되어 전달되면 shallowCopy가 된다.
 
 <br>
 
