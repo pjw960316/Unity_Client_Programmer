@@ -6,201 +6,93 @@
 
 <br><br>
 
-
-
-<br><br>
-
 ## :fire: Struct는 기본적으로는 Stack에 생성 되지만, <br> Struct가 Class의 멤버로 존재할 때는 Heap에 생성된다.
 - [지울 설명] : 이 개념은 heap에 생성되는 것의 GC와 연관지어서 학습하면 좋을 것 -> 당장은 그래서 뭐?
 
 <br><br>
 
-## :fire: Class 내부에 멤버로 존재하는 Struct는 <br> Class의 instance가 복사 될 때 deep-Copy가 일어나지 않는다.
-- Deep-Copy의 개념 : 데이터를 복사할 때 완전히 새로운 메모리 공간에 새로운 객체를 생성하여 복사.
-- **<ins>어떤 순간에도</ins> struct는 ValueType이다.** 하지만 ValueType이 항상 deep-copy를 하지는 않는다.
+## :fireworks: class 내부 struct, struct 내부 class, 같이 헷갈리는 params copy에 대해 모두 정리한다.
 
-#### [지역변수 struct 와 class의 멤버인 struct의 복사 비교 예제]
-<details>
-  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
+#### :+1: 먼저 object의 address를 C#에서 얻는 방법부터 알아본다.
+> But if necessary, you can track an object and get its pointer as an IntPtr, which does not require an unsafe environment. To get the pointer, the GCHandle class and its Alloc method with the GCHandleType.Pinned type are used.
+- :link:[Easy memory management. Unsafe vs Safe Coding: Performance of UnsafeUtility, Marshal and GC.](https://medium.com/@DanielMcRon/easy-memory-management-unsafe-vs-safe-coding-performance-of-unsafeutility-marshal-and-gc-e659af0d3fc8)
 
+#### :zero: 기본 코드 구성
 ~~~c#
-void Main()
+
+//1. 호출부
+TestStructAndClass(_fieldObjectSparrow.Age);
+
+//2. 여기서 params의 타입을 계속 변경하며 테스트
+private void TestStructAndClass(int param)
 {
-  $"************************************* 1. 지역변수 struct ************************************************".Dump();
-  BasicStruct str_1 = new BasicStruct();
-  BasicStruct str_2 = str_1; //둘 다 ValueType이다. 둘 다 stack에 있다. deep-copy가 일어난다.
+  Debug.Log("Params를 받고 데이터 변경");
 
-  var str_1_address = ValueTypeAddressManager.GetAddress(ref str_1);
-  var str_2_address = ValueTypeAddressManager.GetAddress(ref str_2);
-  if (str_1_address != str_2_address)
-  {
-    $"{str_1_address} | {str_2_address} | different".Dump();
-  }
+  //2-1. 데이터 변경 영역
+  param = 11;
 
-  str_1.a = 3; //값 변경
-  $"{str_1.a} vs {str_2.a}\n".Dump();
+  //2-2. 데이터 변경 로그 확인
+  Debug.Log($"{param}");
 
-  $"************************************* 2. class의 멤버인 struct ************************************************".Dump();
-
-  Book easyClassic = new Book(19000, "easyClassic");
-  Book easyClassicCopy = easyClassic; //둘 다 ValueType이다. 둘 다 heap에 있다. 하지만 deep-copy가 일어나지 않는다.
-  
-  var member_1_address = easyClassic.GetStructMemberAddress();
-  var member_2_address = easyClassicCopy.GetStructMemberAddress();
-  if(member_1_address == member_2_address)
-  {
-    $"{member_1_address} | {member_2_address} | same".Dump();
-  }
-  
-  easyClassic.SetFavoritePage(66,77); //원본 인스턴스에 존재하는 struct의 멤버 변경
-  $"{easyClassic.myFavoritePage.num_1} vs {easyClassicCopy.myFavoritePage.num_1}".Dump();
+  //2-3. parameter를 제공하는 referenceType의 FieldObjectSparrow Type에서 자신의 데이터 확인 호출
+  _fieldObjectSparrow.ViewTest();
 }
 
-public struct BasicStruct
+//3. FieldObjectSparrow에서 자신의 데이터 확인
+public void ViewTest()
 {
-  public int a;
-  
-  public BasicStruct()
-  {
-    a = 1;
-  }
+  Debug.Log("Params를 넘겨준 쪽 데이터 확인"); 
+  Debug.Log($"{Age}");
 }
-
-public class Book
-{
-  int price;
-  string name;
-  public FavoritePage myFavoritePage;
-  
-  public struct FavoritePage
-  {
-    public int num_1;
-    public int num_2;
-    
-    public FavoritePage(int n1, int n2)
-    {
-      num_1 = n1;
-      num_2 = n2;
-    }
-  }
-  
-  public Book(int price, string name)
-  {
-    this.price = price;
-    this.name = name;
-    
-    SetFavoritePage(11,22);
-  }
-  
-  public void SetFavoritePage(int n1,int n2)
-  {
-    myFavoritePage = new FavoritePage(n1 , n2);
-  }
-  
-  public string GetStructMemberAddress()
-  {
-    return ValueTypeAddressManager.GetAddress(ref myFavoritePage.num_1);
-  }
-}
-
-/*result
-************************************* 지역변수 struct ************************************************
-0xf2ceafcdd8 | 0xf2ceafcdd0 | different
-3 vs 1
-
-************************************* class의 멤버인 struct ************************************************
-0x256184bafd4 | 0x256184bafd4 | same
-66 vs 66
-*/
 ~~~
-</details>
+
+#### :one: 일반 int를 params로 전달할 때 : deep-copy (원본 변경 X)
+~~~c#
+TestStructAndClass(_fieldObjectSparrow.Age); //여기서 기존에 5임.
+
+private void TestStructAndClass(int param)
+{
+    param = 11;
+    Debug.Log($"{param}");
+
+    _fieldObjectSparrow.ViewTest();
+}
+
+public void ViewTest()
+{    
+    Debug.Log($"{Age}");
+}
+~~~
+- 11로 변경해도, 원본은 5로 유지된다.
+
+#### :two: instance를 params로 전달하고, int 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+~~~c#
+TestStructAndClass(_fieldObjectSparrow);
+
+private void TestStructAndClass(FieldObjectSparrow param)
+{
+    param.Age = 11;
+    Debug.Log($"{param.Age}");
+    _fieldObjectSparrow.ViewTest();
+}
+~~~
+- 11로 변경하면 둘 다 11로 변경된다.
+
+#### :three: instance를 params로 전달하고, string 타입의 field를 변경하면 : shallow-copy (원본 변경 O)
+~~~c#
+TestStructAndClass(_fieldObjectSparrow);
+
+private void TestStructAndClass(FieldObjectSparrow param)
+    {
+        param.Name = "Not ChamBird";
+        Debug.Log($"{param.Name}");
+        _fieldObjectSparrow.ViewTest();
+    }
+~~~
+- String은 Immutable 하지만, 이건 자체 변경이므로 올바르게 나온다.
 
 <br><br>
 
-## :fire: struct를 멤버로 포함한 instance를 method의 params로 전달할 때 <br> struct는 deep-copy가 일어나지 않는다.
-#### [params로 전달하는 예제]
-<details>
-  <summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
-
-~~~c#
-void Main()
-{
-  Book maskBook = new Book(19900, "mask");
-  maskBook.ChangeFavoritePage(33,44); //instance의 struct 값 변경
-  
-  $"---------------------------------------- 1. instance의 주소와 instance의 struct 주소 출력 ---------------------------------------".Dump();
-  ReferenceTypeAddressManager.GetAddress(maskBook).Dump();
-  ValueTypeAddressManager.GetAddress(ref maskBook.myFavoritePage).Dump();
-  
-  MethodTestManager methodTestManager = new MethodTestManager(maskBook);
-}
-
-public class MethodTestManager
-{
-  public MethodTestManager(Book book)
-  {
-    $"---------------------------------------- 2. method의 params로 받은 instance의 주소와 instance의 struct 주소 출력 ---------------------------------------".Dump();
-    ReferenceTypeAddressManager.GetAddress(book).Dump();
-    ValueTypeAddressManager.GetAddress(ref book.myFavoritePage).Dump();
-    
-    $"---------------------------------------- 3. Main()에서 변경한 struct의 값이 반영되는지? ---------------------------------------".Dump();
-    $"{book.myFavoritePage.num_1} | {book.myFavoritePage.num_2}".Dump();
-  }
-}
-
-public class Book
-{
-  int price;
-  string name;
-  public FavoritePage myFavoritePage;
-
-  public struct FavoritePage
-  {
-    public int num_1;
-    public int num_2;
-
-    public FavoritePage(int n1, int n2)
-    {
-      num_1 = n1;
-      num_2 = n2;
-    }
-  }
-
-  public Book(int price, string name)
-  {
-    this.price = price;
-    this.name = name;
-
-    myFavoritePage = new FavoritePage(11, 22);
-  }
-
-  public void ChangeFavoritePage(int n1, int n2)
-  {
-    myFavoritePage.num_1 = n1;
-    myFavoritePage.num_2 = n2;
-  }
-}
-
-/*result
----------------------------------------- 1. instance의 주소와 instance의 struct 주소 출력 ---------------------------------------
-1807242423504
-0x1a4c80aece4
----------------------------------------- 2. method의 params로 받은 instance의 주소와 instance의 struct 주소 출력 ---------------------------------------
-1807242423504
-0x1a4c80aece4
----------------------------------------- 3. Main()에서 변경한 struct의 값이 반영되는지? ---------------------------------------
-33 | 44
-*/
-~~~
-</details>
-
-- params로 전달한 instance의 주소, instance의 struct member인 myFavoritePage의 주소가 모두 같게 유지된다. 
-  - heap에 존재하며 deep-copy가 일어나지 않는다.
-- 같은 주소를 가리키기 때문에 Main()에서 struct의 값을 변경하면 params로 받은 instance의 멤버의 myFavoritePage도 값이 변경된다.
-- 직전 예제와 같은 내용일 수 있지만 한 번 더 정리한다.
-- :star: 최종 정리 : <ins>클래스의 멤버로 선언된 struct는 해당 클래스를 메서드의 인자로 params로 전달해도 struct 내부까지 deep copy 되지 않으므로, 메모리 낭비 없이 안전하게 사용할 수 있다. 따라서 struct를 class 내부에서 데이터 묶음용으로 쓰는 건 좋은 방식이다.</ins>
-
-<br><br>
 
 ## :fire: Main 함수에 있는 testobj1 인스턴스의 실제 메모리 주소는 스택에 저장된다. <br> 그러나 인스턴스 내부에 존재하는 멤버들의 주소는 스택에 저장하지 않는다.
 - stack에 저장한 인스턴스 메모리 주소를 보고 heap으로 이동을 한다.
