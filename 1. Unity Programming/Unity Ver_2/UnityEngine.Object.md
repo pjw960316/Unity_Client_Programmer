@@ -16,6 +16,10 @@
 
 <br><br>
 
+## :fire: GetComponent<T>는 T와 완전히 매치되는 컴포넌트 or <ins>T의 Derived Type</ins>의 컴포넌트를 찾아준다.
+
+<br><br>
+
 ## :fire: 직접 Destroy()로 파괴하는 것과 Scene이 변경되어 자동으로 파괴되는 것은 <br> '파괴'의 관점에서는 거의 비슷하다. <br> :fire: 둘 다 UnityEngine.Object(!= C# Object)를 상속 받는 <br> Scene에 존재하는 모든 Instance들을 파괴한다.
 - Scene이 변경될 때 
   > OnDestroy occurs when a Scene or game ends. Stopping the Play mode when running from inside the Editor will end the application. As this end happens an OnDestroy will be executed. Also, <ins>if a Scene is closed and a new Scene is loaded</ins> the OnDestroy call will be made.

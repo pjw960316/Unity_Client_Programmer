@@ -23,3 +23,20 @@ public ImmutableDictionary<EAlarmButtonType, float> AlarmTimeDictionary => _alar
 ~~~c#
 var alarmData = _modelList.OfType<AlarmData>().FirstOrDefault();
 ~~~
+
+<br><br>
+
+## :fire: TryGetValue는 if문과 함께 사용하도록 한다. <br> :fire: 그리고 ContainsKey 보다도 TryGetValue를 사용해서 콜 횟수를 1회라도 줄이자.
+~~~c#
+
+// 이런 구조가 가장 깔끔하다고 생각한다.
+public Type GetModelTypeUsingMatchDictionary(Type typeKey)
+{
+    if (_fieldObjectViewModelTypeMatchDictionary.TryGetValue(typeKey, out var value))
+    {
+        return value;
+    }
+
+    throw new KeyNotFoundException();   
+}
+~~~

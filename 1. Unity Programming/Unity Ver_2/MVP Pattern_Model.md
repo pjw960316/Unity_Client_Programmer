@@ -15,6 +15,9 @@
 #### 3. Enum
 - Class 외부에 선언하지 않도록 주의한다. (Scope)
 - ![alt text](./captures/20250715.png)
+#### 4. ReactiveProperty (Unirx)
+- State field를 private reactiveProperty로 구현하고 public Iobservable을 제공한다. 
+- 그러면 상태 변경에 따라 호출되는 method를 구독 시킬 수 있다.
 
 <br><br>
 
