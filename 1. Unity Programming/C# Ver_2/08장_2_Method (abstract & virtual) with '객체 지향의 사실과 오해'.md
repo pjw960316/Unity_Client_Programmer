@@ -46,7 +46,7 @@
 
 <br><br>
 
-## :fireworks: UIPopupBase와 를 상속 받는 AlarmPopup을 통해 <br> virtual & abstract로 OnAwake() 구조를 이해한다.
+## :fireworks: 두 독립 클래스 UIPopupBase와 PresenterBase 통해 <br> virtual & abstract로 OnAwake() 구조를 이해한다.
 #### :one: BindEvent를 <ins>최상단</ins>에서 호출하기 <br> :fire:[장점] : 하위 타입에서 BindEvent를 매 번 Initialize()에 넣어 주지 않아도 된다. <br> 또한 abstract로 구현의 책임을 부여하기 때문에 구현도 반드시 하게 된다. <br> :fire:[단점] : base.Initialize()로 인해 부모의 Initialize()부터 타다 보니 <br> 자식의 Initialize()가 완료 되지 않아도 자식의 BindEvent()가 호출이 되어 버린다. <br> null-exception이 날 가능성이 매우 높다. 
 ~~~c#
 // Class : UIPopupBase
