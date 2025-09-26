@@ -3,6 +3,7 @@
 - Subject가 유튜브고, 구독을 할 수 있는 환경을 구현 후 나(외부)에게 IObservable로 제공한다. 나는 IObservable을 통해 여러 채널(메서드)을 구독(Subscribe)한다.
 - hasObserver는 구독하신 채널이 있는 지 묻는 거고 내가 구독하고 있는 채널이 몇 개 있으면 hasObserver는 true다. 하지만 Dispose를 통해 모든 구독을 취소해서 구독하고 있는 채널이 없으면 false가 된다.
 #### :two: Subject는 OnCompleted() 또는 OnError()가 한 번이라도 호출되면 자동으로 모든 구독에 대해 Dispose를 수행합니다.
+#### :three: Observable.Timer().Subscribe().AddTo(_disposable) 하고, _disposable.Dispose()가 콜백 실행 전에 호출되면 그 콜백은 실행되지 않는다. (이미 알고 있던 게 맞다. 다시 재확인한다.)
 
 <br><br>
 
