@@ -39,6 +39,11 @@ public IObservable<ScrollData> OnUpdateScrollWidget => _onUpdateScrollWidget;
 
 <br><br>
 
+## :fire: Dispose()를 호출한 CompositeDisposable은 재사용이 불가능 하다. <br> :fire:그러므로 재사용 할 CompositeDisposable은 Dispose() 대신 Clear()를 이용한다.
+- 영어로 Dispose()는 폐기하다 니까 의도는 정확하다.
+
+<br><br>
+
 ## :fireworks: Disposable의 대상 
 > Unity의 MonoBehaviour를 상속받은 UI 요소라면 Destroy(gameObject)로 파괴됩니다. 이때 Unity는 OnDestroy() 호출 후 GC 대상이 됩니다.
 일반 C# 객체라면 Unity 오브젝트가 아니므로 Destroy() 대상이 아니고, 명시적으로 참조를 해제하거나 null로 만들지 않으면 GC가 수거하지 않습니다.
