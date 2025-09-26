@@ -176,7 +176,7 @@ public sealed override void Initialize(IView view)
 
 <br>
 
-#### :three: BindEvent() public으로 만들고 factory에서 호출하기 <br>:fire: 외부에서 Initialize() 호출 이후에, BindEvent()를 호출하면 <br> 1번과 2번의 장점을 모두 이용한다. <br> :fire: 그러나 BindEvent()를 public으로 빼는 건 캡슐화를 깨기에 좀 그렇다.
+#### :three: BindEvent()를 public으로 만들고 factory에서 호출하기 <br>:fire: 외부에서 Initialize() 호출 이후에, BindEvent()를 호출하면 <br> 1번과 2번의 장점을 모두 이용한다. <br> :fire: 그러나 BindEvent()를 public으로 빼는 건 캡슐화를 깨는 게 맞는가?에 대해서는 의문이다.
 
 <br><br>
 
