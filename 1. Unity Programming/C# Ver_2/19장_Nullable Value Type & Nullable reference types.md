@@ -1,8 +1,8 @@
-## :fireworks: Nullable Value Type 과 Nullable Reference Type은 모두 type에 ?을 붙이고, 이는 null을 허용함을 의미한다.
+## :fireworks: Nullable Value Type 과 Nullable Reference Type은 <br> 모두 type에 ?을 붙이고, 이는 null을 허용함을 의미한다.
 
 <br><br>
 
-## :fire: Nullable Value Type은 <br> 2개의 필드 (bool hasValue 와 T value)를 들고 있는 struct다.
+## :fire: Nullable Value Type은 <br> 2개의 필드 (bool hasValue 와 T value)를 <br> 들고 있는 struct다.
 
 #### [실제 구현]
 <details>
