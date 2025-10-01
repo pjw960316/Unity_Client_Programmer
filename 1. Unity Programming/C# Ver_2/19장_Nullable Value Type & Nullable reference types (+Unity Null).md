@@ -58,11 +58,11 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 - ![alt text](./capture/20251001.png)
 
 <br>
-
 - Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
   > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
-    - 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
-- C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
+- 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
+  > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and all its transform children are destroyed together.
+
 ~~~c# 
 //test
 if (enumKey == 3)
@@ -94,29 +94,5 @@ if (enumKey == 3)
 }
 ~~~
 - ![alt text](./capture/20251001_2.png)
-
-<br><br>
-
-## :fire: UnityEngine.Object를 상속 받은 Instance는 무언가를 참조하고 있어도 C# 레벨에서는 ==null이 true일 수 있다.
-> For types that inherit from <ins>UnityEngine.Object</ins>, Unity uses a custom version of the C# equality and inequality operators. This means the null check in the previous example (myGameObject == null) can evaluate true (and conversely myGameObject != null can evaluate false) even if myGameObject technically holds a valid C# object reference. This happens in two cases:
-  - 보통 View에서 이용되는 UnityEngine.Object의 상속 객체에 대해 null을 생각해보아야 한다.
-  -  
-#### :one: Fake-null 일 때 <br> :fireworks: Fake-null을 아래를 읽고 이해하자.
-
-- 우선 UnityEngine.Object를 상속 받은 객체는 C++ Native
-- Destroy(UnityObject)를 호출하면 <br>
-1. C++ 객체 
-> The object can be a so-called “fake null” or placeholder object which Unity uses in the Editor only to populate uninitialized MonoBehaviour fields. These objects store useful debugging information to help you locate the source of these fields if you try to reference them.
-
-#### :two: Destroy 시에 C++ 레벨의 객체는 즉시 파괴 되었지만 C# 레벨의 객체는 아직 남아서 GC 대기 상태다.
-> The object can be a managed (C#) object which has not yet been garbage collected but which should be considered null because the unmanaged (C++) counterpart object has been destroyed.
-~~~c#
-//fieldObjectSparrow는 view 객체고, Monobehaviour를 상속 받기 때문에 UnityEngine.Object 계열이다.
-Destroy(fieldObjectSparrow); 
-
-Debug.Log(fieldObjectSparrow == null); 
-~~~
-- GameObject를 파괴 시키지만 fieldObjectSparrow == null이 True가 될 수 있다. 
-- Unity의 공식 문서에 따르면, Destroy 직후 C++의 객체는 
-
+- C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
 - :link:[= null'과 'unreachable'은 명백히 다른 개념이다.unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다.참조가 100개 되어 있는데, 고작 1개를 null로 초기화 한다고 unreachable이 되지 않는다](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/21%EC%9E%A5_The%20Managed%20Heap%20and%20Garbage%20Collection.md#fire--null%EA%B3%BC-unreachable%EC%9D%80-%EB%AA%85%EB%B0%B1%ED%9E%88-%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EB%85%90%EC%9D%B4%EB%8B%A4--unreachable%EC%9D%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%9C-%EB%AA%A8%EB%93%A0-%EC%B0%B8%EC%A1%B0%EA%B0%80-null%EC%9D%B4-%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%9C%EB%8B%A4--%EC%B0%B8%EC%A1%B0%EA%B0%80-100%EA%B0%9C-%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94%EB%8D%B0-%EA%B3%A0%EC%9E%91-1%EA%B0%9C%EB%A5%BC-null%EB%A1%9C-%EC%B4%88%EA%B8%B0%ED%99%94-%ED%95%9C%EB%8B%A4%EA%B3%A0-unreachable%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4)
