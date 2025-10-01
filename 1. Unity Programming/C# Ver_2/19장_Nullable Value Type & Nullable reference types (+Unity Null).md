@@ -33,43 +33,10 @@
 #### :one: fake-null이란, Unity 내부(C++)에서는 이미 파괴되어 없지만 C# 객체는 살아 있는 상태를 말한다. <br> 다시 말해, Unity에서 == null은 true인데 ?.은 false가 나오는 상태다. <br> :fire: 원인은 UnityEngine.Object를 상속 받는 instance에 대해 사용하는 '=='은 오버로딩 되어 있기 때문이다.
 > For types that inherit from UnityEngine.Object, Unity uses a <ins>custom version</ins> of the C# equality and inequality operators. This means the null check myGameObject == null can evaluate true (and conversely myGameObject != null can evaluate false) even if myGameObject technically holds a valid C# object reference.
 
-#### :two::fire: Destroy 하면 그 즉시(같은 프레임)는 '== null'이 false고 <br> 1 프레임 뒤에 '== null'은 true가 된다. <br>:fire: 하지만 실제로 GC.collect가 되기 전 까지 ?.은 계속 true로 통과된다.<br> :fire: '==null'은 C++ 레벨의 null 검사고, '?.'은 C# 레벨의 null 검사다. <br>:fireworks: 아래를 읽어봐야 한다.
-- UnityEngine.Object 객체를 Destroy를 시킨다.
-- Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
-- C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
-~~~c# 
-//test
-if (enumKey == 3)
-{
-  Debug.Log($"나 {name}");
-  var otherSparrow = _fieldObjectManager.GetFirstSparrow(_instanceID);
+<br>
 
-  Debug.Log($"상대 {otherSparrow.name}");
-
-  Destroy(otherSparrow.gameObject);
-
-  if (otherSparrow.gameObject == null)
-  {
-    Debug.Log("**************바로 같은 프레임 : Fake-Null?**********************");
-  }
-  Debug.Log($"**************바로 같은 프레임 : C# Null? {otherSparrow?.DefaultSparrowSpeed}**********************");
-
-  // 1 프레임 뒤에 재호출
-  Observable.TimerFrame(1).Subscribe(_ =>
-  {
-    Debug.Log($"**************1 프레임 뒤에 : C# Null? {otherSparrow?.DefaultSparrowSpeed}**********************");
-    
-    if (otherSparrow.gameObject == null) // MissingReferenceException
-    {
-      Debug.Log("**************1 프레임 뒤에 Fake-Null?**********************");
-    }
-  });
-}
-~~~
-- ![alt text](./capture/20251001_2.png)
-> The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
+#### :two::fire:'==null'은 C++ Native Object 레벨의 null 검사고, '?.'은 C# 레벨의 null 검사다. <br>:fire: Destroy 하면 그 즉시(같은 프레임)는 '== null'이 false고 <br> 1 프레임 뒤에 '== null'은 true가 된다. <br>:fire: 하지만 GC.collect가 되기 전 까지 ?.은 계속 true로 통과된다. <br>:fireworks: 아래를 읽어봐야 한다.
 ~~~c#
-
 // Unity API
 public static bool operator ==(Object x, Object y) => Object.CompareBaseObjects(x, y);
 
@@ -89,6 +56,44 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 }
 ~~~
 - ![alt text](./capture/20251001.png)
+
+<br>
+
+- Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
+  > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
+    - 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
+- C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
+~~~c# 
+//test
+if (enumKey == 3)
+{
+  Debug.Log($"나 {name}");
+  var otherSparrow = _fieldObjectManager.GetFirstSparrow(_instanceID);
+
+  Debug.Log($"상대 {otherSparrow.name}");
+
+  Destroy(otherSparrow.gameObject);
+
+  // 바로 같은 프레임이라 아직은 native Object가 null이 아니다.  
+  if (otherSparrow.gameObject == null)
+  {
+    Debug.Log("**************바로 같은 프레임 : Fake-Null?**********************");
+  }
+  Debug.Log($"**************바로 같은 프레임 : C# Null? {otherSparrow?.DefaultSparrowSpeed}**********************");
+
+  // 1 프레임 뒤에 재호출
+  Observable.TimerFrame(1).Subscribe(_ =>
+  {
+    Debug.Log($"**************1 프레임 뒤에 : C# Null? {otherSparrow?.DefaultSparrowSpeed}**********************");
+    
+    if (otherSparrow.gameObject == null) // MissingReferenceException
+    {
+      Debug.Log("**************1 프레임 뒤에 Fake-Null?**********************");
+    }
+  });
+}
+~~~
+- ![alt text](./capture/20251001_2.png)
 
 <br><br>
 
