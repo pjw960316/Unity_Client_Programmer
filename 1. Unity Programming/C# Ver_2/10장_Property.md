@@ -98,7 +98,7 @@ public abstract class UIPresenterBase : PresenterBase
 
 <br><br>
 
-## ::fire: Unity에서는 BackField를 SerializeField로 만들고 Property를 만든다.
+## :fire: Unity에서는 BackField를 SerializeField로 만들고 Property를 만든다.
 
 <br><br>
 
