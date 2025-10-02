@@ -19,6 +19,7 @@ public int Number => _number;
 
 public Canvas Canvas => _canvas;
 ~~~
+- Unity에서는 BackField를 SerializeField로 만들고 Property를 만든다.
 
 <br>
 
@@ -92,10 +93,6 @@ public abstract class UIPresenterBase : PresenterBase
 > 자식에서 초기화만 제대로 하면, 부모 타입으로 참조해도 값은 잘 보인다.
 
 > 메서드는 virtual/override로 흐름이 명확한 반면, 필드는 초기화 순서만 조심하면 끝이다.
-
-<br><br>
-
-## :fire: Unity에서는 BackField를 SerializeField로 만들고 Property를 만든다.
 
 <br><br>
 
