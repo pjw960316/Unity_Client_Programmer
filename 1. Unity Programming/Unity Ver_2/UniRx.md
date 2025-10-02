@@ -7,7 +7,7 @@
 
 <br><br>
 
-## :fire: MVP에서 View에 Subject, Iobservable을 만들고 <br> Presenter에서 Iobservable에 SubScribe를 하는 것은 일회성이 아닐 때 <br> :fire: 일회성일 때는 Observable Static Class를 사용한다.
+## :fire: 일회성일 때는 Observable Static Class를 사용한다.
 
 ~~~c#
 Observable.Timer(TimeSpan.FromSeconds(playingTime))
@@ -36,6 +36,18 @@ public struct ScrollData
 private readonly Subject<ScrollData> _onUpdateScrollWidget = new();
 public IObservable<ScrollData> OnUpdateScrollWidget => _onUpdateScrollWidget;
 ~~~
+
+<br><br>
+
+## :fire: 1개의 이벤트에 2개의 IObservable의 Subscribe가 걸려있다면 실행흐름을 알 수 없기 때문에 지양한다.
+~~~c#
+private void OnClickConfirmButton()
+{
+  _onConfirmed.OnNext(Unit.Default);
+  _onSuccess.OnNext(default);
+}
+~~~
+- 호출 흐름을 알 수 없다. 예를 들어 OnConfirmed에서 popup을 null로 만들었는데 onSuccess에서 접근한다면 에러가 발생한다.
 
 <br><br>
 
