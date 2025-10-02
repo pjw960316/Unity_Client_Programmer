@@ -1,6 +1,6 @@
 ## :fireworks: View를 멍청하게, Presenter는 책임있게. <br> View를 신입 직원이라 생각하고, 본인은 할 줄 아는 게 없음. <br> Presenter가 파트장님, Manager가 팀장님이라 생각하자.
 
-#### :one: 모든 View는 멍청해서 자신의 Close 조차 자신이 책임지지 못하고, Presenter에게 책임을 넘긴다. <br> 최상단에 존재한다. 
+#### :one: 모든 View는 멍청해서 자신의 Close 조차 자신이 책임지지 못하고, Presenter에게 책임을 넘긴다. <br> 최상단에 구현하여 모든 Popup이 동일한 Close 로직을 갖도록 한다.
 ~~~c#
 public abstract class UIPopupBase : MonoBehaviour, IView
 {
