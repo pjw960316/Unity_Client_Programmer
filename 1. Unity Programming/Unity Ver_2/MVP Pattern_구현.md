@@ -76,3 +76,5 @@ public class AlarmPresenter : UIPresenterBase
 <br>
 
 #### :bangbang: 이전에는 화면을 닫는 X 버튼을 누르는 순간 View에서 Close를 인지하고 Presenter에 요청을 시켰다. <br> 이 방식도 나쁘지 않지만, 하나의 버튼에 두 개 이상의 IObservable이 걸리게 되고, <br> 실행 흐름을 알 수 없게 되어 방식을 수정했다.
+- :link:[1개의 이벤트에 2개의 IObservable의 Subscribe가 걸려 있다면
+실행 흐름을 알 수 없기 때문에 지양한다.](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/Unity%20Ver_2/UniRx.md#fire-1%EA%B0%9C%EC%9D%98-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%97%90-2%EA%B0%9C%EC%9D%98-iobservable%EC%9D%98-subscribe%EA%B0%80-%EA%B1%B8%EB%A0%A4-%EC%9E%88%EB%8B%A4%EB%A9%B4--%EC%8B%A4%ED%96%89-%ED%9D%90%EB%A6%84%EC%9D%84-%EC%95%8C-%EC%88%98-%EC%97%86%EA%B8%B0-%EB%95%8C%EB%AC%B8%EC%97%90-%EC%A7%80%EC%96%91%ED%95%9C%EB%8B%A4)
