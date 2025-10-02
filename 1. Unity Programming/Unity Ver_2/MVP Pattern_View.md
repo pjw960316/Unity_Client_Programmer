@@ -1,3 +1,7 @@
+## :fireworks: View는 UI의 View와 Field의 FieldObject(Monobehaviour 상속 받는 GameObject)를 모두 포괄하는 개념이다. 
+
+<br><br>
+
 ## :fire::one: View의 역할 및 책임
 #### 1. View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
 > the View is responsible for handling user input.
@@ -6,6 +10,7 @@
 #### 3. View는 Pub/Sub 구조에서 publisher의 역할을 갖고 있다.
 - View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
 - View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
+#### 4. Game Scene에 존재하는 GameObject의 Transform, Animation, Rendering 같은 기능을 구현할 책임이 있다.
 
 <br><br>
 

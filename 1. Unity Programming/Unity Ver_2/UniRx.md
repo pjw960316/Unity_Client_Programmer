@@ -39,7 +39,7 @@ public IObservable<ScrollData> OnUpdateScrollWidget => _onUpdateScrollWidget;
 
 <br><br>
 
-## :fire: 1개의 이벤트에 2개의 IObservable의 Subscribe가 걸려 있다면 <br> 실행 흐름을 알 수 없기 때문에 지양한다.
+## :fire: 1개의 이벤트에 2개의 IObservable의 Subscribe가 걸려 있다면 <br> 실행 흐름을 알 수 없기 때문에 지양한다. <br> :fire: 결론적으로 1개의 Event에는 1개의 Rx만 구현하는 게 안전하다고 생각한다.
 ~~~c#
 private void OnClickConfirmButton()
 {
