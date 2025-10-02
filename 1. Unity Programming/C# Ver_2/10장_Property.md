@@ -51,6 +51,51 @@ public int Budget
 
 <br><br>
 
+## :fire: 자식에서 초기화 해도 부모에 올바르게 Property의 값이 세팅된다. (가끔 헷갈림)
+~~~c#
+
+// Parent
+public abstract class UIPopupBase : MonoBehaviour, IView
+{
+    protected EPopupKey _ePopupKey;
+    public EPopupKey EPopupKey => _ePopupKey;
+}
+
+// Child
+public class UIAlarmTimerPopup : UIPopupBase
+{
+    protected override void InitializeEPopupKey()
+    {
+        _ePopupKey = EPopupKey.AlarmTimerPopup; //여기서만 초기화
+    }
+}
+
+// 외부
+public abstract class UIPresenterBase : PresenterBase
+{
+    private UIPopupBase _popupBase;
+
+    public override void Initialize(IView view)
+    {
+        base.Initialize(view);
+
+        _popupBase = _view as UIPopupBase;
+        ExceptionHelper.CheckNullException(_popupBase, "_popupBase is null");
+    }
+
+    protected void Close()
+    {
+        RequestUpdateLivedPopup(_popupBase.EPopupKey);
+    }
+}
+~~~
+- RequestUpdateLivedPopup(_popupBase.EPopupKey) 에서 올바르게 EPopupKey.AlarmTimerPopup로 초기화되어 params를 넘긴다.
+> 부모 클래스의 필드는 자식 인스턴스 안에도 그대로 포함된다.
+> 자식에서 초기화만 제대로 하면, 부모 타입으로 참조해도 값은 잘 보인다.
+> 메서드는 virtual/override로 흐름이 명확한 반면, 필드는 초기화 순서만 조심하면 끝이다.
+
+<br><br>
+
 ## ::fire: Unity에서는 BackField를 SerializeField로 만들고 Property를 만든다.
 
 <br><br>
