@@ -51,7 +51,7 @@ public int Budget
 
 <br><br>
 
-## :fire: 자식에서 초기화 해도 부모에 올바르게 Property의 값이 세팅된다. (가끔 헷갈림)
+## :fire: 자식 클래스에서만 필드를 초기화해도 <br> 부모에 올바르게 Property의 값이 세팅된다. (가끔 헷갈림)
 ~~~c#
 
 // Parent
@@ -66,7 +66,7 @@ public class UIAlarmTimerPopup : UIPopupBase
 {
     protected override void InitializeEPopupKey()
     {
-        _ePopupKey = EPopupKey.AlarmTimerPopup; //여기서만 초기화
+        _ePopupKey = EPopupKey.AlarmTimerPopup; //여기서만 초기화, UIPopuBase에서는 초기화 코드가 없다.
     }
 }
 
