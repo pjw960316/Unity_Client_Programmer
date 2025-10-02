@@ -3,15 +3,12 @@
 <br><br>
 
 ## :fire: 3가지 형식의 property
+- 나는 조건(if)을 걸어야 하면 property가 아닌 Method로 만드는 걸 선호한다.
 #### :one: 일반 property
 ~~~c#
 private int _number = 3;
 
-public int Number
-{
-	get => _number;
-	Number = _number;
-}
+public int Number => _number;
 ~~~
 
 <br>
