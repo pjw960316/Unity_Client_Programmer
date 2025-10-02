@@ -91,7 +91,9 @@ public abstract class UIPresenterBase : PresenterBase
 ~~~
 - RequestUpdateLivedPopup(_popupBase.EPopupKey) 에서 올바르게 EPopupKey.AlarmTimerPopup로 초기화되어 params를 넘긴다.
 > 부모 클래스의 필드는 자식 인스턴스 안에도 그대로 포함된다.
+
 > 자식에서 초기화만 제대로 하면, 부모 타입으로 참조해도 값은 잘 보인다.
+
 > 메서드는 virtual/override로 흐름이 명확한 반면, 필드는 초기화 순서만 조심하면 끝이다.
 
 <br><br>
