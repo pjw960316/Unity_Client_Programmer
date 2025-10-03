@@ -51,9 +51,92 @@ private void OnClickConfirmButton()
 
 <br><br>
 
-## :fire: Dispose()를 호출한 CompositeDisposable은 재사용이 불가능 하다. <br> :fire:그러므로 재사용 할 CompositeDisposable은 Dispose() 대신 Clear()를 이용한다.
-- 영어로 Dispose()는 폐기하다 니까 의도는 정확하다.
+## :fire: CompositeDisposable 과 IDisposable은 모두 Dispose()를 하면 해당 오브젝트는 재사용이 불가능하다. <br> 그러나 둘 다 null이 되지는 않는다. <br> :fire: CompositeDisposable은 clear()를 사용해서 구독만 끊고 instance는 재사용한다. <br> :fire: IDisposable은 보통 단발성 Observable을 할당하기 때문에 재할당하여 사용한다.
+#### [1. CompositeDisposable]
+~~~c#
+protected readonly CompositeDisposable _disposable = new();
 
+foreach (var alarmTimeButton in _alarmPopup.AlarmTimeButtons)
+{
+    alarmTimeButton.OnButtonClicked.Subscribe(RequestUpdateLatestSleepingAudioPlayTime).AddTo(_disposable);
+}
+
+protected virtual void DisposeCompositeDisposables()
+{
+    _disposable?.Dispose(); // 여기서 _disposable이 null이 되지는 않는다.
+}
+~~~
+
+<br>
+
+#### [2. IDisposable : static Observable은 IDisposable을 사용하자]
+~~~c#
+//이전 구독 모두 끊기
+_followFieldObjectObservable?.Dispose();
+
+//Observable을 재할당한다.
+_followFieldObjectObservable = Observable.Interval(TimeSpan.FromMilliseconds(1f)).Subscribe(_ =>
+{
+    //body
+});
+
+public void DisposeFollowSparrowCameraMoving()
+{
+  _followFieldObjectObservable?.Dispose(); // 여기서 _followFieldObjectObservable은 null이 되지는 않는다.
+}
+~~~
+- 두 예제 모두 Dispose()시킨 시점부터는 재사용이 불가능하다.
+
+<br>
+
+#### [3. CompositeDisposable Library : Summary를 읽어본다.]
+~~~c#
+/// <summary>
+/// Disposes all disposables in the group and removes them from the group.
+/// </summary>
+public void Dispose()
+{
+  var currentDisposables = default(IDisposable[]);
+  lock (_gate)
+  {
+    if (!_disposed)
+    {
+        _disposed = true;
+        currentDisposables = _disposables.ToArray();
+        _disposables.Clear();
+        _count = 0;
+    }
+  }
+
+  if (currentDisposables != null)
+  {
+    foreach (var d in currentDisposables)
+      if (d != null)
+        d.Dispose();
+  }
+}
+
+/// <summary>
+/// Removes and disposes all disposables from the CompositeDisposable, but does not dispose the CompositeDisposable.
+/// </summary>
+public void Clear()
+{
+  var currentDisposables = default(IDisposable[]);
+  lock (_gate)
+  { 
+    currentDisposables = _disposables.ToArray();
+    _disposables.Clear();
+    _count = 0;
+  }
+
+  foreach (var d in currentDisposables)
+    if (d != null)
+        d.Dispose();
+}
+~~~
+> Removes and disposes all disposables from the CompositeDisposable, but does not dispose the CompositeDisposable.
+- CompositeDisposable 자체를 폐기하지는 않는다.
+ 
 <br><br>
 
 ## :fireworks: Disposable의 대상 
