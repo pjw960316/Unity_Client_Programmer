@@ -121,7 +121,7 @@ protected sealed override void BindEvent()
 
 <br>
 
-### :two: BindEvent를 <ins>최하단(sealed 하면 좋음) -> :o: </ins>에서 호출하기 <br> :fire:[장점] : Initialize()를 부모 ~ 자식 까지 모두 완료하고 나의 BindEvent를 안전하게 할 수 있다.<br> :fire:[단점] : 매 번 BindEvent()를 Initialize()에 넣는 걸 빼 먹으면 안 된다. <br> 이 방식이 더 좋다고 생각한다.
+### :two: BindEvent를 <ins>최하단(sealed 하면 좋음) </ins>에서 호출하기 -> :o: <br> :fire:[장점] : Initialize()를 부모 ~ 자식 까지 모두 완료하고 나의 BindEvent를 안전하게 할 수 있다.<br> :fire:[단점] : 매 번 BindEvent()를 Initialize()에 넣는 걸 빼 먹으면 안 된다. <br> 이 방식이 더 좋다고 생각한다.
 ~~~c#
 
 // PresenterBase (최상단)
