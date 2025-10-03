@@ -52,7 +52,7 @@ private void OnClickConfirmButton()
 <br><br>
 
 ## :fire: CompositeDisposable 과 IDisposable은 모두 Dispose()를 하면 <br> 해당 instance는 재사용이 불가능하다. <br> 그러나 둘 다 instance 자체가 null이 되지는 않는다. <br> :fire: CompositeDisposable은 clear()를 사용해서 구독만 끊고 instance는 재사용이 가능하다. <br> :fire: IDisposable은 보통 단발성 Observable을 할당하기 때문에 재할당하여 사용한다.
-#### [:one: CompositeDisposable]
+#### :one: CompositeDisposable
 ~~~c#
 protected readonly CompositeDisposable _disposable = new();
 
@@ -69,7 +69,7 @@ protected virtual void DisposeCompositeDisposables()
 
 <br>
 
-#### [:two: IDisposable : static Observable은 IDisposable을 사용하자]
+#### :two: IDisposable : static Observable은 IDisposable을 사용하자
 ~~~c#
 //이전 구독 모두 끊기
 _followFieldObjectObservable?.Dispose();
@@ -89,7 +89,7 @@ public void DisposeFollowSparrowCameraMoving()
 
 <br>
 
-#### [:three: CompositeDisposable Library : Summary를 읽어본다.]
+#### :three: CompositeDisposable Library : Summary를 읽어본다.
 ~~~c#
 /// <summary>
 /// Disposes all disposables in the group and removes them from the group.
