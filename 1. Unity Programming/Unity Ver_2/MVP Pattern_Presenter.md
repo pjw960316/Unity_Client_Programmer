@@ -61,6 +61,7 @@ protected override void SetView()
 - Manager가 Presenter를 들고 있거나 Rx로 구현하는 방식은 복잡도가 매우 올라간다고 판단했다.
 - 그리고 Manager는 Singleton이기 때문에 어차피 의존성 높은 객체라.
 #### 4. Model 또는 Manager에게 Request 하는 Method
+#### 5. 생성자?
 
 <br><br>
 
