@@ -4,5 +4,11 @@
 
 <br><br>
 
-## :fire: One Int Parameter -> 하나의 View Animation 컨트롤
-- ex : sparrow
+## :fire: Animation Controller 마다 Animation Parameter를 고유 할당해주어야 한다.
+
+<br><br>
+
+## :fire: Animation Clip만 다르고 로직은 같을 때, Animation Override Controller를 사용한다. 
+> your game has different characters such as a goblin, ogre, and an elf. Each character uses different animation clips for idling, turning, and jogging but the structure, parameters, and logic of each state machine is the same. In this case, you can create a base Animator Controller for all characters and create an Animator Override Controller asset for each character.
+- 잘 만들어 놓은 Animation Controller를 넣어주면 transition만 이식된다. AudioClip은 override 하면 된다.
+- Assets > Create > Animation > Animator Override Controller
