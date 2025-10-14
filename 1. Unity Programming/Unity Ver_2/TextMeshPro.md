@@ -4,9 +4,6 @@
 
 <br><br>
 
-## :fire: 양식만
-> always use TextMeshProUGUI elements, and use a TextMeshProUGUI text component. Then, select the Auto Size checkbox, and set a minimum font size and maximum font size for components
-
-<br><br>
-
-## :fire: AutoSize를 되도록 사용하지 않는다. <br> :fire: TextMeshPro를 들고 있는 GameObject의 Position_Y를 늘려서 <br> 글자가 눌린 느낌도 없앨 수 있다.
+## :fire: Auto Size를 켜자. 
+- Canvas에서 Scale With Screen Size를 하면 Auto Size를 켜지 않아도 알아서 해상도에 맞게 조절을 해주지만, 그래도 Auto Size가 맘 편하다.
+- :bangbang:TextMeshPro를 Component로 갖는 Object의 Scale이 (1,1,1)인지 확인한다.
