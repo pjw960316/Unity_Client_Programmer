@@ -3,14 +3,14 @@
 
 <br><br>
 
-## :fire: Euler Vector는 Vector3(30,45,90)일 때 <br> x축으로 30도 회전을 하고 그 후, <br> y축으로 45도 회전을 하고 그 후, <br> z축으로 90도 회전한다. <br> 하지만 Euler Vector는 결국 quartenion으로 변환된다.
+## :fire: Euler Vector는 Vector3(30,45,90)일 때 <br> x축으로 30도 회전을 하고 그 후, <br> y축으로 45도 회전을 하고 그 후, <br> z축으로 90도 회전한다. <br> :fire: 하지만 Euler Vector는 결국 quartenion으로 변환된다.
 
 <br><br>
 
 ## :fire: 프로그래밍에서는 각도를 사용할 때 라디안을 사용한다. <br> :fire: 라디안은 57.3도를 의미하는 상수다. <br> :fire: 파이도 3.14를 의미하는 상수다.
 - 30도는 사람이 편하자고 사용되는 단위 일 뿐, 프로그래밍에서는 라디안을 사용하기 때문에 변환을 해줘야 한다. 
 - 그래서 Deg2Rad(=Degrees-to-radians conversion constant) 라는 property가 존재하는 것
-  - ![alt text](./captures/20251015.png)
+  - ![alt text](./captures/20251016_2.png)
 - :bangbang: 간혹, radian과 radius(반지름)이 r로 혼용될 때가 있는데 주의한다.
 
 <br><br>
