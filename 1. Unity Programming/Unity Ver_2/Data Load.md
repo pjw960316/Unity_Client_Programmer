@@ -50,6 +50,9 @@ private void InitializeXmlFileDataList()
 ## :fire::two: 음원 로드 방식_2 : Compressed In Memory + PreLoad Audio Data OFF
 - 큰 파일에서 권장한다.
 - Unity는 ScriptableObject에 저장된 음원을 메모리에 로드 시키지 않는다.
+> Keep audio compressed in memory and decompress while playing. This option has a slight performance overhead, especially for Ogg/Vorbis compressed files. Use it only for files that consume excess memory on Decompress on Load. The decompression happens on the mixer thread, which you can monitor in the DSP CPU section in the Audio module of the Profiler window.
+
+<br>
 
 #### [문제점 : ScriptableObject에서는 로드 되지 않는다. 그러므로 게임 음원을 재생시키는 그 순간 로드된다. 이 때 엄청난 렉이 발생한다. (5~10초 프리즈)]
 ~~~c#
@@ -112,7 +115,6 @@ public void SetSleepingAudioClipDictionary(EAlarmButtonType eAlarmButtonType, Au
     _sleepingAudioClipDictionary[eAlarmButtonType] = memoryLoadedAudioClip;
 }
 ~~~
-> Keep audio compressed in memory and decompress while playing. This option has a slight performance overhead, especially for Ogg/Vorbis compressed files. Use it only for files that consume excess memory on Decompress on Load. The decompression happens on the mixer thread, which you can monitor in the DSP CPU section in the Audio module of the Profiler window.
 
 <br><br>
 
