@@ -1,9 +1,9 @@
-## :fire: Rider에서 사용하는 C#이 한국어로 비유한다. <br> :fire: Unity에서 사용하는 언어(YAML)가 일본어로 비유한다. <br> :fire: 둘이 대화를 하기 위해서는 공통된 언어(binary?)가 필요하고, 그걸 영어로 비유한다. <br> :fire: 영어로 변환하는 것이 Serialization(=직렬화)이다. 
-- 영어가 반드시 binary로 1대1 비유가 되지는 않는다.
+## :fire: Rider에서 사용하는 C#은 한국어에 비유할 수 있다. <br> :fire: Unity 내부에서 사용하는 YAML은 일본어에 비유할 수 있다. <br> :fire: 두 언어가 서로 대화하려면 <br> 서로가 이해할 수 있는 공통 언어(=binary)가 필요하다. <br> :fire: 공통 언어로 번역하는 과정을 Serialization(직렬화) 이라고 한다.
 - [SerializeField] , [Serializable] = 통역하기 = Serializable 한 객체로 변경
 > When you apply a Serializefield attribute, it means that you are making the current object 'readable' by the inspector. 
 
 > When you apply a Serializable attribute, it means you are saying that Objects of this type can be 'readed' by the unity's inpector.
+
 > Interfaces are currently not serializable by Unity and therefore don’t show in the inspector.
 
 <br><br>
