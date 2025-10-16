@@ -4,6 +4,7 @@
 > <ins>The purpose of a unit test in software engineering is to verify the behavior of a relatively small piece of software, independently from other parts.</ins> Unit tests are narrow in scope, and allow us to cover all cases, ensuring that every single part works correctly.
 
 <br>
+
 - 개구리 다리, 문어 촉수, 새 날개, 개 머리는 각각 메서드라고 생각하고, 각각이 제 역할을 제대로 수행하는 지 확인하면 키메라라는 게임이 제대로 동작한다.
 - :link:[Unit Testing and Coding: Why Testable Code Matters](https://www.toptal.com/qa/how-to-write-testable-code-and-why-it-matters)
 
