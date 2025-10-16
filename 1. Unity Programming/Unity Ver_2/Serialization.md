@@ -30,7 +30,7 @@ public class PlayerData
 
 <br><br>
 
-## :fire: 클라이언트가 서버에 패킷으로 보낼 때에는 :star:byte[]로 Serialization을 해야 보낼 수 있다.
+## :fire: 클라이언트가 서버에 패킷으로 보낼 때에는 <br> byte[]로 Serialization을 해야 보낼 수 있다.
 #### [packet에 보낼 때 이렇게 보낼 수 없음]
 ~~~c#
 class LoginRequest
