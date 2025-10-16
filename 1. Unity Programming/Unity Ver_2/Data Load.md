@@ -1,4 +1,4 @@
-## :fire: Resources.Load는 빌드 시점의 Resources 폴더 상태를 기준으로 <br> 해당 파일을 read-only 형태로 메모리에 로드한다. <br> :fire: 따라서 XML을 Serialize하여 디스크의 파일을 변경하더라도 <br> 이미 메모리에 올라간 TextAsset에는 반영되지 않으며 <br> 게임을 종료하거나 다시 시작하지 않는 이상 변경 사항은 게임에 반영되지 않는다. <br> :fire: 그러므로 Serialize를 런타임에 반영하고 싶으면 <br> File 클래스를 사용해서 직접 디스크로 부터 읽는다. (느림)
+## :fire: Resources.Load는 빌드 시점의 Resources 폴더 상태를 기준으로 <br> 해당 파일을 read-only 형태로 메모리에 로드한다. <br> :fire: 따라서 XML을 Serialize하여 디스크의 파일을 변경 하더라도 <br> 이미 메모리에 올라간 TextAsset에는 반영되지 않으며 <br> 게임을 종료하거나 다시 시작하지 않는 이상 변경 사항은 게임에 반영되지 않는다. <br> :fire: 그러므로 Serialize를 런타임에 반영하고 싶으면 <br> File 클래스를 사용해서 직접 디스크로 부터 읽는다. (느림)
 > The Resources system is convenient to use, especially for rapid prototyping and small projects. But it does not scale well and overall use of this feature is discouraged. For this reason AssetBundles and the Addressables package are the recommended alternative.
 
 > >The resources folder can be appropriate for small Assets that are required throughout the project’s lifetime, that <ins>**do not require updates**</ins>.
@@ -7,7 +7,7 @@
 
 <br><br>
 
-## :fire: Resources.Load는 항상 슬래시(/)로 구성된 상대 경로를 이용한다. <br> :fire: 확장자를 붙이지 않는다. <br> :fire: 절대 경로(full-path)를 사용하지 않는다. 
+## :fireworks: Resources.Load 주의사항 <br> :fire: 절대 경로를 사용하지 않고, <br> 항상 슬래시(/)로 구성된 상대 경로를 이용한다. <br> :fire: 확장자를 붙이지 않는다.
 > Note that the path is case insensitive and must not contain a file extension. All asset names and paths in Unity use forward slashes, so using backslashes in the path will not work.
 
 #### [예시]
@@ -40,17 +40,18 @@ private void InitializeXmlFileDataList()
 
 <br><br>
 
-## :fire::one: 음원 로드 방식_1 : 1. Decompress On Load + PreLoad Audio Data ON
-#### 
+## :fire::one: 음원 로드 방식_1 : Decompress On Load + PreLoad Audio Data ON
 - 게임 Scene 열리기 전에 로드 하는 것 같다. (로드 씬 보다 먼저 동작해서 검은 화면이 이어진 현상 발견)
 - 초기에 메모리에 로드 하니까 빠르지만 코드 영역을 넘어선 Native 영역이라 컨트롤이 불가능
 > Decompress audio files as soon as they’re loaded. Use this option for smaller compressed sounds to avoid the performance overhead of decompressing during gameplay. Be aware that decompressing Vorbis-encoded sounds on load will use about ten times more memory than keeping them compressed (for ADPCM encoding it’s about 3.5 times), so don’t use this option for large files.
 
-## :fire::two: Compressed In Memory + PreLoad Audio Data OFF
+<br><br>
+
+## :fire::two: 음원 로드 방식_2 : Compressed In Memory + PreLoad Audio Data OFF
 - 큰 파일에서 권장한다.
 - Unity는 ScriptableObject에 저장된 음원을 메모리에 로드 시키지 않는다.
 
-#### [문제점 : ScriptableObject에서는 로드 되지 않는다. 그러므로 게임 음원을 재생시킬 때 로드되는 데 이 때 렉을 유발한다.]
+#### [문제점 : ScriptableObject에서는 로드 되지 않는다. 그러므로 게임 음원을 재생시키는 그 순간 로드된다. 이 때 엄청난 렉이 발생한다. (5~10초 프리즈)]
 ~~~c#
 // AlarmData : ScriptableObject
 // 이건 메모리에 올라오지 않고, LoadAudioData()를 호출해야 올라온다. -> 렉 유발.
@@ -66,10 +67,10 @@ private void InitializeXmlFileDataList()
 /// </returns>
 public bool LoadAudioData()
 {
-IntPtr _unity_self = Object.MarshalledUnityObject.MarshalNotNull<AudioClip>(this);
-if (_unity_self == IntPtr.Zero)
-ThrowHelper.ThrowNullReferenceException((object) this);
-return AudioClip.LoadAudioData_Injected(_unity_self);
+    IntPtr _unity_self = Object.MarshalledUnityObject.MarshalNotNull<AudioClip>(this);
+    if (_unity_self == IntPtr.Zero)
+    ThrowHelper.ThrowNullReferenceException((object) this);
+    return AudioClip.LoadAudioData_Injected(_unity_self);
 }
 ~~~
 
@@ -79,35 +80,36 @@ return AudioClip.LoadAudioData_Injected(_unity_self);
 // 비동기로 로드한다.
 private async UniTaskVoid PreLoadAudioDataAsync()
 {
-var alarmData = _modelList.OfType<AlarmData>().FirstOrDefault();
-if (alarmData == null)
-{
-    throw new NullReferenceException("alarmData is null");
-}
+    var alarmData = _modelList.OfType<AlarmData>().FirstOrDefault();
+    
+    if (alarmData == null)
+    {
+        throw new NullReferenceException("alarmData is null");
+    }
 
-alarmData.Initialize();
-var sleepingAudioClipPathDictionary = alarmData.SleepingAudioClipPathDictionary;
+    alarmData.Initialize();
+    var sleepingAudioClipPathDictionary = alarmData.SleepingAudioClipPathDictionary;
 
-foreach (var element in sleepingAudioClipPathDictionary)
-{
-    var key = element.Key;
-    var relativePath = element.Value;
+    foreach (var element in sleepingAudioClipPathDictionary)
+    {
+        var key = element.Key;
+        var relativePath = element.Value;
 
-    var loadData = await Resources.LoadAsync<AudioClip>(relativePath);
-    var memoryLoadedAudioClip = loadData as AudioClip;
+        var loadData = await Resources.LoadAsync<AudioClip>(relativePath);
+        var memoryLoadedAudioClip = loadData as AudioClip;
 
-    alarmData.SetSleepingAudioClipDictionary(key, memoryLoadedAudioClip);
+        alarmData.SetSleepingAudioClipDictionary(key, memoryLoadedAudioClip);
 
-    //log
-    Debug.Log($"{relativePath}의 음원 파일 {memoryLoadedAudioClip?.name}이 비동기로 로드 되었습니다");
-}
+        //log
+        Debug.Log($"{relativePath}의 음원 파일 {memoryLoadedAudioClip?.name}이 비동기로 로드 되었습니다");
+    }
 }
 
 // 기존의 _sleepingAudioClipDictionary의 value는 load가 되지 않았으나, 직접 비동기로 로드 후에 넣어준다.
 // 렉을 해결했다.
 public void SetSleepingAudioClipDictionary(EAlarmButtonType eAlarmButtonType, AudioClip memoryLoadedAudioClip)
 {
-_sleepingAudioClipDictionary[eAlarmButtonType] = memoryLoadedAudioClip;
+    _sleepingAudioClipDictionary[eAlarmButtonType] = memoryLoadedAudioClip;
 }
 ~~~
 > Keep audio compressed in memory and decompress while playing. This option has a slight performance overhead, especially for Ogg/Vorbis compressed files. Use it only for files that consume excess memory on Decompress on Load. The decompression happens on the mixer thread, which you can monitor in the DSP CPU section in the Audio module of the Profiler window.
