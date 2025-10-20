@@ -14,7 +14,7 @@
 ## :fire: struct 내부에 reference type을 뒀을 때 아무리 생각해도 실수 할 것 같다. <br> 그러므로, struct는 value type으로 내부를 구성할 때만 사용하는 게 좋아보인다.
 > [MSDN] AVOID defining a struct unless the type has all of the following characteristics: 
 
-> It logically represents a single value, similar to primitive types (int, double, etc.). 
+> It logically represents <ins>a single value, similar to primitive types</ins> (int, double, etc.). 
 
 > It has an instance size under 16 bytes. 
 
@@ -26,7 +26,7 @@
 
 ## :fireworks: params로 전달하는 Call-by-value 와 call-by-ref를 7가지 케이스로 증명해 보았다.
 
-#### :zero: 기본 코드 구성
+### :zero: 기본 코드 구성
 ~~~c#
 //SparrowPresenter Class와 FieldObjectSparrow Class 2개를 이용해서 테스트
 
@@ -102,7 +102,7 @@ public void ViewTest()
 
 <br>
 
-#### :one: instance의 int field를 따로 추출해서 params로 전달하고, <ins>int field</ins>를 변경 <br> params인 _fieldObjectSparrow.Age가 value type -> 값 복사 -> deep-copy (원본 변경 X)
+### :one: instance의 int field를 따로 추출해서 params로 전달하고, <ins>int field</ins>를 변경 <br> params인 _fieldObjectSparrow.Age가 value type -> 값 복사 -> deep-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow.Age); //여기서 기존에 5임.
 
@@ -124,7 +124,7 @@ public void ViewTest()
 
 <br>
 
-#### :two: instance를 params로 전달하고, <ins>int field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :two: instance를 params로 전달하고, <ins>int field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -140,7 +140,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :three: instance를 params로 전달하고, <ins>String field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :three: instance를 params로 전달하고, <ins>String field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -155,7 +155,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :four: instance를 params로 전달하고, <ins>List<int> field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :four: instance를 params로 전달하고, <ins>List<int> field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -181,7 +181,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :five: instance를 params로 전달하고, <ins>Eagle(Class) field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :five: instance를 params로 전달하고, <ins>Eagle(Class) field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 public class Eagle
 {
@@ -225,7 +225,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :star::six: instance를 params로 전달하고, <ins>Struct field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :star::six: instance를 params로 전달하고, <ins>Struct field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
 ~~~c#
 public struct EagleStruct
 {
@@ -274,7 +274,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-#### :star::seven: instance의 struct를 따로 추출해서 params로 전달하고, <ins>struct field</ins>를 변경 <br> params인 _fieldObjectSparrow.EnemyEagleStruc가 Value type -> 값 복사 -> deep-copy + Shallow-copy (혼합 변경)
+### :star::seven: instance의 struct를 따로 추출해서 params로 전달하고, <ins>struct field</ins>를 변경 <br> params인 _fieldObjectSparrow.EnemyEagleStruc가 Value type -> 값 복사 -> deep-copy + Shallow-copy (혼합 변경)
 ~~~c#
 // EagleStruct 자체는 6번 예제와 동일하다.
 
