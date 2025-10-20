@@ -7,20 +7,19 @@
 
 <br><br>
 
-## :fire: Object가 Destroy되면 <br> Object의 Monobehaviour 상속 스크립트 내부의 필드들은 <br> 모두 unity null(=fake null) 상태가 된다. 
-- 정확히 <ins>필드</ins>들이 fake null이 됨을 강조하기 위해 따로 적었다. 
-
-<br><br>
-
 ## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> '?.'은 사용하지 않는다. 
 #### :one: 우선 UnityEngine.Object는 C++에서의 null과 C#에서의 null이 동시에 존재한다는 걸 인지하고 간다.
 
 > Yes, true null values are detected by both operators. However, Unity is a bit special. <ins>Unity is a C++ engine</ins>, and when it comes to memory management, there are some major issues. In C# you can not destroy any object manually as this is completely in the hand of the garbage collector. References to objects can not suddenly become null in C#.
 
+<br>
+
 #### :two: UnityEngine.Object가 Destroy 되면 <br> C++ 레벨의 null은 1 프레임 뒤에 null이 되고, <br> C# 레벨의 null은 GC가 담당하기 때문에 언제인지 알 수 없다.
 
 > Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. So Unity uses a trick. <ins>They have overloaded the == operator and the Equals method, and when comparing dead objects to null, those will return true. This is called a fake null object. It's still a **valid** C# object, **but it can no longer be used** because the actual native object was destroyed.</ins> Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
 - But 뒤에가 중요한 문구다. 이제 사용할 수 없는!
+
+<br>
 
 #### :three: 그러므로 fake-null이란, Unity 내부(C++)에서는 이미 파괴되어 없지만 C# 객체는 살아 있는 상태를 말한다. <br> 다시 말해, 코드에서 == null의 결과는 true인데 ?.의 결과는 false가 나오는 상태다. <br> :fire: 원인은 UnityEngine.Object를 상속 받는 instance에 대해 사용하는 '=='은 오버로딩 되어 있기 때문이다.
 - ![alt text](./captures/20251020_1.png)
