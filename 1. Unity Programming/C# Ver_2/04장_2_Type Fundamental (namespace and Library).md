@@ -1,5 +1,5 @@
-## :fireworks:   Class or Interface  ⊂  NameSpace  ⊂  DLL(=Assembly)  ⊂  AppDomain 
-- 아래의 :fire:에서 해당 내용을 다룬다.
+## :fireworks:   Class or Interface  ⊂  NameSpace  ⊂  Dynamic Link Library (=DLL)(=Assembly)  ⊂  AppDomain 
+- Library를 여러 DLL의 묶음으로 보는 경우도 있지만, 대체로 Library랑 DLL을 같은 계층으로 묶어서 본다.
 
 <br><br>
 
@@ -20,7 +20,7 @@
 
 <br><br>
 
-## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
+## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Interface가 있을 수 있다.
 #### :one: ILSpy 기호
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
@@ -62,7 +62,7 @@
 
 </details>
 
-  - 'using System' 과 'using System.Text'가 상속관계가 아니라 사실은 서로 다른 NameSpace이었다.
+  - **'using System' 과 'using System.Text'가 상속관계가 아니라 서로 다른 NameSpace다.**
 
 <br><br>
 
@@ -108,13 +108,7 @@
 
 <br><br>
 
-## :link: Reference
-- [MSDN](https://learn.microsoft.com/en-us/troubleshoot/windows-client/setup-upgrade-and-drivers/dynamic-link-library)
-- [WIKI](https://en.wikipedia.org/wiki/DLL_hell)
-
-<br><br>
-
-## :fire: namespace는 큰 게임 프로젝트 안에 존재하는 <br>:fire: 미니게임 프로젝트에서 독립성을 위해 사용하기 좋다고 생각한다. <br>:fire: 또한, 모호성을 해결하기 위해 명시적으로 using OOOOO = OOOOO;로 적어주자. 
+## :fire: namespace는 큰 게임 프로젝트 안에 존재하는 미니게임 프로젝트에서 <br>:fire: 독립성을 위해 사용하기 좋다고 생각한다. <br>:fire: 또한, 모호성 해결이 필요할 때는 명시적으로 using OOOOO = OOOOO;로 적어주자. 
 
 #### [Ambiguous Code]
 <details>
