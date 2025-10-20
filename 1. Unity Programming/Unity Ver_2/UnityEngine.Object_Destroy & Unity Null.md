@@ -48,11 +48,6 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 
 <br>
 
-- Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
-  > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
-- 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
-  > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and all its transform children are destroyed together.
-
 ~~~c# 
 //test
 if (enumKey == 3)
@@ -83,6 +78,10 @@ if (enumKey == 3)
   });
 }
 ~~~
+- Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
+  > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
+- 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
+  > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and all its transform children are destroyed together.
 - C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
 - :star:**그러므로 UnityEngine.Object에 대해 ?.를 붙이는 건 위험하다.**
   > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. 
