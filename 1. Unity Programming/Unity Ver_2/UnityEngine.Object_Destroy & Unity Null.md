@@ -14,11 +14,12 @@
 
 ## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> '?.'은 사용하지 않는다. 
 #### :one: fake-null이란, Unity 내부(C++)에서는 이미 파괴되어 없지만 C# 객체는 살아 있는 상태를 말한다. <br> 다시 말해, Unity에서 == null은 true인데 ?.은 false가 나오는 상태다. <br> :fire: 원인은 UnityEngine.Object를 상속 받는 instance에 대해 사용하는 '=='은 오버로딩 되어 있기 때문이다.
+- ![alt text](./captures/20251020_1.png)
 > For types that inherit from UnityEngine.Object, Unity uses a <ins>custom version</ins> of the C# equality and inequality operators. This means the null check myGameObject == null can evaluate true (and conversely myGameObject != null can evaluate false) even if myGameObject technically holds a valid C# object reference.
 
 > Yes, true null values are detected by both operators. However, Unity is a bit special. <ins>Unity is a C++ engine</ins>, and when it comes to memory management, there are some major issues. In C# you can not destroy any object manually as this is completely in the hand of the garbage collector. References to objects can not suddenly become null in C#.
 
-> Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. So Unity uses a trick. They have overloaded the == operator and the Equals method, and when comparing dead objects to null, those will return true. This is called a <ins>fake null object. It's still a **valid** C# object, **but it can no longer be used** because the actual native object was destroyed.</ins> Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
+> Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. So Unity uses a trick. <ins>They have overloaded the == operator and the Equals method, and when comparing dead objects to null, those will return true. This is called a fake null object. It's still a **valid** C# object, **but it can no longer be used** because the actual native object was destroyed.</ins> Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
 - But 뒤에가 중요한 문구다. 이제 사용할 수 없는!
 
 > That means you can not use the is null or any of the null coalescing operators on variables with a type that is derived from UnityEngine.Object. When those references are truly null, it would work. However in most cases you would encounter a fake null object and an is null check would not see this as null since it's still an instance.
@@ -47,8 +48,6 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 ~~~
 
 <br>
-
-- ![alt text](./captures/20251020_1.png)
 
 ~~~c# 
 //test
