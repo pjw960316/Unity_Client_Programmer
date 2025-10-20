@@ -17,12 +17,11 @@
   - single assembly = Assembly-Csharp.dll 
   - 그러므로 Assembly == DLL로 인식해도 된다. (물론 엄밀히 말하면 좀 다르긴 한데 좀 애매하다.)
 - > An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (.exe) or dynamic link library (.dll) files, and are the building blocks of .NET applications. DLL contains compiled code of functions stored in so called libraries. Programs call these functions found in the DLLs when needed from inside the program executable (or from another library).
-  - MSDN과 Quora를 합친건데, 같다고 봐도 무방하다.
 
 <br><br>
 
 ## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Inteface가 있을 수 있다.
-- **ILSpy 기호**
+#### :one: ILSpy 기호
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
 
@@ -30,9 +29,7 @@
 
 </details>
 
-<br>
-
-- **DLL 파일 경로**
+#### :two: DLL 파일 경로
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
   
@@ -40,9 +37,7 @@
 
 </details>
 
-<br>
-
-- **DLL 파일 하나에는 무수히 많은 NameSpace가 존재 할 수 있다.**
+#### :three: DLL 파일 하나에는 무수히 많은 NameSpace가 존재 할 수 있다.
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
  
@@ -50,9 +45,7 @@
 
 </details>
 
-<br>
-
-- **NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.**
+#### :four:NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
   
@@ -61,9 +54,7 @@
 
 </details>
 
-<br>
-
-- **NameSpace 하나에는 무수히 많은 Interface가 존재 할 수 있다.**
+#### :five:NameSpace 하나에는 무수히 많은 Interface가 존재 할 수 있다.
 <details>
   <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
 
