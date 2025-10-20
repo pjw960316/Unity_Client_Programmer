@@ -89,13 +89,13 @@ public class FieldObjectSparrow : FieldObjectBase
   public List<int> NumberList = new();
   public Eagle EnemyEagle = new();
   public EagleStruct EnemyEagleStruct = new(7); 
-}
 
-//4. [FieldObjectSparrow Class] 데이터 확인
-public void ViewTest()
-{
-  Debug.Log("Params를 넘겨준 쪽 데이터 확인"); 
-  Debug.Log($"{Age}");
+  //4. [FieldObjectSparrow Class] 데이터 확인
+  public void ViewTest()
+  {
+    Debug.Log("Params를 넘겨준 쪽 데이터 확인"); 
+    Debug.Log($"{Age}");
+  }
 }
 ~~~
 
@@ -111,11 +111,6 @@ private void TestStructAndClass(int param)
     Debug.Log($"{param}");
 
     _fieldObjectSparrow.ViewTest();
-}
-
-public void ViewTest()
-{    
-    Debug.Log($"{Age}");
 }
 ~~~
 - 11로 변경해도, 원본은 5로 유지된다.
