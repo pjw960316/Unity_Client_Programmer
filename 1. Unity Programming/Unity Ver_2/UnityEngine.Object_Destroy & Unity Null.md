@@ -47,6 +47,7 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 ~~~
 
 <br>
+
 - Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
   > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
 - 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
