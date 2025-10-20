@@ -82,7 +82,6 @@ if (enumKey == 3)
   });
 }
 ~~~
-- ![alt text](./capture/20251001_2.png)
 - C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
 - :star:**그러므로 UnityEngine.Object에 대해 ?.를 붙이는 건 위험하다.**
   > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. 
