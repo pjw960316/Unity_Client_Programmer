@@ -12,7 +12,7 @@
 
 <br><br>
 
-## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> ?.은 사용하지 않는다. 
+## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> '?.'은 사용하지 않는다. 
 #### :one: fake-null이란, Unity 내부(C++)에서는 이미 파괴되어 없지만 C# 객체는 살아 있는 상태를 말한다. <br> 다시 말해, Unity에서 == null은 true인데 ?.은 false가 나오는 상태다. <br> :fire: 원인은 UnityEngine.Object를 상속 받는 instance에 대해 사용하는 '=='은 오버로딩 되어 있기 때문이다.
 > For types that inherit from UnityEngine.Object, Unity uses a <ins>custom version</ins> of the C# equality and inequality operators. This means the null check myGameObject == null can evaluate true (and conversely myGameObject != null can evaluate false) even if myGameObject technically holds a valid C# object reference.
 
@@ -45,7 +45,6 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
   return flag1 ? !Object.IsNativeObjectAlive(rhs) : lhs.m_InstanceID == rhs.m_InstanceID;
 }
 ~~~
-- ![alt text](./capture/20251001.png)
 
 <br>
 - Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
@@ -86,20 +85,8 @@ if (enumKey == 3)
 - ![alt text](./capture/20251001_2.png)
 - C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
 - :star:**그러므로 UnityEngine.Object에 대해 ?.를 붙이는 건 위험하다.**
-  > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. The operators don’t return the same results as the equality and inequality operators when you use them on a destroyed MonoBehaviour or ScriptableObject while the managed object still exists.
+  > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. 
+  > The operators don’t return the same results as the equality and inequality operators when you use them on a destroyed MonoBehaviour or ScriptableObject while the managed object still exists.
 - :link:[= null'과 'unreachable'은 명백히 다른 개념이다.unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다.참조가 100개 되어 있는데, 고작 1개를 null로 초기화 한다고 unreachable이 되지 않는다](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/21%EC%9E%A5_The%20Managed%20Heap%20and%20Garbage%20Collection.md#fire--null%EA%B3%BC-unreachable%EC%9D%80-%EB%AA%85%EB%B0%B1%ED%9E%88-%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EB%85%90%EC%9D%B4%EB%8B%A4--unreachable%EC%9D%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%9C-%EB%AA%A8%EB%93%A0-%EC%B0%B8%EC%A1%B0%EA%B0%80-null%EC%9D%B4-%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%9C%EB%8B%A4--%EC%B0%B8%EC%A1%B0%EA%B0%80-100%EA%B0%9C-%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94%EB%8D%B0-%EA%B3%A0%EC%9E%91-1%EA%B0%9C%EB%A5%BC-null%EB%A1%9C-%EC%B4%88%EA%B8%B0%ED%99%94-%ED%95%9C%EB%8B%A4%EA%B3%A0-unreachable%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4)
 - :link:[MSDN_1](https://docs.unity3d.com/ScriptReference/Object-operator_eq.html)
 - :link:[MSDN_2](https://docs.unity3d.com/Manual/class-Object.html)
-
-ㅇㅇㅇㅇㅇㅇㅇㅇ
-
-## :fire: Object가 unity null이 되면 <br> unity 세상에서 완전히 죽은(=어떠한 기능도 할 수 없는) Instance로 취급 된다. <br> 그러나 엄밀히 이야기 하면 unity의 null은 C# 문법의 null과는 다르다. <br> 이는 Unity가 C++로 구현되어 그렇다. <br> :fire: unity null 상태의 Object는 GC의 수집대상이다.
-
-
-- 과거에 멘토님이 GameObject에 대해서 ?를 쓰거나 null을 쓸 때 주의하라고 했는데 그 이유가 Unity Null이라 그렇다.
-
-<br><br>
-
-## :star::fire: UnityEngine.Object에 대한 null 사용 방법은 아래를 읽어 본다!
-#### :one: ?.(=null-conditional operator) 그리고 ??(=null-coalescing operator) 사용하지 않기 
-> unfortunately the most reliable approach <ins>is not using it for Unity objects</ins>
