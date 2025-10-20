@@ -9,7 +9,9 @@
 ## :star::star::star: deep-copy와 shallow-copy는 무조건 params의 타입에만 집중한다. :star::star::star: <br> (내부 필드는 신경 쓰지 않는다.) <br> :fire: params가 참조 타입이면 내부 필드가 어떻든 모두 call by ref 처럼 동작해 <br> shallow-copy가 일어난다. <br> :fire: params가 값 타입이면, call by value 처럼 동작해 <br> deep-copy가 일어난다. <br> :fire::bangbang: 그러나 params가 struct면, struct 내부의 value type field는 deep copy가 되고, <br> struct 내부의 reference type field는 shallow copy가된다. <br> 그렇기 때문에, struct 내부에 reference type 필드를 두면 무조건 실수 할 것 이다. <br> 그러므로, struct는 value type으로만 내부 필드를 구성할 때 사용하자. (MSDN도 이를 강조한다.)
 > 참조 타입은 관리되는 힙에 항상 할당된다. 
 
-> [MSDN] AVOID defining a struct unless the type has all of the following characteristics: 
+> [MSDN] 
+
+> AVOID defining a struct unless the type has all of the following characteristics: 
 
 > It logically represents <ins>a single value, similar to primitive types</ins> (int, double, etc.). 
 
