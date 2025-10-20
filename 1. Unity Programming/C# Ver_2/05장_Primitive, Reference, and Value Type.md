@@ -123,7 +123,7 @@ public void ViewTest()
 
 <br>
 
-### :two: instance를 params로 전달하고, <ins>int field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :two: instance를 params로 전달하고, <ins>int field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 O)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -139,7 +139,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-### :three: instance를 params로 전달하고, <ins>String field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :three: instance를 params로 전달하고, <ins>String field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 O)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -154,7 +154,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-### :four: instance를 params로 전달하고, <ins>List<int> field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :four: instance를 params로 전달하고, <ins>List<int> field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 O)
 ~~~c#
 TestStructAndClass(_fieldObjectSparrow);
 
@@ -180,7 +180,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-### :five: instance를 params로 전달하고, <ins>Eagle(Class) field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :five: instance를 params로 전달하고, <ins>Eagle(Class) field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 O)
 ~~~c#
 public class Eagle
 {
@@ -224,7 +224,7 @@ private void TestStructAndClass(FieldObjectSparrow param)
 
 <br>
 
-### :star::six: instance를 params로 전달하고, <ins>Struct field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 X)
+### :star::six: instance를 params로 전달하고, <ins>Struct field</ins>를 변경 <br> params인 FieldObjectSparrow가 Reference type -> 참조 복사 -> shallow-copy (원본 변경 O)
 ~~~c#
 public struct EagleStruct
 {
