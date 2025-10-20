@@ -1,4 +1,4 @@
-## :fire: 직접 Destroy()로 파괴하는 것과 Scene이 변경되어 자동으로 파괴되는 것은 <br> '파괴'의 관점에서는 거의 비슷하다. <br> :fire: 둘 다 UnityEngine.Object(!= C# Object)를 상속 받는 <br> Scene에 존재하는 모든 Instance들을 파괴한다.
+## :fire: 직접 Destroy()로 파괴하는 것과 <br> Scene이 변경되어 자동으로 파괴되는 것은 <br> '파괴'의 관점에서는 거의 비슷하다. <br> :fire: 둘 다 UnityEngine.Object(!= C# Object)를 상속 받는 <br> Scene에 존재하는 모든 Instance들을 파괴한다.
 - Scene이 변경될 때 
   > OnDestroy occurs when a Scene or game ends. Stopping the Play mode when running from inside the Editor will end the application. As this end happens an OnDestroy will be executed. Also, <ins>if a Scene is closed and a new Scene is loaded</ins> the OnDestroy call will be made.
 - Scene이 변경될 때 DontDestroyOnLoad를 사용하지 않으면 Scene의 Object 들은 파괴된다.
@@ -12,9 +12,16 @@
 
 <br><br>
 
-## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 발견할 수 있는 <br> fake-null을 알아보자. 
+## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> ## :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> ?.은 사용하지 않는다. 
 #### :one: fake-null이란, Unity 내부(C++)에서는 이미 파괴되어 없지만 C# 객체는 살아 있는 상태를 말한다. <br> 다시 말해, Unity에서 == null은 true인데 ?.은 false가 나오는 상태다. <br> :fire: 원인은 UnityEngine.Object를 상속 받는 instance에 대해 사용하는 '=='은 오버로딩 되어 있기 때문이다.
 > For types that inherit from UnityEngine.Object, Unity uses a <ins>custom version</ins> of the C# equality and inequality operators. This means the null check myGameObject == null can evaluate true (and conversely myGameObject != null can evaluate false) even if myGameObject technically holds a valid C# object reference.
+
+> Yes, true null values are detected by both operators. However, Unity is a bit special. <ins>Unity is a C++ engine</ins>, and when it comes to memory management, there are some major issues. In C# you can not destroy any object manually as this is completely in the hand of the garbage collector. References to objects can not suddenly become null in C#.
+
+> Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. So Unity uses a trick. They have overloaded the == operator and the Equals method, and when comparing dead objects to null, those will return true. This is called a <ins>fake null object. It's still a **valid** C# object, **but it can no longer be used** because the actual native object was destroyed.</ins> Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
+- But 뒤에가 중요한 문구다. 이제 사용할 수 없는!
+
+> That means you can not use the is null or any of the null coalescing operators on variables with a type that is derived from UnityEngine.Object. When those references are truly null, it would work. However in most cases you would encounter a fake null object and an is null check would not see this as null since it's still an instance.
 
 <br>
 
@@ -87,12 +94,7 @@ if (enumKey == 3)
 ㅇㅇㅇㅇㅇㅇㅇㅇ
 
 ## :fire: Object가 unity null이 되면 <br> unity 세상에서 완전히 죽은(=어떠한 기능도 할 수 없는) Instance로 취급 된다. <br> 그러나 엄밀히 이야기 하면 unity의 null은 C# 문법의 null과는 다르다. <br> 이는 Unity가 C++로 구현되어 그렇다. <br> :fire: unity null 상태의 Object는 GC의 수집대상이다.
-> Yes, true null values are detected by both operators. However, Unity is a bit special. <ins>Unity is a C++ engine</ins>, and when it comes to memory management, there are some major issues. In C# you can not destroy any object manually as this is completely in the hand of the garbage collector. References to objects can not suddenly become null in C#.
 
-> Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. So Unity uses a trick. They have overloaded the == operator and the Equals method, and when comparing dead objects to null, those will return true. This is called a <ins>fake null object. It's still a **valid** C# object, **but it can no longer be used** because the actual native object was destroyed.</ins> Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
-  - But 뒤에가 중요한 문구다. 이제 사용할 수 없는!
-
-> That means you can not use the is null or any of the null coalescing operators on variables with a type that is derived from UnityEngine.Object. When those references are truly null, it would work. However in most cases you would encounter a fake null object and an is null check would not see this as null since it's still an instance.
 
 - 과거에 멘토님이 GameObject에 대해서 ?를 쓰거나 null을 쓸 때 주의하라고 했는데 그 이유가 Unity Null이라 그렇다.
 
