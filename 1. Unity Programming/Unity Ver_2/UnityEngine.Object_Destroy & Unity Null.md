@@ -8,13 +8,13 @@
 <br><br>
 
 ## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> '?.'은 사용하지 않는다. 
-#### :one: 우선 UnityEngine.Object는 C++ 계층의 null과 C#계층의 null이 동시에 존재한다는 걸 인지하고 간다.
+### :one: 우선 UnityEngine.Object는 C++ 계층의 null과 C#계층의 null이 동시에 존재한다는 걸 인지하고 간다.
 - ![alt text](./captures/20251020_1.png)
 > Yes, true null values are detected by both operators. However, Unity is a bit special. <ins>Unity is a C++ engine</ins>, and when it comes to memory management, there are some major issues. In C# you can not destroy any object manually as this is completely in the hand of the garbage collector. <ins>References to objects can not suddenly become null in C#.</ins>
 
 <br>
 
-#### :two::fire: UnityEngine.Object가 Destroy()되면 <br> C++ 계층의 객체는 1프레임 뒤에 null이 된다. <br>반면 C# 계층의 객체는 GC가 수거하기 전까지 메모리에 남아 있으며 <br> 이 시점에서는 ?. 연산 결과가 null이 아니다. :fire: 따라서 C++에서는 이미 null인데, C#에서는 아직 null이 아닌 상태를 fake-null 이라 한다. <br> 이후 GC가 해당 C# 객체를 수거하면, ?.도 null이 되어 <br> 두 계층 모두 완전히 null 상태가 된다.
+### :two::fire: UnityEngine.Object가 Destroy()되면 <br> C++ 계층의 객체는 1프레임 뒤에 null이 된다. <br>반면 C# 계층의 객체는 GC가 수거하기 전까지 메모리에 남아 있으며 <br> 이 시점에서는 ?. 연산 결과가 null이 아니다. <br>:fire: 따라서 C++에서는 이미 null인데, C#에서는 아직 null이 아닌 상태를 fake-null 이라 한다. <br> 이후 GC가 해당 C# 객체를 수거하면, ?.도 null이 되어 <br> 두 계층 모두 완전히 null 상태가 된다.
 > Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. 
 
 > Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
@@ -25,7 +25,7 @@
 
 > That means you can not use the is null or any of the null coalescing operators on variables with a type that is derived from UnityEngine.Object. When those references are truly null, it would work. However in most cases you would encounter a fake null object and an is null check would not see this as null since it's still an instance.
 
-#### :three: 연산자 오버로딩된 UnityEngine.Object에 대한 '=='
+### :three: 연산자 오버로딩된 UnityEngine.Object에 대한 '=='
 ~~~c#
 // Unity API
 public static bool operator ==(Object x, Object y) => Object.CompareBaseObjects(x, y);
@@ -48,7 +48,7 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 
 <br>
 
-#### :four: 실제 테스트 결과 확인한다.
+### :four: 실제 테스트 결과 확인한다.
 ~~~c# 
 //test
 if (enumKey == 3)
