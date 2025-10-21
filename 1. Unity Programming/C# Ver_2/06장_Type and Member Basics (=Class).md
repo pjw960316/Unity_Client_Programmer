@@ -315,6 +315,7 @@ public class PrivateTestSubject
 		foreach (var member in _privateNewImmutableList)
 		{
 			member.Dump();
+			
 		}
 	}
 }
