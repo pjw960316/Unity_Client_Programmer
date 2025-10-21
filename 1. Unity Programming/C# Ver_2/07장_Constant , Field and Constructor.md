@@ -2,7 +2,7 @@
 
 <br><br>
 
-## :fireworks: 두 가지 Initialization 방법 <br> :one: Field Initializer (=Initialization At Declaration) <br> :two: Constructor <br> :fire: Field initializer가 Constructor 보다 먼저 호출된다. <br> :bangbang: 그러므로, Constructor가 Field Initializer를 덮어 씌울 수 있다. <br> :fire: readonly Field는 두 가지 Initialization에서만 할당이 가능하다. <br> Unity의 Awake()나 Start()에서 불가능해서 불편하다.
+## :fireworks: 두 가지 Initialization 방법 <br> :one: Field Initializer (=Initialization At Declaration) <br> :two: Constructor <br> :fire: Field initializer가 Constructor 보다 먼저 호출된다. <br> 그러므로, Constructor가 Field Initializer를 덮어 씌울 수 있다. <br> :fire: readonly Field는 두 가지 Initialization에서만 할당이 가능하다. <br> Unity의 Awake()나 Start()에서 불가능해서 불편하다.
 > Fields are initialized immediately before the constructor for the object instance is called. If the constructor assigns the value of a field, it overwrites any value given during field declaration.
 
 > A read-only field can only be assigned a value during initialization or in a constructor
