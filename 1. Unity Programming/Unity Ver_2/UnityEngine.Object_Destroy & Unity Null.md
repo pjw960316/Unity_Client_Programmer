@@ -7,7 +7,7 @@
 
 <br><br>
 
-## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> '?.'은 사용하지 않는다. 
+## :fireworks: Unity에서 UnityEngine.Object를 상속 받은 instance에서 <br> 발견할 수 있는 fake-null을 알아보자. <br> :fire: UnityEngine.Object에 대해서는 == null만 쓰고 <br> '?.'은 사용하지 않는다. <br> :fire: == null은 유니티에서 오버로딩 되어 C++ 계층의 null과 c# 계층의 null에 대해 이중검사 하기 때문이다.
 ### :one: 우선 UnityEngine.Object는 C++ 계층의 null과 C#계층의 null이 동시에 존재한다는 걸 인지하고 간다.
 - ![alt text](./captures/20251020_1.png)
 > Yes, true null values are detected by both operators. However, Unity is a bit special. <ins>Unity is a C++ engine</ins>, and when it comes to memory management, there are some major issues. In C# you can not destroy any object manually as this is completely in the hand of the garbage collector. <ins>References to objects can not suddenly become null in C#.</ins>
@@ -90,8 +90,8 @@ if (enumKey == 3)
   
   > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and <ins>all its transform children are destroyed together.</ins>
 - **C# 계층의 null 체크**
-  - null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
-- :star:**그러므로 UnityEngine.Object에 대해 ?.를 붙이는 건 위험하다.**
+  - null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 아직 GC 수거 전 이다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
+- :star:**그러므로 UnityEngine.Object에 대해 equals를 사용하여 null 검사를 하거나 ?.를 붙이는 건 위험하다.**
   > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. 
   > The operators don’t return the same results as the equality and inequality operators when you use them on a destroyed MonoBehaviour or ScriptableObject while the managed object still exists.
 - :link:[= null'과 'unreachable'은 명백히 다른 개념이다.unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다.참조가 100개 되어 있는데, 고작 1개를 null로 초기화 한다고 unreachable이 되지 않는다](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/21%EC%9E%A5_The%20Managed%20Heap%20and%20Garbage%20Collection.md#fire--null%EA%B3%BC-unreachable%EC%9D%80-%EB%AA%85%EB%B0%B1%ED%9E%88-%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EB%85%90%EC%9D%B4%EB%8B%A4--unreachable%EC%9D%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%9C-%EB%AA%A8%EB%93%A0-%EC%B0%B8%EC%A1%B0%EA%B0%80-null%EC%9D%B4-%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%9C%EB%8B%A4--%EC%B0%B8%EC%A1%B0%EA%B0%80-100%EA%B0%9C-%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94%EB%8D%B0-%EA%B3%A0%EC%9E%91-1%EA%B0%9C%EB%A5%BC-null%EB%A1%9C-%EC%B4%88%EA%B8%B0%ED%99%94-%ED%95%9C%EB%8B%A4%EA%B3%A0-unreachable%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4)
