@@ -82,14 +82,14 @@ if (enumKey == 3)
 }
 ~~~
 - ![alt text](./captures/20251020_2.png)
-- C++ 계층의 null 체크
-  - 바로 같은 프레임에서 otherSparrow.gameObject의 null 검사는 null이 아니라고 나온다. 그러므로 로그가 찍히지 않는다.
-  - 1 프레임 뒤에서는 otherSparrow.gameObject의 null 검사는 null이고, MissingReferenceException 예외가 발생한다.
-  - 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
+- **C++ 계층의 null 체크**
+  - 바로 같은 프레임에서 otherSparrow.gameObject의 null 검사는 null이 아직 아니다. 그러므로 로그가 찍히지 않는다.
+  - 1 프레임 뒤에서는 otherSparrow.gameObject의 null 검사는 null이다. 그래서 MissingReferenceException 예외가 발생한다.
+  - 1 프레임 뒤에 오브젝트가 게임에서 제거될 때 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
   > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
   
-  > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and all its transform children are destroyed together.
-- C# 계층의 null 체크
+  > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and <ins>all its transform children are destroyed together.</ins>
+- **C# 계층의 null 체크**
   - null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
 - :star:**그러므로 UnityEngine.Object에 대해 ?.를 붙이는 건 위험하다.**
   > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. 
