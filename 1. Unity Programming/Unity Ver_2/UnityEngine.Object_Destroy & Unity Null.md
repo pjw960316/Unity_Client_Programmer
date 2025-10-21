@@ -14,7 +14,7 @@
 
 <br>
 
-### :two::fire: UnityEngine.Object가 Destroy()되면 <br> C++ 계층의 객체는 1프레임 뒤에 null이 된다. <br>반면 C# 계층의 객체는 GC가 수거하기 전까지 메모리에 남아 있으며 <br> 이 시점에서는 ?. 연산 결과가 null이 아니다. <br>:fire: 따라서 C++에서는 이미 null인데, C#에서는 아직 null이 아닌 상태를 fake-null 이라 한다. <br> 이후 GC가 해당 C# 객체를 수거하면, ?.도 null이 되어 <br> 두 계층 모두 완전히 null 상태가 된다.
+### :two::fire: UnityEngine.Object가 Destroy()되면 <br> C++ 계층의 객체는 1 프레임 뒤에 null이 된다. <br>반면 C# 계층의 객체는 GC가 수거하기 전까지 메모리에 남아 있으며 <br> 이 시점에서는 ?. 연산 결과가 null이 아니다. <br>:fire: 따라서 C++에서는 이미 null인데, C#에서는 아직 null이 아닌 상태를 <ins>fake-null</ins> 이라 한다. <br> 이후 GC가 해당 C# 객체를 수거하면, ?.도 null이 되어 <br> 두 계층 모두 완전히 null 상태가 된다.
 > Since native (C++) objects in Unity can be destroyed at any time, this creates an issue with the C# scripting layer. A GameObject or other Component reference can not magically become null. 
 
 > Most built-in components and classes in Unity are just C# wrapper classes which have a native object behind the scenes. (Every class derived from UnityEngine.Object)
@@ -25,7 +25,9 @@
 
 > That means you can not use the is null or any of the null coalescing operators on variables with a type that is derived from UnityEngine.Object. When those references are truly null, it would work. However in most cases you would encounter a fake null object and an is null check would not see this as null since it's still an instance.
 
-### :three: 연산자 오버로딩된 UnityEngine.Object에 대한 '=='
+<br>
+
+### :three: 연산자 오버로딩된 UnityEngine.Object에 대한 Unity code'=='
 ~~~c#
 // Unity API
 public static bool operator ==(Object x, Object y) => Object.CompareBaseObjects(x, y);
@@ -48,7 +50,7 @@ private static bool CompareBaseObjects(Object lhs, Object rhs)
 
 <br>
 
-### :four: 실제 테스트 결과 확인한다.
+### :four: 실제 테스트 결과 확인한다. <br> 테스트가 가독성은 좀 떨어진다.
 ~~~c# 
 //test
 if (enumKey == 3)
@@ -80,11 +82,15 @@ if (enumKey == 3)
 }
 ~~~
 - ![alt text](./captures/20251020_2.png)
-- Destroy()는 1 프레임 뒤에 게임 오브젝트를 제거하므로 C++ 레벨에서는 null이 된다. 그래서 MissingReferenceException이 발생한다.
+- C++ 계층의 null 체크
+  - 바로 같은 프레임에서 otherSparrow.gameObject의 null 검사는 null이 아니라고 나온다. 그러므로 로그가 찍히지 않는다.
+  - 1 프레임 뒤에서는 otherSparrow.gameObject의 null 검사는 null이고, MissingReferenceException 예외가 발생한다.
+  - 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
   > The object is not immediately destroyed. Actual object destruction is delayed until after the current Update loop, but before rendering.
-- 하위 컴포넌트(script 포함)도 같은 프레임에 제거 된다.
+  
   > If the object is a component, only that component is removed and destroyed. If the object is a GameObject, the GameObject, all its components, and all its transform children are destroyed together.
-- C# 레벨에서 null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
+- C# 계층의 null 체크
+  - null을 검사하는 ?.에서는 프레임 상관없이 모두 null이 아니라고 판정하고 있다. 그래서 otherSparrow?.DefaultSparrowSpeed가 출력되고 있다.
 - :star:**그러므로 UnityEngine.Object에 대해 ?.를 붙이는 건 위험하다.**
   > Because you can’t overload the ?? and ?. operators, they aren’t compatible with objects that derive from UnityEngine.Object. 
   > The operators don’t return the same results as the equality and inequality operators when you use them on a destroyed MonoBehaviour or ScriptableObject while the managed object still exists.
