@@ -1,4 +1,4 @@
-## :fire: View에서는 Awake()가 있기 때문에 BindEvent를 <ins>최상단</ins>에서 호출한다. :fire:[장점] : 하위 타입에서 초기 세팅 함수에 대한 호출 순서에 대한 고민을 하지 않아도 된다. <br> View(내부 Widget 포함)의 Initialize() 세팅이 모두 완료된 후에 <br> Presenter에서 View에 주입할 데이터를 안전하게 SetView() 가능하다.  <br> 또한 abstract로 구현의 책임을 부여하기 때문에 구현도 반드시 하게 된다. <br> :fire:[단점] : 하위 타입 어딘가에서 Initialize() 내부에 BindEvent()를 넣었을 때 발생하는 예외에 대해 무방비 할 수 있다. <br> Initialize()가 끝나지 않았는데 어디선가 BindEvent를 하여 null-exception이 발생 할 수 있다.
+## :fire: View에서는 Awake()가 있기 때문에 BindEvent를 <ins>최상단</ins>에서 호출한다. <br> :fire:[장점] : 하위 타입에서 초기 세팅 함수에 대한 호출 순서에 대한 고민을 하지 않아도 된다. <br> View(내부 Widget 포함)의 Initialize() 세팅이 모두 완료된 후에 <br> Presenter에서 View에 주입할 데이터를 안전하게 SetView() 가능하다.  <br> 또한 abstract로 구현의 책임을 부여하기 때문에 구현도 반드시 하게 된다. <br> :fire:[단점] : 하위 타입 어딘가에서 Initialize() 내부에 BindEvent()를 넣었을 때 발생하는 예외에 대해 무방비 할 수 있다. <br> Initialize()가 끝나지 않았는데 어디선가 BindEvent를 하여 null-exception이 발생 할 수 있다.
 ~~~c#
 // Class : UIPopupBase
 private void Awake()
