@@ -23,7 +23,26 @@
 
 ## :fire::three: Model의 특징 및 주의사항
 #### 1. 절대로 View를 멤버로 갖지 않는다.
-#### 2. :bangbang: ScriptableObject로 구현된 Model의 경우, Model Instance가 생성되면 Field들이 메모리에 로드된다. 그러나 AudioClip은 설정을 해줘야 메모리에 로드된다.
+
+<br>
+
+#### 2. ScriptableObject, Xml, MVP 구조에서 presenter와 붙는 스크립트 모두 모델이다. <br> 그러나 ScriptableObject와 Xml은 Manager Class로 관리되기 때문에 조금은 일반 모델과 다르게 바라본다.
+~~~c#
+public class AlarmData : ScriptableObject, IModel
+
+public class ScriptableObjectManager : ManagerBase<ScriptableObjectManager>
+{
+    #region 1. Fields
+
+    private List<ScriptableObject> _scriptableObjectList = new();
+}
+~~~
+- AlarmData의 경우 Model이므로 IModel을 상속 받지만, ScriptableObject도 상속받는다.
+- ScriptableObjectManager에서는 List<ScriptableObject> _scriptableObjectList 타입으로 생성시킨다. 그로 인해 IModel 보다는 더 특정하게 ScriptableObject로 관리한다.
+
+<br>
+
+#### 3. :bangbang: ScriptableObject로 구현된 Model의 경우, Model Instance가 생성되면 Field들이 메모리에 로드된다. 그러나 AudioClip은 설정을 해줘야 메모리에 로드된다.
 - ![alt text](./captures/20250902.png)
 ~~~c#
 public class AlarmData : ScriptableObject, IModel
