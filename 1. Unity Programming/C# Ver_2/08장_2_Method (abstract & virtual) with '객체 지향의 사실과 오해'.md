@@ -28,8 +28,8 @@
 
 <br><br>
 
-## :fireworks: Interface 와 Abstract를 책을 통해 이해한 내용을 스스로 정리했다. <br> 이상한 엘리스의 예시 대신 나의 예시로 변경했다. <br> 아래까지 다 읽는다. 
-### :one: Interface / Abstract / concrete <br> :fire: 한국 군대 조직을 생각해보면, 국군의 날 행사가 있다. <br> :fire: Interface는 대통령이다. <br> :fire: Abstract class와 Concrete class 모두 대통령 산하 장성들이다. <br> Abstract class는 국방부 장관이다. <br> Concrete Class는 육군대장, 해군대장, 공군대장, 이하 장성들이다. <br> Abstract class 와 abstract method를 엄밀히 구분할 필요는 없다. 둘이 의미하는 건 동일하다.
+## :fireworks: interface 와 abstract를 책을 통해 이해한 내용을 스스로 정리했다. <br> 이상한 엘리스의 예시 대신 나의 예시로 변경했다. <br> 아래까지 다 읽는다. 
+### :one: interface / abstract / concrete / sealed <br> :fire: 한국 군대 조직을 생각해보면, 국군의 날 행사가 있다. <br> :fire: interface는 대통령이다. <br> :fire: abstract class와 concrete class 모두 대통령 산하 장성들이다. <br> :fire:abstract class는 국방부 장관이다. <br> :fire:concrete Class는 육군대장, 해군대장, 공군대장, 이하 장성들이다. <br> :fire:abstract class 와 abstract method를 엄밀히 구분할 필요는 없다. 둘이 의미하는 건 동일하다.
 - 대통령은 세계 정상회의에서 앞으로의 군대 정책을 외부(public) 정상들에게 발표할 책임이 있다. 
 - 국방부 장관은 육군,해군,공군의 군대 정책을 각각의 대장들로부터 대통령의 지침을 바탕으로 세부 내용 준비를 강제시킬 책임이 있다.
   - 국방부 장관 : "각 군(육·해·공)은 대통령의 지침을 바탕으로 세부 내용을 준비하라". 
@@ -47,7 +47,11 @@
 
 > A return type of a method isn't part of the signature of the method for the purposes of method overloading. However, it's part of the signature of the method when determining the compatibility between a delegate and the method that it points to.
 
-### :two::fire: Abstract method는 국방부 장관이 아무것도 정해주지 않고 <br> '정책 세부 내용 준비하라'는 책임만 강제한 method이다. <br>:fire: virtual method는 국방부 장관이 '정책 세부 내용 준비'를 하고, <br> '정책 세부 내용 준비'를 대장들이 하지 않으면 <br> 자신이 준비한 '정책 세부 내용'을 전달하는 것 이다. <br> 대장들은 자신의 '정책 세부 내용'국방부 장관의 '정책 세부 내용'을 포함시킬 수도 있고, 포함시키지 않을 수도 있다.
+<br>
+
+### :two:abstract / virtual <br>:fire: abstract method는 국방부 장관이 아무것도 정해주지 않고 <br> '정책 세부 내용 준비하라'는 책임만 강제한 method이다. <br>:fire: virtual method는 국방부 장관이 '정책 세부 내용 준비'를 하고, <br> '정책 세부 내용 준비'를 대장들이 하지 않으면 <br> 자신이 준비한 '정책 세부 내용'을 전달하는 것 이다. <br> 대장들은 자신의 '정책 세부 내용'국방부 장관의 '정책 세부 내용'을 포함시킬 수도 있고, 포함시키지 않을 수도 있다.
+
+<br>
 
 ### :three: 코드
 ~~~c#
