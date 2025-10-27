@@ -187,3 +187,60 @@ protected sealed override void BindEvent()
 ## :fire: BindEvent()를 public으로 만들고 factory에서 호출하기 <br>:fire: 외부에서 Initialize() 호출 이후에, BindEvent()를 호출하면 <br> 1번과 2번의 장점을 모두 이용한다. <br> :fire: 그러나 BindEvent()를 public으로 빼는 건 캡슐화를 깨는 게 맞는가?에 대해서는 의문이다.
 
 <br><br>
+
+## :fire: Widget의 Initialize()의 경우 Widget을 들고 있는 Popup에서 호출될 수 있도록 <br> Public으로 구현한다. <br> :fire: 각자의 Awake()의 시점을 알 수 없기 때문에 Popup에서 Widget의 Initialize() 시점을 명시적으로 선언한다. 
+#### Widget의 initialize()를 public으로 구현한 모습
+~~~c#
+// UIButtonBase (Widget)
+public void Awake()
+{
+    Initialize();
+
+    BindEvent();
+}
+
+//public으로 해서, popup에서 제어해야 시점을 명확히 시킨다.
+public virtual void Initialize()
+{
+    _uiManager = UIManager.Instance;
+    _stringManager = StringManager.Instance;
+    _soundManager = SoundManager.Instance;
+    _buttonImage = _button.image;
+
+    UpdateButtonAutoText();
+}
+~~~
+
+#### Popup에서 Widget을 들고 있고, 본인의 Initialize() 타이밍에 직접 호출해서 시점을 명확히 한다.
+~~~c#
+
+// UIAlarmPopup : UIPopupBase
+[SerializeField] private List<UIAlarmButton> _alarmAudioClipButtons = new();
+[SerializeField] private List<UIAlarmButton> _alarmTimeButtons = new();
+
+protected sealed override void Initialize()
+{
+    base.Initialize();
+
+    InitializeWidgets();
+}
+
+protected override void InitializeEPopupKey()
+{
+    _ePopupKey = EPopupKey.AlarmPopup;
+}
+
+// note : popup이 widget의 initialize 제어권을 가져, 시점을 조절한다. (awake는 시점을 알 수 없으니)
+private void InitializeWidgets()
+{
+    foreach (var widget in AlarmAudioClipButtons)
+    {
+        widget.Initialize();
+    }
+
+    foreach (var widget in AlarmTimeButtons)
+    {
+        widget.Initialize();
+    }
+}
+~~~
