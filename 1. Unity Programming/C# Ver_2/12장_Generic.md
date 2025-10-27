@@ -1,4 +1,4 @@
-## :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>굳이 추상화 하지말고 전해주면 된다! <br> 그게 Generic이다.
+## :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> :fire: 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>굳이 추상화 하지말고 전해주면 된다. 그게 Generic이다.
 
 #### [호출부에서 명시적인 타입을 알면 Generic을 써서 전달하자]
 ~~~c#
@@ -34,3 +34,12 @@ public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresent
 ~~~
 - UIAlarmPopup은 AlarmPresenter와 자신이 비슷한 추상화 정도 인 걸 알고, 자신이 AlarmPresenter가 갖고 있는 책임은 수행할 필요가 있다고 판단한다.
 - Generic으로 자신이 원하는 Presenter의 explicit Type을 전달해서 얻어낸다.
+
+<br><br>
+
+## :fire: Interface 상속 + Generic Constraint를 같이 쓸 때 문법.
+~~~c#
+public abstract class ManagerBase<T> : IManager
+    where T : class, new()
+{}
+~~~
