@@ -28,15 +28,18 @@
 
 <br><br>
 
-## :fire: Interface 그리고 Abstract Method는 책임을 강제한다는 공통점이 있지만 <br> 미묘한 차이점 또한 존재한다. <br> :fire: Interface는 책임을 강제해서 외부에 제공하도록 한다. <br> :fire: Abstract Method는 책임을 강제함과 동시에 <br> 이 기능은 반드시 override해서 구현해야 한다는 책임까지 강제한다. <br> 수행 방향은 제공하지 않는다. <br>:fire: Virtual method는 책임 수행 방향을 조언 할 수 도 있다. (base에 body를 적으니) <br> :fire: 3가지 키워드 모두 책임을 강제하거나 책임의 수행 방향 까지 조언 할 수 있으나<br> Method Call ('요청')을 강요하지는 않는다.
+## :fireworks: Interface 와 Abstract를 책을 통해 이해한 내용을 스스로 정리했다. <br> 이상한 엘리스의 예시 대신 나의 예시로 변경했다. <br> 아래까지 다 읽는다. 
+### :one: Interface / Abstract / concrete <br> :fire: 한국 군대 조직을 생각해보면, 국군의 날 행사가 있다. <br> :fire: Interface는 대통령이다. <br> :fire: Abstract class와 Concrete class 모두 대통령 산하 장성들이다. <br> Abstract class는 국방부 장관이다. <br> Concrete Class는 육군대장, 해군대장, 공군대장, 이하 장성들이다. <br> Abstract class 와 abstract method를 엄밀히 구분할 필요는 없다. 둘이 의미하는 건 동일하다.
+- 대통령은 세계 정상회의에서 앞으로의 군대 정책을 외부(public) 정상들에게 발표할 책임이 있다. 
+- 국방부 장관은 육군,해군,공군의 군대 정책을 각각의 대장들로부터 대통령의 지침을 바탕으로 세부 내용 준비를 강제시킬 책임이 있다.
+  - 국방부 장관 : "각 군(육·해·공)은 대통령의 지침을 바탕으로 세부 내용을 준비하라". 
+- 육군대장, 해군대장, 공군대장은 각자 군대 정책의 실제 발표 내용을 구현할 책임이 있다. (이 구현 또한 별 3개 -> 별 2개 -> 별 1개한테 계속 책임을 부여할 수 있다.) 
+- 그리고 장성이 아닌 계급에서는 일급 비밀에 관여 할 수 없으므로 장성 이하에서는 sealed 처리로 block 한다.
+- 대통령은 정상회의에 가서 당연히 군대 정책을 발표할 책임이 있는데 수행하지 못하면? 한국은 망한다. 
+- 국방부 장관이 대통령에게 세부 내용 지침을 전달하지 못하면? 국방부 장관은 책임을 다하지 못하고 사퇴한다.
+- 대장들이 국방부 장관에게 세부 내용 지침을 전달하지 못하면? 대장들은 책임을 다하지 못하고 사퇴한다.
+  - method body를 구현하지 않은 것은 무시하도록 한다.
 > Interfaces are about exposing a contract. “You can use this thing this way”. Abstract classes are used for shared functionality. “Here’s a toolkit in building this class, implement one or two methods and you’re set.” They have a bit of overlap. Many abstract classes also implement interfaces. It’s not uncommon to see where something that takes in the interface, but there’s a base class that provides a lot of common functionality.
-> 왕은 '재판을 수행해라'는 요청에 응답해야 하므로 '재판을 수행할' 책임을 지게 된다.
-- 여기서 '재판을 수행'하는 것에만 집중해야 한다.
-- '어떻게 재판을 수행'은 나중일이고, 이건 '책임 수행'에서 구현한다. 또한 이 것은 설계 단계에서 method 구현을 당장 고민하지 않음을 방증한다.
-> 객체가 다른 객체로 부터 받은 요청을 처리하기 위해 객체가 수행하는 행동을 책임이라고 한다. 객체지향 설계의 핵심은 올바른 책임을 올바른 객체에게 할당하는 것이다.
-- 직장에서 항상 고민하던 '이 Method(책임)는 어디에 넣어햐 하지'는 사실 객체지향 설계의 핵심이었다.
-
-<br>
 
 > 행동은 결국 객체가 협력에 참여하면서 완수해야 하는 책임을 의미한다.
 
@@ -44,60 +47,48 @@
 
 > A return type of a method isn't part of the signature of the method for the purposes of method overloading. However, it's part of the signature of the method when determining the compatibility between a delegate and the method that it points to.
 
-<br><br>
+### :two::fire: Abstract method는 국방부 장관이 아무것도 정해주지 않고 <br> '정책 세부 내용 준비하라'는 책임만 강제한 method이다. <br>:fire: virtual method는 국방부 장관이 '정책 세부 내용 준비'를 하고, <br> '정책 세부 내용 준비'를 대장들이 하지 않으면 <br> 자신이 준비한 '정책 세부 내용'을 전달하는 것 이다. <br> 대장들은 자신의 '정책 세부 내용'국방부 장관의 '정책 세부 내용'을 포함시킬 수도 있고, 포함시키지 않을 수도 있다.
 
-## :star::fire: 책임은 Interface로 구현한다. <br> :fire: 책임 수행의 중복은 Abstract Class로 구현한다. <br> :fire: 또한, Interface는 public으로 구현하기에 외부에서 호출될 책임을 구현하고 <br> Abstract는 protected와 private으로 내부의 책임을 구현하는 방향을 지향한다.  
-- 예를 들어, 모든 Popup은 OnAwake()를 구현해서 Initialize()의 책임을 상속 구조로 수행하도록 할 것 이다. 그렇다고 OnAwake()를 Public으로 할 필요는 없다. 그러므로, OnAwake()의 책임은 유지하고, 내부에서 호출되어야 하기 때문에 Abstract Class에 구현한다.
-
-#### [Manager class(=Concrete Class)의 Interface 와 Abstract Class 구분]
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
-
+### :three: 코드
 ~~~c#
-public interface IManager : IFactory
+internal interface IPresenter // 대통령
 {
-    public void Initialize();
-    public void SetModel(IEnumerable<ScriptableObject> _list);
-    public void ConnectInstanceByActivator(IManager instance);
+    public void Initialize(IView view);
+
+    public void SetView();
+
+    public void BindEvent();
 }
 
-// Note
-// 공통로직을 담는 메서드가 굳이 IManager를 상속 받을 필요 없다.
-public abstract class ManagerBase<T> where T : class, new()
+public abstract class PresenterBase : IPresenter // 국방부 장관
 {
-    private static T _instance;
-
-    public static T Instance
+    public virtual void Initialize(IView view)
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new T();
-            }
+        _soundManager = SoundManager.Instance;
+        _uiToastManager = UIToastManager.Instance;
+        _uiManager = UIManager.Instance;
+        _myCharacterManager = MyCharacterManager.Instance;
+        _scriptableObjectManager = ScriptableObjectManager.Instance;
+        _stringManager = StringManager.Instance;
+        _presenterManager = PresenterManager.Instance;
+        _serverManager = MockServerManager.Instance;
+        _view = view;
 
-            return _instance;
-        }
+        InitializeView();
+        InitializeModel();
     }
 
-    public virtual void ConnectInstanceByActivator(IManager instance)
-    {
-        if (_instance == null)
-        {
-            _instance = instance as T;
-        }
-    }
+    public abstract void SetView();
+
+    public abstract void BindEvent();
+
+    protected abstract void InitializeView();
+
+    protected abstract void InitializeModel();
 }
 ~~~
-
-</details>
-
-- Concrete Manager들을 구현하다 보니, ConnectInstanceByActivator의 책임 수행(=메서드 구현)이 같고, 코드의 중복이 발생했다. 이를 Generic으로 처리하면 중복을 줄일 수 있다고 판단했다. 그로 인해, Abstract Class를 구현했고, 메서드를 구현하여 책임 수행에 대한 기본 수행 로직을 제공하지만, 변경에도 자유로울 수 있도록 virtual로 선언했다.
-- :link:[Abstract class or interface? Why not both?](https://www.youtube.com/watch?v=5aCUhnSN00k)
 
 <br><br>
 
 ## :fire: Method Call('요청')은 Unirx의 Subject 와 Observable로 강제하거나 <br> Event(+Unity Event) System을 통해 강제 시킬 수 있다.
 - 책임도 강제가 되고, 요청도 강제가 되면 설계자가 다른 프로그래머에게 내 의도를 강제 시킬 수 있다. 
-
-<br><br>
