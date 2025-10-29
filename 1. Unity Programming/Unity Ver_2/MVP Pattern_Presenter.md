@@ -64,7 +64,7 @@ private void OnStartAlarmSystem()
 
 <br>
 
-### :two: Presenter -> View는 올바르다. <br> 그러나 Presenter와 Connect된 View가 Popup이라고 가정할 때, Presenter는 그 Popup이 들고 있는 Widget(small view)에는 직접 접근하면 안 된다. <br> :fire: 다시 말해, Presenter가 직접 Widget을 Setting하면 안 된다.
+### :two: Presenter -> View는 올바르다. <br> :fire: 그러나 Presenter와 Connect된 View가 Popup이라고 가정할 때 <br> Presenter는 그 Popup이 들고 있는 Widget(small view)에는 직접 접근하면 안 된다. <br> :fire: 다시 말해, Presenter가 직접 Widget을 Setting하면 안 된다.
 - 캡슐화 관점에서 Popup(big-view)은 자신의 field은 Widget들(small-view)를 private이나 protected로 숨겨야 한다.
 - 그러므로, Presenter의 SetView로 Widget의 데이터를 세팅할 때 Presenter -> Popup(big-view) -> Widgets(small-view)를 구조로 구현해야 한다.
 - Presenter가 widget의 세부 구현에 관여하면 SRP 위반이다.
