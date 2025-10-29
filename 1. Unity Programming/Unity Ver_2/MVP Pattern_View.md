@@ -21,6 +21,8 @@ private void OnClickQuitAlarmButton()
 - View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
 - View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
 
+<br>
+
 ### :two: Popup(=Big View)이 Widget(=Small View)을 들고 있는 구조로 구현한다.
 - Widget의 실행 흐름과 Data Injection을 Popup에서 담당한다.
 > extracting the button into a component that lets you control these different variants with props would save a lot of time of creating it on the fly each time. same with inputs/titles, there maybe the repeated variants across your app that would be easier to manage by extracting a component. Everything is a trade off though. I'm not saying doing this every time is the right way, for example I also think that trying to make every single thing reusable can overcomplicate things if you take it too far.
@@ -35,6 +37,8 @@ private void OnClickQuitAlarmButton()
 
 - ![alt text](./captures/20250711.png)
 </details>
+
+<br>
 
 ### :three::question: 로직이 중요하지 않은 단순 transform 계산, render 수정의 경우 View에서 처리해도 무방하다. <br> :fire: GameScene에 존재하는 GameObject의 Transform, Animation, Rendering 같은 기능을 구현해도 무방하다. <br> 그리고 이걸 public으로 presenter에 제공한다. <br> :fire: 로직과 무관한 단순한 데이터는 View가 들고 있어도 무방하다.
 - 모든 걸 View - Presenter - Model로 구분하면 좋겠지만, 오히려 View에서만 처리하는 게 간편할 때도 분명 존재한다.
