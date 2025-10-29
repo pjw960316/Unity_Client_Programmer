@@ -25,17 +25,16 @@ private void OnClickQuitAlarmButton()
 
 ### :two: Popup(=Big View)이 Widget(=Small View)을 들고 있는 구조로 구현한다.
 - Widget의 실행 흐름과 Data Injection을 Popup에서 담당한다.
-> extracting the button into a component that lets you control these different variants with props would save a lot of time of creating it on the fly each time. same with inputs/titles, there maybe the repeated variants across your app that would be easier to manage by extracting a component. Everything is a trade off though. I'm not saying doing this every time is the right way, for example I also think that trying to make every single thing reusable can overcomplicate things if you take it too far.
 - Popup 안에 있는 Button을 Widget화 시켜서 스크립트를 만들어 관리한다. 중복을 줄여 유지보수에 큰 도움을 준다.
+> extracting the button into a component that lets you control these different variants with props would save a lot of time of creating it on the fly each time. same with inputs/titles, there maybe the repeated variants across your app that would be easier to manage by extracting a component. Everything is a trade off though. I'm not saying doing this every time is the right way, for example I also think that trying to make every single thing reusable can overcomplicate things if you take it too far.
 - :link:[Do you create a component for every element? ](https://www.reddit.com/r/reactjs/comments/kp356z/do_you_create_a_component_for_every_element/)
-- View는 필드로 다른 view를 들고 있는 경우가 대부분이다. (예를 들면, Popup 내부에는 여러 개의 Button이 있다.) 구현 초기에는, Popup에서 모든 하위 View들을 필드로 관리하는 데 어려움이 없다.
-- 그러나 추후에 하위 View들이 거대해지면서 코드의 중복이 생기기 시작한다. 이 때가 필드로 들고 있던 view를 독립적인 새로운 View Script를 빼서 관리해야 할 때다.
-- 회사에서는 이걸 widget화 한다고 배웠었다
-- #### [회사에서 적어 놓은 내용]
+- Popup은 다수의 widget을 별 일 없으면 들고 있다. 구현 초기에는, Popup에서 widget들을 필드로 관리하는 데 어려움이 없다. 그러나 추후에 widget들이 거대해지면서 코드의 중복이 생기기 시작했다. 이 때가 필드로 들고 있던 view를 독립적인 새로운 View Script를 빼서 관리해야 할 때라고 생각한다.
+- #### [회사에서는 이걸 widget화 한다고 배웠었다]
 <details>
   <summary> :point_up_2: 눌러서 이미지를 확인 합니다.  </summary>
 
 - ![alt text](./captures/20250711.png)
+
 </details>
 
 <br>
@@ -66,24 +65,56 @@ public void ChangeAnimalPath(int angle)
   - 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
   - Model 과 Manager가 필요 없고, View 갱신만 담당하기에 로직임에도 View Script에 구현해도 문제가 없다.
 
-
 <br><br>
 
-## :fire::three: View의 특징
-#### 1. 아무것도 모르는 멍청이로 구현 할수록 올바른 View의 형태다.
+## :fireworks: View의 특징
+### :one: 아무것도 모르는 멍청이로 구현 할수록 올바른 View의 형태다.
 > View is Humble
 - 뷰는 데이터를 화면으로 전달하는 간단한 일만 처리하도록 만든다.
   > 예시 : App은 Presenter에 Date 객체를 전달한다. 그러면 Presenter는 해당 데이터를 적절한 포맷의 문자열로 만들고, 이 문자열을 View Model이라고 부르는 간단한 데이터 구조에 담는다. 그러면 View는 View Model에 이 데이터를 찾는다.
   - 복잡한 로직처리가 필요할 때는 바로 Presenter로 넘긴다.
-#### 2.절대로 Model을 멤버로 갖지 않는다.
+### :two: 절대로 Model을 멤버로 갖지 않는다.
 > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
 - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
-#### 3. Presenter를 들고 있지 않는다. Presenter -> View를 하도록 Presenter에게 자신가 자신을 이용하도록 한다.
+### :three: Presenter를 들고 있지 않는다. Presenter -> View를 하도록 Presenter만 자신을 들고 있도록 한다.
 > In the Model-View-Presenter (MVP) architectural pattern, the View component exposes public methods to allow the Presenter to interact with and manipulate the User Interface (UI). These public methods represent the contract between the Presenter and the View, defining how the Presenter can instruct the View to display data, update UI elements, or perform other UI-related actions. 
 - View가 Presenter를 들고 있지 않으면 단방향 의존성이라는 좋은 설계가 이루어진다. 
 - Presenter -> View로 프로젝트를 구현했다. 그러다 보니 실수로 View에서 Presenter에 접근할 때 무수히 많은 getter가 필요했었다. 그러다보니 뭔가 이상함을 느끼고 Presenter -> View를 하는 게 맞음을 다시 깨닫고 구현을 수정했다. 
 > If you want to implement MVP by the book and stay true to its principals, every UI that has user interaction should have a presenter. In this case, if your activity is not interacting with the user, there is no need to have a presenter, and your fragments can have their own. If your activity needs, let's say show a loading to the user because of some data loading prior to show the fragments (this is a user interaction because you are interacting with the user to let them know that something is happening so they should wait), then might be good to consider having a presenter for the activity.
 - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
 - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
-#### 4.구현 순서  :  View Initialize() & Widget Initialize() -> View에서 Presenter 생성 -> Presenter는 생성되면서 Presenter Initialize() -> Presenter가 SetView()를 통해 Manager 또는 Model에서 받아온 Data로 View에 Inject하여 Data를 세팅한다.
-> We already know how the widgets should look, therefore, we call setupScreen() first. Then, we call activate() the presenter, which, if required, can read the relevant data from the model (like data from the previous screens or from hardware) and call functions available in the view to update the state of the widgets
+~~~c#
+
+// presenter는 model과 view를 들고 있다.
+public abstract class PresenterBase : IPresenter
+{
+    protected SoundManager _soundManager;
+    protected UIManager _uiManager;
+    protected UIToastManager _uiToastManager;
+    protected ScriptableObjectManager _scriptableObjectManager;
+    protected MyCharacterManager _myCharacterManager;
+    protected StringManager _stringManager;
+    protected PresenterManager _presenterManager;
+    protected MockServerManager _serverManager;
+
+    protected IView _view;
+    protected IModel _model;
+
+    protected readonly CompositeDisposable _disposable = new();
+}
+
+// view는 presenter, model 아무것도 들고 있지 않고 있다.
+public abstract class FieldObjectBase : MonoBehaviour, IView
+{
+    protected PresenterManager _presenterManager;
+    protected FieldObjectManager _fieldObjectManager;
+    protected EFieldObject _eFieldObjectKey;
+    protected int _instanceID;
+    
+    private Transform _fieldObjectTransform;
+    
+    private readonly Subject<Unit> _onDestroyFieldObject = new();
+
+    #endregion
+}
+~~~
