@@ -13,7 +13,7 @@
 
 ### :three: Enum을 관리할 책임이 있다.
 - Class 외부에 선언하지 않도록 주의한다. (Scope)
-- ![alt text](./captures/20250715.png)
+- ![alt text](./captures/20251029.png)
 
 <br>
 
@@ -28,7 +28,11 @@
 
 <br>
 
-### :two: ScriptableObject, Xml, MVP 구조에서 presenter와 붙는 스크립트 모두 모델이다. <br> 그러나 ScriptableObject와 Xml은 Manager Class로 관리되기 때문에 조금은 일반 모델과 다르게 바라본다.
+### :two: 다음 3가지 (ScriptableObject, Xml, FieldObjectAnimalData 같은 IModel 구현 클래스)는 모두 모델이다. <br> 그러나 ScriptableObject와 Xml은 Manager Class로 관리되기 때문에 일반 모델과는 조금 구분해서 구현한다.
+~~~c#
+public class FieldObjectAnimalData : IModel
+~~~
+
 ~~~c#
 public class AlarmData : ScriptableObject, IModel
 
@@ -36,7 +40,7 @@ public class ScriptableObjectManager : ManagerBase<ScriptableObjectManager>
 {
     #region 1. Fields
 
-    private List<ScriptableObject> _scriptableObjectList = new();
+    private List<ScriptableObject> _scriptableObjectList = new(); //IModel 대신에 ScriptableObject로 타입을 명시한다.
 }
 ~~~
 - AlarmData의 경우 Model이므로 IModel을 상속 받지만, ScriptableObject도 상속받는다.
