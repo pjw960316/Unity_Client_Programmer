@@ -1,51 +1,67 @@
-## :fireworks: View는 UI의 View와 Field의 FieldObject(Monobehaviour 상속 받는 GameObject)를 모두 포괄하는 개념이다. 
+## :fireworks: View는 UI의 View와 Field의 FieldObject(Monobehaviour 상속 받는 GameObject)를 <br> 모두 포괄하는 개념이다. 
 
 <br><br>
 
-## :fire::one: View의 역할 및 책임
-#### 1. View는 User의 Input을 받고 Presenter에게 알리는 역할만 하면 된다.
+## :fireworks: View의 역할 및 책임
+### :one: User의 Input을 받고 Presenter에게 알릴 책임이 있다. <br> :fire: Unirx의 publish/subscribe 구조에서 <br> view는 publisher를 담당하여 Iobservable을 Presenter에게 제공한다. 
 > the View is responsible for handling user input.
+~~~c#
+// UniRx
+private readonly Subject<Unit> _onQuitAlarm = new();
+public IObservable<Unit> OnQuitAlarm => _onQuitAlarm; // Presenter에게 제공
 
-#### 2. Popup(=Big View)이 Widget(=Small View)을 들고 있는 형태로 View는 구성되어 있다.
-#### 3. View는 Pub/Sub 구조에서 publisher의 역할을 갖고 있다.
+// User의 Click만 감지하고 제공할 뿐. 아무것도 하지 않는다.
+private void OnClickQuitAlarmButton()
+{
+  _onQuitAlarm.OnNext(default);
+  
+  _uiToastManager.ShowToast(EToastStringKey.EAlarmQuit);
+}
+~~~
 - View는 User의 Input을 받기 때문에 이벤트를 만들고 발행 시킬 수 있다. (Subject)
 - View는 자신과 loose하게 연관된 Presenter에게 이벤트를 구독하도록 제공한다. (IObservable)
-#### 4. Game Scene에 존재하는 GameObject의 Transform, Animation, Rendering 같은 기능을 구현할 책임이 있다.
 
-<br><br>
-
-## :fire::two: View가 멤버로 들고 있을 것
-#### 1. 자신보다 작은 개념의 Widget(=small View)
+### :two: Popup(=Big View)이 Widget(=Small View)을 들고 있는 구조로 구현한다.
+- Widget의 실행 흐름과 Data Injection을 Popup에서 담당한다.
 > extracting the button into a component that lets you control these different variants with props would save a lot of time of creating it on the fly each time. same with inputs/titles, there maybe the repeated variants across your app that would be easier to manage by extracting a component. Everything is a trade off though. I'm not saying doing this every time is the right way, for example I also think that trying to make every single thing reusable can overcomplicate things if you take it too far.
 - Popup 안에 있는 Button을 Widget화 시켜서 스크립트를 만들어 관리한다. 중복을 줄여 유지보수에 큰 도움을 준다.
 - :link:[Do you create a component for every element? ](https://www.reddit.com/r/reactjs/comments/kp356z/do_you_create_a_component_for_every_element/)
 - View는 필드로 다른 view를 들고 있는 경우가 대부분이다. (예를 들면, Popup 내부에는 여러 개의 Button이 있다.) 구현 초기에는, Popup에서 모든 하위 View들을 필드로 관리하는 데 어려움이 없다.
 - 그러나 추후에 하위 View들이 거대해지면서 코드의 중복이 생기기 시작한다. 이 때가 필드로 들고 있던 view를 독립적인 새로운 View Script를 빼서 관리해야 할 때다.
 - 회사에서는 이걸 widget화 한다고 배웠었다
-
-#### [회사에서 적어 놓은 내용]
+- #### [회사에서 적어 놓은 내용]
 <details>
   <summary> :point_up_2: 눌러서 이미지를 확인 합니다.  </summary>
 
 - ![alt text](./captures/20250711.png)
-
 </details>
 
-#### 2. private Subject & public IObservable
-- View에서는 event를 감지만 하고, event handle logic은 Presenter에서 처리하도록 rx를 제공만 한다. 
-- 예시 코드
-  - private readonly Subject<Unit> _onSoundButtonClicked = new();
-  - public IObservable<Unit> OnSoundButtonClicked => _onSoundButtonClicked;
+### :three::question: 로직이 중요하지 않은 단순 transform 계산, render 수정의 경우 View에서 처리해도 무방하다. <br> :fire: GameScene에 존재하는 GameObject의 Transform, Animation, Rendering 같은 기능을 구현해도 무방하다. <br> 그리고 이걸 public으로 presenter에 제공한다. <br> :fire: 로직과 무관한 단순한 데이터는 View가 들고 있어도 무방하다.
+- 모든 걸 View - Presenter - Model로 구분하면 좋겠지만, 오히려 View에서만 처리하는 게 간편할 때도 분명 존재한다.
+~~~c#
+// View에서 Monobehaviour을 상속 받아야 사용할 수 있는 필드의 계산은
+// 본인이 직접 구현하고 외부에 public으로 제공한다.
+public void RotateToFaceCollisionObject()
+{
+  var path = _currentCollision.transform.position - FieldObjectTransform.position;
+  var facePath = Quaternion.LookRotation(path);
+  
+  FieldObjectTransform.rotation = facePath;
+}
 
-#### 3. Presenter가 MonoBehaviour를 통한 View 갱신을 요청 할 때, 그걸 줄 수 있는 Public Get Method
+public void ChangeAnimalPath(int angle)
+{
+  FieldObjectTransform.Rotate(new Vector3(0, angle, 0));
+  UpdateAnimalMovement();
+}
+~~~
+- 단순한 position 계산, scale 계산 같은 순수 UI 수치 계산은 View에서 처리해도 무방하다.
+- > For me it depends on what data we're talking about. If there is any UI component that has any potential business logic tied with it, I'd prefer to keep it in my ViewModel (as a standalone state or part of a UiState data class as Lackner does it). However suppose we have a toggle which <ins>just changes appearances and has nothing to do with any of your app's business logic, I'd keep that in my compose code as that is Ui centric logic.</ins>
+- ![alt text](./captures/20250722_1.png)
+- ![alt text](./captures/20250722.png)
+  - 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
+  - Model 과 Manager가 필요 없고, View 갱신만 담당하기에 로직임에도 View Script에 구현해도 문제가 없다.
 
-#### 4. Presenter를 통해 Model과 Manager에 접근 할 필요 없는 수준의 UI 갱신 데이터(=field)와 로직(=method)
-  - 단순한 position 계산, scale 계산 같은 순수 UI 수치 계산은 View에서 처리해도 무방하다.
-  - > For me it depends on what data we're talking about. If there is any UI component that has any potential business logic tied with it, I'd prefer to keep it in my ViewModel (as a standalone state or part of a UiState data class as Lackner does it). However suppose we have a toggle which <ins>just changes appearances and has nothing to do with any of your app's business logic, I'd keep that in my compose code as that is Ui centric logic.</ins>
-  - ![alt text](./captures/20250722_1.png)
-  - ![alt text](./captures/20250722.png)
-    - 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
-    - Model 과 Manager가 필요 없고, View 갱신만 담당하기에 로직임에도 View Script에 구현해도 문제가 없다.
 
 <br><br>
 
