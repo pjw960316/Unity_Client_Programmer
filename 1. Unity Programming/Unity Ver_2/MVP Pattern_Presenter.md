@@ -1,5 +1,5 @@
 ## :fireworks: Presenter의 역할 및 책임
-### :one: View 와 Model 사이를 연결하는 **중재자(mediator)**다.
+### :one: View 와 Model 사이를 연결하는 **중재자**다.
 > View로부터 입력 이벤트를 받으면 Model을 업데이트하고, Model의 결과를 다시 View로 전달해 화면을 갱신하는 일을 맡습니다.
   - View에서 받은 Input으로 인한 변경사항을 Model에 전달하여 Model의 Data를 변경하고, Model로 부터 Data를 Get해서 View를 통해 보여지는 화면을 갱신한다.
 - Presenter가 1대1로 Model과 View를 연결하는 Unit 단위 연결 통로라면, Presenter들 끼리의 소통은 Manager를 통해 한다.
@@ -53,7 +53,7 @@ private void OnStartAlarmSystem()
 <br><br>
 
 ## :fireworks: Presenter의 특징
-### :one: View와 1대1로 대응하고, View와 Presenter가 묶인 것을 V-P라고 할 때 <br> 여러 개의 V-P가 1개의 model을 참조하는 구조를 채택하도록 한다.
+### :one: View와 Presenter는 1:1로 대응되어야 한다. <br>:fire: View와 Presenter가 묶인 것을 V-P라고 할 때 <br> 여러 개의 V-P가 1개의 model을 참조하는 구조를 채택하도록 한다.
 - two views - one presenter로 구현을 해보았다. 의존성이 매우 높아서 고칠 때 답이 없었다.
   - 1번 view를 close할 때 2번 view 동작시에 1번 view의 동작에 여전히 접근할 수 있지만 null이다.
   - 생명 주기를 presenter가 담당하기에 벅차다.
