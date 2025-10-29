@@ -59,7 +59,7 @@ public void ChangeAnimalPath(int angle)
 }
 ~~~
 - 단순한 position 계산, scale 계산 같은 순수 UI 수치 계산은 View에서 처리해도 무방하다.
-- > For me it depends on what data we're talking about. If there is any UI component that has any potential business logic tied with it, I'd prefer to keep it in my ViewModel (as a standalone state or part of a UiState data class as Lackner does it). However suppose we have a toggle which <ins>just changes appearances and has nothing to do with any of your app's business logic, I'd keep that in my compose code as that is Ui centric logic.</ins>
+> For me it depends on what data we're talking about. If there is any UI component that has any potential business logic tied with it, I'd prefer to keep it in my ViewModel (as a standalone state or part of a UiState data class as Lackner does it). However suppose we have a toggle which <ins>just changes appearances and has nothing to do with any of your app's business logic, I'd keep that in my compose code as that is Ui centric logic.</ins>
 - ![alt text](./captures/20250722_1.png)
 - ![alt text](./captures/20250722.png)
   - 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
@@ -73,13 +73,19 @@ public void ChangeAnimalPath(int angle)
 - 뷰는 데이터를 화면으로 전달하는 간단한 일만 처리하도록 만든다.
   > 예시 : App은 Presenter에 Date 객체를 전달한다. 그러면 Presenter는 해당 데이터를 적절한 포맷의 문자열로 만들고, 이 문자열을 View Model이라고 부르는 간단한 데이터 구조에 담는다. 그러면 View는 View Model에 이 데이터를 찾는다.
   - 복잡한 로직처리가 필요할 때는 바로 Presenter로 넘긴다.
-### :two: 절대로 Model을 멤버로 갖지 않는다.
+
+<br>
+
+### :two: 절대로 Model을 들고 있지 않는다.
 > Since Passive View makes the widgets entirely humble, without even a mapping present, Passive View eliminates even the small risk present with Presentation Model. 
 - :link:[MatinFowler MVP](https://martinfowler.com/eaaDev/uiArchs.html) 
-### :three: Presenter를 들고 있지 않는다. Presenter -> View를 하도록 Presenter만 자신을 들고 있도록 한다.
+
+<br>
+
+### :three: Presenter를 들고 있지 않는다. <br> Presenter -> View를 하도록 Presenter만 자신을 들고 있도록 한다.
 > In the Model-View-Presenter (MVP) architectural pattern, the View component exposes public methods to allow the Presenter to interact with and manipulate the User Interface (UI). These public methods represent the contract between the Presenter and the View, defining how the Presenter can instruct the View to display data, update UI elements, or perform other UI-related actions. 
 - View가 Presenter를 들고 있지 않으면 단방향 의존성이라는 좋은 설계가 이루어진다. 
-- Presenter -> View로 프로젝트를 구현했다. 그러다 보니 실수로 View에서 Presenter에 접근할 때 무수히 많은 getter가 필요했었다. 그러다보니 뭔가 이상함을 느끼고 Presenter -> View를 하는 게 맞음을 다시 깨닫고 구현을 수정했다. 
+- Presenter -> View로 프로젝트를 구현했다. 그러다 보니 실수로 View에서 Presenter에 접근할 때 무수히 많은 getter가 필요했었다. 이상함을 느끼고 Presenter -> View를 하는 게 맞음을 깨닫고 구현을 수정했다. 
 > If you want to implement MVP by the book and stay true to its principals, every UI that has user interaction should have a presenter. In this case, if your activity is not interacting with the user, there is no need to have a presenter, and your fragments can have their own. If your activity needs, let's say show a loading to the user because of some data loading prior to show the fragments (this is a user interaction because you are interacting with the user to let them know that something is happening so they should wait), then might be good to consider having a presenter for the activity.
 - :link:[Model-View-Presenter implementation thoughts](https://softwareengineering.stackexchange.com/questions/60774/model-view-presenter-implementation-thoughts?utm_source=chatgpt.com)
 - :link:[The Model-View-Presenter pattern and its implementation in ASP.NET](https://www.codeproject.com/Articles/5388787/The-Model-View-Presenter-pattern-and-its-implement)
@@ -114,7 +120,5 @@ public abstract class FieldObjectBase : MonoBehaviour, IView
     private Transform _fieldObjectTransform;
     
     private readonly Subject<Unit> _onDestroyFieldObject = new();
-
-    #endregion
 }
 ~~~
