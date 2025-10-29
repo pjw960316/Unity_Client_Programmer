@@ -1,32 +1,34 @@
-## :fire::one: Model의 역할 및 책임
-#### 1. Presenter 또는 Manager가 데이터를 요청 할 때 get, set, update를 담당할 책임이 있다.
-- :star: Get, Set, Update는 매우 단순한 동작을 처리해야 한다. 
-- 그러므로, Presenter 또는 Manager에서 Get, Set, Update를 단순하게 처리 할 수 있게 가공하는 로직을 구현해야 한다.
+## :fireworks: Model의 역할 및 책임
+### :one: Presenter 또는 Manager가 데이터를 요청 할 때 get, set, update를 담당할 책임이 있다.
+- Get, Set, Update는 매우 단순한 동작을 처리해야 한다. 
 
-<br><br>
+<br>
 
-## :fire::two: Model이 멤버로 들고 있을 것
-#### 1. private으로 캡슐화 시킨 일반 타입의 데이터 필드
-- 외부에서 접근을 public getter property 또는 public getter method로 구현해서 Property에게 제공한다.
-#### 2.Container 
-- private 형태의 외부 접근 불가한 기본 Container(List, Dictionary) 
-- public 형태의 외부 접근 가능한 ImmutableContainer의 Getter Property
+### :two: 캡슐화를 최우선적으로 지킨다. <br> private으로 데이터를 관리하고, public property로 getter만 오픈한다.
+- Field의 경우 private back field + public getter property의 구조로 데이터를 관리한다.
+- Container의 경우 private 형태의 외부 접근 불가한 기본 Container(List, Dictionary)로 관리하고, public 형태의 외부 접근 가능한 ImmutableContainer의 Getter Property로 관리한다.
 - :link:[06장_Type and Member Basics (=Class).md](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/06%EC%9E%A5_Type%20and%20Member%20Basics%20(%3DClass).md)
-#### 3. Enum
+
+<br>
+
+### :three: Enum을 관리할 책임이 있다.
 - Class 외부에 선언하지 않도록 주의한다. (Scope)
 - ![alt text](./captures/20250715.png)
-#### 4. ReactiveProperty (Unirx)
+
+<br>
+
+### :four: ReactiveProperty (Unirx)
 - State field를 private reactiveProperty로 구현하고 public Iobservable을 제공한다. 
 - 그러면 상태 변경에 따라 호출되는 method를 구독 시킬 수 있다.
 
 <br><br>
 
-## :fire::three: Model의 특징 및 주의사항
-#### 1. 절대로 View를 멤버로 갖지 않는다.
+## :fireworks: Model의 특징 및 주의사항
+### :one: 절대로 View를 멤버로 갖지 않는다.
 
 <br>
 
-#### 2. ScriptableObject, Xml, MVP 구조에서 presenter와 붙는 스크립트 모두 모델이다. <br> 그러나 ScriptableObject와 Xml은 Manager Class로 관리되기 때문에 조금은 일반 모델과 다르게 바라본다.
+### :two: ScriptableObject, Xml, MVP 구조에서 presenter와 붙는 스크립트 모두 모델이다. <br> 그러나 ScriptableObject와 Xml은 Manager Class로 관리되기 때문에 조금은 일반 모델과 다르게 바라본다.
 ~~~c#
 public class AlarmData : ScriptableObject, IModel
 
@@ -42,7 +44,7 @@ public class ScriptableObjectManager : ManagerBase<ScriptableObjectManager>
 
 <br>
 
-#### 3. :bangbang: ScriptableObject로 구현된 Model의 경우, Model Instance가 생성되면 Field들이 메모리에 로드된다. 그러나 AudioClip은 설정을 해줘야 메모리에 로드된다.
+### :three: ScriptableObject로 구현된 Model의 경우, Model Instance가 생성되면 Field들이 메모리에 로드된다. 그러나 AudioClip은 설정을 해줘야 메모리에 로드된다.
 - ![alt text](./captures/20250902.png)
 ~~~c#
 public class AlarmData : ScriptableObject, IModel
