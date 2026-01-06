@@ -1,12 +1,12 @@
 # :whale: C# 
-- **2025년 ~  **  :  ✈️[C# Ver_2](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/C%23%20Ver_2)
+- **2025년 ~  2026년**  :  ✈️[C# Ver_2](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/C%23%20Ver_2)
 - **2023년 ~ 2024년**  :  ✈️[C# Ver_1](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/C%23%20Ver_1)
-
+- **알고리즘 문제풀이**  :  ✈️[Algorithm](https://persistent-hoverfly-e3c.notion.site/2bc29daafd6680bcb5dae4f1b98f1cde)
 
 <br><br><br>
 
 # :dove: Unity
-- **2025년**  :  ✈️[Unity Ver_2](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Unity%20Ver_2)
+- **2025년 ~ 2026년**  :  ✈️[Unity Ver_2](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Unity%20Ver_2)
 - **2023년 ~ 2024년**  :  ✈️[Unity Ver_1](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Unity%20Ver_1)
 
 <br><br><br>
