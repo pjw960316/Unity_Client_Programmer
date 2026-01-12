@@ -16,6 +16,12 @@
 - ✈️[My Coding GuideLine](https://persistent-hoverfly-e3c.notion.site/My-Coding-GuideLine-1d129daafd668071bad8cd865abf59b4)
 
 <br><br><br>
+
+# :cherry_blossom: Algorithm Habit
+- [대학생 시절 C++](https://solved.ac/profile/pjw960316/solved)
+- [C#](https://solved.ac/profile/csharphabit/solved)
+
+<br><br><br>
   
 # 🥅 목표
 - **Ver_1은 직장 다닐 때 작성했습니다.**
