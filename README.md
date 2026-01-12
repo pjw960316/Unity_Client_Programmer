@@ -18,8 +18,8 @@
 <br><br><br>
 
 # :cherry_blossom: Algorithm Habit
-- [대학생 시절 C++](https://solved.ac/profile/pjw960316/solved)
-- [C#](https://solved.ac/profile/csharphabit/solved)
+- [대학생 시절 C++](https://www.acmicpc.net/user/pjw960316)
+- [C#](https://www.acmicpc.net/user/csharphabit)
 
 <br><br><br>
   
