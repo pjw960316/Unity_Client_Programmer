@@ -18,8 +18,10 @@
 <br><br><br>
 
 # :cherry_blossom: Algorithm Habit
-- [대학생 시절 C++](https://www.acmicpc.net/user/pjw960316)
-- [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
+- **대학 시절 C++**
+  - [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
+- **2026년부터 진행중인 C# 취미**
+  - [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
 
 <br><br><br>
   
