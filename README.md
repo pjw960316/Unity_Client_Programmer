@@ -20,9 +20,12 @@
 # :cherry_blossom: Algorithm Habit
 - **대학 시절 C++**
 <br>
+
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
+  
 - **2026년부터 진행중인 C# 취미**
 <br>
+
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
 
 <br><br><br>
