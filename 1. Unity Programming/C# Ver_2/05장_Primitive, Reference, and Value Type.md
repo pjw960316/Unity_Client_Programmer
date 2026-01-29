@@ -25,7 +25,9 @@
 
 - :link:[Adding a reference to a list c# struct](https://stackoverflow.com/questions/13690509/adding-a-reference-to-a-list-c-sharp-struct?utm_source=chatgpt.com)
 
-## :fire: ValueType(int, ValueTuple, struct)를 ICollection<T>의 T로 사용 할 때 원본을 변경하지 않는다. <br> 값 복사한 후 대입을 하는 것 이다. (int의 경우 눈속임이 발생하고, valueTuple과 struct는 컴파일러가 에러를 발생시켜 사전 차단한다.)
+<br><br>
+
+## :fire: ValueType(int, ValueTuple, struct)를 ICollection<T>의 T로 사용 할 때 원본을 변경하지 않는다. <br> 값 복사한 후 대입을 하는 것 이다. <br> (int의 경우 눈속임이 발생하고, valueTuple과 struct는 컴파일러가 에러를 발생시켜 사전 차단한다.)
 #### [int, valueTuple, struct, class -> 4가지를 List의 T로 사용]
 ~~~c#
 public struct NumberStruct
