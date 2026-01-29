@@ -6,8 +6,11 @@
 
 <br><br>
 
-## :fire:
-
+## :fireworks: DTO를 만들 때 상황에 맞게 valueTuple 또는 struct 또는 class를 선택해서 만들 수 있어야 한다. <br>
+## :fire: 데이터가 2개면 ValueTuple을 사용한다. Item1과 Item2가 valueType 또는 ReferenceType 이어도 상관없다.<br>
+## :fire: 데이터가 3개 이상이고, 모든 데이터가 변경이 되지 않고, valueType이면 struct를 사용한다. <br>
+## :fire: 데이터가 3개 이상이지만, 데이터의 변경이 발생하고, 데이터 중 1개라도 referenceType이면 class를 사용한다. 
+#### 1. MSDN과 StackOverFlow 모두 이를 뒷받침 해준다.
 > [MSDN] 
 
 > AVOID defining a struct unless the type has all of the following characteristics: 
@@ -19,6 +22,65 @@
 > It is immutable. 
 
 > It will not have to be boxed frequently. In all other cases, you should define your types as classes.
+
+- :link:[Adding a reference to a list c# struct](https://stackoverflow.com/questions/13690509/adding-a-reference-to-a-list-c-sharp-struct?utm_source=chatgpt.com)
+
+#### 2. struct에 List<T>를 넣으면 컴파일 에러가 발생할 가능성이 높아진다.
+~~~c#
+public struct Skill
+{
+	public int SkillId;
+	public int Level;
+	
+	public Skill(int a , int b)
+	{
+		SkillId = a;
+		Level = b;		
+	}
+}
+
+public class SkillClass
+{
+	public int SkillId;
+	public int Level;
+
+	public SkillClass(int a, int b)
+	{
+		SkillId = a;
+		Level = b;
+	}
+}
+
+public class TestManager
+{
+	static void Main()
+	{
+		Skill qSkill = new Skill(111,1);
+		Skill wSkill = new Skill(222,2);
+		SkillClass eSkill = new SkillClass(333,3);
+		
+		var list = new List<Skill>();
+		list.Add(qSkill);
+		list.Add(wSkill);
+
+		var list2 = new List<SkillClass>();
+		list2.Add(eSkill);
+		
+		// complie ERROR CS1612
+		//list[0].Level = 3;
+		
+		list2[0].Level = 77;
+		list2[0].Level.Dump(); //result : 77
+	}
+}
+~~~
+> An attempt was made to modify a value type that is produced as the result of an intermediate expression but is not stored in a variable. This error can occur when you attempt to directly modify a struct in a generic collection
+
+> This error occurs because value types are copied on assignment. When you retrieve a value type from a property or indexer, you are getting a copy of the object, not a reference to the object itself. The copy that is returned is not stored by the property or indexer because they are actually methods, not storage locations (variables). You must store the copy into a variable that you declare before you can modify it.
+
+>The error does not occur with reference types because a property or indexer in that case returns a reference to an existing object, which is a storage location.
+
+>If you are defining the class or struct, you can resolve this error by modifying your property declaration to provide access to the members of a struct. If you are writing client code, you can resolve the error by creating your own instance of the struct, modifying its fields, and then assigning the entire struct back to the property. As a third alternative, <ins>you can change your struct to a class. </ins>
 
 <br><br>
 
