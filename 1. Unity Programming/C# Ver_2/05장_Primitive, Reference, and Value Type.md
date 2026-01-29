@@ -82,7 +82,7 @@ void Main()
 	classList[0].Dump(); // 얘는 원본이 변경된다.
 }
 ~~~
-- ![alt text](./capture/20260129.png)
+![alt text](./capture/20260129.png)
 - intList[0] = 2는 사실 컴파일러가 이렇게 동작시킨다. 그러니까 **원본을 참조해서 변경하는 것 처럼 보였다.**
 ~~~c#
 int temp = intList[0]; // 값 복사
