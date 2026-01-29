@@ -10,7 +10,7 @@
 ## :fire: 데이터가 2개면 ValueTuple을 사용한다. Item1과 Item2가 valueType 또는 ReferenceType 이어도 상관없다.<br>
 ## :fire: 데이터가 3개 이상이고, 모든 데이터가 변경이 되지 않고, valueType이면 struct를 사용한다. <br>
 ## :fire: 데이터가 3개 이상이지만, 데이터의 변경이 발생하고, 데이터 중 1개라도 referenceType이면 class를 사용한다. 
-#### 1. MSDN과 StackOverFlow 모두 이를 뒷받침 해준다.
+- MSDN과 StackOverFlow 모두 이를 뒷받침 해준다.
 > [MSDN] 
 
 > AVOID defining a struct unless the type has all of the following characteristics: 
@@ -25,62 +25,79 @@
 
 - :link:[Adding a reference to a list c# struct](https://stackoverflow.com/questions/13690509/adding-a-reference-to-a-list-c-sharp-struct?utm_source=chatgpt.com)
 
-#### 2. struct에 List<T>를 넣으면 컴파일 에러가 발생할 가능성이 높아진다.
+## :fire: ValueType(int, ValueTuple, struct)를 ICollection<T>의 T로 사용 할 때 원본을 변경하지 않는다. <br> 값 복사한 후 대입을 하는 것 이다. (int의 경우 눈속임이 발생하고, valueTuple과 struct는 컴파일러가 에러를 발생시켜 사전 차단한다.)
+#### [int, valueTuple, struct, class -> 4가지를 List의 T로 사용]
 ~~~c#
-public struct Skill
+public struct NumberStruct
 {
-	public int SkillId;
-	public int Level;
+	public int Num1;
+	public int Num2;
 	
-	public Skill(int a , int b)
+	public NumberStruct(int a , int b)
 	{
-		SkillId = a;
-		Level = b;		
+		Num1 = a;
+		Num2 = b;
 	}
 }
 
-public class SkillClass
+public class NumberClass
 {
-	public int SkillId;
-	public int Level;
+	public int Num1;
+	public int Num2;
 
-	public SkillClass(int a, int b)
+	public NumberClass(int a, int b)
 	{
-		SkillId = a;
-		Level = b;
+		Num1 = a;
+		Num2 = b;
 	}
 }
 
-public class TestManager
+void Main()
 {
-	static void Main()
-	{
-		Skill qSkill = new Skill(111,1);
-		Skill wSkill = new Skill(222,2);
-		SkillClass eSkill = new SkillClass(333,3);
-		
-		var list = new List<Skill>();
-		list.Add(qSkill);
-		list.Add(wSkill);
+	// 1. Int
+	var intList = new List<int>();
+	intList.Add(1);
+	intList[0] = 2;
+	intList[0].Dump(); 
 
-		var list2 = new List<SkillClass>();
-		list2.Add(eSkill);
-		
-		// complie ERROR CS1612
-		//list[0].Level = 3;
-		
-		list2[0].Level = 77;
-		list2[0].Level.Dump(); //result : 77
-	}
+	//2. Struct
+	var structList = new List<NumberStruct>();
+	structList.Add(new NumberStruct(1, 2));
+	structList[0].Dump(); 
+	
+	// compile ERROR
+	//structList[0].Num1 = 3;  
+
+	//3. ValueTuple
+	var tupleList = new List<(int, int)>();
+	tupleList.Add((1 , 2));
+	tupleList[0].Dump();
+	
+	// compile ERROR
+	//tupleList[0].Item1 = 3;
+
+	//4. Class
+	var classList = new List<NumberClass>();
+	classList.Add(new NumberClass(1, 2));
+	classList[0].Num1 = 5; 
+	classList[0].Dump(); // 얘는 원본이 변경된다.
 }
 ~~~
-> An attempt was made to modify a value type that is produced as the result of an intermediate expression but is not stored in a variable. This error can occur when you attempt to directly modify a struct in a generic collection
-
-> This error occurs because value types are copied on assignment. When you retrieve a value type from a property or indexer, you are getting a copy of the object, not a reference to the object itself. The copy that is returned is not stored by the property or indexer because they are actually methods, not storage locations (variables). You must store the copy into a variable that you declare before you can modify it.
-
->The error does not occur with reference types because a property or indexer in that case returns a reference to an existing object, which is a storage location.
-
->If you are defining the class or struct, you can resolve this error by modifying your property declaration to provide access to the members of a struct. If you are writing client code, you can resolve the error by creating your own instance of the struct, modifying its fields, and then assigning the entire struct back to the property. As a third alternative, <ins>you can change your struct to a class. </ins>
+- ![alt text](./capture/20260129.png)
+- intList[0] = 2는 사실 컴파일러가 이렇게 동작시킨다. 그러니까 **원본을 참조해서 변경하는 것 처럼 보였다.**
+~~~c#
+int temp = intList[0]; // 값 복사
+temp = 2;              // 값 변경
+intList[0] = temp;     // 다시 넣기
+~~~
+- 그러나 structList[0].Num1 = 3; // ❌인 이유는
+~~~c#
+NumberStruct temp = structList[0]; // 값 복사
+temp.Num1 = 3;                     // 복사본 수정
+// 여기서 모호함이 발생하기에 C#은 컴파일에러를 낸다.
+~~~
+- valueTuple은 struct와 동일한 원리를 갖는다.
+- class는 컴파일러가 값 복사를 하지 않고 참조를 하기 때문에 원본을 실제로 변경한다.
 
 <br><br>
 
