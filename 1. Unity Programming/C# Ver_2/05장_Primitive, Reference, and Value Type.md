@@ -7,6 +7,8 @@
 <br><br>
 
 ## :fireworks: DTO를 만들 때 상황에 맞게 valueTuple 또는 struct 또는 class를 선택해서 만들 수 있어야 한다. <br> :fire: 데이터가 2개면 ValueTuple을 사용한다. Item1과 Item2가 valueType 또는 ReferenceType 이어도 상관없다.<br> :fire: 데이터가 3개 이상이고, 모든 데이터가 변경이 되지 않고, valueType이면 struct를 사용한다. <br> :fire: 데이터가 3개 이상이지만, 데이터의 변경이 발생하고, 데이터 중 1개라도 referenceType이면 class를 사용한다. 
+
+#### 1. 자료 근거 
 - MSDN과 StackOverFlow 모두 이를 뒷받침 해준다.
 > [MSDN] 
 
@@ -21,6 +23,38 @@
 > It will not have to be boxed frequently. In all other cases, you should define your types as classes.
 
 - :link:[Adding a reference to a list c# struct](https://stackoverflow.com/questions/13690509/adding-a-reference-to-a-list-c-sharp-struct?utm_source=chatgpt.com)
+
+#### 2. Struct로 사용 할 수 있으면 struct를 사용하면 좋은 이유
+![alt text](./capture/20260130.png)
+- 아래는 DTO를 class로 만들었을 때, 위에는 DTO를 struct로 만들었을 때의 차이.
+- 해당 문제에서 DTO instance의 값을 변경하는 시도는 하지 않았고, 모든 멤버가 int기 때문에 struct로 사용했다.
+~~~c#
+public class DTO
+{
+    public int row;
+    public int col;
+    public int day;
+            
+    public DTO(int a, int b , int c)
+    {
+        row = a;
+        col = b;
+        day = c;
+    }
+}
+
+public class CSharpHabit
+{
+    static void Main()
+    {
+		// 생략
+
+        var queue = new Queue<DTO>();
+
+		//생략
+	}
+}
+~~~
 
 <br><br>
 
