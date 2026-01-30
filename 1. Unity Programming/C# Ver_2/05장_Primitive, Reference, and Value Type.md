@@ -100,7 +100,7 @@ temp.Num1 = 3;                     // 복사본 수정
 
 <br><br>
 
-## :fireworks: Queue<(StringBuilder , int)> queue로 이해하기 <br> :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> 타겟 객체의 최종 타입 (Queue -> ValueTuple -> StringBuilder니까 StringBuilder)이 어떤 타입인지 판단하면 된다. <br> :fire::star: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
+## :fireworks: Queue<(StringBuilder , int)> queue로 이해하기 <br> :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> :fire: 타겟 객체의 최종 타입 (Queue -> ValueTuple -> StringBuilder니까 StringBuilder)이 <br> 어떤 타입인지 판단하면 된다. <br> :star: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
 ~~~c#
 void Main()
 {
