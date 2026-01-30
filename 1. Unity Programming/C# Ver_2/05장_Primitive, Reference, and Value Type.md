@@ -100,6 +100,28 @@ temp.Num1 = 3;                     // 복사본 수정
 
 <br><br>
 
+## :fireworks: Queue<(StringBuilder , int)> queue로 이해하기 <br> :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> 타겟 객체의 최종 타입 (Queue -> ValueTuple -> StringBuilder니까 StringBuilder)이 어떤 타입인지 판단하면 된다. <br> :fire::star: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
+~~~c#
+void Main()
+{
+	Queue<(StringBuilder,int)> queue = new Queue<(System.Text.StringBuilder, int)>();
+	StringBuilder sb = new StringBuilder();
+	
+	queue.Enqueue((sb,1));
+	
+	sb.Append("a");
+	sb.Append("b");
+	queue.Peek().Item1.Append("c");
+	queue.Peek().ToString().Dump();
+}
+
+// result = (abc,1)
+~~~
+- 결과가 (abc,1)이 나온다. queue.Peek()을 통해 ValueTuple의 값 복사로 새로운 ValueTuple이 생성되지만 그 안에는 sb의 주소를 동일하게 저장하고 있다.
+- 그러므로, 결국 같은 StringBuilder 객체인 sb를 참조해서 원본이 변경된다.
+
+<br><br>
+
 ## :fire: Boxing을 피하고 싶다면 arrayList 대신에 List<T>를 쓰자. <br> :fire: 아래 그림과 내용을 읽고, 왜 박싱이 좋지 않은 지 이해한다. <br> :fire: 어차피 arrayList는 Legacy다.
 ![alt text](./capture/202504232.png)
 - ArrayList에서 최종적으로 도달한 두 개의 int 객체는 각각 값 1과 2를 저장하는 <ins>Boxing된 객체</ins>이다.
