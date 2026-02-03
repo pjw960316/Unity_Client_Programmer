@@ -197,7 +197,7 @@ void Main()
 
 <br><br>
 
-## :fireworks: .ToString()을 통해 Boxing을 이해한다. <br> ##:fire: .ToString()의 구조를 파악하면 Boxing이 발생하지 않음을 알고 편하게 사용이 가능하다.
+## :fireworks: .ToString()을 통해 Boxing을 이해한다. <br> 위 그림은 Object의, 아래 그림은 Int32의 .ToString() <br> :fire: .ToString()의 구조를 파악하면 Boxing이 발생하지 않음을 알고 편하게 사용이 가능하다.
 ![alt text](./capture/20260203_1.png)
 ![alt text](./capture/20260203_2.png)
 - 보통 타입 정도는 명시적으로 알고 사용을 하기 때문에, MS에서 제공하는 override 된 .ToString()을 사용하게 된다.
