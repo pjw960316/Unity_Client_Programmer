@@ -3,6 +3,7 @@
 - Value Type 중 Primitive Type은 모두 struct다.
 - <ins>소문자 string과 대문자 String은 완벽히 동일</ins>하다.
   - > C#의 string 키워드는 FCL 타입인 System.String으로 정확하게 연결되기 때문에, 둘 사이에는 전혀 차이점이 없기 때문이다.
+- Value Type은 System.ValueType 타입으로부터 항상 상속된다.
 
 <br><br>
 
@@ -24,7 +25,12 @@
 
 - :link:[Adding a reference to a list c# struct](https://stackoverflow.com/questions/13690509/adding-a-reference-to-a-list-c-sharp-struct?utm_source=chatgpt.com)
 
-#### 2. Struct로 사용 할 수 있으면 struct를 사용하면 좋은 이유
+#### 2. :book: 제프리
+> 값 타입의 변수를 다른 값 타입의 변수로 대입하려고 할 때, 필드 단위로 하나씩 복제가 이루어지게 된다. 그러나 참조 타입의 변수끼리 대입이 발생하면 단순히 메모리 주소만 복제된다.
+
+> 어떤 객체 하나를 두 개 이상의 참조 타입 변수가 가리키는 일이 있을 수 있으며, 이 때 어떤 변수 하나에서 연산을 실행하면 그 결과가 다른 변수에도 그대로 영향을 주게 된다. 달리 말하면, 값 타입의 변수들은 서로 구분된 객체들이며, 상호간에 영향을 주는 것은 불가능하다. 
+
+#### 3. Struct로 사용 할 수 있으면 struct를 사용하면 좋은 이유
 ![alt text](./capture/20260130.png)
 - 아래는 DTO를 class로 만들었을 때, 위에는 DTO를 struct로 만들었을 때의 차이.
 - 해당 문제에서 DTO instance의 값을 변경하는 시도는 하지 않았고, 모든 멤버가 int기 때문에 struct로 사용했다.
@@ -156,6 +162,49 @@ void Main()
 
 <br><br>
 
+## :fireworks: 두 객체의 같음에 대해 정리한다. <br> :fire: 연산자 오버로딩이 되어있지 않는다고 가정한다. <br> '=='을 편하게 사용해라. <br> :fire: ValueType 끼리의 비교는 값의 동일함만 비교한다. <br> :fire: ReferenceType 끼리의 비교는 주소의 동일함만 비교한다. <br> 이는 static 메서드인 Object.ReferenceEquals()와 완전히 동일하다. <br> 당연하지만, ValueType과 ReferenceType에 대한 비교는 하지 않는다. (컴파일 에러!)
+~~~c#
+void Main()
+{
+	var num1 = 1;
+	var num2 = 1;
+	
+	if(num1 == num2)
+	{
+		"Value Same".Dump();
+	}
+	
+	var num3 = num2; //어차피 주소 공유 절대 하지 않는다.
+	num3 = 3;
+	
+	if(num2 == num3)
+	{
+		"nice".Dump();
+	}
+	
+	var list = new List<int>();
+	var list2 = list;
+	
+	if(list == list2)
+	{
+		"Address Same".Dump();
+	}
+}
+// Value Same
+// Address Same
+~~~
+> It determines whether the two objects represent the same object reference. If they do, the method returns true. This test is equivalent to calling the ReferenceEquals method. In addition, if both objA and objB are null, the method returns true.
+
+<br><br>
+
+## :fireworks: .ToString()을 통해 Boxing을 이해한다. <br> ##:fire: .ToString()의 구조를 파악하면 Boxing이 발생하지 않음을 알고 편하게 사용이 가능하다.
+![alt text](./capture/20260203_1.png)
+![alt text](./capture/20260203_2.png)
+- 보통 타입 정도는 명시적으로 알고 사용을 하기 때문에, MS에서 제공하는 override 된 .ToString()을 사용하게 된다.
+- 그러면 박싱은 발생하지 않으며, object 타입에 대한 ToString()은 발생하니 이는 주의하자.
+
+<br><br>
+
 ## :fire: Boxing을 피하고 싶다면 arrayList 대신에 List<T>를 쓰자. <br> :fire: 아래 그림과 내용을 읽고, 왜 박싱이 좋지 않은 지 이해한다. <br> :fire: 어차피 arrayList는 Legacy다.
 ![alt text](./capture/202504232.png)
 - ArrayList에서 최종적으로 도달한 두 개의 int 객체는 각각 값 1과 2를 저장하는 <ins>Boxing된 객체</ins>이다.
@@ -167,6 +216,7 @@ void Main()
   - ![alt text](./capture/202504233.png)
   - **List**
   - ![alt text](./capture/202504234.png)
+- Generic이 상위호환.
 
 <br><br>
 
