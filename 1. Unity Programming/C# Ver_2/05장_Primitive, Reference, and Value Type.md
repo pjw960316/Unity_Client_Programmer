@@ -7,9 +7,9 @@
 
 <br><br>
 
-## :fireworks: DTO를 만들 때 상황에 맞게 valueTuple 또는 struct 또는 class를 선택해서 만들 수 있어야 한다. <br> :fire: 데이터가 2개 or 3개고, 데이터가 모두 immutable => ValueTuple <br> :fire: 데이터가 4개 이상이고, 데이터가 모두 immutable => struct <br> :fire: 데이터가 2개 이상이지만, 데이터 중 1개라도 mutable referenceType => class <br> :fire: 헷갈리는 게 string인데, string은 immutable하므로 valueTuple 과 struct의 멤버로 사용하면 된다. 
+## :fireworks: DTO를 만들 때 상황에 맞게 valueTuple 또는 struct 또는 class를 선택해서 만들 수 있어야 한다. <br> :fire: 데이터가 2개 or 3개고, 데이터가 모두 immutable => valueTuple <br> :fire: 데이터가 4개 이상이고, 데이터가 모두 immutable => struct <br> :fire: 데이터가 2개 이상이지만, 데이터 중 1개라도 mutable referenceType => class <br> :fire: string은 immutable하므로 valueTuple 과 struct의 멤버로 사용하면 된다. 
 
-#### 1. ValueTuple 내부에 존재하는 string
+#### 1. valueTuple 내부에 존재하는 string
 ~~~c#
 void Main()
 {
