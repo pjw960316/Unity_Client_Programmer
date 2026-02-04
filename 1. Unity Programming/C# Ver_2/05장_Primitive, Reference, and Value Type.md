@@ -17,8 +17,8 @@ void Main()
 	var b = a;
 	b.Item2 = "bye";
 	
-	a.Dump(); // 1 hi
-	b.Dump(); // 1 bye -> 원본 변경 X 
+	a.Dump(); // 1 hi -> 원본 변경 X 
+	b.Dump(); // 1 bye
 }
 ~~~
 - ValueTuple b는 ValueTuple a를 깊은 복사한다.
