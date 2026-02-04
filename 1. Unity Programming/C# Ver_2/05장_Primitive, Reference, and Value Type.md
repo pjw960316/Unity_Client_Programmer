@@ -79,7 +79,7 @@ public class CSharpHabit
 
 <br><br>
 
-## :fire: 값 타입(int, ValueTuple, struct)을 ICollection<T>의 T로 사용 할 때 원본을 변경하지 않는다. <br> 값 복사한 후 대입을 하는 것 이다. <br> (int의 경우 눈속임이 발생하고, valueTuple과 struct는 컴파일러가 에러를 발생시켜 사전 차단한다.)
+## :fire: 값 타입(int, ValueTuple, struct)을 ICollection<T>의 T로 사용 할 때 원본을 변경하지 않는다. <br> 값 복사한 후 대입을 하는 것 이다.<br> 이는 List / Dictionary의 []가 get_accessor 메서드 호출이며 <br> 이 과정에서 값 타입은 항상 값 복사(value copy)로 반환되기 때문이다. <br> (int의 경우 눈속임이 발생하고, valueTuple과 struct는 컴파일러가 에러를 발생시켜 사전 차단한다.)
 #### [int, valueTuple, struct, class -> 4가지를 List의 T로 사용]
 ~~~c#
 public struct NumberStruct
