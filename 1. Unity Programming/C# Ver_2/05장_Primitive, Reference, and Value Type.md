@@ -7,9 +7,24 @@
 
 <br><br>
 
-## :fireworks: DTO를 만들 때 상황에 맞게 valueTuple 또는 struct 또는 class를 선택해서 만들 수 있어야 한다. <br> :fire: 데이터가 2개면 ValueTuple을 사용한다. Item1과 Item2가 valueType 또는 ReferenceType 이어도 상관없다.<br> :fire: 데이터가 3개 이상이고, 모든 데이터가 변경이 되지 않고, valueType이면 struct를 사용한다. <br> :fire: 데이터가 3개 이상이지만, 데이터의 변경이 발생하고, 데이터 중 1개라도 referenceType이면 class를 사용한다. 
+## :fireworks: DTO를 만들 때 상황에 맞게 valueTuple 또는 struct 또는 class를 선택해서 만들 수 있어야 한다. <br> :fire: 데이터가 2개 or 3개이고, 데이터가 모두 immutable하면 ValueTuple을 사용한다. <br> :fire: 데이터가 4개 이상이고, 데이터가 모두 immutable하면, struct를 사용한다. <br> :fire: 데이터가 2개 이상이지만, 데이터 중 1개라도 mutable referenceType이면 class를 사용한다. <br> :fire: 헷갈리는 게 string인데, string은 immutable하므로 valueTuple 과 struct의 멤버로 사용하면 된다. 
 
-#### 1. 자료 근거 
+#### 1. ValueTuple 내부에 존재하는 string
+~~~c#
+void Main()
+{
+	var a = (1,"hi");
+	var b = a;
+	b.Item2 = "bye";
+	
+	a.Dump(); // 1 hi
+	b.Dump(); // 1 bye -> 원본 변경 X 
+}
+~~~
+- ValueTuple b는 ValueTuple a를 깊은 복사한다.
+- valueTuple a와 b는 처음에 같은 string 주소를 공유한다. string은 참조 타입이니까. 그러나, string의 immutable한 특성 때문에 문자열 변경시에 새로운 문자열("bye)을 만들고 이 문자열의 주소를 b.Item2에 교체한다. 그러므로 원본이 변경되지 않는다.
+
+#### 2. 자료 근거 
 - MSDN과 StackOverFlow 모두 이를 뒷받침 해준다.
 > [MSDN] 
 
@@ -19,18 +34,18 @@
 
 > It has an instance size under 16 bytes. 
 
-> It is immutable. 
+> It is **<ins>immutable.</ins>** 
 
 > It will not have to be boxed frequently. In all other cases, you should define your types as classes.
 
 - :link:[Adding a reference to a list c# struct](https://stackoverflow.com/questions/13690509/adding-a-reference-to-a-list-c-sharp-struct?utm_source=chatgpt.com)
 
-#### 2. :book: 제프리
+#### 3. :book: 제프리
 > 값 타입의 변수를 다른 값 타입의 변수로 대입하려고 할 때, 필드 단위로 하나씩 복제가 이루어지게 된다. 그러나 참조 타입의 변수끼리 대입이 발생하면 단순히 메모리 주소만 복제된다.
 
 > 어떤 객체 하나를 두 개 이상의 참조 타입 변수가 가리키는 일이 있을 수 있으며, 이 때 어떤 변수 하나에서 연산을 실행하면 그 결과가 다른 변수에도 그대로 영향을 주게 된다. 달리 말하면, 값 타입의 변수들은 서로 구분된 객체들이며, 상호간에 영향을 주는 것은 불가능하다. 
 
-#### 3. Struct로 사용 할 수 있으면 struct를 사용하면 좋은 이유
+#### 4. Struct로 사용 할 수 있으면 struct를 사용하면 좋은 이유
 ![alt text](./capture/20260130.png)
 - 아래는 DTO를 class로 만들었을 때, 위에는 DTO를 struct로 만들었을 때의 차이.
 - 해당 문제에서 DTO instance의 값을 변경하는 시도는 하지 않았고, 모든 멤버가 int기 때문에 struct로 사용했다.
