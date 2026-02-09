@@ -155,7 +155,7 @@ temp.Num1 = 3;                     // 복사본 수정
 
 <br><br>
 
-## :fireworks: Queue<(StringBuilder , int)> queue로 이해하기 <br> :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> :fire: 타겟 객체의 최종 타입이 어떤 타입인지 판단하면 된다. <br> (Queue -> ValueTuple -> StringBuilder니까 이 예제에서는 StringBuilder가 최종 타입) <br> :star: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
+## :fireworks: 헷갈렸던 것 : Queue<(StringBuilder , int)> queue <br> :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> :fire: 타겟 객체의 최종 타입이 어떤 타입인지 판단하면 된다. <br> (Queue -> ValueTuple -> StringBuilder니까 이 예제에서는 StringBuilder가 최종 타입) <br> :fire: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
 ~~~c#
 void Main()
 {
@@ -174,6 +174,40 @@ void Main()
 ~~~
 - 결과가 (abc,1)이 나온다. queue.Peek()을 통해 ValueTuple의 값 복사로 새로운 ValueTuple이 생성되지만 그 안에는 sb의 주소를 동일하게 저장하고 있다.
 - 그러므로, 결국 같은 StringBuilder 객체인 sb를 참조해서 원본이 변경된다.
+
+<br><br>
+
+## :fireworks: 헷갈렸던 것 : 참조 타입 캐싱할 때 발생하는 실수
+~~~c#
+void Main()
+{
+	var doubleList = new List<List<(int,string)>>();
+	var innerList = new List<(int,string)>();
+	
+	innerList.Add((29,"ff"));
+	innerList.Add((17,"aa"));
+	innerList.Add((38,"cc"));
+	innerList.Add((44,"bb"));
+	innerList.Add((11,"dd"));
+	
+	doubleList.Add(innerList);
+	
+	//예제_1 : 캐싱을 할 때. 
+	var cachedList = doubleList[0];
+	cachedList = innerList.OrderBy(pair => pair.Item2).ToList();
+	doubleList[0].Dump(); // 변경을 의도했으나 변경이 되지 않는다.
+	
+	//예제_2 : 캐싱을 하지 않을 때.
+	doubleList[0] = innerList.OrderBy(pair => pair.Item2).ToList();
+	doubleList[0].Dump();
+}
+~~~
+- cachedList는 참조타입이므로 원본을 변경하는데 왜 예제_1에서 변경이 되지 않는가?
+  - cachedList는 참조타입이 맞다. 그리고 doubleList[0]를 가리키고 있는 것도 맞다.
+  - 그러나 cachedList = innerList.OrderBy(pair => pair.Item2).ToList(); 에서 LINQ 구문은 원본 innerList를 변경하지 않고 새로운 List를 생성한다.
+  - 그리고 그 새로운 List에 cachedList를 연결하므로 이제 cachedList와 doubleList[0]은 서로 다른 힙 영역을 가리키고 있다.
+- 예제_2의 경우는 올바르게 변경되었다.
+- ![alt text](./capture/20260209.png)
 
 <br><br>
 
