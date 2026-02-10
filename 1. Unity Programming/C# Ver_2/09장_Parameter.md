@@ -1,4 +1,4 @@
-## :fire: parameter에 적힌 타입의 “최종 타입”이 valueType인지, referenceType인지가 전부다. <br> :fire: valueType이면 값 복사가 되며 완전히 새로운 객체를 사용하게 된다. <br> :fire: referenceType이면 참조 복사가 되며 원본 객체를 사용하게 된다.
+## :fire: parameter에 적힌 타입의 “최종 타입”이 valueType인지, referenceType인지가 전부다. <br> :fire: valueType이면 새로운 객체를 만들어서 메서드에서 사용하게 된다. <br> :fire: referenceType이면 원본 객체를 받아서 사용하게 된다.
 - 메서드를 만들 때 간헐적으로 주저를 하는 경우가 있다. 그 이유는 대부분 얕은 복사랑 깊은 복사가 헷갈릴 때다.
 - 반드시 :fire: 개념을 항상 기억한다.
 - :star:**스택과 힙에 대한 존재는 조금 다를 수 있지만, 타입이 얕은 복사와 깊은 복사를 결정하는 주체다.**
