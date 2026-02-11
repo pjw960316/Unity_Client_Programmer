@@ -1,4 +1,4 @@
-## :fireworks: 책의 내용을 05장_1에서 다룬다. <br> 05장_2에서 valueType 과 referenceType에서 혼동을 느끼는 코드에 대해 정리한다.
+## :fireworks: 책의 내용을 05장_1에서 다룬다. <br> :fire:works: 05장_2에서는 valueType 과 referenceType에서 혼동을 느끼는 코드에 대해 정리한다.
 
 <br>
 
