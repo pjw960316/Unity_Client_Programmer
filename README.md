@@ -26,8 +26,9 @@
 - **2026년부터 진행중인 C#**
 
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
-
-  - <img width="1855" height="254" alt="Image" src="https://github.com/user-attachments/assets/800d0eb1-3e78-419c-993b-1d40031721a4" />   
+  - 예전에는 해결하지 못했던 문제를 지금은 해결.
+  - <img width="1844" height="47" alt="Image" src="https://github.com/user-attachments/assets/2455b8b6-a11c-4c3f-b276-b9adc5e02717" />
+  - <img width="1311" height="198" alt="Image" src="https://github.com/user-attachments/assets/06727d28-d9f6-4371-ab0a-d6da98eb683a" />
 
 <br><br>
   
