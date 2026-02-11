@@ -23,9 +23,11 @@
 
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
   
-- **2026년부터 진행중인 C# 취미**
+- **2026년부터 진행중인 C#**
 
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
+
+  - <img width="1855" height="254" alt="Image" src="https://github.com/user-attachments/assets/800d0eb1-3e78-419c-993b-1d40031721a4" />   
 
 <br><br>
   
