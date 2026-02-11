@@ -24,7 +24,7 @@
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
   
 - **2026년부터 진행중인 C#**
-
+  - :link:[Profile](https://solved.ac/profile/csharphabit)
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
   - 예전에는 해결하지 못했던 문제를 지금은 해결.
   - <img width="1844" height="47" alt="Image" src="https://github.com/user-attachments/assets/2455b8b6-a11c-4c3f-b276-b9adc5e02717" />
