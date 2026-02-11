@@ -5,10 +5,13 @@
 ## :fire: Built-In Type , primitiveType , valueType , referenceType 관계도 
 ![alt text](./capture/20250214.png)
 > 일부 데이터 타입들은 너무나 일반적이고 당연한 것들이어서 많은 컴파일러들이 코드를 작성하는 동안 단순화된 문법의 형태로 이를 사용할 수 있도록 지원해주고 있다. 이 문법은 앞의 코드보다 더 읽고 이해하기 쉬우며, 당연히 System.Int32 타입을 사용하도록 지시하는 앞의 코드와 의미가 동일한 IL 코드를 만들어준다. 이와 같이 컴파일러가 직접 지원하는 데이터 타입들을 <ins>기본 타입(Primitive Type)</ins>이라고 부른다.
-- valueType 중 primitiveType은 모두 struct다.
 - 소문자 string과 대문자 String은 완벽히 동일하다.
   - C#의 string 키워드는 FCL 타입인 System.String으로 정확하게 연결되기 때문에, 둘 사이에는 전혀 차이점이 없기 때문이다.
-- valueType은 System.ValueType 타입으로부터 항상 상속된다.
+
+<br><br>
+
+## :fire: 모든 valueType은 System.ValueType <ins>클래스</ins>를 상속받는다. <br> 클래스를 상속 받으면 참조타입 아닌가? 싶지만. <br> CLR이 valueType을 정의할 때 값 타입으로 정의했다.
+- ![alt text](./capture/20260209.png)
 
 <br><br>
 
