@@ -74,7 +74,7 @@ temp.Num1 = 3;                     // 복사본 수정
 
 <br><br>
 
-## :fireworks: 헷갈렸던 것_1 : Queue<(StringBuilder , int)> queue <br> :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> :fire: 타겟 객체의 최종 타입이 어떤 타입인지 판단하면 된다. <br> (Queue -> ValueTuple -> StringBuilder니까 이 예제에서는 StringBuilder가 최종 타입) <br> :fire: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
+## :fire: 값 복사인지 참조 복사인지 판단하는 것은 스택과 힙이 아니다. <br> :fire: 타겟 객체의 최종 타입이 어떤 타입인지 판단하면 된다. <br> (Queue -> ValueTuple -> StringBuilder니까 이 예제에서는 StringBuilder가 최종 타입) <br> :fire: 최종 타입이 value type이면 값이 복사되고, reference type이면 참조값(=주소, =원본)이 복사된다.
 ~~~c#
 void Main()
 {
@@ -96,7 +96,7 @@ void Main()
 
 <br><br>
 
-## :fireworks: 헷갈렸던 것_2 : 참조 타입 캐싱할 때 발생하는 실수
+## :fire: 참조 타입 캐싱할 때 발생하는 실수
 ~~~c#
 void Main()
 {
