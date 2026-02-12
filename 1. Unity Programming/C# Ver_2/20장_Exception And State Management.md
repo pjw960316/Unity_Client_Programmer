@@ -1,3 +1,23 @@
+## :fireworks: 논리판정 기초 내용도 추가한다.
+
+<br><br>
+
+## :fire: 판별식에서 && 와 ||은 좌변식의 결과만으로도 조건의 True / False를 판별가능하다.
+- **Short-Circuiting Evaluation**
+> Yes. In C# && and || are short-circuiting and thus evaluates the right side only if the left side doesn't already determine the result. The operators & and | on the other hand don't short-circuit and always evaluate both sides.
+~~~c#
+if(0 < queue.Count && queue.Peek() == 10)
+{}
+~~~
+- queue가 비어 있다면 좌변식이 false가 되므로 전체 논리는 무조건 False가 된다. 
+- 그러므로 우변식을 검사하지 않기에, queue가 비어 있어도 예외가 발생하지 않는다.
+
+<br><br>
+
+## :fire: 조건이 명확하다면 early-continue 또는 early-return으로 <br> 분기를 일찍 종료하는 방식이 좋다고 생각한다. 
+
+<br><br>
+
 ## :fire: 개발자 간 논리 오류를 전파하고 싶을 때는 Debug.Assert를 사용한다.
 > Assertions are used to check the programmer's understanding of the world. An assertion should fail only if the **programmer has done something wrong.** For example, never use an assertion to check user input.
 
