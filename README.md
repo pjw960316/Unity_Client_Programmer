@@ -29,6 +29,8 @@
   - 예전에는 해결하지 못했던 문제를 지금은 해결.
   - <img width="1844" height="47" alt="Image" src="https://github.com/user-attachments/assets/2455b8b6-a11c-4c3f-b276-b9adc5e02717" />
   - <img width="1311" height="198" alt="Image" src="https://github.com/user-attachments/assets/06727d28-d9f6-4371-ab0a-d6da98eb683a" />
+  - <img width="1468" height="172" alt="Image" src="https://github.com/user-attachments/assets/46158d6b-9b89-445e-b1cf-7720498600c3" />
+  - <img width="1450" height="160" alt="Image" src="https://github.com/user-attachments/assets/8d08a13a-ec6a-4a20-9969-7ead3a2a4f0a" />
 
 <br><br>
   
