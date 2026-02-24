@@ -145,7 +145,7 @@ public void Main()
 public void Test(T obj) where T : class
 {}
 ~~~
-- 결국, 참조 타입 매개변수를 갖는다면 힙에 할당하는 new를 허용하게 된다. 그리고 이 힙 객체 생성이 GC의 원인이 된다.
+- 결국, 참조 타입 매개변수를 갖는다면 힙에 할당하는 new를 허용하게 된다. 힙 객체 생성이 GC의 원인이 된다.
 
 <br><br>
 
