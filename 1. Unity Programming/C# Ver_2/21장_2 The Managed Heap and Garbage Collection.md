@@ -1,9 +1,3 @@
-## MSDN Link
-- [LINK](https://learn.microsoft.com/ko-kr/dotnet/standard/garbage-collection/)
-- 제프리 리처가 오래된 책이라... 최신 링크 [LINK](https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/botr/garbage-collection.md)
-
-<br><br>
-
 ## :fire: 결론부터 적으면, C#은 Managed Code기 때문에 <br> GC를 개발자가 컨트롤 하기 쉽지 않다고 생각한다. <br> GC 친화적인 코딩 방식 정도만 알고 넘어가자.
 - null로 끊는다고 메모리가 확보되지는 않는다는 것
 - GC 친화적인 방법 코딩이 그나마 내가 실천할 수 있다
