@@ -108,46 +108,5 @@ public static void TestDTO(DTO obj)
 
 <br><br>
 
-## :bangbang: 추후에 21장으로 옮기는 게 맞아보인다.
-## :fireworks: struct를 매개변수로 하는 게 class를 매개변수로 하는 것 보다 무조건 이득인가? 아닐 수 있다. <br> :fireworks: GC 관련 내용이지만 여기서 정리한다. <br> 아래 내용을 천천히 읽어보자. (한 문장 정리가 어렵다.)
-#### struct는 GC가 절대로 관리하지 않는다. -> 성능상 좋고, 값에 대해서 불필요한 객체를 만들지 않는다. (ex : 벡터)
-- struct는 힙 메모리 안에 저장될 수 있지만(class 내부에 필드로 있을 때), 독립적인 힙 객체가 아니므로 GC가 추적하지 않는다. 
-- GC는 힙에 있는 객체만 추적하고, 힙에 있는 데이터는 추적하지 않는다. struct가 힙에 저장될 때 객체로 저장되지 않는다.
-  - struct는 new로 선언한다. 하지만 class처럼 힙에 존재하는 객체를 생성하는 것은 아니다. 
-  - struct는 new로 선언하면 그저 값으로 존재하게 되고 초기화 하는 의미가 전부다.  
-- struct는 전달 될 때 해당 크기만큼 메모리에 복사한다. 그러니까 크기가 크면 안 되는 것 이다.
-- 하지만 class는 2가지 예제를 비교해보면, 결국 struct가 class보다 성능적 우위를 갖는 건 class가 new로 새로운 객체를 만들 때다. 그게 아니라 기존 객체를 쓰면 class는 8bytes의 변수만 만들고 전달한다.
-
-#### [예제_1]
-~~~c#
-public void Main()
-{
-	// instance는 T 타입이고, 어디선가 만들어졌다고 가정한다.
-	Test(instance); 
-}
-
-public void Test(T obj) where T : class
-{}
-~~~
-- 여기서 obj라는 변수는 8bytes이고, instance의 주소를 갖고 있다. 그리고 GC는 발생하지 않는다.
-- 그러므로 이런 방식은 오히려 struct보다 빠를 수 있다.
-- 하지만 예제_2를 보자
-
-#### [예제_2]
-~~~c#
-public void Main()
-{
-	// 생성해서 넣는다.
-	var instance = new T();
-	Test(instance); 
-}
-
-public void Test(T obj) where T : class
-{}
-~~~
-- 결국, 참조 타입 매개변수를 갖는다면 힙에 할당하는 new를 허용하게 된다. 힙 객체 생성이 GC의 원인이 된다.
-
-<br><br>
-
 ## :fire: valueType을 referenceType 처럼 전달하고 싶을 때 사용하는 키워드가 ref와 out이다. <br> :fire: 전달하기 직전의 값이 중요하면 ref를 사용한다. <br> :fire: 전달하기 직전의 값은 중요하지 않고 완전히 새롭게 사용한다면 out을 사용한다.
 - 사용하는 의도에 따라 분류해서 사용한다.
