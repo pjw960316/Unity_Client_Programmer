@@ -12,17 +12,8 @@
 
 <br><br>
 
-# 📙 My Coding GuideLine
-- **코드를 작성할 때 지킬 나만의 코딩 스타일**
-- ✈️[My Coding GuideLine](https://persistent-hoverfly-e3c.notion.site/My-Coding-GuideLine-1d129daafd668071bad8cd865abf59b4)
-
-<br><br>
-
 # :cherry_blossom: Algorithm Habit
-- **대학 시절 C++**
-
-  [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
-  
+### 🔗[코드 저장 Repository](https://github.com/pjw960316/Algorithm-Habit)
 - **2026년부터 진행중인 C#**
   
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
@@ -31,6 +22,16 @@
   - <img width="1311" height="198" alt="Image" src="https://github.com/user-attachments/assets/06727d28-d9f6-4371-ab0a-d6da98eb683a" />
   - <img width="1468" height="172" alt="Image" src="https://github.com/user-attachments/assets/46158d6b-9b89-445e-b1cf-7720498600c3" />
   - <img width="1450" height="160" alt="Image" src="https://github.com/user-attachments/assets/8d08a13a-ec6a-4a20-9969-7ead3a2a4f0a" />
+
+- **대학 시절 C++**
+
+  [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
+  
+<br><br>
+
+# 📙 My Coding GuideLine
+- **코드를 작성할 때 지킬 나만의 코딩 스타일**
+- ✈️[My Coding GuideLine](https://persistent-hoverfly-e3c.notion.site/My-Coding-GuideLine-1d129daafd668071bad8cd865abf59b4)
 
 <br><br>
   
