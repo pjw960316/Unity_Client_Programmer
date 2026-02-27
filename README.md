@@ -1,8 +1,6 @@
 # :whale: C# 
 - **2025년 ~  2026년**  :  ✈️[C# Ver_2](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/C%23%20Ver_2)
 - **2023년 ~ 2024년**  :  ✈️[C# Ver_1](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/C%23%20Ver_1)
-- **알고리즘 풀이 규칙**  :  ✈️[Algorithm](https://persistent-hoverfly-e3c.notion.site/2bc29daafd6680bcb5dae4f1b98f1cde)
-  - 알고리즘은 2026년 1월부터 진행중입니다.  
 
 <br><br>
 
@@ -13,7 +11,11 @@
 <br><br>
 
 # :cherry_blossom: Algorithm Habit
-### 🔗[코드 저장 Repository](https://github.com/pjw960316/Algorithm-Habit)
+- **알고리즘 코드 모음 Repository**  :  ✈️[Repository](https://github.com/pjw960316/Algorithm-Habit)
+- **알고리즘 풀이 규칙 Notion**  :  ✈️[Notion](https://persistent-hoverfly-e3c.notion.site/2bc29daafd6680bcb5dae4f1b98f1cde)
+
+<br>
+
 - **2026년부터 진행중인 C#**
   
   [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
