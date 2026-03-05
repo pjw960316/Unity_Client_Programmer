@@ -7,6 +7,9 @@
 <br><br>
 
 ## :fire::two: Manager가 멤버로 들고 있을 것
+- Manager로 관리할 게임 씬에 존재하는 Mono 객체(ex : Camera) 
+  - 이 객체는 Property의 Getter를 통해 외부에서 참조 할 수 있도록 하지 않는다.
+  - 오로지 자신을 들고 있는 Manager에 의존해야 한다.
 
 <br><br>
 
@@ -16,4 +19,12 @@
 - Manager가 직접 View의 이벤트를 구독하는 것은 MVP Pattern의 SRP를 위배한다.
 - Manager는 Presenter를 관리하지, View를 관리할 책임은 없다.
 
-<br><br>
+#### 2. 서로 다른 Manager가 Request를 할 때 A_Manager는 B_Manager가 들고 있는 Mono 객체에 직접 접근하지 않는다.
+- 동작 예시
+  - A_Manager는 B_Manager의 Request 메서드를 호출한다.
+  - B_Manager는 자신이 들고 있는 Mono 객체에게 명령을 내려서 필요한 데이터를 가져온다.
+  - B_Manager는 자신의 Request의 리턴 값을 A_Manager에게 전달한다.
+- 주의사항
+  - Manager 끼리의 Request 메서드와, Manager가 Mono 객체에게 명령하는 메서드의 동작이 같은 경우도 있다.
+  - 그러나 이런 경우에도 위의 규칙을 지켜야 한다. 확장성이 열려 있기 때문이다.
+  - Mono 객체에게 데이터를 요청하고 -> Manager가 그걸 가공해서 다른 Manager에게 전달하게 될 수도 있다.

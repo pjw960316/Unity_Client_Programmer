@@ -25,3 +25,12 @@ if (_playerInput.currentActionMap.Count() != _actionDict.Count)
   - 구현은 우선 모든 Input을 받고, dictionary에서 key로 조회해서 Handler Action을 통해 처리한다.
 > Using a Dictionary, I map specific keys to actions that invoke the "ProcessEmailByStoreParam" method with the appropriate parameters. This methodology simplifies the workflow by eliminating verbose if-else or switch statements. Additionally, adding a new action is as simple as adding a new key-value pair to the "actionMap" dictionary.
 - :link: [공식 문서 추가 내용](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.19/manual/PlayerInput.html)
+
+<br><br>
+
+## :fireworks: 몇 가지 주의사항
+- Input System에서 사용할 하드웨어(device)는 직접 추가해줘야 한다. Control Scheme에 가서 키보드랑 마우스를 추가한다.
+- Input은 action property랑 binding property로 나눈다.
+  - Action property는 어떤 input인지 설정한다.
+  - Binding property는 어떤 device의 어떤 key와 연결할 지 설정한다. (Input System에 device가 추가되어 있지 않으면 동작하지 않는다.)
+- Touch의 경우 마우스 포인터의 좌표를 실시간으로 입력 받는 기능과 포인터의 클릭 여부를 감지하는 두 가지 action을 모두 등록한다.
