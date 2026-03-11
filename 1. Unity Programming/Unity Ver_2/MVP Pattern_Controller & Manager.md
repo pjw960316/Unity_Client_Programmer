@@ -34,9 +34,9 @@ public void UpdateMoveVector(Vector2 vector)
 
 <br><br>
 
-## :fireworks: Manager와 Controller의 의존관계
+## :fireworks: Controller와 Manager의 의존관계
 #### :one: <ins>Manager는 절대로 Controller를 들고 있지 않는다.</ins> <br> Controller는 절대로 다른 Controller를 들고 있지 않는다. <br> Controller는 Manager를 들고 있는다. (다른 Manager도 가능하다.) 
-- InputController는 당연히 InputManager를 들고 있는다.
-- InputController가 CameraManager를 들고 있을 수 있고 필요한 데이터를 요청 할 수 있다.
+- InputController는 당연히 InputManager를 들고 있어야 한다.
+- InputController가 CameraManager를 들고 있을 수 있고, 필요한 데이터를 요청 할 수 있다.
 
 #### :two: Manager에서 Controller를 들고 있지 않은지, Request Method가 있지 않은지 검토한다.
