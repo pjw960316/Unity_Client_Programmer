@@ -3,7 +3,7 @@
 
 #### :two: Manager는 Controller를 관리하기 위한 C# Script다.
 - Manager는 MonoBehaviour를 상속받지 않는다. 단, Unity Type을 참조하는 필드를 가질 수는 있다.
-- Manager도 필드로 Camera _camera가 가능하다.
+- Manager도 필드로 Camera _camera가 가능하다. 단, Camera를 통한 Unity API는 절대 Manager에서 구현하지 않는다. 이는 Controller의 책임이다.
 
 <br><br>
 
