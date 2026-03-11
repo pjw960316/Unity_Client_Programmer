@@ -40,3 +40,4 @@ public void UpdateMoveVector(Vector2 vector)
 - InputController가 CameraManager를 들고 있을 수 있고, 필요한 데이터를 요청 할 수 있다.
 
 #### :two: Manager에서 Controller를 들고 있지 않은지, Request Method가 있지 않은지 검토한다.
+  - 이러면, 클래스끼리의 무의미한 코드 중복도 사라진다.
