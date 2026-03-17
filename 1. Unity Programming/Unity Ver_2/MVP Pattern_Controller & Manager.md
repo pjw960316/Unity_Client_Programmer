@@ -41,3 +41,18 @@ public void UpdateMoveVector(Vector2 vector)
 
 #### :two: Manager에서 Controller를 들고 있지 않은지, Request Method가 있지 않은지 검토한다.
   - 이러면, 클래스끼리의 무의미한 코드 중복도 사라진다.
+
+<br><br>
+
+## :fire: Manager는 MVP에서는 presenter만 들고 있어야 한다.
+~~~c#
+public class FieldObjectManager : ManagerBase<FieldObjectManager>
+{
+  // note : key = InstanceID (UnityEngine.Object)
+  private readonly Dictionary<int, FieldObjectPresenterBase> _fieldObjectPresenterDict = new();
+}
+~~~
+- FieldObject MVP 구조를 예로 들면, 여러 FieldObject의 MVP 구조를 관리해 줄 Manager가 필요하다.
+  - ex : 1번 FieldObject가 사라지면 2번 ~ 8번 FieldObject를 생성시키게 하는 기능
+- View는 멍청해야 하고, Model은 Presenter 단 하나의 주체로 변경이 되어야 한다.
+- 그러므로 Manager는 Presenter를 등록하고, Presenter를 통해 요청을 받고, 핸들한 걸 전달해야 한다.
