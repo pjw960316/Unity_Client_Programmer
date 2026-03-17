@@ -7,6 +7,7 @@
 # :dove: Unity
 - **2025년 ~ 2026년**  :  ✈️[Unity Ver_2](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Unity%20Ver_2)
 - **2023년 ~ 2024년**  :  ✈️[Unity Ver_1](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Unity%20Ver_1)
+- **참고 자료**  :  ✈️[디자인 패턴_Unity](https://unity.com/kr/resources/design-patterns-solid-ebook?isGated=false)
 
 <br><br>
 
