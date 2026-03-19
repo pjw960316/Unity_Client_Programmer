@@ -8,39 +8,71 @@
 <br><br>
 
 ## :fireworks: Controller와 Manager의 책임
-#### :one: Controller는 Unity 타입의 데이터를 가공에서 C# 타입으로 만들고 <br> 그  데이터를 Manager의 필드에 초기화 한다.
-- 그러므로, controller와 manager의 의존 관계에서 controller가 manager를 들고 있어야 한다.
+#### :one: Controller는 Unity Component로부터 의존된 기능을 구현한다. <br> 구현 결과를 Manager에게 리턴하거나 이벤트로 처리한다.
 
-#### :two: Manager는 Controller가 가공해 준 데이터를 관리하고, 외부에서 이용 할 수 있도록 한다.
+#### :two: Manager는 Controller가 가공해 준 데이터를 관리하고, 외부에서 이용 할 수 있도록 한다. <br> Manager는 Unity Component로부터 의존된 기능을 절대 구현하지 않는다.
+- Manager는 자신의 데이터를 캡슐화 할 수 있다. (외부에서 Get은 가능하나 Set은 불가능!)
+  - 외부는 FieldObjectPresenter 같은 계층을 의미한다.  
+- Manager에서 관리할 private 필드를 업데이트 할 때 private으로 할 수 있다.
+- Controller에서 변경한 데이터를 리턴하면 그걸 지역변수로 사용해서 사용 범위 및 생명주기를 줄일 수 있고, 필드에 저장해도 private 하다.
 
 #### :three: 코드 예시
 ~~~c#
-// Controller
-public void OnHandleMove(InputAction.CallbackContext context)
+// manager
+private void RequestFollowSparrow(FieldObjectSparrow sparrow)
 {
-  var pathPair = context.ReadValue<Vector2>();
-  
-  _inputManager.UpdateMoveVector(pathPair);
+    _cameraController.StartFollowFieldObject(sparrow.transform);
 }
 
-// Manager
-public void UpdateMoveVector(Vector2 vector)
+//controller
+public void StartFollowFieldObject(Transform fieldObjectTransform)
 {
-  _moveVector = vector;
+  _mainCamera.fieldOfView = FOLLOWING_CAMERA_FOV;
+
+  _followFieldObjectObservable?.Dispose();
+  _followFieldObjectObservable = Observable
+    .Interval(TimeSpan.FromMilliseconds(FOLLOWING_CAMERA_UPDATE_MILLISECONDS))
+    .Subscribe(_ =>
+    {
+      if (_mainCameraTransform == null)
+      {
+          return;
+      }
+
+      var direction = fieldObjectTransform.position - _mainCameraTransform.position -
+                      FOLLOWING_CAMERA_ROTATE_ADJUST_VECTOR;
+      _mainCameraTransform.rotation = Quaternion.LookRotation(direction.normalized);
+      _mainCameraTransform.position = fieldObjectTransform.position + FOLLOWING_CAMERA_POSITION_ADJUST_VECTOR;
+    });
 }
 ~~~
-  - Controller가 Unity 타입인 InputAction.CallbackContext을 가공해서 Vector2를 생성했다. 그리고 이를 Manager의 메서드를 이용해서 초기화 한다.
-  - Manager는 _moveVector를 통해 FieldObject에게 Rx를 이용해서 이벤트를 발생시킨다.
+- Manager는 Controller에게 Unity 세상에서 할 수 있는 동작을 요청한다.
+- Controller는 요청 받은 데이터를 기반으로 unity 동작을 처리한다.
 
 <br><br>
 
 ## :fireworks: Controller와 Manager의 의존관계
-#### :one: <ins>Manager는 절대로 Controller를 들고 있지 않는다.</ins> <br> Controller는 절대로 다른 Controller를 들고 있지 않는다. <br> Controller는 Manager를 들고 있는다. (다른 Manager도 가능하다.) 
-- InputController는 당연히 InputManager를 들고 있어야 한다.
-- InputController가 CameraManager를 들고 있을 수 있고, 필요한 데이터를 요청 할 수 있다.
+#### :one: <ins>Manager는 단 한 개의 Controller(자신이 책임질)만 필드로 들고 있는다. </ins> <br> Manager는 다른 Controller를 절대로 들고 있지 않는다.
+- 결론적으로, Controller는 Manager 하나 만이 들고 있게 되므로, public method 사용에도 안전하게 된다.
+- 책임 질 Controller가 같은 계층으로 존재한다면 여러 개의 controller도 가능하다. 헷갈리지 않게 일단 한 개를 기조로 잡았다.
 
-#### :two: Manager에서 Controller를 들고 있지 않은지, Request Method가 있지 않은지 검토한다.
-  - 이러면, 클래스끼리의 무의미한 코드 중복도 사라진다.
+#### :two: Manager는 다른 Manager를 들고 있는 게 가능하지만, 되도록 들고 있지 않도록 한다.
+- A_Manager의 필드로 B_Manager의 필드를 들고 있으면 Manager의 범위가 방대해진다.
+- 매니저와 소통하는 presenter가 다른 Manager를 통해 필요한 데이터를 받은 후, 인자로 넘겨주도록 하자.
+~~~c#
+private void RequestFollowSparrow()
+{
+    var randomSparrow = _fieldObjectManager.GetRandomSparrow();
+
+    _cameraController.StartFollowFieldObject(randomSparrow.transform);
+}
+~~~
+- _fieldObjectManager.GetRandomSparrow()를 호출부에서 전달하고 함수 시그니처를 RequestFollowSparrow(FieldObjectSparrow)로 변경한다.
+
+#### :three: Controller는 다른 Controller를 절대 들고 있지 않는다.
+
+#### :four: Controller는 당연히 관련 없는 Manager를 들고 있지 않아야 하며, 자신과 연관된 Manager도 들고 있지 않는 구조까지도 고려한다.
+- 진행 중
 
 <br><br>
 
@@ -56,3 +88,10 @@ public class FieldObjectManager : ManagerBase<FieldObjectManager>
   - ex : 1번 FieldObject가 사라지면 2번 ~ 8번 FieldObject를 생성시키게 하는 기능
 - View는 멍청해야 하고, Model은 Presenter 단 하나의 주체로 변경이 되어야 한다.
 - 그러므로 Manager는 Presenter를 등록하고, Presenter를 통해 요청을 받고, 핸들한 걸 전달해야 한다.
+
+<br><br>
+
+## :fire: Controller가 Manager를 들고 있는 방식을 채택하지 않은 이유 : Rx 지옥
+- 기존에는 Controller의 Rx-Pattern으로 Controller가 핸들링 한 방식을 Manager에게 전달하였다.
+- 그러나, 이 방식은 무수히 많은 uniRx 코드를 생성하며 코드 흐름 파악이 쉽지 않았다.
+- uniRx를 통해 값을 변경하고 그걸 Controller에서 Manager의 public UpdateXXXX() Method로 갱신하는 것도 문제다. Manager의 경우 외부에 열려있기 때문에 property의 private Setter가 의미가 없으며, public UpdateXXXX() method는 어디서든 호출이 가능하다. 다시 말해, 어디서든 Set이 가능한 위험한 코드가 된다.
