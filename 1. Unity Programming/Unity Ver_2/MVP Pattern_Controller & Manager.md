@@ -76,7 +76,7 @@ private void RequestFollowSparrow()
 
 <br><br>
 
-## :fire: Manager는 MVP에서는 presenter만 들고 있어야 한다.
+## :fire: MVP 계층에서, Presenter만이 Manager와 소통이 가능하도록 설계한다.
 ~~~c#
 public class FieldObjectManager : ManagerBase<FieldObjectManager>
 {
