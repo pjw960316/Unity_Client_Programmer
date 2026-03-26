@@ -70,15 +70,14 @@ InputManager.Instance.RegisterController(this);
 ~~~c#
 
 // 코드_1
-// Generic을 사용한 코드와 동일하지만, CastController 메서드를 선언해야 한다.
-public abstract class ControllerManagerBase<TManager, TController>
+// CastController 메서드를 선언해야 한다.
+public abstract class ControllerManagerBase<TManager>
     : ManagerBase<TManager>
     where TManager : class, new()
-    where TController : IController
 {
-    protected TController _controller;
+    protected IController _controller;
 
-    public void RegisterController(TController controller)
+    public void RegisterController(IController controller)
     {
         _controller = controller;
     }
