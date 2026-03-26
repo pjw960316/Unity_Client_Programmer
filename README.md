@@ -10,7 +10,7 @@
 
 <br><br>
 
-# ::baby_chick:: Design Pattern
+# :baby_chick: Design Pattern
 - **2025년 ~ 2026년**  :  ✈️[Design Pattern](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Design%20Pattern)
 - **참고 자료**  :  ✈️[디자인 패턴_Unity](https://unity.com/kr/resources/design-patterns-solid-ebook?isGated=false)
 
