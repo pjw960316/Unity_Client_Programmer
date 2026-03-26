@@ -38,6 +38,8 @@ public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresent
 <br><br>
 
 ## :fireworks: 실전 개념 <br> :fire: 인터페이스를 매개변수로 하면 해당 인터페이스를 상속받는 모든 클래스를 받을 수 있다. <br> 그러나 인터페이스에 정의된 기능만 사용할 수 있기 때문에 concrete 타입으로 캐스팅 해줘야 한다. <br> :fire: Generic을 사용하지 않으면, concrete Type 마다 분기를 만들어줘야 하고 매우 귀찮다. <br> :fire: Generic을 사용하면, 개발자가 컴파일 타임에 직접 concrete type을 명시하게 된다. <br> 그 덕분에 <ins>불필요한 분기를 만들지 않게 된다.</ins> 
+
+#### :one: Generic을 사용한 코드
 ~~~c#
 // 코드_1
 // TController는 IController을 상속 받는 타입이면 된다.
@@ -64,8 +66,40 @@ public class InputController : MonoBehaviour, IController
 InputManager.Instance.RegisterController(this);
 ~~~
 
-<br><br>
+#### :two: Generic을 사용하지 않은 코드
+~~~c#
 
+// 코드_1
+// Generic을 사용한 코드와 동일하지만, CastController 메서드를 선언해야 한다.
+public abstract class ControllerManagerBase<TManager, TController>
+    : ManagerBase<TManager>
+    where TManager : class, new()
+    where TController : IController
+{
+    protected TController _controller;
+
+    public void RegisterController(TController controller)
+    {
+        _controller = controller;
+    }
+
+    protected abstract void CastController(IController controller);
+}
+
+// 코드_2
+// ControllerManagerBase을 상속받는 모든 Manager Class가 아래와 같이 캐스팅 코드를 구현해야 한다.
+protected override void CastController(IController controller)
+{
+    _inputController = controller as InputController;
+
+    if (_inputController == null)
+    {
+        Debug.LogError("controller cast fail");
+    }
+}
+~~~
+
+<br><br>
 
 ## :fire: Interface 상속 + Generic Constraint를 같이 쓸 때 문법.
 ~~~c#
