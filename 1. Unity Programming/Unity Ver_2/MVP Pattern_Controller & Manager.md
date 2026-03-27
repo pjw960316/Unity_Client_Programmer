@@ -52,9 +52,10 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
 <br><br>
 
 ## :fireworks: Controller와 Manager의 의존관계
-#### :one: <ins>Manager는 단 한 개의 Controller(자신이 책임질)만 필드로 들고 있는다. </ins> <br> Manager는 다른 Controller를 절대로 들고 있지 않는다.
+#### :one: <ins>Manager는 단 한 개의 Controller(자신이 책임질)만 필드로 들고 있는다. </ins> <br> Manager는 다른 Controller를 절대로 들고 있지 않는다. <br> :x::x::x: 수정이 필요하다. 이게 지금 계속 생각해봐도 구조적으로 좀 어려운데. (실력 부족 ㅠ) <br> controller가 자기랑 관련된 manager를 들고 있지 않으면 소통이 또 너무 복잡해진다. <br> controller에서 unity 관련 구현만 하고 Manager에서 controller에서 처리한 데이터를 들고 있거나 가공할 때 소통이 너무 복잡해진다. <br> 또 편하자고 오픈하면 어디서든 호출이 되고... 
 - 결론적으로, Controller는 Manager 하나 만이 들고 있게 되므로, public method 사용에도 안전하게 된다.
-- 책임 질 Controller가 같은 계층으로 여러 개가 존재한다면, 2개 이상의 controller도 가능하다. 헷갈리지 않게 일단 한 개를 기조로 잡았다.
+- 책임질 Controller가 같은 계층으로 여러 개가 존재한다면, 2개 이상의 controller도 가능하다. 헷갈리지 않게 일단 한 개를 기조로 잡았다.
+- :link:[비슷한 고민 하신 분](https://cyphen156.tistory.com/492)
 
 #### :two: Manager는 다른 Manager를 들고 있는 게 가능하지만, 되도록 들고 있지 않도록 한다.
 - A_Manager의 필드로 B_Manager의 필드를 들고 있으면 Manager의 범위가 방대해진다.
