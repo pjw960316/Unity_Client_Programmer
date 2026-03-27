@@ -51,13 +51,39 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
 
 <br><br>
 
-## :fireworks: Controller와 Manager의 의존관계
-#### :one: <ins>Manager는 단 한 개의 Controller(자신이 책임질)만 필드로 들고 있는다. </ins> <br> Manager는 다른 Controller를 절대로 들고 있지 않는다. <br> :x::x::x: 수정이 필요하다. 이게 지금 계속 생각해봐도 구조적으로 좀 어려운데. (실력 부족 ㅠ) <br> controller가 자기랑 관련된 manager를 들고 있지 않으면 소통이 또 너무 복잡해진다. <br> controller에서 unity 관련 구현만 하고 Manager에서 controller에서 처리한 데이터를 들고 있거나 가공할 때 소통이 너무 복잡해진다. <br> 또 편하자고 오픈하면 어디서든 호출이 되고... 
+## :fireworks: 일단 지금 아래 적은 'Controller와 Manager의 의존관계'에서 :three: 말고는 정답이 아니다. 일단 지우지는 않는다. 기나긴 삽질 과정을 적어보겠다. <br> 결론을 내리기 어렵다.
+#### :one: 삽질의 의식의 흐름
+- 우선 팀에서 우리 이렇게 합시다 + 주석은 절대로 지켜지지 않는다. 왜냐면 내가 0년차 때 회사에서 지키고 싶어도 실력 부족으로 지키지 못했음. 그리고 시니어분들도 문서 공유를 하지 않으면 이게 지켜지지 않는다고 했는데 문서 공유도 진짜 쉽지 않음.
+- 그래서 결론은 최대한 코드레벨에서 막아야 한다고 생각한다. 이게 곧 좋은 설계라고 믿고 있다.
+- 그러나 과설계도 너무 위험하다. 지금도 당장 매우 간단한 구존데 2~3일을 설계만 하고 있었다.
+- 제일 큰 개념은. Controller를 통해 무거운 unity 작업을 처리하고, 그 처리 결과를 Manager에게 전달하고, Manager는 이걸 받아서 MVP 객체들에게 요청의 결과를 전달한다.
+- 그래서 controller랑 manager의 분리는 매우 훌륭한 구조라고 생각한다.
+- 그리고 manager는 자신과 연관된 controller를 들고 있는 것도 맞고.
+- 근데 아직 실력이 부족해서 의존성을 줄이자로만 맹목적인 생각을 가지게 되었다. 그래서 controller는 manager를 들고 있지 말자!. 근데 이게 나쁘지는 않은게 controller가 manager를 들고 있어 버리면 controller는 보통 manager에게 상태 변경을 전달한다. 근데 상태변경을 public method로 호출하면 싱글턴 특성상 저기 있는 FieldObject인 참새가 FieldObjectManager를 통해 직접적으로 상태를 변경하는데 이게 정말 위험한 구조라고 생각한다.
+- 전체 관리 데이터가 관리 받는 대상의 특정 행동으로 바뀌어 버리는게. 근데 또 생각해보면 이게 당연한 거 같기도. 다시 말해 지금 뭐 아는 거랑 경험은 많은데 그래서 나는 앞으로 어떻게 구현을 해야 할 지 감을 못 잡고 있다.
+- 하나씩 정답을 내야 한다. 지금 :three:는 맞는 거 처럼. 
+- 만약 controller manager의 참조 구조를 바꾸려면 uniRx나 Action인데 그러면 또 유지보수 개같고 디버깅 어렵다. 그러니 일단 계속 고민을 하되 하나씩 방향을 잡아가겠다.
+- :link:[비슷한 고민 하신 분의 블로그](https://cyphen156.tistory.com/492)
+  - 학교 다닐 때 friend class 누가 쓰나 했는데 너무 필요하군.
+
+#### :two: 방향성
+- Controller는 다른 Controller를 참조하지 않는다.
+- Controller는 자기 짝 Manager 하나는 참조할 수 있다.
+- Manager는 필요하면 자기 관련 Controller를 참조할 수 있다.
+- Manager의 public API는 SetXXX()보다 Request/Handle/Try 형태로 만든다.
+- Manager 내부 상태를 바꾸는 진짜 로직은 private으로 둔다.
+- Manager가 관리하는 raw mutable 객체를 외부에 그대로 주지 않는다.
+- View / Presenter가 Manager 상태를 직접 바꾸지 못하게 한다.
+
+<br><br>
+
+## :fireworks: :x::x::x: 이 문서는 현재 틀림 -> Controller와 Manager의 의존관계
+#### :one::x: <ins>Manager는 단 한 개의 Controller(자신이 책임질)만 필드로 들고 있는다. </ins> <br> Manager는 다른 Controller를 절대로 들고 있지 않는다.
 - 결론적으로, Controller는 Manager 하나 만이 들고 있게 되므로, public method 사용에도 안전하게 된다.
 - 책임질 Controller가 같은 계층으로 여러 개가 존재한다면, 2개 이상의 controller도 가능하다. 헷갈리지 않게 일단 한 개를 기조로 잡았다.
-- :link:[비슷한 고민 하신 분](https://cyphen156.tistory.com/492)
 
-#### :two: Manager는 다른 Manager를 들고 있는 게 가능하지만, 되도록 들고 있지 않도록 한다.
+
+#### :two::x: Manager는 다른 Manager를 들고 있는 게 가능하지만, 되도록 들고 있지 않도록 한다.
 - A_Manager의 필드로 B_Manager의 필드를 들고 있으면 Manager의 범위가 방대해진다.
 - 매니저와 소통하는 presenter가 다른 Manager를 통해 필요한 데이터를 받은 후, 인자로 넘겨주도록 하자.
 ~~~c#
@@ -72,7 +98,7 @@ private void RequestFollowSparrow()
 
 #### :three: Controller는 다른 Controller를 절대 들고 있지 않는다.
 
-#### :four: Controller는 당연히 관련 없는 Manager를 들고 있지 않아야 하며, 자신과 연관된 Manager도 들고 있지 않는 구조까지도 고려한다.
+#### :four::x: Controller는 당연히 관련 없는 Manager를 들고 있지 않아야 하며, 자신과 연관된 Manager도 들고 있지 않는 구조까지도 고려한다.
 - 진행 중
 
 <br><br>
