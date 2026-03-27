@@ -11,7 +11,6 @@
 <br><br>
 
 ## :fire: 모든 valueType은 System.ValueType <ins>클래스</ins>를 상속받는다. <br> 클래스를 상속 받으면 참조타입 아닌가? 싶지만. <br> CLR이 valueType을 정의할 때 값 타입으로 정의했다.
-- ![alt text](./capture/20260209.png)
 
 <br><br>
 
