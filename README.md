@@ -19,7 +19,7 @@
 # :cherry_blossom: Algorithm Habit
 - **백준, 프로그래머스 코드 모음 Repository**  :  ✈️[Repository](https://github.com/pjw960316/Algorithm-Habit)
   - 현업 태스크 처리에 직접적으로 도움을 주는 **구현 문제** 중점으로 문제를 풉니다.   
-- **알고리즘 풀이 규칙 Notion**  :  ✈️[Notion](https://persistent-hoverfly-e3c.notion.site/2bc29daafd6680bcb5dae4f1b98f1cde)
+- **알고리즘 풀이 규칙 및 자료구조**  :  ✈️[Notion](https://persistent-hoverfly-e3c.notion.site/2bc29daafd6680bcb5dae4f1b98f1cde)
 
 <br>
 
