@@ -10,7 +10,7 @@
 
 <br><br>
 
-## :fire: 모든 valueType은 System.ValueType <ins>클래스</ins>를 상속받는다. <br> 클래스를 상속 받으면 참조타입 아닌가? 싶지만. <br> CLR이 valueType을 정의할 때 값 타입으로 정의했다.
+## :fire: 모든 valueType은 System.ValueType <ins>클래스</ins>를 상속받는다. <br> :fire: 클래스를 상속 받으면 참조타입 같지만. <br> CLR이 valueType을 정의할 때 값 타입으로 정의했다.
 
 <br><br>
 
@@ -57,7 +57,7 @@ void Main()
 
 > It logically represents <ins>a single value, similar to primitive types</ins> (int, double, etc.). 
 
-> It has an instance size under 16 bytes. 
+> It has an instance size **<ins>under 16 bytes.</ins>** 
 
 > It is **<ins>immutable.</ins>** 
 
@@ -104,38 +104,10 @@ public class CSharpHabit
 
 <br><br>
 
-## :fireworks: 두 객체의 같음에 대해 정리한다. <br> :fire: 연산자 오버로딩이 되어있지 않는다고 가정한다. <br> '=='을 편하게 사용해라. <br> :fire: ValueType 끼리의 비교는 값의 동일함만 비교한다. <br> :fire: ReferenceType 끼리의 비교는 주소의 동일함만 비교한다. <br> 이는 static 메서드인 Object.ReferenceEquals()와 완전히 동일하다. <br> 당연하지만, ValueType과 ReferenceType에 대한 비교는 하지 않는다. (컴파일 에러!)
-~~~c#
-void Main()
-{
-	var num1 = 1;
-	var num2 = 1;
-	
-	if(num1 == num2)
-	{
-		"Value Same".Dump();
-	}
-	
-	var num3 = num2; //어차피 주소 공유 절대 하지 않는다.
-	num3 = 3;
-	
-	if(num2 == num3)
-	{
-		"nice".Dump();
-	}
-	
-	var list = new List<int>();
-	var list2 = list;
-	
-	if(list == list2)
-	{
-		"Address Same".Dump();
-	}
-}
-// Value Same
-// Address Same
-~~~
+## :fireworks: 두 객체의 같음에 대해 정리한다. <br> :fire: 연산자 오버로딩이 되어있지 않는다고 가정한다. <br> :fire: ValueType 끼리의 비교에서는 '=='을 편하게 사용해라. <br> ValueType 끼리의 비교는 값의 동일함만 비교한다. <br> :fire: ReferenceType 끼리의 비교는 Object.ReferenceEquals()을 사용해라. <br> 두 객체의 주소가 같음을 이용한다. <br> :fire: 당연하지만, ValueType과 ReferenceType에 대한 비교는 하지 않는다. (컴파일 에러!)
 > It determines whether the two objects represent the same object reference. If they do, the method returns true. This test is equivalent to calling the ReferenceEquals method. In addition, if both objA and objB are null, the method returns true.
+
+> The implementation of Equals in the System.Object universal base class also performs a reference equality check, but it is best not to use this because, if a class happens to override the method, the results might not be what you expect. The same is true for the == and != operators. When they are operating on reference types, the default behavior of == and != is to perform a reference equality check. However, derived classes can overload the operator to perform a value equality check. To minimize the potential for error, <ins>it is best to always use ReferenceEquals when you have to determine whether two objects have reference equality.</ins> (:book: MSDN) 
 
 <br><br>
 
