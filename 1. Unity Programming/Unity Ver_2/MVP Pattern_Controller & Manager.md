@@ -66,14 +66,21 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
 - :link:[비슷한 고민 하신 분의 블로그](https://cyphen156.tistory.com/492)
   - 학교 다닐 때 friend class 누가 쓰나 했는데 너무 필요하군.
 
-#### :two: 방향성
-- Controller는 다른 Controller를 참조하지 않는다.
-- Controller는 자기 짝 Manager 하나는 참조할 수 있다.
-- Manager는 필요하면 자기 관련 Controller를 참조할 수 있다.
-- Manager의 public API는 SetXXX()보다 Request/Handle/Try 형태로 만든다.
-- Manager 내부 상태를 바꾸는 진짜 로직은 private으로 둔다.
-- Manager가 관리하는 raw mutable 객체를 외부에 그대로 주지 않는다.
-- View / Presenter가 Manager 상태를 직접 바꾸지 못하게 한다.
+#### :two: 방향성 -> 탁상공론만 하지 말고 일단 이 방향 잡고 구현해보자. 계속 고치면 됨.
+- 확정
+  - Controller는 다른 Controller를 참조하지 않는다.
+  - Manager와 Controller는 1대1 대응을 하고 서로 각자를 들고 있을 수 있다.
+  - Manager는 MVP 객체들의 소통창구 역할과 게임전체의상태 (ex:음악전체, 필드오브젝트 전체)를 관리하고, Controller는 상태를 들고 있지 않는다. 얘는 유니티 연산 전문가임.
+    - 즉, 일단 MVP는 3계층. Manager-controller는 2계층. Manager는 Model에 가깝고, Controller는 View에 가깝다. 근데 Presenter에서. Presenter의 View 개입기능을 Controller에서 하고, 일반 객체(ex : 참새 오브젝트)들이 요청 받아서 처리하고 전달해 주는 Presenter의 기능은 Manager에서 함.
+  - MVP는 객체단위, Manager - Controller는 시스템 단위 구조. 
+- 연구
+  - 누구든 상태 변경을 호출할 수 있지만 상태 변경의 주체는 하나다 이게 핵심이구나. (얘가 거의 정답임) -> 이 방향으로 가도록
+    - Manager가 상태를 관리하는데 외부에서 변경 불가하는 시스템
+      - 그니까 상태를 private으로 만들고 public을 통해 그 상태 변경을 요청받고, 상태 변경 메서드는 private으로 하는 거지. 근데 이게 결국은 저 public 콜 하면 private 상태 바꾸는 건데. 이게 어쨌든 처리를 manager에서 하니까 안전한거?
+      - 그러하다. 상태: private / 외부 접근: public API / 실제 변경 로직: private
+      - 근본 캡슐화
+    - Manager가 관리하는 raw mutable 객체를 외부에 그대로 주지 않는다.
+    - View / Presenter가 Manager 상태를 직접 바꾸지 못하게 한다.
 
 <br><br>
 
