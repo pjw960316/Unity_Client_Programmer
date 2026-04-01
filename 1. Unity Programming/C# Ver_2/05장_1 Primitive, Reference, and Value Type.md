@@ -104,10 +104,56 @@ public class CSharpHabit
 
 <br><br>
 
-## :fireworks: 두 객체의 같음에 대해 정리한다. <br> :fire: 연산자 오버로딩이 되어있지 않는다고 가정한다. <br> :fire: ValueType 끼리의 비교에서는 '=='을 편하게 사용해라. <br> ValueType 끼리의 비교는 값의 동일함만 비교한다. <br> :fire: ReferenceType 끼리의 비교는 Object.ReferenceEquals()을 사용해라. <br> 두 객체의 주소가 같음을 이용한다. <br> :fire: 당연하지만, ValueType과 ReferenceType에 대한 비교는 하지 않는다. (컴파일 에러!)
+## :fireworks: 두 객체의 같음에 대해 정리한다. <br> :fire: ValueType 끼리의 비교와 ReferenceType 끼리의 비교에서는 '=='을 편하게 사용해라. <br> 오버로딩이 되어있지 않으면 안전하다. 
+- ValueType 끼리의 '=='은 값의 동일함만 비교한다. 단, struct는 따로 정의해주어야 한다.
+- ReferenceType 끼리의 '=='은 연산자 오버로딩이 되어있지 않으면 Object.ReferenceEquals()과 동일하다. 이는 두 객체의 주소가 같은지 비교한다. 
 > It determines whether the two objects represent the same object reference. If they do, the method returns true. This test is equivalent to calling the ReferenceEquals method. In addition, if both objA and objB are null, the method returns true.
 
-> The implementation of Equals in the System.Object universal base class also performs a reference equality check, but it is best not to use this because, if a class happens to override the method, the results might not be what you expect. The same is true for the == and != operators. When they are operating on reference types, the default behavior of == and != is to perform a reference equality check. However, derived classes can overload the operator to perform a value equality check. To minimize the potential for error, <ins>it is best to always use ReferenceEquals when you have to determine whether two objects have reference equality.</ins> (:book: MSDN) 
+> The implementation of Equals in the System.Object universal base class also performs a reference equality check, but it is best not to use this because, if a class happens to override the method, the results might not be what you expect. The same is true for the == and != operators. When they are operating on reference types, the default behavior of == and != is to perform a reference equality check. However, derived classes can overload the operator to perform a value equality check. To minimize the potential for error, <ins>it is best to always use ReferenceEquals when you have to determine whether two objects have reference equality.</ins> (MSDN) 
+
+#### [문자열은 조심한다] (LinqPad 복붙 가능)
+~~~c#
+public static class MainManager
+{
+	public static void Main()
+	{
+		var obj = new Test();
+		
+		obj.DoTest();
+	}
+}
+
+public class Test
+{
+	public Test()
+	{
+	}
+
+	public void DoTest()
+	{
+		string a = "jiwon";
+		string b = "jiwon";
+		
+		if(a==b)
+		{
+			"string is same".Dump();
+		}
+		
+		StringBuilder aa = new StringBuilder("jiwon");
+		StringBuilder bb = new StringBuilder("jiwon");
+		
+		if(aa==bb)
+		{
+			"stringBuilder is same".Dump();
+		}
+	}
+}
+
+// string is same
+~~~
+> String.Equals has an overload where a StringComparison argument can be provided to alter its sorting rules. (MSDN)
+- string은 오버로딩하여 값을 비교한다. 그래서 참조타입이지만 특수하게 Object.ReferenceEquals()으로 동작하지 않는다.
+- stringBuilder는 Object.ReferenceEquals()로 동작한다. 그래서 값이 같지만 객체가 다르기 때문에 같지 않다.
 
 <br><br>
 
