@@ -65,7 +65,7 @@ public class TestManager
     - fruit2은 Fruit 타입이고 이는 검사 타겟인 Apple 또는 Apple의 Derived 타입을 만족하지 않는다.
     - 사과로 캐스팅 되려면 과일이 아니라 사과거나 초록사과 같은 객체여야 한다!
 - is와 as 모두 runtime에 검사하는 캐스팅 연산자고, 둘 다 예외를 절대로 발생 시키지 않는다.
-- 
+
 <br><br>
 
 #### [개발하다가 만든 예제]
