@@ -1,0 +1,25 @@
+public static class MainManager
+{
+	public static void Main()
+	{
+		var testManager = new TestManager();
+	}
+}
+
+public class TestManager
+{
+	// TODO : Field를 선언하세요.
+	
+	public TestManager()
+	{
+		Initialize();
+	}
+
+	private void Initialize()
+	{
+		
+	}
+	
+	// TODO : private method를 구현하세요.
+	
+}
