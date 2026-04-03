@@ -22,12 +22,6 @@ void Main()
 
 <br><br>
 
-## :fire: 나누기 연산에서는 모두 double로 변환해서 사용한다.
-- :link:[How can I divide two integers to get a double?](https://stackoverflow.com/questions/661028/how-can-i-divide-two-integers-to-get-a-double)
-- 생각하기 편하다.
-
-<br><br>
-
 ## :fireworks: DTO를 만들 때 상황에 맞게 <ins>휴리스틱한 기준</ins>으로 <br> valueTuple 또는 struct 또는 class를 선택할 수 있어야 한다. <br> :fireworks: 당연히 성능과 용도 관점에서는 어폐가 있다. <br> 애당초 valueTuple은 DTO가 아니다. 내부 데이터가 각각 4bytes라고 가정한다. <br> :fire: valueTuple => 데이터가 2개 or 3개고, 데이터가 모두 immutable <br> :fire: struct => 데이터가 4개 ~ 5개고, 데이터가 모두 immutable <br> :fire: class => 데이터 중 하나라도 mutable reference 거나, 데이터가 매우 많고 큰 경우 <br> :fire: string은 immutable하므로 valueTuple 과 struct의 멤버로 사용하면 된다. 
 
 #### 1. valueTuple 내부에 존재하는 string
