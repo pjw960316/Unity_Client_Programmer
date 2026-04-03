@@ -1,5 +1,11 @@
+# 📘 CLR via CSharp by Jeffrey Richter
+![alt text](./capture/CLR_Via.png)
+
+<br><br>
+
 # :dog: 개요
-- 2025년부터 아래의 책으로 공부하고, 업무에 바로 활용할 수 있게 기록한 문서.
+- 2025년 시작
+- 2026.04.03 &nbsp;:&nbsp; 내용이 많아진 챕터 파일들 디렉터리로 묶음.
 
 <br><br>
 
@@ -8,13 +14,3 @@
 - 예제들을 LinqPad에 복붙하면 바로 실행 될 수 있도록 구현한다.
 - GitHub Emoji -> spiral_notepad를 이용한다.
 - 🔗 [LinqPad Base Template.txt](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/LinqPad%20Base%20Template.txt)
-
-<br><br>
-
-
-# 📘 Book
-- **CLR via CSharp by Jeffrey Richter**
-
-<br>
-
-![alt text](./capture/CLR_Via.png)
