@@ -60,7 +60,7 @@ void Main()
     classList[0].Dump(); // 얘는 원본이 변경된다.
 }
 ~~~
-![alt text](./capture/20260129.png)
+![alt text](../capture/20260129.png)
 - intList[0] = 2는 사실 컴파일러가 이렇게 동작시킨다. 그러니까 **원본을 참조해서 변경하는 것 처럼 보였다.**
 ~~~c#
 int temp = intList[0]; // 값 복사
@@ -130,4 +130,4 @@ void Main()
   - 그러나 cachedList = innerList.OrderBy(pair => pair.Item2).ToList(); 에서 LINQ 구문은 원본 innerList를 변경하지 않고 새로운 List를 생성한다.
   - 그리고 그 새로운 List에 cachedList를 연결하므로 이제 cachedList와 doubleList[0]은 서로 다른 힙 영역을 가리키고 있다.
 - 예제_2의 경우는 올바르게 변경되었다.
-- ![alt text](./capture/20260209.png)
+- ![alt text](../capture/20260209.png)
