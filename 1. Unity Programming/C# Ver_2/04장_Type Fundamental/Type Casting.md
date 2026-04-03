@@ -149,7 +149,7 @@ private void CreateSingletonManagers()
 <br><br>
 
 ## :fire: Declared Type <= Instance Type일 때만 암시적 할당 가능하다. <br>:fire: Declared Type > Instance Type인 경우, 명시적 캐스팅 필요하다.
-![alt text](./capture/0117_1.png)
+![alt text](../capture/0117_1.png)
 - Object(Super Base Type) - Parent(Base Type) - Child (Derived Type)
 - Parent는 Object의 모든 멤버와 메서드를 갖고, Child는 Parent의 모든 멤버와 메서드를 갖기 때문에 크기 비교를 다음의 그림과 같이 정리 가능하다.
 ~~~c#
