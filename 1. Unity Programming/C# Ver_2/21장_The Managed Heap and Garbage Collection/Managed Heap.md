@@ -44,7 +44,7 @@ class Program
 - Test obj = new Test()에서 주소는 사실 2개가 존재한다.
   - 첫 번째 주소 = heap 주소 : obj의 인스턴스가 실제로 저장된 Heap 메모리의 주소값. (예제의 0x77)
   - 두 번째 주소 = stack 주소 : 첫 번째 주소의 값을 stack의 변수에 저장하는 데, 이 때 stack에 생기는 주소 저장 필드의 주소값. (예제의 0x11)
-  - ![alt text](./capture/20250404.png) 
+  - ![alt text](../capture/20250404.png) 
 - 예제 코드의 1번 시점에 obj는 **unreachable(=접근 불가)** 상태가 되지만, 아직 managed heap에 obj의 인스턴스 정보가 저장되어 있다. 
 - 예제 코드의 2번 시점이 되면 heap에서 해제된다. 
 
