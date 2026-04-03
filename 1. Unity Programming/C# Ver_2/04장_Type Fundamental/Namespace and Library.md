@@ -4,9 +4,9 @@
 <br><br>
 
 ## :fire: 개발자 + 기획자 + 아트가 모여서 만든 하나의 유니티 프로젝트가 곧 하나의 Domain이다. <br> AppDomain.CurrentDomain 내부에는 여러 종류의 DLL이 포함되어 있다. <br> 그 DLL 중에는 Assembly-CSharp.dll도 포함되어 있다.
-- ![alt text](./capture/20250617.png)
+- ![alt text](../capture/20250617.png)
 - AppDomain.CurrentDomain.GetAssemblies()에서 참조하는 여러 DLL 중 Assembly-CSharp.dll도 포함된다.
-  - ![alt text](./capture/20250617_2.png)
+  - ![alt text](../capture/20250617_2.png)
 > 애플리케이션 도메인(AppDomains)은 앱을 서로 격리합니다. AppDomains는 런타임 지원이 필요하며 리소스 비용이 많이 듭니다. 더 많은 앱 도메인 만들기는 지원되지 않으며 나중에 이 기능을 추가할 계획이 없습니다. 코드 격리의 경우 별도의 프로세스 또는 컨테이너를 대안으로 사용합니다.
 
 <br><br>
@@ -22,47 +22,21 @@
 
 ## :fire: 하나의 DLL 파일 안에 여러 namespace가 있을 수 있다. <br> :fire: 하나의 namespace 안에는 여러 class or Interface가 있을 수 있다.
 #### :one: ILSpy 기호
-<details>
-  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-
-- ![alt text](./capture//20250606_1.png)
-
-</details>
+- ![alt text](../capture//20250606_1.png)
 
 #### :two: DLL 파일 경로
-<details>
-  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-  
-- ![alt text](./capture//20250606_2.png)
-
-</details>
+- ![alt text](../capture//20250606_2.png)
 
 #### :three: DLL 파일 하나에는 무수히 많은 NameSpace가 존재 할 수 있다.
-<details>
-  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
- 
-- ![alt text](./capture//20250606_4.png)
-
-</details>
+- ![alt text](../capture//20250606_4.png)
 
 #### :four:NameSpace 하나에는 무수히 많은 Class가 존재 할 수 있다.
-<details>
-  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-  
-- ![alt text](./capture//20250606_3.png)
+- ![alt text](../capture//20250606_3.png)
 - 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
 
-</details>
-
 #### :five:NameSpace 하나에는 무수히 많은 Interface가 존재 할 수 있다.
-<details>
-  <summary> :point_up_2: 눌러서 캡처 자료를 확인 합시다  </summary>
-
 - ![alt text](./capture//20250606_5.png)
-
-</details>
-
-  - **'using System' 과 'using System.Text'가 상속관계가 아니라 서로 다른 NameSpace다.**
+- **'using System' 과 'using System.Text'가 상속관계가 아니라 서로 다른 NameSpace다.**
 
 <br><br>
 
@@ -80,15 +54,9 @@
   - > An API is a specification; a library implements that specification. Theoretically, two different libraries could implement the same API. 
 
 - #### [Reddit에서 찾은 답변]
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
-
-- ![alt text](./capture/20250606_6.png)
-- ![alt text](./capture/20250606_7.png)
+- ![alt text](../capture/20250606_6.png)
+- ![alt text](../capture/20250606_7.png)
 - [Reference](https://www.reddit.com/r/learnprogramming/comments/1l3ekbs/is_a_library_just_an_api/)
-
-</details>
 
 <br>
 
@@ -111,8 +79,6 @@
 ## :fire: namespace는 큰 게임 프로젝트 안에 존재하는 미니게임 프로젝트에서 <br>:fire: 독립성을 위해 사용하기 좋다고 생각한다. <br>:fire: 또한, 모호성 해결이 필요할 때는 명시적으로 using OOOOO = OOOOO;로 적어주자. 
 
 #### [Ambiguous Code]
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
 using MiniGame; // 내가 2024년에 이렇게 적어놓고 사용했다고 가정하자. 아래 코드(using BigGame)가 없다면 잘 돌아간다.
@@ -143,12 +109,7 @@ namespace MiniGame
 }
 ~~~
 
-</details>
-
 #### [Explicit Code]
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
-
 ~~~c#
 using MusicController = MiniGame.MusicController; //Explicit
 
@@ -175,8 +136,6 @@ namespace MiniGame
 }
 //MiniGame
 ~~~
-
-</details>
 
 <br><br>
 
