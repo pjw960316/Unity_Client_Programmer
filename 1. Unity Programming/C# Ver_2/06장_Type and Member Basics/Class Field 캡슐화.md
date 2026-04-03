@@ -1,6 +1,6 @@
-## :fire: Private Field (Non Container)는 외부에서 접근에 완벽히 안전하지 않다. <br> :fire: 그러므로 private field에 readonly + Declaration을 쓰도록 한다.
-#### [예제 1_private의 한계 : property나 public Method로 그냥 뚫린다.]
+## :fire: Private Field는 외부에서 접근에 완벽히 안전하지 않다. <br> :fire: 그러므로 private field에 readonly + Declaration을 쓰도록 한다.
 
+#### :one: property나 public Method로 그냥 뚫린다.
 ~~~c#
 // 예제 1-1 : 2개의 Class에서 private의 방어가 뚫리는 구조
 public class TestManager
@@ -56,7 +56,6 @@ void Main()
 // Result
 // 2
 ~~~
-
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
 
@@ -123,7 +122,7 @@ void Main()
 
 <br><br>
 
-#### [예제_2 : Non-Container Field는 readonly로 방어]
+#### :two: Non-Container Field는 readonly로 방어
 
 ~~~c#
 public class PrivateTestSubject
@@ -144,7 +143,7 @@ public class PrivateTestSubject
 
 ## :fire: Private Container Field는 readonly + Declaration으로도 방어가 불가능하다. <br> 그러므로 ImmutableList<T>를 사용한다. <br> :fire: ImmutableList에 Add 또는 Remove를 해도 원본은 변경하지 않지만 <br> 새로운 ImmutableList를 만들게 된다. <br> 그러므로 정말로 값이 추가되거나 삭제되지 않고 readonly로 사용하고 싶은 Container에 대해서만 ImmutableList로 구현한다.
 
-#### [예제_1 : Container는 readonly로 방어가 불가능하다.]
+#### :one: Container는 readonly로 방어가 불가능하다.
 ~~~c#
 public class PrivateTestSubject
 {
@@ -216,7 +215,7 @@ void Main()
 
 <br><br>
 
-#### [예제_2 : Immutable한 readonly Container는 Immutable로 만들어 준다.]
+#### :two: Immutable한 readonly Container는 Immutable로 만들어 준다.
 ~~~c#
 public class PrivateTestSubject
 {
@@ -293,7 +292,7 @@ void Main()
 
 <br>
 
-#### [예제_3 : 활용도가 높은 실제 예제 : private field로 일반 Container 사용하고, public property로 Immutable Container를 사용한다.]
+#### :three: 활용도가 높은 실제 예제 <br> private field로 일반 Container 사용하고, public property로 Immutable Container를 사용한다.
 ~~~c#
 private Dictionary<string, List<bool>> _routineRecordDictionary = new();
 
