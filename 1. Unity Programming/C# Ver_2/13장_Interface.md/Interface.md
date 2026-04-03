@@ -1,9 +1,6 @@
 ## :fire: Inteface에 대한 의문이 있을 때 <br> '객체지향의 사실과 오해'의 P138 ~ P176을 천천히 읽어봐라.
 
 #### ['객체지향의 사실과 오해'에서 중요한 개념인 message 와 method의 차이점은 이해하고 가자]
-<details>
-<summary> :point_up_2::point_up_2::point_up_2: 눌러서 코드를 확인하자  </summary>
-
 ~~~c#
 void Main()
 {
@@ -36,8 +33,6 @@ public class MessageMan
 
 // I am Method
 ~~~
-</details>
-
 - Message 와 Method의 차이만 알면 책을 쉽게 이해할 수 있다.
   - ShowMessageExample() method에서 methodMan instance의 TestMethod()를 call 하는 걸 <ins>message</ins>라고 부른다.
   - TestMethod()가 MethodMan instance의 메서드로 존재하는 데, 이걸 <ins>method</ins>라고 부른다.
