@@ -3,6 +3,14 @@
 
 <br><br>
 
+# :spiral_notepad: 예제 형식
+- C#의 경우 대부분의 예제는 LinqPad의 Template을 지킨다.
+- 예제들을 LinqPad에 복붙하면 바로 실행 될 수 있도록 구현한다.
+- GitHub Emoji -> spiral_notepad를 이용한다.
+
+<br><br>
+
+
 # 📘 Book
 - **CLR via CSharp by Jeffrey Richter**
 
