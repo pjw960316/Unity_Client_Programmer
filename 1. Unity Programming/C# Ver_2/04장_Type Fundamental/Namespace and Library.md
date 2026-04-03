@@ -35,7 +35,7 @@
 - 우리가 사용하는 StringBuilder 클래스가 내가 구현하지 않았음에도 이 덕에 사용 할 수 있다.
 
 #### :five:NameSpace 하나에는 무수히 많은 Interface가 존재 할 수 있다.
-- ![alt text](./capture//20250606_5.png)
+- ![alt text](../capture//20250606_5.png)
 - **'using System' 과 'using System.Text'가 상속관계가 아니라 서로 다른 NameSpace다.**
 
 <br><br>
@@ -57,9 +57,6 @@
 - ![alt text](../capture/20250606_6.png)
 - ![alt text](../capture/20250606_7.png)
 - [Reference](https://www.reddit.com/r/learnprogramming/comments/1l3ekbs/is_a_library_just_an_api/)
-
-<br>
-
 - **.asmdef를 이용하면 하나의 'Assembly-Csharp.dll'이 아니라 여러 개의 dll로 나누어 진다.**
   - internal keyword가 access 영역을 하나의 assembly(=dll)로 설정하는 키워드인데, .asmdef를 사용하지 않으면 클라이언트 개발팀에서 작성하는 모든 코드는 internal일 때 접근이 가능하다고 판단 할 수 있다.
 
