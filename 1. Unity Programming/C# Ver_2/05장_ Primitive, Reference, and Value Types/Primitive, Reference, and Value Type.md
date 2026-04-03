@@ -1,9 +1,5 @@
-## :fireworks: 책의 내용을 05장_1에서 다룬다. <br> :fire:works: 05장_2에서는 valueType 과 referenceType에서 혼동을 느끼는 코드에 대해 정리한다.
-
-<br>
-
 ## :fire: Built-In Type , primitiveType , valueType , referenceType 관계도 
-![alt text](./capture/20250214.png)
+![alt text](../capture/20250214.png)
 > 일부 데이터 타입들은 너무나 일반적이고 당연한 것들이어서 많은 컴파일러들이 코드를 작성하는 동안 단순화된 문법의 형태로 이를 사용할 수 있도록 지원해주고 있다. 이 문법은 앞의 코드보다 더 읽고 이해하기 쉬우며, 당연히 System.Int32 타입을 사용하도록 지시하는 앞의 코드와 의미가 동일한 IL 코드를 만들어준다. 이와 같이 컴파일러가 직접 지원하는 데이터 타입들을 <ins>기본 타입(Primitive Type)</ins>이라고 부른다.
 - 소문자 string과 대문자 String은 완벽히 동일하다.
   - C#의 string 키워드는 FCL 타입인 System.String으로 정확하게 연결되기 때문에, 둘 사이에는 전혀 차이점이 없기 때문이다.
@@ -71,7 +67,7 @@ void Main()
 > 어떤 객체 하나를 두 개 이상의 참조 타입 변수가 가리키는 일이 있을 수 있으며, 이 때 어떤 변수 하나에서 연산을 실행하면 그 결과가 다른 변수에도 그대로 영향을 주게 된다. 달리 말하면, 값 타입의 변수들은 서로 구분된 객체들이며, 상호간에 영향을 주는 것은 불가능하다. 
 
 #### 4. Struct로 사용 할 수 있으면 struct를 사용하면 좋은 이유
-![alt text](./capture/20260130.png)
+![alt text](../capture/20260130.png)
 - 아래는 DTO를 class로 만들었을 때, 위에는 DTO를 struct로 만들었을 때의 차이.
 - 해당 문제에서 DTO instance의 값을 변경하는 시도는 하지 않았고, 모든 멤버가 int기 때문에 struct로 사용했다.
 ~~~c#
@@ -154,58 +150,6 @@ public class Test
 > String.Equals has an overload where a StringComparison argument can be provided to alter its sorting rules. (MSDN)
 - string은 오버로딩하여 값을 비교한다. 그래서 참조타입이지만 특수하게 Object.ReferenceEquals()으로 동작하지 않는다.
 - stringBuilder는 Object.ReferenceEquals()로 동작한다. 그래서 값이 같지만 객체가 다르기 때문에 같지 않다.
-
-<br><br>
-
-## :fireworks: .ToString()을 통해 Boxing을 이해한다. <br> 위 그림은 Object의, 아래 그림은 Int32의 .ToString() <br> :fire: .ToString()의 구조를 파악하면 Boxing이 발생하지 않음을 알고 편하게 사용이 가능하다.
-![alt text](./capture/20260203_1.png)
-![alt text](./capture/20260203_2.png)
-- 보통 타입 정도는 명시적으로 알고 사용을 하기 때문에, MS에서 제공하는 override 된 .ToString()을 사용하게 된다.
-- 그러면 박싱은 발생하지 않으며, object 타입에 대한 ToString()은 발생하니 이는 주의하자.
-
-<br><br>
-
-## :fire: Boxing을 피하고 싶다면 arrayList 대신에 List<T>를 쓰자. <br> :fire: 아래 그림과 내용을 읽고, 왜 박싱이 좋지 않은 지 이해한다. <br> :fire: 어차피 arrayList는 Legacy다.
-![alt text](./capture/202504232.png)
-- ArrayList에서 최종적으로 도달한 두 개의 int 객체는 각각 값 1과 2를 저장하는 <ins>Boxing된 객체</ins>이다.
-  - 이 객체들은 값 타입이 참조 타입으로 변환되면서 Heap에 생성된 것으로, <ins>메모리 낭비</ins>의 대표적인 사례를 보여준다.
-- 또한, 이 int 객체들은 배열처럼 연속된 메모리에 존재하지 않고,Heap 상에서 독립적으로 흩어져 할당된다.
-  - 이로 인해 추가적인 <ins>참조 비용과 캐시 비효율성</ins>이 발생한다.
-- 실제 클래스 해부
-  - **ArrayList**
-  - ![alt text](./capture/202504233.png)
-  - **List**
-  - ![alt text](./capture/202504234.png)
-- Generic이 상위호환.
-
-<br><br>
-
-## :fire: Boxing 된 녀석의 GetType()를 하면 UnBoxing 된 타입이 나온다.
-#### [arrayList로 확인]
-~~~c#
-void Main()
-{
-	ArrayList arrayList = new ArrayList();
-	int a = 1;
-	int b = 2;
-	arrayList.Add(a); //boxing
-	arrayList.Add(b); //boxing
-	
-	arrayList[1].GetType().Dump(); //unboxing 아니다!!!
-}
-~~~
-- arrayList[1]는 object 타입이지만 Int32로 출력된다.
-
-#### [참고만 하자 : Native C++의 .Net 런타임에서 Boxing을 확인하는 코드]
-![alt text](./capture/20250423.png)
-- Unbox 라는 키워드를 확인 할 수 있다.
-
-> The answer is easy to spot. Prior to calling GetType() method, the boxing of the value type occurs (while the exact type is known to the compiler). Boxing operation allocates a new object on the heap, which layout is known to us already. In particular, it contains a proper MethodTable pointer.
-
-<br>
-
-> Hence GetType() is processed as usual. Since boxed object has a typical layout, we can use the standard Object.GetType() method which get object’s MethodTable and returns the :star:corresponding(상응하는) Type object.
-
 
 <br><br>
 
