@@ -1,5 +1,5 @@
 # 📘 CLR via CSharp by Jeffrey Richter
-![alt text](./capture/CLR_Via.png)
+<img width="100" height="150" alt="Image" src="https://github.com/user-attachments/assets/05af72f1-c771-4a17-a413-6fed4c7801d3" />
 
 <br><br>
 
