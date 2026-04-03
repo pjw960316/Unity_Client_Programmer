@@ -175,9 +175,3 @@ public class NightRoutine : Routine
 ## :fire: 참고 서적
 - 클린 코드
 - 객체 지향의 사실과 오해
-
-
-<br><br>
-
-## :fire: abstract & virtual 과거 문서
-- [Github -C#](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23/Abstract%20%26%20Virtual.md)
