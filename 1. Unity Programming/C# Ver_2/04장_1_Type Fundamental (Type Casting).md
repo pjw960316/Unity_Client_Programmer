@@ -2,96 +2,70 @@
 
 <br><br>
 
-## :fire: 컴파일 시점에는 타입 검사시에 Declared Type으로 한다.<br>:fire: 런타임 시점에는 타입 검사시에 Instance Type으로 한다.
+## :fire: is , as는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Declared Type을 비교한다. <br>:fire: 검사 대상의 Instance Type이 <br> 검사 타겟과 동일하거나, 검사 타겟의 Derived Type이면 True를 리턴한다. 
 
-#### [기본 예제]
+#### :spiral_notepad:[기본 예제]
 ~~~c#
-void Main()
+public static class MainManager
 {
-	Fruit fruit = new Fruit();
-	Fruit fruit2 = new Apple(); //Fruit = Declared Type , Apple = Instance Type
-	Apple apple = new Apple();
-	GreenApple greenApple = new GreenApple();
-	Animal animal = new Animal();
-	
-	//Test(fruit); //InvalidCastException
-	//Test(animal); //InvalidCastException
-	Test(fruit2); //Success
-	Test(apple); //Success
-	Test(greenApple); //Success
+    public static void Main()
+    {
+        var testManager = new TestManager();
+    }
 }
 
-public static void Test(object o)
-{
-	Apple apple = (Apple) o;
-	apple.GetType().Dump();
-}
+public class Fruit { }
+public class Apple : Fruit { }
 
-public class Fruit{}
-public class Apple : Fruit{}
-public class GreenApple : Apple{}
-public class Animal{}
+public class TestManager
+{
+    private object _successObj;
+    private object _failObj;
+
+    public TestManager()
+    {
+        Initialize();
+
+		TestCasting(_successObj); // 캐스팅 성공
+		TestCasting(_failObj);    // 캐스팅 실패    
+	}
+
+	private void Initialize()
+	{
+		Fruit fruit = new Apple();
+		_successObj = fruit;
+
+		Fruit fruit2 = new Fruit();
+		_failObj = fruit2;
+	}
+
+	// object 타입의 모든 인자를 받을 수 있다.
+	private void TestCasting(object obj)
+	{
+		Apple apple = obj as Apple;
+
+		if (apple != null)
+		{
+			Console.WriteLine("캐스팅 성공");
+		}
+		else
+		{
+			Console.WriteLine("캐스팅 실패");
+		}
+	}
+}
 ~~~
 - **컴파일 단계**
   - 컴파일러는 <ins>컴파일 단계에서 명시적 캐스팅이 성공할지 실패할지를 검증하지 않는다.</ins> 대신, 이 책임을 런타임에 넘긴다.
   - 컴파일러는 "캐스팅 구문이 문법적으로 유효하다"고 판단하여 에러 없이 컴파일을 허용한다.
 - **런타임 단계**
-  - 런타임 단계에서 Test 메서드에 있는 Apple apple = (Apple) o;이 성공하려면, <ins>instance type이 Apple 타입이거나 Apple의 derived Class</ins>이어야 한다.
-  - 그러므로 fruit2와 apple은 instance type이 Apple 타입이고, greenApple은 Apple 타입의 Dervied Class이므로 캐스팅에 성공한다.
-
-<br><br>
-
-## :fire: Is는 <ins>Runtime</ins>에 <br>:fire: 검사 대상의 Instance Type과 검사 타겟의 Declared Type을 비교한다. <br>:fire: 검사 대상의 Instance Type이 <br> 검사 타겟과 동일하거나, 검사 타겟의 Derived Type이면 True를 리턴한다. 
-
-#### [기본 예제]
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
-
-~~~c#
-void Main()
-{
-	Fruit fruit = new Fruit();
-	Fruit apple_1 = new Apple();
-	Apple apple_2 = new Apple();
-	GreenApple apple_3 = new GreenApple();
-	
-	Test(fruit);
-	Test(apple_1);
-	Test(apple_2);
-	Test(apple_3);
-}
-
-static void Test(Fruit inputObj)
-{
-	//inputObj(=검사 대상)가 Apple(=검사 타겟)과 같은 타입이거나
-	//Apple의 Derived Type이면 TRUE를 리턴한다.
-	if(inputObj is Apple) 
-	{
-		(inputObj.ToString() + " is Apple").Dump();
-	}
-	else
-	{
-		(inputObj.ToString() + " is not Apple").Dump();
-	}
-}
-
-class Fruit {}
-class Apple : Fruit{}
-class GreenApple : Apple{}
-
-/*
-UserQuery+Fruit is not Apple
-UserQuery+Apple is Apple
-UserQuery+Apple is Apple
-UserQuery+GreenApple is Apple
-*/
-~~~
-
-</details>
-
+  - TestCasting은 object 타입이 parameter이므로 fruit과 fruit2를 받을 수 있다.
+  - 그러나 Apple apple = obj as Apple을 확인해보자. 
+    - fruit은 Apple 타입이고 이는 검사 타겟인 Apple 또는 Apple의 Derived 타입을 만족한다.
+    - fruit2은 Fruit 타입이고 이는 검사 타겟인 Apple 또는 Apple의 Derived 타입을 만족하지 않는다.
+    - 사과로 캐스팅 되려면 과일이 아니라 사과거나 초록사과 같은 객체여야 한다!
 - is와 as 모두 runtime에 검사하는 캐스팅 연산자고, 둘 다 예외를 절대로 발생 시키지 않는다.
-
+- 
 <br><br>
 
 #### [개발하다가 만든 예제]
