@@ -1,53 +1,5 @@
-## :fire: Class 내부의 Static Member는 모든 instance 간에 공유해야 하는 값을 저장한다.
-> 정적 멤버는 클래스의 인스턴스가 없는 경우에도 클래스에서 호출할 수 있습니다
-
-> 생성된 클래스의 인스턴스 수에 관계없이 정적 멤버의 복사본은 하나만 존재합니다.
-
-> 전체 클래스를 정적으로 선언하는 것보다 일부 정적 멤버를 사용하여 비정적 클래스를 선언하는 것이 더 일반적입니다.
-
-<br><br>
-
-## :fire: Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
-> 'readonly' indicates that assignment to the field can only occur as part of the declaration or in a constructor in the same class. 
-- static member 같은 global 한 변수는 유지보수 관점에서는 readonly로 선언하는 게 좋다고 생각한다. 물론, 런타임에서 동적으로 바뀌어야 하면 예외지만.
-
-#### [예제]
-~~~c#
-void Main()
-{
-	Test obj = new Test();
-	
-	obj.instanceField.Dump();
-	Test.staticField.Dump();
-}
-
-public class Test
-{
-    // declaration
-	public readonly int instanceField = 1;
-	public readonly static int staticField = 1;
-	
-    // constructor
-	public Test()
-	{
-		instanceField = 2;
-	}
-
-	static Test()
-	{
-		staticField = 3;
-	}
-}
-// 2 3
-~~~
-
-<br><br>
-
 ## :fire: Private Field (Non Container)는 외부에서 접근에 완벽히 안전하지 않다. <br> :fire: 그러므로 private field에 readonly + Declaration을 쓰도록 한다.
 #### [예제 1_private의 한계 : property나 public Method로 그냥 뚫린다.]
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
 // 예제 1-1 : 2개의 Class에서 private의 방어가 뚫리는 구조
@@ -105,13 +57,8 @@ void Main()
 // 2
 ~~~
 
-</details>
-
 - TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
 - TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
 // 예제 1-2 : 3개의 Class에서 private의 방어가 뚫리는 구조
@@ -170,8 +117,6 @@ void Main()
 }
 ~~~
 
-</details>
-
 - 결론적으로 public으로 변경하는 Setter가 존재하면 private로 설정해도 어디서든 바뀔 수 있다.
 - F12가 있다고 해서 추적이 된다고 하지만, private이 무색하게 10개의 class 끼리 공유가 되면 답이 없지 않을까?
 - 누군가 View Class에서 Model Class의 데이터를 바꾼다? 그냥 답이 없음.
@@ -179,9 +124,6 @@ void Main()
 <br><br>
 
 #### [예제_2 : Non-Container Field는 readonly로 방어]
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
 
 ~~~c#
 public class PrivateTestSubject
@@ -195,9 +137,6 @@ public class PrivateTestSubject
 	}
 }
 ~~~
-
-</details>
-
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
 
@@ -206,10 +145,6 @@ public class PrivateTestSubject
 ## :fire: Private Container Field는 readonly + Declaration으로도 방어가 불가능하다. <br> 그러므로 ImmutableList<T>를 사용한다. <br> :fire: ImmutableList에 Add 또는 Remove를 해도 원본은 변경하지 않지만 <br> 새로운 ImmutableList를 만들게 된다. <br> 그러므로 정말로 값이 추가되거나 삭제되지 않고 readonly로 사용하고 싶은 Container에 대해서만 ImmutableList로 구현한다.
 
 #### [예제_1 : Container는 readonly로 방어가 불가능하다.]
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
-
 ~~~c#
 public class PrivateTestSubject
 {
@@ -276,19 +211,12 @@ void Main()
 // RESULT
 // 2 4 6 8
 ~~~
-
-</details>
-
 - ChangeListInstance()에서 새로운 devilList를 기존의 readonly List에 할당하는 것은 막을 수 있다.
 - 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다.
 
 <br><br>
 
 #### [예제_2 : Immutable한 readonly Container는 Immutable로 만들어 준다.]
-
-<details>
-  <summary> :point_up_2: 눌러서 코드를 확인 합시다  </summary>
-
 ~~~c#
 public class PrivateTestSubject
 {
@@ -357,9 +285,6 @@ void Main()
 	//2 4 6 8
 }
 ~~~  
-
-</details>
-
 - '_privateImmutableList.Add(8);'을 통해 8을 추가시켰지만 _privateImmutableList은 여전히 '2,4,6'만을 elements로 갖는다.
 - '_privateNewImmutableList = _privateImmutableList.Add(8);'를 하면 Add나 Remove로 원본은 변화시키지 않고 새로운 ImmutableList를 생성한다.
 - :bangbang: ImmutableList가 ReadOnlyCollection 보다 thread-safe 하기에 ImmutableList를 사용해야 한다.
