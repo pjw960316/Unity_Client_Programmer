@@ -84,7 +84,7 @@ public class PrivateTestSubject
 
 ## :fire: Private Container는 readonly + Declaration으로도 방어가 불가능하다. <br> 그러므로 ImmutableContainer를 사용한다. <br> :fire: ImmutableList에 Add 또는 Remove를 해도 원본은 변경하지 않지만 <br> 새로운 ImmutableList를 만들게 된다. <br> 그러므로 정말로 값이 추가되거나 삭제되지 않고 readonly로 사용하고 싶은 Container에 대해서만 ImmutableList로 구현한다.
 
-#### :one: Container는 readonly로 방어가 불가능하다.
+#### :one: Mutable Container는 readonly로 방어가 불가능하다.
 ~~~c#
 public class PrivateTestSubject
 {
