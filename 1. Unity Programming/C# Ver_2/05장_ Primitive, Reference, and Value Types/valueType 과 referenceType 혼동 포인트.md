@@ -35,6 +35,7 @@ public static class MainManager
 
 public class TestManager
 {
+	List<int> intList = new List<int>();
 	List<NumberStruct> structList = new List<NumberStruct>();
 	List<(int, int)> tupleList = new List<(int, int)>();
 	List<NumberClass> classList = new List<NumberClass>();
@@ -43,6 +44,7 @@ public class TestManager
 	{
 		Initialize();
 		
+		ChangeIntList(); // 2
 		ChangeStruct(); // 3,4
 		ChangeTuple(); // 3,4
 		ChangeClass(); // 5,2
@@ -50,11 +52,17 @@ public class TestManager
 
 	private void Initialize()
 	{
+		intList.Add(1);
 		structList.Add(new NumberStruct(1, 2));
 		tupleList.Add((1, 2));
 		classList.Add(new NumberClass(1, 2));
 	}
 	
+	private void ChangeIntList()
+	{
+		intList[0] = 2;
+		intList[0].Dump();
+	}
 	private void ChangeStruct()
 	{
 		// Compile ERROR
@@ -80,7 +88,6 @@ public class TestManager
 	}
 }
 ~~~
-![alt text](../capture/20260129.png)
 - intList[0] = 2는 사실 컴파일러가 이렇게 동작시킨다. 그러니까 **원본을 참조해서 변경하는 것 처럼 보였다.**
 ~~~c#
 int temp = intList[0]; // 값 복사
