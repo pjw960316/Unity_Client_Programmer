@@ -5,55 +5,79 @@ public struct NumberStruct
 {
     public int Num1;
     public int Num2;
-    
-    public NumberStruct(int a , int b)
-    {
-        Num1 = a;
-        Num2 = b;
-    }
+
+	public NumberStruct(int a, int b)
+	{
+		Num1 = a;
+		Num2 = b;
+	}
 }
 
 public class NumberClass
 {
-    public int Num1;
-    public int Num2;
+	public int Num1;
+	public int Num2;
 
-    public NumberClass(int a, int b)
-    {
-        Num1 = a;
-        Num2 = b;
-    }
+	public NumberClass(int a, int b)
+	{
+		Num1 = a;
+		Num2 = b;
+	}
 }
 
-void Main()
+public static class MainManager
 {
-    // 1. Int
-    var intList = new List<int>();
-    intList.Add(1);
-    intList[0] = 2;
-    intList[0].Dump(); 
+	public static void Main()
+	{
+		var testManager = new TestManager();
+	}
+}
 
-    //2. Struct
-    var structList = new List<NumberStruct>();
-    structList.Add(new NumberStruct(1, 2));
-    structList[0].Dump(); 
-    
-    // compile ERROR
-    //structList[0].Num1 = 3;  
+public class TestManager
+{
+	List<NumberStruct> structList = new List<NumberStruct>();
+	List<(int, int)> tupleList = new List<(int, int)>();
+	List<NumberClass> classList = new List<NumberClass>();
 
-    //3. ValueTuple
-    var tupleList = new List<(int, int)>();
-    tupleList.Add((1 , 2));
-    tupleList[0].Dump();
-    
-    // compile ERROR
-    //tupleList[0].Item1 = 3;
+	public TestManager()
+	{
+		Initialize();
+		
+		ChangeStruct(); // 3,4
+		ChangeTuple(); // 3,4
+		ChangeClass(); // 5,2
+	}
 
-    //4. Class
-    var classList = new List<NumberClass>();
-    classList.Add(new NumberClass(1, 2));
-    classList[0].Num1 = 5; 
-    classList[0].Dump(); // 얘는 원본이 변경된다.
+	private void Initialize()
+	{
+		structList.Add(new NumberStruct(1, 2));
+		tupleList.Add((1, 2));
+		classList.Add(new NumberClass(1, 2));
+	}
+	
+	private void ChangeStruct()
+	{
+		// Compile ERROR
+		//structList[0].Num1 == 3;
+		
+		structList[0] = new NumberStruct(3,4);
+		structList.Dump();
+	}
+
+	private void ChangeTuple()
+	{
+		// compile ERROR
+		//tupleList[0].Item1 = 3;
+		
+		tupleList[0] = (3,4);
+		structList.Dump();
+	}
+	
+	private void ChangeClass()
+	{
+		classList[0].Num1 = 5;
+		classList[0].Dump(); // 얘는 원본이 변경된다.
+	}
 }
 ~~~
 ![alt text](../capture/20260129.png)
@@ -96,7 +120,7 @@ void Main()
 
 <br><br>
 
-## :fire: 참조 타입 캐싱할 때 발생하는 실수
+## :fire: 참조 타입 캐싱할 때 발생하는 실수 -> LINQ는 새로운 container를 생성한다.
 #### :spiral_notepad: [예제]
 ~~~c#
 void Main()
