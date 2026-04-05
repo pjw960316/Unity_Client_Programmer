@@ -1,4 +1,4 @@
-## :fire: Private Field는 외부 접근을 차단한다. <br> 그러나 public method를 통해 변경이 가능하다. :fire: 하지만 public method를 통한 변경은 결국 변경 요청이다. <br> 상태 변경 로직은 해당 클래스 내부에서만 수행되니까 주체가 통일된다. <br> 내부에서 invariant를 검증할 수도 있다.
+## :fire: Private Field는 외부 접근을 차단하지만 <br> public method를 통해 변경이 가능하다. <br> :fire: 하지만 public method를 통한 변경은 결국 변경 요청이다. <br> 상태 변경 로직은 해당 클래스 내부에서만 수행되니까 주체가 통일된다. <br> 내부에서 invariant를 검증할 수도 있다.
 
 #### :one: property나 public Method로 그냥 뚫린다.
 ~~~c#
