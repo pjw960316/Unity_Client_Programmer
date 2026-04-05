@@ -2,65 +2,7 @@
 
 #### :one: property나 public Method로 그냥 뚫린다.
 ~~~c#
-// 예제 1-1 : 2개의 Class에서 private의 방어가 뚫리는 구조
-public class TestManager
-{
-	private PrivateTestSubject _privateTestSubject;
-	
-	public TestManager(PrivateTestSubject arg)
-	{
-		//DI
-		this._privateTestSubject = arg;
-	}
-	
-	public void TestFirstQuestion()
-	{
-		//Compile ERROR
-		//_privateTestSubject._privateNumber = 1;
-	}
-	
-	public void TestSecondQuestion()
-	{
-		_privateTestSubject.ChangePrivateNumber();
-	}
-	public void PrintPrivateNumber()
-	{
-		_privateTestSubject.PrintPrivateNumber();
-	}
-}
-
-public class PrivateTestSubject
-{
-	private int _privateNumber = 0;
-	
-	public void ChangePrivateNumber()
-	{
-		_privateNumber = 2;
-	}
-	
-	public void PrintPrivateNumber()
-	{
-		_privateNumber.Dump();
-	}
-	
-}
-
-void Main()
-{
-	PrivateTestSubject privateTestSubject = new PrivateTestSubject();
-	TestManager testManager = new TestManager(privateTestSubject);
-	
-	testManager.TestSecondQuestion();
-	testManager.PrintPrivateNumber();
-}
-// Result
-// 2
-~~~
-- TestFirstQuestion()에서 DI로 받은 Instance 내부의 private Field는 접근이 불가능함을 보여준다.
-- TestSecondQuestion()에서 Public Method로 바꿀 수 있다.
-
-~~~c#
-// 예제 1-2 : 3개의 Class에서 private의 방어가 뚫리는 구조
+// 3개의 Class에서 private의 방어가 뚫리는 구조
 public class TestManager
 {
 	private PrivateTestSubject _privateTestSubject;
@@ -115,15 +57,13 @@ void Main()
 	privateTestObject.PrintPrivateNumber();
 }
 ~~~
-
 - 결론적으로 public으로 변경하는 Setter가 존재하면 private로 설정해도 어디서든 바뀔 수 있다.
 - F12가 있다고 해서 추적이 된다고 하지만, private이 무색하게 10개의 class 끼리 공유가 되면 답이 없지 않을까?
 - 누군가 View Class에서 Model Class의 데이터를 바꾼다? 그냥 답이 없음.
 
 <br><br>
 
-#### :two: Non-Container Field는 readonly로 방어
-
+#### :two: readonly로 기초적인 방어 수행
 ~~~c#
 public class PrivateTestSubject
 {
@@ -138,10 +78,11 @@ public class PrivateTestSubject
 ~~~
 > Readonly 키워드가 붙은 멤버의 Set은 declaration 또는 constructor에서만 가능하다.
   - 그러므로 public Method로 private Field를 변경하는 방식을 막을 수 있다.
+- 그러나 Unity에서는 Awake()의 존재 때문에 의미가 퇴색된다.
 
 <br><br>
 
-## :fire: Private Container Field는 readonly + Declaration으로도 방어가 불가능하다. <br> 그러므로 ImmutableList<T>를 사용한다. <br> :fire: ImmutableList에 Add 또는 Remove를 해도 원본은 변경하지 않지만 <br> 새로운 ImmutableList를 만들게 된다. <br> 그러므로 정말로 값이 추가되거나 삭제되지 않고 readonly로 사용하고 싶은 Container에 대해서만 ImmutableList로 구현한다.
+## :fire: Private Container는 readonly + Declaration으로도 방어가 불가능하다. <br> 그러므로 ImmutableContainer를 사용한다. <br> :fire: ImmutableList에 Add 또는 Remove를 해도 원본은 변경하지 않지만 <br> 새로운 ImmutableList를 만들게 된다. <br> 그러므로 정말로 값이 추가되거나 삭제되지 않고 readonly로 사용하고 싶은 Container에 대해서만 ImmutableList로 구현한다.
 
 #### :one: Container는 readonly로 방어가 불가능하다.
 ~~~c#
