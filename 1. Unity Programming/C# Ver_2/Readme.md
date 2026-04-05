@@ -11,4 +11,4 @@
 
 # :spiral_notepad: 예제 형식
 - **GitHub Emoji -> spiral_notepad를 붙이면 LinqPad에서 바로 복붙에서 확인 할 수 있는 예제**
-(https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/LinqPad%20Base%20Template.txt)
+- ✈️[LinqPad Base Template](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/LinqPad%20Base%20Template.txt)
