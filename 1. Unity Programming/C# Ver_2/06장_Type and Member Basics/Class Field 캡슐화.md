@@ -61,7 +61,7 @@ void Main()
 - F12가 있다고 해서 추적이 된다고 하지만, private이 무색하게 10개의 class 끼리 공유가 되면 답이 없지 않을까?
 - 누군가 View Class에서 Model Class의 데이터를 바꾼다? 그냥 답이 없음.
 
-<br><br>
+<br>
 
 #### :two: readonly로 기초적인 방어 수행
 ~~~c#
@@ -154,7 +154,7 @@ void Main()
 - ChangeListInstance()에서 새로운 devilList를 기존의 readonly List에 할당하는 것은 막을 수 있다.
 - 그러나 readonly키워드로는 Container의 내부 멤버를 추가하는 것을 방어할 수 없다.
 
-<br><br>
+<br>
 
 #### :two: Immutable한 readonly Container는 Immutable로 만들어 준다.
 ~~~c#
