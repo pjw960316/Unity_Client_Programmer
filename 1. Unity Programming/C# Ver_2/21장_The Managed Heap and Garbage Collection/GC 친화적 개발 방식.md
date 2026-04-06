@@ -1,4 +1,4 @@
-## :fire: GC 친화적 개발 방식은 거시적으로 보면 힙에 불필요한 객체를 할당시키지 않는 게 전부다.. <br> :fire: 관점 자체를 힙 객체가 생성되느냐 아니냐로 바라본다. 
+## :fire: GC 친화적 개발 방식은 거시적으로 보면 힙에 불필요한 객체를 할당시키지 않는 게 전부다! <br> :fire: 관점 자체를 힙 객체가 생성되느냐 아니냐로 바라본다. 
 - 이게 스택에 생성되냐 힙에 생성되냐를 따지는 것은 생각보다 중요하지 않다.
 
 <br><br>
@@ -9,10 +9,7 @@
 > As an application developer, you work only with virtual address space and never manipulate physical memory directly. The garbage collector <ins>allocates and frees virtual memory for you on the managed heap.</ins>
 
 - 모든 struct는 valueType이므로 managed object가 아니다. 그러므로 GC를 발생시키지 않는다.
-
-<br><br>
-
-## :fire: valueType이 박싱되면, managed object가 되기 때문에 주의한다.
+- valueType이 박싱되면, managed object가 되기 때문에 주의한다.
 
 <br><br>
 
