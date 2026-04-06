@@ -17,3 +17,7 @@
 
 ## :fireworks: 유니티 생성 이벤트의 순서를 제대로 이해한다. <br>:one: Field Initializer는 static이 아니면 항상 제일 빠르다. <br>:two: Awake가 그 다음으로 빠르다. <br>:three: start가 그 다음으로 빠르다. <br> :star::fire: Popup과 Popup 내부의 Widget의 Awake중 누가 빨리 되는 지는 알 수 없다. <br> 그러나 언제나 Popup의 Field Initializer는 Widget의 Awake 보다 빠르고 <br> 반대로 Widget의 Field Initializer는 Popup의 Awake 보다 반드시 빠르다. <br> 당연히 Start와 Awake의 관계도 똑같다.
 - OnEnable 이런 건 일단 제외했다.
+
+<br><br>
+
+## :fireworks: 144fps로 이해해보는 Update 와 FixedUpdate <br> :fire: Update는 1 프레임마다 콜이 되는 유니티 이벤트다. <br> 그러면 144fps는 이론상 1초에 144프레임이 생성되는 상태이다. <br> 그러면 Update는 이론상 1초에 144번 호출이 된다. <br> 하지만 **매 프레임이 동일하지는 않다. 컴퓨터 성능에 따라 밀릴 수도 있다. <br> :fire: FixedUpdate는 프레임과 무관하게 고정된 시간 (1초동안 50번)마다 콜이 되는 유니티 이벤트다. 
