@@ -1,4 +1,4 @@
-## :fireworks: 기본 개념 <br> :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> :fire: 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>굳이 추상화 하지말고 컴파일 타임에 확정시키면 된다. <br> 그게 Generic이다.
+## :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> :fire: 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>굳이 추상화 하지말고 컴파일 타임에 확정시키면 된다. <br> 그게 Generic이다.
 #### [호출부에서 명시적인 타입을 알면 Generic을 써서 전달하자]
 ~~~c#
 //1. View_1 : UIAlarmPopup Script의 코드
@@ -35,8 +35,7 @@ public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresent
 
 <br><br>
 
-## :fireworks: Generic의 장점
-## :fire: 타입의 분기를 호출부에서 책임 질 수 있으면 Generic Method로 구현한다.
+## :fireworks: Generic의 장점 <br> fire: 타입의 분기를 호출부에서 책임 질 수 있으면 Generic Method로 구현한다.
 - 타입을 코드가 아니라 “타입 파라미터”로 추상화해서 컴파일 타임에 확정시키는 것
 - 불필요한 박싱과 캐스팅이 없다. 
 - 타입이 매우 안정적이고 재사용이 되므로 코드의 중복도 없애준다.
@@ -49,7 +48,7 @@ public T GetController<T>() where T : IController, new()
 
 <br><br>
 
-## :fireworks: 실전 개념 <br> :fire: 인터페이스를 매개변수로 하면 해당 인터페이스를 상속받는 모든 클래스를 받을 수 있다. <br> 그러나 인터페이스에 정의된 기능만 사용할 수 있기 때문에 concrete 타입으로 캐스팅 해줘야 한다. <br> :fire: Generic을 사용하지 않으면, concrete Type 마다 분기를 만들어줘야 하고 매우 귀찮다. <br> :fire: Generic을 사용하면, 개발자가 컴파일 타임에 직접 concrete type을 명시하게 된다. <br> 그 덕분에 <ins>불필요한 분기를 만들지 않게 된다.</ins> 
+## fire: 인터페이스를 매개변수로 하면 해당 인터페이스를 상속받는 모든 클래스를 받을 수 있다. <br> 그러나 인터페이스에 정의된 기능만 사용할 수 있기 때문에 concrete 타입으로 캐스팅 해줘야 한다. <br> :fire: Generic을 사용하지 않으면, concrete Type 마다 분기를 만들어줘야 하고 매우 귀찮다. <br> :fire: Generic을 사용하면, 개발자가 컴파일 타임에 직접 concrete type을 명시하게 된다. <br> 그 덕분에 <ins>불필요한 분기를 만들지 않게 된다.</ins> 
 
 #### :one: Generic을 사용한 코드
 ~~~c#
