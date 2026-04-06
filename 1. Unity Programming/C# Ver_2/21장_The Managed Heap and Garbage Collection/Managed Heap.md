@@ -1,8 +1,9 @@
 ## :fire: 결론부터 적으면, C#은 Managed Code기 때문에 <br> GC를 개발자가 컨트롤 하기 쉽지 않다고 생각한다. <br> GC 친화적인 코딩 방식 정도만 알고 넘어가자.
 - null로 끊는다고 메모리가 확보되지는 않는다는 것
-- GC 친화적인 방법 코딩이 그나마 내가 실천할 수 있다
+- GC 친화적인 방법 코딩이 그나마 내가 실천할 수 있다.
+  - GC 친화적 기법들을 계속 추가해서 기록한다.
   - object pooling 
-  - [LINK](https://www.reddit.com/r/dotnet/comments/1b95sam/how_to_write_c_to_avoid_any_gc_pauses/)
+  - :link:[How to write C# to avoid any GC pauses?](https://www.reddit.com/r/dotnet/comments/1b95sam/how_to_write_c_to_avoid_any_gc_pauses/)
 
 <br><br>
 
