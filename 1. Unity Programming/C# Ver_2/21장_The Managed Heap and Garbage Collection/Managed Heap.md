@@ -38,7 +38,7 @@ class Program
 
 		obj = null;  //1번 시점 : 참조 끊기
 		
-		GC.Collect(); //2번 시점 : GC 동작
+		GC.Collect(); //2번 시점 : GC 동작  ->  실무에서는 사용하지 말자.
 	}
 }
 ~~~
