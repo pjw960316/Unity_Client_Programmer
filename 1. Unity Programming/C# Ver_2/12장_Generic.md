@@ -1,4 +1,4 @@
-## :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> :fire: 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>굳이 추상화 하지말고 컴파일 타임에 확정시키면 된다. <br> 그게 Generic이다.
+## :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> :fire: 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>Generic Method를 사용해서 컴파일 타임에 확정시키면 된다. <br> :fire: Generic Method는 비 Generic Class에서도 당연히 만들 수 있다.
 #### [호출부에서 명시적인 타입을 알면 Generic을 써서 전달하자]
 ~~~c#
 //1. View_1 : UIAlarmPopup Script의 코드
