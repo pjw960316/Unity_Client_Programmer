@@ -51,7 +51,7 @@ class Program
 
 <br><br>
 
-## :fire: '= null'과 'unreachable'은 명백히 다른 개념이다. <br> unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다. <br> 참조가 100개 되어 있는데, 고작 1개를 null로 초기화 한다고 unreachable이 되지 않는다.
+## :fire: '= null'과 'unreachable'은 명백히 다른 개념이다. <br> unreachable은 인스턴스에 대한 '모든' 참조가 null이 되어야 한다. <br> 참조가 100개 되어 있는데, 고작 1개를 null로 초기화 한다고 unreachable이 되지 않는다. <br> 100개 모두 null이 되면 GC가 인지하고 언젠가 해제한다. 
 #### [참조가 2개인 힙에 올라간 1개의 AAA 인스턴스]
 ~~~c#
 void Main()
@@ -77,7 +77,7 @@ public class AAA
 
 <br><br>
 
-## :fire: GC는 Managed Heap에 있는 ReferenceType만 관리한다. <br> :fire: 하지만... Class의 멤버로 있는 ValueType도 함께 관리된다.
+## :fire: GC는 Managed Heap에 있는 ReferenceType만 관리한다. <br> :fire: 하지만 Class의 멤버로 있는 ValueType도 함께 관리된다.
   - ReferenceType인 인스턴스가 제거되면 당연히 인스턴스 전체가 메모리에서 사라지기 때문에, 내부의 valueType 멤버들(int, struct)도 **같이 제거** 된다.
     - Class의 valueType 멤버들도 managed heap에 있다.
   - 다시 말해, 클래스의 valueType 멤버가 독립적으로 제거되는 경우는 알 수 없으나, 인스턴스가 삭제될 때 valueType 멤버는 당연히 같이 해제된다.
