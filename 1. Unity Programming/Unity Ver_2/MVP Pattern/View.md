@@ -33,7 +33,7 @@ private void OnClickQuitAlarmButton()
 <details>
   <summary> :point_up_2: 눌러서 이미지를 확인 합니다.  </summary>
 
-- ![alt text](./captures/20250711.png)
+- ![alt text](../captures/20250711.png)
 
 </details>
 
@@ -60,8 +60,8 @@ public void ChangeAnimalPath(int angle)
 ~~~
 - 단순한 position 계산, scale 계산 같은 순수 UI 수치 계산은 View에서 처리해도 무방하다.
 > For me it depends on what data we're talking about. If there is any UI component that has any potential business logic tied with it, I'd prefer to keep it in my ViewModel (as a standalone state or part of a UiState data class as Lackner does it). However suppose we have a toggle which <ins>just changes appearances and has nothing to do with any of your app's business logic, I'd keep that in my compose code as that is Ui centric logic.</ins>
-- ![alt text](./captures/20250722_1.png)
-- ![alt text](./captures/20250722.png)
+- ![alt text](../captures/20250722_1.png)
+- ![alt text](../captures/20250722.png)
   - 마우스 클릭으로 버튼의 색상을 변경하는 경우, 버튼의 색상 값과 변경 로직 정도는 View에 구현한다.
   - Model 과 Manager가 필요 없고, View 갱신만 담당하기에 로직임에도 View Script에 구현해도 문제가 없다.
 

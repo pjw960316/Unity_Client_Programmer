@@ -76,7 +76,7 @@ Main : Run Event Loop
 300
 */
 ~~~
-- ![alt text](./captures/20250808_1.png)
+- ![alt text](../captures/20250808_1.png)
 - **UniTask.Delay(1000) 부분에서 탈출해도 또 await SumAsync(100,200)이 존재한다. 그러면 당연히 또 탈출해서 Test()로 제어가 넘어간다.**
 > await 연산자의 피연산자는 일반적으로 .NET 형식인 Task, Task<TResult>, ValueTask 또는 ValueTask<TResult> 중 하나에 해당합니다. 그러나 대기 가능한 모든 식은 await 연산자의 피연산자일 수 있습니다. 
 

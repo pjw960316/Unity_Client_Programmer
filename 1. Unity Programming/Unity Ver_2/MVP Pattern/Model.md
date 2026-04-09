@@ -13,7 +13,7 @@
 
 ### :three: Enum을 관리할 책임이 있다.
 - Class 외부에 선언하지 않도록 주의한다. (Scope)
-- ![alt text](./captures/20251029.png)
+- ![alt text](../captures/20251029.png)
 
 <br>
 
@@ -49,7 +49,7 @@ public class ScriptableObjectManager : ManagerBase<ScriptableObjectManager>
 <br>
 
 ### :three: ScriptableObject로 구현된 Model의 경우, Model Instance가 생성되면 Field들이 메모리에 로드된다. 그러나 AudioClip은 설정을 해줘야 메모리에 로드된다.
-- ![alt text](./captures/20250902.png)
+- ![alt text](../captures/20250902.png)
 ~~~c#
 public class AlarmData : ScriptableObject, IModel
 {
@@ -65,5 +65,5 @@ public class AlarmData : ScriptableObject, IModel
 - 여기 존재하는 필드는 메모리에 올라가지만 AudioClip의 경우 완전히 메모리에 올라가지는 않는다. 
 - 그러므로, 높은 용량의 audioClip을 참조할 때 disk-load로 인한 2~3초 정도의 렉이 발생한다. 
 > When Preload Audio Data is enabled, the audio data is loaded into memory along with the object when the scene loads or the asset is referenced. If disabled, Unity will not load audio data into memory until you explicitly call AudioClip.LoadAudioData() or call Play(), which implicitly does so.
-- ![alt text](./captures/20250902_2.png)
+- ![alt text](../captures/20250902_2.png)
   - Preload Audio Data를 하면 Memory에 미리 로드해서 렉은 없어지지만 memory에 상주한다는 단점이 있다. (Trade-Off)

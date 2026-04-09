@@ -1,11 +1,6 @@
 ## :fireworks: MVP + Manager + User
 
-<details>
-  <summary> :point_up_2: 누르면 매우 큰 이미지가 나옵니다...!  </summary>
-
-![alt text](./captures/20250618.png)
-
-</details>
+![alt text](../captures/20250618.png)
 
 <br><br>
 
@@ -21,7 +16,7 @@
 <details>
   <summary> :point_up_2: 누르면 매우 큰 이미지가 나옵니다...  </summary>
 
-![alt text](./captures/20250612.png)
+![alt text](../captures/20250612.png)
 
 </details>
 
@@ -31,7 +26,7 @@
 <br><br>
 
 ## :fire: 컴포넌트(MVP + Manager) 관계는 단방향으로 이루어진다. (:book: Clean Architecture)
-- ![alt text](./captures/20250903.png)
+- ![alt text](../captures/20250903.png)
 - View는 Presenter에 의존해야 하며 Presenter -> View는 있을 수 없다.
 
 <br><br>
