@@ -1,6 +1,6 @@
 ## :fireworks: MVP + Manager + User
 
-![alt text](../captures/20250618.png)
+<img src="../captures/20250618.png" width="300" height="400"/>
 
 <br><br>
 
