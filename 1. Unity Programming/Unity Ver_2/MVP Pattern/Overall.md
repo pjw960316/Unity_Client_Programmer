@@ -1,6 +1,6 @@
 ## :fireworks: MVP + Manager + User
 
-<img src="../captures/20250618.png" width="300" height="400"/>
+<img src="../captures/20250618.png" width="300" height="600"/>
 
 <br><br>
 
