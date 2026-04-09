@@ -64,6 +64,8 @@ public static async Task<int> SumAsync(int a, int b)
 - async 메서드의 await을 만나면 풀의 스레드에서 해당 부분을 관리하고 주 스레드는 관심을 갖지 않고 자신의 흐름을 유지한다.
   - Blocking이 발생하지 않는다!
 
+<br><br>
+
 ## :fire: async 함수의 리턴 타입
 - void면 그냥 void
 - Task로 리턴할 수 있는데 신기한 것이 return을 적지 않아도 Task를 리턴한다.
