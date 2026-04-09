@@ -1,31 +1,15 @@
-# 목차
-- [목차](#목차)
-- [동기 호출과 비동기 호출](#동기-호출과-비동기-호출)
-    - [1. 동기 호출 (=Blocking Call)](#1-동기-호출-blocking-call)
-    - [2. 비동기 호출](#2-비동기-호출)
-- [Async/Await 예제\_1 : LINQPAD7](#asyncawait-예제_1--linqpad7)
-- [Async/Await 예제\_2 : Lecture](#asyncawait-예제_2--lecture)
-- [Async 함수의 리턴 타입](#async-함수의-리턴-타입)
-- [Async 키워드와 Async를 붙이는 함수](#async-키워드와-async를-붙이는-함수)
-- [await이 걸리는 순간 this도 null일 수 있다.](#await이-걸리는-순간-this도-null일-수-있다)
-- [Async vs Coroutine](#async-vs-coroutine)
-
-<br/><br/><br/>
-
-# 동기 호출과 비동기 호출
-### 1. 동기 호출 (=Blocking Call)
+## :fire: 동기 호출과 비동기 호출
+#### :one: 동기 호출 (=Blocking Call)
 - ![20230126_162358](https://user-images.githubusercontent.com/55792986/214779354-5e5015cf-65bd-4b5d-9b13-d737103d016a.png)
   - 디스크 I/O를 하느라 스레드가 멈춰 있는 현상을 blocking 이라고 한다.
 
-<br/><br/>
-
-### 2. 비동기 호출
+#### :two: 비동기 호출
 - ![20230126_162313](https://user-images.githubusercontent.com/55792986/214779318-7824ee69-30e8-4710-a2c6-481dbf4ec677.png)
-    - Blocking이 발생하지 않고 주 스레드는 계속 일을 한다.
+  - Blocking이 발생하지 않고 주 스레드는 계속 일을 한다.
 
-<br/><br/><br/>
+<br><br>
 
-# Async/Await 예제_1 : LINQPAD7
+## :fire: Async/Await 예제_1
 ~~~c#
 public static void Main()
 {
@@ -63,10 +47,9 @@ public static async Task<int> SumAsync(int a, int b)
 */
 ~~~
 
+<br><br>
 
-<br/><br/><br/>
-
-# Async/Await 예제_2 : Lecture
+## :fire: Async/Await 예제_2
 - ![20230206_164222](https://user-images.githubusercontent.com/55792986/216913244-155031a6-3c96-4128-a9b9-7c215adcd124.png)
 - ![20230201_141055](https://user-images.githubusercontent.com/55792986/215956880-75105804-3c47-466b-a651-7018cee01135.png)
   - '메서드'의 즉시 반환이 핵심이다. 해당 메서드를 탈출하는 것을 의미한다. 
@@ -80,9 +63,8 @@ public static async Task<int> SumAsync(int a, int b)
 - 주 스레드는 SumAsync의 결과를 기다리지 않고 Main 함수를 수행할 수 있다.
 - async 메서드의 await을 만나면 풀의 스레드에서 해당 부분을 관리하고 주 스레드는 관심을 갖지 않고 자신의 흐름을 유지한다.
   - Blocking이 발생하지 않는다!
-<br/><br/><br/>
 
-# Async 함수의 리턴 타입
+## :fire: async 함수의 리턴 타입
 - void면 그냥 void
 - Task로 리턴할 수 있는데 신기한 것이 return을 적지 않아도 Task를 리턴한다.
   - ![image](https://user-images.githubusercontent.com/55792986/214784192-6923360d-11ba-4d40-a9ed-1880c3fc319c.png)
@@ -90,19 +72,23 @@ public static async Task<int> SumAsync(int a, int b)
   - ![image](https://user-images.githubusercontent.com/55792986/214784401-0779a594-a6d0-4009-a852-f546b7a419b0.png)
     - 얘는 리턴 값을 명시해줘야 한다.
     - ret는 int지만 C#에서 알아서 Task<int>로 변경해서 리턴 해준다.
-<br/><br/><br/>
 
-# Async 키워드와 Async를 붙이는 함수
-- Async 키워드를 붙인 비동기 함수
+<br><br>
+
+## :fire: async 키워드와 async를 붙이는 함수
+- async 키워드를 붙인 비동기 함수
   - 얘는 비동기로 동작시킬 것이며 이 함수는 만나도 주 스레드에서 블로킹이 되지 않음을 의미한다.
-- 함수 이름 뒤에 Async를 붙여서 만든 함수 (ex : TestAsync)
-  - 보통 Async 키워드를 붙인 비동기 함수 내부에서 호출되고 await 뒤에 있다.
+- 함수 이름 뒤에 async를 붙여서 만든 함수 (ex : TestAsync)
+  - 보통 async 키워드를 붙인 비동기 함수 내부에서 호출되고 await 뒤에 있다.
   - TestAsync의 작업이 모두 진행 완료 될 때 까지 비동기 함수에서 결과를 기다리겠다.
-<br/><br/><br/>
 
-# await이 걸리는 순간 this도 null일 수 있다.
+<br><br>
+
+## :fire: await이 걸리는 순간 this도 null일 수 있다.
 - 실행 흐름이 언제인지 알 수 없기 때문에 나 자체가 꺼졌을 때 해당 task가 수행 될 수 있다.
 - cancellationToken을 항상 await과 함께 쓴다고 생각해서 이벤트도 종료 시키고, 인스턴스의 필드에 대해서도 null 검사를 해서 안정성을 확보한다.
 
-# Async vs Coroutine
+<br><br>
+
+## :fire: async vs Coroutine
 - ![20230126_171320](https://user-images.githubusercontent.com/55792986/214787579-622546cc-ed29-4cb3-9e4b-06d63e80012b.png)
