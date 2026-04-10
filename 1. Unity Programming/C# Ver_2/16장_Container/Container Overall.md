@@ -1,7 +1,7 @@
 ## :fire: Container는 7개만 알면 된다. 
-1. Array<T>
-2. List<T> / HashSet<T> / Dictionary<T>
-3. Stack<T> / Queue<T> / PriorityQueue<T>
+1. **Array<T>**
+2. **List<T> / HashSet<T> / Dictionary<T>**
+3. **Stack<T> / Queue<T> / PriorityQueue<T>**
 - 원래 6개였는데 priorityQueue도 추가 
 
 <br><br>
@@ -50,7 +50,7 @@
 <br><br>
 
 ## :fireworks: IEnumerable 참고
-- ![alt text](../capture/20260410_2.png)
+![alt text](../capture/20260410_2.png)
 ~~~c#
 public class List<T> : 
 System.Collections.Generic.ICollection<T>, 
