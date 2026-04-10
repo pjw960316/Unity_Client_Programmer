@@ -1,4 +1,4 @@
-## :fire: 문자열 가공(문자열 뒤에 추가, 삽입, 삭제, 덮어쓰기)은 StringBuilder를 사용하는 것이 적절하다. <br> :fire: 반복적인 가공 상황에서 메모리와 시간 측면 모두에서 StringBuilder가 효율적이다.**
+## :fire: 문자열 가공(추가, 삽입, 삭제, 덮어쓰기)은 StringBuilder를 사용하는 것이 적절하다. <br> :fire: 반복적인 가공 상황에서 메모리와 시간 측면 모두에서 StringBuilder가 효율적이다.
 - String은 immutable이므로, 문자열을 가공할 때마다 새로운 문자열이 생성되고 이 과정에서 기존 문자열 길이만큼의 복사가 발생한다. 따라서 +=를 연속적으로 사용하면, 매 단계마다 누적된 길이만큼 다시 순회하게 되어 전체 시간 복잡도는 O(n²)이 된다.
 - StringBuilder는 내부 버퍼를 유지하며 기존 결과를 반복해서 복사하지 않는다. 연속적인 append에서는 추가되는 문자 수만큼만 처리되므로 전체 시간 복잡도는 O(n)으로 유지된다.
   - :airplane:[Why StringBuilder.append time complexity is O(1)](https://stackoverflow.com/questions/56799064/why-stringbuilder-append-time-complexity-is-o1)
@@ -11,6 +11,9 @@
 
 ## :bangbang: StringBuilder 주의사항
 #### :one: StringBuilder 객체에 대해서 ToString()을 사용하면 O(n)의 복잡도를 갖는다.
+
+<br>
+
 #### :two: StringBuilder로 할 수 없는 문자열 정렬은 List<string>으로 변화해서 사용한다.
 ~~~c#
 var nameList = new List<string>();
@@ -30,9 +33,12 @@ foreach (var name in nameList)
     sb.AppendLine(name);
 }
 ~~~
-    
+
+<br>    
+
 #### :three: 매우 긴 문자열을 가공하는 경우는 StringBuilder의 Capacity를 크게 초기화하고 시작한다.
-- StringBuilder는 일정하게 메모리를 할당해서 실제보다 더 많은 메모리를 사용한다. 이 때 들어가는 게 Capacity 개념이다.
+- StringBuilder는 일정하게 메모리를 할당해서 실제보다 더 많은 메모리를 사용한다. 
+- 이 때 들어가는 게 Capacity 개념이다.
 ~~~c#
 StringBuilder sb1 = new StringBuilder("abc");
 StringBuilder sb2 = new StringBuilder("abc", 16);
@@ -44,7 +50,9 @@ Console.WriteLine("a1) sb1.Length = {0}, sb1.Capacity = {1}", sb1.Length, sb1.Ca
 ~~~
 > Gets or sets the maximum number of characters that can be contained in the memory allocated by the current instance.
 
-#### :four: StringBuilder는 IEnumerable<T>(및 IEnumerable)를 구현하지 않기 때문에 <br> 직접적인 foreach나 LINQ 사용이 불가능하다. <br> :fire: 반면에, String은 IEnumerable<char>를 구현하고 있으므로 foreach와 LINQ 사용이 가능하다.**
+<br>
+
+#### :four: StringBuilder는 IEnumerable<T>(및 IEnumerable)를 구현하지 않기 때문에 직접적인 foreach나 LINQ 사용이 불가능하다. <br> :fire: 반면에, String은 IEnumerable<char>를 구현하고 있으므로 foreach와 LINQ 사용이 가능하다.**
 > The string value of this instance is set to [String.Empty](https://learn.microsoft.com/en-us/dotnet/api/system.string.empty?view=net-9.0#system-string-empty), and the capacity is set to the implementation-specific default capacity.*
 
 <br><br>
@@ -56,11 +64,11 @@ Console.WriteLine("a1) sb1.Length = {0}, sb1.Capacity = {1}", sb1.Length, sb1.Ca
 <br>
 
 - **AppendLine(string 만)은 string 타입이 아니면 사용하지 않는다.**
+  - 개행이 필요하면 다음과 같이 사용한다.
 ~~~c#
 int a = 3;
 str.Append(a).Append('\n');  
 ~~~    
-  - 개행이 필요하면 다음과 같이 사용한다.
 
 <br>
 
