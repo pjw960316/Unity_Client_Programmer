@@ -6,6 +6,7 @@
 <br><br> 
 
 ## :fire: String과 StringBuilder에서 각각의 element는 반드시 char 타입이다.
+![alt text](../capture/20260410_6.png)
 
 <br><br>
 
