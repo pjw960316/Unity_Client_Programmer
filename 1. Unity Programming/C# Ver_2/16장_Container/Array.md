@@ -90,4 +90,4 @@ void Main()
 <br>
 
 - **알고리즘 문제 → Clone() 이용.**
-  - :airplane:[BOJ](https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Gold/2573.%E2%80%85%EB%B9%99%EC%82%B0/%EB%B9%99%EC%82%B0.cs)
+  - :airplane:[BOJ_2573번 문제](https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Gold/2573.%E2%80%85%EB%B9%99%EC%82%B0/%EB%B9%99%EC%82%B0.cs)
