@@ -69,7 +69,7 @@ System.Collections.ICollection
 <br><br>
 
 ## :fire: ICollection<T>를 구현해야 Count, Clear(), Contains(T), Add(T), Remove(T)를 사용 할 수 있다.
-- ![alt text](../capture/20260410_3.png)
+![alt text](../capture/20260410_3.png)
 - Dictionary는 ContainsKey(T).
 - HashSet 과 Dictionary는 Remove(key)인게 이 둘은 인덱스 개념이 없다.
 - property로 저장하고 있기 때문에 O(1)이다.
