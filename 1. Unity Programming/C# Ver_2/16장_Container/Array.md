@@ -1,7 +1,7 @@
 ## :fire: Array 개념 (📔제프리 16장)
 - **모든 배열은 System.Array class로 부터 상속을 받기 때문에 참조 타입이고 힙에 저장.**
   - System.Array → IList → ICollection → IEnumerable(최상단) (📔P444)
-    - https://learn.microsoft.com/ko-kr/dotnet/api/system.array?view=net-8.0
+    - :airplane:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/api/system.array?view=net-8.0)
 - **배열은 Add나 Remove 같은 메서드를 사용 할 수 없다. (고정 크기)**
   - ![alt text](../capture/20260410_1.png)
 - **메서드의 매개변수로 배열을 전달할 때에는 실제로는 배열의 참조를 전달하게 된다.**
@@ -90,4 +90,4 @@ void Main()
 <br>
 
 - **알고리즘 문제 → Clone() 이용.**
-  - https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Gold/2573.%E2%80%85%EB%B9%99%EC%82%B0/%EB%B9%99%EC%82%B0.cs
+  - :airplane:[BOJ](https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Gold/2573.%E2%80%85%EB%B9%99%EC%82%B0/%EB%B9%99%EC%82%B0.cs)
