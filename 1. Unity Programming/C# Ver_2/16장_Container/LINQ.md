@@ -1,6 +1,8 @@
 ## :fire: LINQ는 IEnumerable 기반 반복 체인이다.
 > which supports the generic IEnumerable<T> interface. This fact means it can be queried with LINQ. A query is executed in a foreach statement, and foreach requires IEnumerable or IEnumerable<T>.
 
+<br><br>
+
 ## :fire: Lazy(=deferred -> MSDN은 이걸 사용) Evaluation은 LINQ의 실제 실행이 특정 구문을 만날 때 까지 지연 되는 것을 의미한다.<br> :one: LINQ의 본질인 순회를 담당하는 foreach 구문을 만나면 즉시 실행된다. <br> :two: .ToList() 같은 메서드를 만나면 즉시 실행된다. <br> :three: Count, Max, Average, First 같은 메서드를 만나면 즉시 실행된다.
 > The actual execution only occurs when a materialization method is invoked, such as .ToList(), .ToArray(), or when iterating with foreach.
 
