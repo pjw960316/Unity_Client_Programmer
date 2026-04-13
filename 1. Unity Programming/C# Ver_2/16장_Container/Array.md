@@ -1,10 +1,9 @@
 ## :fire: Array 개념 (📔제프리 16장)
 - **모든 배열은 System.Array class로 부터 상속을 받기 때문에 참조 타입이고 힙에 저장된다.**
   - System.Array → IList → ICollection → IEnumerable(최상단) (📔P444)
-  > IList.Add(Object) => Calling this method always throws a NotSupportedException exceition.
-	- :airplane:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/api/system.array?view=net-8.0)
+  - :airplane:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/api/system.array?view=net-8.0)
 - **배열은 Add나 Remove 같은 메서드를 사용 할 수 없다. (고정 크기)**
-  - ![alt text](../capture/20260410_1.png)
+   > IList.Add(Object) => Calling this method always throws a NotSupportedException exceition.
 - **메서드의 매개변수로 배열을 전달할 때에는 실제로는 배열의 참조를 전달하게 된다.**
     - 이차원 배열에서 하나의 Row(일차원 배열)만 분리해서 메서드로 전달할 수 없다. 그러므로 메서드에서는 이차원 배열 전체를 전달한다.
 - **var arr = new int[0]는 빈 배열이고 var arr = null은 배열을 할당 하지 않은 것 이다. 엄연히 다르다.**
