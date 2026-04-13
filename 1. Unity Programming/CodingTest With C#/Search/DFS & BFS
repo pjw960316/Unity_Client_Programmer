@@ -1,48 +1,25 @@
-## 탐색의 핵심
+## :fireworks: DFS & BFS 기초 팁
+- input의 변수명은 무시하고 반드시 row와 col로 변수명을 선언해서 사용하고 Arr [row+1 , col+1] 배열을 이용한다.
+- Local Function을 만들고 visit 갱신, 값 갱신은 모두 메서드에서 진행한다.
+- Enqueue 할 때 visit을 true로 한다.
+- 모든 문제가 DFS로 풀리지는 않는다. BFS가 유리한 문제도 존재한다.
+  - :airplane:[BOJ_7576](https://www.acmicpc.net/problem/7576)
 
----
+<br><Br>
 
-
-
-## 완전탐색_DFS & BFS
-
----
-
-- **어려운 탐색은 구현을 멈추고, 종이노트에 트리를 그려라!**
-    - 쉬운 탐색은 ‘Depth 마다의’ 또는 ‘Node 마다의’ 상태를 몰라도 풀린다.
-    - 하지만 어려운 탐색은 ‘Depth 마다의’ 또는 ‘Node 마다의’ 상태를 자세하게 알아야 한다.
-        - 필요시에는 Node 별로 현재 state를 관리하기 위해 node 별 struct 나 class가 요구된다.
-            - :links: [Github](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/C%23%20Ver_2/05%EC%9E%A5_Primitive%2C%20Reference%2C%20and%20Value%20Type.md#fireworks-dto%EB%A5%BC-%EB%A7%8C%EB%93%A4-%EB%95%8C-%EC%83%81%ED%99%A9%EC%97%90-%EB%A7%9E%EA%B2%8C-valuetuple-%EB%98%90%EB%8A%94-struct-%EB%98%90%EB%8A%94-class%EB%A5%BC-%EC%84%A0%ED%83%9D%ED%95%B4%EC%84%9C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EC%96%B4%EC%95%BC-%ED%95%9C%EB%8B%A4--fire-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-2%EA%B0%9C%EB%A9%B4-valuetuple%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C%EB%8B%A4-item1%EA%B3%BC-item2%EA%B0%80-valuetype-%EB%98%90%EB%8A%94-referencetype-%EC%9D%B4%EC%96%B4%EB%8F%84-%EC%83%81%EA%B4%80%EC%97%86%EB%8B%A4-fire-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-3%EA%B0%9C-%EC%9D%B4%EC%83%81%EC%9D%B4%EA%B3%A0-%EB%AA%A8%EB%93%A0-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EB%B3%80%EA%B2%BD%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EA%B3%A0-valuetype%EC%9D%B4%EB%A9%B4-struct%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C%EB%8B%A4--fire-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-3%EA%B0%9C-%EC%9D%B4%EC%83%81%EC%9D%B4%EC%A7%80%EB%A7%8C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EB%B3%80%EA%B2%BD%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%98%EA%B3%A0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%91-1%EA%B0%9C%EB%9D%BC%EB%8F%84-referencetype%EC%9D%B4%EB%A9%B4-class%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C%EB%8B%A4)
+## :fire: 재귀가 코드에서 읽히지 않는다면, 종이노트에 트리를 그려라!
+- 쉬운 탐색은 ‘Depth 마다의’ 또는 ‘Node 마다의’ 상태를 몰라도 풀린다.
+- 하지만 어려운 탐색은 ‘Depth 마다의’ 또는 ‘Node 마다의’ 상태를 자세하게 알아야 한다.  ->  Backtracking
+  - 필요시에는 Node 별로 현재 state를 관리하기 위해 node 별 struct 나 class가 요구된다.
 - 재귀는 멈춰야 한다. 보통 그 조건은 Depth로 한다. 그러므로 모든 Node마다 Depth는 저장해야 한다.
 - for문으로는 해결이 불가능한, **깊이가 달라지는 문제 구조**
-- **input의 변수명은 무시하고 반드시 row와 col로 변수명을 선언해서 사용하고 
-Arr [row+1 , col+1] 배열을 이용한다.**
-- **둘 다 메서드를 만들고 visit 갱신, 값 갱신은 모두 메서드에서 진행한다.**
-    - Enqueue 할 때 visit을 true로 한다.
-- **모든 문제가 DFS로 풀리지는 않는다. BFS가 유리한 문제도 존재한다.**
-    - https://www.acmicpc.net/problem/7576
+
 
 ## BackTracking_DFS (Prunning)
 
 ---
 
-- 완전탐색을 하면 시간초과가 나는 문제가 있다.
-- DFS에서 Depth가 조금만 내려가도 재귀의 성질로 인해 엄청난 계산량을 생성한다.
-- 그러므로 prunning(=불필요한 경우를 제거)을 통해 Depth를 진행하지 않게 만든다.
-- 문제의 난이도에 따라 prunning 조건의 개수가 증가한다.
-    - visit은 보통 기본적인 prunning의 조건이다.
-- 조합은 DFS에서 Depth 마다 이전 원소보다 크기가 크면 중복이 없음을 이용한다.
-- **연구중**
-    - 제일 중요한 거!!!
-        - visit 배열이든, arr 배열이든, 예를 들어 visit[1]이 무엇을 의미할까? 어떤 리스트의 1번 인덱스를 의미할 수도 있고, 그냥 값 1을 의미할 수도 있다. 이걸 제대로 설정하고 depth 마다 알맞게 상태를 저장하는 게 백트래킹의 알파이자 오메가다.
-        - 깊이 마다의 상태를 계속 갱신하는 게 제일 중요하다. 그러면 상태는 곧 데이터 자료구조. 보통 depth 마다의 데이터 자료구조를 의미한다.
-    - 이해가 안 가면 실제로 트리를 그려라
-    - 백트래킹
-        - 상태를 최소 범위로 만들고, 빠르게 쓰고 버리는 기술
-        - 엔티티들의 상태를 재귀적으로 탐색 + 가지치기(pruning)
-        - ⭐그러므로 depth마다의 상태를 저장하는데. 어려운 문제일수록 가지치기의 조건을 만들기 위해 다양한 상태가 필요하다.
-    - 가능한 선택지를 만들고, 조건 안 맞으면 되돌린다 → 현업 사고
-    - 데이터를 depth 마다 지우고 다시 갱신하고 하는 건 결국 덮어쓰기고 이는 배열에서 좋다.
+
 
 # Binary Search
 
