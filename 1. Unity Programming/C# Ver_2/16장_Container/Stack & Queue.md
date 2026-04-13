@@ -11,7 +11,3 @@
 
 ## :bangbang: Stack & Queue 주의사항
 - Count가 0일 때를 항상 주의하고 검사한다.
-
-<br><br>
-
-## Priority Queue
