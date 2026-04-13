@@ -31,6 +31,18 @@ void Main()
 
 <br><br>
 
+## :fire: Dictionary는 당연히 Key로 정렬되지 않으며, foreach를 돌 때 LINQ OrderBy를 해야 한다.
+~~~c#
+//1. 정렬 되지 않음
+var dict = dict.OrderBy(kv => kv.Key).ToDictionary();
+foreach(var kv in dict) {}
+
+// 2. 정렬 됨
+foreach(var kv in dict.OrderBy(kv => kv.Key) {}
+~~~
+
+<br><br>
+
 ## :fire: TryGetValue()가 좋지만 ContainsKey()를 이용해서 값을 찾는다.  ⇒ O(1) * 2
 ~~~c#
 if (dict.ContainsKey(key))
