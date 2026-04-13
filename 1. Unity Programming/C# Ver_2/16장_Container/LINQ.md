@@ -1,5 +1,6 @@
 ## :fire: LINQ는 IEnumerable 기반 반복 체인이다.
-> which supports the generic IEnumerable<T> interface. This fact means it can be queried with LINQ. A query is executed in a foreach statement, and foreach requires IEnumerable or IEnumerable<T>.
+> which supports the generic IEnumerable<T> interface. This fact means it can be queried with LINQ.
+> A query is executed in a foreach statement, and foreach requires IEnumerable or IEnumerable<T>.
 
 <br><br>
 
