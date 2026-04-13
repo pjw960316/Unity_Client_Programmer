@@ -58,5 +58,4 @@
     }
     ~~~
 - Box가 TPriority가 된다.
-- Default 연산자가 존재하므로 아무것도 넣지 않으면 일반 숫자 비교가 된다.
 - return 1 , return 0 , return -1로 구현해도 충분하다.
