@@ -1,5 +1,5 @@
 ## :fire: Array 개념 (📔제프리 16장)
-- **모든 배열은 System.Array class로 부터 상속을 받기 때문에 참조 타입이고 힙에 저장.**
+- **모든 배열은 System.Array class로 부터 상속을 받기 때문에 참조 타입이고 힙에 저장된다.**
   - System.Array → IList → ICollection → IEnumerable(최상단) (📔P444)
     - :airplane:[MSDN](https://learn.microsoft.com/ko-kr/dotnet/api/system.array?view=net-8.0)
 - **배열은 Add나 Remove 같은 메서드를 사용 할 수 없다. (고정 크기)**
