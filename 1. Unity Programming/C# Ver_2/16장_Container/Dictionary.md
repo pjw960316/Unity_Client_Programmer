@@ -1,4 +1,4 @@
-## :fire: ContainsKey를 회피하기 위해 value(int)를 0으로 초기화 하는 방식은 매우 중요하다.
+## :fire: ContainsKey를 회피하기 위해 <br> value(int)를 0으로 초기화 하는 방식은 유용하다.
 ~~~c#
 void Main()
 {
