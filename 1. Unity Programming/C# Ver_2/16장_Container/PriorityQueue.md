@@ -1,4 +1,4 @@
-## :fire: PriorityQueue는 Custom Sorted Queue다. <br> :fire: 정렬된 Queue는 최적화 관점에서 매우 유용하게 사용이된다.
+## :fire: PriorityQueue는 Custom Sorted Queue다. <br> :fire: 정렬된 Queue는 시간복잡도 성능이 좋아서 유용하게 사용된다.
 - 시간 순서대로 정렬된 list와 priorityQueue를 비교해본다.
   - List는 맨 앞 원소를 사용하고 제거할 때 O(n)의 RemoveAt()을 사용한다.
   - PriorityQueue는 맨 앞 원소를 사용하고 제거할 때 O(log n)의 Dequeue()을 사용한다.
@@ -9,8 +9,6 @@
 
 ## :fireworks: 아래에서 두 가지 PriorityQueue를 알아본다.
 
-<br><br>
-
 ## :one: api 대신 List의 Sort와 Queue를 이용한 방식
 - list.Sort() 이후, Queue에 넣기
 - list.Sort()는 O(nlogn)이고, Queue에 넣는 것은 O(n)이므로 총 복잡도는 O(nlogn + n)이 된다.
@@ -20,7 +18,7 @@
 
 ## :two: System.Collections.Generic.PriorityQueue를 이용한 방식
 #### [MSDN]
-![alt text](../capture/20260413_3.png)
+<img src="../capture/20260413_3.png" width="600" height="300">
 - :airplane:[IComparer를 매개변수로 하는 생성자](https://learn.microsoft.com/ko-kr/dotnet/api/system.collections.generic.priorityqueue-2.-ctor?view=net-8.0#system-collections-generic-priorityqueue-2-ctor(system-collections-generic-icomparer((-1))))
 
 <br>
