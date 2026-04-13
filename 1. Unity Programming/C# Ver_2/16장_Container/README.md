@@ -43,8 +43,8 @@
 <br><br>
 
 ## :fire: List<T> , HashSet<T> , Dictionary<K,V>는 ICollection<T>를 구현한다. <br> :fire: Stack<T> , Queue<T>는 IReadonlyCollection<T>를 구현한다.
-- **ICollection 과 ICollection<T>는 서로 다르다.**
-- **IEnumerable과 IEnumerable<T>는 계승 관계다.**
+- **ICollection 과 ICollection Generic는 서로 다르다.**
+- **IEnumerable과 IEnumerable Generic은 계승 관계다.**
 > ICollection<T> seems like ICollection, but it’s actually a very different abstraction. We found that ICollection was not very useful. At the same time, we did not have an abstraction that represented an read/write non-indexed collection. ICollection<T> is such abstraction and you could say that ICollection does not have an exact corresponding peer in the generic world; IEnumerable<T> is the closest.
 - :airplane: [Why doesn't ICollection<T> implement ICollection?](https://stackoverflow.com/questions/2353346/why-doesnt-icollectiont-implement-icollection)
 
