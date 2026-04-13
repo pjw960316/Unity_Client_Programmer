@@ -1,5 +1,8 @@
 ## :fire: PriorityQueue는 Custom Sorted Queue다. <br> :fire: 정렬된 Queue는 시간복잡도 성능이 좋아서 유용하게 사용된다.
 - :teacher: 시간 순서대로 정렬된 list와 priorityQueue를 비교해본다.
+
+<br>
+
 - **List는 맨 앞 원소를 사용하고 제거할 때 O(n)의 RemoveAt()을 사용한다.**
 
 <br>
