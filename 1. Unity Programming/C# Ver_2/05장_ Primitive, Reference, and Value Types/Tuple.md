@@ -25,6 +25,9 @@ list.Add(new ValueTuple<int, int>(1, 1));
 <br><br>
 
 ## :fire: C# 7.0 이후, tuple 타입의 문법 은 ValueTuple (,) 사용이 표준이며 <br> System.Tuple은 레거시 API로 간주된다.
+
+<br>
+
 - **우리가 사용하는 ValueTuple**
 <img src="../capture/20260410_4.png" width="600" height="400" />
 ![alt text](../capture/20260410_4.png)
@@ -32,7 +35,7 @@ list.Add(new ValueTuple<int, int>(1, 1));
 <br>
     
 - **과거의 레거시인 Tuple**
-![alt text](../capture/20260410_5.png)
+<img src="../capture/20260410_5.png" width="600" height="400" />
 
 <br><br>
 
