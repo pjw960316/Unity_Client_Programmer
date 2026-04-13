@@ -61,3 +61,4 @@ else
 - float과 double은 부동소수점이고 이는 근사값이다.
 - 그러므로 key의 같음을 비교할 때 정확하지 않을 수 있다.
 - decimal이 128비트를 사용하므로 float과 double보다 정밀하지만 이 또한 100% key 비교에서 같음을 보장 할 수는 없다.
+- :airplane:[Should I use Decimal type as keys in a Dictionary?](https://stackoverflow.com/questions/14693561/should-i-use-decimal-type-as-keys-in-a-dictionary)
