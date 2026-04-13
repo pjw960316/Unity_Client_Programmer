@@ -6,11 +6,10 @@
 
 <br><br>
 
-## :fire: 서로 다른 타입 끼리 계산할 때 C#은 더 범위가 넓은 타입을 리턴한다.
-> If the operands are different integral or floating-point types, their values are converted to the closest containing type, if such a type exists.
-  - int + long = long
-    - int가 long으로 캐스팅되어 계산된다.
-  - double / int = double
+## :fire: 서로 다른 타입 끼리 계산할 때 C#은 더 범위가 넓은 타입을 리턴한다. <br> :fire: double이 long 보다 넓은 범위다.
+- **int + long => long 캐스팅**
+- **double / int => double 캐스팅**
+- **double + long => double 캐스팅**
 ~~~c#
 var arr = new long[52];
 arr[0] = 1; // int는 long으로 캐스팅 된다.
@@ -23,6 +22,7 @@ for (int i = 2; i <= 51; i++)
     // 1234567891은 int니까 long % int니까 결과는 long이다.
 }
 ~~~
+> If the operands are different integral or floating-point types, their values are converted to the closest containing type, if such a type exists.
 
 <br><br>
 
