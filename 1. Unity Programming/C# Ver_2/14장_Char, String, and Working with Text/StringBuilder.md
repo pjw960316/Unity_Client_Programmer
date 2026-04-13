@@ -1,6 +1,8 @@
 ## :fire: 문자열 가공(추가, 삽입, 삭제, 덮어쓰기)은 StringBuilder를 사용하는 것이 적절하다. <br> :fire: 반복적인 가공 상황에서 메모리와 시간 측면 모두에서 StringBuilder가 효율적이다.
-- String은 immutable이므로, 문자열을 가공할 때마다 새로운 문자열이 생성되고 이 과정에서 기존 문자열 길이만큼의 복사가 발생한다. 따라서 +=를 연속적으로 사용하면, 매 단계마다 누적된 길이만큼 다시 순회하게 되어 전체 시간 복잡도는 O(n²)이 된다.
-- StringBuilder는 내부 버퍼를 유지하며 기존 결과를 반복해서 복사하지 않는다. 연속적인 append에서는 추가되는 문자 수만큼만 처리되므로 전체 시간 복잡도는 O(n)으로 유지된다.
+- String은 immutable이므로, 문자열을 가공할 때마다 새로운 문자열이 생성되고 이 과정에서 기존 문자열 길이만큼의 복사가 발생한다.
+- 따라서 +=를 연속적으로 사용하면, 매 단계마다 누적된 길이만큼 다시 순회하게 되어 전체 시간 복잡도는 O(n²)이 된다.
+- StringBuilder는 내부 버퍼를 유지하며 기존 결과를 반복해서 복사하지 않는다.
+- 연속적인 append에서는 추가되는 문자 수만큼만 처리되므로 전체 시간 복잡도는 O(n)으로 유지된다.
   - :airplane:[Why StringBuilder.append time complexity is O(1)](https://stackoverflow.com/questions/56799064/why-stringbuilder-append-time-complexity-is-o1)
 
 <br><br> 
