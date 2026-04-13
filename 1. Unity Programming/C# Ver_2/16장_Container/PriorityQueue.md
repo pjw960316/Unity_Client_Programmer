@@ -22,41 +22,41 @@
 
 <br>
 
-#### TPriority Generic을 사용하는 Compare 메서드를 구현해야 한다.
+#### [TPriority Generic을 사용하는 Compare 메서드를 구현해야 한다.]
 - PriorityQueue는 Custom Sorted Queue이다.
 - 그러므로, IComparer가 부여한 Compare의 책임을 구현해야 한다. 
 ![alt text](../capture/20260413_4.png)
-~~~c#
-// MSDN CODE
+    ~~~c#
+    // MSDN CODE
 
-// This class is not demonstrated in the Main method
-// and is provided only to show how to implement
-// the interface. It is recommended to derive
-// from Comparer<T> instead of implementing IComparer<T>.
-public class BoxComp : IComparer<Box>
-{
-    // Compares by Height, Length, and Width.
-    public int Compare(Box x, Box y)
+    // This class is not demonstrated in the Main method
+    // and is provided only to show how to implement
+    // the interface. It is recommended to derive
+    // from Comparer<T> instead of implementing IComparer<T>.
+    public class BoxComp : IComparer<Box>
     {
-        if (x.Height.CompareTo(y.Height) != 0)
+        // Compares by Height, Length, and Width.
+        public int Compare(Box x, Box y)
         {
-            return x.Height.CompareTo(y.Height);
-        }
-        else if (x.Length.CompareTo(y.Length) != 0)
-        {
-            return x.Length.CompareTo(y.Length);
-        }
-        else if (x.Width.CompareTo(y.Width) != 0)
-        {
-            return x.Width.CompareTo(y.Width);
-        }
-        else
-        {
-            return 0;
+            if (x.Height.CompareTo(y.Height) != 0)
+            {
+                return x.Height.CompareTo(y.Height);
+            }
+            else if (x.Length.CompareTo(y.Length) != 0)
+            {
+                return x.Length.CompareTo(y.Length);
+            }
+            else if (x.Width.CompareTo(y.Width) != 0)
+            {
+                return x.Width.CompareTo(y.Width);
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
-}
-~~~
+    ~~~
 - Box가 TPriority가 된다.
 - Default 연산자가 존재하므로 아무것도 넣지 않으면 일반 숫자 비교가 된다.
 - return 1 , return 0 , return -1로 구현해도 충분하다.
