@@ -6,7 +6,7 @@
 
 <br><br>
 
-## :fire: 서로 다른 타입 끼리 계산할 때 C#은 더 범위가 넓은 타입을 리턴한다. <br> :fire: double이 long 보다 넓은 범위다. <br> :fire: 정수와 실수가 계산되면 실수로 캐스팅된다.
+## :fire: 서로 다른 타입 끼리 계산할 때 C#은 더 범위가 넓은 타입을 리턴한다. <br> :fire: double이 long 보다 범위가 넓다. <br> :fire: 정수와 실수를 계산하면 실수로 캐스팅된다.
 - **int + long => long 캐스팅**
 - **double / int => double 캐스팅**
 - **double + long => double 캐스팅**
