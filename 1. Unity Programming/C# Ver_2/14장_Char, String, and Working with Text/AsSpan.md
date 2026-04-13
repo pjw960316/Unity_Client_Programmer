@@ -61,7 +61,6 @@ string 객체에 대해서 .AsSpan(startIdx , length)으로 생성한다.
      }
     ```
     ![alt text](../capture/20260413_2.png)
-    ![image.png](attachment:6918153e-bc2b-4f46-a374-8e95287ad836:image.png)
     
 - **코드**
     
