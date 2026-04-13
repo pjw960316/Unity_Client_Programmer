@@ -1,4 +1,4 @@
-## :fire: (int,int) 처럼 선언하는 것은 C# 7.0 이후 ValueTuple과 완전히 동일하다. <br> :fire: ValueTuple은 struct다.
+## :fire: (int,int)의 선언 방식은 C# 7.0 이후 ValueTuple과 완전히 동일하다. <br> :fire: ValueTuple은 struct다.
 ~~~c#
 //1. Normal
 (int,int) a = (1,2); // => ValueTuple
