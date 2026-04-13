@@ -42,12 +42,12 @@ else
     dict[key] = 1;
 }
 ~~~
-- 직관적인 가독성에 더 좋다.
+- 개인적으로 더 가독성이 좋다고 생각한다.
 - Linq의 Any(kv ⇒ kv.Key == 2)처럼도 가능하다
 
 <br><br>
 
-## :fire: *모든 Value에 중복이 없다고 가정할 때, 역방향 Dictionary를 생성하면 <br> Value로 Key를 조회 할 수 있다.
+## :fire: 모든 Value에 중복이 없다고 가정할 때, <br> 역방향 Dictionary를 추가로 생성하면 Value로 Key를 조회 할 수 있다.
 
 <br><br>
 
