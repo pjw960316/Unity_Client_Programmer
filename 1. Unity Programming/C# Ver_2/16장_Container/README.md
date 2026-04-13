@@ -37,7 +37,7 @@
 <br>
 
 - **LINQ가 가능하다.**
-  - LINQ는 IEnumerable<T>를 this로 하는 확장메서드의 집합이므로 IEnumerable<T>를 구현하는 모든 Container에 대해서 사용이 가능하다.**
+  - LINQ는 IEnumerable<T>를 this로 하는 확장메서드의 집합이므로 IEnumerable<T>를 구현하는 모든 Container에 대해서 사용이 가능하다.
   - > The methods in this class provide an implementation of the standard query operators for querying data sources that implement [IEnumerable<T>](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-10.0). The standard query operators are general purpose methods that follow the LINQ pattern and enable you to express traversal, filter, and projection operations over data in any .NET-based programming language.
 
 <br><br>
