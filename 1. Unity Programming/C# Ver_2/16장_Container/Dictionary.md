@@ -1,4 +1,4 @@
-## :fire: ContainsKey를 회피하기 위해 value(int)를 0으로 초기화 하는 방식은 매우 중요하다.**
+## :fire: ContainsKey를 회피하기 위해 value(int)를 0으로 초기화 하는 방식은 매우 중요하다.
 ~~~c#
 void Main()
 {
@@ -17,7 +17,7 @@ void Main()
 
 <br><br>
 
-## :fire: Dictionary<key , Dictionary<k,v>>은 가독성 및 구현이 최악이므로 되도록 사용하지 않는다. 자료구조를 재설계 하도록한다.
+## :fire: Dictionary<key , Dictionary<k,v>>은 가독성 및 구현이 최악이므로 되도록 사용하지 않는다. <br> 자료구조를 재설계 하도록한다.
 - 일단 동작하자 마인드로 설계할 때 이런 자료구조를 선택한다.
 - dict에 dict는 변수 네이밍도 어렵고 순회 네이밍도 답이 없다.
 
