@@ -24,8 +24,10 @@ void Main()
 <br><br>
 
 ## :fire: 해시 기반 자료구조다. <br> 그래서 조회한 Key의 이전 key 또는 다음 Key는 알 수 없다.
-- 정렬의 개념도 없다.  ->  필요시에는 SortedDictionary 
-- 그러므로 LINQ의 OrderBy는 IEnumerable 타입의 시퀀스를 만들어 내는 거다.
+- 정렬의 개념도 없다.
+- 정렬이 필요하다면 두 가지 방식이 있다.
+    - SortedDictionary를 이용한다.
+    - LINQ의 OrderBy 또는 OrderByDescending을 이용한다.
 
 <br><br>
 
