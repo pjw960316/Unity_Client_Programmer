@@ -23,10 +23,6 @@ for (int i = 2; i <= 51; i++)
     // 1234567891은 int니까 long % int니까 결과는 long이다.
 }
 ~~~
-        
-        - int가 double로 캐스팅되어 계산된다.
-        - **하지만 double / double로 계산하자. 그게 기억하기도 쉽다.**
-            - 
 
 <br><br>
 
