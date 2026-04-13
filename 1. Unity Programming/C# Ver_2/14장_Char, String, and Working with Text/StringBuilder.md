@@ -61,7 +61,7 @@ Console.WriteLine("a1) sb1.Length = {0}, sb1.Capacity = {1}", sb1.Length, sb1.Ca
 
 <br>
 
-#### :four: StringBuilder는 IEnumerable<T>(및 IEnumerable)를 구현하지 않기 때문에 <br> 직접적인 foreach나 LINQ 사용이 불가능하다. <br> 반면에, String은 IEnumerable<char>를 구현하고 있으므로 <br> foreach와 LINQ 사용이 가능하다.**
+#### :four: StringBuilder는 IEnumerable Generic (및 IEnumerable)를 구현하지 않기 때문에 <br> 직접적인 foreach나 LINQ 사용이 불가능하다. <br> 반면에, String은 IEnumerable<char>를 구현하고 있으므로 <br> foreach와 LINQ 사용이 가능하다.**
 > The string value of this instance is set to [String.Empty](https://learn.microsoft.com/en-us/dotnet/api/system.string.empty?view=net-9.0#system-string-empty), and the capacity is set to the implementation-specific default capacity.*
 
 <br><br>
