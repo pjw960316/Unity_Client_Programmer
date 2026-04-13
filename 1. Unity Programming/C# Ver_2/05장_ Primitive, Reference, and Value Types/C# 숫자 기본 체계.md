@@ -60,7 +60,7 @@ for (int i = 2; i <= 51; i++)
 
 <br><br>
 
-## ToString()으로 소수점 반올림 출력하기
+## :fire: .ToString()으로 소수점 반올림 출력하기
 ~~~c#
 void Main()
 {
