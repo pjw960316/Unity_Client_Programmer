@@ -19,7 +19,7 @@
 ## :two: System.Collections.Generic.PriorityQueue를 이용한 방식
 #### [MSDN]
 <img src="../capture/20260413_3.png" width="700" height="400">
-- :airplane:[IComparer를 매개변수로 하는 생성자](https://learn.microsoft.com/ko-kr/dotnet/api/system.collections.generic.priorityqueue-2.-ctor?view=net-8.0#system-collections-generic-priorityqueue-2-ctor(system-collections-generic-icomparer((-1))))
+- :airplane:[IComparer를 매개변수로 하는 생성자](https://learn.microsoft.com/ko-kr/dotnet/api/system.collections.generic.priorityqueue-2.-ctor?view=net-8.0#system-collections-generic-priorityqueue-2-ctor(system-collections-generic-icomparer((-1)))
 
 <br>
 
