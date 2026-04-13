@@ -14,8 +14,7 @@ string 객체에 대해서 .AsSpan(startIdx , length)으로 생성한다.
     - Span<T> 또는 ReadonlySpan<T>에서 Slice(idx, len)를 사용한다. 이 메서드는 Span<T> 또는 ReadonlySpan<T>를 return 한다.
     - ToString()의 결과가 ReadonlySpan<Char>만 올바르게 나온다.
         - ReadonlySpan<Char>는 string의 AsSpan()의 return Type.
-        
-        ![image.png](attachment:b5ced252-0daf-4822-8b85-3489ca16a53e:image.png)
+    
         
 - **.AsSpan()으로 생성한 ReadonlySpan<T>와 문자열 비교하기 (코테에선 까먹을 듯…)**
     - 비교할 문자열도 AsSpan으로 ReadonlySpan<T>로 만든다.
@@ -61,7 +60,7 @@ string 객체에 대해서 .AsSpan(startIdx , length)으로 생성한다.
          }
      }
     ```
-    
+    ![alt text](../capture/20260413_2.png)
     ![image.png](attachment:6918153e-bc2b-4f46-a374-8e95287ad836:image.png)
     
 - **코드**
