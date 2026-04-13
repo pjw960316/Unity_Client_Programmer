@@ -74,10 +74,10 @@ Console.WriteLine("a1) sb1.Length = {0}, sb1.Capacity = {1}", sb1.Length, sb1.Ca
 
 - **AppendLine(string 만)은 string 타입이 아니면 사용하지 않는다.**
   - 개행이 필요하면 다음과 같이 사용한다.
-~~~c#
-int a = 3;
-str.Append(a).Append('\n');  
-~~~    
+  ~~~c#
+  int a = 3;
+  str.Append(a).Append('\n');  
+  ~~~    
 
 <br>
 
@@ -95,14 +95,14 @@ str.Append(a).Append('\n');
 
 - **범위내의 Index를 통해 char를 덮어쓸 수 있다.**
   - 범위는 Capacity가 아닌 Length를 기준으로 한다.
-~~~c#
-void Main()
-{
-    var sb = new StringBuilder();
-    sb.Append("abc");
-    
-    sb[1] = 'e';
-    
-    sb.Dump();	
-}
-~~~ 
+  ~~~c#
+  void Main()
+  {
+      var sb = new StringBuilder();
+      sb.Append("abc");
+      
+      sb[1] = 'e';
+      
+      sb.Dump();	
+  }
+  ~~~ 
