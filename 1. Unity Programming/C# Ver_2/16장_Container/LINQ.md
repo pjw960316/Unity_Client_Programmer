@@ -1,7 +1,10 @@
-## :fire: LINQ는 IEnumerable 기반 반복 체인이다.
+## :fire: LINQ는 IEnumerable 기반 반복 체인이다. <br> :fire: LINQ는 IEnumerable<T>를 구현한 객체에서만 사용 할 수 있다.
 > which supports the generic IEnumerable<T> interface. This fact means it can be queried with LINQ.
 
 > A query is executed in a foreach statement, and foreach requires IEnumerable or IEnumerable<T>.
+
+> You can enable LINQ querying of in-memory data in two ways. If the data is of a type that implements IEnumerable<T>, query the data by using LINQ to Objects. If it doesn't make sense to enable enumeration by implementing the IEnumerable<T> interface, define LINQ standard query operator methods either in that type or as extension members for that type.
+- 직접 IEnumerable을 구현하는 경우는 언젠가 확인하면 내용을 추가하자.   
 
 <br><br>
 

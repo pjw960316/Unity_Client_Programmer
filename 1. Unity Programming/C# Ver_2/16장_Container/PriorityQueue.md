@@ -11,6 +11,10 @@
   - PriorityQueue는 트리 구조기 때문이다.
   - While(pq.Count > 0)을 이용하면 조건에 맞는 첫 원소를 계속 검사 할 수 있다.
 
+<br>
+
+- **매우 큰 자료구조에서 조건에 맞는 원소 하나를 선택해서 제거할 때, List는 제거하고 O(n)이지만 priorityQueue는 해당 조건을 미리 IComparer로 구현을 했다면 O(logn)이 된다.**
+
 <br><br>
 
 ## :fireworks: 아래에서 두 가지 PriorityQueue를 알아본다.
@@ -65,6 +69,13 @@
     ~~~
 - Box가 TPriority가 된다.
 - return 1 , return 0 , return -1로 구현해도 충분하다.
+
+## :bangbang: PriorityQueue 주의사항
+#### :one: IEnumerable을 구현하지 않는다. <br> :fire: foreach를 사용할 수 없고 Linq도 사용 할 수 없다.
+
+<br>
+
+#### :two: foreach 순회가 불가능하기 때문에 <br> for문으로 순회하며 Dequeue()를 해서 확인한다. <br> 그러나 Dequeue()의 경우 실제로 원소를 제거하는 로직이므로 주의한다.
 
 <br><br>
 
