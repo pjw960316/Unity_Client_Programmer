@@ -33,7 +33,7 @@ dict.Remove(key);
 
 <br><br>
 
-## :fire: ToList()처럼 새로운 컨테이너를 힙에 할당하는 LINQ 구분은 <br> 자주 콜 되는 구문에서 사용하면 메모리가 낭비된다. <br> :fire: 이런 경우에는 IEnumerable Generic 변수를 할당해서 참조시킨다. <br> :fireworks: 아래 코드를 읽어본다. 
+## :fire: ToList()처럼 새로운 컨테이너를 힙에 할당하는 LINQ 구문은 <br> 자주 콜 되는 구문에서 사용하면 메모리가 낭비된다. <br> :fire: 이런 경우에는 IEnumerable Generic 변수를 할당해서 참조시킨다. <br> :fireworks: 아래 코드를 읽어본다. 
 ~~~c#
 var virusList = new List<(int r, int c, int virusNum)>();
 IEnumerable <(int r, int c, int virusNum)> viruses;
