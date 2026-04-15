@@ -36,7 +36,7 @@ list.Add(new ValueTuple<int, int>(1, 1));
 
 <br><br>
 
-## :fire: 생명주기가 길다면 Naming Tuple을 사용하자.
+## :fire: 항상 Naming Tuple을 사용하도록 하자.
 ~~~c#
 var queue = new Queue<(int id, int workTime, int entryTime)>();
 queue.Enqueue((1, 10, 0)); 
