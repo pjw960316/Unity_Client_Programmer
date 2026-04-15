@@ -33,4 +33,67 @@ dict.Remove(key);
 
 <br><br>
 
-## :fire: foreach 구문 내부에서 단순 순회를 하는 경우 .ToList() 대신, IEnumerable<T>로 이용한다. <br> :fire: .ToList()를 통한 새로운 리스트 할당을 막기에 메모리 관점에서 성능 이득이 있다.
+## :fire: ToList()처럼 새로운 컨테이너를 힙에 할당하는 LINQ 구분은 <br> 자주 콜 되는 구문에서 사용하면 메모리가 낭비된다. <br> :fire: 이런 경우에는 IEnumerable Generic 변수를 할당해서 참조시킨다. <br> :fireworks: 아래 코드를 읽어본다. 
+~~~c#
+var virusList = new List<(int r, int c, int virusNum)>();
+IEnumerable <(int r, int c, int virusNum)> viruses;
+
+// 엄청난 콜
+for (int t = 0; t < 1,000,000; t++)
+{
+    UpdateVirusList();
+    MoveVirus();
+}
+
+void UpdateVirusList()
+{    
+    virusList.Clear();
+            
+    for (int r = 1; r <= n; r++)
+    {
+        for (int c = 1; c <= n; c++)
+        {
+            for (int idx = 0; idx < 4; idx++)
+            {
+                if (arr[r + path[idx].r, c + path[idx].c] == 0)
+                {
+                    virusList.Add((r, c, arr[r, c]));
+                    break;
+                }
+            }
+        }
+    }
+
+    viruses = virusList
+        .OrderBy(threePair => threePair.virusNum); // 버퍼로 메모리를 사용하긴 하나, 금방 해제된다.
+
+    // 나쁜 코드
+    /* virusList = virusList
+        .OrderBy(threePair => threePair.virusNum)
+        .ToList();
+    */
+}
+        
+void MoveVirus()
+{
+    foreach (var threePair in viruses) //foreach는 IEnumerable의 기능
+    {
+        var r = threePair.r;
+        var c = threePair.c;
+        var virusNum = threePair.virusNum;
+
+        for (int idx = 0; idx < 4; idx++)
+        {
+            var newR = r + path[idx].r;
+            var newC = c + path[idx].c;
+
+            if (arr[newR, newC] == 0)
+            {
+                arr[newR, newC] = virusNum;
+            }
+        }
+    }
+}
+~~~
+- .ToList()를 했다면 1,000,000개의 List가 힙에 생성된다. 그러나 필요한 건 갱신된 리스트 뿐이다.
+- 그러므로 IEnumerable로 변경된 컨테이너를 참조하고, 매 번 갱신 때마다 리스트를 clear()하면 된다.
