@@ -65,3 +65,8 @@
     ~~~
 - Box가 TPriority가 된다.
 - return 1 , return 0 , return -1로 구현해도 충분하다.
+
+<br><br>
+
+## :ladder: 백준 문제
+- :airplane:[BOJ_29160](https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Silver/29160.%E2%80%85%EB%82%98%EC%9D%98%E2%80%85FIFA%E2%80%85%ED%8C%80%E2%80%85%EA%B0%80%EC%B9%98%EB%8A%94%EF%BC%9F/%EB%82%98%EC%9D%98%E2%80%85FIFA%E2%80%85%ED%8C%80%E2%80%85%EA%B0%80%EC%B9%98%EB%8A%94%EF%BC%9F.cs)
