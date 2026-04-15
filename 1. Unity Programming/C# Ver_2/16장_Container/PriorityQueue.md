@@ -31,7 +31,7 @@
 #### [TPriority Generic을 사용하는 Compare 메서드를 구현해야 한다.]
 - PriorityQueue는 Custom Sorted Queue이다.
 - 그러므로, IComparer가 부여한 Compare의 책임을 구현해야 한다. 
-![alt text](../capture/20260413_4.png)
+![alt text](../capture/20260413_3.png)
     ~~~c#
     // MSDN CODE
 
