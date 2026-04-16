@@ -34,7 +34,7 @@
   
 <br><br>
 
-# ::astronaut:: Developer Insight Journal
+# :astronaut: Developer Insight Journal
 - ✈️[Developer Insight Journal](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Developer%20Insight%20Journal)
 - 시니어 프로그래머분들이 작성하신 에세이를 읽고 개인적인 생각을 정리하고 있습니다.
 
