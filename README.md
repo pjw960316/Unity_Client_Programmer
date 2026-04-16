@@ -25,7 +25,7 @@
 <br>
 
 - **2026년부터 진행중인 C#**
-  - <img src="https://github.com/user-attachments/assets/039f6987-e6eb-4032-8f4d-dcec15f97eaa" align="left" width="626" height="286">
+  <img width="626" height="286" alt="Image" src="https://github.com/user-attachments/assets/039f6987-e6eb-4032-8f4d-dcec15f97eaa" />
 
 <br>
 
