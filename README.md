@@ -34,6 +34,12 @@
   
 <br><br>
 
+# ::astronaut:: Developer Insight Journal
+- ✈️[Developer Insight Journal](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Developer%20Insight%20Journal)
+- 시니어 프로그래머분들이 작성하신 에세이를 읽고 개인적인 생각을 정리하고 있습니다.
+
+<br><br>
+
 # 📙 My Coding GuideLine
 - **코드를 작성할 때 지킬 나만의 코딩 스타일**
 - ✈️[My Coding GuideLine](https://persistent-hoverfly-e3c.notion.site/My-Coding-GuideLine-1d129daafd668071bad8cd865abf59b4)
