@@ -30,9 +30,7 @@
 <br>
 
 - **대학 시절 C++**
-
-  [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjw960316)](https://solved.ac/pjw960316/)
-  - 클릭하면 이동하지만 서버가 불안정해서 깨지기도 합니다.
+<img width="626" height="286" alt="Image" src="https://github.com/user-attachments/assets/99980e1a-c00a-432a-a6d6-ed56ddfd5ab3" />
   
 <br><br>
 
