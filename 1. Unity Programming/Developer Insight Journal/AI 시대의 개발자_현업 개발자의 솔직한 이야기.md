@@ -1,6 +1,7 @@
 ## :fire: 원문
 - :airplane:[링크](https://velog.io/@teo/ai-and-developer)
 
+<br><br>
 
 ## :fire: '해줘~'형 개발자가 되지는 않아야 한다. <br> :fire: 그러려면 역설적으로 올바른 코드를 작성 할 수 있는 사고력이 필요하지 않을까?
 ![alt text](./capture/20260416_1.png)
