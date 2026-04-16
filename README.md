@@ -25,9 +25,7 @@
 <br>
 
 - **2026년부터 진행중인 C#**
-  - <img width="626" height="286" alt="Image" src="https://github.com/user-attachments/assets/039f6987-e6eb-4032-8f4d-dcec15f97eaa" />
-  [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=CSharpHabit)](https://solved.ac/CSharpHabit/)
-  - 클릭하면 이동하지만 서버가 불안정해서 깨지기도 합니다. 
+  <img src="https://github.com/user-attachments/assets/039f6987-e6eb-4032-8f4d-dcec15f97eaa" align="left" width="626" height="286">
 
 <br>
 
