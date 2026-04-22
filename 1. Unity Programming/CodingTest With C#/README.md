@@ -49,20 +49,25 @@
 
 <br>
 
-- **기능이 복잡하면 무조건 Local Function으로 만든다. Nested Local Function도 허용한다.**
-  - **Local Function으로 만드는 조건**
+- **Instance Field를 적극적으로 사용하고, Field Initializer 방식으로 초기화한다. **
+  - Initialize()를 통해 복잡한 구현이 필요하다면 수정한다.
+
+<br>
+
+- **기능이 복잡하면 무조건 Method로 만든다.** 
+  - **Method로 만드는 조건**
     - 일단 구현할 때 복잡하고 실수 할 것 같으면 만든다. (실수는 쉬운 기능에서 한다.)
       - 어려운 기능이 여러 개일 때는 자연스럽게 기능을 나누어 구현한다.
       - 쉬운 기능은 한 번에 처리하려는 경향이 생기고, 이 과정에서 필연적으로 실수한다.
     - 매개변수에 다양한 인자의 값을 넣어 호출해야 하는 경우는 반드시 메서드로 만든다.
     - 쪼개서 보는 게 가독성 및 디버깅에 유리하면 만든다.  (ex  :  Print Method)
-  - **Local Function 대신 if-else 사용하는 조건**
+  - **Method 대신 if-else 사용하는 조건**
       - 기능이 2~3줄 정도로 간단하다면 if-else를 사용한다. 현업이면 리팩토링 할 수도 있는.
-    - **Local Function을 위해 지역변수를 static Main의 가장 큰 scope에 한번에 선언한다.**
+    - **Method를 위해 지역변수를 static Main의 가장 큰 scope에 한번에 선언한다.**
     - **예시 문제**
       - [BOJ_17281](https://www.acmicpc.net/problem/17281)
-        - 복잡하면 local_function
-        - 야구 게임 시뮬은 쉽지만 거슬려서 local function으로 뺀다.
+        - 복잡하면 Method (백준 시절은 local function)
+        - 야구 게임 시뮬은 쉽지만 거슬려서 method로 뺀다.
       - [BOJ_21922](https://www.acmicpc.net/problem/21922)
         - 간단하면 if-else
 
