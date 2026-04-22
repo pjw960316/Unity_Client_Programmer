@@ -49,7 +49,7 @@
 
 <br>
 
-- **Instance Field를 적극적으로 사용하고, Field Initializer 방식으로 초기화한다. **
+- **Instance Field를 적극적으로 사용하고, Field Initializer 방식으로 초기화한다.**
   - Initialize()를 통해 복잡한 구현이 필요하다면 수정한다.
 
 <br>
@@ -65,10 +65,10 @@
       - 기능이 2~3줄 정도로 간단하다면 if-else를 사용한다. 현업이면 리팩토링 할 수도 있는.
     - **Method를 위해 지역변수를 static Main의 가장 큰 scope에 한번에 선언한다.**
     - **예시 문제**
-      - [BOJ_17281](https://www.acmicpc.net/problem/17281)
+      - [BOJ_17281](https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Gold/17281.%E2%80%85%E2%9A%BE/%E2%9A%BE.cs)
         - 복잡하면 Method (백준 시절은 local function)
         - 야구 게임 시뮬은 쉽지만 거슬려서 method로 뺀다.
-      - [BOJ_21922](https://www.acmicpc.net/problem/21922)
+      - [BOJ_21922](https://github.com/pjw960316/Algorithm-Habit/blob/main/%EB%B0%B1%EC%A4%80/Gold/21922.%E2%80%85%ED%95%99%EB%B6%80%E2%80%85%EC%97%B0%EA%B5%AC%EC%83%9D%E2%80%85%EB%AF%BC%EC%83%81/%ED%95%99%EB%B6%80%E2%80%85%EC%97%B0%EA%B5%AC%EC%83%9D%E2%80%85%EB%AF%BC%EC%83%81.cs)
         - 간단하면 if-else
 
 <br><br>
