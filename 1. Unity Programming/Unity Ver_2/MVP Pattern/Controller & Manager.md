@@ -81,6 +81,14 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
       - 근본 캡슐화
     - Manager가 관리하는 raw mutable 객체를 외부에 그대로 주지 않는다.
     - View / Presenter가 Manager 상태를 직접 바꾸지 못하게 한다.
+- 구현 해보고 2차 메모
+  - 이벤트를 “발행하는 주체”와 “구독해서 반응하는 주체”는 달라도 됩니다. `UIManager`가 `OnOpenPopup`, `OnClosePopup`을 발행하고, `CameraManager`가 그것을 구독하는 구조는 설계적으로 문제 없습니다.
+  - Manager는 어딘가에서 요청을 받지만 직접 계산 및 유니티 세상의 연관하는 게 아니라 controller라는 대리자를 통해 유니티 계산을 해서 본인이 관리하고 있는 state를 본인이 변경하는 거다. 
+  - controller가 계산하고 그걸 controller에게 주입 받지. 이게 의존성이 있지만 manager - controller 의존은 나쁘지 않아. 
+  - 그래서 manager에서 터치 좌표 관리 -> controller가 터치 감지 -> 유니티 관련 계산 -> 이 과정에서 인풋이라는 개념이 들어오니 전략 패턴으로 인풋들을 쪼갬 -> 그러면 쪼갠 결과를 manager에게 전달. -> manager는 변경 사항을 받고 (의존성 생성) 자신의 상태를 갱신 -> 갱신된 상태를 통해 요청한 주체에게 반환
+  - :star: 정답이라고 생각 -> Manager는 필드로 상태를 들고 있고, Controller를 통해 “가공된 형태”로 외부에서 변경사항을 주입받는다. 그리고 Manager가 주체로 그 상태를 갱신한다. 만약 unity를 통하지 않는다면 manager 내부에서 직접 갱신을 해도 무방하지 않을까?
+  - 값 타입은 복사라서 외부로 빼도 안전 참조 타입은 조심해야 한다
+  - 누구든 상태 변경을 요청할 수는 있지만, 상태 변경의 주체는 하나다.
 
 <br><br>
 
