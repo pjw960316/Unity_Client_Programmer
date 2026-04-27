@@ -1,46 +1,11 @@
-## :fireworks: Manager - Controller 구조 규칙
-#### :one: Manager는 Controller를 들고 있는다. <br> Controller는 Manager를 들고 있지 않는다. <br> 단방향 의존성을 구현한다.
-- Manager는 Controller의 메서드를 직접 호출, Controller는 CallBack으로 구현한다.
-- [핵심] Controller 내부에 2가지 Interface가 존재한다.
-  - 1. unity 데이터 가공이란 추상적 개념은 같음 -> 인터페이스 -> 전략 패턴으로 여러 가지 데이터 가공 책임을 concrete method로 구현 
-  - 2. 가공된 데이터가 여러 타입임. 그러나 추상적 개념은 manager에게 전달해야 할 데이터인 건 동일 -> 그러니 인터페이스
+## :fireworks: Controller Script와 Manager Script의 기본
+#### :one: Controller는 Unity Scene에 존재하는 Component를 이용하기 위한 MonoBehaviour 상속 Script다.
 
-#### :two: 
-
-<br><br>
-
-## :fireworks: Controller의 책임
-#### :one: Controller는 Unity 종속 Component 기능을 수행한다. 
-- Unity에 의존적인 기능은 Controller에서 진행한다.
-- 무거운 기능 및 계산을 담당한다.
-
-#### :two: Controller는 manager가 상태를 변경하기 위해 필요한 context를 생산하고 전달한다.
-
-#### :three: Controller는 다른 Controller를 참조하지 않는다.
-
-
-
-
-
-
-<br><br>
-
-## :fireworks: Manager의 책임
-#### :one: Manager는 게임의 거시적인 기능을 '관리'한다. <br> MVP 객체들은 책임 영역이 개인에만 있다. 그러므로 서로를 모른다. <br> Manager를 통해 MVP 객체들이 상호 작용 할 수 있다.
-  - MVP 객체에서 Manager는 Model에 가까우며 Presenter의 소통 창구 역할을 한다.
+#### :two: Manager는 Controller를 관리하기 위한 C# Script다.
 - Manager는 MonoBehaviour를 상속받지 않는다. 단, Unity Type을 참조하는 필드를 가질 수는 있다.
 - Manager도 필드로 Camera _camera가 가능하다. 단, Camera를 통한 Unity API는 절대 Manager에서 구현하지 않는다. 이는 Controller의 책임이다.
 
-
-#### :two: Manager는 Controller의 처리 결과를 주입 받아서 자신의 상태를 변경시킨다. <br> :star: 누구나 Manager에게 상태 변경을 요청할 수 있지만, 상태 변경의 주체는 Manager 하나다. 
-- Controller에서 Manager의 상태 변경 메서드 (public)를 호출하지만 상태 변경의 주체는 Manager 단 하나임을 보장한다.
-  - 예시 :  manager 터치 좌표를 필드로 관리 -> controller 터치 감지 -> Unity 관련 계산 -> 전략 패턴을 통해 인풋을 쪼갠다 -> 쪼갠 결과를 manager에게 주입 -> manager는 주입 받은 context를 이용해서 상태 변경 -> 상태 변경과 연동된 이벤트가 발행되어 MVP 객체들이 메서드 수행 
-
-#### :three: Manager는 MVP 객체들의 요청을 받고 Controller에게 해당 요청을 수행시킨다.
-- MVP 객체 -> Request -> Manager -> Command -> Controller -> Handle
-
-#### :four: Manager는 자신이 관리하고 있는 거시적인 기능의 상태를 외부에 전달한다.
-- ValueType은 값 복사이므로 안전할 수 있으나 ReferenceType은 읽기 전용으로 전달하도록 구현한다.
+<br><br>
 
 ## :fireworks: Controller와 Manager의 책임
 #### :one: Controller는 Unity Component로부터 의존된 기능을 구현한다. <br> 구현 결과를 Manager에게 리턴하거나 이벤트로 처리한다.
