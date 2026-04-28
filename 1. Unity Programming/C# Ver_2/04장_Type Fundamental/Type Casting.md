@@ -1,4 +1,5 @@
 ## :fireworks: 용어 정리 <br>:fire: Base Type - Derived Type : 상위 타입 - 하위 타입 <br>:fire: Declared Type - Instance Type : Complie Type - Runtime Type <br>:fire: () : Explicit Casting
+- GetType() 메서드는 객체의 실제 런타임 타입(Instance Type)을 반환한다.
 
 <br><br>
 
