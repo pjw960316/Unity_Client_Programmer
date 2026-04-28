@@ -97,3 +97,25 @@ void MoveVirus()
 ~~~
 - .ToList()를 했다면 1,000,000개의 List가 힙에 생성된다. 그러나 필요한 건 갱신된 리스트 뿐이다.
 - 그러므로 IEnumerable로 변경된 컨테이너를 참조하고, 매 번 갱신 때마다 리스트를 clear()하면 된다.
+
+<br><br>
+
+## :fire: Ienumerable을 foreach에서 캐싱할 필요는 없다.
+~~~c#
+// 1번 코드
+foreach (var p in _dict.OrderBy(kv => kv.Key))
+{
+    ...
+}
+
+// 2번 코드
+var enumerable = _dict.OrderBy(kv => kv.Key);
+var enumerator = enumerable.GetEnumerator(); 
+
+while (enumerator.MoveNext())
+{
+    var p = enumerator.Current; 
+}
+~~~
+- 1번 코드와 2번 코드는 컴파일러가 거의 동등하게 해석한다. (try ~ finally 정도 차이)
+- 그러므로 foreach 순회 중에는 OrderBy가 반복 실행되지 않으며, 실제 정렬은 GetEnumerator 시점에 한 번만 수행된다.
