@@ -18,7 +18,8 @@ public interface IControllerManagerBase
 - 추상적으로 Manager와 Controller를 연결하는 코드는 모두 같기 때문에 구현을 강제 할 수 있다.
 
 #### :three: ControllerManagerBase : ManagerBase의 문제점
-- 메서드 기능 하나 때문에 계층을 분리시키면 Is-A가 깨진다.
+- 메서드 기능 하나 때문에 계층을 분리시키면 Is-A가 깨진다.  
+  - ControllerManagerBase는 “새로운 타입”이 아니라 그냥 “Controller를 가진 Manager”일 뿐이다.
 - 계속 이런 구조를 유지하면 계층의 Depth가 10 이상이 나올 수도 있고 망가진 설계가 된다.
 - 그렇다고 계층 분리를 피하기 위해 기존의 ManagerBase에 RegisterController 메서드를 넣는 건 절대 안 된다. 
   - ManagerBase는 “모든 Manager의 공통”

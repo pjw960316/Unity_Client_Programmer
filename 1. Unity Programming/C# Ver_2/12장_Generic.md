@@ -35,6 +35,10 @@ public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresent
 
 <br><br>
 
+## :fireworks: 기초 문법 <br> :fire: 필드 + 메서드에 Generic Type이 사용되면 Class에 Generic을 선언한다. <br> :fire: 메서드에만 Generic Type이 사용되면 Method에 Generic을 선언한다.
+
+<br><br>
+
 ## :fireworks: Generic의 장점 <br> fire: 타입의 분기를 호출부에서 책임 질 수 있으면 Generic Method로 구현한다.
 - 타입을 코드가 아니라 “타입 파라미터”로 추상화해서 컴파일 타임에 확정시키는 것
 - 불필요한 박싱과 캐스팅이 없다. 
