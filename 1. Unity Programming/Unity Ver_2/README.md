@@ -53,6 +53,9 @@
 4. **Event Handle Method**
 5. **Request Method**
 6. **Method**
+
+<br>
+
 ![alt text](./captures/20260430_1.png)
 
 <br><br>
