@@ -3,7 +3,7 @@
 
 <br><br>
 
-## :white_check_mark: PortFolio CheckList
+## :white_check_mark: 포트폴리오 체크리스트
 - ✈️ [PortFolio CheckList](https://github.com/pjw960316/Unity_Client_Programmer/issues/2)
 
 <br><br>
