@@ -5,23 +5,85 @@
   - 1. unity 데이터 가공이란 추상적 개념은 같음 -> 인터페이스 -> 전략 패턴으로 여러 가지 데이터 가공 책임을 concrete method로 구현 
   - 2. 가공된 데이터가 여러 타입임. 그러나 추상적 개념은 manager에게 전달해야 할 데이터인 건 동일 -> 그러니 인터페이스
 
-#### :two: 
-
 <br><br>
 
 ## :fireworks: Controller의 책임
-#### :one: Controller는 Unity 종속 Component 기능을 수행한다. 
+#### :one: Controller는 Unity Component를 다루는 Unity 세상과 가장 가까운 계산기다.
 - Unity에 의존적인 기능은 Controller에서 진행한다.
 - 무거운 기능 및 계산을 담당한다.
 
-#### :two: Controller는 manager가 상태를 변경하기 위해 필요한 context를 생산하고 전달한다.
+#### :two: Controller는 manager가 상태를 변경하기 위해 필요한 context를 생산하고 전달한다. <br> Manager는 context를 조합해서 자신이 요청받은 데이터를 MVP에게 전달한다. <br> 그러므로 Controller는 Manager에게 작은 단위의 context를 전달하기 위해 메서드를 작게 만들어야 한다.
+- 예를 들어, Manager가 화면 터치 이벤트를 처리해야 한다.
+- Manager는 Controller를 통해 터치가 되었는지, 그리고 터치의 좌표를 알아야 한다. 그리고 두 기능 모두 Unity Component에 종속된다.
+- 그러므로 Controller는 터치의 여부와 터치의 좌표를 각각 Manager에게 전달만 할 책임이 있다. 그 외에 Controller는 책임 지지 않는다.
+- Manager는 두 데이터를 통해 터치관련 가공을 한다.
+
+~~~c#
+// 1. InputController의 TouchHandler -> 터치 여부만 검사하고 콜백으로 넘긴다.
+public class TouchHandler : IInputHandler
+{
+    private readonly Action _onResult;
+
+    public TouchHandler(Action action)
+    {
+        _onResult = action;
+    }
+    
+    public void HandleInput(InputAction.CallbackContext context)
+    {
+        if (!context.canceled)
+        {
+            return;
+        }
+
+        _onResult.Invoke();
+    }
+}
+
+// 2. InputController의 TouchPosHandler -> 마우스의 경우 계속 현재 포인터의 좌표를 갱신한다.
+// Handler는 InputController에게 계산한 좌표를 전달하여 갱신하도록 한다.
+public class TouchPosHandler : IInputHandler
+{
+    private readonly InputController _inputController;
+
+    public TouchPosHandler(InputController inputController)
+    {
+        _inputController = inputController;
+    }
+    
+    public void HandleInput(InputAction.CallbackContext context)
+    {
+        var pos = context.ReadValue<Vector2>();
+
+        _inputController.UpdateCurMousePosition(pos);
+    }
+}
+
+// 3. InputManager 내부의 두가지 메서드
+// 단방향 의존성이므로 InputController를 Manager는 들고 있는다.
+// Controller가 제공한 Event에 Manager의 OnTouchScreen을 등록한다.
+// 터치 여부가 콜백의 호출로 구현된다.
+// 컨트롤러는 콜백이 호출될 때 curTouchPos context를 Manager에게 전달한다.
+private void BindInputControllerEvent()
+{
+    _inputController.OnTouchEvent += OnTouchScreen;
+}
+
+private void OnTouchScreen(Vector2 curTouchPos)
+{
+  var ray = CameraManager.Instance.GetRay(curTouchPos);
+
+  if (Physics.Raycast(ray, out var hit))
+  {
+      if (hit.collider.TryGetComponent<FieldObjectSparrow>(out var sparrow))
+      {
+          _touchedFieldObject.Value = sparrow;
+      }
+  }
+}
+~~~
 
 #### :three: Controller는 다른 Controller를 참조하지 않는다.
-
-
-
-
-
 
 <br><br>
 
@@ -41,6 +103,8 @@
 
 #### :four: Manager는 자신이 관리하고 있는 거시적인 기능의 상태를 외부에 전달한다.
 - ValueType은 값 복사이므로 안전할 수 있으나 ReferenceType은 읽기 전용으로 전달하도록 구현한다.
+
+<br><br>
 
 ## :fireworks: Controller와 Manager의 책임
 #### :one: Controller는 Unity Component로부터 의존된 기능을 구현한다. <br> 구현 결과를 Manager에게 리턴하거나 이벤트로 처리한다.
@@ -86,7 +150,7 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
 
 <br><br>
 
-## :fireworks: 일단 지금 아래 적은 'Controller와 Manager의 의존관계'에서 :three: 말고는 정답이 아니다. 일단 지우지는 않는다. 기나긴 삽질 과정을 적어보겠다. <br> 결론을 내리기 어렵다.
+## :fireworks: 위 문서를 적기 위해 삽질한 과정
 #### :one: 삽질의 의식의 흐름
 - 우선 팀에서 우리 이렇게 합시다 + 주석은 절대로 지켜지지 않는다. 왜냐면 내가 0년차 때 회사에서 지키고 싶어도 실력 부족으로 지키지 못했음. 그리고 시니어분들도 문서 공유를 하지 않으면 이게 지켜지지 않는다고 했는데 문서 공유도 진짜 쉽지 않음.
 - 그래서 결론은 최대한 코드레벨에서 막아야 한다고 생각한다. 이게 곧 좋은 설계라고 믿고 있다.
@@ -101,10 +165,9 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
 - :link:[비슷한 고민 하신 분의 블로그](https://cyphen156.tistory.com/492)
   - 학교 다닐 때 friend class 누가 쓰나 했는데 너무 필요하군.
 
-#### :two: 방향성 -> 탁상공론만 하지 말고 일단 이 방향 잡고 구현해보자. 계속 고치면 됨.
+#### :two: 방향성을 적어놓고 계속 연구한다.
 - 확정
   - Controller는 다른 Controller를 참조하지 않는다.
-  - Manager와 Controller는 1대1 대응을 하고 서로 각자를 들고 있을 수 있다.
   - Manager는 MVP 객체들의 소통창구 역할과 게임전체의상태 (ex:음악전체, 필드오브젝트 전체)를 관리하고, Controller는 상태를 들고 있지 않는다. 얘는 유니티 연산 전문가임.
     - 즉, 일단 MVP는 3계층. Manager-controller는 2계층. Manager는 Model에 가깝고, Controller는 View에 가깝다. 근데 Presenter에서. Presenter의 View 개입기능을 Controller에서 하고, 일반 객체(ex : 참새 오브젝트)들이 요청 받아서 처리하고 전달해 주는 Presenter의 기능은 Manager에서 함.
   - MVP는 객체단위, Manager - Controller는 시스템 단위 구조. 
@@ -124,32 +187,6 @@ public void StartFollowFieldObject(Transform fieldObjectTransform)
   - :star: 정답이라고 생각 -> Manager는 필드로 상태를 들고 있고, Controller를 통해 “가공된 형태”로 외부에서 변경사항을 주입받는다. 그리고 Manager가 주체로 그 상태를 갱신한다. 만약 unity를 통하지 않는다면 manager 내부에서 직접 갱신을 해도 무방하지 않을까?
   - 값 타입은 복사라서 외부로 빼도 안전 참조 타입은 조심해야 한다
   - 누구든 상태 변경을 요청할 수는 있지만, 상태 변경의 주체는 하나다.
-
-<br><br>
-
-## :fireworks: :x::x::x: 이 문서는 현재 틀림 -> Controller와 Manager의 의존관계
-#### :one::x: <ins>Manager는 단 한 개의 Controller(자신이 책임질)만 필드로 들고 있는다. </ins> <br> Manager는 다른 Controller를 절대로 들고 있지 않는다.
-- 결론적으로, Controller는 Manager 하나 만이 들고 있게 되므로, public method 사용에도 안전하게 된다.
-- 책임질 Controller가 같은 계층으로 여러 개가 존재한다면, 2개 이상의 controller도 가능하다. 헷갈리지 않게 일단 한 개를 기조로 잡았다.
-
-
-#### :two::x: Manager는 다른 Manager를 들고 있는 게 가능하지만, 되도록 들고 있지 않도록 한다.
-- A_Manager의 필드로 B_Manager의 필드를 들고 있으면 Manager의 범위가 방대해진다.
-- 매니저와 소통하는 presenter가 다른 Manager를 통해 필요한 데이터를 받은 후, 인자로 넘겨주도록 하자.
-~~~c#
-private void RequestFollowSparrow()
-{
-    var randomSparrow = _fieldObjectManager.GetRandomSparrow();
-
-    _cameraController.StartFollowFieldObject(randomSparrow.transform);
-}
-~~~
-- _fieldObjectManager.GetRandomSparrow()를 호출부에서 전달하고 함수 시그니처를 RequestFollowSparrow(FieldObjectSparrow)로 변경한다.
-
-#### :three: Controller는 다른 Controller를 절대 들고 있지 않는다.
-
-#### :four::x: Controller는 당연히 관련 없는 Manager를 들고 있지 않아야 하며, 자신과 연관된 Manager도 들고 있지 않는 구조까지도 고려한다.
-- 진행 중
 
 <br><br>
 
