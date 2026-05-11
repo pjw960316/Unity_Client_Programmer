@@ -83,7 +83,11 @@ private void OnTouchScreen(Vector2 curTouchPos)
 }
 ~~~
 
-#### :three: Controller는 다른 Controller를 참조하지 않는다.
+#### :three: Controller도 Manager에게 전달하기 위해 context를 필드로 들고 있을 수 있다. <br> 그러나 controller의 필드 자체를 Manager가 아닌 외부 객체에서 이용하지는 않는다.
+- Controller는 MonoBehaviour기 때문에 new로 선언하지 않는다. 이는 manager가 아닌 객체에서 쉽게 접근하기 어렵게 한다.
+- MVP 객체들은 외부에서 필요한 데이터는 반드시 Manager를 통해 조회되도록 한다.
+
+#### :four: Controller는 다른 Controller를 참조하지 않는다.
 
 <br><br>
 
@@ -92,7 +96,6 @@ private void OnTouchScreen(Vector2 curTouchPos)
   - MVP 객체에서 Manager는 Model에 가까우며 Presenter의 소통 창구 역할을 한다.
 - Manager는 MonoBehaviour를 상속받지 않는다. 단, Unity Type을 참조하는 필드를 가질 수는 있다.
 - Manager도 필드로 Camera _camera가 가능하다. 단, Camera를 통한 Unity API는 절대 Manager에서 구현하지 않는다. 이는 Controller의 책임이다.
-
 
 #### :two: Manager는 Controller의 처리 결과를 주입 받아서 자신의 상태를 변경시킨다. <br> :star: 누구나 Manager에게 상태 변경을 요청할 수 있지만, 상태 변경의 주체는 Manager 하나다. 
 - Controller에서 Manager의 상태 변경 메서드 (public)를 호출하지만 상태 변경의 주체는 Manager 단 하나임을 보장한다.
