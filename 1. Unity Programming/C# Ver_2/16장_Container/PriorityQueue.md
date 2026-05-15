@@ -1,3 +1,8 @@
+## :fire: O(NlogN)이라면 Heap을 떠올린다. <br> 즉, PriorityQueue 자료구조를 떠올린다!
+- :bangbang: Mono C# Compiler 6.10.0 환경이면 기본 PriorityQueue<TElement, TPriority> 없다.
+
+<br><br>
+
 ## :fire: PriorityQueue는 Custom Sorted Queue다. <br> :fire: 정렬된 Queue는 시간복잡도 성능이 좋아서 유용하게 사용된다.
 - :teacher: 시간 순서대로 정렬된 list와 priorityQueue를 비교해본다.
 
@@ -8,7 +13,7 @@
 <br>
 
 - **PriorityQueue는 맨 앞 원소를 사용하고 제거할 때 O(log n)의 Dequeue()을 사용한다.**
-  - PriorityQueue는 트리 구조기 때문이다.
+  - PriorityQueue는 Heap 구조기 때문이다.
   - While(pq.Count > 0)을 이용하면 조건에 맞는 첫 원소를 계속 검사 할 수 있다.
 
 <br>
