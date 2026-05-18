@@ -1,3 +1,9 @@
+## :fire: DFS의 핵심은 재귀마다 상태가 변한다. <br> 그리고 그 상태를 저장할 멤버 자료구조를 만들어야 한다.
+- 보통은 depth 마다 변하므로 index가 depth인 Array를 만든다.
+- 어떤 문제든 이 구조를 그릴 줄 알아야 한다.
+
+<br><br>
+
 ## :fireworks: DFS & BFS 기초 팁
 - input의 변수명은 무시하고 반드시 row와 col로 변수명을 선언해서 사용하고 Arr [row+1 , col+1] 배열을 이용한다.
 - Local Function을 만들고 visit 갱신, 값 갱신은 모두 메서드에서 진행한다.
