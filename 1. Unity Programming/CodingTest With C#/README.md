@@ -16,7 +16,7 @@
 <br><br>
 
 ## :three: 복잡도 검사
-#### :white_check_mark: [해야 할 것]
+### :triangular_flag_on_post: 해야 할 것
 1. **대강의 완전탐색 Big-O를 빠르게 파악한다.**
 2. **상수까지 포함해서 제대로 복잡도를 계산한다.**
    - Big-O는 상수를 무시하지만 실전 복잡도에서는 포함하는 게 더 확실하다.
@@ -28,7 +28,7 @@
 
 <br>
 
-#### :bangbang: [주의 사항]
+### :bangbang: 주의 사항
 - **재귀는 특히 조심한다.**
   - 재귀의 경우 100회 순회를 재귀로 4번만 타도 10^8이다.
 - **nlogn에서 logn은 밑이 2인 logn이다.**
@@ -38,22 +38,22 @@
 <br><br>
 
 ## :four: 완전탐색이 시간초과가 난다면 아래의 방식들을 고려해본다.
-#### Binary Search
+### :white_check_mark: Binary Search
 - :airplane:[Binary Search](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/CodingTest%20With%20C%23/Search/Binary%20Search.md)
 
 <br>
 
-#### BackTracking
+### :white_check_mark: BackTracking
 - :airplane:[BackTracking](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/CodingTest%20With%20C%23/Search/%5BDFS%20%26%20BFS%5D%20with%20Backtracking%20and%20Pruning.md)
 
 <br>
 
-#### DP
+### :white_check_mark: DP
 - :airplane:[DP](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/CodingTest%20With%20C%23/Dynamic%20Programming.md)
 
 <br>
 
-#### Greedy
+### :white_check_mark: Greedy
 - 하지만 나는 보통 그리디 문제라고 느껴지면 일단 넘어감  ->  잘못 빠지면 큰일남
 - 최후의 방식
 
