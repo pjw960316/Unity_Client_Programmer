@@ -1,5 +1,6 @@
 ## :fire: 6단계의 AI Spectrum에서 3단계와 4단계를 병행해서 학습한다. 
-- ![alt text](./captures/ai-spectrum.png)
+<img src="./captures/ai-spectrum.png" alt="AI Coding Spectrum" width="500" />
+
 - :airplane: [The AI Coding Spectrum: 6 Levels of Assistance Developers Should Know](https://eclipsesource.com/blogs/2025/06/26/ai-coding-spectrum-levels-of-assistance/)
 
 <br><br>
