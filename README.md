@@ -16,6 +16,12 @@
 
 <br><br>
 
+# :astronaut: AI-Assisted-Development
+- ✈️[AI-Assisted-Development](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/AI-Assisted-Development)
+- AI 활용 역량이 필수인 시대에 개발자는 무엇을 해야하는 지 고민하고 있습니다.
+
+<br><br>
+
 # :baby_chick: Design Pattern
 - **2025년 ~ 2026년**  :  ✈️[Design Pattern](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Design%20Pattern)
 - **참고 자료**  :  ✈️[디자인 패턴_Unity](https://unity.com/kr/resources/design-patterns-solid-ebook?isGated=false)
@@ -37,12 +43,6 @@
 - **대학 시절 C++**
 <img width="626" height="286" alt="Image" src="https://github.com/user-attachments/assets/99980e1a-c00a-432a-a6d6-ed56ddfd5ab3" />
   
-<br><br>
-
-# :astronaut: Developer Insight Journal
-- ✈️[Developer Insight Journal](https://github.com/pjw960316/Unity_Client_Programmer/tree/main/1.%20Unity%20Programming/Developer%20Insight%20Journal)
-- 시니어 프로그래머분들이 작성하신 에세이를 읽고 개인적인 생각을 정리하고 있습니다.
-
 <br><br>
 
 # 📙 My Coding GuideLine
