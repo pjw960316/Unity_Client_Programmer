@@ -1,9 +1,10 @@
 ## :fire: 6단계의 AI Spectrum에서 3단계와 4단계를 병행해서 학습한다. 
+- ![alt text](./captures/codex.png)
 - :airplane: [The AI Coding Spectrum: 6 Levels of Assistance Developers Should Know](https://eclipsesource.com/blogs/2025/06/26/ai-coding-spectrum-levels-of-assistance/)
 
 <br><br>
 
-### :white_check_mark: 3단계_Intent-Based Chat Agent
+## :white_check_mark: 3단계_Intent-Based Chat Agent
 - **구현하기 전의 설계를 프롬프트로 만들고 설계 기준 강화하기**
    - 포트폴리오 작성처럼, 구현 전에 내가 무엇을 만들려는지 먼저 구조화한다.
    - 어제보다 더 좋은 질문을 할 수 있게 되었는지 확인한다.
@@ -25,7 +26,7 @@
 
 <br><br>
 
-### :white_check_mark: 4단계_Local Autonomous Agent
+## :white_check_mark: 4단계_Local Autonomous Agent
 - **프로젝트 전체 분석 & 클래스 분석 & 메서드 분석**
    - 내가 잘한 점, 내가 못한 점을 AI에게 찾아내도록 하기
    - 앞으로의 로드맵 만들기
@@ -42,4 +43,20 @@
  
 <br><br>
 
-## :airplane: [인프런_31년차 개발자가 전하는 "AI시대, 개발자로 살아가는 법"](https://www.inflearn.com/course/ai%EC%8B%9C%EB%8C%80-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C-%EC%82%B4%EC%95%84%EA%B0%80%EB%8A%94%EB%B2%95?cid=338806)
+## :fire: 잡설.
+- **개발 공부의 가치 상실**
+    - 코딩 테스트를 풀어도, 이게 의미가 있을까?
+    - Unity 기능을 만들어도 Codex가 더 빨리 만들텐데.
+    - 내가 몇 시간 기능 구현하고 고민하는 게 더는 즐겁지 않다.
+- **힘들더라도, 그럼에도 불구하고 하면 무조건 이득인 행동도 없었다.**
+    - 헬스 -> 너무 힘든데 -> 집에서 10이라도 땅크부부 유산소 영상보고 따라하자
+    - 자기관리 -> 너무 힘든데 -> 지금 눈 앞에 있는 거라도 제일 쉬운 게 몇 개만 하자
+    - 멘탈관리 -> 일찍 자고 일찍 일어나자
+    - 과거 공부 -> 하기 싫은데 -> 코테 1문제만 풀자, c# 책이라도 읽자
+    - 현재 공부 -> ????? -> 실행 X
+
+
+<br><br>
+
+## 인프런_31년차 개발자가 전하는 "AI시대, 개발자로 살아가는 법"
+- :airplane: [링크](https://www.inflearn.com/course/ai%EC%8B%9C%EB%8C%80-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C-%EC%82%B4%EC%95%84%EA%B0%80%EB%8A%94%EB%B2%95?cid=338806)
