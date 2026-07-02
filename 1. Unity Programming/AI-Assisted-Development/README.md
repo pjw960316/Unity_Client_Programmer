@@ -1,4 +1,4 @@
-## :fire: 6단계의 AI Spectrum에서 3단계와 4단계를 병행해서 학습한다. 
+## :fire: 6단계의 AI-Spectrum <br> Codex(4단계)로 구현을 요청하고, <br> GPT(3단계)로 설계와 4단계의 결과물을 학습한다.  
 <img src="./captures/ai-spectrum.png" alt="AI Coding Spectrum" width="500" />
 
 - 3단계는 페어프로그래밍의 영역.
@@ -54,7 +54,7 @@
 
 <br>
 
-- **나는 왜 개발자가 되고 싶었는가?**
+- :technologist: **나는 왜 개발자가 되고 싶었는가?**
   - 몇 시간 고민해서 만든 기능이 게임에서 돌아가는 걸 볼 때의 쾌감이 있다.
   - 이제는 그 감정이 무뎌졌다. 
 
