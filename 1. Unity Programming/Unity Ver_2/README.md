@@ -131,7 +131,7 @@
 
 ## :fire: 안드로이드 디버깅
 - **기본 환경 세팅**
-  - PackageManager에서 ‘Android Logcat’을 다운로드 한다.
+  - PackageManager에서 Unity Registry -> ‘Android Logcat’을 다운로드 한다.
   - 내 스마트폰은 ‘개발자 모드 → USB 디버깅 허용’을 켜야 한다.
   - :airplane: [링크](https://developer.android.com/studio/debug/dev-options?hl=ko)
 
