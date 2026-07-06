@@ -142,7 +142,7 @@
      - 개발자모드를 켠다.
      - USB 디버깅 -> 권한 주기 
   2. **Build And Run** (유니티에서 안드로이드 빌드 뽑기) 
-  3. **Android Logcat에서 Filter를 Unity로 변경**
+  3. **Android Logcat(Alt+6 단축키)에서 Filter를 Unity로 변경**
   ![alt text](./captures/20260430_2.png)   
         
 <br><br>
