@@ -1,5 +1,5 @@
 ## :fireworks: Manager - Controller 구조 규칙
-#### :one: Manager는 Controller를 들고 있는다. <br> Controller는 Manager를 들고 있지 않는다. <br> 단방향 의존성을 구현한다.
+#### :one: Manager는 Controller를 들고 있는다. <br> Controller는 Manager를 들고 있지 않는다. <br> 단방향 의존성을 구현한다. <br> 구현은 Manager와 Controller를 연결해주는 연결 전문 Singleton Class를 만든다.
 - Manager는 Controller의 메서드를 직접 호출, Controller는 CallBack으로 구현한다.
 - [핵심] Controller 내부에 2가지 Interface가 존재한다.
   - 1. unity 데이터 가공이란 추상적 개념은 같음 -> 인터페이스 -> 전략 패턴으로 여러 가지 데이터 가공 책임을 concrete method로 구현 
