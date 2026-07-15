@@ -1,4 +1,4 @@
-## :fire: 지금까지는 Interface, Base Type을 통해 코드의 유연성을 만들었다. <br> :fire: 그러나 호출하는 쪽에서 명시적인 타입을 알고 있다면 <br>Generic Method를 사용해서 컴파일 타임에 확정시키면 된다. <br> :fire: Generic Method는 비 Generic Class에서도 당연히 만들 수 있다.
+## :fireworks: Generic의 궁극의 장점 <br> :fire: Interface와 상위클래스(특히 abstract)로 타입을 받으면 많은 타입을 받을 수 있다. <br> 하지만 추후에 캐스팅을 해야 한다. <br> :fire: 그러나, 컴파일 타임에 명시적인 타입을 알고 있다면 <br> Generic Method + where 조건으로 타입을 명시할 수 있다. <br> :fire: 결국 훨씬 명시적이고 좁은 범위를 잡게 되면서 캐스팅을 없앨 수 있다. 
 #### [호출부에서 명시적인 타입을 알면 Generic을 써서 전달하자]
 ~~~c#
 //1. View_1 : UIAlarmPopup Script의 코드
@@ -22,7 +22,8 @@ private void Initialize()
 }
 
 //3. SoundManager의 코드
-public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresenter : IPresenter, new()
+public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) 
+where TPresenter : IPresenter, new()
 {
     TPresenter presenter = new TPresenter();
     presenter.Initialize(view);
@@ -35,20 +36,34 @@ public TPresenter GetPresenterAfterCreate<TPresenter>(IView view) where TPresent
 
 <br><br>
 
-## :fireworks: 기초 문법 <br> :fire: 필드 + 메서드에 Generic Type이 사용되면 Class에 Generic을 선언한다. <br> :fire: 메서드에만 Generic Type이 사용되면 Method에 Generic을 선언한다.
+## :fireworks: Generic Method의 단점 <br> :fire: 상위 타입에 구현한 메서드를 강제로 하위 타입도 강제로 호출 시키고 싶다. <br> 그러면 상위 타입에서 호출을 시키면 되지만 Generic Method는 불가능하다. <br> :fire: 강제 호출을 하고 싶다면 Generic Class로 만들어야 하는데 <br> 그러면 과한 설계가 된다고 생각한다.
 
-<br><br>
-
-## :fireworks: Generic의 장점 <br> fire: 타입의 분기를 호출부에서 책임 질 수 있으면 Generic Method로 구현한다.
-- 타입을 코드가 아니라 “타입 파라미터”로 추상화해서 컴파일 타임에 확정시키는 것
-- 불필요한 박싱과 캐스팅이 없다. 
-- 타입이 매우 안정적이고 재사용이 되므로 코드의 중복도 없애준다.
 ~~~c#
-public T GetController<T>() where T : IController, new()
+public abstract class ControllerBase : MonoBehaviour, IController
 {
-    return new T();
+    private ControllerConnectionManager _controllerConnectionManager;
+
+    protected virtual void Awake()
+    {
+        _controllerConnectionManager = ControllerConnectionManager.Instance;
+        
+        Initialize();
+    }
+
+    protected virtual void Initialize()
+    {
+    }
+
+    // NOTE : 하위 타입에서 항상 호출시키세요.
+    // ControllerBase를 비제네릭 클래스로 유지하고 싶다.
+    // 그러므로, 해당 메서드를 하위 타입에서 강제 할 수 없다.
+    protected void RequestConnectManager<TManager, TController>(TController controller)
+        where TManager : class, IManager, IHasController<TController>
+        where TController : ControllerBase
+    {
+        _controllerConnectionManager.ConnectManager<TManager, TController>(controller);
+    }
 }
-~~~
 
 <br><br>
 
