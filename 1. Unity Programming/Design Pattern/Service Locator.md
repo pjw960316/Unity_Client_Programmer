@@ -1,4 +1,4 @@
-## :fire: Service Locator는 필요한 객체를 직접 생성하지 않고, 중앙 저장소(GameManager)에 요청해서 찾아오는 패턴이다.
+## :fire: Service Locator는 필요한 객체를 직접 생성하지 않고, <br> 중앙 저장소(GameManager)에 요청해서 찾아오는 패턴이다.
 
 #### :one: 고민한 이유
 - Controller 와 Manager는 서로 의존된다.
@@ -7,7 +7,7 @@
 <br>
 
 #### :two: 도식화
-![alt text](./captures/20260715.png)
+<img src="./captures/20260715.png" alt="구조도" width="600">
 
 <br>
 
