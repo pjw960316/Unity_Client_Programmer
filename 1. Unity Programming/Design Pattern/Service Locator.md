@@ -22,6 +22,7 @@
 #### :four: 장점
 - 책임이 명확하게 분리된다.
 - Generic을 통해 컴파일 타임에 아는 정보를 제공하면 캐스팅이 없다. 또한, 깔끔하게 DI를 제거 할 수 있다.
+- Manager만 Controller를 들고 있고, Controller는 Manager를 들고 있지 않도록 구현이 된다.
 
 <br>
 

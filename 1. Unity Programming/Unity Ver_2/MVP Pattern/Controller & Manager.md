@@ -4,6 +4,7 @@
 - [핵심] Controller 내부에 2가지 Interface가 존재한다.
   - 1. unity 데이터 가공이란 추상적 개념은 같음 -> 인터페이스 -> 전략 패턴으로 여러 가지 데이터 가공 책임을 concrete method로 구현 
   - 2. 가공된 데이터가 여러 타입임. 그러나 추상적 개념은 manager에게 전달해야 할 데이터인 건 동일 -> 그러니 인터페이스
+- :airplane:[Service Locator로 구현](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/Design%20Pattern/Service%20Locator.md)
 
 <br><br>
 
