@@ -90,6 +90,8 @@ private void OnTouchScreen(Vector2 curTouchPos)
 
 #### :four: Controller는 다른 Controller를 참조하지 않는다.
 
+#### :five: Controller에서 다른 Manager를 호출하지 않는다. <br> 그 요청도 자신의 Manager에게 부탁한다.
+
 <br><br>
 
 ## :fireworks: Manager의 책임
