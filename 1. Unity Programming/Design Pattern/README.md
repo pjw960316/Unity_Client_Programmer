@@ -1,8 +1,6 @@
 ## :fireworks: 롤체를 통해 깨달은 것  :  나만의 디자인패턴을 만들어야 한다.
 <img src="./captures/TFT_and_Unity.png" alt="TFT와 Unity의 나만의 패턴" width="900">
 
-<br>
-
 #### :white_check_mark:왜 롤체를 잘했을까?  :arrow_right:  나만의 패턴을 계속 연구하고 만들었다.
 - 그 과정에서 통계, 다른 사람들의 패턴, 내 기록을 연구했고 나만의 법칙을 몇 가지 만들었다.
 - 그 법칙을 자주보며 개선하고 수정했다.
