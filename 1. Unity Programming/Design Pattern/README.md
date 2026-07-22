@@ -1,5 +1,5 @@
 ## :fireworks: 롤체를 통해 깨달은 것  :  나만의 디자인패턴을 만들어야 한다.
-<img src="./captures/TFT_and_Unity.png" alt="TFT와 Unity의 나만의 패턴" width="750">
+<img src="./captures/TFT_and_Unity.png" alt="TFT와 Unity의 나만의 패턴" width="900">
 
 <br>
 
