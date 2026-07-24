@@ -16,7 +16,7 @@
 <br><br>
 
 ## :fireworks: 유니티에서 필드의 생성 및 초기화 순서를 제대로 이해한다. 
-![순서](./captures/20260724_2.png)
+<img src="./captures/20260724_2.png" alt="순서" width="600">
 - Field Initializer가 static일 때는 제외한다.
 - Popup과 Popup 내부의 Widget의 Awake중 누가 빨리 되는 지는 알 수 없다. <br> 그러나 언제나 Popup의 Field Initializer는 Widget의 Awake 보다 빠르다
 - 반대로 Widget의 Field Initializer는 Popup의 Awake 보다 반드시 빠르다. <br> 당연히 Start와 Awake의 관계도 똑같다.
