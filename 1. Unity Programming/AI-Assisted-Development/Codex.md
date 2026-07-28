@@ -19,6 +19,16 @@
 
 <br><br>
 
-## :fireworks: 각종 팁
-- AGENTS.md를 만들어서 세션마다 진행할 영구 프롬프트를 구성한다.
+## :fireworks: CODEX 적용 규칙
+- **AGENTS.md를 만들어서 세션마다 진행할 영구 프롬프트를 구성한다.**
   - 경로는 .codex 하단에 만들면 된다.
+- **config.toml을 만들어서 CODEX에게 권한을 부여한다.**
+  - 더 이상 권한을 묻지 않으므로 인터럽트가 걸리지 않는다.
+  - :airplane:[config.toml](https://learn.chatgpt.com/docs/sandboxing?surface=app)
+- :airplane:[CODEX 설정 팁](https://blog.naver.com/jhc9639/224186400602)
+
+<br><br>
+
+## :memo: 메모
+- 새 세션 == 새 채팅
+- 결국 CODEX의 원리와 구성방식을 잘 알아야 개발력도 올라간다. 
