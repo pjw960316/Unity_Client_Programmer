@@ -9,7 +9,7 @@
 <br><br>
 
 ## SerializedDictionary의 복합 Value 분할
-
+- Unity 공식 제공 private UnityEngine.Rendering.SerializedDictionary로 사용하기.
 처음에는 하나의 `EFieldObject`에 여러 데이터를 묶어서 저장하려고 했다.
 ```text
 EFieldObject → AnimalSpawnSetting
