@@ -10,7 +10,7 @@
 
 <br><br>
 
-## :fire: Resources의 데이터는 최초 실행용 원본이다.
+## :fire: Resources의 데이터는 최초 실행용 원본이다. <br> 별일 없으면 우선은 Resources 하위에 XML , ScriptableObject를 만든다.
 - `Resources`에 있는 XML은 사용자의 변경 데이터를 계속 저장하는 파일이 아니다.
 - 빌드에 포함된 기본 데이터를 최초 한 번 불러오기 위해 사용한다.
 - 사용자 데이터가 아직 없다면 기본 XML을 읽어서 `Application.persistentDataPath`에 복사한다.
@@ -39,11 +39,6 @@
   - Persistent 경로에 있는 XML만 갱신한다.
 
 <br><br>
-
-## :fire: 경로 변수는 역할이 보이도록 이름을 짓는다.
-- `RelativePath`만으로는 무엇을 기준으로 한 상대 경로인지 알기 어렵다.
-- `ResourcesRelativePath`는 `Resources` 폴더 하위의 로드 경로라는 뜻이다.
-- `AbsolutePath`보다 `PersistentFilePath`가 실제 사용자 저장 파일이라는 의미를 잘 전달한다.
 
 ## :fireworks: 아래는 과거 문서
 
