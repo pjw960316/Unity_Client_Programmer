@@ -1,7 +1,6 @@
-
-
-
 ## :fireworks: 아래는 CODEX 제작
+
+<br><br>
 
 ## :fireworks: Resources 경로와 실제 저장 경로는 역할이 다르다.
 - `Assets/Resources`는 게임에 포함할 기본 데이터를 두는 곳이다.
