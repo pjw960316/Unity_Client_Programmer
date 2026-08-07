@@ -52,6 +52,7 @@
 3. **Constructor + Initialize Method + SetData Method**
 4. **Event Handle Method**
 5. **Request Method**
+  - 서버나 ThirdParty에게 요청하는 메서드 일 때 접두어로 Request를 붙인다. 
 6. **Method**
 
 <br>
