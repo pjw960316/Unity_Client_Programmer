@@ -67,6 +67,8 @@
 
 <br>
 
+![alt text](./captures/TODO%20Rider%20Setting.png)
+
 - **NOTE**
   - 코드 설명
   - 클래스 or 메서드 거시적 설명
