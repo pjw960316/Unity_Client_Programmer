@@ -1,24 +1,94 @@
-## :fire: IModel을 상속 받는 클래스를 Xml로부터 만들어야 할 때 사용한다.
+## :fire: <br> 나는 유니티에서 XmlSerializer 클래스로 Xml을 다룬다. <br> XmlSerializer는 public 데이터만 직렬화한다.
+
+| 멤버                            | XML 직렬화 |
+| ----------------------------- | ------- |
+| `public` 필드                   | O       |
+| `public get/set` 프로퍼티         | O       |
+| `private` 필드·프로퍼티             | X       |
+| `[XmlIgnore]`가 붙은 `public` 멤버 | X       |
+
+- Container도 동일한 기준을 적용한다.
+- XmlSerializer가 지원하지 않는 Dictionary는 <br> private으로 관리하거나 [XmlIgnore]로 제외하고, XML 저장용 List를 별도로 둔다.
+- [XmlIgnore]는 에러를 무시하는 Attribute가 아니라, 해당 public 멤버를 **XML 저장 대상에서 제외**한다.
 
 ~~~c#
-public class MyCharacterData : IModel
+public List<RoutineRecordData> RoutineRecordList = new();
+
+private Dictionary<string, List<bool>> _routineRecordDictionary = new();
+
+[XmlIgnore]
+public ImmutableSortedDictionary<string, ImmutableList<bool>> RoutineRecordDictionary
+{
+    get { /* Dictionary를 읽기 전용으로 제공 */ }
+}
 ~~~
 
 <br><br>
 
-## :fire: Unity에서 xml은 TextAsset에 포함되고, TextAsset으로 관리된다.
-> Represents a raw text or binary file asset.
+## :fire: Deserialize는 XML 데이터를 읽어서 C# Data Class에 초기화하는 과정이다. <br> 일단은 게임 플레이에서 한 번 실행된다고 대충 이해한다.
 
-> Text assets are a format for imported text files. When you drop a text file into your Project folder, Unity converts it to a Text Asset. The supported text formats are: <ins>.bytes / .xml / .json / .txt / .md / </ins> 
-- 더 많은 format이 존재하지만 생략했다.
+> XML → C# Object
+- 저장되어 있는 XML 데이터를 읽어서 C#에서 사용할 수 있는 객체로 변환한다.
+- 현재 프로젝트에서는 게임 데이터를 처음 로드할 때 실행한다.
+- `XmlSerializer.Deserialize()`의 반환값은 `object`이므로 실제 Data Class 타입으로 사용한다.
+
+~~~c#
+var serializer = new XmlSerializer(typeof(MyCharacterData));
+
+using var reader = new StringReader(xmlText);
+
+var myCharacterData =
+    (MyCharacterData)serializer.Deserialize(reader);
+~~~
+
+- 현재 `XmlDataManager`에서는 XML 타입별로 Deserialize한 객체를 Dictionary에 보관한다.
+
+~~~c#
+_deserializedXmlDictionary.Add(
+    xmlType,
+    xmlSerializer.Deserialize(stringReader)
+);
+~~~
+
+<br><br>
+
+## :fire: Serialize는 C# Data Class를 XML 데이터로 저장하는 과정이다. <br> 일단은 게임 플레이에서 자주 실행된다고 대충 이해한다.
+
+> C# Object → XML
+
+- 런타임에서 C# Data Class의 인스턴스의 필드는 계속 변경된다. <br> 코드 레벨에서 데이터가 변경되면 Serialize를 통해 XML 파일에 데이터를 저장해야 한다.
+  - 캐릭터의 재화, 루틴 기록처럼 게임 중 데이터가 변경된 뒤 저장할 때 실행한다.
+  - 타입을 잘 맞추는 게 중요하다.
+- Deserialize가 저장 데이터를 **불러오는 것**이라면, Serialize는 변경된 데이터를 **저장하는 것**이다.
+
+~~~c#
+public void SerializeXmlData<T>(T data)
+{
+    var xmlFileData = GetXmlFileData(typeof(T));
+    var serializer = new XmlSerializer(typeof(T));
+
+    using var writer = new StreamWriter(xmlFileData.PersistentFilePath);
+
+    serializer.Serialize(writer, data);
+}
+~~~
+
+예를 들어 `MyCharacterData`의 값이 런타임에서 변경되었다면,
+
+~~~c#
+myCharacterData.MonthlyRoutineSuccessMoney += 100;
+
+XmlDataManager.Instance.SerializeXmlData(myCharacterData);
+~~~
+
+C# 객체의 현재 상태가 XML 파일에 다시 기록된다.
+
 
 <br><br>
 
 ## :fireworks: XML을 C# Class로 변환시키는 4단계 과정 <br> (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
 
 #### :one: [<ins>C# Class</ins>] (Xml에 대응하는 C#의 Class를 만들어 준다.) 
-- :todo: 코드 완성하고 예제로
-- 잡다한 xmlelement attribute 정도?
 
 <br>
 
@@ -124,6 +194,10 @@ Debug.Log($"{text}");
 - Name & Age = Child Element 
 - :link:[formatting XML](https://dontpaniclabs.com/blog/post/2025/05/06/formatting-xml-when-serializing-c-objects/)
 
-<br><br>
+<br>
 
-## :fire: [XmlIgnore] attribute를 이용해서 테스트 시에 <br> Serialize 실패 에러를 무시할 수 있다. <br> :question: Model의 데이터 필드로 존재하는 Dictionary의 경우 [XmlIgnore]를 이용해서 무시하고, <br> List를 Serialize 한 걸 property로 참조하여 이용한다.  
+#### :four: Unity에서 xml은 TextAsset에 포함되고, TextAsset으로 관리된다.
+> Represents a raw text or binary file asset.
+
+> Text assets are a format for imported text files. When you drop a text file into your Project folder, Unity converts it to a Text Asset. The supported text formats are: <ins>.bytes / .xml / .json / .txt / .md / </ins> 
+- 더 많은 format이 존재하지만 생략했다.
