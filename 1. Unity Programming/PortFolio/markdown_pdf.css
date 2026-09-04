@@ -1,20 +1,39 @@
-table {
+table 
+{
   width: 100%;
   border-collapse: collapse;
 }
 
 table th,
-table td {
+table td 
+{
   border: 1px solid #999 !important;
   padding: 8px;
   vertical-align: top;
 }
 
-table ul {
+table ul 
+{
   margin: 0;
   padding-left: 18px;
 }
 
-table li {
+table li 
+{
   margin: 0;
+}
+
+/* 이 부분은 페이지에 배경 넣기 */
+.chapter-page 
+{
+  width: 100%;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  background-color: #d6c3ea;
+  padding: 40px;
+
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
