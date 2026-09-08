@@ -40,7 +40,7 @@
 
 <br><br>
 
-# :fire: [AI Coding Spectrum Level 3] <br> CODEX와의 협업 단계에서 공부한 내용을 사용자는 Markdown으로 기록해서 Github에 올린다.
+# :fire: [AI Coding Spectrum Level 3] <br> CODEX와의 협업 단계에서 공부한 내용을 <br> 사용자는 Markdown으로 기록해서 Github에 올린다.
 ### 배경
 - 사용자는 4년동안 markdown으로 기록해서 Github에 올리고 개인 블로그처럼 사용하고 있다.
 
@@ -83,10 +83,10 @@
 <br><br>
 
 # :fire: Codex 업무 시작 자동화 규칙
-## 1.Codex가 판단하는 업무 시작 트리거
+### :one: Codex가 판단하는 업무 시작 트리거
 - 새 채팅창의 첫 채팅이 업무 시작 트리거다.
 
-## 2. CODEX가 업무 시작시에 진행해야 할 절차
+### :two: CODEX가 업무 시작시에 진행해야 할 절차
 #### Context Switching
 - 가장 최근의 이전 Codex 채팅을 확인한다.
   - 이전 채팅과 현재 채팅의 날짜 간격을 알려준다.
@@ -116,10 +116,10 @@
 <br><br>
 
 # :fire: Codex 업무 완료 자동화 규칙
-## 1. Codex가 판단하는 업무 완료 트리거
+### :one: Codex가 판단하는 업무 완료 트리거
 - 사용자가 “오전은 여기까지”, “오후 업무 끝”, “오늘은 그만”, “퇴근할게” 등 업무를 마무리하는 의도를 표현하면 업무 완료임을 인지한다.
 
-## 2. CODEX가 업무 완료시에 진행해야 할 절차
+### :two: CODEX가 업무 완료시에 진행해야 할 절차
 #### AGENTS.md 동기화
 - 업무 완료를 인지하면 다음 원본과 복사본을 동기화한다.
   - 원본: `C:\Users\pjw96\.codex\AGENTS.md`
