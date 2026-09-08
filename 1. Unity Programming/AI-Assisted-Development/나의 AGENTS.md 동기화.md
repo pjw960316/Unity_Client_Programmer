@@ -16,19 +16,19 @@
 
 <br>
 
-- Level 0: Static Tooling
+#### Level 0: Static Tooling
   - 린터, 포매터, 컴파일러, 언어 서버처럼 규칙 기반으로 오류와 스타일을 알려주는 단계이다.
-- Level 1: Token-Level Completion
+#### Level 1: Token-Level Completion
   - 현재 코드 주변 문맥을 보고 다음 토큰이나 단어를 자동완성하는 단계이다.
-- Level 2: Block-Level Completion
+#### Level 2: Block-Level Completion
   - 한 줄, 함수, 반복문 같은 코드 블록을 자동완성하는 단계이다.
-- Level 3: Intent-Based Chat Agent
+#### Level 3: Intent-Based Chat Agent
   - 사용자가 의도와 문제를 자연어로 설명하면 AI가 코드 변경안을 제안하고, 사용자가 검토하는 단계이다.
   - 이 단계는 주로 GPT와 함께 설계 질문, 구현 전 구조화, 이해되지 않는 코드 공부에 사용한다.
-- Level 4: Local Autonomous Agent
+#### Level 4: Local Autonomous Agent
   - 기능 설명을 받으면 로컬 프로젝트 안에서 계획을 세우고, 파일을 수정하고, 빌드/테스트를 실행하며 반복하는 단계이다.
   - 이 단계는 Codex와 함께 프로젝트 분석, 클래스/메서드 분석, 구현, 검증, 개선 로드맵 작성에 사용한다.
-- Level 5: Fully Autonomous Dev Agent
+#### Level 5: Fully Autonomous Dev Agent
   - 이슈나 백로그를 받아 사람의 개입을 최소화하고 end-to-end로 개발 작업을 완료하는 단계이다.
 
 <br><br>
@@ -44,17 +44,17 @@
 <br><br>
 
 # :fire: [AI Coding Spectrum Level 3] <br> CODEX와의 협업 단계에서 공부한 내용을 <br> 사용자는 Markdown으로 기록해서 Github에 올린다.
-### 배경
+### :one: 배경
 - 사용자는 4년동안 markdown으로 기록해서 Github에 올리고 개인 블로그처럼 사용하고 있다.
 
 <br>
 
-### 업무 단계에서의 사용자의 공부 방식
+### :two: 업무 단계에서의 사용자의 공부 방식
 - 업무 중간에 공부하고 기록하는 건 좋은 방식이 아님을 사용자는 경험으로 알고 있다. 그래서 사용자는 '공부할 핵심 키워드'와 '질문'을 사용자가 직접 선정하여 Notion에 기록한다.
 
 <br>
 
-### 업무 완료 후 사용자의 공부 방식
+### :three: 업무 완료 후 사용자의 공부 방식
 - Codex는 사용자에게 '핵심 키워드', '핵심 질문', '사용자가 이해한 내용이 담긴 프롬프트' 세 항목을 요청한다.
 - Codex는 사용자가 설명한 이해를 검토하고, 정확한 부분과 오류·불명확한 부분을 짚는다. 확인이 필요한 부분은 질문한다.
 - 이후 사용자의 표현과 실제 개발 경험을 살려, 사용자가 지정한 Markdown 형식으로 짧고 수정하기 쉬운 초안을 채팅에 제공한다.
@@ -64,14 +64,14 @@
 <br><br>
 
 # :fire: [AI Coding Spectrum Level 4] <br> CODEX가 사용자의 설계와 프롬프트를 기반으로 구현하기.
-### 배경
+### :one: 배경
 - 사용자는 개인의 Design Pattern을 만드는 게 목표다. 
 - 사용자는 GitHub의 Design Pattern에 이를 관리하고 있으며 <br> AGENTS.MD에는 그 핵심만을 적는다.
   - 설계의 영역 전체를 모두 구현으로 연결 짓지 않기 위함.
 
 <br>
 
-### 구현 규칙
+### :two: 구현 규칙
 - 사용자가 요청하지 않은 관련 없는 리팩터링은 하지 않는다.
 - 새로운 파일 생성이나 클래스를 생성하는 건 보수적으로 진행한다. 물론 필요하면 만들고 그걸 답변에 적는다.
 - 메서드를 수정하는 것 보다는 메서드를 추가로 생성해서 '메서드는 하나의 기능만을 갖는다.'를 지킨다.
@@ -79,13 +79,15 @@
 
 <br>
 
-### 코드 스타일
+### :three: 코드 스타일
 - 생성자와 메서드 선언부의 매개변수는 길어도 줄바꿈하지 않고 한 줄로 작성한다.
 - 메서드 호출부의 인자도 길어도 가능한 한 한 줄로 작성한다.
 - `if`, `else`, `for`, `foreach`, `while` 등의 제어문은 본문이 한 줄이어도 중괄호를 생략하지 않는다.
 - 여는 중괄호와 닫는 중괄호는 각각 별도의 줄에 작성한다.
 
-### Codex dotnet build은 기본적으로 실행하지 않는다.
+<br>
+
+### :four: Codex dotnet build은 기본적으로 실행하지 않는다.
 - Unity 프로젝트의 컴파일 검증은 사용자가 Unity 에디터에서 직접 수행한다.
 - Codex는 코드 수정 후 기본적으로 `dotnet build`를 실행하지 않는다.
 - Codex는 정적 검색, 호출부 확인, `git diff --check` 등 빌드가 필요 없는 검증까지만 수행한다.
@@ -100,7 +102,7 @@
 <br>
 
 ### :two: CODEX가 업무 시작시에 진행해야 할 절차
-#### Context Switching
+#### [Context Switching]
 - 가장 최근의 이전 Codex 채팅을 확인한다.
   - 이전 채팅과 현재 채팅의 날짜 간격을 알려준다.
   - 이전에 개발한 내용, 학습한 내용, 미완료 설계 판단과 다음 작업을 짧게 요약한다.
@@ -110,7 +112,7 @@
 
 <br>
 
-#### Rider 플러그인 문서 동기화
+#### [Rider 플러그인 문서 동기화]
 - Codex는 User가 플러그인 문서 동기화 작업을 요청하면 `C:\HabitGame\HabitGame\Assets\Docs` 경로를 확인한다.
 - 해당 경로가 없으면 이 작업은 아무것도 하지 않고 넘어간다.
 - 해당 경로에 `Rider_Plugins` 문서가 있으면 현재 Rider에 설치된 플러그인 정보를 확인하고 문서와 비교한다.
@@ -135,7 +137,7 @@
 <br>
 
 ### :two: CODEX가 업무 완료시에 진행해야 할 절차
-#### AGENTS.md 동기화
+#### [AGENTS.md 동기화]
 - 업무 완료를 인지하면 다음 원본과 복사본을 동기화한다.
   - 원본: `C:\Users\pjw96\.codex\AGENTS.md`
   - 복사본: `C:\Unity_Client_Programmer\1. Unity Programming\AI-Assisted-Development\나의 AGENTS.md 동기화.md`
@@ -145,13 +147,13 @@
 
 <br>
 
-#### GitHub Commit & Push를 통한 동기화 검토
+#### [GitHub Commit & Push를 통한 동기화 검토]
 - 현재 프로젝트에 변경사항이 있다면 그걸 알려준다. 변경 사항이 없다면 없다고 한다.
 - 현재 프로젝트에서 commit은 했는데 아직 push를 하지 않았다면 알려준다. push까지 완료했다면 github 이슈가 없는 것.
 
 <br>
 
-#### Review
+#### [오늘의 업무 전체 리뷰]
 - 현재 채팅, 오늘의 커밋, 남아 있는 변경 사항을 확인하여 실제로 한 일을 요약한다.
 - 개발한 기능, 새로 만든 설계 규칙, 판단이 바뀐 과정, 실수와 개선점을 구분해서 알려준다.
 - 사용자가 오늘 배운 내용을 스스로 설명할 수 있도록 핵심 복습 질문을 한 번에 하나씩 묻는다.
@@ -162,5 +164,5 @@
 
 <br>
 
-#### Markdown 문서 작성을 위한 초안 생성
+#### [Markdown 문서 작성을 위한 초안 생성]
 - AGENTS.md 문서의 '[AI Coding Spectrum Level 3] <br> CODEX와의 협업 단계에서 공부한 내용을 사용자는 Markdown으로 기록해서 Github에 올린다'의 업무 '완료 후 사용자의 공부 방식'을 수행한다.
