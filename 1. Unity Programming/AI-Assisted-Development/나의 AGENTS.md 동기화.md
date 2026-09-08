@@ -124,6 +124,7 @@
 - 업무 완료를 인지하면 다음 원본과 복사본을 동기화한다.
   - 원본: `C:\Users\pjw96\.codex\AGENTS.md`
   - 복사본: `C:\Unity_Client_Programmer\1. Unity Programming\AI-Assisted-Development\나의 AGENTS.md 동기화.md`
+  - 복사본 전체를 원본 파일과 동일하게 덮어쓴다. 별도의 제목이나 안내문을 추가하거나 보존하지 않는다.
 - 내용이 같으면 수정하지 않는다. 복사본의 내용을 원본에 역으로 반영하지 않는다.
 - 동기화 결과를 짧게 알린다. Git commit과 push는 사용자가 요청한 경우에만 수행한다.
 
