@@ -15,6 +15,7 @@
 
 ### :two: Manager 내부의 Handler들은 데이터를 조회 및 가공해서 MVP / UI 객체들에게 전달한다. <br> 가공 과정이 Handler의 메서드로 표현된다.
 - Manager는 외부 객체(MVP / UI)의 진입점이 된다.
+- Manager는 Handler를 필드로 가지고 있어야 한다. 그래야 MVP / UI 객체의 요청을 이벤트뿐만 아니라 메서드 호출(Getter) 방식으로도 Handler에 위임할 수 있다.
 - Handler는 외부 객체가 요구하는 데이터를 전달하기 위해 Data 클래스의 데이터를 가공한다. 
   - immutable 데이터를 받으므로 가공 과정에서 원본은 변하지 않는다.
 - Manager와 Handler는 데이터를 저장하지 않고 Data Class를 통해 전달 받아 사용한다.
