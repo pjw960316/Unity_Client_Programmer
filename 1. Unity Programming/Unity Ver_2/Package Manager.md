@@ -4,7 +4,8 @@
 <br><br>
 
 ## :fireworks: 필요한 Package를 찾는 순서
-- Built-in → Unity Registry → My Assets → `+` 외부 Package 순서로 찾는다.
+> **Built-in → Unity Registry → My Assets → 외부 Package 순서로 찾는다.**
+
 - Unity에 내장되었거나 Unity가 공식 관리하는 기능을 먼저 확인하고, 원하는 기능이 없을 때 Asset Store와 외부 Package까지 범위를 넓힌다.
 - `+` 외부 Package는 Git URL이나 Local Package처럼 Unity Registry와 Asset Store 밖에서 직접 가져오는 Package를 뜻한다.
 
@@ -40,10 +41,14 @@
 
 <br>
 
-- **`+` 외부 Package**
-  - '+'를 누르고 'install package by github' 
-  - '+'를 누르고 'install package by name' 
-  - 완전 외부에서 Pacakge를 다운로드
+- ** 외부 Package**
+  - Github
+    - '+'를 누르고 'install package by github' 
+    - '+'를 누르고 'install package by name' 
+  - NuGet
+    - C#·.NET Library를 배포하고 설치하는 Package Manager이다.
+    - Unity 전용이 아니므로 Unity의 .NET 버전과 Platform·IL2CPP 호환성을 확인해야 한다.
+    - 순수 C# 기능이 필요할 때 공식 배포자가 관리하는 Package를 우선 검토한다.
 
 <br>
 
