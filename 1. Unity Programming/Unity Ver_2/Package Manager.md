@@ -8,7 +8,10 @@
 - Unity에 내장되었거나 Unity가 공식 관리하는 기능을 먼저 확인하고, 원하는 기능이 없을 때 Asset Store와 외부 Package까지 범위를 넓힌다.
 - `+` 외부 Package는 Git URL이나 Local Package처럼 Unity Registry와 Asset Store 밖에서 직접 가져오는 Package를 뜻한다.
 
-### 
+### Unity Registry Package는 주기적으로 Update를 확인한다.
+- Bug 수정과 안정성 개선을 적용할 수 있다.
+- 새로운 Unity·Android·iOS 버전과의 호환성을 유지할 수 있다.
+- 폐기된 API를 피하고 현재 Unity가 지원하는 기능을 사용할 수 있다.
 
 <br><br>
 
