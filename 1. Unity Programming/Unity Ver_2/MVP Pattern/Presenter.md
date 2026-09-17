@@ -7,6 +7,7 @@
   - Model의 필드는 캡슐화를 반드시 해야하고, Presenter는 Model에게 데이터 변경을 요청한다. (그러나 같은 layer므로, Request는 붙이지 않는다.)
 > Model does not know the View or the Presenter. Presenter knows both Models and Views, but only through their interfaces.
 - :link:[Unity에서 MVP 패턴으로 UI를 깔끔하게 관리하기](https://wolstar.tistory.com/73)
+- 위 인용의 인터페이스 참조는 무조건 따라야 하는 규칙으로 삼지 않는다. 이 프로젝트에서는 아래 기준에 따라 View를 구체 타입으로 참조할 수도 있다.
 
 <br>
 
@@ -90,4 +91,17 @@ public void SetButtonText(ImmutableDictionary<EAlarmButtonType, float> immutable
 
 <br>
 
-### :three: Presenter는 View 와 Model과 동등한 위치기 때문에 <br> Request 접두어를 메서드 이름 앞에 붙이지 않는다. 
+### :three: Presenter는 View 와 Model과 동등한 위치기 때문에 <br> Request 접두어를 메서드 이름 앞에 붙이지 않는다.
+
+<br>
+
+### :four: View를 추상 타입으로 들고 있는 것이 항상 더 좋은 구현은 아니다.
+- Presenter가 특정 View를 전담하고 다른 View로 교체할 필요가 없다면, 구체 타입으로 들고 있어도 된다.
+~~~c#
+// AlarmTimerPresenter는 알람 타이머 팝업을 전담한다.
+private UIAlarmTimerPopup _alarmTimerPopup;
+~~~
+- 구체 타입으로 참조해도, Presenter가 View를 알고 View는 Presenter를 모르는 의존 방향은 유지된다.
+- 다른 View 구현이나 테스트용 View로 대체할 필요가 생기면, 필요한 기능을 담은 인터페이스를 고려한다. 이 경우에도 한 번에 하나의 View를 연결할 수 있다.
+- 필요한 기능이 없는 상위 타입으로 바꾼 뒤 다시 캐스팅한다면 이점이 작다. 필요한 기능을 갖춘 인터페이스라면 캐스팅 없이 사용할 수 있다.
+- 확장성을 위해 추가하는 코드와 관리 비용도 있다. 모든 곳을 미리 교체 가능하게 만들기보다, 필요한 곳에 추상화를 적용한다.
