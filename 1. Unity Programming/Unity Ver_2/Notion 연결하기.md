@@ -4,6 +4,7 @@
 
 - [Notion — Personal access tokens](https://developers.notion.com/guides/get-started/personal-access-tokens)
 - [Notion — API Introduction](https://developers.notion.com/reference/intro)
+- [Notion — Search by title](https://developers.notion.com/reference/post-search)
 - [Notion — Retrieve your token's bot user](https://developers.notion.com/reference/get-self)
 - [Unity — UnityWebRequest.SendWebRequest](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Networking.UnityWebRequest.SendWebRequest.html)
 
@@ -44,44 +45,69 @@ Authorization: Bearer <PAT>
 
 <br><br>
 
-## :fire: 공개 프로젝트에서는 PAT 파일을 Git 저장소 밖에 둔다.
+## :fire: PAT은 Windows 사용자 환경 변수에서 읽는다.
 
-- 이번에는 PC의 특정 경로에 PAT을 텍스트 파일로 저장하고, 실행 중 해당 파일을 읽기로 했다.
-- 예시: `C:\HabitGameLocal\notion-pat.txt`
-- 파일에는 PAT 문자열만 저장한다.
-- 공개하는 것은 파일을 읽는 코드와 경로 정보다. 실제 토큰 파일은 저장소 밖에 둔다.
-- `Resources`는 프로젝트 내부이므로 파일이 함께 커밋될 수 있고, 빌드에도 포함된다.
-- 외부 파일은 `Resources.Load()` 대신 `File.ReadAllText()`로 읽는다.
-- 파일을 읽은 뒤 `Trim()`으로 앞뒤 공백과 줄바꿈을 제거한다.
+- 현재는 Windows 사용자 환경 변수 `NotionToken`에 PAT을 저장한다.
+- `EnvironmentVariableTarget.User`를 지정해 사용자 영역의 값을 읽는다.
+- 읽은 값을 private 필드 `_notionToken`에 보관하고 요청마다 사용한다.
+- 토큰 자체는 소스 코드나 Resources에 넣지 않는다.
 
 ~~~c#
-var pat = File.ReadAllText(patFilePath).Trim();
+_notionToken = Environment.GetEnvironmentVariable("NotionToken", EnvironmentVariableTarget.User);
 ~~~
 
 <br><br>
 
-## :fire: 첫 요청은 PAT으로 내 사용자 정보를 읽는 것으로 시작한다.
+## :fire: UnityWebRequest에 목적에 맞는 API URL과 HTTP 메서드를 지정한다.
 
-- 첫 요청 주소: `https://api.notion.com/v1/users/me`
-- PAT으로 요청하면 발급한 사용자 정보를 반환한다.
-- 사용자 정보를 읽는 요청이 성공해도 개별 문서 조회까지 검증된 것은 아니다.
-- 요청에는 `Authorization`과 `Notion-Version` 헤더를 넣는다.
-- 이번 코드의 API 버전은 `2026-03-11`이다.
-
-~~~text
-로컬 PAT 파일 읽기
-    → 토큰을 요청 헤더에 넣기
-    → Notion 서버에 GET 요청
-    → HTTP 상태와 원본 JSON 확인
-~~~
-
-### HabitGame에서 준비한 코드
-
-- `NotionManager.RequestNotionUserAsync(string patFilePath)` 메서드를 추가했다.
-- 파일 존재 여부와 빈 토큰을 확인하고, 요청 후 HTTP 상태와 원본 JSON을 Console에 출력한다.
-- HTTP 실패 시에도 오류 응답 내용을 관찰할 수 있도록 원본 응답을 반환한다.
-- `PracticeNotion()`에서 실제 파일 경로를 전달하여 호출할 수 있다.
+- `UnityWebRequest`는 한 번의 HTTP 요청을 처리하는 객체다.
+- 노트 화면을 여는 링크와 데이터를 요청하는 API 주소는 구분한다.
+- `GET /v1/users/me`는 PAT을 발급한 사용자 정보를 확인하는 요청이다.
+- 이번에 필요한 페이지 정보는 `POST /v1/search`로 검색해서 받아왔다.
+- URL과 HTTP 메서드를 지정하고, PAT을 헤더에 넣은 뒤 `SendWebRequest()`로 전송한다.
 
 ~~~c#
-RequestNotionUserAsync(@"C:\HabitGameLocal\notion-pat.txt").Forget();
+using (var request = new UnityWebRequest(NOTION_SEARCH_URL, "POST"))
+{
+    // 인증 헤더와 검색 조건 JSON을 설정한 뒤 요청한다.
+}
 ~~~
+
+<br><br>
+
+## :fire: 페이지 정보는 Search API로 제목을 검색해서 찾는다.
+
+- API 주소: `https://api.notion.com/v1/search`
+- HTTP 메서드: `POST`
+- `query`에 검색할 제목을 넣고, `filter`로 페이지만 검색하도록 지정한다.
+- 공식 문서에서 요청 주소, HTTP 메서드, 헤더, JSON 본문, 응답 형식을 확인할 수 있었다.
+- 검색 조건 JSON을 `RequestNotionPage(string requestJson)`에 전달했다.
+
+### 예시: 제목에 2026년 10월이 포함된 페이지 검색
+
+~~~json
+{
+  "query": "2026년 10월",
+  "filter": {
+    "property": "object",
+    "value": "page"
+  }
+}
+~~~
+
+~~~c#
+var requestJson = "{\"query\":\"2026년 10월\",\"filter\":{\"property\":\"object\",\"value\":\"page\"}}";
+RequestNotionPage(requestJson).Forget();
+~~~
+
+- `query`는 페이지의 제목을 검색한다. 본문이나 날짜 속성을 검색하는 조건은 아니다.
+- 검색 결과의 페이지 정보에서 `id`와 속성 등을 확인할 수 있다.
+- 페이지 본문은 블록으로 구성되며, 본문을 읽으려면 검색 결과의 페이지 ID로 별도 블록 조회를 해야 한다.
+
+<br><br>
+
+## :fire: 오늘 확인한 것
+
+- PAT으로 사용자 정보를 요청해서 HTTP 200 응답을 확인했다.
+- `2026년 10월`을 검색어로 지정해 페이지 검색 결과를 정상적으로 받아왔다.
+- 다음 탐색은 반환된 페이지 ID로 본문 블록을 읽는 것이다.
