@@ -9,6 +9,17 @@
 
 <br><br>
 
+## :fire: 토큰 관리
+- 환경 변수란 무엇인가? 똑똑하면서도 어리버리한 컴퓨터를 위해서 미리 경로나 값 등을 지정해 둔 것을 환경 변수(env)라고 할 수 있다. 
+- 로컬 환경 변수를 이용해서 관리하는 게?
+
+
+
+
+## :fireworks: 아래는 codex 자동
+
+<br><br>
+
 ## :fire: PAT은 내 권한으로 Notion API에 접근하기 위한 개인용 토큰이다.
 
 - PAT은 **Personal Access Token**의 약자다.
@@ -74,10 +85,3 @@ var pat = File.ReadAllText(patFilePath).Trim();
 ~~~c#
 RequestNotionUserAsync(@"C:\HabitGameLocal\notion-pat.txt").Forget();
 ~~~
-
-<br><br>
-
-## :fire: 현재는 첫 연결 코드를 준비한 단계다.
-
-- 아직 실제 Notion 통신 성공과 Unity 컴파일 여부는 확인하지 않았다.
-- 다음에는 로컬 토큰 파일을 준비하고, Unity Play 모드에서 응답을 확인한다.
