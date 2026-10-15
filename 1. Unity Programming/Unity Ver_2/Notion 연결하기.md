@@ -92,3 +92,13 @@ RequestNotionPage(requestJson).Forget();
 - `query`는 페이지의 제목을 검색한다. 본문이나 날짜 속성을 검색하는 조건은 아니다.
 - 검색 결과의 페이지 정보에서 `id`와 속성 등을 확인할 수 있다.
 - 페이지 본문은 블록으로 구성되며, 본문을 읽으려면 검색 결과의 페이지 ID로 별도 블록 조회를 해야 한다.
+
+<br><br>
+
+### :sparkles: `query`를 생략했을 때
+
+> If no query param is provided, then the response contains all pages or data_sources that have been shared with the connection.
+
+- `query`를 생략하면 제목 조건 없이, 해당 연결에 공유된 페이지 또는 데이터 소스를 조회한다.
+- `filter`를 `"page"`로 지정했다면 그중 페이지만 반환한다.
+- :airplane: [Notion — Search by title](https://developers.notion.com/reference/post-search)
