@@ -47,16 +47,13 @@
 <br><br>
 
 ## :sparkles: Package Manager의 `+` 설치 메뉴
-
-> **기본 메뉴에서 Package 목록을 확인하고, `+` 메뉴에서 설치할 Package의 이름이나 위치를 직접 지정한다.**
-
-- 목록에서 검색되지 않으면 배포자가 안내한 Package 이름, Git URL 또는 로컬 파일을 확인한다.
-- 목록에서 보이지 않아도 Unity Registry의 Package일 수 있다. Newtonsoft Json처럼 이름을 직접 입력해 설치하는 경우도 있다.
+- 위에 5가지 목록에 없을 수 있다. 그 때 사용할 메뉴
+- GPT를 적극적으로 활용한다.
 
 <br>
 
 #### :one: Install package by name
-
+- 얘를 가장 많이 쓴다. 실제로 Newtonsoft Json도 이거로 다운로드
 - Unity Registry 또는 프로젝트에 연결된 Registry에서 **정확한 Package 이름**으로 설치한다.
 - `+ → Install package by name`을 선택하고 `Name`을 입력한다.
 - `Version`을 비워두면 Unity가 호환되는 최신 정식 버전을 선택한다.
