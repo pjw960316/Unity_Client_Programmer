@@ -12,6 +12,7 @@
 
 <br>
 
+#### :two: **Unity Registry**
 
 - Unity가 직접 제공하고 관리하는 **공식 Package Store**이다.
 - Unity에 모든 기능을 기본으로 넣지 않고, 프로젝트에 필요한 기능만 선택해서 설치하게 한다.
