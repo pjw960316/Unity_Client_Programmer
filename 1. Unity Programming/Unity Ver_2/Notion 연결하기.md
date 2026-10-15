@@ -14,28 +14,17 @@
 - 환경 변수란 무엇인가? 똑똑하면서도 어리버리한 컴퓨터를 위해서 미리 경로나 값 등을 지정해 둔 것을 환경 변수(env)라고 할 수 있다. 
 - 로컬 환경 변수를 이용해서 관리하는 게?
 
-
-
-
-## :fireworks: 아래는 codex 자동
-
 <br><br>
 
 ## :fire: PAT은 내 권한으로 Notion API에 접근하기 위한 개인용 토큰이다.
-
 - PAT은 **Personal Access Token**의 약자다.
-- PAT은 하나의 워크스페이스에 속하며, 발급한 사용자의 접근 권한을 사용한다.
-- 내가 접근할 수 있는 비공개 문서도 API로 읽을 수 있다. 문서를 웹에 공개할 필요는 없다.
-- 내부 연결의 봇에게 페이지를 공유하는 방식과 달리, PAT은 발급한 사용자의 페이지 권한을 사용한다.
-- API 요청에 토큰을 붙여 접근 권한을 전달한다.
-
-~~~http
-Authorization: Bearer <PAT>
-~~~
+- PAT은 하나의 워크스페이스에 속하며, 발급한 사용자의 접근 권한을 사용한다. <br> 다시 말해, PAT이 있으면 내 노션에 접근 할 수 있다.
+- 내가 접근할 수 있는 비공개 문서도 API로 읽을 수 있다. 
+  - 문서를 웹에 공개할 필요는 없다.
 
 <br><br>
 
-## :fire: Unity에서 Notion에 연결하기 위해 별도 SDK를 반드시 설치해야 하는 것은 아니다.
+## :sparkles: Unity에서 Notion에 연결하기 위해 별도 SDK를 반드시 설치해야 하는 것은 아니다.
 
 - Notion API는 HTTPS 요청을 받고 JSON 형식으로 응답한다.
 - Unity의 기본 기능인 `UnityWebRequest`로 요청할 수 있다.
@@ -45,7 +34,7 @@ Authorization: Bearer <PAT>
 
 <br><br>
 
-## :fire: PAT은 Windows 사용자 환경 변수에서 읽는다.
+## :sparkles: PAT은 Windows 사용자 환경 변수에서 읽는다.
 
 - 현재는 Windows 사용자 환경 변수 `NotionToken`에 PAT을 저장한다.
 - `EnvironmentVariableTarget.User`를 지정해 사용자 영역의 값을 읽는다.
@@ -58,7 +47,7 @@ _notionToken = Environment.GetEnvironmentVariable("NotionToken", EnvironmentVari
 
 <br><br>
 
-## :fire: UnityWebRequest에 목적에 맞는 API URL과 HTTP 메서드를 지정한다.
+## :sparkles: UnityWebRequest에 목적에 맞는 API URL과 HTTP 메서드를 지정한다.
 
 - `UnityWebRequest`는 한 번의 HTTP 요청을 처리하는 객체다.
 - 노트 화면을 여는 링크와 데이터를 요청하는 API 주소는 구분한다.
@@ -75,7 +64,7 @@ using (var request = new UnityWebRequest(NOTION_SEARCH_URL, "POST"))
 
 <br><br>
 
-## :fire: 페이지 정보는 Search API로 제목을 검색해서 찾는다.
+## :sparkles: 페이지 정보는 Search API로 제목을 검색해서 찾는다.
 
 - API 주소: `https://api.notion.com/v1/search`
 - HTTP 메서드: `POST`
@@ -103,11 +92,3 @@ RequestNotionPage(requestJson).Forget();
 - `query`는 페이지의 제목을 검색한다. 본문이나 날짜 속성을 검색하는 조건은 아니다.
 - 검색 결과의 페이지 정보에서 `id`와 속성 등을 확인할 수 있다.
 - 페이지 본문은 블록으로 구성되며, 본문을 읽으려면 검색 결과의 페이지 ID로 별도 블록 조회를 해야 한다.
-
-<br><br>
-
-## :fire: 오늘 확인한 것
-
-- PAT으로 사용자 정보를 요청해서 HTTP 200 응답을 확인했다.
-- `2026년 10월`을 검색어로 지정해 페이지 검색 결과를 정상적으로 받아왔다.
-- 다음 탐색은 반환된 페이지 ID로 본문 블록을 읽는 것이다.
