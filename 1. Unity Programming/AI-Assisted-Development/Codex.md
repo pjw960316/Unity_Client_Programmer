@@ -1,4 +1,4 @@
-## :fireworks: 4단계 스펙트럼을 도와줄 도구
+## :fireworks: CODEX는 4단계 스펙트럼을 도와줄 도구
 - 2026 개발 조합  :  **Unity + Rider + GPT + Codex (Rider Official Plugins)**
   - :airplane: [Codex Official Docs](https://learn.chatgpt.com/docs)
   - :airplane: [Codex Is Now Integrated Into JetBrains IDEs](https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/?utm_source=chatgpt.com)
@@ -6,21 +6,7 @@
 
 <br><br>
 
-## :fireworks: Codex에게 명령을 내리고 개발자가 할 수 있는 일
-- 제일 좋은 것은 결국 코드를 읽는 것 이다. Codex라는 시니어 개발자가 코드를 생성한 걸 내가 해석하고 분석 할 줄 알아야 한다.
-
-<br><br>
-
-## :fireworks: 일단 적기 CODEX 잘 쓰기 -> 이거가 핵심일 거 같다.
-- 메모리 정리 잘 됐는지 확인해줘. 보다는 현재 씬이 바뀌면 이전 씬에서 필요없는 메모리를 내려야 하는데, 그거 체크해 줘.
-  - 예를 들면, 현재 scene change의 책임을 부여한 클래스가 없음. 근데 그 클래스의 책임을 정확히 명시는 했으나, 보수적임.
-- AI가 만든 결과물에 감탄하는 단계에서 끝나면 위험함
-- AI가 만든 결과물을 읽고 판단하면 성장함
-- AI가 만든 결과물을 내 기준으로 고치면 실력이 됨
-
-<br><br>
-
-## :fireworks: CODEX 적용 규칙
+## :fireworks: CODEX 전용 관리 문서
 - **AGENTS.md를 만들어서 세션마다 진행할 영구 프롬프트를 구성한다.**
   - 경로는 .codex 하단에 만들면 된다.
 - **config.toml을 만들어서 CODEX에게 권한을 부여한다.**
@@ -30,7 +16,24 @@
 
 <br><br>
 
-## :memo: 메모
-- 새 세션 == 새 채팅
-- 결국 CODEX의 원리와 구성방식을 잘 알아야 개발력도 올라간다. 
-- notion mcp를 gpt에게 정도는 넣을까 싶기도 한데... 음, 보안?
+## :sparkles: 추론 수준 — 내가 언제 사용할까?
+- 모델명과 분리하여, 작업의 복잡도와 AI에 맡길 범위를 기준으로 선택한다.
+- **나의 기본값은 Medium. 구조 판단이나 어려운 오류에서 High 이상을 사용한다.**
+
+| 수준 | 직관적인 선택 기준 | 내 프로젝트에서 사용할 때 |
+| --- | --- | --- |
+| Low | 해야 할 일이 명확하고 간단할 때 | 문구 수정, 간단한 문법 확인, 작은 반복 수정 |
+| Medium | 코드를 이해하며 작은 단위로 개발할 때 — 기본값 | 기존 코드 흐름 설명, 메서드 추가, 작은 기능 구현 |
+| High | 여러 흐름을 연결하고 설계를 판단할 때 | 클래스 책임 검토, 비동기 예외 처리, Unity와 Android 연결 설계 |
+| xHigh | 원인을 찾기 어렵거나 여러 조건이 얽혔을 때 | 재현이 어려운 오류, 비동기 경쟁 상태, 복잡한 저장 오류 분석 |
+| Max | 시간을 들여 넓은 범위를 종합 검토할 때 | 통신·저장·초기화 흐름을 함께 검토하고 설계의 누락 확인 |
+| Ultra | 지원 환경에서 가장 깊은 검토가 필요할 때 | 독립적인 여러 영역을 나눠 검토하고 결과를 종합해야 하는 큰 작업 |
+
+- 위 예시는 나의 작업 선택 기준이며, 단계별로 가능한 작업을 제한하는 규칙은 아니다.
+- 추론 수준을 높이면 응답 시간과 사용량이 늘어날 수 있다. 지원 단계와 의미는 모델·앱·버전에 따라 달라질 수 있으므로, 이 6개가 영구 고정된다고 보지는 않는다.
+- Ultra와 병렬 에이전트 사용은 구분한다. ChatGPT Work의 Ultra는 자율적인 작업 분담을 지원하지만, 로컬 Codex에서는 명시적인 요청이나 AGENTS.md·스킬 지침에 따라 분담한다.
+
+<br>
+
+- :airplane: [OpenAI 추론 수준 안내](https://developers.openai.com/api/docs/guides/reasoning)
+- :airplane: [Codex 서브에이전트와 추론 설정](https://learn.chatgpt.com/docs/agent-configuration/subagents)
