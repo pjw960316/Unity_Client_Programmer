@@ -27,7 +27,7 @@ Assets/Android/Test.androidlib/
 
 - **`.java` 파일**
   - Android에서 실행할 기능을 작성하는 소스 파일이다.
-  - 빌드할 때 컴파일되어 앱에 포함되고, Unity C#에서는 `AndroidJavaClass` 등의 API로 해당 클래스에 접근한다.
+  - 빌드할 때 컴파일되어 앱에 포함되고, Unity C#에서는 `AndroidJavaClass` API로 해당 클래스에 접근한다.
   - Java는 내가 미숙하므로 AI 생성을 이용한다.
 
 <br><br>
