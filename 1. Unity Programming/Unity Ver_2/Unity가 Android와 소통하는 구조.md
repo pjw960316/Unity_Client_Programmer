@@ -87,21 +87,43 @@ long confirmedAt = AndroidManager.Instance.CallStatic<long>(javaClassName, "getL
 
 <br><br>
 
-## :sparkles: 이번 알림 코드와 AndroidManager의 역할
+## :fire: Java Method의 경우는 Codex로 자동 생성했다. <br> 시니어 Java 개발자의 코드를 내 C#에서 호출한다고 생각하면 된다.
+- 안드로이드 푸쉬앱의 경우 C#과 Unity로 깊게 제어하기가 어렵다.
+- 그러므로 여기서는 반드시 Java를 이용해야 한다.
+- 아래의 코드를 깊게 이해할 필요는 없다. 
+- 여기서 알아야 할 거는 이렇게 앱 푸쉬를 제어하는 건 결국 자바코드고 우리는 이를 c#에서 호출만 하면 된다.
 
-- `addConfirmButton`은 알림 Builder에 '예' 버튼과 클릭 동작을 연결한다. 알림 자체의 예약까지 하는 메서드는 아니다.
-- `onReceive`는 Android가 호출하는 수신 콜백이다. 이번 코드에서는 '예' 버튼 클릭이 연결되어 있어서 Unity의 OnClick에 연결한 함수처럼 이해했다.
-- `getSharedPreferences`는 앱 전용 키·값 저장소에 접근하는 메서드다. Context 자체에 저장하는 것은 아니며, `edit().putLong(...).apply()`로 값을 반영한다.
-- SharedPreferences는 Unity의 PlayerPrefs처럼 간단한 데이터를 저장하고 다시 읽는 용도다. 현재는 `habit_water_practice` 저장소의 `last_confirmed_at` 키에 마지막 응답 시각 하나를 저장한다.
-- `getLastConfirmedAt`은 저장된 시각을 반환한다. 기록이 없으면 `0`이다. 게임 시작이나 로드 시 조회해서 물 UI에 활용할 수 있다.
+~~~java
+// C#에서 호출합니다. [예]를 누르면 이 수신기를 실행하도록 연결합니다.
+public static void addConfirmButton(Context context, Notification.Builder builder, int notificationId)
+{
+    Intent intent = new Intent(context, WaterNotificationReceiver.class);
+    intent.setAction(ACTION_CONFIRM);
+    intent.putExtra(EXTRA_NOTIFICATION_ID, notificationId);
 
-<br>
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+    builder.addAction(new Notification.Action.Builder(null, "예", pendingIntent).build());
+}
 
-- **기능 담당:** 호출 정보와 기능별 인자를 준비하고, 반환값의 의미와 보상·UI 반영을 판단한다.
-- **AndroidManager:** 외부에 public 진입점을 제공하고, 전달받은 호출 정보를 JavaMethodHandler에게 넘긴다.
-- **JavaMethodHandler:** 준비된 Java 클래스 참조와 메서드 이름, 인자로 실제 static 메서드를 호출하고 반환값을 전달한다.
-- **AndroidContextHandler:** 현재는 Java 클래스 참조를 생성한다. Activity 확보와 수명 관리 등 직원 1의 책임은 아직 모호하므로 TODO로 남겼다.
-- 현재 구현은 Context를 인자에 자동으로 끼워 넣지 않는다. Context를 어떻게 준비하고 전달할지는 다음 연결 단계에서 정한다.
+// [예]를 누르면 Android가 호출합니다. Unity의 실행 여부와 관계없이 처리합니다.
+@Override
+public void onReceive(Context context, Intent intent)
+{
+    if (!ACTION_CONFIRM.equals(intent.getAction()))
+    {
+        return;
+    }
+
+    // 앱 전용 저장소에 마지막 클릭 시각 하나를 보관합니다. 값의 단위는 Unix 밀리초입니다.
+    context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putLong(CONFIRMED_AT_KEY, System.currentTimeMillis()).apply();
+
+    NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+    if (notificationManager != null)
+    {
+        notificationManager.cancel(intent.getIntExtra(EXTRA_NOTIFICATION_ID, -1));
+    }
+}
+~~~
 
 <br><br>
 
