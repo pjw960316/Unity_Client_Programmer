@@ -37,3 +37,90 @@ Assets/Android/Test.androidlib/
 <br><br>
 
 ## :fire: Java를 통해 Android를 다루게 되면 <br> 게임을 로드하지 않고 안드로이드 기기의 기능을 사용할 수 있다.
+<br><br>
+
+## :sparkles: 오늘의 핵심 : C#에서 Java 메서드를 호출하려면 세 가지 정보가 필요하다.
+
+- 내가 이해한 핵심은 **Java 클래스, 그 클래스의 메서드, 그 메서드를 위한 인자들**이다.
+- 현재 구현한 것은 Java 클래스의 **static 메서드를 호출하는 구조**다.
+
+| 필요한 정보 | 의미 | 이번 알림 코드의 예시 |
+|---|---|---|
+| Java 클래스 이름 | 어느 클래스에 접근할 것인가? | `com.habitgame.notificationpractice.WaterNotificationReceiver` |
+| 메서드 이름 | 그 클래스에서 무엇을 호출할 것인가? | `addConfirmButton`, `getLastConfirmedAt` |
+| 인자 목록 | 메서드 실행에 어떤 값을 전달할 것인가? | Context, 알림 Builder, 알림 ID 등을 담은 `object[]` |
+
+- 인자의 **개수, 순서, 타입**은 호출할 Java 메서드의 선언과 맞아야 한다.
+- 반환값이 있다면 `CallStatic<long>`처럼 Java 반환형에 맞는 C# 반환형도 지정한다.
+- Java 쪽에도 실제 메서드 구현이 있어야 한다. 직접 만드는 기능은 현재 Codex에게 구현을 맡기고 있다.
+- 이 과정은 Java 개발자에게 기능을 받아서 호출 규격을 맞추는 협업처럼 느껴졌다. Android나 라이브러리가 이미 제공하는 메서드는 직접 구현하지 않고 호출할 수 있다.
+
+<br><br>
+
+## :sparkles: 다른 언어의 타입을 어떻게 연결할까? JNI와 object[]
+
+- 오늘은 C#과 Java가 서로 다른 언어인데 어떻게 인자를 주고받는지 제대로 모르고 있었다는 것을 알게 됐다.
+- **C#과 Java 사이에는 정해진 타입 변환 규칙이 있고, Unity가 그 변환을 수행한다.** 모두 비트로 표현된다는 이유만으로 타입이 저절로 맞는 것은 아니다.
+- 연결에 사용하는 기술은 **JNI(Java Native Interface)**다. Unity에서는 `AndroidJavaClass`와 `AndroidJavaObject`가 호출 API를 제공한다.
+- `AndroidJavaObject`는 Java 객체를 C#에서 참조하기 위한 래퍼다. Java의 Context나 Builder를 일반 C# 데이터로 복사해서 전달하는 것은 아니다.
+- :airplane:[Unity CallStatic API](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/AndroidJavaObject.CallStatic.html)
+- :airplane:[JNI 타입 변환 규칙](https://docs.oracle.com/en/java/javase/17/docs/specs/jni/types.html)
+
+<br>
+
+- Java 메서드마다 매개변수의 개수와 타입이 다르다. 그래서 이번 공통 호출 API는 **`params object[] args`로 열었다.**
+- `object[]`는 서로 다른 타입의 인자를 순서대로 담는 C# 컨테이너다. Java 메서드가 이 배열 하나를 받는다는 뜻은 아니다.
+- `params` 덕분에 호출할 때 인자를 나열해도 된다. Unity가 각 값을 Java 호출용으로 변환한다.
+- 다만 임의의 C# 객체가 모두 Java 객체로 자동 변환되는 것은 아니다. Unity가 지원하는 값이나 Java 객체 래퍼를 전달해야 한다.
+
+```csharp
+// javaClassName과 필요한 Java 객체 참조가 이미 준비되었다고 가정한다.
+// Java: addConfirmButton(Context context, Notification.Builder builder, int notificationId)
+AndroidManager.Instance.CallStatic(javaClassName, "addConfirmButton", context, builder, WATER_NOTIFICATION_ID);
+
+// Java: long getLastConfirmedAt(Context context)
+long confirmedAt = AndroidManager.Instance.CallStatic<long>(javaClassName, "getLastConfirmedAt", context);
+```
+
+- `WATER_NOTIFICATION_ID = 1001`은 세 인자 중 알림 ID다. Context와 Builder는 별도로 확보하거나 생성해야 한다.
+- `object[]`를 사용할 때 배열 할당과 값 타입의 박싱 비용이 생길 수 있다. 현재처럼 호출 빈도가 낮은 흐름은 먼저 구현하고, 필요하면 실제 비용을 확인한 뒤 최적화한다.
+
+<br><br>
+
+## :sparkles: 이번 알림 코드와 AndroidManager의 역할
+
+- `addConfirmButton`은 알림 Builder에 '예' 버튼과 클릭 동작을 연결한다. 알림 자체의 예약까지 하는 메서드는 아니다.
+- `onReceive`는 Android가 호출하는 수신 콜백이다. 이번 코드에서는 '예' 버튼 클릭이 연결되어 있어서 Unity의 OnClick에 연결한 함수처럼 이해했다.
+- `getSharedPreferences`는 앱 전용 키·값 저장소에 접근하는 메서드다. Context 자체에 저장하는 것은 아니며, `edit().putLong(...).apply()`로 값을 반영한다.
+- SharedPreferences는 Unity의 PlayerPrefs처럼 간단한 데이터를 저장하고 다시 읽는 용도다. 현재는 `habit_water_practice` 저장소의 `last_confirmed_at` 키에 마지막 응답 시각 하나를 저장한다.
+- `getLastConfirmedAt`은 저장된 시각을 반환한다. 기록이 없으면 `0`이다. 게임 시작이나 로드 시 조회해서 물 UI에 활용할 수 있다.
+
+<br>
+
+- **기능 담당:** 호출 정보와 기능별 인자를 준비하고, 반환값의 의미와 보상·UI 반영을 판단한다.
+- **AndroidManager:** 외부에 public 진입점을 제공하고, 전달받은 호출 정보를 JavaMethodHandler에게 넘긴다.
+- **JavaMethodHandler:** 준비된 Java 클래스 참조와 메서드 이름, 인자로 실제 static 메서드를 호출하고 반환값을 전달한다.
+- **AndroidContextHandler:** 현재는 Java 클래스 참조를 생성한다. Activity 확보와 수명 관리 등 직원 1의 책임은 아직 모호하므로 TODO로 남겼다.
+- 현재 구현은 Context를 인자에 자동으로 끼워 넣지 않는다. Context를 어떻게 준비하고 전달할지는 다음 연결 단계에서 정한다.
+
+<br><br>
+
+## :sparkles: 자잘한 팁 : 전처리 조건의 범위를 필요한 호출부로 좁히기
+
+- 클래스나 메서드 선언 전체를 `#if`로 감싸기보다, Android에서만 실행할 호출부에 조건을 둔다.
+- 이렇게 하면 메서드 선언과 내부 코드는 남아 있으므로 PC에서 개발할 때도 코드 탐색과 참조 확인이 용이하다.
+
+```csharp
+public sealed override void Initialize()
+{
+#if UNITY_ANDROID && !UNITY_EDITOR
+    InitializeNotificationChannel();
+    InitializeNotifications();
+    ScheduleNotifications();
+#endif
+}
+```
+
+- `UNITY_ANDROID && !UNITY_EDITOR`는 Android 플랫폼이면서 Unity 에디터가 아닌 경우에만 해당 코드를 컴파일하도록 하는 조건이다.
+- 여기서 추적이 쉽다는 것은 **코드 탐색과 구조 확인**을 뜻한다. `#if` 안의 Android 호출을 PC 에디터에서 실행하거나 브레이크포인트로 따라갈 수 있다는 뜻은 아니다.
+- :airplane:[Unity 조건부 컴파일 문서](https://docs.unity3d.com/6000.0/Documentation/Manual/platform-dependent-compilation.html)
