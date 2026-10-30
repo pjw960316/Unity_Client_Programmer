@@ -127,22 +127,11 @@ public void onReceive(Context context, Intent intent)
 
 <br><br>
 
-## :sparkles: 자잘한 팁 : 전처리 조건의 범위를 필요한 호출부로 좁히기
+## :sparkles: Android의 작은 기록 저장소 — SharedPreferences
 
-- 클래스나 메서드 선언 전체를 `#if`로 감싸기보다, Android에서만 실행할 호출부에 조건을 둔다.
-- 이렇게 하면 메서드 선언과 내부 코드는 남아 있으므로 PC에서 개발할 때도 코드 탐색과 참조 확인이 용이하다.
-
-```csharp
-public sealed override void Initialize()
-{
-#if UNITY_ANDROID && !UNITY_EDITOR
-    InitializeNotificationChannel();
-    InitializeNotifications();
-    ScheduleNotifications();
-#endif
-}
-```
-
-- `UNITY_ANDROID && !UNITY_EDITOR`는 Android 플랫폼이면서 Unity 에디터가 아닌 경우에만 해당 코드를 컴파일하도록 하는 조건이다.
-- 여기서 추적이 쉽다는 것은 **코드 탐색과 구조 확인**을 뜻한다. `#if` 안의 Android 호출을 PC 에디터에서 실행하거나 브레이크포인트로 따라갈 수 있다는 뜻은 아니다.
-- :airplane:[Unity 조건부 컴파일 문서](https://docs.unity3d.com/6000.0/Documentation/Manual/platform-dependent-compilation.html)
+- `SharedPreferences`는 Android가 관리하는 파일에 작은 데이터를 키·값으로 저장하고 읽는 API다.
+- `context.getSharedPreferences(저장소이름, Context.MODE_PRIVATE)`로 앱 전용 저장소에 접근한다.
+- `edit().putLong(키, 값).apply()`로 저장하고, `getLong(키, 기본값)`으로 읽는다. `apply()`의 파일 기록은 비동기로 처리된다.
+- 이번 물 알림은 `habit_water_practice` 저장소의 `last_confirmed_at` 키에 마지막 클릭 시각(Unix 밀리초) 하나를 저장한다. 같은 키에 다시 저장하면 이전 값을 덮어쓴다.
+- 다음 게임 실행 때 Java의 조회 메서드를 C#에서 호출해 기록을 읽을 수 있다. 과거의 클릭 이벤트가 자동으로 다시 전달되는 구조는 아니다.
+- :airplane: [Android 공식 문서 — SharedPreferences](https://developer.android.com/training/data-storage/shared-preferences)
