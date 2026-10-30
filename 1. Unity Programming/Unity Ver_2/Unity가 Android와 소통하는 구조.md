@@ -127,11 +127,31 @@ public void onReceive(Context context, Intent intent)
 
 <br><br>
 
-## :sparkles: Android의 작은 기록 저장소 — SharedPreferences
-
-- `SharedPreferences`는 Android가 관리하는 파일에 작은 데이터를 키·값으로 저장하고 읽는 API다.
-- `context.getSharedPreferences(저장소이름, Context.MODE_PRIVATE)`로 앱 전용 저장소에 접근한다.
-- `edit().putLong(키, 값).apply()`로 저장하고, `getLong(키, 기본값)`으로 읽는다. `apply()`의 파일 기록은 비동기로 처리된다.
-- 이번 물 알림은 `habit_water_practice` 저장소의 `last_confirmed_at` 키에 마지막 클릭 시각(Unix 밀리초) 하나를 저장한다. 같은 키에 다시 저장하면 이전 값을 덮어쓴다.
-- 다음 게임 실행 때 Java의 조회 메서드를 C#에서 호출해 기록을 읽을 수 있다. 과거의 클릭 이벤트가 자동으로 다시 전달되는 구조는 아니다.
+## :fire: Android의 작은 기록 저장소 — SharedPreferences
+- Unity와 Android가 소통하기 위해서는 서로 주고받을 데이터가 필요하다. <br> 그 데이터를 SharedPreferences에 저장한다.
+  - `SharedPreferences`는 Android가 관리하는 파일에 작은 데이터를 키·값으로 저장하고 읽는 API다.
 - :airplane: [Android 공식 문서 — SharedPreferences](https://developer.android.com/training/data-storage/shared-preferences)
+
+<br>
+
+#### SharedPreferences 구조
+- 데이터를 저장하는 공간은 어떤 구조로 데이터를 저장하고 있는가?
+
+> 저장 구조는 '이름으로 고르는 저장소 안에 key - value 구조'가 있다.
+
+- 저장소 이름: habit_water_practice
+└─ 키: last_confirmed_at
+   └─ 값: 마지막 클릭 시각 (long)
+
+<br>
+
+#### Write
+- 이건 JAVA 코드를 codex 자동완성으로 구현한다.
+
+<br>
+
+#### READ
+- C#에서 게임을 로드 할 때 read 하도록 한다.
+- AndroidManager 같이 가장 상위 타입에서 게임이 로드되면 현재 sharedPreferences에 저장된 데이터를 읽도록 한다.
+  - 여기서 읽은 데이터를 처리하는 기법은 기존 C#과 동일하기 때문에 따로 신경 쓸 것은 없다.
+  - 오히려 읽은 데이터를 저장하는 방식, 읽지 못했을 때 처리가 훨씬 중요하다고 생각한다.
