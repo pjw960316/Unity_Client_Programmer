@@ -16,9 +16,15 @@
 
 <br><br>
 
-## :fire: sol 과 astra
-- 체감상 astra가 토큰 3~5배 더 먹음.
-- sol을 패고 싶은 순간에 astra를 켜자.
+## :fire: 3가지 플랫폼
+1. GPT_Web
+  - 일상 질문
+  - 간단한 개발 개념 질문
+2. GPT_App
+  - Github 문서 복습
+  - Github 문서 기반 과외
+3. CODEX_Rider Plugin
+  - Unity 프로젝트 개발
 
 <br><br>
 
