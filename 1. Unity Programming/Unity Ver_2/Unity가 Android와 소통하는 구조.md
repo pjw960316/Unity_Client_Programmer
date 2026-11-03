@@ -139,9 +139,11 @@ public void onReceive(Context context, Intent intent)
 
 > 저장 구조는 '이름으로 고르는 저장소 안에 key - value 구조'가 있다.
 
-- 저장소 이름: habit_water_practice
-└─ 키: last_confirmed_at
-   └─ 값: 마지막 클릭 시각 (long)
+- 현재 Android 공개 구현은 메모리에서 `Map<String, Object>`로 관리하고, 디스크에는 XML로 저장한다. C#의 `Dictionary<string, object>`에 파일 저장 기능이 붙은 모습과 비슷하게 이해했다.
+- 조회 흐름은 **저장소 이름 → 키 → 값 조회 → C#에서 사용**이다.
+- 내부에서는 `Object`로 값을 담고, 저장 타입에 맞는 Java 조회 메서드를 `Call<T>()`로 호출해 C#의 `T` 타입으로 받는다. 현재 프로젝트에서는 `SharedPreferencesHandler`가 타입에 맞는 조회 메서드를 선택한다.
+- **용어 보완 제안:** 이 과정은 C#으로 직렬화하는 것이 아니라, Unity를 통해 Java 값을 C# 타입으로 전달받는 것이다. 저장소 이름과 키뿐 아니라 저장된 값의 타입도 맞춰야 한다.
+- :airplane: [Android 공개 구현 — SharedPreferencesImpl](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/main/core/java/android/app/SharedPreferencesImpl.java)
 
 <br>
 
