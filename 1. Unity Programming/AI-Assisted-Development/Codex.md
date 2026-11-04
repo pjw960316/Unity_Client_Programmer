@@ -17,16 +17,22 @@
 <br><br>
 
 ## :fire: 3가지 플랫폼
-1. GPT_Web
-  - 일상 질문
-  - 간단한 개발 개념 질문
-2. GPT_App
-  - Github 문서 복습
-  - Github 문서 기반 과외
-  - GPT_Web을 참고 할 수 **있다**.
-3. CODEX_Rider Plugin
-  - Unity 프로젝트 개발
-  - GPT_Web을 참고 할 수 **없다**.
+#### :one: GPT_Web
+- 일상 질문
+- 간단한 개발 개념 질문
+
+<br>
+
+#### :two: GPT_App
+- Github 문서 복습
+- Github 문서 기반 과외
+- GPT_Web을 참고 할 수 **있다**.
+
+<br>
+
+#### :three:CODEX_Rider Plugin
+- Unity 프로젝트 개발
+- GPT_Web을 참고 할 수 **없다**.
 
 <br><br>
 
