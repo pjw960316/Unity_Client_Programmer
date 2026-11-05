@@ -1,6 +1,6 @@
 ## :fireworks: Manager Class - Data Class 쪼개는 규칙 
 <p align="center">
-  <img src="./captures/Manager%20And%20Data.png" width="700">
+  <img src="../captures/Manager And Data.png" width="700">
 </p>
 
 <br>
