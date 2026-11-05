@@ -5,19 +5,19 @@
 <br><br>
 
 ## :fire: AI Coding Spectrum 기준
-#### Level 0: Static Tooling
+#### :white_check_mark: Level 0: Static Tooling
   - 린터, 포매터, 컴파일러, 언어 서버처럼 규칙 기반으로 오류와 스타일을 알려주는 단계이다.
-#### Level 1: Token-Level Completion
+#### :white_check_mark: Level 1: Token-Level Completion
   - 현재 코드 주변 문맥을 보고 다음 토큰이나 단어를 자동완성하는 단계이다.
-#### Level 2: Block-Level Completion
+#### :white_check_mark: Level 2: Block-Level Completion
   - 한 줄, 함수, 반복문 같은 코드 블록을 자동완성하는 단계이다.
-#### Level 3: Intent-Based Chat Agent
+#### :white_check_mark: Level 3: Intent-Based Chat Agent
   - 사용자가 의도와 문제를 자연어로 설명하면 AI가 코드 변경안을 제안하고, 사용자가 검토하는 단계이다.
   - 이 단계는 주로 GPT와 함께 설계 질문, 구현 전 구조화, 이해되지 않는 코드 공부에 사용한다.
-#### Level 4: Local Autonomous Agent
+#### :white_check_mark: Level 4: Local Autonomous Agent
   - 기능 설명을 받으면 로컬 프로젝트 안에서 계획을 세우고, 파일을 수정하고, 빌드/테스트를 실행하며 반복하는 단계이다.
   - 이 단계는 Codex와 함께 프로젝트 분석, 클래스/메서드 분석, 구현, 검증, 개선 로드맵 작성에 사용한다.
-#### Level 5: Fully Autonomous Dev Agent
+#### :white_check_mark: Level 5: Fully Autonomous Dev Agent
   - 이슈나 백로그를 받아 사람의 개입을 최소화하고 end-to-end로 개발 작업을 완료하는 단계이다.
 
 <br>
