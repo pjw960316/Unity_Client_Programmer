@@ -27,3 +27,26 @@
 - 조회와 갱신은 프로퍼티와 매우 간단한 메서드로 구성된다. <br> 또한 Data Class를 쪼개는 건 결국 도메인 단위의 필드들을 구분하기 위함이다.
 - 즉, Entity 영역이므로 메서드의 기능들이 단순하며 책임도 단순하다.
 - **외부에 Data를 전달할 때 immutable 하게 전달하도록 주의한다.**
+
+<br><br>
+
+## :sparkles: const는 Data에 모으고 클래스 이름으로 접근한다
+
+- Manager와 Data 구조에서 사용하는 `const`는 Data에 모아 정의하고, 외부에서도 Data 클래스 이름으로 직접 접근한다.
+
+<br><br>
+
+## :sparkles: Getter는 Manager → Handler → Data로 연결한다
+
+#### :one: 경험
+
+- 물 섭취 기능을 만들면서 Manager에 같은 값을 따로 보관하기보다 Data에서 읽어오기로 했다.
+- 그 값을 읽는 코드도 Handler에 두기로 했다. 단순한 Getter까지 한 단계를 더 거치는 번거로움은 있지만, 해당 기능의 조회와 가공을 Handler에서 찾을 수 있도록 통일하고 싶었다.
+
+<br>
+
+#### :two: 유지하려는 규칙
+
+- Data는 공용 상태를 보관한다. Manager와 Handler에는 같은 상태를 별도 필드로 중복 보관하지 않는다.
+- Handler는 해당 기능의 데이터를 Data에서 조회하고, 필요한 공통 가공을 담당한다.
+- Manager의 Getter는 Handler에 조회를 위임하고, 반환받은 값을 외부에 제공한다.
