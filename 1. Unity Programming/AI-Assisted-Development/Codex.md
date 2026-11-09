@@ -7,30 +7,42 @@
 <br><br>
 
 ## :fireworks: CODEX 전용 관리 문서
+
+#### :white_check_mark: `AGENTS.md`
+
 - **AGENTS.md를 만들어서 세션마다 진행할 영구 프롬프트를 구성한다.**
-  - 경로는 .codex 하단에 만들면 된다.
+  - 경로는 `.codex` 하단에 만들면 된다.
+
+<br>
+
+#### :white_check_mark: `config.toml`
+
 - **config.toml을 만들어서 CODEX에게 권한을 부여한다.**
   - 더 이상 권한을 묻지 않으므로 인터럽트가 걸리지 않는다.
-  - :airplane:[config.toml](https://learn.chatgpt.com/docs/sandboxing?surface=app)
-- :airplane:[CODEX 설정 팁](https://blog.naver.com/jhc9639/224186400602)
+- :airplane: [config.toml](https://learn.chatgpt.com/docs/sandboxing?surface=app)
+- :airplane: [CODEX 설정 팁](https://blog.naver.com/jhc9639/224186400602)
 
 <br><br>
 
 ## :fireworks: 3가지 플랫폼
-#### :one: GPT_Web
+
+#### :white_check_mark: GPT_Web
+
 - 일상 질문
 - 간단한 개발 개념 질문
 
 <br>
 
-#### :two: GPT_App
+#### :white_check_mark: GPT_App
+
 - Github 문서 복습
 - Github 문서 기반 과외
 - GPT_Web을 참고 할 수 **있다**.
 
 <br>
 
-#### :three:CODEX_Rider Plugin
+#### :white_check_mark: CODEX_Rider Plugin
+
 - Unity 프로젝트 개발
 - GPT_Web을 참고 할 수 **없다**.
 
