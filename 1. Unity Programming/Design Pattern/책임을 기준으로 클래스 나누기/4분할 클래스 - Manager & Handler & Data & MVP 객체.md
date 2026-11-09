@@ -42,6 +42,18 @@
   - Manager가 커지게 되는 요인과 가독성을 깨는 주범이었다. AI 시대여도 이는 동일하다고 생각한다.
 - 특정 UI나 FieldObject의 사용 목적에 맞춘 세부 가공은 그들의 Presenter가 담당하면 된다.
 
+#### Facade Pattern
+> Facade는 건물의 ‘정면’이라는 뜻입니다. 회사 비유에서는 외부인이 마주하는 대표 '창구'
+
+- MVP객체가 Handler나 Data의 내부 구조를 몰라도 Manager에 필요한 일을 요청할 수 있다면, 그 창구 역할만으로 Facade 패턴이 성립한다.
+  - private nested class의 구현은 Facade Pattern에 엄밀히 말하면 표현되지 않는다.
+
+<br>
+
+- 내 프로젝트에서는 Handler를 Manager의 `private` 중첩 클래스로 둔다. 
+- MVP 객체는 Manager의 `public` 메서드로 요청하고, 어느 Handler에게 일을 맡길지는 Manager가 정한다.
+- MVP 객체는 Manager가 공개한 메서드의 사용법과 동작에 의존한다. 그 약속을 지키면 Handler를 추가하거나 직원끼리 일을 다시 나누는 변경을 Manager 내부에서 처리할 수 있다.
+
 <br>
 
 ## :sparkles: Handler Class — 공용 데이터에 대한 공통 가공 처리 메서드의 집합
