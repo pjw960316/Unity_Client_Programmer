@@ -81,10 +81,10 @@
 <br>
 
 #### :white_check_mark: 장점
-이 구조의 장점은 책임을 쪼개는 것. <br> 그리고 책임의 계층이 있는 것. 
+- 이 구조의 장점은 책임을 쪼개는 것. 그리고 책임의 계층이 있는 것. 
 > I typically nest a class if the nested class doesn't serve a purpose outside the context of the outer class.
 > It could be a parameter class or something.
-> Nesting it helps keeping the namespace cleaner ¯\_(ツ)_/¯
+> Nesting it helps keeping the namespace cleaner
 - :airplane:[reddit](https://www.reddit.com/r/csharp/comments/1lgfa6i/purpose_of_nested_classes/)
 
 <br>
