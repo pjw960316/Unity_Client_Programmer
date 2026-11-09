@@ -56,12 +56,13 @@
 
 <br>
 
-## :sparkles: Handler Class — 공용 데이터에 대한 공통 가공 처리 메서드의 집합
+## :fire: Handler Class — 공용 데이터에 대한 공통 가공 처리 메서드의 집합
 
 #### 경험
 
 - MyCharacterManager가 커지는 것을 경계해서 Handler 직원으로 나눴다. 
 - 그런데 이번 대화에서 Manager의 책임을 너무 크게 잡아 Handler도 그 범위를 이어받고 있다는 생각이 들었다.
+- private nested class로 두는 게 가장 아름답다고 생각한다.
 
 #### 책임과 범위
 
@@ -70,6 +71,13 @@
 - 특정 UI가 원하는 표현을 만드는 것보다, 사용처들이 동일한 기준으로 활용할 수 있는 값을 만드는 데 집중한다.
 - 가공 결과가 필요하다고 해서 별도의 공용 원본을 중복해서 보관할 필요는 없다.
 - Manager 아래에 Handler를 추가하기 전에, 그 업무가 해당 Manager의 공용 책임에 속하는지 먼저 판단한다.
+
+#### 장점
+이 구조의 장점은 책임을 쪼개는 것. <br> 그리고 책임의 계층이 있는 것. 
+> I typically nest a class if the nested class doesn't serve a purpose outside the context of the outer class.
+> It could be a parameter class or something.
+> Nesting it helps keeping the namespace cleaner ¯\_(ツ)_/¯
+- :airplane:[reddit](https://www.reddit.com/r/csharp/comments/1lgfa6i/purpose_of_nested_classes/)
 
 <br>
 
