@@ -22,7 +22,7 @@
 
 ## :fire: Manager — 모든 클래스가 편하게 공용 Data를 읽도록 열어준 통로
 
-#### 경험
+#### :white_check_mark: 경험
 
 - 처음에는 캐릭터 데이터를 외부에서 자주 참조하므로 MyCharacterManager에 모아두자고 생각했다. 
 - 이후에는 캐릭터와 조금이라도 관련되면 넣기 시작했다. <br> 그러다보니 데이터 참조뿐만 아니라 가공까지 책임이 생겨버렸다. <br> 클래스가 너무 커졌다.
@@ -30,7 +30,9 @@
 - 편하게 참조하려면 가공이 필요했고 그 가공을 Handler가 담당하도록 분리했다.
 - 이 때 Handler의 가공과 MVP 객체의 Presenter의 가공이 겹치게 되었고 판단 기준을 고민했다.
 
-#### 책임과 범위
+<br>
+
+#### :white_check_mark: 책임과 범위
 
 - 내 프로젝트에서 Manager는 싱글턴으로 사용한다. 외부 객체가 해당 공용 Data를 일관된 창구로 조회하고 갱신할 수 있게 한다.
 - 데이터 자체는 Data 클래스에 두고, Manager는 Data와 외부 객체 사이의 접근 통로 역할에 집중한다.
@@ -42,7 +44,9 @@
   - Manager가 커지게 되는 요인과 가독성을 깨는 주범이었다. AI 시대여도 이는 동일하다고 생각한다.
 - 특정 UI나 FieldObject의 사용 목적에 맞춘 세부 가공은 그들의 Presenter가 담당하면 된다.
 
-#### Facade Pattern
+<br>
+
+#### :white_check_mark: Facade Pattern
 > Facade는 건물의 ‘정면’이라는 뜻입니다. 회사 비유에서는 외부인이 마주하는 대표 '창구'
 
 - MVP객체가 Handler나 Data의 내부 구조를 몰라도 Manager에 필요한 일을 요청할 수 있다면, 그 창구 역할만으로 Facade 패턴이 성립한다.
@@ -58,13 +62,15 @@
 
 ## :fire: Handler Class — 공용 데이터에 대한 공통 가공 처리 메서드의 집합
 
-#### 경험
+#### :white_check_mark: 경험
 
 - MyCharacterManager가 커지는 것을 경계해서 Handler 직원으로 나눴다. 
 - 그런데 이번 대화에서 Manager의 책임을 너무 크게 잡아 Handler도 그 범위를 이어받고 있다는 생각이 들었다.
 - private nested class로 두는 게 가장 아름답다고 생각한다.
 
-#### 책임과 범위
+<br>
+
+#### :white_check_mark: 책임과 범위
 
 - Manager에게 요청을 받아 해당 영역의 데이터를 조회하거나 가공하는 직원이다.
 - 기능 영역을 기준으로 책임을 나누고, 그 영역에서 공통으로 적용할 처리와 규칙을 담당한다.
@@ -72,7 +78,9 @@
 - 가공 결과가 필요하다고 해서 별도의 공용 원본을 중복해서 보관할 필요는 없다.
 - Manager 아래에 Handler를 추가하기 전에, 그 업무가 해당 Manager의 공용 책임에 속하는지 먼저 판단한다.
 
-#### 장점
+<br>
+
+#### :white_check_mark: 장점
 이 구조의 장점은 책임을 쪼개는 것. <br> 그리고 책임의 계층이 있는 것. 
 > I typically nest a class if the nested class doesn't serve a purpose outside the context of the outer class.
 > It could be a parameter class or something.
@@ -83,13 +91,15 @@
 
 ## :sparkles: MVP 객체 — 자신의 목적에 맞게 데이터 활용
 
-#### 경험
+#### :white_check_mark: 경험
 
 - 과거에는 UI에서 필요한 데이터와 갱신 로직을 View에 함께 두고 처리한 적이 있다.
 - FieldObject는 이미 MVP로 구성해서 데이터를 관리하고 있었다. 
 - 이번에는 UI와 FieldObject 모두 필요한 공용 값을 받아 각자의 목적에 맞게 활용하는 객체로 정리했다.
 
-#### :sparkles: 책임과 범위
+<br>
+
+#### :white_check_mark: 책임과 범위
 
 - UI와 FieldObject 모두 MVP 객체에 포함한다.
 - 필요한 공용 값은 Manager를 통해 전달받고, 각 객체의 목적에 맞게 활용한다.
@@ -122,7 +132,7 @@
 
 ## :sparkles: 물 섭취 기능에서 정리한 조회·가공·보관의 책임
 
-#### :one: 경험
+#### :white_check_mark: 경험
 
 - 물 섭취 기능을 만들면서 Android에서 받은 시각을 어디에서 가공하고 보관할지 고민했다.
 - Handler가 가공한 날짜를 자신의 필드에 보관할 필요는 없다고 판단했다. Handler는 MyCharacterData의 Update 메서드를 호출해 값을 갱신하도록 했다.
@@ -131,7 +141,7 @@
 
 <br>
 
-#### :two: 내가 유지하려는 흐름
+#### :white_check_mark: 내가 유지하려는 흐름
 
 ```text
 조회 요청: MVP → Manager → Handler → Data
@@ -145,7 +155,7 @@
 
 <br>
 
-#### :three: Codex 보완 제안 — 의존성과 응집도를 확인하는 기준
+#### :white_check_mark: Codex 보완 제안 — 의존성과 응집도를 확인하는 기준
 
 - 계층을 추가하는 것만으로 의존성이 자동으로 줄지는 않는다. MVP가 Android 저장소의 Key나 Handler 내부 구현을 몰라도 필요한 값을 사용할 수 있는지 확인한다.
 - Handler에는 같은 기능의 조회·가공을 모은다. 관련 없는 기능까지 모으지 않아야 책임과 응집도를 유지할 수 있다.
