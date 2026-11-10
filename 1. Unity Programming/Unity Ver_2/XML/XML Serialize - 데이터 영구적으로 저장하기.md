@@ -46,8 +46,6 @@ XmlDataManager.Instance.SerializeXmlData(myCharacterData);
 
 ## :sparkles: 저장 시점과 범위, 데이터 유실을 판단하기
 
-아래는 Codex의 보완 제안이다. 저장 주기와 파일 분리 방식은 아직 HabitGame의 정책으로 확정하지 않았다.
-
 #### :white_check_mark: 저장 시점은 성능 비용과 허용할 유실량을 함께 판단한다
 
 - 자주 저장한다고 반드시 체감 성능이 떨어지는 것은 아니다. 직렬화할 데이터의 양, 파일 크기, 호출 빈도, 실제 기기에서 저장에 걸리는 시간을 함께 확인한다.
