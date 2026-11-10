@@ -25,7 +25,7 @@ public ImmutableSortedDictionary<string, ImmutableList<bool>> RoutineRecordDicti
 
 <br><br>
 
-## :fire: Deserialize는 XML 데이터를 읽어서 C# Data Class에 초기화하는 과정이다. <br> 일단은 게임 플레이에서 한 번 실행된다고 대충 이해한다.
+## :fire: [Deserialize] <br> :fire: '영구 저장'된 XML 파일을 읽어 런타임 메모리의 C# 객체로 불러온다. <br> 서버 데이터를 읽어오는 느낌.
 
 > XML → C# Object
 - 저장되어 있는 XML 데이터를 읽어서 C#에서 사용할 수 있는 객체로 변환한다.
@@ -52,7 +52,7 @@ _deserializedXmlDictionary.Add(
 
 <br><br>
 
-## :fire: Serialize는 C# Data Class를 XML 데이터로 저장하는 과정이다. <br> 일단은 게임 플레이에서 자주 실행된다고 대충 이해한다.
+## :fire: [Serialize] <br> :fire: 런타임에 변경된 C# 객체의 데이터를 XML 파일에 영구 저장한다. <br> 서버에 데이터 업데이트를 요청하는 느낌.
 
 > C# Object → XML
 
