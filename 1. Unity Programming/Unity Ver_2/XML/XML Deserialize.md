@@ -1,30 +1,3 @@
-## :fire: <br> 나는 유니티에서 XmlSerializer 클래스로 Xml을 다룬다. <br> XmlSerializer는 public 데이터만 직렬화한다.
-
-| 멤버                            | XML 직렬화 |
-| ----------------------------- | ------- |
-| `public` 필드                   | O       |
-| `public get/set` 프로퍼티         | O       |
-| `private` 필드·프로퍼티             | X       |
-| `[XmlIgnore]`가 붙은 `public` 멤버 | X       |
-
-- Container도 동일한 기준을 적용한다.
-- XmlSerializer가 지원하지 않는 Dictionary는 <br> private으로 관리하거나 [XmlIgnore]로 제외하고, XML 저장용 List를 별도로 둔다.
-- [XmlIgnore]는 에러를 무시하는 Attribute가 아니라, 해당 public 멤버를 **XML 저장 대상에서 제외**한다.
-
-~~~c#
-public List<RoutineRecordData> RoutineRecordList = new();
-
-private Dictionary<string, List<bool>> _routineRecordDictionary = new();
-
-[XmlIgnore]
-public ImmutableSortedDictionary<string, ImmutableList<bool>> RoutineRecordDictionary
-{
-    get { /* Dictionary를 읽기 전용으로 제공 */ }
-}
-~~~
-
-<br><br>
-
 ## :fire: [Deserialize] <br> :fire: '영구 저장'된 XML 파일을 읽어 런타임 메모리의 C# 객체로 불러온다. <br> 서버 데이터를 읽어오는 느낌.
 
 > XML → C# Object
@@ -52,40 +25,6 @@ _deserializedXmlDictionary.Add(
 
 <br><br>
 
-## :fire: [Serialize] <br> :fire: 런타임에 변경된 C# 객체의 데이터를 XML 파일에 영구 저장한다. <br> 서버에 데이터 업데이트를 요청하는 느낌.
-
-> C# Object → XML
-
-- 런타임에서 C# Data Class의 인스턴스의 필드는 계속 변경된다. <br> 코드 레벨에서 데이터가 변경되면 Serialize를 통해 XML 파일에 데이터를 저장해야 한다.
-  - 캐릭터의 재화, 루틴 기록처럼 게임 중 데이터가 변경된 뒤 저장할 때 실행한다.
-  - 타입을 잘 맞추는 게 중요하다.
-- Deserialize가 저장 데이터를 **불러오는 것**이라면, Serialize는 변경된 데이터를 **저장하는 것**이다.
-
-~~~c#
-public void SerializeXmlData<T>(T data)
-{
-    var xmlFileData = GetXmlFileData(typeof(T));
-    var serializer = new XmlSerializer(typeof(T));
-
-    using var writer = new StreamWriter(xmlFileData.PersistentFilePath);
-
-    serializer.Serialize(writer, data);
-}
-~~~
-
-예를 들어 `MyCharacterData`의 값이 런타임에서 변경되었다면,
-
-~~~c#
-myCharacterData.MonthlyRoutineSuccessMoney += 100;
-
-XmlDataManager.Instance.SerializeXmlData(myCharacterData);
-~~~
-
-C# 객체의 현재 상태가 XML 파일에 다시 기록된다.
-
-
-<br><br>
-
 ## :fireworks: XML을 C# Class로 변환시키는 4단계 과정 <br> (XmlDocument가 아닌 XmlSerializer를 사용하기로 했다.)
 
 #### :one: [<ins>C# Class</ins>] (Xml에 대응하는 C#의 Class를 만들어 준다.) 
@@ -98,7 +37,7 @@ C# 객체의 현재 상태가 XML 파일에 다시 기록된다.
 <br>
 
 #### :three: [<ins>Decode</ins>] (TextAsset인 XML의 Raw Byte[]를 String으로 변환하는 과정)
-- ![alt text](./captures/20250805_1.png)
+- ![alt text](../captures/20250805_1.png)
 
 ~~~c#
 public string text
@@ -116,8 +55,8 @@ public string text
 
 #### :four: [<ins>Deserialize</ins>] (Xml의 String을 C#의 Class에 대응하는 과정)
 - :link:[MSDN XmlSerializer](https://learn.microsoft.com/ko-kr/dotnet/standard/serialization/xml-and-soap-serialization)
-- ![alt text](./captures/20250805_3.png)
-- ![alt text](./captures/20250805_2.png)
+- ![alt text](../captures/20250805_3.png)
+- ![alt text](../captures/20250805_2.png)
   - 내부적으로 reflection을 사용하고 있다.
   - StringReader -> TextReader로 사용한다.
 
@@ -171,33 +110,3 @@ Debug.Log($"{text}");
 
 <br><br>
 
-## :fireworks: XML의 기본 특징에 대해 공부한다.
-
-#### :one: Xml은 대소문자에 민감하다. 
-
-<br>
-
-#### :two: XML은 get과 set이 public인 property와 함께한다. 
-> XmlSerializer only looks at public fields and properties.
-
-<br>
-
-#### :three: XML의 Root Element가 C#의 [XmlRoot] attribute고, XML의 Child Element가 C#의 [XmlElement] attribute다.
-
-~~~XML
-<MyCharacterData>
-<Name>지원</Name>
-<Age>30</Age>
-</MyCharacterData>
-~~~
-- MyCharacterData = Root Element
-- Name & Age = Child Element 
-- :link:[formatting XML](https://dontpaniclabs.com/blog/post/2025/05/06/formatting-xml-when-serializing-c-objects/)
-
-<br>
-
-#### :four: Unity에서 xml은 TextAsset에 포함되고, TextAsset으로 관리된다.
-> Represents a raw text or binary file asset.
-
-> Text assets are a format for imported text files. When you drop a text file into your Project folder, Unity converts it to a Text Asset. The supported text formats are: <ins>.bytes / .xml / .json / .txt / .md / </ins> 
-- 더 많은 format이 존재하지만 생략했다.
