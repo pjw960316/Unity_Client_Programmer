@@ -37,7 +37,7 @@ if (typeof(IDictionary).IsAssignableFrom(type))
 
 <br><br>
 
-#### :sparkles: DataContractSerializer로 Dictionary를 사용해보려고 했으나 <br> Xml에서는 List로 관리하는 게 맞다고 판단했다.
+## :sparkles: DataContractSerializer로 Dictionary를 사용해보려고 했으나 <br> Xml에서는 List로 관리하는 게 맞다고 판단했다.
 
 - 연월을 key로, 그 달에 물을 마셔서 포인트를 얻은 횟수를 value로 관리하고 싶었다. 예를 들면 `202610 → 3`처럼 key로 바로 접근하고 싶었다.
 - XmlSerializer가 Dictionary를 직접 지원하지 않아, Dictionary를 지원하는 .NET 공식 API인 DataContractSerializer를 알아봤다.
@@ -49,7 +49,7 @@ if (typeof(IDictionary).IsAssignableFrom(type))
 
 <br><br>
 
-#### :sparkles: public List로 저장하고, 필요한 자료구조는 [XmlIgnore]를 사용해서 public property에서 Dictionary로 만들어 사용하자.
+## :sparkles: public List로 저장하고, 필요한 자료구조는 [XmlIgnore]를 사용해서 public property에서 Dictionary로 만들어 사용하자.
 
 - XML의 읽기·쓰기는 `List<class>`로 처리한다. 기록 하나에 함께 있어야 하는 정보는 class로 묶는다.
 - key로 접근하고 싶을 때는 [XmlIgnore]가 붙은 public property에서 Dictionary로 변환해 사용한다.
