@@ -37,4 +37,8 @@ if (typeof(IDictionary).IsAssignableFrom(type))
 
 <br><br>
 
-#### :fire: XmlSerializer로는 기존 필드와 List를 이용하고, <br> DataContractSerializer로 Dictionary를 사용하자. <br> 둘 다 공식 .Net Library다.
+#### :fire: DataContractSerializer로 Dictionary를 사용해보려고 했으나 <br> Xml에서는 List로 관리하는 게 맞다고 판단했다.
+
+<br><br>
+
+#### :fire: private List로 저장하고, 필요한 자료구조는 [xmlIgnore]를 사용해서 public property Dictionary처럼 만들자. 
