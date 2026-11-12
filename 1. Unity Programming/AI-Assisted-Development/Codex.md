@@ -55,7 +55,7 @@
 
 <br>
 
-#### :white_check_mark: CODEX_Rider_Sub
+#### :white_check_mark: CODEX_Rider_Sub (필요할 때 만)
 
 - Main이 장시간 작업하는 동안 과외가 필요하면 Fork
 - 분기 시점까지의 대화를 기반으로 학습
