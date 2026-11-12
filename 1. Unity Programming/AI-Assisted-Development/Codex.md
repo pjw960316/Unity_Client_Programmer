@@ -24,27 +24,47 @@
 
 <br><br>
 
-## :fireworks: 3가지 플랫폼
+## :fireworks: 플랫폼 구분
+- **GPT_Web은 사용하지 않는다. GPT_App으로 통일한다.**
+  - Chrome을 켜지 않으므로 빠른 듯?
 
-#### :white_check_mark: GPT_Web
+#### :white_check_mark: GPT_Chat
 
 - 일상 질문
-- 간단한 개발 개념 질문
 
 <br>
 
-#### :white_check_mark: GPT_App
+#### :white_check_mark: GPT_Work
 
-- Github 문서 복습
-- Github 문서 기반 과외
-- GPT_Web을 참고 할 수 **있다**.
+- 포트폴리오 문서 제작
 
 <br>
 
-#### :white_check_mark: CODEX_Rider Plugin
+#### :white_check_mark: CODEX_GPT APP
 
-- Unity 프로젝트 개발
-- GPT_Web을 참고 할 수 **없다**.
+- 개발을 하지 않을 때(IDE Turn OFF) GitHub 문서를 복습 및 과외
+
+<br>
+
+#### :white_check_mark: CODEX_Rider_Main
+
+- 개발, 설계, 코드 기반 과외를 모두 담당
+- 평소에는 Main만 사용
+
+<br>
+
+#### :white_check_mark: CODEX_Rider_Sub
+
+- Main이 장시간 작업하는 동안 과외가 필요하면 Fork
+- 분기 시점까지의 대화를 기반으로 학습
+- 코드 수정 없이 분석과 설명 중심으로 활용
+- 학습이 끝나면 세션 종료
+
+<br>
+
+#### :white_check_mark: JetBrain Junie Lite
+  
+- Codex 토큰 다 쓰면 사용할 무료 AI-Agent.
 
 <br><br>
 
