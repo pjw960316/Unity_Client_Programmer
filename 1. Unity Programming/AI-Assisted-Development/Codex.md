@@ -25,8 +25,13 @@
 <br><br>
 
 ## :fireworks: 플랫폼 구분
+
+#### ::cherry_blossom: 참고 사항
 - **GPT_Web은 사용하지 않는다.  ->  GPT_App으로 통일한다.**
   - Chrome을 켜지 않으므로 빠른 듯?
+
+> 공식적으로도 ChatGPT(chat & work)와 Codex의 대화 기록은 별도로 관리됩니다. 
+> Work가 로컬 프로젝트를 읽을 수 있다고 해서 Codex의 과거 대화까지 자동으로 전달되는 것은 아닙니다.
 
 <br>
 
