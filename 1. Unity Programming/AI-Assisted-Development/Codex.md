@@ -51,17 +51,18 @@
 #### :white_check_mark: CODEX_GPT APP
 
 - 개발을 하지 않을 때(IDE Turn OFF) GitHub 문서를 복습 및 과외
+- 무거운 Rider를 사용하지 않기 때문에 쾌적하다.
 
 <br>
 
-#### :white_check_mark: CODEX_Rider_Main
+#### :white_check_mark: CODEX_Rider_Plugin_Main
 
 - 개발, 설계, 코드 기반 과외를 모두 담당
 - 평소에는 Main만 사용
 
 <br>
 
-#### :white_check_mark: CODEX_Rider_Sub (필요할 때 만)
+#### :white_check_mark: CODEX_Rider_Plugin_Sub (필요할 때 만)
 
 - Main이 장시간 작업하는 동안 과외가 필요하면 Fork
 - 분기 시점까지의 대화를 기반으로 학습
