@@ -25,8 +25,10 @@
 <br><br>
 
 ## :fireworks: 플랫폼 구분
-- **GPT_Web은 사용하지 않는다. GPT_App으로 통일한다.**
+- **GPT_Web은 사용하지 않는다.  ->  GPT_App으로 통일한다.**
   - Chrome을 켜지 않으므로 빠른 듯?
+
+<br>
 
 #### :white_check_mark: GPT_Chat
 
