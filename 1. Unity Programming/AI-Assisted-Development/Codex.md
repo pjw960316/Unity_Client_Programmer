@@ -2,7 +2,6 @@
 - 2026 개발 조합  :  **Unity + Rider + GPT + Codex (Rider Official Plugins)**
   - :airplane: [Codex Official Docs](https://learn.chatgpt.com/docs)
   - :airplane: [Codex Is Now Integrated Into JetBrains IDEs](https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/?utm_source=chatgpt.com)
-  - ![alt text](./captures/codex.png)
 
 <br><br>
 
@@ -26,7 +25,7 @@
 
 ## :fireworks: 플랫폼 구분
 
-#### ::cherry_blossom: 참고 사항
+#### :cherry_blossom: 참고 사항
 - **GPT_Web은 사용하지 않는다.  ->  GPT_App으로 통일한다.**
   - Chrome을 켜지 않으므로 빠른 듯?
 
