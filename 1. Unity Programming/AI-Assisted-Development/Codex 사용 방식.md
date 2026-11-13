@@ -103,3 +103,6 @@
 
 - :airplane: [OpenAI 추론 수준 안내](https://developers.openai.com/api/docs/guides/reasoning)
 - :airplane: [Codex 서브에이전트와 추론 설정](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+
+- :sparkles: GitHub 문서 수정 연결을 확인하기 위한 테스트 문구입니다.
+- :sparkles: 이 두 줄은 테스트 완료 후 삭제해도 됩니다.
