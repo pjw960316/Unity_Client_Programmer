@@ -38,6 +38,7 @@
 #### :white_check_mark: GPT_Chat
 
 - 일상 질문
+- Notion 일일·주간 계획표와 GitHub 커밋 기록을 대조하여, 유니티 개발 성과와 남은 작업을 점검
 
 <br>
 
