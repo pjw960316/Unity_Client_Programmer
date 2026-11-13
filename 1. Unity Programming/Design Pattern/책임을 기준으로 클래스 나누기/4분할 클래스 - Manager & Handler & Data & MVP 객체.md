@@ -67,6 +67,7 @@
 - MyCharacterManager가 커지는 것을 경계해서 Handler 직원으로 나눴다. 
 - 그런데 이번 대화에서 Manager의 책임을 너무 크게 잡아 Handler도 그 범위를 이어받고 있다는 생각이 들었다.
 - private nested class로 두는 게 가장 아름답다고 생각한다.
+- Manager의 getter가 Handler의 getter를 호출하면서 같은 값을 전달하기만 하는 경우, getter가 두 번 이어지는 표현이 불편했다. 간단한 Handler의 조회는 프로퍼티로 표현해 가독성을 높이기로 했다.
 
 <br>
 
@@ -77,6 +78,28 @@
 - 특정 UI가 원하는 표현을 만드는 것보다, 사용처들이 동일한 기준으로 활용할 수 있는 값을 만드는 데 집중한다.
 - 가공 결과가 필요하다고 해서 별도의 공용 원본을 중복해서 보관할 필요는 없다.
 - Manager 아래에 Handler를 추가하기 전에, 그 업무가 해당 Manager의 공용 책임에 속하는지 먼저 판단한다.
+
+<br>
+
+#### :white_check_mark::sparkles: 단순한 Handler getter는 프로퍼티로 표현한다
+
+- Manager의 Get 메서드가 Handler의 Get 메서드를 호출하고, 두 메서드가 동일한 값을 읽어 전달하기만 한다면 Handler 쪽은 읽기 전용 프로퍼티로 제공한다.
+- Manager는 외부에 공개한 Get 메서드를 유지하고, 내부에서는 Handler의 프로퍼티를 읽는다. 동일한 getting에 Get 메서드가 반복되는 표현을 줄여 가독성을 높이려는 기준이다.
+- Handler는 Manager의 private nested class다. 외부 객체는 Manager를 통해 접근하므로, Handler 내부의 단순 조회를 프로퍼티로 바꿔도 외부에서 사용하는 API에는 영향을 주지 않는다.
+- 여러 단계의 가공이나 복잡한 조회 절차가 있다면, 처리 동작을 드러내는 Get 메서드로 유지한다.
+
+예시 — 현재의 단순 날짜 조회에 이 기준을 적용한다면 다음처럼 표현할 수 있다.
+
+~~~c#
+// Manager: 외부에 공개하는 조회 메서드
+public DateTime GetLatestWaterDrinkingDateFromAndroid()
+{
+    return _drinkingWaterHandler.LatestWaterDrinkingDateFromAndroid;
+}
+
+// private nested Handler: 단순한 값 조회를 프로퍼티로 제공
+public DateTime LatestWaterDrinkingDateFromAndroid => _myCharacterData.LatestWaterDrinkingDateFromAndroid;
+~~~
 
 <br>
 
