@@ -55,6 +55,7 @@
 #### :white_check_mark: CODEX_GPT APP
 
 - 개발을 하지 않을 때(IDE Turn OFF) GitHub 문서를 복습 및 과외
+  - 집 PC & 노트북 모두 정상 동작 확인
 - 무거운 Rider를 사용하지 않기 때문에 쾌적하다.
 
 <br>
@@ -103,6 +104,3 @@
 
 - :airplane: [OpenAI 추론 수준 안내](https://developers.openai.com/api/docs/guides/reasoning)
 - :airplane: [Codex 서브에이전트와 추론 설정](https://learn.chatgpt.com/docs/agent-configuration/subagents)
-
-- :sparkles: GitHub 문서 수정 연결을 확인하기 위한 테스트 문구입니다.
-- :sparkles: 이 두 줄은 테스트 완료 후 삭제해도 됩니다.
