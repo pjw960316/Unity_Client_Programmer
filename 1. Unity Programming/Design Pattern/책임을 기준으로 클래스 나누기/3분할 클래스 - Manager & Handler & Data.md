@@ -97,23 +97,29 @@ public int MonthlyRoutineSuccessMoney { get; private set; }
 
 <br><br>
 
-## :sparkles: 조회와 갱신에서 데이터를 가공하는 주체
+## :fire: 데이터를 가공하는 주체는 상황에 따라 두 개로 나뉜다. <br> :fire: 하나는 Handler Class <br> :fire: 다른 하나는 Data Class
 
 #### :white_check_mark: 경험
 
-- 물 푸시에서 안드로이드의 `confirmedDates`를 받아오면서, Data에 반영하기 전에 누가 이 값을 가공해야 하는지 고민했다.
+- **Getter의 가공은 위에서 공부한 바와 같이 handler의 영역이다.**
+  - Data Class가 결국 entity가 되는 거고, 우리는 거기서 온전히 읽어온다. 
+  - 그 후, MVP의 요청대로 전달해주려면 적절한 가공이 필요하고 그걸 Handler가 한다.
+- **하지만 반대의 경우도 있다. MVP의 어떤 행위로 데이터 갱신이 필요하다면?**
+  - 그건 어떤 클래스에서 해야할까? 의 질문으로 출발했다.
 
 <br>
 
-#### :white_check_mark: 조회에서는 Handler가 결과를 가공한다
+#### :one: 조회에서는 Handler Class가 데이터를 가공한다.
 
 - Data → Handler → Manager → MVP <br>
   MVP가 요청한 값에 가공이 필요하면 Handler가 Data를 읽어 결과를 만든다. Manager가 그 결과를 MVP에 전달한다.
 
 <br>
 
-#### :white_check_mark: 갱신에서는 Data가 입력을 가공한다
+#### :two: 갱신에서는 Data Class가 데이터를 가공한다.
 
 - MVP → Manager → Handler → Data <br>
-  Manager가 작업을 맡기면 Handler는 필요한 인자를 준비해 Data의 갱신 메서드를 호출한다. 예를 들어 Handler가 `confirmedDates`를 넘기면 Data가 자기 컬렉션에 맞게 가공해 상태를 갱신한다.
+  Manager가 작업을 맡기면 Handler는 필요한 인자를 준비해 Data의 갱신 메서드를 호출한다. 
+  - 예를 들어 Handler가 `confirmedDates`를 넘기면 Data가 자기 컬렉션에 맞게 가공해 상태를 갱신한다.
+- Data Class에 private set을 지향하는 이유.
 - Data는 컬렉션의 갱신을 맡고, 외부 조회에는 `ImmutableDictionary`나 `ImmutableHashSet` 같은 불변 컬렉션을 제공한다.
