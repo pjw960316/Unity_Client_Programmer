@@ -30,23 +30,57 @@
 
 <br><br>
 
-## :sparkles: const는 Data에 모으고 클래스 이름으로 접근한다
+## :fireworks: MVP -> Manager -> Handler -> Data 구조에서 <br> Getter를 구현하는 방식
 
-- Manager와 Data 구조에서 사용하는 `const`는 Data에 모아 정의하고, 외부에서도 Data 클래스 이름으로 직접 접근한다.
+#### :white_check_mark: 경험
 
-<br><br>
+- 나는 Data Class의 Setter를 외부로 여는 걸 싫어한다. <br> 그래서 public get; private set;을 이용한다.
+- 나는 MVP 객체가 필요한 데이터를 싱글턴에 요청할 때 반드시 Manager를 통해야 한다고 설계했다.
+- 그러다 보니 중복된 코드가 발견되기 시작했다. 
 
-## :sparkles: Getter는 Manager → Handler → Data로 연결한다
+~~~c#
+// MyCharacterManager
+public int GetMonthlyRoutineSuccessMoney()
+{
+    return _routineHandler.GetMonthlyRoutineSuccessMoney();
+}
 
-#### :one: 경험
+// RoutineHandler
+public int GetMonthlyRoutineSuccessMoney()
+{
+    return _myCharacterData.MonthlyRoutineSuccessMoney;
+}
 
-- 물 섭취 기능을 만들면서 Manager에 같은 값을 따로 보관하기보다 Data에서 읽어오기로 했다.
-- 그 값을 읽는 코드도 Handler에 두기로 했다. 단순한 Getter까지 한 단계를 더 거치는 번거로움은 있지만, 해당 기능의 조회와 가공을 Handler에서 찾을 수 있도록 통일하고 싶었다.
+// MyCharacterData
+public int MonthlyRoutineSuccessMoney { get; private set; }
+~~~
 
 <br>
 
-#### :two: 유지하려는 규칙
+#### :white_check_mark: 각각의 클래스의 Getter 관점 책임
 
 - Data는 공용 상태를 보관한다. Manager와 Handler에는 같은 상태를 별도 필드로 중복 보관하지 않는다.
 - Handler는 해당 기능의 데이터를 Data에서 조회하고, 필요한 공통 가공을 담당한다.
-- Manager의 Getter는 Handler에 조회를 위임하고, 반환받은 값을 외부에 제공한다.
+- Manager는 외부에 최종 Data를 제공한다.
+
+<br>
+
+#### :pushpin: 단순 조회는 Manager에서 Data를 바로 읽는다.
+
+- MVP가 필요한 값을 Data 프로퍼티에서 그대로 얻을 수 있으면 <br> Manager가 직접 읽는 것을 기본으로 삼는다.
+- 이전 예시의 월간 루틴 보상액은 Handler에서도 같은 값을 전달하기 때문에, Manager에서 바로 읽을 수 있다.
+
+  ~~~c#
+  // MyCharacterManager
+  public int GetMonthlyRoutineSuccessMoney()
+  {
+      return _myCharacterData.MonthlyRoutineSuccessMoney;
+  }
+  ~~~
+
+
+<br>
+
+#### :pushpin: const는 Data에 모으고 클래스 이름으로 접근한다
+
+- Manager와 Data 구조에서 사용하는 `const`는 Data에 모아 정의하고, 외부에서도 Data 클래스 이름으로 직접 접근한다.
