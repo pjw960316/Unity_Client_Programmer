@@ -84,3 +84,13 @@ public int MonthlyRoutineSuccessMoney { get; private set; }
 #### :pushpin: const는 Data에 모으고 클래스 이름으로 접근한다
 
 - Manager와 Data 구조에서 사용하는 `const`는 Data에 모아 정의하고, 외부에서도 Data 클래스 이름으로 직접 접근한다.
+
+<br>
+
+#### :white_check_mark: 이상적인 Manager는 Getter로만 이루어질까?
+
+- 조회 흐름을 정리하다 보니, 이상적인 Manager의 공개 메서드에는 Getter만 남지 않을까 하는 생각이 들었다. <br>
+  월간 루틴 보상액은 Data에서 읽고, 월간 물 보상 횟수는 Handler에서 받아오면 MVP는 Manager에 필요한 값을 요청할 수 있다.
+
+- 실제로 낮잠을 기록할 때는 MVP가 `UpdateSiestaRecord()`를 호출한다. Manager는 기록 갱신을 Handler에 맡기고, 저장한 뒤 변경된 보상액을 알린다. <br>
+  조회만 제공하는 Manager라면 Getter로 충분하다. 상태 변경 요청도 받는 Manager라면 그 작업의 순서를 조율하는 메서드가 필요하다.
