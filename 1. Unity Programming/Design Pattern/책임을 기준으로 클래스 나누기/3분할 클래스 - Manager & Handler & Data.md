@@ -94,3 +94,26 @@ public int MonthlyRoutineSuccessMoney { get; private set; }
 
 - 실제로 낮잠을 기록할 때는 MVP가 `UpdateSiestaRecord()`를 호출한다. Manager는 기록 갱신을 Handler에 맡기고, 저장한 뒤 변경된 보상액을 알린다. <br>
   조회만 제공하는 Manager라면 Getter로 충분하다. 상태 변경 요청도 받는 Manager라면 그 작업의 순서를 조율하는 메서드가 필요하다.
+
+<br><br>
+
+## :sparkles: 조회와 갱신에서 데이터를 가공하는 주체
+
+#### :white_check_mark: 경험
+
+- 물 푸시에서 안드로이드의 `confirmedDates`를 받아오면서, Data에 반영하기 전에 누가 이 값을 가공해야 하는지 고민했다.
+
+<br>
+
+#### :white_check_mark: 조회에서는 Handler가 결과를 가공한다
+
+- Data → Handler → Manager → MVP <br>
+  MVP가 요청한 값에 가공이 필요하면 Handler가 Data를 읽어 결과를 만든다. Manager가 그 결과를 MVP에 전달한다.
+
+<br>
+
+#### :white_check_mark: 갱신에서는 Data가 입력을 가공한다
+
+- MVP → Manager → Handler → Data <br>
+  Manager가 작업을 맡기면 Handler는 필요한 인자를 준비해 Data의 갱신 메서드를 호출한다. 예를 들어 Handler가 `confirmedDates`를 넘기면 Data가 자기 컬렉션에 맞게 가공해 상태를 갱신한다.
+- Data는 컬렉션의 갱신을 맡고, 외부 조회에는 `ImmutableDictionary`나 `ImmutableHashSet` 같은 불변 컬렉션을 제공한다.
