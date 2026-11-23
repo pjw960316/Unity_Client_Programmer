@@ -23,7 +23,7 @@
 
 <br>
 
-#### ::bookmark:: Reddit
+#### :bookmark: Reddit
 
 > YAGNI" ("You Aren't Gonna Need It" 또는 "You Ain't Gonna Need It")라는 아이디어는 본질적으로 필요하다고 판단될 때까지 기능을 구현하지 말라는 생각입니다. 
 
