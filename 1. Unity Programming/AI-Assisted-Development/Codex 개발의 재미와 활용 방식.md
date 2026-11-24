@@ -40,6 +40,7 @@
 ## :fire: Codex에게 위임 할 것
 #### :white_check_mark: Class를 새로 만들 때 초기 틀 구현.
 - 시작이 매우 쉬워진다.
+- Abstract Base Class (ex : UIPopupBase) 를 상속 받는 초기 클래스 모형을 쉽게 만들 수 있다.
 
 <br>
 
@@ -76,3 +77,7 @@
 
 #### :white_check_mark: 다수의 클래스에서 변수 이름 & 메서드 이름 정리하기
 - 별거 아닌데 생각보다 엄청 도움되는 기능
+
+<br>
+
+#### :white_check_mark: 
