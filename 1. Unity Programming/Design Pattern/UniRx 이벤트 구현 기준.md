@@ -27,4 +27,17 @@
 
 <br><br>
 
-## :fireworks: 언제 Action, 그리고 언제 UniRx (R3)를 사용할 지 다시 정리해 봐야 한다!
+## :fireworks: 
+
+<br><br>
+
+## :sparkles: 나중에 다시 볼 질문
+
+
+#### :white_check_mark: 언제 Action, 그리고 언제 UniRx (R3)를 사용할 지 다시 정리해 봐야 한다!
+
+
+#### :white_check_mark: Widget 이벤트를 상위 View에서 어떻게 전달할까?
+
+- Widget의 IObservable을 그대로 공개하는 경우와 상위 View가 화면 단위의 이벤트를 직접 발행하는 경우를 어떻게 판단할까?
+- 예를 들어 2~3번 탄다면? View -> Widget -> Widget-> Widget-> Widge
