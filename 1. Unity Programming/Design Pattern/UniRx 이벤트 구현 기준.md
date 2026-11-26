@@ -19,28 +19,14 @@
 
 #### :white_check_mark:  IObservable이 호출할 메서드는 Presenter에 둔다.
 
-- Subscribe만 구현되어 있다.
-- 다시 말해, 이 콜백의 결과로 호출될 메서드를 구현하는 것. <br> 당연히 Subscribe로 호출될 메서드는 Presenter에 두어야 한다. <br> 우리의 View는 멍청하니까.
+- 이 콜백의 결과로 호출될 메서드를 구현하는 것. <br> 당연히 Subscribe로 호출될 메서드는 Presenter에 두어야 한다. <br> 우리의 View는 멍청하니까.
 - Presenter는 View를 알기 때문에 View의 public IObservable은 읽을 수 있다.
 
 - :airplane: [MVP Pattern · Presenter](../Unity%20Ver_2/MVP%20Pattern/Presenter.md)
 
 <br><br>
 
-## :fireworks: 
 
-<br><br>
-
-## :sparkles: 나중에 다시 볼 질문
-
-
-#### :white_check_mark: 언제 Action, 그리고 언제 UniRx (R3)를 사용할 지 다시 정리해 봐야 한다!
-
-
-#### :white_check_mark: Widget 이벤트를 상위 View에서 어떻게 전달할까?
-
-- Widget의 IObservable을 그대로 공개하는 경우와 상위 View가 화면 단위의 이벤트를 직접 발행하는 경우를 어떻게 판단할까?
-- 예를 들어 2~3번 탄다면? View -> Widget -> Widget-> Widget-> Widge
 
 <br><br>
 
@@ -100,3 +86,10 @@
 - 모든 활성 Presenter가 팝업 열림을 받아야 한다면, Presenter가 활성화될 때 공통으로 `OnOpenPopup`을 구독하고 종료할 때 해제하는 방식으로 구현할 수 있다. 이 방식에서는 `UIManager`에 Presenter 목록을 하나 더 둘 필요가 없다.
 - 현재 알림이 전달하는 값은 `EPopupKey`다. 여기에 **방금 생성한 팝업 인스턴스**도 전달하면, 출금을 담당하는 Presenter가 그 자리에서 해당 팝업의 `OnConfirmed`를 구독할 수 있다. <br>
   같은 확인 팝업을 출금과 삭제에 재사용할 때는 어느 버튼이 열었는지도 함께 전달해 각 Presenter가 자기 요청의 확인만 처리하도록 한다.
+
+
+<br><br>
+
+## :sparkles: 나중에 다시 볼 질문
+
+#### :white_check_mark: 언제 Action, 그리고 언제 UniRx (R3)를 사용할 지 다시 정리해 봐야 한다!
