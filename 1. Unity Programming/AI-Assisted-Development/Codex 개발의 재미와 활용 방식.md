@@ -80,4 +80,5 @@
 
 <br>
 
-#### :white_check_mark: 
+#### :white_check_mark: 인터페이스 메서드 생성 -> <br> 하위 클래스에서 빈 메서드 자동 생성
+- GOAT 기능
