@@ -26,7 +26,7 @@
 
 <br><br>
 
-## :fireworks:
+## :fireworks: IObservable 과 Subject는 어떤 View 계층에 생성시켜야 하나?
 
 #### :white_check_mark: 경험
 
@@ -47,7 +47,7 @@
 
 <br><br>
 
-#### :fireworks: View의 이벤트를 Subscribe 하기 위해 Presenter는 Manager에게 정보를 받는다.
+## :fireworks: View의 이벤트를 Subscribe 하기 위해 Presenter는 Manager에게 정보를 받는다.
 
 #### :white_check_mark: 경험
 
