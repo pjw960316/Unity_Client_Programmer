@@ -64,6 +64,7 @@
 - 확인 팝업은 결국 View다. 멍청하다. 그러므로, 확인 팝업의 역할은 "저 생겼어요!" 가 전부다.
 - Manager (지금은 PresenterManager가 좋다고 생각)가 확인 팝업이 열린 정보를 받는다. <br> Manager는 현재 열린 모든 Presenter에게 이를 알린다. <br> 그러면 Presenter는 이를 받아서 Subscribe를 할 수 있다.
   - PresenterManager가 그래서 현재 생성된 Presenter들을 Dictionary로 들고 있다.
+  - IPresenter에 인터페이스 메서드로 구현해준다.
 
 <br><br>
 
