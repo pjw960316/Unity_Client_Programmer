@@ -26,67 +26,44 @@
 
 <br><br>
 
-
-
-<br><br>
-
-## :sparkles: 팝업의 입력 이벤트를 Presenter에서 구독하기
+## :fireworks:
 
 #### :white_check_mark: 경험
 
-- 출금 확인 팝업의 `IObservable`을 Presenter가 어떻게 받는지 고민했다. <br>
-  처음에는 Widget에서 최상단 View까지 신호를 여러 번 넘기는 흐름을 떠올렸다. 계층이 깊어질수록 중간 객체마다 전달 코드를 붙여야 해서 흐름을 읽기 어렵겠다고 생각했다.
-- Presenter에서 `UIManager`로 팝업을 여는 코드를 다시 보니, 반환값이 방금 생성한 팝업이었다. <br>
-  팝업을 연 자리에서 그 인스턴스의 확인 이벤트를 바로 구독하는 흐름이 직관적이라고 느꼈다.
+- IObservable 과 Subject의 위치가 View에 존재한다는 것은 이해했다.
+- View는 결국 무수히 많은 widget의 계층으로 이뤄질 수도 있다.
+  - 예를 들어 View(엄청 큰 Popup) -> Widget -> Widget -> ... -> widget
+  - 이러면 나는 IObservable 과 Subject을 어디에 선언해야 하는가?
+- 또한, View는 Presenter를 갖고, Widget은 보통 갖지 않는다. <br> Widget을 누르면 또 다른 View가 생성 될 수도 있다.
+  - 이것이 의미하는 건 결국 생명주기가 다른 View와 Presenter 사이에서 Rx가 되는 순간이 있는데, <br> 이건 어찌 할건지
 
 <br>
 
-#### :white_check_mark: 입력 이벤트를 발행하는 View에 Subject와 IObservable을 둔다
+#### :white_check_mark: 가장 사용자 인풋에 가까운 곳에 IObservable 과 Subject을 선언한다.
 
-- View와 Widget은 모두 View 계층에 속한다. 사용자 입력을 가까이에서 받아 그 입력의 의미를 정하고 이벤트를 직접 발행하는 객체에 `private Subject`와 `public IObservable`을 함께 둔다.
-- 확인 버튼은 ‘버튼이 눌렸다’를 알리고, 확인 팝업은 그 클릭을 ‘사용자가 확인했다’는 이벤트로 발행한다. <br>
-  그래서 확인 이벤트의 `Subject`와 `IObservable`은 팝업에 둔다.
-
-<br>
-
-#### :white_check_mark: Presenter는 Manager가 생성한 팝업을 받아 구독한다
-
-- Presenter가 `UIManager`를 통해 새 팝업을 열 때는 반환값으로 그 인스턴스를 받는다. <br>
-  받은 팝업의 `OnConfirmed`를 직접 구독하면, Presenter는 자신이 연 팝업의 확인에만 반응한다.
-
-  ```csharp
-  var popup = _uiManager.OpenPopupByStringKey(EPopupKey.ConfirmPopup, _uiManager.MainCanvasTransform) as UIConfirmPopup;
-  ```
+- 경험상 괜히 복잡하게 할 이유가 없다.
+- 과거에는 Manager에 UniRx를 생성해서 괜히 메모리에 오래 남지 않을까 걱정했다.
+- 하지만, UI의 경우 즉시 사라지는 경우가 많으며 생명주기 관리만 잘되면 <br> Widget이 들고 있어도 무방하다.
 
 <br><br>
 
-## :sparkles: 생명주기가 다른 팝업의 이벤트를 Presenter에서 구독하기
-
-- 연구 자체는 1시간 했다.
+#### :fireworks: View의 이벤트를 Subscribe 하기 위해 Presenter는 Manager에게 정보를 받는다.
 
 #### :white_check_mark: 경험
 
-- 가장 헷갈렸던 건 출금 버튼이 확인 팝업을 여는 경우였다. 패널의 Presenter는 이미 살아 있고, 확인 팝업은 나중에 생성된다. <br>
-  Presenter가 처음 이벤트를 연결할 때는 아직 팝업이 없는데, 언제 그 팝업의 `OnConfirmed`를 Subscribe할 수 있을까?
-- 팝업을 생성하는 `UIManager`가 “방금 이 팝업이 열렸다”고 알려주면 된다고 생각했다. <br>
+- 패널(Large-View) 출금 버튼(widget)이 확인 팝업(또 다른 View)을 여는 경우였다. 
+- 패널의 Presenter는 이미 생성자가 돌았다. 확인 팝업은 나중에 생성된다.
+- Presenter가 처음 이벤트를 연결할 때는 아직 확인 팝업이 없는데, <br> 언제 그 팝업의 `OnConfirmed`를 Subscribe할 수 있을까?
+ <br> 그러면 PresenterManager가 
   팝업이 열렸다는 정보는 그때 살아 있는 모든 Presenter가 받아도 좋겠다고 봤다. 그래서 Manager에 팝업처럼 Presenter도 자료구조로 보관하는 방안을 떠올렸다.
 
 <br>
 
-#### :white_check_mark: 현재 OnOpenPopup이 알려주는 것
+#### :white_check_mark: Presenter는 다른 생명주기의 View 나 Widget의 이벤트를 <br> UIManager 나 PresenterManager 같은 싱글턴 매니저를 통해 받는다.
 
-- `UIManager`는 생성한 팝업을 딕셔너리에 넣고 `_onOpenPopup.OnNext(popupKey)`를 호출한다. 이때 공개된 `OnOpenPopup`을 구독 중인 객체들이 팝업 키를 받는다. 현재 이 알림을 쓰는 예가 `CameraManager`다.
-- Presenter를 보관하는 자료구조는 이미 `PresenterManager`에 있다. Presenter를 생성하면 `_livedPresenterHashSet`에 추가하고, 종료 처리할 때 제거한다. <br>
-  이 목록에 들어가는 것과 `OnOpenPopup`을 구독하는 것은 별개다.
-
-<br>
-
-#### :white_check_mark: 설계 제안 — 열림 알림을 먼저 구독하고, 확인 이벤트는 팝업이 생겼을 때 구독한다
-
-- 모든 활성 Presenter가 팝업 열림을 받아야 한다면, Presenter가 활성화될 때 공통으로 `OnOpenPopup`을 구독하고 종료할 때 해제하는 방식으로 구현할 수 있다. 이 방식에서는 `UIManager`에 Presenter 목록을 하나 더 둘 필요가 없다.
-- 현재 알림이 전달하는 값은 `EPopupKey`다. 여기에 **방금 생성한 팝업 인스턴스**도 전달하면, 출금을 담당하는 Presenter가 그 자리에서 해당 팝업의 `OnConfirmed`를 구독할 수 있다. <br>
-  같은 확인 팝업을 출금과 삭제에 재사용할 때는 어느 버튼이 열었는지도 함께 전달해 각 Presenter가 자기 요청의 확인만 처리하도록 한다.
-
+- 확인 팝업은 결국 View다. 멍청하다. 그러므로, 확인 팝업의 역할은 "저 생겼어요!" 가 전부다.
+- Manager (지금은 PresenterManager가 좋다고 생각)가 확인 팝업이 열린 정보를 받는다. <br> Manager는 현재 열린 모든 Presenter에게 이를 알린다. <br> 그러면 Presenter는 이를 받아서 Subscribe를 할 수 있다.
+  - PresenterManager가 그래서 현재 생성된 Presenter들을 Dictionary로 들고 있다.
 
 <br><br>
 
