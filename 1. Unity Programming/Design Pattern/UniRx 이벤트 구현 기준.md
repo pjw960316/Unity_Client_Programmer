@@ -44,6 +44,7 @@
 - 경험상 괜히 복잡하게 할 이유가 없다.
 - 과거에는 Manager에 UniRx를 생성해서 괜히 메모리에 오래 남지 않을까 걱정했다.
 - 하지만, UI의 경우 즉시 사라지는 경우가 많으며 생명주기 관리만 잘되면 <br> Widget이 들고 있어도 무방하다.
+- :airplane:[widget](https://github.com/pjw960316/Unity_Client_Programmer/blob/main/1.%20Unity%20Programming/Unity%20Ver_2/MVP%20Pattern/View%20-%20Widget.md)
 
 <br><br>
 
