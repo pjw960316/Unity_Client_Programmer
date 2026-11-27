@@ -34,6 +34,12 @@ flowchart LR
 
 <br><br>
 
+## :fire: Widget은 Presenter를 두지 않는다.
+
+- 내가 정한 설계 원칙.
+
+<br><br>
+
 ## :fireworks: Widget을 별도 Prefab으로 분리하는 기준 
 
 - 같은 구성의 Widget을 여러 곳에 배치하거나 목록에서 반복 생성할 때는 별도 Prefab으로 두면 편하다. 
